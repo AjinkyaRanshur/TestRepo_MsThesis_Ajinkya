@@ -1,7 +1,7 @@
 #!/bin/bash
 
 start=0
-end=17
+end=0
 
 
 for ((i=start;i<=end;i++)); do
@@ -9,6 +9,4 @@ for ((i=start;i<=end;i++)); do
     python3 main.py --config "$config"
 done
 
-python3 main.py --config control_pc
-python3 main.py --config control_fffb
 

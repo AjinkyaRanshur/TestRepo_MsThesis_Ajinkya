@@ -6,7 +6,7 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from eval_and_plotting import evaluation_metric,evaluation_reconstruction,plot_metrics
+from eval_and_plotting import evaluation_metric,evaluation_of_loss_metric,plot_metrics
 import os
 import wandb
 from wb_tracker import init_wandb
@@ -32,14 +32,13 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
                 ft_DE_pc_temp = torch.zeros(batch_size,64,4,4).to(device)
 
                 ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
-                # In pc_train.py training loop
-                
+
+                # In pc_train.py training loop       
                 ft_AB_pc_temp.requires_grad_(True)
                 ft_BC_pc_temp.requires_grad_(True)
                 ft_CD_pc_temp.requires_grad_(True)
                 ft_DE_pc_temp.requires_grad_(True)
                 ft_EF_pc_temp.requires_grad_(True)
-
                 optimizer.zero_grad()
                 final_loss=0
                 for i in range(timesteps):
@@ -53,14 +52,15 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
                 running_loss.append(final_loss.item())
 
             avg_loss=np.mean(running_loss)
-
             print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
-            accuracy=evaluation_metric(net,testloader,seed,device)
-            metrics={"Predictive_Coding/train_loss":avg_loss,"Predictive_Coding/testing_accuracy":accuracy,"Predictive_Coding/chance_level":10.00}
+            test_loss=evaluation_of_loss_metric(net,testloader,batch_size,device,criterion)
+            test_accuracy=evaluation_metric(net,testloader,seed,device)
+            train_accuracy=evaluation_metric(net,trainloader,seed,device)
+            metrics={"Predictive_Coding/train_loss":avg_loss,"Predictive_Coding/test_loss":test_loss,"Predictive_Coding/Testing_accuracy":test_accuracy,"Predictive_Coding/Training_accuracy":train_accuracy }
             wandb.log(metrics)
             loss_arr.append(avg_loss)
         iters = range(1, epochs+1)
-        plot_bool=plot_metrics(iters,loss_arr,save_dir,"Number of Epochs","Average Loss","Pc Training Loss","AverageLoss_Vs_Epoch_pc_training",seed)
+        #plot_bool=plot_metrics(iters,loss_arr,save_dir,"Number of Epochs","Average Loss","Pc Training Loss","AverageLoss_Vs_Epoch_pc_training",seed)
         if plot_bool==True:
             print("Predicitive coding plot was created sucessfully")
 

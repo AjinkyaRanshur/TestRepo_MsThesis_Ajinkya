@@ -6,7 +6,7 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from eval_and_plotting import evaluation_metric,evaluation_reconstruction,plot_metrics
+from eval_and_plotting import evaluation_metric,evaluation_of_loss_metric,plot_metrics
 import os
 import wandb
 from wb_tracker import init_wandb
