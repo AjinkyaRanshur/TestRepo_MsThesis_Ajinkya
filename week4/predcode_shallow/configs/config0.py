@@ -1,11 +1,11 @@
 import torch
 batch_size = 128
-epochs = 70
+epochs = 130
 seed = 42
 lr = 0.001
 momentum = 0.9
 datasetpath = '/home/ajinkyar/datasets'
-training_condition = None
+training_condition = "pc_train"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 print(f"CUDA available: {torch.cuda.is_available()}")
@@ -25,6 +25,5 @@ alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
 model_name = "pc_model"
 noise_type="s&p"
-noise_param=0.000
-experiment_name = "control_pc_model_sp_0.000"
-
+noise_param=0.0
+experiment_name = "pc_model_more_epochs"

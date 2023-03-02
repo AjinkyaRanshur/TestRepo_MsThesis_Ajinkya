@@ -11,14 +11,14 @@ import os
 import wandb
 from PIL import Image
 
-def evaluation_metric(net,testloader,batch_size,device):
+def evaluation_metric(net,dataloader,batch_size,device):
     # Testing
     #net.eval()
     total_correct = 0
     total_samples = 0
 
     with torch.no_grad():
-        for batch_idx, batch in enumerate(testloader):
+        for batch_idx, batch in enumerate(dataloader):
             
             ft_AB = torch.randn(batch_size, 6, 32, 32)
             ft_BC = torch.randn(batch_size, 16, 16, 16)
@@ -38,25 +38,26 @@ def evaluation_metric(net,testloader,batch_size,device):
 
 #It's showing the error not the accuracy fix that
 
-def evaluation_reconstruction(net,testloader):
+def evaluation_of_loss_metric(net,dataloader,batch_size,device,criterion):
+    # Testing
     #net.eval()
-    total_pixels = 0
-    correct_pixels = 0
-    threshold=0.1
-    for batch_idx, batch in enumerate(testloader):
-        images, labels = batch
-        images,labels=images.to(device),labels.to(device)
-        ft_AB,ft_BC,ft_CD,ft_DE,output,indices_AB,indices_BC = net.feedforward_pass(images)
-        _,_,_,_, xpred = net.feedback_pass(output,indices_AB,indices_BC,ft_AB,ft_BC,ft_CD,ft_DE)
-        diff=torch.abs(xpred-images)
-        correct=(diff<threshold).float().sum().item()
-        total=images.numel()
-        correct_pixels+=correct
-        total_pixels+=total
+    loss=0
 
-    accuracy = 100 * (correct_pixels / total_pixels)
+    with torch.no_grad():
+        for batch_idx, batch in enumerate(dataloader):
+            
+            ft_AB = torch.randn(batch_size, 6, 32, 32)
+            ft_BC = torch.randn(batch_size, 16, 16, 16)
+            ft_CD = torch.randn(batch_size, 32, 8, 8)
+            ft_DE = torch.randn(batch_size,64,4,4)
+            images, labels = batch
+            images,labels=images.to(device),labels.to(device)
+            _,_,_,_,_,output = net.feedforward_pass(images,ft_AB,ft_BC,ft_CD,ft_DE)
+            loss+=criterion(output,labels)
 
-    return accuracy
+
+    return loss
+
 
 def plot_metrics(x,y,save_dir,xtitle,ytitle,title,savetitle,seed):
     
