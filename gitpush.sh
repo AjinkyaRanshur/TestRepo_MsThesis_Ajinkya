@@ -7,7 +7,7 @@ read message
 #########################
 
 # add all added/modified files
-git add *
+git add -A
 # commit changes
 git commit -m "$message"
 # push to git remote repository
