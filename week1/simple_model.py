@@ -103,15 +103,21 @@ def fwd_training(net,criterion):
         print("Plots Successfully Stored")
     print(f'Accuracy = {accuracy:.2f}%')
 
+def visualize_model(net):
+    writer = SummaryWriter('runs/cifar10_experiment')
+    sample_input = torch.randn(1, 3, 32, 32)
+    writer.add_graph(net, sample_input)
+    writer.close()
+    #To launch tensorboard use this command: tensorboard --logdir=runs and then click on the link that it generates  
+
+
 def main():
     # Your training and testing code goes here
     net = Net()
     criterion = nn.CrossEntropyLoss()
     fwd_training(net,criterion)
-    writer = SummaryWriter('runs/cifar10_experiment')
-    sample_input = torch.randn(1, 3, 32, 32)
-    writer.add_graph(net, sample_input)
-    writer.close()  
+    #visualize_model(net)
+
 
 
 
