@@ -24,7 +24,7 @@ testloader=torch.utils.data.DataLoader(testset,batch_size=batch_size,shuffle=Fal
 
 classes= ('plane','car','bird','cat','deer','dog','frog','horse','ship','truck')
 
-epochs=10
+epochs=4
 
 class Net(nn.Module):
     
@@ -54,7 +54,9 @@ class Net(nn.Module):
             ft_CD=F.relu(self.fc1(ft_BC))
             ft_DE=F.relu(self.fc2(ft_CD))
             output=self.fc3(ft_DE)
-            return output
+
+            return ft_AB,ft_BC,ft_CD,ft_DE,output
+
         if direction=="backward":
             #You get the features from the forward direction
             ft_AB=self.pool(F.relu(self.conv1(x)))
@@ -84,7 +86,7 @@ def evaluation_metric(net,direction):
     with torch.no_grad():
         for batch_idx, batch in enumerate(testloader):
             images, labels = batch
-            outputs = net(images,direction)
+            ft_AB,ft_BC,ft_CD,ft_DE,output = net(images,direction)
             _, predicted = torch.max(outputs, 1)
             total_correct += (predicted == labels).sum().item()
             total_samples += labels.size(0)
@@ -147,7 +149,7 @@ def feedfwd_training(net):
         for batch_idx, batch in enumerate(trainloader):
             images, labels = batch
             optimizer_fwd.zero_grad()
-            ypred = net(images,"forward")
+            ft_AB,ft_BC,ft_CD,ft_DE,ypred = net(images,"forward")
             loss = criterion(ypred, labels)
             loss.backward()
             optimizer_fwd.step()
@@ -225,7 +227,7 @@ def main():
     net = Net()
     feedfwd_training(net)
     #visualize_model(net)
-    feedback_training(net)
+    #feedback_training(net)
 
 
 
