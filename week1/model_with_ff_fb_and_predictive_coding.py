@@ -184,7 +184,7 @@ def feedback_training(net):
             lossDtoE = criterion_recon(ft_DE, ft_ED)
             loss_input_and_recon = criterion_recon(xpred, images)
             final_loss=lossAtoB+lossBtoC+lossCtoD+lossDtoE+loss_input_and_recon
-            final_loss.backward(retain_graph=True)
+            final_loss.backward()
             optimizer_bck.step()
             running_loss.append(final_loss.item())
 
@@ -192,12 +192,12 @@ def feedback_training(net):
         print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
         loss_arr.append(avg_loss)
 
-    #accuracy=evaluation_reconstruction(net,criterion_recon)
+    accuracy=evaluation_reconstruction(net,criterion_recon)
     iters = range(1, epochs+1)
     plot_bool=plot_metrics(iters,loss_arr,"backward")
     if plot_bool==True:
         print("Plots Successfully Stored")
-    #print(f'Backward Connections Accuracy = {accuracy:.2f}%')
+    print(f'Backward Connections Accuracy = {accuracy:.2f}%')
 
     print("Backward Training Succesful")
 
