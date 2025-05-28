@@ -24,6 +24,8 @@ testloader=torch.utils.data.DataLoader(testset,batch_size=batch_size,shuffle=Fal
 
 classes= ('plane','car','bird','cat','deer','dog','frog','horse','ship','truck')
 
+epochs=10
+
 class Net(nn.Module):
     
     def __init__(self):
@@ -38,40 +40,40 @@ class Net(nn.Module):
         self.fc3_fb=nn.Linear(10,84)
         self.fc2_fb=nn.Linear(84,120)
         self.fc1_fb=nn.Linear(120,16*5*5)
-        self.deconv2_fb=nn.ConvTranspose2d(16, 6, 5,stride=2, padding=2, output_padding=1)
-        self.unpool1=nn.Upsample(scale_factor=2, mode='nearest')
+        self.deconv2_fb=nn.ConvTranspose2d(16, 6, 5,stride=1, padding=0)
+        self.unpool1=nn.Upsample(size=(14, 14), mode='bilinear', align_corners=False)
         self.deconv1_fb=nn.ConvTranspose2d(6, 3, 5,stride=2, padding=2, output_padding=1)
         self.final_upsample=nn.Upsample(size=(32, 32), mode='bilinear', align_corners=False)
 
 
     def forward(self,x,direction):
         if direction=="forward":
-            x=self.pool(F.relu(self.conv1(x)))
-            x=self.pool(F.relu(self.conv2(x)))
-            x=torch.flatten(x,1) #Flatten all dimensions except batch
-            x=F.relu(self.fc1(x))
-            x=F.relu(self.fc2(x))
-            x=self.fc3(x)
-            return x
+            ft_AB=self.pool(F.relu(self.conv1(x)))
+            ft_BC=self.pool(F.relu(self.conv2(ft_AB)))
+            ft_BC=torch.flatten(ft_BC,1) #Flatten all dimensions except batch
+            ft_CD=F.relu(self.fc1(ft_BC))
+            ft_DE=F.relu(self.fc2(ft_CD))
+            output=self.fc3(ft_DE)
+            return output
         if direction=="backward":
             #You get the features from the forward direction
-            x=self.pool(F.relu(self.conv1(x)))
-            x=self.pool(F.relu(self.conv2(x)))
-            x=torch.flatten(x,1) #Flatten all dimensions except batch
-            x=F.relu(self.fc1(x))
-            x=F.relu(self.fc2(x))
-            x=self.fc3(x)
+            ft_AB=self.pool(F.relu(self.conv1(x)))
+            ft_BC_will_flatten=self.pool(F.relu(self.conv2(ft_AB)))
+            ft_BC=torch.flatten(ft_BC_will_flatten,1) #Flatten all dimensions except batch
+            ft_CD=F.relu(self.fc1(ft_BC))
+            ft_DE=F.relu(self.fc2(ft_CD))
+            output=self.fc3(ft_DE)
             #Now once you have the features you just go back in the opposite direction and then reconstruct the input and adjust the weights based on the error 
-            x=F.relu(self.fc3_fb(x))
-            x=F.relu(self.fc2_fb(x))
-            x=F.relu(self.fc1_fb(x))
-            x = x.view(-1, 16, 5, 5)
-            x=F.relu(self.deconv2_fb(x))
-            x=self.unpool1(x)
-            x=F.relu(self.deconv1_fb(x))
+            ft_ED=F.relu(self.fc3_fb(output))
+            ft_DC=F.relu(self.fc2_fb(ft_ED))
+            ft_CB=F.relu(self.fc1_fb(ft_DC))
+            ft_CB = ft_CB.view(-1, 16, 5, 5)
+            ft_BA=F.relu(self.deconv2_fb(ft_CB))
+            ft_BA=self.unpool1(ft_BA)
+            x=F.relu(self.deconv1_fb(ft_BA))
             #This should be the input
             x=self.final_upsample(x) 
-            return x
+            return ft_AB,ft_BA,ft_BC_will_flatten,ft_CB,ft_CD,ft_DC,ft_DE,ft_ED,x
 
 def evaluation_metric(net,direction):
     # Testing
@@ -94,14 +96,25 @@ def evaluation_metric(net,direction):
 
 #It's showing the error not the accuracy fix that
 
-def evaluation_reconstruction(net,criterion_recon):
+def evaluation_reconstruction(net,direction):
     net.eval()
-    total_loss = 0.0
+    total_pixels = 0
+    correct_pixels = 0
+    threshold=0.1
     with torch.no_grad():
-        for images, _ in testloader:
-            xpred = net(images, "backward")
-            total_loss += criterion_recon(xpred, images).item()
-    return total_loss / len(testloader)
+        for batch_idx, batch in enumerate(testloader):
+            images, labels = batch
+            _,_,_,_,_,_,_,_,xpred = net(images,direction)
+            diff=torch.abs(xpred-images)
+            correct=(diff<threshold).float().sum().item()
+            total=images.numel()
+            correct_pixels=+correct
+            total_pixels=+total
+
+    accuracy = 100 * (correct_pixels / total_pixels)
+
+    return accuracy
+
 
 
 def plot_metrics(x,y,direction):
@@ -129,7 +142,7 @@ def feedfwd_training(net):
     criterion = nn.CrossEntropyLoss()
     optimizer_fwd = optim.SGD(list(net.conv1.parameters())+list(net.conv2.parameters())+list(net.fc1.parameters())+list(net.fc2.parameters())+list(net.fc3.parameters()), lr=0.001, momentum=0.9)
     loss_arr = []
-    for epoch in range(4):
+    for epoch in range(epochs):
         running_loss = []
         for batch_idx, batch in enumerate(trainloader):
             images, labels = batch
@@ -145,7 +158,7 @@ def feedfwd_training(net):
         loss_arr.append(avg_loss)
 
     accuracy=evaluation_metric(net,"forward")
-    iters = range(1, 5)
+    iters = range(1, epochs+1)
     plot_bool=plot_metrics(iters,loss_arr,"forward")
     if plot_bool==True:
         print("Plots Successfully Stored")
@@ -159,23 +172,28 @@ def feedback_training(net):
     criterion_recon = nn.MSELoss()
     optimizer_bck = optim.SGD(list(net.deconv2_fb.parameters())+list(net.deconv1_fb.parameters())+list(net.fc1_fb.parameters())+list(net.fc2_fb.parameters())+list(net.fc3_fb.parameters()), lr=0.001, momentum=0.9)
     loss_arr = []
-    for epoch in range(4):
+    for epoch in range(epochs):
         running_loss = []
         for batch_idx, batch in enumerate(trainloader):
             images, labels = batch
             optimizer_bck.zero_grad()
-            xpred = net(images,"backward")
-            loss = criterion_recon(xpred, images)
-            loss.backward()
+            ft_AB,ft_BA,ft_BC,ft_CB,ft_CD,ft_DC,ft_DE,ft_ED,xpred = net(images,"backward")
+            lossAtoB = criterion_recon(ft_AB, ft_BA)
+            lossBtoC = criterion_recon(ft_BC, ft_CB)
+            lossCtoD = criterion_recon(ft_CD, ft_DC)
+            lossDtoE = criterion_recon(ft_DE, ft_ED)
+            loss_input_and_recon = criterion_recon(xpred, images)
+            final_loss=lossAtoB+lossBtoC+lossCtoD+lossDtoE+loss_input_and_recon
+            final_loss.backward()
             optimizer_bck.step()
-            running_loss.append(loss.item())
+            running_loss.append(final_loss.item())
 
         avg_loss = np.mean(running_loss)
         print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
         loss_arr.append(avg_loss)
 
     accuracy=evaluation_reconstruction(net,criterion_recon)
-    iters = range(1, 5)
+    iters = range(1, epochs+1)
     plot_bool=plot_metrics(iters,loss_arr,"backward")
     if plot_bool==True:
         print("Plots Successfully Stored")
