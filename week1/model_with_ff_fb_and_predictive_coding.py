@@ -14,11 +14,11 @@ transform= transforms.Compose([transforms.ToTensor(),transforms.Normalize((0.5,0
 
 batch_size=4
 
-trainset=torchvision.datasets.CIFAR10(root='D:\datasets',train=True,download=True,transform=transform)
+trainset=torchvision.datasets.CIFAR10(root='/home/ajinkya/projects/datasets',train=True,download=True,transform=transform)
 
 trainloader=torch.utils.data.DataLoader(trainset,batch_size=batch_size,shuffle=True,num_workers=0)
 
-testset=torchvision.datasets.CIFAR10(root='D:\datasets',train=False,download=True,transform=transform)
+testset=torchvision.datasets.CIFAR10(root='/home/ajinkya/projects/datasets',train=False,download=True,transform=transform)
 
 testloader=torch.utils.data.DataLoader(testset,batch_size=batch_size,shuffle=False,num_workers=0)
 
@@ -87,7 +87,7 @@ def evaluation_metric(net,direction):
         for batch_idx, batch in enumerate(testloader):
             images, labels = batch
             ft_AB,ft_BC,ft_CD,ft_DE,output = net(images,direction)
-            _, predicted = torch.max(outputs, 1)
+            _, predicted = torch.max(output, 1)
             total_correct += (predicted == labels).sum().item()
             total_samples += labels.size(0)
 
@@ -168,8 +168,11 @@ def feedfwd_training(net):
 
     print("Forward Training Succesful")
 
+    return ft_AB,ft_BC,ft_CD,ft_DE,ypred
 
-def feedback_training(net):
+
+
+def feedback_training(net,ft_AB,ft_BC,ft_CD,ft_DE,output):
     net.train()
     criterion_recon = nn.MSELoss()
     optimizer_bck = optim.SGD(list(net.deconv2_fb.parameters())+list(net.deconv1_fb.parameters())+list(net.fc1_fb.parameters())+list(net.fc2_fb.parameters())+list(net.fc3_fb.parameters()), lr=0.001, momentum=0.9)
@@ -225,9 +228,10 @@ def visualize_model(net):
 def main():
     # Your training and testing code goes here
     net = Net()
-    feedfwd_training(net)
+    ft_AB,ft_BC,ft_CD,ft_DE,output=feedfwd_training(net)
     #visualize_model(net)
-    #feedback_training(net)
+    feedback_training(net,ft_AB,ft_BC,ft_CD,ft_DE,output)
+
 
 
 
