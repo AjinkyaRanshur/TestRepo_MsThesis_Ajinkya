@@ -9,8 +9,26 @@ import torch.optim as optim
 from eval_and_plotting import evaluation_reconstruction,plot_metrics
 from config import epochs
 
-def feedback_training(net,ft_AB,ft_BC,ft_CD,ft_DE,output):
+def feedback_training(net,trainloader,testloader):
+    
     net.train()
+
+    forward_params = [
+    net.conv1, net.conv2, net.fc1, net.fc2, net.fc3]
+
+    for module in forward_params:
+        for param in module.parameters():
+            param.requires_grad = False
+
+    feedback_params = [
+        net.fc3_fb, net.fc2_fb, net.fc1_fb, 
+        net.deconv2_fb, net.deconv1_fb
+    ]
+
+    for module in feedback_params:
+        for param in module.parameters():
+            param.requires_grad = True
+
     criterion_recon = nn.MSELoss()
     optimizer_bck = optim.SGD(list(net.deconv2_fb.parameters())+list(net.deconv1_fb.parameters())+list(net.fc1_fb.parameters())+list(net.fc2_fb.parameters())+list(net.fc3_fb.parameters()), lr=0.001, momentum=0.9)
     loss_arr = []
@@ -19,7 +37,8 @@ def feedback_training(net,ft_AB,ft_BC,ft_CD,ft_DE,output):
         for batch_idx, batch in enumerate(trainloader):
             images, labels = batch
             optimizer_bck.zero_grad()
-            ft_AB,ft_BA,ft_BC,ft_CB,ft_CD,ft_DC,ft_DE,ft_ED,xpred = net(images,"backward")
+            ft_AB,ft_BC,ft_CD,ft_DE,output=net.feedforward_pass(images)
+            ft_BA,ft_CB,ft_DC,ft_ED,xpred = net.feedback_pass(output)
             lossAtoB = criterion_recon(ft_AB, ft_BA)
             lossBtoC = criterion_recon(ft_BC, ft_CB)
             lossCtoD = criterion_recon(ft_CD, ft_DC)
@@ -34,7 +53,7 @@ def feedback_training(net,ft_AB,ft_BC,ft_CD,ft_DE,output):
         print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
         loss_arr.append(avg_loss)
 
-    accuracy=evaluation_reconstruction(net,criterion_recon)
+    accuracy=evaluation_reconstruction(net,testloader)
     iters = range(1, epochs+1)
     plot_bool=plot_metrics(iters,loss_arr,"backward")
     if plot_bool==True:

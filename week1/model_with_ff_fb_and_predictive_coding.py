@@ -14,12 +14,11 @@ transform= transforms.Compose([transforms.ToTensor(),transforms.Normalize((0.5,0
 
 batch_size=4
 
-trainset=torchvision.datasets.CIFAR10(root='/home/ajinkya/projects/datasets',train=True,download=True,transform=transform)
-
+#trainset=torchvision.datasets.CIFAR10(root='/home/ajinkya/projects/datasets',train=True,download=True,transform=transform)
+trainset=torchvision.datasets.CIFAR10(root='"D:\datasets"',train=True,download=True,transform=transform)
 trainloader=torch.utils.data.DataLoader(trainset,batch_size=batch_size,shuffle=True,num_workers=0)
-
-testset=torchvision.datasets.CIFAR10(root='/home/ajinkya/projects/datasets',train=False,download=True,transform=transform)
-
+#testset=torchvision.datasets.CIFAR10(root='/home/ajinkya/projects/datasets',train=False,download=True,transform=transform)
+testset=torchvision.datasets.CIFAR10(root='"D:\datasets"',train=False,download=True,transform=transform)
 testloader=torch.utils.data.DataLoader(testset,batch_size=batch_size,shuffle=False,num_workers=0)
 
 classes= ('plane','car','bird','cat','deer','dog','frog','horse','ship','truck')

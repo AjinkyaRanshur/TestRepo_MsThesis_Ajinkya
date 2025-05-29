@@ -33,10 +33,25 @@ class Net(nn.Module):
     def feedforward_pass(self, x):
 
         ft_AB = self.pool(F.relu(self.conv1(x)))
-        ft_BC = self.pool(F.relu(self.conv2(ft_AB)))
-        ft_BC = torch.flatten(ft_BC, 1)  # Flatten all dimensions except batch
+        ft_BC_will_flatten = self.pool(F.relu(self.conv2(ft_AB)))
+        ft_BC = torch.flatten(ft_BC_will_flatten, 1)  # Flatten all dimensions except batch
         ft_CD = F.relu(self.fc1(ft_BC))
         ft_DE = F.relu(self.fc2(ft_CD))
         output = self.fc3(ft_DE)
 
-        return ft_AB, ft_BC, ft_CD, ft_DE, output
+        return ft_AB, ft_BC_will_flatten, ft_CD, ft_DE, output
+    
+    def feedback_pass(self,output):
+
+        #Now once you have the features you just go back in the opposite direction and then reconstruct the input and adjust the weights based on the error 
+        ft_ED=F.relu(self.fc3_fb(output))
+        ft_DC=F.relu(self.fc2_fb(ft_ED))
+        ft_CB=F.relu(self.fc1_fb(ft_DC))
+        ft_CB = ft_CB.view(-1, 16, 5, 5)
+        ft_BA=F.relu(self.deconv2_fb(ft_CB))
+        ft_BA=self.unpool1(ft_BA)
+        x=self.deconv1_fb(ft_BA)
+        #This should be the input
+        x=self.final_upsample(x) 
+
+        return ft_BA, ft_CB, ft_DC, ft_ED, x
