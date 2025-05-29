@@ -28,7 +28,7 @@ def evaluation_metric(net,direction,testloader):
 
 #It's showing the error not the accuracy fix that
 
-def evaluation_reconstruction(net,direction):
+def evaluation_reconstruction(net,testloader):
     net.eval()
     total_pixels = 0
     correct_pixels = 0
@@ -36,7 +36,8 @@ def evaluation_reconstruction(net,direction):
     with torch.no_grad():
         for batch_idx, batch in enumerate(testloader):
             images, labels = batch
-            _,_,_,_,_,_,_,_,xpred = net(images,direction)
+            _,_,_,_,output = net.feedforward_pass(images)
+            _,_,_,_, xpred = net.feedback_pass(output)
             diff=torch.abs(xpred-images)
             correct=(diff<threshold).float().sum().item()
             total=images.numel()
@@ -62,6 +63,6 @@ def plot_metrics(x,y,direction):
     plt.ylabel("Average Loss")
     plt.xticks(x)
     plt.tight_layout()
-    plt.savefig(f'avgloss_vs_epoch_{direction}.png')
+    plt.savefig(fr'week1\modular_code\result_folder\avgloss_vs_epoch_{direction}.png')
 
     return True

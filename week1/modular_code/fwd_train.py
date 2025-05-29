@@ -10,7 +10,26 @@ from eval_and_plotting import evaluation_metric,evaluation_reconstruction,plot_m
 from config import epochs
 
 def feedfwd_training(net,trainloader,testloader):
+    
     net.train()
+
+    forward_params = [
+    net.conv1, net.conv2, net.fc1, net.fc2, net.fc3]
+
+    for module in forward_params:
+        for param in module.parameters():
+            param.requires_grad = True
+
+    feedback_params = [
+        net.fc3_fb, net.fc2_fb, net.fc1_fb, 
+        net.deconv2_fb, net.deconv1_fb
+    ]
+    for module in feedback_params:
+        for param in module.parameters():
+            param.requires_grad = False
+
+    
+
     criterion = nn.CrossEntropyLoss()
     optimizer_fwd = optim.SGD(list(net.conv1.parameters())+list(net.conv2.parameters())+list(net.fc1.parameters())+list(net.fc2.parameters())+list(net.fc3.parameters()), lr=0.001, momentum=0.9)
     loss_arr = []
@@ -21,7 +40,7 @@ def feedfwd_training(net,trainloader,testloader):
             optimizer_fwd.zero_grad()
             ft_AB,ft_BC,ft_CD,ft_DE,ypred = net.feedforward_pass(images)
             loss = criterion(ypred, labels)
-            loss.backward()
+            loss.backward(retain_graph=True)
             optimizer_fwd.step()
             running_loss.append(loss.item())
 
