@@ -1,2 +1,2 @@
 batch_size=4
-epochs=15
+epochs=12
