@@ -16,7 +16,7 @@ def evaluation_metric(net,direction,testloader):
     with torch.no_grad():
         for batch_idx, batch in enumerate(testloader):
             images, labels = batch
-            _,_,_,_,output = net.feedforward_pass(images)
+            _,_,_,_,output,_,_ = net.feedforward_pass(images)
             _, predicted = torch.max(output, 1)
             total_correct += (predicted == labels).sum().item()
             total_samples += labels.size(0)
@@ -36,13 +36,13 @@ def evaluation_reconstruction(net,testloader):
     with torch.no_grad():
         for batch_idx, batch in enumerate(testloader):
             images, labels = batch
-            _,_,_,_,output = net.feedforward_pass(images)
-            _,_,_,_, xpred = net.feedback_pass(output)
+            ft_AB,ft_BC,ft_CD,ft_DE,output,indices_AB,indices_BC = net.feedforward_pass(images)
+            _,_,_,_, xpred = net.feedback_pass(output,indices_AB,indices_BC,ft_AB,ft_BC,ft_CD,ft_DE)
             diff=torch.abs(xpred-images)
             correct=(diff<threshold).float().sum().item()
             total=images.numel()
-            correct_pixels=+correct
-            total_pixels=+total
+            correct_pixels+=correct
+            total_pixels+=total
 
     accuracy = 100 * (correct_pixels / total_pixels)
 

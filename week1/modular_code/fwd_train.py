@@ -38,9 +38,9 @@ def feedfwd_training(net,trainloader,testloader):
         for batch_idx, batch in enumerate(trainloader):
             images, labels = batch
             optimizer_fwd.zero_grad()
-            ft_AB,ft_BC,ft_CD,ft_DE,ypred = net.feedforward_pass(images)
+            ft_AB,ft_BC,ft_CD,ft_DE,ypred,_,_ = net.feedforward_pass(images)
             loss = criterion(ypred, labels)
-            loss.backward(retain_graph=True)
+            loss.backward()
             optimizer_fwd.step()
             running_loss.append(loss.item())
 
