@@ -7,9 +7,10 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from eval_and_plotting import evaluation_reconstruction,plot_metrics
-from config import epochs
+from config import epochs,seed
+import os
 
-def feedback_training(net,trainloader,testloader):
+def feedback_training(net,trainloader,testloader,lr,momentum,save_dir):
     
     net.train()
 
@@ -30,7 +31,7 @@ def feedback_training(net,trainloader,testloader):
             param.requires_grad = True
 
     criterion_recon = nn.functional.mse_loss
-    optimizer_bck = optim.SGD(list(net.deconv2_fb.parameters())+list(net.deconv1_fb.parameters())+list(net.fc1_fb.parameters())+list(net.fc2_fb.parameters())+list(net.fc3_fb.parameters()), lr=0.001, momentum=0.9)
+    optimizer_bck = optim.SGD(list(net.deconv2_fb.parameters())+list(net.deconv1_fb.parameters())+list(net.fc1_fb.parameters())+list(net.fc2_fb.parameters())+list(net.fc3_fb.parameters()), lr=lr, momentum=momentum)
     loss_arr = []
     for epoch in range(epochs):
         running_loss = []
@@ -47,12 +48,13 @@ def feedback_training(net,trainloader,testloader):
             lossCtoD = criterion_recon(ft_CD, ft_DC)
             lossDtoE = criterion_recon(ft_DE, ft_ED)
             loss_input_and_recon = criterion_recon(xpred, images)
-            print("lossAtoB",lossAtoB)
-            print("lossBtoC",lossBtoC)
-            print("lossCtoD",lossCtoD)
-            print("lossDtoE",lossDtoE)
-            print("loss_input_and_recon",loss_input_and_recon)
+            #print("lossAtoB",lossAtoB)
+            #print("lossBtoC",lossBtoC)
+            #print("lossCtoD",lossCtoD)
+            #print("lossDtoE",lossDtoE)
+            #print("loss_input_and_recon",loss_input_and_recon)
             final_loss=lossAtoB+lossBtoC+lossCtoD+lossDtoE+loss_input_and_recon
+            final_loss=final_loss/5.0
             final_loss.backward()
             optimizer_bck.step()
             running_loss.append(final_loss.item())
@@ -63,9 +65,13 @@ def feedback_training(net,trainloader,testloader):
 
     accuracy=evaluation_reconstruction(net,testloader)
     iters = range(1, epochs+1)
-    plot_bool=plot_metrics(iters,loss_arr,"backward")
+    plot_bool=plot_metrics(iters,loss_arr,"backward",save_dir)
     if plot_bool==True:
         print("Plots Successfully Stored")
-    print(f'Backward Connections Accuracy = {accuracy:.2f}%')
+
+    file_path=os.path.join(save_dir,f"Accuracy_Stats_{seed}.txt")
+    with open(file_path,"a") as f:
+        f.write(f"Backward Connection Accuracy= {accuracy:.2f} with seed ={seed}\n")
+    #print(f'Backward Connections Accuracy = {accuracy:.2f}%')
 
     print("Backward Training Succesful")
