@@ -1,3 +1,4 @@
-Results for hyperparameters settings Epochs=12,Batch Size= 4,learning rate= 0.001,momentum=0.9 
- 
- 
+Forward Connection Accuracy= 64.46 with seed = 13
+Backward Connection Accuracy= 24.32 with seed =13
+Forward Connection Accuracy= 64.46 with seed = 13
+Backward Connection Accuracy= 24.32 with seed =13

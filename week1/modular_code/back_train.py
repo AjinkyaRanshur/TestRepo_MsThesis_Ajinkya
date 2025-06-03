@@ -44,17 +44,18 @@ def feedback_training(net,trainloader,testloader,lr,momentum,save_dir):
             # ft_BC = ft_BC.view(ft_BC.size(0), -1)
             # ft_CB = ft_CB.view(ft_CB.size(0), -1)
             lossAtoB = criterion_recon(ft_AB, ft_BA)
+            #print("Shape of BC",ft_BC.size(),"Shape of CB",ft_CB.size())
             lossBtoC = criterion_recon(ft_BC, ft_CB)
-            lossCtoD = criterion_recon(ft_CD, ft_DC)
-            lossDtoE = criterion_recon(ft_DE, ft_ED)
+            #lossCtoD = criterion_recon(ft_CD, ft_DC)
+            #lossDtoE = criterion_recon(ft_DE, ft_ED)
             loss_input_and_recon = criterion_recon(xpred, images)
             #print("lossAtoB",lossAtoB)
             #print("lossBtoC",lossBtoC)
             #print("lossCtoD",lossCtoD)
             #print("lossDtoE",lossDtoE)
             #print("loss_input_and_recon",loss_input_and_recon)
-            final_loss=lossAtoB+lossBtoC+lossCtoD+lossDtoE+loss_input_and_recon
-            final_loss=final_loss/5.0
+            final_loss=lossAtoB+lossBtoC+loss_input_and_recon
+            final_loss=final_loss/3.0
             final_loss.backward()
             optimizer_bck.step()
             running_loss.append(final_loss.item())

@@ -1,0 +1,25 @@
+Forward Connection Accuracy= 63.34 with seed = 42
+Backward Connection Accuracy= 25.16 with seed =42
+Forward Connection Accuracy= 63.34 with seed = 42
+Forward Connection Accuracy= 63.34 with seed = 42
+Forward Connection Accuracy= 60.47 with seed = 42
+Forward Connection Accuracy= 60.47 with seed = 42
+Forward Connection Accuracy= 60.47 with seed = 42
+Forward Connection Accuracy= 60.47 with seed = 42
+Forward Connection Accuracy= 60.47 with seed = 42
+Forward Connection Accuracy= 60.47 with seed = 42
+Forward Connection Accuracy= 60.47 with seed = 42
+Forward Connection Accuracy= 60.47 with seed = 42
+Forward Connection Accuracy= 60.47 with seed = 42
+Forward Connection Accuracy= 60.47 with seed = 42
+Forward Connection Accuracy= 60.47 with seed = 42
+Forward Connection Accuracy= 60.47 with seed = 42
+Forward Connection Accuracy= 60.47 with seed = 42
+Forward Connection Accuracy= 60.47 with seed = 42
+Backward Connection Accuracy= 91.42 with seed =42
+Forward Connection Accuracy= 64.01 with seed = 42
+Backward Connection Accuracy= 92.91 with seed =42
+Forward Connection Accuracy= 64.01 with seed = 42
+Forward Connection Accuracy= 64.01 with seed = 42
+Forward Connection Accuracy= 64.01 with seed = 42
+Backward Connection Accuracy= 93.27 with seed =42
