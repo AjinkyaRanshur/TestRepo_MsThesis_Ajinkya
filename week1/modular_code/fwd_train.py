@@ -7,9 +7,10 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from eval_and_plotting import evaluation_metric,evaluation_reconstruction,plot_metrics
-from config import epochs
+from config import epochs,seed
+import os
 
-def feedfwd_training(net,trainloader,testloader):
+def feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir):
     
     net.train()
 
@@ -31,7 +32,7 @@ def feedfwd_training(net,trainloader,testloader):
     
 
     criterion = nn.CrossEntropyLoss()
-    optimizer_fwd = optim.SGD(list(net.conv1.parameters())+list(net.conv2.parameters())+list(net.fc1.parameters())+list(net.fc2.parameters())+list(net.fc3.parameters()), lr=0.001, momentum=0.9)
+    optimizer_fwd = optim.SGD(list(net.conv1.parameters())+list(net.conv2.parameters())+list(net.fc1.parameters())+list(net.fc2.parameters())+list(net.fc3.parameters()), lr=lr, momentum=momentum)
     loss_arr = []
     for epoch in range(epochs):
         running_loss = []
@@ -50,10 +51,13 @@ def feedfwd_training(net,trainloader,testloader):
 
     accuracy=evaluation_metric(net,"forward",testloader)
     iters = range(1, epochs+1)
-    plot_bool=plot_metrics(iters,loss_arr,"forward")
+    plot_bool=plot_metrics(iters,loss_arr,"forward",save_dir)
     if plot_bool==True:
         print("Plots Successfully Stored")
-    print(f'Accuracy = {accuracy:.2f}%')
+    file_path=os.path.join(save_dir,f"Accuracy_Stats_{seed}.txt")
+    with open(file_path,"a") as f:
+        f.write(f"Forward Connection Accuracy= {accuracy:.2f} with seed = {seed}\n")
+    #print(f'Accuracy = {accuracy:.2f}%')
 
     print("Forward Training Succesful")
 

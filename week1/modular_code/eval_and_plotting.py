@@ -6,6 +6,8 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+from config import seed
+import os
 
 def evaluation_metric(net,direction,testloader):
     # Testing
@@ -48,7 +50,7 @@ def evaluation_reconstruction(net,testloader):
 
     return accuracy
 
-def plot_metrics(x,y,direction):
+def plot_metrics(x,y,direction,save_dir):
 
     if direction=="forward":
         title="Forward Training Evaluation"
@@ -61,8 +63,12 @@ def plot_metrics(x,y,direction):
     plt.title(title)
     plt.xlabel("Epochs")
     plt.ylabel("Average Loss")
-    plt.xticks(x)
+    plt.ylim(0,5)
+    plt.yticks(range(0,5,1))
+    #plt.xticks(x)
     plt.tight_layout()
-    plt.savefig(fr'week1\modular_code\result_folder\avgloss_vs_epoch_{direction}.png')
+    os.makedirs(save_dir,exist_ok=True)
+    file_path=os.path.join(save_dir,f"avgloss_vs_epoch_{direction}_{seed}.png")
+    plt.savefig(file_path)
 
     return True
