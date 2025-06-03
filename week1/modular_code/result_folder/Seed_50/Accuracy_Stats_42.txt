@@ -1,2 +1,0 @@
-Forward Connection Accuracy= 63.48 with seed = 42
-Backward Connection Accuracy= 22.01 with seed =42
