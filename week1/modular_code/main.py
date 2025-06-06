@@ -11,12 +11,16 @@ from torch.utils.tensorboard import SummaryWriter
 from network import Net as Net
 from fwd_train import feedfwd_training
 from back_train import feedback_training
-from config import batch_size,epochs,lr,momentum
+from config import batch_size,epochs,lr,momentum,seed
+from pc_train import pc_training
+from eval_and_plotting import plot_multiple_metrics
 import random
 import os
 import sys
+import time
 
-seed=int(sys.argv[1])
+start=time.time()
+
 
 def set_seed(seed):
     
@@ -70,16 +74,30 @@ def main():
     save_dir=os.path.join("result_folder",f"Seed_{seed}")
     os.makedirs(save_dir,exist_ok=True)
     file_path=os.path.join(save_dir,f"Accuracy_Stats_{seed}.txt")
-    with open(file_path,"w") as f:
+    with open(file_path,"w") as f):
         f.write(f"Results for hyperparameters settings Epochs={epochs},Batch Size= {batch_size},learning rate= {lr},momentum={momentum} \n")
         f.write(" \n")
         f.write(" \n")
     ft_AB,ft_BC,ft_CD,ft_DE,output=feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir)
     #visualize_model(net)
     feedback_training(net,trainloader,testloader,lr,momentum,save_dir)
+    hyp_dict={'Gamma= 0.2,0.7\n Beta=0.8,0.3\n alpha=0.3,0.8\n ':[[0.2,0.7],[0.8,0.3],[0.3,0.8]],'Gamma= 0.8,0.3\n Beta=0.2,0.37\n alpha=0.3,0.8\n ':[[0.8,0.3],[0.2,0.7],[0.3,0.8]],'Gamma= 0.5,0.5\n Beta=0.5,0.5\n alpha=0.3,0.8\n ':[[0.5,0.5],[0.5,0.5],[0.3,0.8]]}
+    i=0
+    accuracy_dict={}
+    iters=range(0,5,1)
+    for key,value in hyp_dict.items():
+        gamma_i,beta_i,alpha_i=value
+        accuracy_i=pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma_i,beta_i,alpha_i)
+        i+=1
+        accuracy_dict[key]=accuracy_i
 
+    plot_multiple_metrics(iters,accuracy_dict,save_dir,"Accuracies for different priors","Timesteps","Predicitive Coding Performance for Various Hyperparameter Configrations","pc_multiplehp_accuracy_vs_timesteps")
 
-
+    end=time.time()
+    with open(file_path,"a") as f:
+        diff=end - start
+        diff=diff/60
+        f.write(f"Time taken to Run the code {diff} minutes")
 
 # This line ensures safe multiprocessing
 if __name__ == "__main__":

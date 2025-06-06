@@ -34,6 +34,7 @@ def feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir):
     criterion = nn.CrossEntropyLoss()
     optimizer_fwd = optim.SGD(list(net.conv1.parameters())+list(net.conv2.parameters())+list(net.fc1.parameters())+list(net.fc2.parameters())+list(net.fc3.parameters()), lr=lr, momentum=momentum)
     loss_arr = []
+    acc_arr=[]
     for epoch in range(epochs):
         running_loss = []
         for batch_idx, batch in enumerate(trainloader):
@@ -48,15 +49,17 @@ def feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir):
         avg_loss = np.mean(running_loss)
         print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
         loss_arr.append(avg_loss)
+        accuracy=evaluation_metric(net,"forward",testloader)
+        acc_arr.append(accuracy)
 
-    accuracy=evaluation_metric(net,"forward",testloader)
     iters = range(1, epochs+1)
-    plot_bool=plot_metrics(iters,loss_arr,"forward",save_dir)
+    plot_bool=plot_metrics(iters,loss_arr,save_dir,"Number of Epochs","Average Loss","Forward Training Loss","AverageLoss_Vs_Epoch_forward")
+    plot_bool=plot_metrics(iters,acc_arr,save_dir,"Number of Epochs","Accuracy","Forward Testing Performance","Accuracy_Vs_Epoch_forward")
     if plot_bool==True:
         print("Plots Successfully Stored")
-    file_path=os.path.join(save_dir,f"Accuracy_Stats_{seed}.txt")
-    with open(file_path,"a") as f:
-        f.write(f"Forward Connection Accuracy= {accuracy:.2f} with seed = {seed}\n")
+    #file_path=os.path.join(save_dir,f"Accuracy_Stats_{seed}.txt")
+    #with open(file_path,"a") as f:
+    #    f.write(f"Forward Connection Accuracy= {acc_arr:.2f} with seed = {seed}\n")
     #print(f'Accuracy = {accuracy:.2f}%')
 
     print("Forward Training Succesful")

@@ -64,15 +64,15 @@ def feedback_training(net,trainloader,testloader,lr,momentum,save_dir):
         print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
         loss_arr.append(avg_loss)
 
-    accuracy=evaluation_reconstruction(net,testloader)
+    #accuracy=evaluation_reconstruction(net,testloader)
     iters = range(1, epochs+1)
-    plot_bool=plot_metrics(iters,loss_arr,"backward",save_dir)
+    plot_bool=plot_metrics(iters,loss_arr,save_dir,"Number of Epochs","Average Loss","FeedBack Training Loss","averageloss_vs_epoch_backward")
     if plot_bool==True:
         print("Plots Successfully Stored")
 
-    file_path=os.path.join(save_dir,f"Accuracy_Stats_{seed}.txt")
-    with open(file_path,"a") as f:
-        f.write(f"Backward Connection Accuracy= {accuracy:.2f} with seed ={seed}\n")
+    #file_path=os.path.join(save_dir,f"Accuracy_Stats_{seed}.txt")
+    #with open(file_path,"a") as f:
+    #    f.write(f"Backward Connection Accuracy= {accuracy:.2f} with seed ={seed}\n")
     #print(f'Backward Connections Accuracy = {accuracy:.2f}%')
 
     print("Backward Training Succesful")
