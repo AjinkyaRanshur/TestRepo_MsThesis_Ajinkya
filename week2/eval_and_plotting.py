@@ -19,7 +19,7 @@ def evaluation_metric(net,direction,testloader):
         for batch_idx, batch in enumerate(testloader):
             images, labels = batch
             images,labels=images.to(device),labels.to(device)
-            _,_,_,_,output,_,_ = net.feedforward_pass(images)
+            _,_,_,_,output = net.feedforward_pass(images)
             _, predicted = torch.max(output, 1)
             total_correct += (predicted == labels).sum().item()
             total_samples += labels.size(0)
@@ -78,7 +78,7 @@ def plot_multiple_metrics(x,y_dict,save_dir,xtitle,ytitle,title,savetitle):
     plt.title(title)
     plt.xlabel(xtitle)
     plt.ylabel(ytitle)
-    #plt.xticks(x)
+    plt.xticks(x)
     plt.tight_layout()
     os.makedirs(save_dir,exist_ok=True)
     file_path=os.path.join(save_dir,f"{savetitle}_{seed}.png")

@@ -15,24 +15,23 @@ def feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir):
     net.train()
 
     forward_params = [
-    net.conv1, net.conv2, net.fc1, net.fc2, net.fc3]
+    net.conv1, net.conv2, net.conv3, net.fc1, net.fc2]
 
     for module in forward_params:
         for param in module.parameters():
             param.requires_grad = True
 
     feedback_params = [
-        net.fc3_fb, net.fc2_fb, net.fc1_fb, 
+        net.fc2_fb, net.fc1_fb, net.deconv3_fb, 
         net.deconv2_fb, net.deconv1_fb
     ]
     for module in feedback_params:
         for param in module.parameters():
             param.requires_grad = False
 
-    
 
     criterion = nn.CrossEntropyLoss()
-    optimizer_fwd = optim.SGD(list(net.conv1.parameters())+list(net.conv2.parameters())+list(net.fc1.parameters())+list(net.fc2.parameters())+list(net.fc3.parameters()), lr=lr, momentum=momentum)
+    optimizer_fwd = optim.SGD(list(net.conv1.parameters())+list(net.conv2.parameters())+list(net.conv3.parameters())+list(net.fc1.parameters())+list(net.fc2.parameters()), lr=lr, momentum=momentum)
     loss_arr = []
     acc_arr=[]
     for epoch in range(epochs):
@@ -41,7 +40,7 @@ def feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir):
             images, labels = batch
             images,labels=images.to(device),labels.to(device)
             optimizer_fwd.zero_grad()
-            ft_AB,ft_BC,ft_CD,ft_DE,ypred,_,_ = net.feedforward_pass(images)
+            ft_AB,ft_BC,ft_CD,ft_DE,ypred = net.feedforward_pass(images)
             loss = criterion(ypred, labels)
             loss.backward()
             optimizer_fwd.step()
