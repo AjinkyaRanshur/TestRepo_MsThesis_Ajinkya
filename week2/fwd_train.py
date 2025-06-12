@@ -7,7 +7,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from eval_and_plotting import evaluation_metric,evaluation_reconstruction,plot_metrics
-from config import epochs,seed,device
+from config import epochs,seed,device,batch_size
 import os
 
 def feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir):
@@ -37,10 +37,13 @@ def feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir):
     for epoch in range(epochs):
         running_loss = []
         for batch_idx, batch in enumerate(trainloader):
+            ft_AB = torch.randn(batch_size, 6, 32, 32)
+            ft_BC = torch.randn(batch_size, 16, 16, 16)
+            ft_CD = torch.randn(batch_size, 64, 8, 8)
             images, labels = batch
             images,labels=images.to(device),labels.to(device)
             optimizer_fwd.zero_grad()
-            ft_AB,ft_BC,ft_CD,ft_DE,ypred = net.feedforward_pass(images)
+            ft_AB,ft_BC,ft_CD,ft_DE,ypred = net.feedforward_pass(images,ft_AB,ft_BC,ft_CD)
             loss = criterion(ypred, labels)
             loss.backward()
             optimizer_fwd.step()
