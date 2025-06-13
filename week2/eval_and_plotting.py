@@ -57,28 +57,16 @@ def evaluation_reconstruction(net,testloader):
     return accuracy
 
 def plot_metrics(x,y,save_dir,xtitle,ytitle,title,savetitle):
-
+    
     # Plotting
     plt.figure(figsize=(8, 6))
     plt.plot(x, y, linewidth=2, markersize=6)
     plt.title(title)
     plt.xlabel(xtitle)
     plt.ylabel(ytitle)
+    #plt.ylim(0,5)
+    #plt.yticks(range(0,5,1))
     plt.xticks(x)
-    # Create hyperparameters textbox
-    hyperparams = {
-        'epochs': epochs,
-        'batch_size': batch_size,
-        'lr': lr,
-        'momentum': momentum,
-        'seed': seed,
-        'timesteps': timesteps,
-        'Training condition':training_condition
-    }
-    # Create textbox
-    param_lines = [f"{k}: {v}" for k, v in hyperparams.items()]
-    param_text = '\n'.join(param_lines)
-    plt.text(0.98,0.98,param_text,transform=plt.gca().transAxes,fontsize=9,verticalalignment='top',horizontalalignment='right',bbox=dict(boxstyle='round',facecolor='wheat',alpha=0.8))
     plt.tight_layout()
     os.makedirs(save_dir,exist_ok=True)
     file_path=os.path.join(save_dir,f"{savetitle}_{seed}.png")
@@ -110,7 +98,7 @@ def plot_multiple_metrics(x,y_dict,save_dir,xtitle,ytitle,title,savetitle):
     # Create textbox
     param_lines = [f"{k}: {v}" for k, v in hyperparams.items()]
     param_text = '\n'.join(param_lines)
-    plt.text(0.98,0.98,param_text,transform=plt.gca().transAxes,fontsize=9,verticalalignment='top',horizontalalignment='right',bbox=dict(boxstyle='round',facecolor='wheat',alpha=0.8))
+    #plt.text(0.98,0.98,param_text,transform=plt.gca().transAxes,fontsize=9,verticalalignment='top',horizontalalignment='right',bbox=dict(boxstyle='round',facecolor='wheat',alpha=0.8))
     plt.tight_layout()
     os.makedirs(save_dir,exist_ok=True)
     file_path=os.path.join(save_dir,f"{savetitle}_{seed}.png")
