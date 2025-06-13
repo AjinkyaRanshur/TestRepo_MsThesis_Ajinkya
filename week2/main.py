@@ -11,7 +11,7 @@ from torch.utils.tensorboard import SummaryWriter
 from network import Net as Net
 from fwd_train import feedfwd_training
 from back_train import feedback_training
-from config import batch_size,epochs,lr,momentum,seed,device,training_condition
+from config import batch_size,epochs,lr,momentum,seed,device,training_condition,load_model,save_model,hyp_dict
 from pc_train import pc_training
 from eval_and_plotting import plot_multiple_metrics
 import random
@@ -98,23 +98,30 @@ def main():
         plot_multiple_metrics(iters,accuracy_dict,save_dir,"Timesteps","Accuracies for different priors","Predicitive Coding Performance for Various Hyperparameter Configrations","pc_multiplehp_accuracy_vs_timesteps")
 
     if training_condition=="pc_train":
-        net = Net().to(device)
-        gamma_train=[0.3,0.3,0.3]
-        beta_train=[0.3,0.3,0.3]
-        alpha_train=[0.01,0.01,0.01]
-        pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma_train,beta_train,alpha_train,"train")
-        hyp_dict={'Gamma= 0.4,0.2,0.8\n Beta=0.5,0.3,0.2\n alpha=0.01,0.01,0.01\n ':[[0.4,0.2,0.8],[0.5,0.3,0.2],[0.01,0.01,0.01]],'Gamma= 0.2,0.2,0.2\n Beta=0.2,0.4,0.5\n alpha=0.01,0.01,0.01\n ':[[0.2,0.2,0.2],[0.2,0.4,0.5],[0.01,0.01,0.01]],'Gamma= 0.5,0.5,0.5\n Beta=0.5,0.5,0.5\n alpha=0.01,0.01,0.01\n ':[[0.5,0.5,0.5],[0.5,0.5,0.5],[0.01,0.01,0.01]]}
-        i=0
-        accuracy_dict={}
-        iters=range(0,5,1)
-        for key,value in hyp_dict.items():
-            set_seed(seed)
-            gamma_i,beta_i,alpha_i=value
-            accuracy_i=pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma_i,beta_i,alpha_i,"test")
-            i+=1
-            accuracy_dict[key]=accuracy_i
+        if save_model==True:
+            net = Net().to(device)
+            gamma_train=[0.3,0.3,0.3]
+            beta_train=[0.3,0.3,0.3]
+            alpha_train=[0.01,0.01,0.01]
+            pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma_train,beta_train,alpha_train,"train")
+            torch.save(cnn_model.state_dict(), 'cnn_model.pth')
 
-        plot_multiple_metrics(iters,accuracy_dict,save_dir,"Timesteps","Accuracies for different priors","Predicitive Coding Performance for Various Hyperparameter Configrations","pc_multiplehp_accuracy_vs_timesteps")
+        if load_model==True:
+            net=Net()
+            net.load_state_dict(torch.load('cnn_model.pth'))
+            #hyp_dict={'Gamma= 0.4,0.2,0.8\n Beta=0.5,0.3,0.2\n alpha=0.01,0.01,0.01\n ':[[0.4,0.2,0.8],[0.5,0.3,0.2],[0.01,0.01,0.01]],'Gamma= 0.2,0.2,0.2\n Beta=0.2,0.4,0.5\n alpha=0.01,0.01,0.01\n ':[[0.2,0.2,0.2],[0.2,0.4,0.5],[0.01,0.01,0.01]],'Gamma= 0.5,0.5,0.5\n Beta=0.5,0.5,0.5\n alpha=0.01,0.01,0.01\n ':[[0.5,0.5,0.5],[0.5,0.5,0.5],[0.01,0.01,0.01]]}
+            
+            i=0
+            accuracy_dict={}
+            iters=range(0,5,1)
+            for key,value in hyp_dict.items():
+                set_seed(seed)
+                gamma_i,beta_i,alpha_i=value
+                accuracy_i=pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma_i,beta_i,alpha_i,"test")
+                i+=1
+                accuracy_dict[key]=accuracy_i
+
+            plot_multiple_metrics(iters,accuracy_dict,save_dir,"Timesteps","Accuracies for different priors","Predicitive Coding Performance for Various Hyperparameter Configrations","pc_multiplehp_accuracy_vs_timesteps")
 
     end=time.time()
     with open(file_path,"a") as f:
