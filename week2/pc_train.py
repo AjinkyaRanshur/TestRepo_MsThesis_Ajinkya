@@ -76,18 +76,22 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
             ft_AB_pc_temp = torch.zeros(batch_size, 6, 32, 32)
             ft_BC_pc_temp = torch.zeros(batch_size, 16, 16, 16)
             ft_CD_pc_temp = torch.zeros(batch_size, 64, 8, 8)
-            
-            ft_AB_pc_temp.requires_grad_(True)
-            ft_BC_pc_temp.requires_grad_(True)
-            ft_CD_pc_temp.requires_grad_(True)
             images,labels=batch
             # Move data to the same device as the model
             images, labels = images.to(device), labels.to(device)
             ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp)
+
+            # Re-enable gradients after feedforward_pass overwrites the tensors
+            ft_AB_pc_temp = ft_AB_pc_temp.requires_grad_(True)
+            ft_BC_pc_temp = ft_BC_pc_temp.requires_grad_(True)
+            ft_CD_pc_temp = ft_CD_pc_temp.requires_grad_(True)
+
+            _,predicted=torch.max(output,1)
+            total_correct[0]+=(predicted==labels).sum().item()
             for i in range(timesteps):
                 output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,beta,gamma,alpha,images.size(0))
                 _,predicted=torch.max(output,1)
-                total_correct[i]+=(predicted==labels).sum().item()
+                total_correct[i+1]+=(predicted==labels).sum().item()
 
 
             total_samples+=labels.size(0)

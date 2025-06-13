@@ -34,8 +34,26 @@
 Using Device:cuda
 Files already downloaded and verified
 Files already downloaded and verified
-Epoch:0 and AverageLoss:1.646181967278719
-Epoch:1 and AverageLoss:1.2020000516021252
-Epoch:2 and AverageLoss:1.0193555335739255
-Epoch:3 and AverageLoss:0.9051406671419739
-Epoch:4 and AverageLoss:0.8184269285657816
+Epoch:0 and AverageLoss:1.647190852162838
+Epoch:1 and AverageLoss:1.2003729188804328
+Epoch:2 and AverageLoss:1.0179068855704367
+Epoch:3 and AverageLoss:0.9057285332000256
+Epoch:4 and AverageLoss:0.8188452476754785
+Accuracy at each timestep:
+Timestep 0: 66.51%
+Timestep 1: 60.15%
+Timestep 2: 43.18%
+Timestep 3: 28.78%
+Timestep 4: 30.76%
+Accuracy at each timestep:
+Timestep 0: 66.51%
+Timestep 1: 66.95%
+Timestep 2: 67.62%
+Timestep 3: 68.14%
+Timestep 4: 68.19%
+Accuracy at each timestep:
+Timestep 0: 66.51%
+Timestep 1: 64.51%
+Timestep 2: 31.59%
+Timestep 3: 14.25%
+Timestep 4: 15.40%
