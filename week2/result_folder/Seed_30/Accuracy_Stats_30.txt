@@ -1,2 +1,3 @@
 Results for hyperparameters settings Epochs=5,Batch Size= 4,learning rate= 0.001,momentum=0.9 
  
+Time taken to Run the code 17.277239815394083 minutes
