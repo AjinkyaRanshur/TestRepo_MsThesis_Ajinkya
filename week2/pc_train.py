@@ -74,14 +74,17 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
             # Move data to the same device as the model
             images, labels = images.to(device), labels.to(device)
             ft_AB,ft_BC,ft_CD,ft_DE,output = net.feedforward_pass(images)
+            ft_AB.requires_grad=True
+            ft_BC.requires_grad=True
+            ft_CD.requires_grad=True
             output,ft_AB_fc_temp,ft_BC_pc_temp,ft_CD_temp,ft_DE_temp=net.predictive_coding_pass(images,ft_AB,ft_BC,ft_CD,ft_DE,beta,gamma,alpha,images.size(0))
-            ft_AB_fc_temp.requires_grad=True
-            ft_BC_fc_temp.requires_grad=True
-            ft_CD_fc_temp.requires_grad=True
             _,predicted=torch.max(output,1)
             total_correct[0]+=(predicted==labels).sum().item()
 
             for i in range(timesteps):
+                ft_AB_fc_temp.requires_grad=True
+                ft_BC_fc_temp.requires_grad=True
+                ft_CD_fc_temp.requires_grad=True
                 output,ft_AB_fc_temp,ft_BC_pc_temp,ft_CD_temp,ft_DE_temp=net.predictive_coding_pass(images,ft_AB_fc_temp,ft_BC_pc_temp,ft_CD_temp,ft_DE_temp,beta,gamma,alpha,images.size(0))
                 _,predicted=torch.max(output,1)
                 total_correct[i+1]+=(predicted==labels).sum().item()
@@ -92,7 +95,6 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
 
         accuracy=[100 * c /total_samples for c in total_correct]
         #iters=range(0,timesteps+1)
-        #plot_bool=plot_metrics(iters,accuracy,save_dir,"Timesteps","Accuracy","Predictive Coding Performance","pc_timesteps_vs_accuracy")
         print("Accuracy at each timestep:")
         for i, acc in enumerate(accuracy):
             print(f"Timestep {i}: {acc:.2f}%")
