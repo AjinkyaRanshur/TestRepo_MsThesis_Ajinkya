@@ -6,7 +6,7 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from config import seed,device
+from config import seed,device,batch_size
 import os
 
 def evaluation_metric(net,direction,testloader):
@@ -17,9 +17,14 @@ def evaluation_metric(net,direction,testloader):
 
     with torch.no_grad():
         for batch_idx, batch in enumerate(testloader):
+            
+            ft_AB = torch.randn(batch_size, 6, 32, 32)
+            ft_BC = torch.randn(batch_size, 16, 16, 16)
+            ft_CD = torch.randn(batch_size, 64, 8, 8)
+
             images, labels = batch
             images,labels=images.to(device),labels.to(device)
-            _,_,_,_,output = net.feedforward_pass(images)
+            _,_,_,_,output = net.feedforward_pass(images,ft_AB,ft_BC,ft_CD)
             _, predicted = torch.max(output, 1)
             total_correct += (predicted == labels).sum().item()
             total_samples += labels.size(0)

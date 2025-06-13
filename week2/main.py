@@ -46,13 +46,13 @@ set_seed(seed)
 transform= transforms.Compose([transforms.ToTensor(),transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))])
 
 
-trainset=torchvision.datasets.CIFAR10(root='/home/ajinkya/projects/datasets',train=True,download=True,transform=transform)
+trainset=torchvision.datasets.CIFAR10(root='/exports/home/ajinkya/projects/datasets',train=True,download=True,transform=transform)
 
 #trainset=torchvision.datasets.CIFAR10(root="D:\datasets",train=True,download=True,transform=transform)
 
 trainloader=torch.utils.data.DataLoader(trainset,batch_size=batch_size,shuffle=True,num_workers=0)
 
-testset=torchvision.datasets.CIFAR10(root='/home/ajinkya/projects/datasets',train=False,download=True,transform=transform)
+testset=torchvision.datasets.CIFAR10(root='/exports/home/ajinkya/projects/datasets',train=False,download=True,transform=transform)
 
 #testset=torchvision.datasets.CIFAR10(root="D:\datasets",train=False,download=True,transform=transform)
 
@@ -83,7 +83,7 @@ def main():
         ft_AB,ft_BC,ft_CD,ft_DE,output=feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir)
         #visualize_model(net)
         feedback_training(net,trainloader,testloader,lr,momentum,save_dir)
-        hyp_dict={'Gamma= 0.4,0.2,0.8\n Beta=0.5,0.3,0.2\n alpha=0.1,0.1,0.1\n ':[[0.4,0.2,0.8],[0.5,0.3,0.2],[0.1,0.1,0.1]],'Gamma= 0.2,0.2,0.2\n Beta=0.2,0.4,0.5\n alpha=0.1,0.1,0.1\n ':[[0.2,0.2,0.2],[0.2,0.4,0.5],[0.1,0.1,0.1]],'Gamma= 0.5,0.5,0.5\n Beta=0.5,0.5,0.5\n alpha=0.1,0.1,0.1\n ':[[0.5,0.5,0.5],[0.5,0.5,0.5],[0.1,0.1,0.1]]}
+        hyp_dict={'Gamma= 0.4,0.2,0.8\n Beta=0.5,0.3,0.2\n alpha=0.01,0.01,0.01\n ':[[0.4,0.2,0.8],[0.5,0.3,0.2],[0.01,0.01,0.01]],'Gamma= 0.2,0.2,0.2\n Beta=0.2,0.4,0.5\n alpha=0.01,0.01,0.01\n ':[[0.2,0.2,0.2],[0.2,0.4,0.5],[0.01,0.01,0.01]],'Gamma= 0.5,0.5,0.5\n Beta=0.5,0.5,0.5\n alpha=0.01,0.01,0.01\n ':[[0.5,0.5,0.5],[0.5,0.5,0.5],[0.01,0.01,0.01]]}
         i=0
         accuracy_dict={}
         iters=range(0,5,1)
@@ -103,7 +103,7 @@ def main():
         beta_train=[0.3,0.3,0.3]
         alpha_train=[0.01,0.01,0.01]
         pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma_train,beta_train,alpha_train,"train")
-        hyp_dict={'Gamma= 0.4,0.2,0.8\n Beta=0.5,0.3,0.2\n alpha=0.1,0.1,0.1\n ':[[0.4,0.2,0.8],[0.5,0.3,0.2],[0.1,0.1,0.1]],'Gamma= 0.2,0.2,0.2\n Beta=0.2,0.4,0.5\n alpha=0.1,0.1,0.1\n ':[[0.2,0.2,0.2],[0.2,0.4,0.5],[0.1,0.1,0.1]],'Gamma= 0.5,0.5,0.5\n Beta=0.5,0.5,0.5\n alpha=0.1,0.1,0.1\n ':[[0.5,0.5,0.5],[0.5,0.5,0.5],[0.1,0.1,0.1]]}
+        hyp_dict={'Gamma= 0.4,0.2,0.8\n Beta=0.5,0.3,0.2\n alpha=0.01,0.01,0.01\n ':[[0.4,0.2,0.8],[0.5,0.3,0.2],[0.01,0.01,0.01]],'Gamma= 0.2,0.2,0.2\n Beta=0.2,0.4,0.5\n alpha=0.01,0.01,0.01\n ':[[0.2,0.2,0.2],[0.2,0.4,0.5],[0.01,0.01,0.01]],'Gamma= 0.5,0.5,0.5\n Beta=0.5,0.5,0.5\n alpha=0.01,0.01,0.01\n ':[[0.5,0.5,0.5],[0.5,0.5,0.5],[0.01,0.01,0.01]]}
         i=0
         accuracy_dict={}
         iters=range(0,5,1)

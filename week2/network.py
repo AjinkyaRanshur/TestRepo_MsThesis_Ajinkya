@@ -28,7 +28,7 @@ class Net(nn.Module):
         self.upsample=nn.Upsample(scale_factor=2,mode='bilinear')
         self.upsample_nearest=nn.Upsample(scale_factor=2,mode='nearest')
 
-    def feedforward_pass(self, x):
+    def feedforward_pass(self, x,ft_AB,ft_BC,ft_CD):
 
         ft_AB = self.conv1(x)
         pooled_ft_AB,_=self.pool(F.relu(ft_AB))
