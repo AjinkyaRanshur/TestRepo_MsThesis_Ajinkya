@@ -48,3 +48,21 @@ Epoch:3 and AverageLoss:2.2571870622825623
 Epoch:4 and AverageLoss:2.2111957820129393
 Plots Successfully Stored
 Backward Training Succesful
+Accuracy at each timestep:
+Timestep 0: 66.15%
+Timestep 1: 65.12%
+Timestep 2: 62.74%
+Timestep 3: 60.03%
+Timestep 4: 56.91%
+Accuracy at each timestep:
+Timestep 0: 66.15%
+Timestep 1: 65.94%
+Timestep 2: 65.53%
+Timestep 3: 64.90%
+Timestep 4: 64.33%
+Accuracy at each timestep:
+Timestep 0: 66.15%
+Timestep 1: 65.10%
+Timestep 2: 63.00%
+Timestep 3: 60.71%
+Timestep 4: 57.66%
