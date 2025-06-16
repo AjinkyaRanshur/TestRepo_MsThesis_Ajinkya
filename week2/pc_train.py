@@ -46,6 +46,8 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
             avg_loss=np.mean(running_loss)
             print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
             loss_arr.append(avg_loss)
+        iters = range(1, epochs+1)
+        plot_bool=plot_metrics(iters,loss_arr,save_dir,"Number of Epochs","Average Loss","Pc Training Loss","AverageLoss_Vs_Epoch_pc_training")
 
         return None
 
