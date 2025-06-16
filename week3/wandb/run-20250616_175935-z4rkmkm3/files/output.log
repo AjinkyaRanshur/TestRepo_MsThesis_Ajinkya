@@ -1,0 +1,21 @@
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch:0 and AverageLoss:2.3022641678295477
+Epoch:1 and AverageLoss:2.297905797543733
+Epoch:2 and AverageLoss:2.237578559104744
+Epoch:3 and AverageLoss:2.0556857067605723
+Model Save Sucessfully
+Training Sucessful
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/main.py", line 137, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/main.py", line 125, in main
+    accuracy_dict=testing_model(save_dir,trainloader,testloader,net)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/main.py", line 100, in testing_model
+    accuracy_i=pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma_i,beta_i,alpha_i,"test")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/pc_train.py", line 103, in pc_training
+    ft_BC_fc_temp.requires_grad_(True)
+    ^^^^^^^^^^^^^
+NameError: name 'ft_BC_fc_temp' is not defined. Did you mean: 'ft_BC_pc_temp'?

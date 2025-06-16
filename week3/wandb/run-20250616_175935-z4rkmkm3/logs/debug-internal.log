@@ -1,0 +1,16 @@
+{"time":"2025-06-16T17:59:35.509217301+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/wandb/run-20250616_175935-z4rkmkm3/logs/debug-core.log"}
+{"time":"2025-06-16T17:59:35.799775006+02:00","level":"INFO","msg":"stream: created new stream","id":"z4rkmkm3"}
+{"time":"2025-06-16T17:59:35.799829051+02:00","level":"INFO","msg":"stream: started","id":"z4rkmkm3"}
+{"time":"2025-06-16T17:59:35.799923604+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"z4rkmkm3"}
+{"time":"2025-06-16T17:59:35.800002607+02:00","level":"INFO","msg":"sender: started","stream_id":"z4rkmkm3"}
+{"time":"2025-06-16T17:59:35.80011722+02:00","level":"INFO","msg":"handler: started","stream_id":"z4rkmkm3"}
+{"time":"2025-06-16T17:59:36.083475175+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-16T18:07:44.002204689+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Test%20WandB/z4rkmkm3/file_stream\": dial tcp: lookup api.wandb.ai on 127.0.0.53:53: server misbehaving"}
+{"time":"2025-06-16T18:08:51.127154421+02:00","level":"INFO","msg":"stream: closing","id":"z4rkmkm3"}
+{"time":"2025-06-16T18:08:51.127203177+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-16T18:08:51.127274942+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-16T18:08:51.8805785+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-16T18:08:52.096092064+02:00","level":"INFO","msg":"handler: closed","stream_id":"z4rkmkm3"}
+{"time":"2025-06-16T18:08:52.096141746+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"z4rkmkm3"}
+{"time":"2025-06-16T18:08:52.096200407+02:00","level":"INFO","msg":"sender: closed","stream_id":"z4rkmkm3"}
+{"time":"2025-06-16T18:08:52.096276893+02:00","level":"INFO","msg":"stream: closed","id":"z4rkmkm3"}
