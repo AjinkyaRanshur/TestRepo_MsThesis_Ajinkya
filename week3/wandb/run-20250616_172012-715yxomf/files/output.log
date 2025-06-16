@@ -1,0 +1,21 @@
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch:0 and AverageLoss:2.3032582214726207
+Epoch:1 and AverageLoss:2.300759697814122
+Epoch:2 and AverageLoss:2.297060397579847
+Epoch:3 and AverageLoss:2.2558441131621065
+Model Save Sucessfully
+Training Sucessful
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/main.py", line 137, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/main.py", line 125, in main
+    accuracy_dict=testing_model(save_dir,trainloader,testloader,net)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/main.py", line 100, in testing_model
+    accuracy_i=pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma_i,beta_i,alpha_i,"test")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/pc_train.py", line 88, in pc_training
+    ft_AB,ft_BC,ft_CD,ft_DE,output = net.feedforward_pass(images)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Net.feedforward_pass() missing 3 required positional arguments: 'ft_AB', 'ft_BC', and 'ft_CD'

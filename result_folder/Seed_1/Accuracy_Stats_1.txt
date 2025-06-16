@@ -1,2 +1,0 @@
-Results for hyperparameters settings Epochs=10,Batch Size= 4,learning rate= 0.001,momentum=0.9 
- 
