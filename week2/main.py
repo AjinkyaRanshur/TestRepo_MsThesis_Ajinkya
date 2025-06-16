@@ -11,7 +11,7 @@ from torch.utils.tensorboard import SummaryWriter
 from network import Net as Net
 from fwd_train import feedfwd_training
 from back_train import feedback_training
-from config import batch_size,epochs,lr,momentum,seed,device,training_condition
+from config import batch_size,epochs,lr,momentum,seed,device,training_condition,load_model,save_model,timesteps,gammaset,betaset,alphaset
 from pc_train import pc_training
 from eval_and_plotting import plot_multiple_metrics
 import random
@@ -21,7 +21,7 @@ import time
 
 start=time.time()
 #device=torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(f"Using Device:{device}")
+# print(f"Using Device:{device}")
 
 def set_seed(seed):
     
@@ -46,13 +46,13 @@ set_seed(seed)
 transform= transforms.Compose([transforms.ToTensor(),transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))])
 
 
-trainset=torchvision.datasets.CIFAR10(root='/exports/home/ajinkya/projects/datasets',train=True,download=True,transform=transform)
+trainset=torchvision.datasets.CIFAR10(root=r"D:\datasets\cifar-10-batches-py",train=True,download=True,transform=transform)
 
 #trainset=torchvision.datasets.CIFAR10(root="D:\datasets",train=True,download=True,transform=transform)
 
 trainloader=torch.utils.data.DataLoader(trainset,batch_size=batch_size,shuffle=True,num_workers=0)
 
-testset=torchvision.datasets.CIFAR10(root='/exports/home/ajinkya/projects/datasets',train=False,download=True,transform=transform)
+testset=torchvision.datasets.CIFAR10(root=r"D:\datasets\cifar-10-batches-py",train=False,download=True,transform=transform)
 
 #testset=torchvision.datasets.CIFAR10(root="D:\datasets",train=False,download=True,transform=transform)
 
@@ -66,7 +66,74 @@ classes= ('plane','car','bird','cat','deer','dog','frog','horse','ship','truck')
 #    sample_input = torch.randn(1, 3, 32, 32)
 #    writer.add_graph(net, sample_input)
 #    writer.close()
-#    #To launch tensorboard use this command: tensorboard --logdir=runs and then click on the## link that it generates  
+#    #To launch tensorboard use this command: tensorboard --logdir=runs and then click on the## link that it generates
+
+def create_priors_dict(gammaset,betaset,alphaset):
+
+    hyp_dict={}
+
+    for a,b,c in zip(gammaset,betaset,alphaset):
+        key_name='Gamma: ' + ' '.join([str(s) for s in a]) + ' \n ' + 'Beta: ' + ' '.join([str(s) for s in b]) + ' \n ' + 'Alpha: ' + ' '.join([str(s) for s in c]) + ' \n '
+        dict_value=[a,b,c]
+        hyp_dict[key_name]=dict_value
+
+    return hyp_dict
+
+
+def training_using_ff_fb(save_dir,):
+
+    net = Net().to(device)
+    ft_AB,ft_BC,ft_CD,ft_DE,output=feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir)
+    #visualize_model(net)
+    feedback_training(net,trainloader,testloader,lr,momentum,save_dir)
+    hyp_dict={'Gamma= 0.4,0.2,0.8\n Beta=0.5,0.3,0.2\n alpha=0.01,0.01,0.01\n ':[[0.4,0.2,0.8],[0.5,0.3,0.2],[0.01,0.01,0.01]],'Gamma= 0.2,0.2,0.2\n Beta=0.2,0.4,0.5\n alpha=0.01,0.01,0.01\n ':[[0.2,0.2,0.2],[0.2,0.4,0.5],[0.01,0.01,0.01]],'Gamma= 0.5,0.5,0.5\n Beta=0.5,0.5,0.5\n alpha=0.01,0.01,0.01\n ':[[0.5,0.5,0.5],[0.5,0.5,0.5],[0.01,0.01,0.01]]}
+    i=0
+    accuracy_dict={}
+    iters=range(0,timesteps+1,1)
+    for key,value in hyp_dict.items():
+        set_seed(seed)
+        gamma_i,beta_i,alpha_i=value
+        accuracy_i=pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma_i,beta_i,alpha_i,"test")
+        i+=1
+        accuracy_dict[key]=accuracy_i
+    
+
+    return iters,accuracy_dict  
+
+
+def training_using_predicitve_coding(save_dir):
+
+    if save_model==True:
+        net = Net().to(device)
+        gamma_train=[0.33,0.33,0.33]
+        beta_train=[0.33,0.33,0.33]
+        alpha_train=[0.01,0.01,0.01]
+        pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma_train,beta_train,alpha_train,"train")
+        torch.save(net.state_dict(), 'cnn_model.pth')
+        print("Model Save Sucessfully")
+
+        return None
+
+    if load_model==True:
+        net=Net()
+        net.load_state_dict(torch.load('cnn_model.pth', map_location=device, weights_only=True))
+        net = net.to(device)  # Ensure the entire model is on the correct device
+        #hyp_dict={'Gamma= 0.4,0.2,0.8\n Beta=0.5,0.3,0.2\n alpha=0.01,0.01,0.01\n ':[[0.4,0.2,0.8],[0.5,0.3,0.2],[0.01,0.01,0.01]],'Gamma= 0.2,0.2,0.2\n Beta=0.2,0.4,0.5\n alpha=0.01,0.01,0.01\n ':[[0.2,0.2,0.2],[0.2,0.4,0.5],[0.01,0.01,0.01]],'Gamma= 0.5,0.5,0.5\n Beta=0.5,0.5,0.5\n alpha=0.01,0.01,0.01\n ':[[0.5,0.5,0.5],[0.5,0.5,0.5],[0.01,0.01,0.01]]}
+        hyp_dict=create_priors_dict(gammaset,betaset,alphaset)
+        # hyp_dict={'Gamma= 0.3,0.3,0.3\n Beta=0.3,0.3,0.3\n alpha=0.01,0.01,0.01\n ':[[0.3,0.3,0.3],[0.3,0.3,0.3],[0.01,0.01,0.01]]}
+        i=0
+        accuracy_dict={}
+        iters=range(0,timesteps+1,1)
+        for key,value in hyp_dict.items():
+            set_seed(seed)
+            gamma_i,beta_i,alpha_i=value
+            accuracy_i=pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma_i,beta_i,alpha_i,"test")
+            i+=1
+            accuracy_dict[key]=accuracy_i
+
+        # plot_multiple_metrics(iters,accuracy_dict,save_dir,"Timesteps","Accuracies for different priors","Predicitive Coding Performance for Various Hyperparameter Configrations","pc_multiplehp_accuracy_vs_timesteps")
+
+        return iters,accuracy_dict
 
 
 def main():
@@ -74,48 +141,20 @@ def main():
     save_dir=os.path.join("result_folder",f"Seed_{seed}")
     os.makedirs(save_dir,exist_ok=True)
     file_path=os.path.join(save_dir,f"Accuracy_Stats_{seed}.txt")
+
     with open(file_path,"w") as f:
         f.write(f"Results for hyperparameters settings Epochs={epochs},Batch Size= {batch_size},learning rate= {lr},momentum={momentum} \n")
         f.write(" \n")
 
     if training_condition=="ff_fb_train":
-        net = Net().to(device)
-        ft_AB,ft_BC,ft_CD,ft_DE,output=feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir)
-        #visualize_model(net)
-        feedback_training(net,trainloader,testloader,lr,momentum,save_dir)
-        hyp_dict={'Gamma= 0.4,0.2,0.8\n Beta=0.5,0.3,0.2\n alpha=0.01,0.01,0.01\n ':[[0.4,0.2,0.8],[0.5,0.3,0.2],[0.01,0.01,0.01]],'Gamma= 0.2,0.2,0.2\n Beta=0.2,0.4,0.5\n alpha=0.01,0.01,0.01\n ':[[0.2,0.2,0.2],[0.2,0.4,0.5],[0.01,0.01,0.01]],'Gamma= 0.5,0.5,0.5\n Beta=0.5,0.5,0.5\n alpha=0.01,0.01,0.01\n ':[[0.5,0.5,0.5],[0.5,0.5,0.5],[0.01,0.01,0.01]]}
-        i=0
-        accuracy_dict={}
-        iters=range(0,5,1)
-        for key,value in hyp_dict.items():
-        
-            set_seed(seed)
-            gamma_i,beta_i,alpha_i=value
-            accuracy_i=pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma_i,beta_i,alpha_i,"test")
-            i+=1
-            accuracy_dict[key]=accuracy_i
-
+        iters,accuracy_dict=training_using_ff_fb(save_dir)
         plot_multiple_metrics(iters,accuracy_dict,save_dir,"Timesteps","Accuracies for different priors","Predicitive Coding Performance for Various Hyperparameter Configrations","pc_multiplehp_accuracy_vs_timesteps")
 
     if training_condition=="pc_train":
-        net = Net().to(device)
-        gamma_train=[0.3,0.3,0.3]
-        beta_train=[0.3,0.3,0.3]
-        alpha_train=[0.01,0.01,0.01]
-        pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma_train,beta_train,alpha_train,"train")
-        hyp_dict={'Gamma= 0.4,0.2,0.8\n Beta=0.5,0.3,0.2\n alpha=0.01,0.01,0.01\n ':[[0.4,0.2,0.8],[0.5,0.3,0.2],[0.01,0.01,0.01]],'Gamma= 0.2,0.2,0.2\n Beta=0.2,0.4,0.5\n alpha=0.01,0.01,0.01\n ':[[0.2,0.2,0.2],[0.2,0.4,0.5],[0.01,0.01,0.01]],'Gamma= 0.5,0.5,0.5\n Beta=0.5,0.5,0.5\n alpha=0.01,0.01,0.01\n ':[[0.5,0.5,0.5],[0.5,0.5,0.5],[0.01,0.01,0.01]]}
-        i=0
-        accuracy_dict={}
-        iters=range(0,5,1)
-        for key,value in hyp_dict.items():
-            set_seed(seed)
-            gamma_i,beta_i,alpha_i=value
-            accuracy_i=pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma_i,beta_i,alpha_i,"test")
-            i+=1
-            accuracy_dict[key]=accuracy_i
-
+        iters,accuracy_dict=training_using_predicitve_coding(save_dir)
         plot_multiple_metrics(iters,accuracy_dict,save_dir,"Timesteps","Accuracies for different priors","Predicitive Coding Performance for Various Hyperparameter Configrations","pc_multiplehp_accuracy_vs_timesteps")
 
+    
     end=time.time()
     with open(file_path,"a") as f:
         diff=end - start

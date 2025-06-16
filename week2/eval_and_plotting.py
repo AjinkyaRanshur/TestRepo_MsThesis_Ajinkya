@@ -6,7 +6,7 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from config import seed,device,batch_size
+from config import seed, device, batch_size, epochs, lr, momentum, timesteps,training_condition
 import os
 
 def evaluation_metric(net,direction,testloader):
@@ -57,7 +57,7 @@ def evaluation_reconstruction(net,testloader):
     return accuracy
 
 def plot_metrics(x,y,save_dir,xtitle,ytitle,title,savetitle):
-
+    
     # Plotting
     plt.figure(figsize=(8, 6))
     plt.plot(x, y, linewidth=2, markersize=6)
@@ -87,7 +87,7 @@ def plot_multiple_metrics(x,y_dict,save_dir,xtitle,ytitle,title,savetitle):
     plt.tight_layout()
     os.makedirs(save_dir,exist_ok=True)
     file_path=os.path.join(save_dir,f"{savetitle}_{seed}.png")
-    plt.legend()
+    plt.legend(loc='lower left')
     plt.savefig(file_path)
 
     return True
