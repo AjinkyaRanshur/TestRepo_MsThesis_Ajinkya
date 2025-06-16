@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week2/main.py", line 166, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week2/main.py", line 154, in main
+    iters,accuracy_dict=training_using_predicitve_coding(save_dir)
+    ^^^^^^^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+srun: error: c-a100-cn01: task 0: Exited with exit code 1
+srun: Terminating StepId=15882.0

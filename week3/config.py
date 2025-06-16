@@ -4,6 +4,7 @@ epochs=20
 seed=1
 lr=0.01
 momentum=0.9
+#datasetpath='/home/ajinkya/projects/datasets'
 datasetpath='/home/ajinkya/projects/datasets'
 #training_condition="ff_fb_train"
 training_condition="pc_train"
