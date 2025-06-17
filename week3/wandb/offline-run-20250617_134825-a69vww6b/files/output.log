@@ -1,0 +1,62 @@
+✓ WandB initialized in OFFLINE mode
+📁 Logs will be saved to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/wandb/offline-run-20250617_134825-a69vww6b/files
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch:0 and AverageLoss:2.0681292251552765
+Epoch:1 and AverageLoss:1.5820210662949117
+Epoch:2 and AverageLoss:1.3745886590474707
+Epoch:3 and AverageLoss:1.2320192061421815
+Epoch:4 and AverageLoss:1.1229494023505988
+Epoch:5 and AverageLoss:1.0352250910780925
+Epoch:6 and AverageLoss:0.9636691113567109
+Epoch:7 and AverageLoss:0.9092829797578894
+Epoch:8 and AverageLoss:0.8498397708853798
+Epoch:9 and AverageLoss:0.8058527724822159
+Epoch:10 and AverageLoss:0.7685608665656556
+Epoch:11 and AverageLoss:0.7254175318933814
+Epoch:12 and AverageLoss:0.6960897390799754
+Epoch:13 and AverageLoss:0.662518297924715
+Epoch:14 and AverageLoss:0.6283357619781933
+Epoch:15 and AverageLoss:0.6043100030068547
+Epoch:16 and AverageLoss:0.5853811169371885
+Epoch:17 and AverageLoss:0.5621462234145845
+Epoch:18 and AverageLoss:0.5348813727383723
+Epoch:19 and AverageLoss:0.511251705839201
+Model Save Sucessfully
+Training Sucessful
+Accuracy at each timestep:
+Timestep 0: 65.20%
+Timestep 1: 62.02%
+Timestep 2: 63.02%
+Timestep 3: 63.93%
+Timestep 4: 62.72%
+Timestep 5: 62.69%
+Timestep 6: 62.09%
+Timestep 7: 61.87%
+Timestep 8: 61.31%
+Timestep 9: 60.87%
+Timestep 10: 60.78%
+Accuracy at each timestep:
+Timestep 0: 65.20%
+Timestep 1: 65.88%
+Timestep 2: 66.21%
+Timestep 3: 66.41%
+Timestep 4: 66.44%
+Timestep 5: 66.21%
+Timestep 6: 65.71%
+Timestep 7: 65.22%
+Timestep 8: 64.64%
+Timestep 9: 63.83%
+Timestep 10: 63.19%
+Accuracy at each timestep:
+Timestep 0: 65.20%
+Timestep 1: 63.83%
+Timestep 2: 45.31%
+Timestep 3: 26.54%
+Timestep 4: 21.78%
+Timestep 5: 24.03%
+Timestep 6: 24.32%
+Timestep 7: 25.00%
+Timestep 8: 18.25%
+Timestep 9: 15.32%
+Timestep 10: 15.16%

@@ -1,0 +1,15 @@
+{"time":"2025-06-17T12:09:41.414940042+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/wandb/offline-run-20250617_120941-brdacv6w/logs/debug-core.log"}
+{"time":"2025-06-17T12:09:41.530579899+02:00","level":"WARN","msg":"GraphQL client is nil, skipping feature loading"}
+{"time":"2025-06-17T12:09:41.532475361+02:00","level":"INFO","msg":"stream: created new stream","id":"brdacv6w"}
+{"time":"2025-06-17T12:09:41.532492944+02:00","level":"INFO","msg":"stream: started","id":"brdacv6w"}
+{"time":"2025-06-17T12:09:41.532638919+02:00","level":"INFO","msg":"handler: started","stream_id":"brdacv6w"}
+{"time":"2025-06-17T12:09:41.532645531+02:00","level":"INFO","msg":"sender: started","stream_id":"brdacv6w"}
+{"time":"2025-06-17T12:09:41.532662222+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"brdacv6w"}
+{"time":"2025-06-17T12:09:41.553185586+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-17T12:29:07.765973004+02:00","level":"INFO","msg":"stream: closing","id":"brdacv6w"}
+{"time":"2025-06-17T12:29:07.766032786+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-17T12:29:07.766137904+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-17T12:29:07.766190372+02:00","level":"INFO","msg":"handler: closed","stream_id":"brdacv6w"}
+{"time":"2025-06-17T12:29:07.766197366+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"brdacv6w"}
+{"time":"2025-06-17T12:29:07.766211612+02:00","level":"INFO","msg":"sender: closed","stream_id":"brdacv6w"}
+{"time":"2025-06-17T12:29:07.770562643+02:00","level":"INFO","msg":"stream: closed","id":"brdacv6w"}
