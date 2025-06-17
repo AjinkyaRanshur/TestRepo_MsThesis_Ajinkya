@@ -47,8 +47,10 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
                 running_loss.append(final_loss.item())
 
             avg_loss=np.mean(running_loss)
+
             print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
-            metrics={"Predictive_Coding_Forward/train_loss":avg_loss,"Predictive_Coding_Forward/Epoch":epoch}
+            accuracy=evaluation_metric(net,testloader)
+            metrics={"Predictive_Coding/train_loss":avg_loss,"Predictive_Coding/train_accuracy":accuracy}
             wandb.log(metrics)
             loss_arr.append(avg_loss)
         iters = range(1, epochs+1)
@@ -113,9 +115,9 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
 
         accuracy=[100 * c /total_samples for c in total_correct]
         #iters=range(0,timesteps+1)
+
         print("Accuracy at each timestep:")
         for i, acc in enumerate(accuracy):
-            wandb.log({"Predicitive_Coding_Val/Timestep":i,"Predicitive_Coding_Val/Accuracy":acc})
             print(f"Timestep {i}: {acc:.2f}%")
 
 

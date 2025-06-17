@@ -8,8 +8,10 @@ import torch.nn.functional as F
 import torch.optim as optim
 from config import seed, device, batch_size, epochs, lr, momentum, timesteps,training_condition
 import os
+import wandb
+from PIL import Image
 
-def evaluation_metric(net,direction,testloader):
+def evaluation_metric(net,testloader):
     # Testing
     #net.eval()
     total_correct = 0
@@ -71,7 +73,8 @@ def plot_metrics(x,y,save_dir,xtitle,ytitle,title,savetitle):
     os.makedirs(save_dir,exist_ok=True)
     file_path=os.path.join(save_dir,f"{savetitle}_{seed}.png")
     plt.savefig(file_path)
-
+    wandb.log({'chart':wandb.Image(Image.open(file_path),caption="")})
+    
     return True
 
 def plot_multiple_metrics(x,y_dict,save_dir,xtitle,ytitle,title,savetitle):
@@ -89,6 +92,8 @@ def plot_multiple_metrics(x,y_dict,save_dir,xtitle,ytitle,title,savetitle):
     file_path=os.path.join(save_dir,f"{savetitle}_{seed}.png")
     plt.legend(loc='lower left')
     plt.savefig(file_path)
+
+    wandb.log({'chart':wandb.Image(Image.open(file_path),caption="")})
 
     return True
 

@@ -123,6 +123,7 @@ def main():
             print("Training Sucessful")
 
     accuracy_dict=testing_model(save_dir,trainloader,testloader,net)
+    #wandb.log(accuracy_dict)
     plot_multiple_metrics(iters,accuracy_dict,save_dir,"Timesteps","Accuracies for different priors","Predicitive Coding Performance for Various Hyperparameter Configrations","pc_multiplehp_accuracy_vs_timesteps")
 
     end=time.time()

@@ -1,6 +1,6 @@
 import torch
 batch_size=128
-epochs=20
+epochs=4
 seed=1
 lr=0.01
 momentum=0.9
@@ -16,10 +16,10 @@ if torch.cuda.is_available():
     print(f"CUDA device name: {torch.cuda.get_device_name(0)}")
     print(f"CUDA memory allocated: {torch.cuda.memory_allocated(0) / 1024**3:.2f} GB")
 print(f"Using device: {device}")
-timesteps=10
+timesteps=5
 load_model=False
 save_model=True
 gammaset=[[0.4,0.2,0.8],[0.2,0.2,0.2],[0.5,0.5,0.5]]
 betaset=[[0.5,0.3,0.2],[0.2,0.4,0.5],[0.5,0.5,0.5]]
 alphaset=[[0.01,0.01,0.01],[0.01,0.01,0.01],[0.01,0.01,0.01]]
-experiment_name="Pc_Coding_Big_Epoch_High_BatchSz_High_lr"
+experiment_name="Accuracy_dict"

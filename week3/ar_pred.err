@@ -1,108 +1,21 @@
 wandb: Appending key for api.wandb.ai to your netrc file: /home/ajinkya/.netrc
 wandb: Network error (ConnectionError), entering retry loop.
 wandb: W&B API key is configured. Use `wandb login --relogin` to force relogin
-wandb: Network error (ConnectionError), entering retry loop.
-wandb: Network error (ConnectionError), entering retry loop.
-wandb: ERROR Run initialization has timed out after 90.0 sec. Please try increasing the timeout with the `init_timeout` setting: `wandb.init(settings=wandb.Settings(init_timeout=120))`.
-Traceback (most recent call last):
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
-    return await fut
-           ^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/asyncio/locks.py", line 212, in wait
-    await fut
-asyncio.exceptions.CancelledError
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/mailbox/response_handle.py", line 105, in wait_async
-    await asyncio.wait_for(evt.wait(), timeout=timeout)
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
-    async with timeouts.timeout(timeout):
-               ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
-    raise TimeoutError from exc_val
-TimeoutError
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/wandb_init.py", line 999, in init
-    result = wait_with_progress(
-             ^^^^^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/mailbox/wait_with_progress.py", line 24, in wait_with_progress
-    return wait_all_with_progress(
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/mailbox/wait_with_progress.py", line 87, in wait_all_with_progress
-    return asyncio_compat.run(progress_loop_with_timeout)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_compat.py", line 30, in run
-    return future.result()
-           ^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/concurrent/futures/_base.py", line 456, in result
-    return self.__get_result()
-           ^^^^^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
-    raise self._exception
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/concurrent/futures/thread.py", line 59, in run
-    result = self.fn(*self.args, **self.kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_compat.py", line 74, in run
-    return asyncio.run(self._run_or_cancel(fn))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/asyncio/runners.py", line 195, in run
-    return runner.run(main)
-           ^^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
-    return future.result()
-           ^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_compat.py", line 98, in _run_or_cancel
-    return fn_task.result()
-           ^^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/mailbox/wait_with_progress.py", line 82, in progress_loop_with_timeout
-    return await _wait_handles_async(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/mailbox/wait_with_progress.py", line 130, in _wait_handles_async
-    async with asyncio_compat.open_task_group() as task_group:
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/contextlib.py", line 217, in __aexit__
-    await anext(self.gen)
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_compat.py", line 190, in open_task_group
-    await task_group._wait_all()
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_compat.py", line 159, in _wait_all
-    raise exc
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/mailbox/wait_with_progress.py", line 128, in wait_single
-    results[index] = await handle.wait_async(timeout=timeout)
-                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/mailbox/mailbox_handle.py", line 122, in wait_async
-    response = await self._handle.wait_async(timeout=timeout)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/mailbox/response_handle.py", line 114, in wait_async
-    raise TimeoutError(
-TimeoutError: Timed out waiting for response on e20oawvqyt78
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/main.py", line 137, in <module>
-    main()
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/main.py", line 107, in main
-    init_wandb(experiment_name)
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/wb_tracker.py", line 8, in init_wandb
-    wandb.init(
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/wandb_init.py", line 1623, in init
-    wandb._sentry.reraise(e)
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/analytics/sentry.py", line 156, in reraise
-    raise exc.with_traceback(sys.exc_info()[2])
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/wandb_init.py", line 1609, in init
-    return wi.init(run_settings, run_config, run_printer)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/wandb_init.py", line 1012, in init
-    raise CommError(
-wandb.errors.errors.CommError: Run initialization has timed out after 90.0 sec. Please try increasing the timeout with the `init_timeout` setting: `wandb.init(settings=wandb.Settings(init_timeout=120))`.
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
-slurmstepd: error: *** JOB 15955 ON c-a100-cn01 CANCELLED AT 2025-06-16T19:14:39 ***
-slurmstepd: error: *** STEP 15955.0 ON c-a100-cn01 CANCELLED AT 2025-06-16T19:14:39 ***
+wandb: WARNING Changes to your `wandb` environment variables will be ignored because your `wandb` session has already started. For more information on how to modify your settings with `wandb.init()` arguments, please refer to https://wandb.me/wandb-init.
+wandb: Tracking run with wandb version 0.20.1
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: Predictive_Coding/train_accuracy ▁▄▇█
+wandb:     Predictive_Coding/train_loss █▄▂▁
+wandb: Time Taken to Run the Code(Mins) ▁
+wandb: 
+wandb: Run summary:
+wandb: Predictive_Coding/train_accuracy 57.35
+wandb:     Predictive_Coding/train_loss 1.19902
+wandb: Time Taken to Run the Code(Mins) 3.01183
+wandb: 
+wandb: You can sync this run to the cloud by running:
+wandb: wandb sync /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/wandb/offline-run-20250617_145839-1blkou12
+wandb: Find logs at: ./wandb/offline-run-20250617_145839-1blkou12/logs
