@@ -16,10 +16,11 @@ if torch.cuda.is_available():
     print(f"CUDA device name: {torch.cuda.get_device_name(0)}")
     print(f"CUDA memory allocated: {torch.cuda.memory_allocated(0) / 1024**3:.2f} GB")
 print(f"Using device: {device}")
-timesteps=5
+timesteps=10
 load_model=False
 save_model=True
 gammaset=[[0.4,0.2,0.8],[0.2,0.2,0.2],[0.5,0.5,0.5]]
 betaset=[[0.5,0.3,0.2],[0.2,0.4,0.5],[0.5,0.5,0.5]]
 alphaset=[[0.01,0.01,0.01],[0.01,0.01,0.01],[0.01,0.01,0.01]]
-experiment_name="Accuracy_dict"
+experiment_name="Test_Run"
+

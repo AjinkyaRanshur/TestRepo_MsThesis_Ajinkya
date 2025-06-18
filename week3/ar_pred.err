@@ -7,15 +7,15 @@ wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or 
 wandb:                                                                                
 wandb: 
 wandb: Run history:
-wandb: Predictive_Coding/train_accuracy ▁▄▇█
-wandb:     Predictive_Coding/train_loss █▄▂▁
+wandb: Predictive_Coding/train_accuracy ▁▃▅▆▆▇▇▇▇███████████
+wandb:     Predictive_Coding/train_loss █▆▅▄▄▃▃▃▂▂▂▂▂▂▂▁▁▁▁▁
 wandb: Time Taken to Run the Code(Mins) ▁
 wandb: 
 wandb: Run summary:
-wandb: Predictive_Coding/train_accuracy 57.35
-wandb:     Predictive_Coding/train_loss 1.19902
-wandb: Time Taken to Run the Code(Mins) 3.01183
+wandb: Predictive_Coding/train_accuracy 66.2
+wandb:     Predictive_Coding/train_loss 0.49447
+wandb: Time Taken to Run the Code(Mins) 21.31059
 wandb: 
 wandb: You can sync this run to the cloud by running:
-wandb: wandb sync /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/wandb/offline-run-20250617_145839-1blkou12
-wandb: Find logs at: ./wandb/offline-run-20250617_145839-1blkou12/logs
+wandb: wandb sync /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/wandb/offline-run-20250618_111855-c4prt0ii
+wandb: Find logs at: ./wandb/offline-run-20250618_111855-c4prt0ii/logs

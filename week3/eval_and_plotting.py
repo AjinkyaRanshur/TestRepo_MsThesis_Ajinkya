@@ -72,8 +72,11 @@ def plot_metrics(x,y,save_dir,xtitle,ytitle,title,savetitle):
     plt.tight_layout()
     os.makedirs(save_dir,exist_ok=True)
     file_path=os.path.join(save_dir,f"{savetitle}_{seed}.png")
-    plt.savefig(file_path)
-    wandb.log({'chart':wandb.Image(Image.open(file_path),caption="")})
+    plt.savefig(file_path,dpi=150,bbox_inches='tight',facecolor='white',edgecolor='none')
+    # Log to WandB with proper caption and key
+    wandb.log({
+        f"plots/{savetitle}": wandb.Image(file_path, caption=f"{title}")
+    })
     
     return True
 
@@ -91,9 +94,11 @@ def plot_multiple_metrics(x,y_dict,save_dir,xtitle,ytitle,title,savetitle):
     os.makedirs(save_dir,exist_ok=True)
     file_path=os.path.join(save_dir,f"{savetitle}_{seed}.png")
     plt.legend(loc='lower left')
-    plt.savefig(file_path)
-
-    wandb.log({'chart':wandb.Image(Image.open(file_path),caption="")})
+    plt.savefig(file_path,dpi=150,bbox_inches='tight',facecolor='white',edgecolor='none')
+    # Log to WandB with proper caption and key
+    wandb.log({
+        f"plots/{savetitle}": wandb.Image(file_path, caption=f"{title}")
+    })
 
     return True
 
