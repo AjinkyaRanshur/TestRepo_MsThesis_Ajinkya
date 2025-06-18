@@ -1,8 +1,0 @@
-{"time":"2025-06-18T11:03:22.516635423+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/wandb/offline-run-20250618_110322-btsnv9dz/logs/debug-core.log"}
-{"time":"2025-06-18T11:03:22.655567925+02:00","level":"WARN","msg":"GraphQL client is nil, skipping feature loading"}
-{"time":"2025-06-18T11:03:22.6574218+02:00","level":"INFO","msg":"stream: created new stream","id":"btsnv9dz"}
-{"time":"2025-06-18T11:03:22.65743744+02:00","level":"INFO","msg":"stream: started","id":"btsnv9dz"}
-{"time":"2025-06-18T11:03:22.657445294+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"btsnv9dz"}
-{"time":"2025-06-18T11:03:22.657567033+02:00","level":"INFO","msg":"sender: started","stream_id":"btsnv9dz"}
-{"time":"2025-06-18T11:03:22.657582713+02:00","level":"INFO","msg":"handler: started","stream_id":"btsnv9dz"}
-{"time":"2025-06-18T11:03:22.700337055+02:00","level":"INFO","msg":"Starting system monitor"}
