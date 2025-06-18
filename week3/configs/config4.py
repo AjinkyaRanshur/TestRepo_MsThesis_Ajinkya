@@ -1,6 +1,6 @@
 import torch
-batch_size=4
-epochs=10
+batch_size=64
+epochs=20
 seed=1
 lr=0.001
 momentum=0.9
@@ -22,5 +22,5 @@ save_model=True
 gammaset=[[0.4,0.2,0.8],[0.2,0.2,0.2],[0.5,0.5,0.5]]
 betaset=[[0.5,0.3,0.2],[0.2,0.4,0.5],[0.5,0.5,0.5]]
 alphaset=[[0.01,0.01,0.01],[0.01,0.01,0.01],[0.01,0.01,0.01]]
-experiment_name="Test_Run_1"
+experiment_name="Test_Run_4"
 
