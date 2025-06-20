@@ -7,13 +7,12 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from eval_and_plotting import evaluation_metric,evaluation_reconstruction,plot_metrics
-from config import epochs,seed,device,timesteps,batch_size
 import os
 import wandb
 from wb_tracker import init_wandb
 
 
-def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha,pc_train_bool):
+def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha,pc_train_bool,epochs,seed,device,timesteps,batch_size):
 
     if pc_train_bool=="train":
         criterion=nn.CrossEntropyLoss()
@@ -49,12 +48,15 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
             avg_loss=np.mean(running_loss)
 
             print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
-            accuracy=evaluation_metric(net,testloader)
+            accuracy=evaluation_metric(net,testloader,seed,device)
             metrics={"Predictive_Coding/train_loss":avg_loss,"Predictive_Coding/train_accuracy":accuracy}
             wandb.log(metrics)
             loss_arr.append(avg_loss)
         iters = range(1, epochs+1)
-        plot_bool=plot_metrics(iters,loss_arr,save_dir,"Number of Epochs","Average Loss","Pc Training Loss","AverageLoss_Vs_Epoch_pc_training")
+        plot_bool=plot_metrics(iters,loss_arr,save_dir,"Number of Epochs","Average Loss","Pc Training Loss","AverageLoss_Vs_Epoch_pc_training",seed)
+        if plot_bool==True:
+            print("Predicitive coding plot was created sucessfully")
+
         return None
 
 

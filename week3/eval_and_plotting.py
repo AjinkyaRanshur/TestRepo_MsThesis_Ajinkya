@@ -6,12 +6,12 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from config import seed, device, batch_size, epochs, lr, momentum, timesteps,training_condition
+#from config import seed, device, batch_size, epochs, lr, momentum, timesteps,training_condition
 import os
 import wandb
 from PIL import Image
 
-def evaluation_metric(net,testloader):
+def evaluation_metric(net,testloader,batch_size,device):
     # Testing
     #net.eval()
     total_correct = 0
@@ -58,7 +58,7 @@ def evaluation_reconstruction(net,testloader):
 
     return accuracy
 
-def plot_metrics(x,y,save_dir,xtitle,ytitle,title,savetitle):
+def plot_metrics(x,y,save_dir,xtitle,ytitle,title,savetitle,seed):
     
     # Plotting
     plt.figure(figsize=(8, 6))
@@ -80,7 +80,7 @@ def plot_metrics(x,y,save_dir,xtitle,ytitle,title,savetitle):
     
     return True
 
-def plot_multiple_metrics(x,y_dict,save_dir,xtitle,ytitle,title,savetitle):
+def plot_multiple_metrics(x,y_dict,save_dir,xtitle,ytitle,title,savetitle,seed):
 
     # Plotting
     plt.figure(figsize=(8, 6))

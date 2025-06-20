@@ -11,8 +11,6 @@ from torch.utils.tensorboard import SummaryWriter
 from network import Net as Net
 from fwd_train import feedfwd_training
 from back_train import feedback_training
-# from config import
-# batch_size,epochs,lr,momentum,seed,device,training_condition,load_model,save_model,timesteps,gammaset,betaset,alphaset,datasetpath,experiment_name
 from pc_train import pc_training
 from eval_and_plotting import plot_multiple_metrics
 import random
@@ -25,6 +23,7 @@ import argparse
 import importlib
 
 start = time.time()
+
 classes = (
     'plane',
     'car',
@@ -94,14 +93,14 @@ def create_priors_dict(gammaset, betaset, alphaset):
     return hyp_dict
 
 
-def training_using_ff_fb(save_dir, trainloader, testloader, net):
+def training_using_ff_fb(save_dir, trainloader, testloader, net,epochs,seed,device,batch_size):
     ft_AB, ft_BC, ft_CD, ft_DE, output = feedfwd_training(
-    net, trainloader, testloader, lr, momentum, save_dir)
-    feedback_training(net, trainloader, testloader, lr, momentum, save_dir)
+    net, trainloader, testloader, lr, momentum, save_dir,epochs,seed,device,batch_size)
+    feedback_training(net, trainloader, testloader, lr, momentum, save_dir,epochs,seed,device,batch_size)
     return True
 
 
-def training_using_predicitve_coding(save_dir, trainloader, testloader, net):
+def training_using_predicitve_coding(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size):
     accuracy_dict = {}
     # net = Net().to(device)
     gamma_train = [0.33, 0.33, 0.33]
@@ -117,14 +116,15 @@ def training_using_predicitve_coding(save_dir, trainloader, testloader, net):
     gamma_train,
     beta_train,
     alpha_train,
-     "train")
+     "train",
+     epochs,seed,device,timesteps,batch_size)
     torch.save(net.state_dict(), 'cnn_model.pth')
     print("Model Save Sucessfully")
 
     return True
 
 
-def testing_model(save_dir, trainloader, testloader, net):
+def testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size):
     # net=Net()
     net.load_state_dict(
     torch.load(
@@ -149,7 +149,7 @@ def testing_model(save_dir, trainloader, testloader, net):
     gamma_i,
     beta_i,
     alpha_i,
-     "test")
+     "test",epochs,seed,device,timesteps,batch_size)
         i += 1
         accuracy_dict[key] = accuracy_i
 
@@ -157,7 +157,7 @@ def testing_model(save_dir, trainloader, testloader, net):
 
 
 def main():
-    init_wandb(experiment_name)
+    init_wandb(batch_size, epochs, lr, momentum, seed, device, training_condition, load_model, save_model, timesteps, gammaset, betaset, alphaset, datasetpath,experiment_name)
     save_dir = os.path.join("result_folder", f"Seed_{seed}")
     os.makedirs(save_dir, exist_ok=True)
     file_path = os.path.join(save_dir, f"Accuracy_Stats_{seed}.txt")
@@ -167,17 +167,17 @@ def main():
     iters = range(0, timesteps + 1, 1)
     if training_condition == "ff_fb_train":
         train_bool = training_using_ff_fb(
-    save_dir, trainloader, testloader, net)
+    save_dir, trainloader, testloader, net,epochs,seed,device,batch_size)
         if train_bool == True:
             print("Training Sucessful")
 
     if training_condition == "pc_train":
         train_bool = training_using_predicitve_coding(
-            save_dir, trainloader, testloader, net)
+            save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size)
         if train_bool == True:
             print("Training Sucessful")
 
-    accuracy_dict = testing_model(save_dir, trainloader, testloader, net)
+    accuracy_dict = testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size)
     # wandb.log(accuracy_dict)
     plot_multiple_metrics(
     iters,
@@ -186,7 +186,7 @@ def main():
     "Timesteps",
     "Accuracies for different priors",
     "Predicitive Coding Performance for Various Hyperparameter Configrations",
-     "pc_multiplehp_accuracy_vs_timesteps")
+     "pc_multiplehp_accuracy_vs_timesteps",seed)
 
     end = time.time()
     diff = end - start
@@ -198,6 +198,8 @@ def main():
 
 def load_config(config_name):
     return importlib.import_module(config_name)
+
+
 
 # This line ensures safe multiprocessing
 if __name__ == "__main__":

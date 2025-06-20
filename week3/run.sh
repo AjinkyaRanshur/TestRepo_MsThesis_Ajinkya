@@ -2,6 +2,8 @@
 
 #SBATCH --job-name=pred_code
 #SBATCH --ntasks=1
+#SBATCH --mem=32G
+#SBATCH --cpus-per-task=2   
 #SBATCH --error=ar_pred.err
 #SBATCH --output=ar_pred.out
 #SBATCH --mail-user=ranshur.ajinkya@students.iiserpune.ac.in
@@ -16,7 +18,7 @@ IFS='
 '
 for cmd in `cat cmd_list`
 do
-srun -N1 -n1 -c1 --exclusive bash -c ${cmd} &
+srun bash -c "${cmd}" &
 done
 wait
 IFS=$old_ifs

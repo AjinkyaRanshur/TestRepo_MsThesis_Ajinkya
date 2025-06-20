@@ -1,0 +1,53 @@
+✓ WandB initialized in OFFLINE mode
+📁 Logs will be saved to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/wandb/offline-run-20250619_221444-7m4d3ye7/files
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch:0 and AverageLoss:2.1152566698810937
+Epoch:1 and AverageLoss:1.5689250892385498
+Epoch:2 and AverageLoss:1.348503736583778
+Epoch:3 and AverageLoss:1.199422483858855
+Epoch:4 and AverageLoss:1.0860196650790437
+Epoch:5 and AverageLoss:0.9890016776216609
+Epoch:6 and AverageLoss:0.9232425380240926
+Epoch:7 and AverageLoss:0.8700570433645907
+Epoch:8 and AverageLoss:0.8117865131944036
+Epoch:9 and AverageLoss:0.7790833851870369
+Predicitive coding plot was created sucessfully
+Model Save Sucessfully
+Training Sucessful
+Accuracy at each timestep:
+Timestep 0: 66.10%
+Timestep 1: 68.40%
+Timestep 2: 67.79%
+Timestep 3: 67.11%
+Timestep 4: 65.72%
+Timestep 5: 64.78%
+Timestep 6: 63.78%
+Timestep 7: 62.75%
+Timestep 8: 61.76%
+Timestep 9: 60.73%
+Timestep 10: 59.83%
+Accuracy at each timestep:
+Timestep 0: 66.10%
+Timestep 1: 67.37%
+Timestep 2: 68.07%
+Timestep 3: 68.29%
+Timestep 4: 68.30%
+Timestep 5: 68.15%
+Timestep 6: 67.63%
+Timestep 7: 67.07%
+Timestep 8: 66.51%
+Timestep 9: 65.98%
+Timestep 10: 65.32%
+Accuracy at each timestep:
+Timestep 0: 66.10%
+Timestep 1: 67.00%
+Timestep 2: 67.27%
+Timestep 3: 66.37%
+Timestep 4: 65.08%
+Timestep 5: 64.04%
+Timestep 6: 63.60%
+Timestep 7: 63.57%
+Timestep 8: 63.51%
+Timestep 9: 63.36%
+Timestep 10: 62.78%

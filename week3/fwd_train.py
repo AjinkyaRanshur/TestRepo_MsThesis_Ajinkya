@@ -7,11 +7,10 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from eval_and_plotting import evaluation_metric,evaluation_reconstruction,plot_metrics
-from config import epochs,seed,device,batch_size
 import os
 from wb_tracker import init_wandb
 
-def feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir):
+def feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir,epochs,seed,device,batch_size):
     
     net.train()
 
