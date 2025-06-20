@@ -7,7 +7,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from eval_and_plotting import evaluation_reconstruction,plot_metrics
-from config import epochs,seed,device,batch_size
 import os
 
 def feedback_training(net,trainloader,testloader,lr,momentum,save_dir):

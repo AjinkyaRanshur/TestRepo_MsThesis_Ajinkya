@@ -1,0 +1,16 @@
+{"time":"2025-06-19T19:06:18.368284095+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/wandb/offline-run-20250619_190618-9ln6sj3h/logs/debug-core.log"}
+{"time":"2025-06-19T19:06:18.484917593+02:00","level":"WARN","msg":"GraphQL client is nil, skipping feature loading"}
+{"time":"2025-06-19T19:06:18.486941779+02:00","level":"INFO","msg":"stream: created new stream","id":"9ln6sj3h"}
+{"time":"2025-06-19T19:06:18.486960143+02:00","level":"INFO","msg":"stream: started","id":"9ln6sj3h"}
+{"time":"2025-06-19T19:06:18.487254216+02:00","level":"INFO","msg":"handler: started","stream_id":"9ln6sj3h"}
+{"time":"2025-06-19T19:06:18.487276879+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"9ln6sj3h"}
+{"time":"2025-06-19T19:06:18.487416421+02:00","level":"INFO","msg":"sender: started","stream_id":"9ln6sj3h"}
+{"time":"2025-06-19T19:06:18.499846772+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-19T21:50:30.455658496+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-19T21:50:30.455748054+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-19T21:50:30.456379792+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-06-19T21:50:30.47889044+02:00","level":"INFO","msg":"stream: closing","id":"9ln6sj3h"}
+{"time":"2025-06-19T21:50:30.478913172+02:00","level":"INFO","msg":"handler: closed","stream_id":"9ln6sj3h"}
+{"time":"2025-06-19T21:50:30.478924584+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"9ln6sj3h"}
+{"time":"2025-06-19T21:50:30.478974007+02:00","level":"INFO","msg":"sender: closed","stream_id":"9ln6sj3h"}
+{"time":"2025-06-19T21:50:30.497979868+02:00","level":"INFO","msg":"stream: closed","id":"9ln6sj3h"}

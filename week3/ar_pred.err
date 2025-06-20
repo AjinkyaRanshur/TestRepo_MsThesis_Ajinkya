@@ -1,54 +1,21 @@
-Traceback (most recent call last):
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/main.py", line 12, in <module>
-    from fwd_train import feedfwd_training
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/fwd_train.py", line 9, in <module>
-    from eval_and_plotting import evaluation_metric,evaluation_reconstruction,plot_metrics
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/eval_and_plotting.py", line 9, in <module>
-    from config import seed, device, batch_size, epochs, lr, momentum, timesteps,training_condition
-ModuleNotFoundError: No module named 'config'
-srun: error: c-a100-cn01: task 0: Exited with exit code 1
-srun: Terminating StepId=16072.0
-srun: Step created for StepId=16072.1
-Traceback (most recent call last):
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/main.py", line 12, in <module>
-    from fwd_train import feedfwd_training
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/fwd_train.py", line 9, in <module>
-    from eval_and_plotting import evaluation_metric,evaluation_reconstruction,plot_metrics
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/eval_and_plotting.py", line 9, in <module>
-    from config import seed, device, batch_size, epochs, lr, momentum, timesteps,training_condition
-ModuleNotFoundError: No module named 'config'
-srun: error: c-a100-cn01: task 0: Exited with exit code 1
-srun: Terminating StepId=16072.1
-srun: Step created for StepId=16072.2
-Traceback (most recent call last):
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/main.py", line 12, in <module>
-    from fwd_train import feedfwd_training
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/fwd_train.py", line 9, in <module>
-    from eval_and_plotting import evaluation_metric,evaluation_reconstruction,plot_metrics
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/eval_and_plotting.py", line 9, in <module>
-    from config import seed, device, batch_size, epochs, lr, momentum, timesteps,training_condition
-ModuleNotFoundError: No module named 'config'
-srun: error: c-a100-cn01: task 0: Exited with exit code 1
-srun: Terminating StepId=16072.2
-srun: Step created for StepId=16072.3
-Traceback (most recent call last):
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/main.py", line 12, in <module>
-    from fwd_train import feedfwd_training
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/fwd_train.py", line 9, in <module>
-    from eval_and_plotting import evaluation_metric,evaluation_reconstruction,plot_metrics
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/eval_and_plotting.py", line 9, in <module>
-    from config import seed, device, batch_size, epochs, lr, momentum, timesteps,training_condition
-ModuleNotFoundError: No module named 'config'
-srun: error: c-a100-cn01: task 0: Exited with exit code 1
-srun: Terminating StepId=16072.3
-srun: Step created for StepId=16072.4
-Traceback (most recent call last):
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/main.py", line 12, in <module>
-    from fwd_train import feedfwd_training
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/fwd_train.py", line 9, in <module>
-    from eval_and_plotting import evaluation_metric,evaluation_reconstruction,plot_metrics
-  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week3/eval_and_plotting.py", line 9, in <module>
-    from config import seed, device, batch_size, epochs, lr, momentum, timesteps,training_condition
-ModuleNotFoundError: No module named 'config'
-srun: error: c-a100-cn01: task 0: Exited with exit code 1
-srun: Terminating StepId=16072.4
+wandb: Appending key for api.wandb.ai to your netrc file: /home/ajinkya/.netrc
+wandb: Network error (ConnectionError), entering retry loop.
+wandb: W&B API key is configured. Use `wandb login --relogin` to force relogin
+wandb: WARNING Changes to your `wandb` environment variables will be ignored because your `wandb` session has already started. For more information on how to modify your settings with `wandb.init()` arguments, please refer to https://wandb.me/wandb-init.
+wandb: Tracking run with wandb version 0.20.1
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+srun: Job 16312 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 16312 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 16312 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 16312 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 16312 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 16312 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 16312 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 16312 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 16312: Job/step already completing or completed
+srun: error: Unable to create step for job 16312: Job/step already completing or completed
+srun: error: Unable to create step for job 16312: Job/step already completing or completed
+srun: error: Unable to create step for job 16312: Job/step already completing or completed
+slurmstepd: error: *** JOB 16312 ON c-a100-cn01 CANCELLED AT 2025-06-20T10:30:01 ***
+slurmstepd: error: *** STEP 16312.0 ON c-a100-cn01 CANCELLED AT 2025-06-20T10:30:01 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
