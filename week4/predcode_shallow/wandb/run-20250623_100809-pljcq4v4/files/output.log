@@ -1,0 +1,51 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch:0 and AverageLoss:2.30320098759878
+Epoch:1 and AverageLoss:2.3010487056449245
+Epoch:2 and AverageLoss:2.2967786441373703
+Epoch:3 and AverageLoss:2.2581750633161697
+Epoch:4 and AverageLoss:2.0819426671318384
+Epoch:5 and AverageLoss:1.946940753161145
+Epoch:6 and AverageLoss:1.8357457084119166
+Epoch:7 and AverageLoss:1.7149619284798117
+Epoch:8 and AverageLoss:1.629660585652227
+Epoch:9 and AverageLoss:1.5704459366591081
+Epoch:10 and AverageLoss:1.523480499187089
+Epoch:11 and AverageLoss:1.4740002569944963
+Epoch:12 and AverageLoss:1.4261161649928373
+Epoch:13 and AverageLoss:1.384012626260138
+Epoch:14 and AverageLoss:1.3416755519559622
+Epoch:15 and AverageLoss:1.3061768886683238
+Epoch:16 and AverageLoss:1.2701257333121336
+Epoch:17 and AverageLoss:1.2380901453135265
+Traceback (most recent call last):
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 239, in <module>
+    main()
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 182, in main
+    train_bool = training_using_predicitve_coding(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 110, in training_using_predicitve_coding
+    pc_training(
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/pc_train.py", line 39, in pc_training
+    output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_temp,ft_DE_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_temp,ft_DE_temp,beta,gamma,alpha,images.size(0))
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/network.py", line 78, in predictive_coding_pass
+    errorC=nn.functional.mse_loss(self.deconv2_fb(self.upsample(ft_BC)),ft_AB)
+                                                  ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/upsampling.py", line 172, in forward
+    return F.interpolate(
+           ^^^^^^^^^^^^^^
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/functional.py", line 4570, in interpolate
+    if not torch.jit.is_scripting():
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/_jit_internal.py", line 103, in is_scripting
+    def is_scripting() -> bool:
+
+KeyboardInterrupt

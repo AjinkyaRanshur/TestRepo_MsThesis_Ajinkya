@@ -1,0 +1,15 @@
+{"time":"2025-06-20T11:02:54.713272013+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week3/wandb/offline-run-20250620_110254-gjd8im15/logs/debug-core.log"}
+{"time":"2025-06-20T11:02:54.828415234+02:00","level":"WARN","msg":"GraphQL client is nil, skipping feature loading"}
+{"time":"2025-06-20T11:02:54.828528303+02:00","level":"INFO","msg":"stream: created new stream","id":"gjd8im15"}
+{"time":"2025-06-20T11:02:54.828566205+02:00","level":"INFO","msg":"stream: started","id":"gjd8im15"}
+{"time":"2025-06-20T11:02:54.828651902+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"gjd8im15"}
+{"time":"2025-06-20T11:02:54.828697801+02:00","level":"INFO","msg":"handler: started","stream_id":"gjd8im15"}
+{"time":"2025-06-20T11:02:54.828728335+02:00","level":"INFO","msg":"sender: started","stream_id":"gjd8im15"}
+{"time":"2025-06-20T11:02:54.835044946+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-20T11:17:16.760828002+02:00","level":"INFO","msg":"stream: closing","id":"gjd8im15"}
+{"time":"2025-06-20T11:17:16.76091597+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-20T11:17:16.762027367+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-20T11:17:16.765434518+02:00","level":"INFO","msg":"handler: closed","stream_id":"gjd8im15"}
+{"time":"2025-06-20T11:17:16.765462699+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"gjd8im15"}
+{"time":"2025-06-20T11:17:16.765488612+02:00","level":"INFO","msg":"sender: closed","stream_id":"gjd8im15"}
+{"time":"2025-06-20T11:17:16.765753302+02:00","level":"INFO","msg":"stream: closed","id":"gjd8im15"}

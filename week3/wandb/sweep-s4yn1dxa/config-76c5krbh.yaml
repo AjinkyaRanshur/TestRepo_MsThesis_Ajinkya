@@ -1,0 +1,20 @@
+wandb_version: 1
+
+batch_size:
+  value: 64
+datasetpath:
+  value: /home/ajinkyar/datasets
+device:
+  value: cuda:0
+epochs:
+  value: 30
+lr:
+  value: 0.024746553056002357
+momentum:
+  value: 0.8032709814214251
+seed:
+  value: 42
+timesteps:
+  value: 20
+training_condition:
+  value: pc_train

@@ -1,0 +1,38 @@
+wandb_version: 1
+
+alpha_1:
+  value: 0.0024367226566167723
+alpha_2:
+  value: 0.08453846842732844
+alpha_3:
+  value: 0.002540923720080426
+batch_size:
+  value: 32
+beta_1:
+  value: 0.2088443071883025
+beta_2:
+  value: 0.16971963412903737
+beta_3:
+  value: 0.29760905835707596
+datasetpath:
+  value: ./data
+device:
+  value: cuda:0
+epochs:
+  value: 20
+gamma_1:
+  value: 0.4266540884780031
+gamma_2:
+  value: 0.15926439484060487
+gamma_3:
+  value: 0.4612524660042055
+lr:
+  value: 0.0018287603034111855
+momentum:
+  value: 0.6372395936796718
+seed:
+  value: 456
+timesteps:
+  value: 5
+training_condition:
+  value: pc_train

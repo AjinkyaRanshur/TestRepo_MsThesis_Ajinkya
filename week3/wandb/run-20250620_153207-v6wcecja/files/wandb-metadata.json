@@ -1,0 +1,70 @@
+{
+  "os": "Linux-5.13.0-25-generic-x86_64-with-glibc2.31",
+  "python": "CPython 3.12.11",
+  "startedAt": "2025-06-20T13:32:08.157412Z",
+  "args": [
+    "--alpha_1=0.005382479355624375",
+    "--alpha_2=0.0066420024343526",
+    "--alpha_3=0.09512741298860902",
+    "--batch_size=32",
+    "--beta_1=0.26288291784696427",
+    "--beta_2=0.5597967950798938",
+    "--beta_3=0.1049542644283201",
+    "--datasetpath=/home/ajinkyar/datasets",
+    "--device=cuda:0",
+    "--epochs=30",
+    "--gamma_1=0.11539717594477993",
+    "--gamma_2=0.36354267335053225",
+    "--gamma_3=0.18263682909045267",
+    "--lr=0.00032055065095195874",
+    "--momentum=0.7122372323929007",
+    "--seed=456",
+    "--timesteps=5",
+    "--training_condition=pc_train"
+  ],
+  "program": "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week3/main.py",
+  "codePath": "week3/main.py",
+  "git": {
+    "remote": "https://github.com/AjinkyaRanshur/TestRepo_MsThesis_Ajinkya.git",
+    "commit": "429521697218bf6e32c096ea046ab0199834f51b"
+  },
+  "email": "ranshur.ajinkya.res@gmail.com",
+  "root": "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week3",
+  "host": "Rufin-Precision-Tower-7910",
+  "executable": "/home/ajinkyar/miniconda3/envs/cuda_pyt/bin/python",
+  "codePathLocal": "main.py",
+  "cpu_count": 20,
+  "cpu_count_logical": 40,
+  "gpu": "NVIDIA GeForce GTX 1080 Ti",
+  "gpu_count": 2,
+  "disk": {
+    "/": {
+      "total": "1006530654208",
+      "used": "578415775744"
+    }
+  },
+  "memory": {
+    "total": "67446697984"
+  },
+  "cpu": {
+    "count": 20,
+    "countLogical": 40
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce GTX 1080 Ti",
+      "memoryTotal": "11811160064",
+      "cudaCores": 3584,
+      "architecture": "Pascal",
+      "uuid": "GPU-b15d563d-a000-09b4-2fd1-f31c5c1df971"
+    },
+    {
+      "name": "NVIDIA GeForce GTX 1080 Ti",
+      "memoryTotal": "11811160064",
+      "cudaCores": 3584,
+      "architecture": "Pascal",
+      "uuid": "GPU-d7e9e8fb-5ea6-ff6c-8df8-5fb1511a4168"
+    }
+  ],
+  "cudaVersion": "12.0"
+}

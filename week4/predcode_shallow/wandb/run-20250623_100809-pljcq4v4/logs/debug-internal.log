@@ -1,0 +1,10 @@
+{"time":"2025-06-23T10:08:09.999855216+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250623_100809-pljcq4v4/logs/debug-core.log"}
+{"time":"2025-06-23T10:08:10.308918338+02:00","level":"INFO","msg":"stream: created new stream","id":"pljcq4v4"}
+{"time":"2025-06-23T10:08:10.308971834+02:00","level":"INFO","msg":"stream: started","id":"pljcq4v4"}
+{"time":"2025-06-23T10:08:10.308998583+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"pljcq4v4"}
+{"time":"2025-06-23T10:08:10.309066297+02:00","level":"INFO","msg":"handler: started","stream_id":"pljcq4v4"}
+{"time":"2025-06-23T10:08:10.309006648+02:00","level":"INFO","msg":"sender: started","stream_id":"pljcq4v4"}
+{"time":"2025-06-23T10:08:10.729897121+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-23T10:30:27.024777424+02:00","level":"INFO","msg":"stream: closing","id":"pljcq4v4"}
+{"time":"2025-06-23T10:30:27.024851435+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-23T10:30:27.024936331+02:00","level":"INFO","msg":"Stopped system monitor"}
