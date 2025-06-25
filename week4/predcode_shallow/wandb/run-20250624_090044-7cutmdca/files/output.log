@@ -1,0 +1,43 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch:0 and AverageLoss:1.953888080309114
+Epoch:1 and AverageLoss:1.5273730105451306
+Epoch:2 and AverageLoss:1.3307893977445715
+Epoch:3 and AverageLoss:1.1915325955356784
+Epoch:4 and AverageLoss:1.090254622194773
+Epoch:5 and AverageLoss:1.0102681685286714
+Epoch:6 and AverageLoss:0.943510704028332
+Epoch:7 and AverageLoss:0.8902997822712755
+Epoch:8 and AverageLoss:0.8298738292416038
+Epoch:9 and AverageLoss:0.7869461421161661
+Epoch:10 and AverageLoss:0.7337717401706959
+Epoch:11 and AverageLoss:0.6990070512227695
+Epoch:12 and AverageLoss:0.6571287939615567
+Epoch:13 and AverageLoss:0.6156880559061494
+Epoch:14 and AverageLoss:0.5919342954902698
+Epoch:15 and AverageLoss:0.5492395491856138
+Epoch:16 and AverageLoss:0.5138826340513156
+Epoch:17 and AverageLoss:0.48267156419241825
+Epoch:18 and AverageLoss:0.45755078199574406
+Epoch:19 and AverageLoss:0.42328733880349134
+Epoch:20 and AverageLoss:0.3926582559752647
+Epoch:21 and AverageLoss:0.36146563600243814
+Epoch:22 and AverageLoss:0.33169830344674534
+Epoch:23 and AverageLoss:0.30649944800702505
+Epoch:24 and AverageLoss:0.2795443595446589
+Predicitive coding plot was created sucessfully
+Model Save Sucessfully
+Training Sucessful
+Accuracy at each timestep:
+Timestep 0: 64.26%
+Timestep 1: 64.57%
+Timestep 2: 64.78%
+Timestep 3: 64.35%
+Timestep 4: 62.55%
+Timestep 5: 59.87%
+Timestep 6: 56.36%
+Timestep 7: 52.59%
+Timestep 8: 48.70%
+Timestep 9: 44.81%
+Timestep 10: 41.68%

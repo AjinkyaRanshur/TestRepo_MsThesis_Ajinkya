@@ -1,0 +1,38 @@
+wandb_version: 1
+
+alpha_1:
+  value: 0.02706165509796355
+alpha_2:
+  value: 0.019019433454353574
+alpha_3:
+  value: 0.009885998761977476
+batch_size:
+  value: 64
+beta_1:
+  value: 0.5791119342697523
+beta_2:
+  value: 0.24076930728666715
+beta_3:
+  value: 0.4001279251063251
+datasetpath:
+  value: /home/ajinkyar/datasets
+device:
+  value: cuda:0
+epochs:
+  value: 10
+gamma_1:
+  value: 0.26414109293501964
+gamma_2:
+  value: 0.27441603048762697
+gamma_3:
+  value: 0.28371178317037093
+lr:
+  value: 0.03952249825422671
+momentum:
+  value: 0.7441481740974618
+seed:
+  value: 789
+timesteps:
+  value: 5
+training_condition:
+  value: pc_train

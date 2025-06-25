@@ -56,11 +56,11 @@ class Net(nn.Module):
 
     def predictive_coding_pass(self,x,ft_AB,ft_BC,ft_CD,ft_DE,beta,gamma,alpha,batch_size):
 
-        gamma_AB_fwd,gamma_BC_fwd,gamma_CD_fwd=gamma
+        gamma_AB_fwd,gamma_BC_fwd,gamma_CD_fwd,gamma_DE_fwd=gamma
 
-        beta_AB_bck,beta_BC_bck,beta_CD_bck=beta
+        beta_AB_bck,beta_BC_bck,beta_CD_bck,beta_DE_bck=beta
 
-        alpha_AB,alpha_BC,alpha_CD=alpha
+        alpha_AB,alpha_BC,alpha_CD,alpha_DE=alpha
 
         errorB=nn.functional.mse_loss(self.deconv1_fb(ft_AB),x)
         
@@ -95,17 +95,23 @@ class Net(nn.Module):
         reconstructionD=torch.autograd.grad(errorD,ft_CD,retain_graph=True)[0]
 
         scalingD= np.round(np.sqrt(np.square(np.prod(ft_BC.shape[1:])) / np.prod(self.deconv3_fb(torch.rand_like(ft_CD)).shape[1:])))
-        ft_CD_pc=gamma_CD_fwd * self.conv3(pooled_ft_BC_pc) + (1-gamma_CD_fwd) * ft_CD + alpha_CD*scalingD*batch_size*reconstructionD
+        ft_CD_pc=gamma_CD_fwd * self.conv3(pooled_ft_BC_pc) + (1-gamma_CD_fwd-beta_CD_bck) * ft_CD + alpha_CD*scalingD*batch_size*reconstructionD
 
         pooled_ft_CD,_=self.pool(F.relu(ft_CD_pc))
 
+        errorE=nn.functional.mse_loss(self.fc1_fb(ft_DE),ft_CD)
+
+        reconstructionE=torch.autograd.grad(errorE,ft_DE,retain_graph=True)[0]
+
+        scalingE= np.round(np.sqrt(np.square(np.prod(ft_CD.shape[1:])) / np.prod(self.fc1_fb(torch.rand_like(ft_DE)).shape[1:])))
+    
         ft_CD_flat=torch.flatten(pooled_ft_CD,1)
-        
-        ft_DE = self.fc1(ft_CD_flat)
-        
-        relu_DE=F.relu(ft_DE)
-        
+
+        ft_DE_pc=gamma_DE_fwd * self.fc1(ft_CD_flat) + (1-gamma_DE_fwd)*ft_DE + alpha_DE*scalingE*batch_size*reconstructionE
+
+        relu_DE=F.relu(ft_DE_pc)
+
         output=self.fc2(relu_DE)
 
-        return output,ft_AB_pc,ft_BC_pc,ft_CD_pc,ft_DE
+        return output,ft_AB_pc,ft_BC_pc,ft_CD_pc,ft_DE_pc
 

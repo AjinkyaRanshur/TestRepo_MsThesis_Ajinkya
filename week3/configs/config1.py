@@ -5,7 +5,7 @@ seed=1
 lr=0.001
 momentum=0.9
 #datasetpath='/home/ajinkya/projects/datasets'
-datasetpath='/home/ajinkya/projects/datasets'
+datasetpath='/home/ajinkyar/datasets'
 #training_condition="ff_fb_train"
 training_condition="pc_train"
 # Fixed device configuration

@@ -1,0 +1,67 @@
+program: main.py
+method: bayes
+metric:
+  name: best_accuracy
+  goal: maximize
+parameters:
+  batch_size:
+    values: [32, 64, 128]
+  epochs:
+    values: [10, 20, 30]
+  lr:
+    distribution: log_uniform_values
+    min: 0.0001
+    max: 0.1
+  momentum:
+    distribution: uniform
+    min: 0.5
+    max: 0.99
+  seed:
+    values: [42, 123, 456, 789, 999]
+  device:
+    value: "cuda:0"  # Change to "cpu" if no GPU available
+  training_condition:
+    value: "pc_train"
+  timesteps:
+    values: [5, 10, 15, 20]
+  datasetpath:
+    value: "/home/ajinkyar/datasets"
+  # Gamma parameters (forward pass weights)
+  gamma_1:
+    distribution: uniform
+    min: 0.1
+    max: 0.6
+  gamma_2:
+    distribution: uniform
+    min: 0.1
+    max: 0.6
+  gamma_3:
+    distribution: uniform
+    min: 0.1
+    max: 0.6
+  # Beta parameters (backward pass weights)
+  beta_1:
+    distribution: uniform
+    min: 0.1
+    max: 0.6
+  beta_2:
+    distribution: uniform
+    min: 0.1
+    max: 0.6
+  beta_3:
+    distribution: uniform
+    min: 0.1
+    max: 0.6
+  # Alpha parameters (error gradient weights)
+  alpha_1:
+    distribution: log_uniform_values
+    min: 0.001
+    max: 0.1
+  alpha_2:
+    distribution: log_uniform_values
+    min: 0.001
+    max: 0.1
+  alpha_3:
+    distribution: log_uniform_values
+    min: 0.001
+    max: 0.1

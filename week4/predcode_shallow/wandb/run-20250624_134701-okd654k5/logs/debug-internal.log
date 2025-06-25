@@ -1,0 +1,7 @@
+{"time":"2025-06-24T13:47:01.732151493+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250624_134701-okd654k5/logs/debug-core.log"}
+{"time":"2025-06-24T13:47:02.0479529+02:00","level":"INFO","msg":"stream: created new stream","id":"okd654k5"}
+{"time":"2025-06-24T13:47:02.04800483+02:00","level":"INFO","msg":"stream: started","id":"okd654k5"}
+{"time":"2025-06-24T13:47:02.048039659+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"okd654k5"}
+{"time":"2025-06-24T13:47:02.048049405+02:00","level":"INFO","msg":"sender: started","stream_id":"okd654k5"}
+{"time":"2025-06-24T13:47:02.048097988+02:00","level":"INFO","msg":"handler: started","stream_id":"okd654k5"}
+{"time":"2025-06-24T13:47:02.372171335+02:00","level":"INFO","msg":"Starting system monitor"}

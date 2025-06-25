@@ -157,7 +157,7 @@ def testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,time
 
 
 def main():
-    init_wandb(batch_size, epochs, lr, momentum, seed, device, training_condition, load_model, save_model, timesteps, gammaset, betaset, alphaset, datasetpath,experiment_name)
+    #init_wandb(batch_size, epochs, lr, momentum, seed, device, training_condition, load_model, save_model, timesteps, gammaset, betaset, alphaset, datasetpath,experiment_name)
     save_dir = os.path.join("result_folder", f"Seed_{seed}")
     os.makedirs(save_dir, exist_ok=True)
     file_path = os.path.join(save_dir, f"Accuracy_Stats_{seed}.txt")
@@ -204,14 +204,18 @@ def load_config(config_name):
 # This line ensures safe multiprocessing
 if __name__ == "__main__":
     
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--config", type=str, required=True)
-    args = parser.parse_args()
+    wandb.init()
+    #parser = argparse.ArgumentParser()
+    #parser.add_argument("--config", type=str, required=True)
+    #args = parser.parse_args()
 
     # Add config directory to Python path
-    sys.path.append(os.path.abspath("configs"))
+    #sys.path.append(os.path.abspath("configs"))
     
-    config = load_config(args.config)
+    #config = load_config(args.config)
+
+    
+    config = wandb.config
     
     batch_size=config.batch_size
     epochs=config.epochs
@@ -220,15 +224,23 @@ if __name__ == "__main__":
     seed=config.seed
     device=config.device
     training_condition=config.training_condition
-    load_model=config.load_model
-    save_model=config.save_model
     timesteps=config.timesteps
-    gammaset=config.gammaset
-    betaset=config.betaset
-    alphaset=config.alphaset
-    datasetpath=config.datasetpath
-    experiment_name=config.experiment_name
+    # Set gamma, beta, alpha values from config
+    gamma_train = [config.gamma_1, config.gamma_2, config.gamma_3]
+    beta_train = [config.beta_1, config.beta_2, config.beta_3]
+    alpha_train = [config.alpha_1, config.alpha_2, config.alpha_3]
 
+    # For testing, create variations of the parameters
+    gammaset = [gamma_train, [0.5, 0.3, 0.2], [0.4, 0.4, 0.2]]
+    betaset = [beta_train, [0.5, 0.3, 0.2], [0.4, 0.4, 0.2]]
+    alphaset = [alpha_train, [0.02, 0.01, 0.005], [0.015, 0.01, 0.005]]
+    # Set seed
+    set_seed(seed)
+    #gammaset=config.gammaset
+    #betaset=config.betaset
+    #alphaset=config.alphaset
+    datasetpath=config.datasetpath
+    #experiment_name=config.experiment_name
     main()
 
 

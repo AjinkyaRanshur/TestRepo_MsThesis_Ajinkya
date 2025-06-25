@@ -1,0 +1,31 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch:0 and AverageLoss:2.2995080874704033
+Epoch:1 and AverageLoss:2.2316195977008557
+Epoch:2 and AverageLoss:2.027426698018828
+Epoch:3 and AverageLoss:1.9106553991127502
+Epoch:4 and AverageLoss:1.7719445634071174
+Epoch:5 and AverageLoss:1.6624685592968445
+Epoch:6 and AverageLoss:1.593249308788563
+Epoch:7 and AverageLoss:1.5292931886585168
+Epoch:8 and AverageLoss:1.4745726375018848
+Epoch:9 and AverageLoss:1.421777592900464
+Epoch:10 and AverageLoss:1.3674943416624727
+Epoch:11 and AverageLoss:1.3188066839257164
+Epoch:12 and AverageLoss:1.2746875670254993
+Epoch:13 and AverageLoss:1.2325244864539417
+Epoch:14 and AverageLoss:1.1914540187782034
+Traceback (most recent call last):
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 239, in <module>
+    main()
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 176, in main
+    train_bool = training_using_ff_fb(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 96, in training_using_ff_fb
+    ft_AB, ft_BC, ft_CD, ft_DE,ft_EF,output = feedfwd_training(
+                                              ^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/fwd_train.py", line 60, in feedfwd_training
+    plot_bool=plot_metrics(iters,loss_arr,save_dir,"Number of Epochs","Average Loss","Forward Training Loss","AverageLoss_Vs_Epoch_forward")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: plot_metrics() missing 1 required positional argument: 'seed'
