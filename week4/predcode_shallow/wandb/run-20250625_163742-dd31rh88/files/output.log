@@ -1,0 +1,30 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch:0 and AverageLoss:2.302560933105781
+Epoch:1 and AverageLoss:2.296068608608392
+Epoch:2 and AverageLoss:2.211724812417384
+Plots Successfully Stored
+Forward Training Succesful
+Epoch:0 and AverageLoss:0.47742489285176365
+Epoch:1 and AverageLoss:0.3390393541444598
+Epoch:2 and AverageLoss:0.28780270365955274
+Plots Successfully Stored
+Backward Training Succesful
+Training Sucessful
+Traceback (most recent call last):
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 239, in <module>
+    main()
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 187, in main
+    accuracy_dict = testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 146, in testing_model
+    accuracy_i = pc_training(
+                 ^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/pc_train.py", line 110, in pc_training
+    output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,beta,gamma,alpha,images.size(0))
+                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/network.py", line 116, in predictive_coding_pass
+    ft_DE_pc=gamma_DE_fwd*self.conv4(pooled_ft_CD_pc) + (1-gamma_DE_fwd) * ft_DE - alpha_DE * scalingE * batch_size * reconstructionE
+                                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+TypeError: can't multiply sequence by non-int of type 'numpy.float64'

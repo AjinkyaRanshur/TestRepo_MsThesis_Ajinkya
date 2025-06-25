@@ -59,7 +59,7 @@ class Net(nn.Module):
 
         return ft_BA, ft_CB, ft_DC, ft_ED,ft_FE,x
 
-    def predictive_coding_pass(self,x,ft_AB,ft_BC,ft_CD,ft_DE,beta,gamma,alpha,batch_size):
+    def predictive_coding_pass(self,x,ft_AB,ft_BC,ft_CD,ft_DE,ft_EF,beta,gamma,alpha,batch_size):
 
         gamma_AB_fwd,gamma_BC_fwd,gamma_CD_fwd,gamma_DE_fwd=gamma
 
@@ -113,7 +113,8 @@ class Net(nn.Module):
 
         scalingE = np.round(np.sqrt(np.square(4*4*32)/(5*5*32)))
 
-        ft_DE_pc=gamma_DE_fwd*self.conv3(pooled_ft_CD_pc) + (1-gamma_DE_fwd) * ft_DE - alpha_DE * scalingE * batch_size * reconstructionE
+        ft_DE_pc=gamma_DE_fwd*self.conv4(pooled_ft_CD_pc) + (1-gamma_DE_fwd) * ft_DE - alpha_DE*scalingE*batch_size*reconstructionE
+
         pooled_ft_DE,_ = self.pool(F.relu(ft_DE_pc))
 
         ft_DE_flat=torch.flatten(pooled_ft_DE,1)
