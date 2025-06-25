@@ -119,8 +119,6 @@ def training_using_predicitve_coding(save_dir, trainloader, testloader, net,epoc
     alpha_train,
      "train",
      epochs,seed,device,timesteps,batch_size)
-    
-    torch.save(net.state_dict(), 'cnn_model_diff.pth')
 
     print("Model Save Sucessfully")
 
@@ -176,12 +174,14 @@ def main():
         train_bool = training_using_ff_fb(
     save_dir, trainloader, testloader, net,epochs,seed,device,batch_size)
         if train_bool == True:
+            torch.save(net.state_dict(), 'cnn_model_diff.pth')
             print("Training Sucessful")
 
     if training_condition == "pc_train":
         train_bool = training_using_predicitve_coding(
             save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size)
         if train_bool == True:
+            torch.save(net.state_dict(), 'cnn_model_diff.pth')
             print("Training Sucessful")
 
     accuracy_dict = testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size)

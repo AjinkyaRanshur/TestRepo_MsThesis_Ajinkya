@@ -27,8 +27,8 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
                 
                 ft_AB_pc_temp = torch.zeros(batch_size, 6, 32, 32)
                 ft_BC_pc_temp = torch.zeros(batch_size, 16, 16, 16)
-                ft_CD_pc_temp = torch.zeros(batch_size, 64, 8, 8)
-                ft_DE_pc_temp = torch.zeros(batch_size,84)
+                ft_CD_pc_temp = torch.zeros(batch_size, 32, 8, 8)
+                ft_DE_pc_temp = torch.zeros(batch_size,64,4,4)
 
                 ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
                 # In pc_train.py training loop
@@ -67,14 +67,14 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
     if pc_train_bool=="test":
 
         forward_params = [
-        net.conv1, net.conv2, net.fc1, net.fc2, net.conv3]
+        net.conv1, net.conv2,net.conv3,net.conv4,net.fc1, net.fc2]
 
         for module in forward_params:
             for param in module.parameters():
                 param.requires_grad = False
 
         feedback_params = [
-            net.deconv3_fb, net.fc2_fb, net.fc1_fb, 
+            net.deconv4_fb,net.deconv3_fb, net.fc2_fb, net.fc1_fb, 
             net.deconv2_fb, net.deconv1_fb
         ]
         for module in feedback_params:
@@ -91,21 +91,23 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
             images, labels = images.to(device), labels.to(device)
             ft_AB_pc_temp = torch.zeros(batch_size, 6, 32, 32)
             ft_BC_pc_temp = torch.zeros(batch_size, 16, 16, 16)
-            ft_CD_pc_temp = torch.zeros(batch_size, 64, 8, 8)
-            ft_DE_pc_temp = torch.zeros(batch_size,84)
+            ft_CD_pc_temp = torch.zeros(batch_size, 32, 8, 8)
+            ft_DE_pc_temp = torch.zeros(batch_size,64,4,4)
 
-            ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
+            ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
 
             # Re-enable gradients after feedforward_pass overwrites the tensors
             ft_AB_pc_temp = ft_AB_pc_temp.requires_grad_(True)
             ft_BC_pc_temp = ft_BC_pc_temp.requires_grad_(True)
             ft_CD_pc_temp = ft_CD_pc_temp.requires_grad_(True)
             ft_DE_pc_temp = ft_DE_pc_temp.requires_grad_(True)
+            ft_EF_pc_temp = ft_EF_pc_temp.requires_grad_(True)
+
             _,predicted=torch.max(output,1)
             total_correct[0]+=(predicted==labels).sum().item()
 
             for i in range(timesteps):
-                output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,beta,gamma,alpha,images.size(0))
+                output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,beta,gamma,alpha,images.size(0))
                 _,predicted=torch.max(output,1)
                 total_correct[i+1]+=(predicted==labels).sum().item()
 
