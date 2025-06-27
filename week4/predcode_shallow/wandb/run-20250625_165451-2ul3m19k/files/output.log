@@ -1,0 +1,56 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch:0 and AverageLoss:2.3029793497851436
+Epoch:1 and AverageLoss:2.3000097183315344
+Epoch:2 and AverageLoss:2.2887313969604803
+Epoch:3 and AverageLoss:2.1399593072779037
+Epoch:4 and AverageLoss:1.9276288570955282
+Epoch:5 and AverageLoss:1.8181071354605047
+Epoch:6 and AverageLoss:1.7350037610134506
+Epoch:7 and AverageLoss:1.651195109347858
+Epoch:8 and AverageLoss:1.5935774120833257
+Epoch:9 and AverageLoss:1.541076305272329
+Epoch:10 and AverageLoss:1.4975834337951581
+Epoch:11 and AverageLoss:1.4525613995159374
+Epoch:12 and AverageLoss:1.412591775664893
+Epoch:13 and AverageLoss:1.3620544748233103
+Epoch:14 and AverageLoss:1.3256904548391357
+Traceback (most recent call last):
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 239, in <module>
+    main()
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 181, in main
+    train_bool = training_using_predicitve_coding(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 110, in training_using_predicitve_coding
+    pc_training(
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/pc_train.py", line 45, in pc_training
+    output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_temp,ft_DE_temp,ft_EF_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,beta,gamma,alpha,images.size(0))
+                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/network.py", line 106, in predictive_coding_pass
+    ft_CD_pc= gamma_CD_fwd*self.conv3(pooled_ft_BC_pc) + (1-gamma_CD_fwd-beta_CD_bck) * ft_CD + beta_CD_bck*self.deconv4_fb(self.upsample(ft_DE))-alpha_CD*scalingD*batch_size*reconstructionD
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 1162, in forward
+    return F.conv_transpose2d(
+           ^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7efb74dcdee0>
+Traceback (most recent call last):
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service_connection.py", line 90, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service_connection.py", line 218, in teardown
+    self._router.join()
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:

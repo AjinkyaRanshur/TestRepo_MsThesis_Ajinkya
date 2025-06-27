@@ -30,16 +30,19 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
                 ft_CD_pc_temp = torch.zeros(batch_size, 32, 8, 8)
                 ft_DE_pc_temp = torch.zeros(batch_size,64,4,4)
 
-                ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
+                ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
                 # In pc_train.py training loop
+                
                 ft_AB_pc_temp.requires_grad_(True)
                 ft_BC_pc_temp.requires_grad_(True)
                 ft_CD_pc_temp.requires_grad_(True)
                 ft_DE_pc_temp.requires_grad_(True)
+                ft_EF_pc_temp.requires_grad_(True)
+
                 optimizer.zero_grad()
                 final_loss=0
                 for i in range(timesteps):
-                    output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_temp,ft_DE_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,beta,gamma,alpha,images.size(0))
+                    output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_temp,ft_DE_temp,ft_EF_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,beta,gamma,alpha,images.size(0))
                     loss=criterion(output,labels)
                     final_loss+=loss
 

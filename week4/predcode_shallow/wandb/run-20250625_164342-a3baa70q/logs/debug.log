@@ -20,3 +20,4 @@ config: {'learning_rate': 0.001, 'architecture': 'CNN', 'dataset': 'CIFAR-10', '
 2025-06-25 16:43:43,354 INFO    MainThread:45421 [wandb_run.py:_redirect():2393] Redirects installed.
 2025-06-25 16:43:43,358 INFO    MainThread:45421 [wandb_init.py:init():1078] run started, returning control to user process
 2025-06-25 16:43:45,739 INFO    MainThread:45421 [wandb_watch.py:_watch():70] Watching
+2025-06-25 16:46:29,595 INFO    MsgRouterThr:45421 [mailbox.py:close():129] [no run ID] Closing mailbox, abandoning 1 handles.
