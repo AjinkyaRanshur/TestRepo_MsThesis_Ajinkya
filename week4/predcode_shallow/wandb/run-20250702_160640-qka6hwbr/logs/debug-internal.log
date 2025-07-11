@@ -1,0 +1,16 @@
+{"time":"2025-07-02T16:06:40.988525228+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250702_160640-qka6hwbr/logs/debug-core.log"}
+{"time":"2025-07-02T16:06:41.288454682+02:00","level":"INFO","msg":"stream: created new stream","id":"qka6hwbr"}
+{"time":"2025-07-02T16:06:41.288524009+02:00","level":"INFO","msg":"stream: started","id":"qka6hwbr"}
+{"time":"2025-07-02T16:06:41.288553113+02:00","level":"INFO","msg":"sender: started","stream_id":"qka6hwbr"}
+{"time":"2025-07-02T16:06:41.288542572+02:00","level":"INFO","msg":"handler: started","stream_id":"qka6hwbr"}
+{"time":"2025-07-02T16:06:41.28861395+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"qka6hwbr"}
+{"time":"2025-07-02T16:06:41.535864253+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-07-02T16:06:56.652806269+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-02T16:06:56.652879623+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-07-02T16:06:57.655518713+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.573564019,"progress":"350B/350B"},{"desc":"uploading wandb-summary.json","runtime_seconds":0.573550314,"progress":"516B/516B"},{"desc":"uploading config.yaml","runtime_seconds":0.402611642,"progress":"1.1KB/1.1KB"}],"total_operations":3}}
+{"time":"2025-07-02T16:06:57.771228045+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-02T16:06:58.020334921+02:00","level":"INFO","msg":"stream: closing","id":"qka6hwbr"}
+{"time":"2025-07-02T16:06:58.020367596+02:00","level":"INFO","msg":"handler: closed","stream_id":"qka6hwbr"}
+{"time":"2025-07-02T16:06:58.020385888+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"qka6hwbr"}
+{"time":"2025-07-02T16:06:58.020433988+02:00","level":"INFO","msg":"sender: closed","stream_id":"qka6hwbr"}
+{"time":"2025-07-02T16:06:58.020503456+02:00","level":"INFO","msg":"stream: closed","id":"qka6hwbr"}

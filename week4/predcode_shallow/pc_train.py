@@ -10,9 +10,10 @@ from eval_and_plotting import evaluation_metric,evaluation_reconstruction,plot_m
 import os
 import wandb
 from wb_tracker import init_wandb
+from add_noise import noisy_img
+import torchvision.utils as vutils
 
-
-def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha,pc_train_bool,epochs,seed,device,timesteps,batch_size):
+def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha,pc_train_bool,epochs,seed,device,timesteps,batch_size,noise_type,noise_param):
 
     if pc_train_bool=="train":
         criterion=nn.CrossEntropyLoss()
@@ -25,10 +26,10 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
                 images,labels=batch
                 images,labels=images.to(device),labels.to(device)
                 
-                ft_AB_pc_temp = torch.zeros(batch_size, 6, 32, 32)
-                ft_BC_pc_temp = torch.zeros(batch_size, 16, 16, 16)
-                ft_CD_pc_temp = torch.zeros(batch_size, 32, 8, 8)
-                ft_DE_pc_temp = torch.zeros(batch_size,64,4,4)
+                ft_AB_pc_temp = torch.zeros(batch_size, 6, 32, 32).to(device)
+                ft_BC_pc_temp = torch.zeros(batch_size, 16, 16, 16).to(device)
+                ft_CD_pc_temp = torch.zeros(batch_size, 32, 8, 8).to(device)
+                ft_DE_pc_temp = torch.zeros(batch_size,64,4,4).to(device)
 
                 ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
                 # In pc_train.py training loop
@@ -42,7 +43,7 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
                 optimizer.zero_grad()
                 final_loss=0
                 for i in range(timesteps):
-                    output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_temp,ft_DE_temp,ft_EF_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,beta,gamma,alpha,images.size(0))
+                    output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,beta,gamma,alpha,images.size(0))
                     loss=criterion(output,labels)
                     final_loss+=loss
 
@@ -55,7 +56,7 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
 
             print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
             accuracy=evaluation_metric(net,testloader,seed,device)
-            metrics={"Predictive_Coding/train_loss":avg_loss,"Predictive_Coding/train_accuracy":accuracy}
+            metrics={"Predictive_Coding/train_loss":avg_loss,"Predictive_Coding/testing_accuracy":accuracy,"Predictive_Coding/chance_level":10.00}
             wandb.log(metrics)
             loss_arr.append(avg_loss)
         iters = range(1, epochs+1)
@@ -89,7 +90,22 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
         total_samples=0
         
         for batch_id,batch in enumerate(testloader):
+            
             images,labels=batch
+            #Adding noise to the image
+            images=noisy_img(images,noise_type,noise_param)
+            if batch_id == 0:
+                classes = ('plane','car','bird','cat','deer','dog','frog','horse','ship','truck')
+                wandb_images=[]
+                if batch_id == 0:
+                    # Clamp or normalize images to [0, 1] for correct visualization
+                    images = images.clone().detach()
+                    images = images - images.min()
+                    images = images / images.max()
+                grid = vutils.make_grid(images[:8], nrow=4, padding=2, normalize=False)
+                wandb.log({
+                f"MediaLogs/{noise_type}_{noise_param}": wandb.Image(grid, caption=f"Noisy Images: {noise_type} {noise_param}")
+                })
             # Move data to the same device as the model
             images, labels = images.to(device), labels.to(device)
             ft_AB_pc_temp = torch.zeros(batch_size, 6, 32, 32)
@@ -123,6 +139,7 @@ def pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha
         print("Accuracy at each timestep:")
         for i, acc in enumerate(accuracy):
             print(f"Timestep {i}: {acc:.2f}%")
+            wandb.log({"Timestep":i,"Accuracy":acc,"chance_level":10.00})
 
 
         return accuracy

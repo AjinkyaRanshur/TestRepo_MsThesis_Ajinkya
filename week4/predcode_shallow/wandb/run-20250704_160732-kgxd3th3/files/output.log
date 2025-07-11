@@ -1,0 +1,15 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy at each timestep:
+Timestep 0: 53.42%
+Timestep 1: 53.84%
+Timestep 2: 54.86%
+Timestep 3: 55.47%
+Timestep 4: 55.53%
+Timestep 5: 54.98%
+Timestep 6: 54.46%
+Timestep 7: 53.64%
+Timestep 8: 52.47%
+Timestep 9: 50.90%
+Timestep 10: 49.42%

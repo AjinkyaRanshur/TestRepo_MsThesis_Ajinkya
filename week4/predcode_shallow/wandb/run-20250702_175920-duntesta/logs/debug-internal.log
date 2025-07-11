@@ -1,0 +1,16 @@
+{"time":"2025-07-02T17:59:20.375993985+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250702_175920-duntesta/logs/debug-core.log"}
+{"time":"2025-07-02T17:59:20.716714963+02:00","level":"INFO","msg":"stream: created new stream","id":"duntesta"}
+{"time":"2025-07-02T17:59:20.716826564+02:00","level":"INFO","msg":"stream: started","id":"duntesta"}
+{"time":"2025-07-02T17:59:20.716880835+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"duntesta"}
+{"time":"2025-07-02T17:59:20.716964145+02:00","level":"INFO","msg":"sender: started","stream_id":"duntesta"}
+{"time":"2025-07-02T17:59:20.717024897+02:00","level":"INFO","msg":"handler: started","stream_id":"duntesta"}
+{"time":"2025-07-02T17:59:20.977581398+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-07-02T17:59:36.430244875+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-02T17:59:36.430351047+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-07-02T17:59:37.105339093+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-02T17:59:37.437032968+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.33148076}],"total_operations":1}}
+{"time":"2025-07-02T17:59:37.484884772+02:00","level":"INFO","msg":"stream: closing","id":"duntesta"}
+{"time":"2025-07-02T17:59:37.484917156+02:00","level":"INFO","msg":"handler: closed","stream_id":"duntesta"}
+{"time":"2025-07-02T17:59:37.484934527+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"duntesta"}
+{"time":"2025-07-02T17:59:37.484983012+02:00","level":"INFO","msg":"sender: closed","stream_id":"duntesta"}
+{"time":"2025-07-02T17:59:37.485039622+02:00","level":"INFO","msg":"stream: closed","id":"duntesta"}

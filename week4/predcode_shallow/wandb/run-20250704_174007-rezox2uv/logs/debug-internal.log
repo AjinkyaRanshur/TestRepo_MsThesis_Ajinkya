@@ -1,0 +1,16 @@
+{"time":"2025-07-04T17:40:07.3486315+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250704_174007-rezox2uv/logs/debug-core.log"}
+{"time":"2025-07-04T17:40:07.662130421+02:00","level":"INFO","msg":"stream: created new stream","id":"rezox2uv"}
+{"time":"2025-07-04T17:40:07.662245427+02:00","level":"INFO","msg":"stream: started","id":"rezox2uv"}
+{"time":"2025-07-04T17:40:07.662362427+02:00","level":"INFO","msg":"sender: started","stream_id":"rezox2uv"}
+{"time":"2025-07-04T17:40:07.662597361+02:00","level":"INFO","msg":"handler: started","stream_id":"rezox2uv"}
+{"time":"2025-07-04T17:40:07.662477399+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"rezox2uv"}
+{"time":"2025-07-04T17:40:07.946697474+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-07-04T17:40:23.465269418+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-04T17:40:23.465371662+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-07-04T17:40:24.108466383+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-04T17:40:24.340988824+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-07-04T17:40:24.347053164+02:00","level":"INFO","msg":"stream: closing","id":"rezox2uv"}
+{"time":"2025-07-04T17:40:24.347085649+02:00","level":"INFO","msg":"handler: closed","stream_id":"rezox2uv"}
+{"time":"2025-07-04T17:40:24.347103453+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"rezox2uv"}
+{"time":"2025-07-04T17:40:24.347152769+02:00","level":"INFO","msg":"sender: closed","stream_id":"rezox2uv"}
+{"time":"2025-07-04T17:40:24.347211867+02:00","level":"INFO","msg":"stream: closed","id":"rezox2uv"}

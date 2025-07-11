@@ -1,0 +1,16 @@
+{"time":"2025-06-27T14:50:15.39589841+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250627_145015-gurpfxts/logs/debug-core.log"}
+{"time":"2025-06-27T14:50:15.709373525+02:00","level":"INFO","msg":"stream: created new stream","id":"gurpfxts"}
+{"time":"2025-06-27T14:50:15.709435222+02:00","level":"INFO","msg":"stream: started","id":"gurpfxts"}
+{"time":"2025-06-27T14:50:15.709463373+02:00","level":"INFO","msg":"sender: started","stream_id":"gurpfxts"}
+{"time":"2025-06-27T14:50:15.709482843+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"gurpfxts"}
+{"time":"2025-06-27T14:50:15.709457787+02:00","level":"INFO","msg":"handler: started","stream_id":"gurpfxts"}
+{"time":"2025-06-27T14:50:15.939987937+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-27T15:58:56.048146415+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-27T15:58:56.048260572+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-27T15:58:56.679614589+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-27T15:58:56.956503398+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-06-27T15:58:56.962693268+02:00","level":"INFO","msg":"stream: closing","id":"gurpfxts"}
+{"time":"2025-06-27T15:58:56.962711772+02:00","level":"INFO","msg":"handler: closed","stream_id":"gurpfxts"}
+{"time":"2025-06-27T15:58:56.962731695+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"gurpfxts"}
+{"time":"2025-06-27T15:58:56.962779977+02:00","level":"INFO","msg":"sender: closed","stream_id":"gurpfxts"}
+{"time":"2025-06-27T15:58:56.96278927+02:00","level":"INFO","msg":"stream: closed","id":"gurpfxts"}

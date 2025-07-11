@@ -1,0 +1,29 @@
+2025-07-08 14:19:07,445 INFO    MainThread:388251 [wandb_setup.py:_flush():81] Current SDK version is 0.20.1
+2025-07-08 14:19:07,445 INFO    MainThread:388251 [wandb_setup.py:_flush():81] Configure stats pid to 388251
+2025-07-08 14:19:07,445 INFO    MainThread:388251 [wandb_setup.py:_flush():81] Loading settings from /home/ajinkyar/.config/wandb/settings
+2025-07-08 14:19:07,445 INFO    MainThread:388251 [wandb_setup.py:_flush():81] Loading settings from /home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/settings
+2025-07-08 14:19:07,445 INFO    MainThread:388251 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2025-07-08 14:19:07,445 INFO    MainThread:388251 [wandb_init.py:setup_run_log_directory():703] Logging user logs to /home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250708_141907-ur3qmrdn/logs/debug.log
+2025-07-08 14:19:07,446 INFO    MainThread:388251 [wandb_init.py:setup_run_log_directory():704] Logging internal logs to /home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250708_141907-ur3qmrdn/logs/debug-internal.log
+2025-07-08 14:19:07,446 INFO    MainThread:388251 [wandb_init.py:init():831] calling init triggers
+2025-07-08 14:19:07,446 INFO    MainThread:388251 [wandb_init.py:init():836] wandb.init called with sweep_config: {}
+config: {'learning_rate': 0.001, 'architecture': 'CNN', 'dataset': 'CIFAR-10', 'epochs': 70, 'Batch_size': 128, 'momentum': 0.9, 'timesteps': 10, 'training_condition': None, 'Model_Name': 'pc_model', 'Gamma_layer0': 0.13, 'Gamma_layer1': 0.43, 'Gamma_layer2': 0.13, 'Gamma_layer3': 0.33, 'Beta_layer0': 0.43, 'Beta_layer1': 0.13, 'Beta_layer2': 0.43, 'Beta_layer3': 0.33, 'Alpha_layer0': 0.01, 'Alpha_layer1': 0.01, 'Alpha_layer2': 0.01, 'Alpha_layer3': 0.01, 'noise_type': 'gauss', 'noise_param': 0.4, '_wandb': {}}
+2025-07-08 14:19:07,446 INFO    MainThread:388251 [wandb_init.py:init():872] starting backend
+2025-07-08 14:19:07,655 INFO    MainThread:388251 [wandb_init.py:init():875] sending inform_init request
+2025-07-08 14:19:07,662 INFO    MainThread:388251 [wandb_init.py:init():883] backend started and connected
+2025-07-08 14:19:07,664 INFO    MainThread:388251 [wandb_init.py:init():956] updated telemetry
+2025-07-08 14:19:07,672 INFO    MainThread:388251 [wandb_init.py:init():980] communicating run to backend with 90.0 second timeout
+2025-07-08 14:19:08,267 INFO    MainThread:388251 [wandb_init.py:init():1032] starting run threads in backend
+2025-07-08 14:19:08,350 INFO    MainThread:388251 [wandb_run.py:_console_start():2453] atexit reg
+2025-07-08 14:19:08,350 INFO    MainThread:388251 [wandb_run.py:_redirect():2301] redirect: wrap_raw
+2025-07-08 14:19:08,351 INFO    MainThread:388251 [wandb_run.py:_redirect():2370] Wrapping output streams.
+2025-07-08 14:19:08,351 INFO    MainThread:388251 [wandb_run.py:_redirect():2393] Redirects installed.
+2025-07-08 14:19:08,355 INFO    MainThread:388251 [wandb_init.py:init():1078] run started, returning control to user process
+2025-07-08 14:19:09,944 INFO    MainThread:388251 [wandb_watch.py:_watch():70] Watching
+2025-07-08 14:19:23,686 INFO    MainThread:388251 [wandb_run.py:_finish():2219] finishing run ranshur-ajinkya-res-cerco/Pyramid_Scheme_In_Pc_and_FFFB_models/ur3qmrdn
+2025-07-08 14:19:23,687 INFO    MainThread:388251 [wandb_run.py:_atexit_cleanup():2418] got exitcode: 0
+2025-07-08 14:19:23,687 INFO    MainThread:388251 [wandb_run.py:_restore():2400] restore
+2025-07-08 14:19:23,687 INFO    MainThread:388251 [wandb_run.py:_restore():2406] restore done
+2025-07-08 14:19:24,526 INFO    MainThread:388251 [wandb_run.py:_footer_history_summary_info():4000] rendering history
+2025-07-08 14:19:24,527 INFO    MainThread:388251 [wandb_run.py:_footer_history_summary_info():4032] rendering summary
+2025-07-08 14:19:24,528 INFO    MainThread:388251 [wandb_run.py:_footer_sync_info():3961] logging synced files

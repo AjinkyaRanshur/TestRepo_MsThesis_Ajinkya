@@ -1,0 +1,7 @@
+{"time":"2025-07-01T16:09:01.7844858+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250701_160901-ben3ww91/logs/debug-core.log"}
+{"time":"2025-07-01T16:09:02.093851388+02:00","level":"INFO","msg":"stream: created new stream","id":"ben3ww91"}
+{"time":"2025-07-01T16:09:02.093934142+02:00","level":"INFO","msg":"stream: started","id":"ben3ww91"}
+{"time":"2025-07-01T16:09:02.093954807+02:00","level":"INFO","msg":"handler: started","stream_id":"ben3ww91"}
+{"time":"2025-07-01T16:09:02.093963006+02:00","level":"INFO","msg":"sender: started","stream_id":"ben3ww91"}
+{"time":"2025-07-01T16:09:02.094030512+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ben3ww91"}
+{"time":"2025-07-01T16:09:02.347198821+02:00","level":"INFO","msg":"Starting system monitor"}
