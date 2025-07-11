@@ -67,7 +67,7 @@ def train_test_loader(datasetpath):
      transform=transform)
 
     trainloader = torch.utils.data.DataLoader(
-    trainset, batch_size=batch_size, shuffle=True, num_workers=0)
+    trainset, batch_size=batch_size, shuffle=True, num_workers=4)
 
     testset = torchvision.datasets.CIFAR10(
     root=datasetpath,
@@ -76,7 +76,7 @@ def train_test_loader(datasetpath):
      transform=transform)
 
     testloader = torch.utils.data.DataLoader(
-    testset, batch_size=batch_size, shuffle=False, num_workers=0)
+    testset, batch_size=batch_size, shuffle=False, num_workers=4)
 
     return trainloader, testloader
 
@@ -99,7 +99,7 @@ def training_using_ff_fb(save_dir, trainloader, testloader, net,epochs,seed,devi
     return True
 
 
-def training_using_predicitve_coding(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size):
+def training_using_predicitve_coding(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param):
     accuracy_dict = {}
 
     #Training the model using these hyperparameters
@@ -118,18 +118,18 @@ def training_using_predicitve_coding(save_dir, trainloader, testloader, net,epoc
     beta_train,
     alpha_train,
      "train",
-     epochs,seed,device,timesteps,batch_size)
+     epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
 
     print("Model Save Sucessfully")
 
     return True
 
 
-def testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size):
+def testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param):
     # net=Net()
     net.load_state_dict(
     torch.load(
-        'cnn_model_diff.pth',
+        f'{model_name}.pth',
         map_location=device,
          weights_only=True))
 
@@ -153,7 +153,7 @@ def testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,time
     gamma_i,
     beta_i,
     alpha_i,
-     "test",epochs,seed,device,timesteps,batch_size)
+     "test",epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
         i += 1
         accuracy_dict[key] = accuracy_i
 
@@ -162,7 +162,7 @@ def testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,time
 
 
 def main():
-    init_wandb(batch_size, epochs, lr, momentum, seed, device, training_condition, load_model, save_model, timesteps, gammaset, betaset, alphaset, datasetpath,experiment_name)
+    init_wandb(batch_size, epochs, lr, momentum, seed, device, training_condition, load_model, save_model, timesteps, gammaset, betaset, alphaset, datasetpath,experiment_name,noise_type,noise_param,model_name)
     save_dir = os.path.join("result_folder", f"Seed_{seed}")
     os.makedirs(save_dir, exist_ok=True)
     file_path = os.path.join(save_dir, f"Accuracy_Stats_{seed}.txt")
@@ -174,27 +174,27 @@ def main():
         train_bool = training_using_ff_fb(
     save_dir, trainloader, testloader, net,epochs,seed,device,batch_size)
         if train_bool == True:
-            torch.save(net.state_dict(), 'cnn_model_diff.pth')
+            torch.save(net.state_dict(), f'{model_name}.pth')
             print("Training Sucessful")
 
     if training_condition == "pc_train":
         train_bool = training_using_predicitve_coding(
-            save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size)
+            save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
         if train_bool == True:
-            torch.save(net.state_dict(), 'cnn_model_diff.pth')
+            torch.save(net.state_dict(), f'{model_name}.pth')
             print("Training Sucessful")
 
-    accuracy_dict = testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size)
+    accuracy_dict = testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
     
-    plot_multiple_metrics(
-    iters,
-    accuracy_dict,
-    save_dir,
-    "Timesteps",
-    "Accuracies for different priors",
-    "Predicitive Coding Performance for Various Hyperparameter Configrations",
-     "pc_multiplehp_accuracy_vs_timesteps",seed)
-
+#    plot_multiple_metrics(
+#    iters,
+#    accuracy_dict,
+#    save_dir,
+#    "Timesteps",
+#    "Accuracies for different priors",
+#    "Predicitive Coding Performance for Various Hyperparameter Configrations",
+#     "pc_multiplehp_accuracy_vs_timesteps",seed)
+#
     end = time.time()
     diff = end - start
     diff = diff / 60
@@ -235,6 +235,9 @@ if __name__ == "__main__":
     alphaset=config.alphaset
     datasetpath=config.datasetpath
     experiment_name=config.experiment_name
+    model_name=config.model_name
+    noise_type=config.noise_type
+    noise_param=config.noise_param
 
     main()
 

@@ -1,0 +1,16 @@
+{"time":"2025-07-08T11:59:22.941298811+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250708_115922-46z2bmkk/logs/debug-core.log"}
+{"time":"2025-07-08T11:59:23.503818033+02:00","level":"INFO","msg":"stream: created new stream","id":"46z2bmkk"}
+{"time":"2025-07-08T11:59:23.503884179+02:00","level":"INFO","msg":"stream: started","id":"46z2bmkk"}
+{"time":"2025-07-08T11:59:23.503906347+02:00","level":"INFO","msg":"handler: started","stream_id":"46z2bmkk"}
+{"time":"2025-07-08T11:59:23.503929625+02:00","level":"INFO","msg":"sender: started","stream_id":"46z2bmkk"}
+{"time":"2025-07-08T11:59:23.50403459+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"46z2bmkk"}
+{"time":"2025-07-08T11:59:23.786084689+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-07-08T11:59:39.218368182+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-08T11:59:39.218470061+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-07-08T11:59:40.101938117+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-08T11:59:40.224395008+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.122180558}],"total_operations":1}}
+{"time":"2025-07-08T11:59:40.389878963+02:00","level":"INFO","msg":"stream: closing","id":"46z2bmkk"}
+{"time":"2025-07-08T11:59:40.389912119+02:00","level":"INFO","msg":"handler: closed","stream_id":"46z2bmkk"}
+{"time":"2025-07-08T11:59:40.389946852+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"46z2bmkk"}
+{"time":"2025-07-08T11:59:40.389985178+02:00","level":"INFO","msg":"sender: closed","stream_id":"46z2bmkk"}
+{"time":"2025-07-08T11:59:40.390057742+02:00","level":"INFO","msg":"stream: closed","id":"46z2bmkk"}

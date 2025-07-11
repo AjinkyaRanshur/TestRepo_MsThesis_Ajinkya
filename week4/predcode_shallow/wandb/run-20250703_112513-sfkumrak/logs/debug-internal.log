@@ -1,0 +1,16 @@
+{"time":"2025-07-03T11:25:13.679492405+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250703_112513-sfkumrak/logs/debug-core.log"}
+{"time":"2025-07-03T11:25:14.004689535+02:00","level":"INFO","msg":"stream: created new stream","id":"sfkumrak"}
+{"time":"2025-07-03T11:25:14.004832949+02:00","level":"INFO","msg":"stream: started","id":"sfkumrak"}
+{"time":"2025-07-03T11:25:14.004844388+02:00","level":"INFO","msg":"handler: started","stream_id":"sfkumrak"}
+{"time":"2025-07-03T11:25:14.004868602+02:00","level":"INFO","msg":"sender: started","stream_id":"sfkumrak"}
+{"time":"2025-07-03T11:25:14.004920645+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"sfkumrak"}
+{"time":"2025-07-03T11:25:14.337493822+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-07-03T11:25:29.764867598+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-03T11:25:29.764941007+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-07-03T11:25:30.351906771+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-03T11:25:30.639430683+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-07-03T11:25:30.647002048+02:00","level":"INFO","msg":"stream: closing","id":"sfkumrak"}
+{"time":"2025-07-03T11:25:30.647038596+02:00","level":"INFO","msg":"handler: closed","stream_id":"sfkumrak"}
+{"time":"2025-07-03T11:25:30.647060894+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"sfkumrak"}
+{"time":"2025-07-03T11:25:30.647081824+02:00","level":"INFO","msg":"sender: closed","stream_id":"sfkumrak"}
+{"time":"2025-07-03T11:25:30.647185362+02:00","level":"INFO","msg":"stream: closed","id":"sfkumrak"}

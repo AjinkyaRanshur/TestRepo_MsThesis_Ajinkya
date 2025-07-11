@@ -1,0 +1,10 @@
+{"time":"2025-07-02T09:53:40.870833919+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250702_095340-lblx9de1/logs/debug-core.log"}
+{"time":"2025-07-02T09:53:41.188726426+02:00","level":"INFO","msg":"stream: created new stream","id":"lblx9de1"}
+{"time":"2025-07-02T09:53:41.188807082+02:00","level":"INFO","msg":"stream: started","id":"lblx9de1"}
+{"time":"2025-07-02T09:53:41.188831398+02:00","level":"INFO","msg":"handler: started","stream_id":"lblx9de1"}
+{"time":"2025-07-02T09:53:41.18883947+02:00","level":"INFO","msg":"sender: started","stream_id":"lblx9de1"}
+{"time":"2025-07-02T09:53:41.188953878+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"lblx9de1"}
+{"time":"2025-07-02T09:53:41.441690057+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-07-02T10:06:19.67925509+02:00","level":"INFO","msg":"stream: closing","id":"lblx9de1"}
+{"time":"2025-07-02T10:06:19.679320785+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-02T10:06:19.679383179+02:00","level":"INFO","msg":"Stopped system monitor"}

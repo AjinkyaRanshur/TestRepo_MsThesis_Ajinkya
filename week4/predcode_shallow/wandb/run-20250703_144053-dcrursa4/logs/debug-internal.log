@@ -1,0 +1,16 @@
+{"time":"2025-07-03T14:40:53.90516969+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250703_144053-dcrursa4/logs/debug-core.log"}
+{"time":"2025-07-03T14:40:54.229257994+02:00","level":"INFO","msg":"stream: created new stream","id":"dcrursa4"}
+{"time":"2025-07-03T14:40:54.229321601+02:00","level":"INFO","msg":"stream: started","id":"dcrursa4"}
+{"time":"2025-07-03T14:40:54.229345359+02:00","level":"INFO","msg":"handler: started","stream_id":"dcrursa4"}
+{"time":"2025-07-03T14:40:54.229400043+02:00","level":"INFO","msg":"sender: started","stream_id":"dcrursa4"}
+{"time":"2025-07-03T14:40:54.229476651+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"dcrursa4"}
+{"time":"2025-07-03T14:40:54.492532238+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-07-03T14:41:10.193063842+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-03T14:41:10.19316086+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-07-03T14:41:10.837483393+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-03T14:41:11.196242958+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.358541625}],"total_operations":1}}
+{"time":"2025-07-03T14:41:11.212587121+02:00","level":"INFO","msg":"stream: closing","id":"dcrursa4"}
+{"time":"2025-07-03T14:41:11.212616002+02:00","level":"INFO","msg":"handler: closed","stream_id":"dcrursa4"}
+{"time":"2025-07-03T14:41:11.212634641+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"dcrursa4"}
+{"time":"2025-07-03T14:41:11.212682158+02:00","level":"INFO","msg":"sender: closed","stream_id":"dcrursa4"}
+{"time":"2025-07-03T14:41:11.212738608+02:00","level":"INFO","msg":"stream: closed","id":"dcrursa4"}

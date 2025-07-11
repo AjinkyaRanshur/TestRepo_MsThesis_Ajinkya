@@ -1,0 +1,17 @@
+{"time":"2025-07-02T18:08:34.582451425+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250702_180834-fvhx0v34/logs/debug-core.log"}
+{"time":"2025-07-02T18:09:04.6980031+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-07-02T18:09:06.942273292+02:00","level":"INFO","msg":"stream: created new stream","id":"fvhx0v34"}
+{"time":"2025-07-02T18:09:06.942338617+02:00","level":"INFO","msg":"stream: started","id":"fvhx0v34"}
+{"time":"2025-07-02T18:09:06.942362422+02:00","level":"INFO","msg":"handler: started","stream_id":"fvhx0v34"}
+{"time":"2025-07-02T18:09:06.942389222+02:00","level":"INFO","msg":"sender: started","stream_id":"fvhx0v34"}
+{"time":"2025-07-02T18:09:06.942474467+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"fvhx0v34"}
+{"time":"2025-07-02T18:09:07.194375936+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-07-02T18:09:22.753855976+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-02T18:09:22.753961602+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-07-02T18:09:23.361559791+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-02T18:09:23.601527824+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-07-02T18:09:23.608070041+02:00","level":"INFO","msg":"stream: closing","id":"fvhx0v34"}
+{"time":"2025-07-02T18:09:23.608102325+02:00","level":"INFO","msg":"handler: closed","stream_id":"fvhx0v34"}
+{"time":"2025-07-02T18:09:23.60812305+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"fvhx0v34"}
+{"time":"2025-07-02T18:09:23.608138573+02:00","level":"INFO","msg":"sender: closed","stream_id":"fvhx0v34"}
+{"time":"2025-07-02T18:09:23.608273287+02:00","level":"INFO","msg":"stream: closed","id":"fvhx0v34"}

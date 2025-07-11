@@ -1,0 +1,16 @@
+{"time":"2025-07-01T16:14:24.444684571+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250701_161424-ukonzrvx/logs/debug-core.log"}
+{"time":"2025-07-01T16:14:24.765358016+02:00","level":"INFO","msg":"stream: created new stream","id":"ukonzrvx"}
+{"time":"2025-07-01T16:14:24.765421921+02:00","level":"INFO","msg":"stream: started","id":"ukonzrvx"}
+{"time":"2025-07-01T16:14:24.765486513+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ukonzrvx"}
+{"time":"2025-07-01T16:14:24.76553995+02:00","level":"INFO","msg":"sender: started","stream_id":"ukonzrvx"}
+{"time":"2025-07-01T16:14:24.765565506+02:00","level":"INFO","msg":"handler: started","stream_id":"ukonzrvx"}
+{"time":"2025-07-01T16:14:25.037508167+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-07-01T16:14:39.796624117+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-01T16:14:39.796706217+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-07-01T16:14:40.433042992+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-01T16:14:40.750196256+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-07-01T16:14:40.755661263+02:00","level":"INFO","msg":"stream: closing","id":"ukonzrvx"}
+{"time":"2025-07-01T16:14:40.755689829+02:00","level":"INFO","msg":"handler: closed","stream_id":"ukonzrvx"}
+{"time":"2025-07-01T16:14:40.755705301+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ukonzrvx"}
+{"time":"2025-07-01T16:14:40.755788826+02:00","level":"INFO","msg":"sender: closed","stream_id":"ukonzrvx"}
+{"time":"2025-07-01T16:14:40.755859246+02:00","level":"INFO","msg":"stream: closed","id":"ukonzrvx"}

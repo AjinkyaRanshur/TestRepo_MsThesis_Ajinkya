@@ -8,6 +8,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 from eval_and_plotting import evaluation_metric,evaluation_reconstruction,plot_metrics
 import os
+import wandb
 from wb_tracker import init_wandb
 
 def feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir,epochs,seed,device,batch_size):
@@ -51,16 +52,18 @@ def feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir,epochs,seed
             running_loss.append(loss.item())
 
         avg_loss = np.mean(running_loss)
-        print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
-        loss_arr.append(avg_loss)
         accuracy=evaluation_metric(net,testloader,batch_size,device)
+        print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
+        metrics={"Forward_Train/train_loss":avg_loss,"Forward_Train/testing_accuracy":accuracy}
+        wandb.log(metrics)
+        loss_arr.append(avg_loss)
         acc_arr.append(accuracy)
 
     iters = range(1, epochs+1)
-    plot_bool=plot_metrics(iters,loss_arr,save_dir,"Number of Epochs","Average Loss","Forward Training Loss","AverageLoss_Vs_Epoch_forward",seed)
-    plot_bool=plot_metrics(iters,acc_arr,save_dir,"Number of Epochs","Accuracy","Forward Testing Performance","Accuracy_Vs_Epoch_forward",seed)
-    if plot_bool==True:
-        print("Plots Successfully Stored")
+    #plot_bool=plot_metrics(iters,loss_arr,save_dir,"Number of Epochs","Average Loss","Forward Training Loss","AverageLoss_Vs_Epoch_forward",seed)
+    #plot_bool=plot_metrics(iters,acc_arr,save_dir,"Number of Epochs","Accuracy","Forward Testing Performance","Accuracy_Vs_Epoch_forward",seed)
+    #if plot_bool==True:
+    #    print("Plots Successfully Stored")
 
     print("Forward Training Succesful")
 

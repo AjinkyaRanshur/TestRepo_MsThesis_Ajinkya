@@ -1,0 +1,126 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch:0 and AverageLoss:2.3030902882061346
+Epoch:1 and AverageLoss:2.298732033166129
+Epoch:2 and AverageLoss:2.277675099994825
+Epoch:3 and AverageLoss:2.089200940278485
+Epoch:4 and AverageLoss:1.884886478524074
+Epoch:5 and AverageLoss:1.738243009123351
+Epoch:6 and AverageLoss:1.6276898121894778
+Epoch:7 and AverageLoss:1.5487286742690884
+Epoch:8 and AverageLoss:1.4905733269498782
+Epoch:9 and AverageLoss:1.4402950191131942
+Epoch:10 and AverageLoss:1.388372655109981
+Epoch:11 and AverageLoss:1.34184606758225
+Epoch:12 and AverageLoss:1.3026210401978944
+Epoch:13 and AverageLoss:1.2580630245720943
+Epoch:14 and AverageLoss:1.218938286499599
+Epoch:15 and AverageLoss:1.1753713729436441
+Epoch:16 and AverageLoss:1.1420594949246672
+Epoch:17 and AverageLoss:1.1084417583387527
+Epoch:18 and AverageLoss:1.0744765957298181
+Epoch:19 and AverageLoss:1.0484597068613448
+Epoch:20 and AverageLoss:1.0216113996627691
+Epoch:21 and AverageLoss:0.9953692296276921
+Epoch:22 and AverageLoss:0.9694568280063932
+Epoch:23 and AverageLoss:0.9494418443926155
+Epoch:24 and AverageLoss:0.9271838587263356
+Epoch:25 and AverageLoss:0.9043315464578321
+Epoch:26 and AverageLoss:0.8860062746440663
+Epoch:27 and AverageLoss:0.8623184400141392
+Epoch:28 and AverageLoss:0.8450161279619807
+Epoch:29 and AverageLoss:0.8249547059273781
+Epoch:30 and AverageLoss:0.8052008534636339
+Epoch:31 and AverageLoss:0.7881828230970046
+Epoch:32 and AverageLoss:0.7711384249160357
+Epoch:33 and AverageLoss:0.7541282439933104
+Epoch:34 and AverageLoss:0.735528159781795
+Epoch:35 and AverageLoss:0.7162543373644504
+Epoch:36 and AverageLoss:0.6986850283639815
+Epoch:37 and AverageLoss:0.6817614949115401
+Epoch:38 and AverageLoss:0.664393665769216
+Epoch:39 and AverageLoss:0.6490262063110576
+Epoch:40 and AverageLoss:0.6394719546255858
+Epoch:41 and AverageLoss:0.6142907342337587
+Epoch:42 and AverageLoss:0.6103631798416147
+Epoch:43 and AverageLoss:0.5908703151566294
+Epoch:44 and AverageLoss:0.5782549276071436
+Epoch:45 and AverageLoss:0.5578480065631135
+Epoch:46 and AverageLoss:0.5456231014655374
+Epoch:47 and AverageLoss:0.5354787437507259
+Epoch:48 and AverageLoss:0.5187940379542768
+Epoch:49 and AverageLoss:0.5025609146298655
+Epoch:50 and AverageLoss:0.49323653511683957
+Epoch:51 and AverageLoss:0.4865250212457174
+Epoch:52 and AverageLoss:0.4594661143734632
+Epoch:53 and AverageLoss:0.44623585395953236
+Epoch:54 and AverageLoss:0.4316139608774039
+Epoch:55 and AverageLoss:0.42216546719184006
+Epoch:56 and AverageLoss:0.41627771424515475
+Epoch:57 and AverageLoss:0.40121311482870975
+Epoch:58 and AverageLoss:0.3873072781831102
+Epoch:59 and AverageLoss:0.378997241063496
+Epoch:60 and AverageLoss:0.359104286031345
+Epoch:61 and AverageLoss:0.34925536792296585
+Epoch:62 and AverageLoss:0.3305880886971798
+Epoch:63 and AverageLoss:0.32150963173650415
+Epoch:64 and AverageLoss:0.32327026993874697
+Epoch:65 and AverageLoss:0.3113251059408993
+Epoch:66 and AverageLoss:0.3145742387799046
+Epoch:67 and AverageLoss:0.2870917045094473
+Epoch:68 and AverageLoss:0.28119313356745274
+Epoch:69 and AverageLoss:0.27742797930908325
+Forward Training Succesful
+Epoch:0 and AverageLoss:8.881427952700564
+Epoch:1 and AverageLoss:6.073357080864479
+Epoch:2 and AverageLoss:5.493463165010028
+Epoch:3 and AverageLoss:5.195303187650793
+Epoch:4 and AverageLoss:5.0025630960684
+Epoch:5 and AverageLoss:4.863416603459116
+Epoch:6 and AverageLoss:4.756632299984203
+Epoch:7 and AverageLoss:4.670601591124864
+Epoch:8 and AverageLoss:4.599652790352511
+Epoch:9 and AverageLoss:4.540663835032822
+Epoch:10 and AverageLoss:4.489261513780755
+Epoch:11 and AverageLoss:4.444554111841694
+Epoch:12 and AverageLoss:4.405032773152032
+Epoch:13 and AverageLoss:4.370529288221198
+Epoch:14 and AverageLoss:4.3392893274117
+Epoch:15 and AverageLoss:4.311238377295491
+Epoch:16 and AverageLoss:4.285476229684737
+Epoch:17 and AverageLoss:4.26278657498567
+Epoch:18 and AverageLoss:4.241242445338413
+Epoch:19 and AverageLoss:4.221788359420074
+Traceback (most recent call last):
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 240, in <module>
+    main()
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 174, in main
+    train_bool = training_using_ff_fb(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 98, in training_using_ff_fb
+    feedback_training(net, trainloader, testloader, lr, momentum, save_dir,epochs,seed,device,batch_size)
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/back_train.py", line 58, in feedback_training
+    final_loss.backward()
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/_tensor.py", line 581, in backward
+    torch.autograd.backward(
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/autograd/__init__.py", line 347, in backward
+    _engine_run_backward(
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/autograd/graph.py", line 825, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7f9581512020>
+Traceback (most recent call last):
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service_connection.py", line 90, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service_connection.py", line 218, in teardown
+    self._router.join()
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:
