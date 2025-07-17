@@ -19,13 +19,13 @@ timesteps = 10
 load_model = False
 save_model = True
 
-gammaset=[[0.13, 0.43, 0.13, 0.33]]
-betaset = [[0.43, 0.13, 0.43, 0.33]]
+gammaset=[[0.33, 0.33, 0.33, 0.33]]
+betaset = [[0.33, 0.33, 0.33, 0.33]]
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
 
 model_name = "ff_fb_model"
 noise_type="gauss"
 noise_param=0.200
-experiment_name = "ff_fb_model_Parallel_part_d_gauss_0.200"
+experiment_name = "control_ff_fb_model_gauss_0.200"
 

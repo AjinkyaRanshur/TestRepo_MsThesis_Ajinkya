@@ -2,10 +2,10 @@ import numpy as np
 
 iters = 0
 
-insert_gamma=[0.13, 0.43, 0.13, 0.33]
-insert_beta=[0.43, 0.13, 0.43, 0.33]
+insert_gamma=[0.33, 0.33, 0.33, 0.33]
+insert_beta=[0.33, 0.33, 0.33, 0.33]
 
-insert_scheme="Parallel_part_d"
+insert_scheme="control_models"
 
 
 # salt and pepper in pc model
@@ -38,7 +38,7 @@ alphaset = [[0.01, 0.01, 0.01, 0.01]]
 model_name = "pc_model"
 noise_type="s&p"
 noise_param={spnoise:.3f}
-experiment_name = "pc_model_{insert_scheme}_sp_{spnoise:.3f}"
+experiment_name = "control_pc_model_sp_{spnoise:.3f}"
 
 '''
 
@@ -78,7 +78,7 @@ alphaset = [[0.01, 0.01, 0.01, 0.01]]
 model_name = "pc_model"
 noise_type="gauss"
 noise_param={gnoise:.3f}
-experiment_name = "pc_model_{insert_scheme}_gauss_{gnoise:.3f}"
+experiment_name = "control_pc_model_gauss_{gnoise:.3f}"
 
 '''
 
@@ -118,7 +118,7 @@ alphaset = [[0.01, 0.01, 0.01, 0.01]]
 model_name = "ff_fb_model"
 noise_type="s&p"
 noise_param={spnoise:.3f}
-experiment_name = "ff_fb_model_{insert_scheme}_sp_{spnoise:.3f}"
+experiment_name = "control_ff_fb_model_sp_{spnoise:.3f}"
 
 '''
 
@@ -160,7 +160,7 @@ alphaset = [[0.01, 0.01, 0.01, 0.01]]
 model_name = "ff_fb_model"
 noise_type="gauss"
 noise_param={gnoise:.3f}
-experiment_name = "ff_fb_model_{insert_scheme}_gauss_{gnoise:.3f}"
+experiment_name = "control_ff_fb_model_gauss_{gnoise:.3f}"
 
 '''
 

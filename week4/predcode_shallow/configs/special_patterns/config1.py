@@ -19,12 +19,12 @@ timesteps = 10
 load_model = False
 save_model = True
 
-gammaset=[[0.13, 0.43, 0.13, 0.33]]
-betaset = [[0.43, 0.13, 0.43, 0.33]]
+gammaset=[[0.33, 0.33, 0.33, 0.33]]
+betaset = [[0.33, 0.33, 0.33, 0.33]]
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
 model_name = "pc_model"
 noise_type="s&p"
 noise_param=0.020
-experiment_name = "pc_model_Parallel_part_d_sp_0.020"
+experiment_name = "control_pc_model_sp_0.020"
 

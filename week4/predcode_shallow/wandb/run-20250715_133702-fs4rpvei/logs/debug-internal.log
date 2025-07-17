@@ -1,0 +1,16 @@
+{"time":"2025-07-15T13:37:02.634941456+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250715_133702-fs4rpvei/logs/debug-core.log"}
+{"time":"2025-07-15T13:37:02.948756494+02:00","level":"INFO","msg":"stream: created new stream","id":"fs4rpvei"}
+{"time":"2025-07-15T13:37:02.94882551+02:00","level":"INFO","msg":"stream: started","id":"fs4rpvei"}
+{"time":"2025-07-15T13:37:02.948845068+02:00","level":"INFO","msg":"handler: started","stream_id":"fs4rpvei"}
+{"time":"2025-07-15T13:37:02.948853642+02:00","level":"INFO","msg":"sender: started","stream_id":"fs4rpvei"}
+{"time":"2025-07-15T13:37:02.94892353+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"fs4rpvei"}
+{"time":"2025-07-15T13:37:03.238034636+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-07-15T13:37:18.296573864+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-15T13:37:18.296658831+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-07-15T13:37:18.903433703+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-15T13:37:19.260806942+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading data","runtime_seconds":0.35727125}],"total_operations":1}}
+{"time":"2025-07-15T13:37:19.833552336+02:00","level":"INFO","msg":"stream: closing","id":"fs4rpvei"}
+{"time":"2025-07-15T13:37:19.833598005+02:00","level":"INFO","msg":"handler: closed","stream_id":"fs4rpvei"}
+{"time":"2025-07-15T13:37:19.833625462+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"fs4rpvei"}
+{"time":"2025-07-15T13:37:19.833662524+02:00","level":"INFO","msg":"sender: closed","stream_id":"fs4rpvei"}
+{"time":"2025-07-15T13:37:19.833780697+02:00","level":"INFO","msg":"stream: closed","id":"fs4rpvei"}
