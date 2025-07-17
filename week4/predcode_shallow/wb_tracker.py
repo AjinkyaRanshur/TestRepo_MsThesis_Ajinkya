@@ -9,7 +9,7 @@ os.environ["WANDB_MODE"] = "online"
 def init_wandb(batch_size, epochs, lr, momentum, seed, device, training_condition, load_model, save_model, timesteps, gammaset, betaset, alphaset, datasetpath,name,noise_type,noise_param,model_name):
 
     wandb.init(
-        project="Pyramid_Scheme_In_Pc_and_FFFB_models",
+        project="control_model_on_different_noise",
         name=name,
         mode="online",
         config={
