@@ -1,0 +1,16 @@
+{"time":"2023-03-02T17:38:49.804115757+01:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20230302_173849-p7ddqfwk/logs/debug-core.log"}
+{"time":"2023-03-02T17:38:49.977975271+01:00","level":"ERROR","msg":"Failed to load features, feature will default to disabled","error":"api: failed sending: POST https://api.wandb.ai/graphql giving up after 1 attempt(s): Post \"https://api.wandb.ai/graphql\": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: current time 2023-03-02T17:38:49+01:00 is before 2025-06-19T20:04:50Z"}
+{"time":"2023-03-02T17:38:49.978104267+01:00","level":"INFO","msg":"stream: created new stream","id":"p7ddqfwk"}
+{"time":"2023-03-02T17:38:49.978131249+01:00","level":"INFO","msg":"stream: started","id":"p7ddqfwk"}
+{"time":"2023-03-02T17:38:49.978180539+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"p7ddqfwk"}
+{"time":"2023-03-02T17:38:49.978222703+01:00","level":"INFO","msg":"handler: started","stream_id":"p7ddqfwk"}
+{"time":"2023-03-02T17:38:49.978800282+01:00","level":"INFO","msg":"sender: started","stream_id":"p7ddqfwk"}
+{"time":"2023-03-02T17:38:50.022266407+01:00","level":"ERROR","msg":"runupserter: failed to init run","error":"api: failed sending: POST https://api.wandb.ai/graphql giving up after 1 attempt(s): Post \"https://api.wandb.ai/graphql\": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: current time 2023-03-02T17:38:50+01:00 is before 2025-06-19T20:04:50Z"}
+{"time":"2023-03-02T17:38:51.025222064+01:00","level":"INFO","msg":"stream: closing","id":"p7ddqfwk"}
+{"time":"2023-03-02T17:38:51.02559417+01:00","level":"ERROR","msg":"sender: uploadConfigFile: stream: no run"}
+{"time":"2023-03-02T17:38:51.115606059+01:00","level":"ERROR","msg":"runfiles: CreateRunFiles returned error: api: failed sending: POST https://api.wandb.ai/graphql giving up after 1 attempt(s): Post \"https://api.wandb.ai/graphql\": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: current time 2023-03-02T17:38:51+01:00 is before 2025-06-19T20:04:50Z"}
+{"time":"2023-03-02T17:38:51.116437864+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2023-03-02T17:38:51.116510817+01:00","level":"INFO","msg":"handler: closed","stream_id":"p7ddqfwk"}
+{"time":"2023-03-02T17:38:51.116530175+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"p7ddqfwk"}
+{"time":"2023-03-02T17:38:51.116572212+01:00","level":"INFO","msg":"sender: closed","stream_id":"p7ddqfwk"}
+{"time":"2023-03-02T17:38:51.116614282+01:00","level":"INFO","msg":"stream: closed","id":"p7ddqfwk"}
