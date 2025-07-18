@@ -41,8 +41,7 @@ def evaluation_metric(net,dataloader,batch_size,device):
 def evaluation_of_loss_metric(net,dataloader,batch_size,device,criterion):
     # Testing
     #net.eval()
-    loss=0
-
+    final_loss=0
     with torch.no_grad():
         for batch_idx, batch in enumerate(dataloader):
             
@@ -53,10 +52,13 @@ def evaluation_of_loss_metric(net,dataloader,batch_size,device,criterion):
             images, labels = batch
             images,labels=images.to(device),labels.to(device)
             _,_,_,_,_,output = net.feedforward_pass(images,ft_AB,ft_BC,ft_CD,ft_DE)
-            loss+=criterion(output,labels)
+            loss=criterion(output,labels)
+            final_loss+=loss.item()
+
+    final_loss=final_loss/len(dataloader)
 
 
-    return loss
+    return final_loss
 
 
 def plot_metrics(x,y,save_dir,xtitle,ytitle,title,savetitle,seed):
