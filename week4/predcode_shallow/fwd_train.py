@@ -52,14 +52,16 @@ def feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir,epochs,seed
             running_loss.append(loss.item())
 
         avg_loss = np.mean(running_loss)
-        accuracy=evaluation_metric(net,testloader,batch_size,device)
+        test_loss=evaluation_of_loss_metric(net,testloader,batch_size,device,criterion)
+        test_accuracy=evaluation_metric(net,testloader,seed,device)
+        train_accuracy=evaluation_metric(net,trainloader,seed,device)
         print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
-        metrics={"Forward_Train/train_loss":avg_loss,"Forward_Train/testing_accuracy":accuracy}
+        metrics={"FF&FB/Classification_train_loss":avg_loss,"FF&FB/Classification_test_loss":test_loss,"FF&FB/Classication_train_accuracy":train_accuracy,"FF&FB/Classification_test_accuracy":test_accuracy}
         wandb.log(metrics)
-        loss_arr.append(avg_loss)
-        acc_arr.append(accuracy)
+        #loss_arr.append(avg_loss)
+        #acc_arr.append(accuracy)
 
-    iters = range(1, epochs+1)
+    #iters = range(1, epochs+1)
     #plot_bool=plot_metrics(iters,loss_arr,save_dir,"Number of Epochs","Average Loss","Forward Training Loss","AverageLoss_Vs_Epoch_forward",seed)
     #plot_bool=plot_metrics(iters,acc_arr,save_dir,"Number of Epochs","Accuracy","Forward Testing Performance","Accuracy_Vs_Epoch_forward",seed)
     #if plot_bool==True:

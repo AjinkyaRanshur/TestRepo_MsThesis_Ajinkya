@@ -1,0 +1,105 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch:0 and AverageLoss:2.304193008891152
+Epoch:1 and AverageLoss:2.3027611699555535
+Epoch:2 and AverageLoss:2.3019603176799883
+Epoch:3 and AverageLoss:2.3011524945573734
+Epoch:4 and AverageLoss:2.2997384455502794
+Epoch:5 and AverageLoss:2.2960554096095094
+Epoch:6 and AverageLoss:2.280859821592755
+Epoch:7 and AverageLoss:2.1755890010872765
+Epoch:8 and AverageLoss:2.0199584348122483
+Epoch:9 and AverageLoss:1.9049610152573841
+Epoch:10 and AverageLoss:1.81602062044851
+Epoch:11 and AverageLoss:1.767957306578946
+Epoch:12 and AverageLoss:1.708063189026035
+Epoch:13 and AverageLoss:1.6677757260744528
+Epoch:14 and AverageLoss:1.6283792897563456
+Epoch:15 and AverageLoss:1.5859772064496793
+Epoch:16 and AverageLoss:1.5492089450206903
+Epoch:17 and AverageLoss:1.5077323895281234
+Epoch:18 and AverageLoss:1.4742578697936308
+Epoch:19 and AverageLoss:1.4336068328384244
+Epoch:20 and AverageLoss:1.3955081762255306
+Epoch:21 and AverageLoss:1.3602715364807403
+Epoch:22 and AverageLoss:1.3240132691610196
+Epoch:23 and AverageLoss:1.2842855919962344
+Epoch:24 and AverageLoss:1.2613883460574138
+Epoch:25 and AverageLoss:1.2294726013527502
+Epoch:26 and AverageLoss:1.1994447102936943
+Epoch:27 and AverageLoss:1.1710218185049188
+Epoch:28 and AverageLoss:1.1466566708386707
+Epoch:29 and AverageLoss:1.1215801943293617
+Epoch:30 and AverageLoss:1.0975398402994552
+Epoch:31 and AverageLoss:1.0751756109544992
+Epoch:32 and AverageLoss:1.054185315166288
+Epoch:33 and AverageLoss:1.0292769742133978
+Epoch:34 and AverageLoss:1.0141457610422997
+Epoch:35 and AverageLoss:0.9917470521634192
+Epoch:36 and AverageLoss:0.9693285161272034
+Epoch:37 and AverageLoss:0.953373721645921
+Epoch:38 and AverageLoss:0.9381144322702647
+Epoch:39 and AverageLoss:0.9249072334040767
+Epoch:40 and AverageLoss:0.9070591223819177
+Epoch:41 and AverageLoss:0.8905047320039071
+Epoch:42 and AverageLoss:0.876989855485804
+Epoch:43 and AverageLoss:0.8631926520401255
+Epoch:44 and AverageLoss:0.8446950542042627
+Epoch:45 and AverageLoss:0.8385468262540715
+Epoch:46 and AverageLoss:0.8296047758568278
+Epoch:47 and AverageLoss:0.8128075479241588
+Epoch:48 and AverageLoss:0.8001227432199757
+Epoch:49 and AverageLoss:0.7888700769990301
+Epoch:50 and AverageLoss:0.7815897923601253
+Epoch:51 and AverageLoss:0.7697302683082687
+Epoch:52 and AverageLoss:0.7557159768955787
+Epoch:53 and AverageLoss:0.7425876442733628
+Epoch:54 and AverageLoss:0.7332505797181288
+Epoch:55 and AverageLoss:0.7225986488944734
+Epoch:56 and AverageLoss:0.7079744426643148
+Epoch:57 and AverageLoss:0.7049945393181822
+Epoch:58 and AverageLoss:0.6923668678764188
+Epoch:59 and AverageLoss:0.683391496348564
+Epoch:60 and AverageLoss:0.6703215457899186
+Epoch:61 and AverageLoss:0.6632845452831834
+Epoch:62 and AverageLoss:0.6544092115386367
+Epoch:63 and AverageLoss:0.6470106925500934
+Epoch:64 and AverageLoss:0.6356709568244417
+Epoch:65 and AverageLoss:0.6221859067907114
+Epoch:66 and AverageLoss:0.6196553320683482
+Epoch:67 and AverageLoss:0.6074322172442971
+Epoch:68 and AverageLoss:0.59641194846624
+Epoch:69 and AverageLoss:0.5884664764489664
+Epoch:70 and AverageLoss:0.5769273288871931
+Epoch:71 and AverageLoss:0.5703024599710693
+Epoch:72 and AverageLoss:0.5587356523479647
+Epoch:73 and AverageLoss:0.5489447867626425
+Epoch:74 and AverageLoss:0.54144775753131
+Epoch:75 and AverageLoss:0.5302255402135727
+Epoch:76 and AverageLoss:0.5226814811644347
+Epoch:77 and AverageLoss:0.5145283471745299
+Epoch:78 and AverageLoss:0.507624502072249
+Epoch:79 and AverageLoss:0.49410699525147755
+Epoch:80 and AverageLoss:0.48912699116617825
+Epoch:81 and AverageLoss:0.4783063866293339
+Epoch:82 and AverageLoss:0.4670426132886306
+Epoch:83 and AverageLoss:0.4647801929270215
+Epoch:84 and AverageLoss:0.4518171865921801
+Epoch:85 and AverageLoss:0.4391479944176686
+Epoch:86 and AverageLoss:0.43269275887238096
+Epoch:87 and AverageLoss:0.41998142568046787
+Epoch:88 and AverageLoss:0.41017409762763
+Epoch:89 and AverageLoss:0.40370306627982105
+Traceback (most recent call last):
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 242, in <module>
+    main()
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 181, in main
+    train_bool = training_using_predicitve_coding(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 110, in training_using_predicitve_coding
+    pc_training(
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/pc_train.py", line 64, in pc_training
+    if plot_bool==True:
+       ^^^^^^^^^
+NameError: name 'plot_bool' is not defined

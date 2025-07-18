@@ -1,0 +1,17 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch:0 and AverageLoss:2.303102307917212
+Traceback (most recent call last):
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 242, in <module>
+    main()
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 174, in main
+    train_bool = training_using_ff_fb(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/main.py", line 96, in training_using_ff_fb
+    ft_AB, ft_BC, ft_CD, ft_DE,ft_EF,output = feedfwd_training(
+                                              ^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/fwd_train.py", line 62, in feedfwd_training
+    acc_arr.append(accuracy)
+                   ^^^^^^^^
+NameError: name 'accuracy' is not defined

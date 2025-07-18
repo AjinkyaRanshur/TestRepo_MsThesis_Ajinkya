@@ -61,7 +61,7 @@ def feedback_training(net, trainloader, testloader, lr, momentum, save_dir,epoch
 
         avg_loss = np.mean(running_loss)
         print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
-        metrics={"Feedback_Train/train_loss":avg_loss}
+        metrics={"FF&FB/Recon_train_loss":avg_loss}
         wandb.log(metrics)
         loss_arr.append(avg_loss)
 
