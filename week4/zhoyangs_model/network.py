@@ -16,11 +16,11 @@ class ZP_PC_Net(nn.Module):
         self.encoder2=nn.Conv2d(in_channels=128,out_channels= 128,kernel_size= 5,stride=(2,2),padding=2)
         self.encoder3=nn.Conv2d(in_channels=128,out_channels= 128,kernel_size= 5,stride=(2,2),padding=2)
 
-        self.decoder3=nn.Conv2d(in_channels=128,out_channels= 128,kernel_size= 5,stride=(2,2),padding=2,output_padding=1)
-        self.decoder2=nn.Conv2d(in_channels=128,out_channels= 128,kernel_size= 5,stride=(2,2),padding=2,output_padding=1)
-        self.decoder1=nn.Conv2d(in_channels=128,out_channels= 3,kernel_size= 5,stride=(2,2),padding=2,output_padding=1)
+        self.decoder3=nn.ConvTranspose2d(in_channels=128,out_channels= 128,kernel_size= 5,stride=(2,2),padding=2,output_padding=1)
+        self.decoder2=nn.ConvTranspose2d(in_channels=128,out_channels= 128,kernel_size= 5,stride=(2,2),padding=2,output_padding=1)
+        self.decoder1=nn.ConvTranspose2d(in_channels=128,out_channels= 3,kernel_size= 5,stride=(2,2),padding=2,output_padding=1)
 
-        self.dropout_layer = nn.Dropout2d(self.dropout)
+        self.dropout_layer = nn.Dropout2d(0.0)
         self.bach_normal   = nn.BatchNorm1d(num_features=2048)
         self.fc1 = nn.Linear(128*4*4,256)
         self.fc2 = nn.Linear(256,128)
