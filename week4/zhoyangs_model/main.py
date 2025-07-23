@@ -67,6 +67,7 @@ def train_test_loader(datasetpath):
 
 
 def create_priors_dict(gammaset, betaset, alphaset):
+<<<<<<< HEAD
 
     hyp_dict = {}
 
@@ -83,6 +84,27 @@ def train_network(training_condition,net,trainloader,testloader,lr,momentum,save
 
     if training_condition=="pre_training":
         train_bool=pre_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha,epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
+=======
+
+    hyp_dict = {}
+
+    for a, b, c in zip(gammaset, betaset, alphaset):
+        key_name = 'Gamma: ' + ' '.join([str(s) for s in a]) + ' \n ' + 'Beta: ' + ' '.join(
+            [str(s) for s in b]) + ' \n ' + 'Alpha: ' + ' '.join([str(s) for s in c]) + ' \n '
+        dict_value = [a, b, c]
+        hyp_dict[key_name] = dict_value
+
+    return hyp_dict
+
+
+def train_network(train_cond,net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha,pc_train_bool,epochs,seed,device,timesteps,batch_size,noise_type,noise_param):
+
+    if train_cond=="pretrain":
+        train_bool=pre_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha,pc_train_bool,epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
+
+    if train_cond=="finetune":
+        return None
+>>>>>>> feac1f8acbfc652eba97239f4f7e66756e8d96b7
 
     return train_bool
 
@@ -91,6 +113,7 @@ def load_config(config_name):
     return importlib.import_module(config_name)
 
 def main():
+<<<<<<< HEAD
     #init_wandb(batch_size, epochs, lr, momentum, seed, device, training_condition, load_model, save_model, timesteps, gammaset, betaset, alphaset, datasetpath,experiment_name,noise_type,noise_param,model_name)
 
     save_dir = os.path.join("result_folder", f"Seed_{seed}")
@@ -108,6 +131,20 @@ def main():
 
     if training_condition == "pre_training":
         train_bool = train_network(training_condition,net,trainloader,testloader,lr,momentum,save_dir,gamma_train,beta_train,alpha_train,epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
+=======
+    init_wandb(batch_size, epochs, lr, momentum, seed, device, training_condition, load_model, save_model, timesteps, gammaset, betaset, alphaset, datasetpath,experiment_name,noise_type,noise_param,model_name)
+    
+    save_dir = os.path.join("result_folder", f"Seed_{seed}")
+    os.makedirs(save_dir, exist_ok=True)
+    
+    file_path = os.path.join(save_dir, f"Accuracy_Stats_{seed}.txt")
+    net = Net().to(device)
+    wandb.watch(net, log="all", log_freq=10)
+    trainloader, testloader = train_test_loader(datasetpath)
+
+    if training_condition == "pre_training":
+        train_bool = train_network(train_condition,net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha,pc_train_bool,epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
+>>>>>>> feac1f8acbfc652eba97239f4f7e66756e8d96b7
         if train_bool == True:
             torch.save(net.state_dict(), f'{model_name}.pth')
             print("Training Sucessful")
@@ -117,9 +154,15 @@ def main():
     end = time.time()
     diff = end - start
     diff = diff / 60
+<<<<<<< HEAD
     #wandb.log({"Time Taken to Run the Code(Mins)": diff})
 
     #wandb.finish()
+=======
+    wandb.log({"Time Taken to Run the Code(Mins)": diff})
+
+    wandb.finish()
+>>>>>>> feac1f8acbfc652eba97239f4f7e66756e8d96b7
 
 
 
