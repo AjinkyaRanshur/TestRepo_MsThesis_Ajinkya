@@ -16,11 +16,11 @@ class ZP_PC_Net(nn.Module):
         self.encoder2=nn.Conv2d(in_channels=128,out_channels= 128,kernel_size= 5,stride=(2,2),padding=2)
         self.encoder3=nn.Conv2d(in_channels=128,out_channels= 128,kernel_size= 5,stride=(2,2),padding=2)
 
-        self.decoder3=nn.Conv2d(in_channels=128,out_channels= 128,kernel_size= 5,stride=(2,2),padding=2,output_padding=1)
-        self.decoder2=nn.Conv2d(in_channels=128,out_channels= 128,kernel_size= 5,stride=(2,2),padding=2,output_padding=1)
-        self.decoder1=nn.Conv2d(in_channels=128,out_channels= 3,kernel_size= 5,stride=(2,2),padding=2,output_padding=1)
+        self.decoder3=nn.ConvTranspose2d(in_channels=128,out_channels= 128,kernel_size= 5,stride=(2,2),padding=2,output_padding=1)
+        self.decoder2=nn.ConvTranspose2d(in_channels=128,out_channels= 128,kernel_size= 5,stride=(2,2),padding=2,output_padding=1)
+        self.decoder1=nn.ConvTranspose2d(in_channels=128,out_channels= 3,kernel_size= 5,stride=(2,2),padding=2,output_padding=1)
 
-        self.dropout_layer = nn.Dropout2d(self.dropout)
+        self.dropout_layer = nn.Dropout2d(0.0)
         self.bach_normal   = nn.BatchNorm1d(num_features=2048)
         self.fc1 = nn.Linear(128*4*4,256)
         self.fc2 = nn.Linear(256,128)
@@ -48,13 +48,14 @@ class ZP_PC_Net(nn.Module):
 
 
 
-    def predictive_coding_pass(self,x,ft_AB,ft_BC,ft_CD,ft_DE,ft_EF,beta,gamma,alpha,batch_size):
+    def predictive_coding_pass(self,x,ft_AB,ft_BC,ft_CD,beta,gamma,alpha,batch_size):
 
+        print(gamma)
         gamma_AB_fwd,gamma_BC_fwd,gamma_CD_fwd=gamma
 
         beta_AB_bck,beta_BC_bck,beta_CD_bck=beta
 
-        alpha_AB,alpha_BC,alpha_CD,alpha_DE=alpha
+        alpha_AB,alpha_BC,alpha_CD=alpha
 
         ### First Layer Start ######
         errorB=nn.functional.mse_loss(self.decoder1(ft_AB),x)
@@ -115,8 +116,5 @@ class ZP_PC_Net(nn.Module):
         output=F.softmax(ft_FG,dim=-1)
 
         return output
-
-
-
 
 
