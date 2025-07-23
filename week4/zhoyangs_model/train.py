@@ -8,14 +8,20 @@ import torch.nn.functional as F
 import torch.optim as optim
 #from eval_and_plotting import evaluation_metric,evaluation_reconstruction,plot_metrics
 import os
+<<<<<<< HEAD
 #import wandb
 #from wb_tracker import init_wandb
+=======
+import wandb
+from wb_tracker import init_wandb
+>>>>>>> feac1f8acbfc652eba97239f4f7e66756e8d96b7
 #from add_noise import noisy_img
 import torchvision.utils as vutils
 
 def pre_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alpha,epochs,seed,device,timesteps,batch_size,noise_type,noise_param):
 
     criterion=nn.CrossEntropyLoss()
+<<<<<<< HEAD
     optimizer = optim.SGD(
     list(net.encoder1.parameters()) +
     list(net.encoder2.parameters()) +
@@ -25,6 +31,9 @@ def pre_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alph
     list(net.decoder3.parameters()),
     lr=lr
     )
+=======
+    optimizer=optim.SGD(list(net.encoder1.parameters()),list(net.encoder2.parameters()),list(net.encoder3.parameters()),list(net.decoder1.parameters()),list(net.decoder2.parameters()),list(net.decoder3.parameters()) ,lr=lr)
+>>>>>>> feac1f8acbfc652eba97239f4f7e66756e8d96b7
     loss_arr=[]
 
     for epoch in range(epochs):
@@ -57,7 +66,11 @@ def pre_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta,alph
         print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
         accuracy=evaluation_metric(net,testloader,seed,device)
         metrics={"PreTraining/train_loss":avg_loss,"PreTraining/testing_accuracy":accuracy,"PreTraining/chance_level":10.00,"PreTraining/Startline":0.00}
+<<<<<<< HEAD
         #wandb.log(metrics)
+=======
+        wandb.log(metrics)
+>>>>>>> feac1f8acbfc652eba97239f4f7e66756e8d96b7
         loss_arr.append(avg_loss)
         iters = range(1, epochs+1)
 
