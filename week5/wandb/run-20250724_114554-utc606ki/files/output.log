@@ -1,0 +1,41 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 278, in <module>
+    main()
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 209, in main
+    train_bool = training_using_classification_and_predicitve_coding(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 111, in training_using_classification_and_predicitve_coding
+    class_pc_training(
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week5/pc_train.py", line 46, in class_pc_training
+    loss=criterion(output,labels)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/loss.py", line 1293, in forward
+    return F.cross_entropy(
+           ^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/functional.py", line 3479, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7f9f96f620c0>
+Traceback (most recent call last):
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service_connection.py", line 90, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service_connection.py", line 218, in teardown
+    self._router.join()
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:
