@@ -6,7 +6,7 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from eval_and_plotting import evaluation_metric,evaluation_of_loss_metric,plot_metrics
+from eval_and_plotting import classification_accuracy_metric,classification_loss_metric,plot_metrics,recon_pc_loss,eval_pc_accuracy
 import os
 import wandb
 from wb_tracker import init_wandb
@@ -22,7 +22,7 @@ def recon_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
         loss_arr=[]
         for epoch in range(epochs):
             running_loss=[]
-
+            
             for batch_idx,batch in enumerate(trainloader):
                 images,labels=batch
                 images,labels=images.to(device),labels.to(device)
@@ -41,10 +41,11 @@ def recon_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
                 ft_DE_pc_temp.requires_grad_(True)
 
                 optimizer.zero_grad()
+                
                 final_loss=0
                 for i in range(timesteps):
                     ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,loss_of_layers=net.recon_predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,beta,gamma,alpha,images.size(0))
-                    final_loss+=(loss_of_layers/4)
+                    final_loss+=loss_of_layers
 
                 final_loss=final_loss/timesteps
                 final_loss.backward()
@@ -53,9 +54,11 @@ def recon_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
 
             avg_loss=np.mean(running_loss)
             print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
-            test_loss=evaluation_of_loss_metric(net,testloader,batch_size,device,criterion)
-            test_accuracy=evaluation_metric(net,testloader,seed,device)
-            train_accuracy=evaluation_metric(net,trainloader,seed,device)
+            test_loss=recon_pc_loss(net,testloader,batch_size,beta,gamma,alpha,device,criterion,timesteps)
+            
+            #This will give the mean accuracy over timesteps across all batches
+            test_accuracy=eval_pc_accuracy(net,testloader,beta,gamma,alpha,noise_type,noise_param,device,timesteps)
+            train_accuracy=eval_pc_accuracy(net,trainloader,beta,gamma,alpha,noise_type,noise_param,device,timesteps)
             metrics={"Reconstruction_with_Predictive_Coding/train_loss":avg_loss,"Reconstruction_with_Predictive_Coding/test_loss":test_loss,"Reconstruction_with_Predictive_Coding/Testing_accuracy":test_accuracy,"Reconstruction_with_Predictive_Coding/Training_accuracy":train_accuracy }
             wandb.log(metrics)
             loss_arr.append(avg_loss)
