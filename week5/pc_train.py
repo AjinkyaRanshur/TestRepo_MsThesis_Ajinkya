@@ -6,7 +6,7 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from eval_and_plotting import evaluation_metric,evaluation_of_loss_metric,plot_metrics
+from eval_and_plotting import eval_pc_accuracy,recon_pc_loss,plot_metrics
 import os
 import wandb
 from wb_tracker import init_wandb
@@ -53,9 +53,9 @@ def class_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
 
             avg_loss=np.mean(running_loss)
             print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
-            test_loss=evaluation_of_loss_metric(net,testloader,batch_size,device,criterion)
-            test_accuracy=evaluation_metric(net,testloader,seed,device)
-            train_accuracy=evaluation_metric(net,trainloader,seed,device)
+            test_loss=recon_pc_loss(net,testloader,batch_size,device,criterion,timesteps)
+            test_accuracy=eval_pc_accuracy(net,testloader,beta,gamma,alpha,noise_type,noise_param,device,timesteps)
+            train_accuracy=eval_pc_accuracy(net,trainloader,beta,gamma,alpha,noise_type,noise_param,device,timesteps)
             metrics={"Predictive_Coding/train_loss":avg_loss,"Predictive_Coding/test_loss":test_loss,"Predictive_Coding/Testing_accuracy":test_accuracy,"Predictive_Coding/Training_accuracy":train_accuracy }
             wandb.log(metrics)
             loss_arr.append(avg_loss)
