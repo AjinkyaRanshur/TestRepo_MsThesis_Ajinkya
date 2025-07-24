@@ -1,0 +1,64 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch:0 and AverageLoss:1.0923878396034241
+Epoch:1 and AverageLoss:1.030249468755722
+Epoch:2 and AverageLoss:1.0142431541442871
+Epoch:3 and AverageLoss:1.0043569441795348
+Epoch:4 and AverageLoss:0.9970335920810699
+Epoch:5 and AverageLoss:0.9911186873435974
+Epoch:6 and AverageLoss:0.9862225741386413
+Epoch:7 and AverageLoss:0.9821668729782105
+Epoch:8 and AverageLoss:0.9787821565151215
+Epoch:9 and AverageLoss:0.9758955973625183
+Epoch:10 and AverageLoss:0.9733666728496552
+Epoch:11 and AverageLoss:0.971101750087738
+Epoch:12 and AverageLoss:0.9690455310344696
+Epoch:13 and AverageLoss:0.9671658812522889
+Epoch:14 and AverageLoss:0.9654439255714417
+Epoch:15 and AverageLoss:0.9638667348384857
+Epoch:16 and AverageLoss:0.9624236162185669
+Epoch:17 and AverageLoss:0.9611043284893036
+Epoch:18 and AverageLoss:0.959898139667511
+Epoch:19 and AverageLoss:0.9587942338466644
+Epoch:20 and AverageLoss:0.9577822057247162
+Epoch:21 and AverageLoss:0.9568521965503692
+Epoch:22 and AverageLoss:0.9559951122760773
+Epoch:23 and AverageLoss:0.9552026822090149
+Epoch:24 and AverageLoss:0.954468289232254
+Epoch:25 and AverageLoss:0.9537856321811676
+Epoch:26 and AverageLoss:0.9531492292881012
+Epoch:27 and AverageLoss:0.9525544199466706
+Epoch:28 and AverageLoss:0.951996786403656
+Epoch:29 and AverageLoss:0.9514727343082428
+Epoch:30 and AverageLoss:0.9509790544986725
+Epoch:31 and AverageLoss:0.9505128506183624
+Traceback (most recent call last):
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 278, in <module>
+    main()
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 217, in main
+    train_bool = training_using_reconstruction_and_predicitve_coding(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 137, in training_using_reconstruction_and_predicitve_coding
+    recon_pc_training(
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week5/recon_pc_train.py", line 59, in recon_pc_training
+    train_accuracy=evaluation_metric(net,trainloader,seed,device)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week5/eval_and_plotting.py", line 23, in evaluation_metric
+    ft_AB = torch.randn(batch_size, 6, 32, 32)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7f9640cc5f80>
+Traceback (most recent call last):
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service_connection.py", line 90, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service_connection.py", line 218, in teardown
+    self._router.join()
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkyar/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:

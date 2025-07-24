@@ -1,0 +1,54 @@
+{
+  "os": "Linux-5.13.0-25-generic-x86_64-with-glibc2.31",
+  "python": "CPython 3.12.11",
+  "startedAt": "2025-07-22T10:02:35.356256Z",
+  "args": [
+    "--config",
+    "config0"
+  ],
+  "program": "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/zhoyangs_model/main.py",
+  "codePath": "week4/zhoyangs_model/main.py",
+  "git": {
+    "remote": "https://github.com/AjinkyaRanshur/TestRepo_MsThesis_Ajinkya.git",
+    "commit": "feac1f8acbfc652eba97239f4f7e66756e8d96b7"
+  },
+  "email": "ranshur.ajinkya.res@gmail.com",
+  "root": "/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/zhoyangs_model",
+  "host": "Rufin-Precision-Tower-7910",
+  "executable": "/home/ajinkyar/miniconda3/envs/cuda_pyt/bin/python3",
+  "codePathLocal": "main.py",
+  "cpu_count": 20,
+  "cpu_count_logical": 40,
+  "gpu": "NVIDIA GeForce GTX 1080 Ti",
+  "gpu_count": 2,
+  "disk": {
+    "/": {
+      "total": "1006530654208",
+      "used": "651889999872"
+    }
+  },
+  "memory": {
+    "total": "67446697984"
+  },
+  "cpu": {
+    "count": 20,
+    "countLogical": 40
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce GTX 1080 Ti",
+      "memoryTotal": "11811160064",
+      "cudaCores": 3584,
+      "architecture": "Pascal",
+      "uuid": "GPU-b15d563d-a000-09b4-2fd1-f31c5c1df971"
+    },
+    {
+      "name": "NVIDIA GeForce GTX 1080 Ti",
+      "memoryTotal": "11811160064",
+      "cudaCores": 3584,
+      "architecture": "Pascal",
+      "uuid": "GPU-d7e9e8fb-5ea6-ff6c-8df8-5fb1511a4168"
+    }
+  ],
+  "cudaVersion": "12.0"
+}
