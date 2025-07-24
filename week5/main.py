@@ -68,7 +68,7 @@ def train_test_loader(datasetpath):
      transform=transform)
 
     trainloader = torch.utils.data.DataLoader(
-    trainset, batch_size=batch_size, shuffle=True, num_workers=4)
+    trainset, batch_size=batch_size, shuffle=True, num_workers=0)
 
     testset = torchvision.datasets.CIFAR100(
     root=datasetpath,
@@ -77,7 +77,7 @@ def train_test_loader(datasetpath):
      transform=transform)
 
     testloader = torch.utils.data.DataLoader(
-    testset, batch_size=batch_size, shuffle=False, num_workers=4)
+    testset, batch_size=batch_size, shuffle=False, num_workers=0)
 
     return trainloader, testloader
 
