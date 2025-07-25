@@ -1,9 +1,8 @@
-import wandb
 import os
-#from config import batch_size, epochs, lr, momentum, seed, device, training_condition, load_model, save_model, timesteps, gammaset, betaset, alphaset, datasetpath
+os.environ["WANDB_API_KEY"] = "f523ba1b9f976511455de2b9e78f37eaf45c7ab9"
 
-wandb.login(key="f523ba1b9f976511455de2b9e78f37eaf45c7ab9")
-os.environ["WANDB_MODE"] = "online"
+import wandb
+wandb.login()
 
 
 def init_wandb(batch_size, epochs, lr, momentum, seed, device, training_condition, load_model, save_model, timesteps, gammaset, betaset, alphaset, datasetpath,name,noise_type,noise_param,model_name):
