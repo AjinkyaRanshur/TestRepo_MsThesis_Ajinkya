@@ -47,6 +47,7 @@ def recon_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
                     ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,loss_of_layers=net.recon_predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,beta,gamma,alpha,images.size(0))
                     final_loss+=loss_of_layers
 
+
                 final_loss=final_loss/timesteps
                 final_loss.backward()
                 optimizer.step()
@@ -54,15 +55,10 @@ def recon_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
 
             avg_loss=np.mean(running_loss)
             print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
-            test_loss=classification_loss_metric(net,testloader,batch_size,device,criterion)
-            #test_loss=classification_loss_metric(net,testloader,batch_size,beta,gamma,alpha,device,criterion,timesteps)
-            
-            #This will give the mean accuracy over timesteps across all batches
-            test_accuracy=classification_accuracy_metric(net,testloader,batch_size,device)
-            train_accuracy=classification_accuracy_metric(net,trainloader,batch_size,device)
-            #test_accuracy=eval_pc_accuracy(net,testloader,batch_size,beta,gamma,alpha,noise_type,noise_param,device,timesteps)
-            #train_accuracy=eval_pc_accuracy(net,trainloader,batch_size,beta,gamma,alpha,noise_type,noise_param,device,timesteps)
-            metrics={"Reconstruction_with_Predictive_Coding/train_loss":avg_loss,"Reconstruction_with_Predictive_Coding/test_loss":test_loss,"Reconstruction_with_Predictive_Coding/Testing_accuracy":test_accuracy,"Reconstruction_with_Predictive_Coding/Training_accuracy":train_accuracy }
+
+            test_loss=recon_pc_loss(net,testloader,batch_size,beta,gamma,alpha,device,criterion,timesteps)
+
+            metrics={"Reconstruction_with_Predictive_Coding/train_loss":avg_loss,"Reconstruction_with_Predictive_Coding/test_loss":test_loss }
             wandb.log(metrics)
             loss_arr.append(avg_loss)
 

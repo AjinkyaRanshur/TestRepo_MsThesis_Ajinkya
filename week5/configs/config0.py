@@ -5,7 +5,7 @@ epochs = 90
 seed = 42
 lr = 0.001 
 momentum = 0.9
-datasetpath = '/home/ajinkyar/datasets'
+datasetpath = '/home/ajinkya/datasets'
 training_condition = "recon_pc_train"
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
@@ -28,5 +28,5 @@ alphaset = [[0.01, 0.01, 0.01, 0.01]]
 model_name = "recon_pc_zp_model_pretrain"
 noise_type="s&p"
 noise_param=0.0
-experiment_name = "Zhoyang's Model Trail1"
+experiment_name = "Zhoyang's Model Trail1_Different_Pc_"
 

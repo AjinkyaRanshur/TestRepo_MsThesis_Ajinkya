@@ -6,6 +6,7 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+
 #from config import seed, device, batch_size, epochs, lr, momentum, timesteps,training_condition
 import os
 import wandb
@@ -99,7 +100,7 @@ def eval_pc_accuracy(net,dataloader,batch_size,beta,gamma,alpha,noise_type,noise
     for batch_id,batch in enumerate(dataloader):
         images,labels=batch
         #Adding noise to the image
-        images=noisy_img(images,noise_type,noise_param)
+        #images=noisy_img(images,noise_type,noise_param)
         
         # Move data to the same device as the model
         images, labels = images.to(device), labels.to(device)

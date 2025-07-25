@@ -1,0 +1,21 @@
+✓ WandB initialized in Online mode
+Downloading https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz to /home/ajinkya/datasets/cifar-100-python.tar.gz
+100.0%
+Extracting /home/ajinkya/datasets/cifar-100-python.tar.gz to /home/ajinkya/datasets
+Files already downloaded and verified
+Epoch:0 and AverageLoss:0.25716230934461975
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 278, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 217, in main
+    train_bool = training_using_reconstruction_and_predicitve_coding(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 137, in training_using_reconstruction_and_predicitve_coding
+    recon_pc_training(
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/recon_pc_train.py", line 63, in recon_pc_training
+    test_accuracy=eval_pc_accuracy(net,testloader,batch_size,beta,gamma,alpha,noise_type,noise_param,device,timesteps)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/eval_and_plotting.py", line 102, in eval_pc_accuracy
+    images=noisy_img(images,noise_type,noise_param)
+           ^^^^^^^^^
+NameError: name 'noisy_img' is not defined
