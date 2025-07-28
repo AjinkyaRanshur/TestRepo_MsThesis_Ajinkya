@@ -61,7 +61,7 @@ def train_test_loader(datasetpath):
     transform = transforms.Compose(
         [transforms.ToTensor(), transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))])
 
-    trainset = torchvision.datasets.CIFAR100(
+    trainset = torchvision.datasets.CIFAR10(
     root=datasetpath,
     train=True,
     download=True,
@@ -70,7 +70,7 @@ def train_test_loader(datasetpath):
     trainloader = torch.utils.data.DataLoader(
     trainset, batch_size=batch_size, shuffle=True, num_workers=0)
 
-    testset = torchvision.datasets.CIFAR100(
+    testset = torchvision.datasets.CIFAR10(
     root=datasetpath,
     train=False,
     download=True,
@@ -126,7 +126,7 @@ def training_using_classification_and_predicitve_coding(save_dir, trainloader, t
     return True
 
 
-def training_using_reconstruction_and_predicitve_coding(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param):
+def training_using_reconstruction_and_predicitve_coding(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param,train_bool):
     accuracy_dict = {}
 
     #Training the model using these hyperparameters
@@ -144,12 +144,25 @@ def training_using_reconstruction_and_predicitve_coding(save_dir, trainloader, t
     gamma_train,
     beta_train,
     alpha_train,
-     "train",
+     train_bool,
      epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
 
     print("Model Save Sucessfully")
     
     return True
+
+def fine_tuning(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param):
+
+    net.load_state_dict(
+    torch.load(
+        f'{model_name}.pth',
+        map_location=device,
+         weights_only=True))
+    
+    train_bool = training_using_reconstruction_and_predicitve_coding(
+            save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param,"fine_tuning")
+
+    return train_bool
 
 def testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param):
     # net=Net()
@@ -169,7 +182,7 @@ def testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,time
     for key, value in hyp_dict.items():
         set_seed(seed)
         gamma_i, beta_i, alpha_i = value
-        accuracy_i = pc_training(
+        accuracy_i = class_pc_training(
     net,
     trainloader,
     testloader,
@@ -198,39 +211,52 @@ def main():
     trainloader, testloader = train_test_loader(datasetpath)
     iters = range(0, timesteps + 1, 1)
 
-    if training_condition == "recon_train":
-        train_bool = training_using_ff_fb(
-    save_dir, trainloader, testloader, net,epochs,seed,device,batch_size)
-        if train_bool == True:
-            torch.save(net.state_dict(), f'{model_name}.pth')
-            print("Training Sucessful")
+    for iteration_index in range(8):
+        
+        print(f"The Iteration{iteration_index}:")
+        print("================================")
+        if iteration_index != 0:
+            net.load_state_dict(
+            torch.load(
+                f'/models/model_name/{model_name}_{iteration_index}.pth',
+                map_location=device,
+                weights_only=True))
 
-    if training_condition == "class_pc_train":
-        train_bool = training_using_classification_and_predicitve_coding(
-            save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
-        if train_bool == True:
-            torch.save(net.state_dict(), f'{model_name}.pth')
-            print("Training Sucessful")
+        if training_condition == "recon_train":
+            train_bool = training_using_ff_fb(
+            save_dir, trainloader, testloader, net,epochs,seed,device,batch_size)
+            if train_bool == True:
+                torch.save(net.state_dict(), f'/models/model_name/{model_name}_{iteration_index + 1 }.pth')
+                print("Training Sucessful")
+
+        if training_condition == "class_pc_train":
+            train_bool = training_using_classification_and_predicitve_coding(
+                save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
+            if train_bool == True:
+                torch.save(net.state_dict(), f'/models/model_name/{model_name}_{iteration_index + 1 }.pth')
+                print("Training Sucessful")
 
     
-    if training_condition == "recon_pc_train":
-        train_bool = training_using_reconstruction_and_predicitve_coding(
-            save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
-        if train_bool == True:
-            torch.save(net.state_dict(), f'{model_name}.pth')
-            print("Training Sucessful")
+        if training_condition == "recon_pc_train":
+            train_bool = training_using_reconstruction_and_predicitve_coding(
+                save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param,"train")
+            if train_bool == True:
+                torch.save(net.state_dict(), f'/models/model_name/{model_name}_{iteration_index + 1 }.pth')
+                print("Training Sucessful")
 
-    accuracy_dict = testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
+        if training_condition == "fine_tuning":
+            train_bool = fine_tuning(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
+            if train_bool == True:
+                torch.save(net.state_dict(), f'/models/model_name/{model_name}_{iteration_index + 1 }.pth')
+                print("Training Sucessful")
+
+
+    #accuracy_dict = testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
     
-#    plot_multiple_metrics(
-#    iters,
-#    accuracy_dict,
-#    save_dir,
-#    "Timesteps",
-#    "Accuracies for different priors",
-#    "Predicitive Coding Performance for Various Hyperparameter Configrations",
-#     "pc_multiplehp_accuracy_vs_timesteps",seed)
-#
+
+
+
+
     end = time.time()
     diff = end - start
     diff = diff / 60

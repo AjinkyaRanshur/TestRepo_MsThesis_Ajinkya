@@ -33,6 +33,9 @@ def class_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
 
                 ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
 
+                _,predicted=torch.max(output,1)
+                total_correct[0]+=(predicted==labels).sum().item()
+
                 # In pc_train.py training loop       
                 ft_AB_pc_temp.requires_grad_(True)
                 ft_BC_pc_temp.requires_grad_(True)
@@ -45,18 +48,24 @@ def class_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
                     output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,_=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,beta,gamma,alpha,images.size(0))
                     loss=criterion(output,labels)
                     final_loss+=loss
+                    _,predicted=torch.max(output,1)
+                    total_correct[i+1]+=(predicted==labels).sum().item()
+
+                total_samples+=labels.size(0)
 
                 final_loss=final_loss/timesteps
                 final_loss.backward()
                 optimizer.step()
                 running_loss.append(final_loss.item())
-
+            
+            accuracy=[100 * c /total_samples for c in total_correct]
+            accuracy=np.array(accuracy)
+            train_accuracy=np.mean(accuracy)
             avg_loss=np.mean(running_loss)
             print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
             test_loss=recon_pc_loss(net,testloader,batch_size,device,criterion,timesteps)
             test_accuracy=eval_pc_accuracy(net,testloader,beta,gamma,alpha,noise_type,noise_param,device,timesteps)
-            train_accuracy=eval_pc_accuracy(net,trainloader,beta,gamma,alpha,noise_type,noise_param,device,timesteps)
-            metrics={"Predictive_Coding/train_loss":avg_loss,"Predictive_Coding/test_loss":test_loss,"Predictive_Coding/Testing_accuracy":test_accuracy,"Predictive_Coding/Training_accuracy":train_accuracy }
+            metrics={"Classification_with_predictive_coding/train_loss":avg_loss,"Classification_with_predictive_coding/test_loss":test_loss,"Classification_with_predictive_coding/Testing_accuracy":test_accuracy,"Classification_with_predictive_coding/Training_accuracy":train_accuracy }
             wandb.log(metrics)
             loss_arr.append(avg_loss)
         iters = range(1, epochs+1)
@@ -126,7 +135,7 @@ def class_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
             total_correct[0]+=(predicted==labels).sum().item()
 
             for i in range(timesteps):
-                output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,_=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,beta,gamma,alpha,images.size(0))
+                output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,beta,gamma,alpha,images.size(0))
                 _,predicted=torch.max(output,1)
                 total_correct[i+1]+=(predicted==labels).sum().item()
 

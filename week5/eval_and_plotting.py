@@ -89,6 +89,9 @@ def recon_pc_loss(net,dataloader,batch_size,beta,gamma,alpha,device,criterion,ti
 
         final_loss=final_loss/timesteps
         total_loss+=final_loss
+        # Clear batch tensors
+        del ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp
+        torch.cuda.empty_cache()
 
     total_loss=total_loss/len(dataloader)
 
@@ -134,6 +137,35 @@ def eval_pc_accuracy(net,dataloader,batch_size,beta,gamma,alpha,noise_type,noise
     mean_acc=np.mean(accuracy)
 
     return mean_acc
+
+
+def recon_loss(net,dataloader,batch_size,device,criterion):
+    running_loss = []
+    
+    for batch_idx, batch in enumerate(dataloader):
+        ft_AB = torch.zeros(batch_size, 6, 32, 32)
+        ft_BC = torch.zeros(batch_size, 16, 16, 16)
+        ft_CD = torch.zeros(batch_size, 32, 8, 8)
+        ft_DE = torch.zeros(batch_size,64,4,4)
+        images, labels = batch
+        images,labels=images.to(device),labels.to(device)
+        optimizer_bck.zero_grad()
+        ft_AB,ft_BC,ft_CD,ft_DE,ft_EF,output=net.feedforward_pass(images,ft_AB,ft_BC,ft_CD,ft_DE)
+        ft_BA,ft_CB,ft_DC,ft_ED,ft_FE,xpred = net.feedback_pass(output,ft_AB,ft_BC,ft_CD,ft_DE,ft_EF)
+
+        # # Flatten ft_BC for comparison with ft_CB (which is also flattened in feedback)
+        lossAtoB = criterion_recon(ft_AB, ft_BA)
+        lossBtoC = criterion_recon(ft_BC, ft_CB)
+        lossCtoD = criterion_recon(ft_CD,ft_DC)
+        lossDtoE = criterion_recon(ft_DE,ft_ED)
+        lossEtoF = criterion_recon(ft_EF,ft_FE)
+        loss_input_and_recon = criterion_recon(xpred, images)
+        final_loss=lossAtoB+lossBtoC+lossCtoD+lossDtoE+loss_input_and_recon+lossEtoF
+        final_loss=final_loss/6.0
+        running_loss.append(final_loss.item())
+    avg_loss = np.mean(running_loss)
+    
+    return avg_loss
 
 
 
