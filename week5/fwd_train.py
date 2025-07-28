@@ -56,7 +56,7 @@ def feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir,epochs,seed
         test_accuracy=classification_accuracy_metric(net,testloader,seed,device)
         train_accuracy=classification_accuracy_metric(net,trainloader,seed,device)
         print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
-        metrics={"FF&FB/Classification_train_loss":avg_loss,"FF&FB/Classification_test_loss":test_loss,"FF&FB/Classication_train_accuracy":train_accuracy,"FF&FB/Classification_test_accuracy":test_accuracy}
+        metrics={"Reconstruction_Model/Classification_train_loss":avg_loss,"Reconstruction_Model/Classification_test_loss":test_loss,"Reconstruction_Model/Classication_train_accuracy":train_accuracy,"Reconstruction_Model/Classification_test_accuracy":test_accuracy}
         wandb.log(metrics)
 
 

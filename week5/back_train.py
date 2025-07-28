@@ -6,7 +6,7 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from eval_and_plotting import plot_metrics
+from eval_and_plotting import recon_loss
 import wandb
 import os
 
@@ -60,8 +60,9 @@ def feedback_training(net, trainloader, testloader, lr, momentum, save_dir,epoch
             running_loss.append(final_loss.item())
 
         avg_loss = np.mean(running_loss)
-        print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
-        metrics={"FF&FB/Recon_train_loss":avg_loss}
+        testloss=recon_loss(net,testloader,batch_size,device,criterion)
+        print(f"Epoch:{epoch} and TrainLoss:{avg_loss}")
+        metrics={"Reconstruction_Model/Recon_train_loss":avg_loss,"Reconstruction_model/Recon_test_loss":testloss}
         wandb.log(metrics)
         loss_arr.append(avg_loss)
 

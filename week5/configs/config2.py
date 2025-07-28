@@ -1,12 +1,12 @@
 import torch
 
 batch_size = 128
-epochs = 90
+epochs = 25
 seed = 42
 lr = 0.001 
 momentum = 0.9
 datasetpath = '/home/ajinkyar/datasets'
-training_condition = "recon_train"
+training_condition = "recon_pc_train"
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
 print(f"CUDA available: {torch.cuda.is_available()}")
@@ -25,7 +25,7 @@ gammaset=[[0.33, 0.33, 0.33, 0.33]]
 betaset = [[0.33, 0.33, 0.33, 0.33]]
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
-model_name = "recon_train_model"
+model_name = "reconstruction_pc_pretrain"
 noise_type="s&p"
 noise_param=0.0
-experiment_name = "Recon Train Trial1"
+experiment_name = "Reconstruction Model with Predicitive Coding Zp"

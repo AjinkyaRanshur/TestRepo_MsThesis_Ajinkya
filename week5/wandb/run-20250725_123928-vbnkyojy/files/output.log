@@ -1,0 +1,105 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch:0 and AverageLoss:0.2669303195784464
+Epoch:1 and AverageLoss:0.12324650898156568
+Epoch:2 and AverageLoss:0.09562011994897862
+Epoch:3 and AverageLoss:0.08104103163380147
+Epoch:4 and AverageLoss:0.07156626768696034
+Epoch:5 and AverageLoss:0.06480010884725834
+Epoch:6 and AverageLoss:0.059521704693050945
+Epoch:7 and AverageLoss:0.05534929366748961
+Epoch:8 and AverageLoss:0.05194753976276768
+Epoch:9 and AverageLoss:0.04914559334364084
+Epoch:10 and AverageLoss:0.04673868210038261
+Epoch:11 and AverageLoss:0.04469165834776886
+Epoch:12 and AverageLoss:0.04285422653493369
+Epoch:13 and AverageLoss:0.041238841431601274
+Epoch:14 and AverageLoss:0.039728210938860996
+Epoch:15 and AverageLoss:0.03836555613200073
+Epoch:16 and AverageLoss:0.03713120890738409
+Epoch:17 and AverageLoss:0.03603205847008454
+Epoch:18 and AverageLoss:0.03499285478973785
+Epoch:19 and AverageLoss:0.03407216765215177
+Epoch:20 and AverageLoss:0.03320345850399388
+Epoch:21 and AverageLoss:0.032401537008183386
+Epoch:22 and AverageLoss:0.03167621987631254
+Epoch:23 and AverageLoss:0.031001795178560346
+Epoch:24 and AverageLoss:0.030364037150769588
+Epoch:25 and AverageLoss:0.029765057322733542
+Epoch:26 and AverageLoss:0.029219927480611044
+Epoch:27 and AverageLoss:0.028706101876924104
+Epoch:28 and AverageLoss:0.028211452224103692
+Epoch:29 and AverageLoss:0.027742177943515654
+Epoch:30 and AverageLoss:0.027295307139568317
+Epoch:31 and AverageLoss:0.026890015000920465
+Epoch:32 and AverageLoss:0.026495939644668107
+Epoch:33 and AverageLoss:0.026110021340305847
+Epoch:34 and AverageLoss:0.025752798966167834
+Epoch:35 and AverageLoss:0.025408248771982424
+Epoch:36 and AverageLoss:0.025080873133123988
+Epoch:37 and AverageLoss:0.024760792460626044
+Epoch:38 and AverageLoss:0.024461533197813936
+Epoch:39 and AverageLoss:0.024164300978831623
+Epoch:40 and AverageLoss:0.02389498214092096
+Epoch:41 and AverageLoss:0.023620271288296756
+Epoch:42 and AverageLoss:0.02335510683029204
+Epoch:43 and AverageLoss:0.023106003451682722
+Epoch:44 and AverageLoss:0.02286534898859613
+Epoch:45 and AverageLoss:0.02263341504899437
+Epoch:46 and AverageLoss:0.022401660323486
+Epoch:47 and AverageLoss:0.022180394443404645
+Epoch:48 and AverageLoss:0.021970828280538854
+Epoch:49 and AverageLoss:0.021759737468779544
+Epoch:50 and AverageLoss:0.021559023014877155
+Epoch:51 and AverageLoss:0.021365515473286818
+Epoch:52 and AverageLoss:0.0211735446187084
+Epoch:53 and AverageLoss:0.020992020997778534
+Epoch:54 and AverageLoss:0.020813499012833362
+Epoch:55 and AverageLoss:0.02063951830443976
+Epoch:56 and AverageLoss:0.020475257812139325
+Epoch:57 and AverageLoss:0.020304390903362227
+Epoch:58 and AverageLoss:0.020147446338134957
+Epoch:59 and AverageLoss:0.019989027858466443
+Epoch:60 and AverageLoss:0.0198424295724734
+Epoch:61 and AverageLoss:0.01968936086215479
+Epoch:62 and AverageLoss:0.019541279186525613
+Epoch:63 and AverageLoss:0.019399638790303788
+Epoch:64 and AverageLoss:0.019261631576339606
+Epoch:65 and AverageLoss:0.019128228559175415
+Epoch:66 and AverageLoss:0.01899583534816342
+Epoch:67 and AverageLoss:0.018866525191213467
+Epoch:68 and AverageLoss:0.01874003852800945
+Epoch:69 and AverageLoss:0.018615730911912515
+Epoch:70 and AverageLoss:0.01849798475156355
+Epoch:71 and AverageLoss:0.018374728010324262
+Epoch:72 and AverageLoss:0.01826046003252649
+Epoch:73 and AverageLoss:0.018151553569223416
+Epoch:74 and AverageLoss:0.018037148915669498
+Epoch:75 and AverageLoss:0.01792693695248774
+Epoch:76 and AverageLoss:0.017818237947838385
+Epoch:77 and AverageLoss:0.01771512200050723
+Epoch:78 and AverageLoss:0.01760901312303284
+Epoch:79 and AverageLoss:0.017510611659196942
+Epoch:80 and AverageLoss:0.017410206372666236
+Epoch:81 and AverageLoss:0.017316249558878373
+Epoch:82 and AverageLoss:0.017218789883682032
+Epoch:83 and AverageLoss:0.017123238164502792
+Epoch:84 and AverageLoss:0.01703331186948225
+Epoch:85 and AverageLoss:0.016947022829766924
+Epoch:86 and AverageLoss:0.0168570561234451
+Epoch:87 and AverageLoss:0.016767438870313983
+Epoch:88 and AverageLoss:0.01668390720758749
+Epoch:89 and AverageLoss:0.016598834672852246
+Model Save Sucessfully
+Training Sucessful
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 278, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 223, in main
+    accuracy_dict = testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 172, in testing_model
+    accuracy_i = pc_training(
+                 ^^^^^^^^^^^
+NameError: name 'pc_training' is not defined

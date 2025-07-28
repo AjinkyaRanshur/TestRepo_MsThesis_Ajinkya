@@ -1,7 +1,7 @@
 import torch
 
 batch_size = 128
-epochs = 90
+epochs = 25
 seed = 42
 lr = 0.001
 momentum = 0.9
@@ -25,7 +25,7 @@ gammaset=[[0.33, 0.33, 0.33, 0.33]]
 betaset = [[0.33, 0.33, 0.33, 0.33]]
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
-model_name = "class_pc_model"
+model_name = "classification_pc"
 noise_type="s&p"
 noise_param=0.0
-experiment_name = "Class Model Trail1"
+experiment_name = "Classification Model with Predictive Coding"

@@ -1,0 +1,42 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch:0 and AverageLoss:4.606599484563179
+Epoch:1 and AverageLoss:4.6063462523243315
+Epoch:2 and AverageLoss:4.606085963871168
+Epoch:3 and AverageLoss:4.605812125193799
+Epoch:4 and AverageLoss:4.605490347918342
+Epoch:5 and AverageLoss:4.605059728598046
+Epoch:6 and AverageLoss:4.604353438862754
+Epoch:7 and AverageLoss:4.602934661728646
+Epoch:8 and AverageLoss:4.597912595704998
+Epoch:9 and AverageLoss:4.546660885481578
+Epoch:10 and AverageLoss:4.386193287646984
+Epoch:11 and AverageLoss:4.232030397181011
+Epoch:12 and AverageLoss:4.124964782953872
+Epoch:13 and AverageLoss:4.016469871906368
+Epoch:14 and AverageLoss:3.9244660087253735
+Epoch:15 and AverageLoss:3.8537880112143124
+Epoch:16 and AverageLoss:3.7871718272528687
+Epoch:17 and AverageLoss:3.7258357605360963
+Epoch:18 and AverageLoss:3.665867906092378
+Epoch:19 and AverageLoss:3.597890890467807
+Epoch:20 and AverageLoss:3.5343543385605676
+Epoch:21 and AverageLoss:3.471683027189406
+Epoch:22 and AverageLoss:3.409909765433777
+Epoch:23 and AverageLoss:3.3520501952646944
+Epoch:24 and AverageLoss:3.2930449683343053
+Model Save Sucessfully
+Training Sucessful
+Accuracy at each timestep:
+Timestep 0: 1.02%
+Timestep 1: 1.02%
+Timestep 2: 1.00%
+Timestep 3: 1.00%
+Timestep 4: 1.00%
+Timestep 5: 1.00%
+Timestep 6: 1.00%
+Timestep 7: 1.00%
+Timestep 8: 1.00%
+Timestep 9: 1.00%
+Timestep 10: 1.00%
