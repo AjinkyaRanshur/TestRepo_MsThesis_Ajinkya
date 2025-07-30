@@ -60,7 +60,7 @@ def feedback_training(net, trainloader, testloader, lr, momentum, save_dir,epoch
             running_loss.append(final_loss.item())
 
         avg_loss = np.mean(running_loss)
-        testloss=recon_loss(net,testloader,batch_size,device,criterion)
+        testloss=recon_loss(net,testloader,batch_size,device,criterion_recon)
         print(f"Epoch:{epoch} and TrainLoss:{avg_loss}")
         metrics={"Reconstruction_Model/Recon_train_loss":avg_loss,"Reconstruction_model/Recon_test_loss":testloss}
         wandb.log(metrics)

@@ -151,11 +151,10 @@ def training_using_reconstruction_and_predicitve_coding(save_dir, trainloader, t
     
     return True
 
-def fine_tuning(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param):
-
+def fine_tuning(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param,model_path):
     net.load_state_dict(
     torch.load(
-        f'{model_name}.pth',
+        f'{model_path}/{model_name}.pth',
         map_location=device,
          weights_only=True))
     
@@ -164,11 +163,11 @@ def fine_tuning(save_dir, trainloader, testloader, net,epochs,seed,device,timest
 
     return train_bool
 
-def testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param):
+def testing_model(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param,model_path):
     # net=Net()
     net.load_state_dict(
     torch.load(
-        f'{model_name}.pth',
+        f'{model_path}/{model_name}.pth',
         map_location=device,
          weights_only=True))
 
@@ -218,7 +217,7 @@ def main():
         if iteration_index != 0:
             net.load_state_dict(
             torch.load(
-                f'/models/model_name/{model_name}_{iteration_index}.pth',
+                f'models/{model_name}/{model_name}_{iteration_index}.pth',
                 map_location=device,
                 weights_only=True))
 
@@ -226,14 +225,14 @@ def main():
             train_bool = training_using_ff_fb(
             save_dir, trainloader, testloader, net,epochs,seed,device,batch_size)
             if train_bool == True:
-                torch.save(net.state_dict(), f'/models/model_name/{model_name}_{iteration_index + 1 }.pth')
+                torch.save(net.state_dict(), f'models/{model_name}/{model_name}_{iteration_index + 1 }.pth')
                 print("Training Sucessful")
 
         if training_condition == "class_pc_train":
             train_bool = training_using_classification_and_predicitve_coding(
                 save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
             if train_bool == True:
-                torch.save(net.state_dict(), f'/models/model_name/{model_name}_{iteration_index + 1 }.pth')
+                torch.save(net.state_dict(), f'models/{model_name}/{model_name}_{iteration_index + 1 }.pth')
                 print("Training Sucessful")
 
     
@@ -241,13 +240,14 @@ def main():
             train_bool = training_using_reconstruction_and_predicitve_coding(
                 save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param,"train")
             if train_bool == True:
-                torch.save(net.state_dict(), f'/models/model_name/{model_name}_{iteration_index + 1 }.pth')
+                torch.save(net.state_dict(), f'models/{model_name}/{model_name}_{iteration_index + 1 }.pth')
                 print("Training Sucessful")
 
         if training_condition == "fine_tuning":
-            train_bool = fine_tuning(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param)
+            train_bool = fine_tuning(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param,model_path)
+            temp_save_name='reconstruction_pc_finetuned_t_10'
             if train_bool == True:
-                torch.save(net.state_dict(), f'/models/model_name/{model_name}_{iteration_index + 1 }.pth')
+                torch.save(net.state_dict(), f'models/{temp_save_name}/{temp_save_name}_{iteration_index + 1 }.pth')
                 print("Training Sucessful")
 
 
@@ -300,6 +300,7 @@ if __name__ == "__main__":
     model_name=config.model_name
     noise_type=config.noise_type
     noise_param=config.noise_param
+    model_path=config.model_path
 
     main()
 

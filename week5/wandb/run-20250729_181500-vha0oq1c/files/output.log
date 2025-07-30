@@ -1,0 +1,37 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:3.8005135602048594
+Epoch:1 and AverageLoss:2.3155421094821236
+Epoch:2 and AverageLoss:2.1983711774391894
+Epoch:3 and AverageLoss:2.01144936505486
+Epoch:4 and AverageLoss:1.8803517452591216
+Epoch:5 and AverageLoss:1.766656883842195
+Epoch:6 and AverageLoss:1.7049948611222874
+Epoch:7 and AverageLoss:1.6439580517961545
+Epoch:8 and AverageLoss:1.6042938055589682
+Epoch:9 and AverageLoss:1.5607145695430238
+Epoch:10 and AverageLoss:1.524557687437443
+Epoch:11 and AverageLoss:1.4935778620297953
+Epoch:12 and AverageLoss:1.457710842037445
+Epoch:13 and AverageLoss:1.4303076282486586
+Epoch:14 and AverageLoss:1.4015932226424936
+Epoch:15 and AverageLoss:1.3787572560712809
+Epoch:16 and AverageLoss:1.3484135311277932
+Epoch:17 and AverageLoss:1.3191268590405165
+Epoch:18 and AverageLoss:1.2926118099476065
+Epoch:19 and AverageLoss:1.2610857919658847
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 304, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 233, in main
+    train_bool = training_using_classification_and_predicitve_coding(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 111, in training_using_classification_and_predicitve_coding
+    class_pc_training(
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/pc_train.py", line 74, in class_pc_training
+    if plot_bool==True:
+       ^^^^^^^^^
+NameError: name 'plot_bool' is not defined

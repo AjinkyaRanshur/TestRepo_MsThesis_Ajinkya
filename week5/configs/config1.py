@@ -1,11 +1,11 @@
 import torch
 
 batch_size = 128
-epochs = 25
+epochs = 20
 seed = 42
 lr = 0.001
 momentum = 0.9
-datasetpath = '/home/ajinkyar/datasets'
+datasetpath = '/home/ajinkya/datasets'
 training_condition = "class_pc_train"
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 

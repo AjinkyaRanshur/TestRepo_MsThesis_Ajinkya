@@ -8,7 +8,7 @@ wandb.login()
 def init_wandb(batch_size, epochs, lr, momentum, seed, device, training_condition, load_model, save_model, timesteps, gammaset, betaset, alphaset, datasetpath,name,noise_type,noise_param,model_name):
 
     wandb.init(
-        project="Experimenting_with_Zhoyang's_Model_Reports",
+        project="Ajinkya_Training_Model_Reports",
         name=name,
         mode="online",
         config={

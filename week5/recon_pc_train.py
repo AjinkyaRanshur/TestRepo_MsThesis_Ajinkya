@@ -22,7 +22,9 @@ def recon_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
         loss_arr=[]
         for epoch in range(epochs):
             running_loss=[]
-            
+            val_loss=[]            
+            ##Switch to training Mode
+            net.train()
             for batch_idx,batch in enumerate(trainloader):
                 images,labels=batch
                 images,labels=images.to(device),labels.to(device)
@@ -47,16 +49,59 @@ def recon_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
                     ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,loss_of_layers=net.recon_predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,beta,gamma,alpha,images.size(0))
                     final_loss+=loss_of_layers
 
-
                 final_loss=final_loss/timesteps
                 final_loss.backward()
                 optimizer.step()
                 running_loss.append(final_loss.item())
+                
+                del ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp,loss_of_layers,final_loss
+                torch.cuda.empty_cache()
+
 
             avg_loss=np.mean(running_loss)
 
             print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
-            test_loss=recon_pc_loss(net,testloader,batch_size,beta,gamma,alpha,device,criterion,timesteps)
+            test_loss=0
+            ##Set to eval to avoid memory constraints
+            net.eval()
+            for batch_idx,batch in enumerate(testloader):
+                images,labels=batch
+                images,labels=images.to(device),labels.to(device)
+
+                ft_AB_pc_temp = torch.zeros(batch_size, 6, 32, 32).to(device)
+                ft_BC_pc_temp = torch.zeros(batch_size, 16, 16, 16).to(device)
+                ft_CD_pc_temp = torch.zeros(batch_size, 32, 8, 8).to(device)
+                ft_DE_pc_temp = torch.zeros(batch_size,64,4,4).to(device)
+
+                ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
+
+                # Re-enable gradients after feedforward_pass overwrites the tensors
+                # Only enable gradients for the specific tensors that need them
+                ft_AB_pc_temp.requires_grad_(True)
+                ft_BC_pc_temp.requires_grad_(True)
+                ft_CD_pc_temp.requires_grad_(True)
+                ft_DE_pc_temp.requires_grad_(True)
+
+                final_loss=0
+                #ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,loss_of_layers=net.recon_predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,beta,gamma,alpha,images.size(0))
+
+
+                for i in range(timesteps):
+                    #print("Timestep",i)
+                    #print("Batch Id",batch_idx)
+                    ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,loss_of_layers=net.recon_predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,beta,gamma,alpha,images.size(0))
+                    final_loss+=loss_of_layers
+
+                final_loss=final_loss/timesteps
+                val_loss.append(final_loss.item())
+                #test_loss+=loss_of_layers
+                # Clear batch tensors
+                del ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp,loss_of_layers
+                torch.cuda.empty_cache()
+        
+            test_loss=np.mean(val_loss)
+            print("Test Loss",test_loss)
+            #test_loss=recon_pc_loss(net,testloader,batch_size,beta,gamma,alpha,device,criterion,timesteps)
             metrics={"Reconstruction_with_Predictive_Coding/train_loss":avg_loss,"Reconstruction_with_Predictive_Coding/test_loss":test_loss}
             wandb.log(metrics)
             loss_arr.append(avg_loss)
@@ -68,8 +113,10 @@ def recon_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
         optimizer=optim.SGD(net.parameters(),lr=lr,momentum=momentum)
         loss_arr=[]
         ##In zhoyang's paper finetuning was for only 25 epochs
-        for epoch in range(90):
+        for epoch in range(epochs):
             running_loss=[]
+            total_correct = np.zeros(timesteps + 1)  # ✅ Initialize here
+            total_samples = 0  # ✅ Initialize here
 
             for batch_idx,batch in enumerate(trainloader):
                 images,labels=batch
@@ -93,6 +140,7 @@ def recon_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
                 ft_EF_pc_temp.requires_grad_(True)
                 optimizer.zero_grad()
                 final_loss=0
+
                 for i in range(timesteps):
                     output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,beta,gamma,alpha,images.size(0))
                     loss=criterion(output,labels)
@@ -104,7 +152,7 @@ def recon_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
 
 
                 final_loss=final_loss/timesteps
-                final_loss.backward()
+                final_loss.backward(retain_graph=True)
                 optimizer.step()
                 running_loss.append(final_loss.item())
             
@@ -115,7 +163,7 @@ def recon_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
             print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
             test_loss=recon_pc_loss(net,testloader,batch_size,beta,gamma,alpha,device,criterion,timesteps)
             test_accuracy=eval_pc_accuracy(net,testloader,batch_size,beta,gamma,alpha,noise_type,noise_param,device,timesteps)
-            metrics={"Reconstruction_with_predictive_coding/train_loss":avg_loss,"Reconstruction_with_predictive_coding/test_loss":test_loss,"Reconstruction_with_predictive_coding/Testing_accuracy":test_accuracy,"Reconstruction_with_predictive_coding/Training_accuracy":train_accuracy }
+            metrics={"Reconstruction_with_Predictive_Coding/fine_tuned_train_loss":avg_loss,"Reconstruction_with_Predictive_Coding/fine_tuned_test_loss":test_loss,"Reconstruction_with_Predictive_Coding/fine_tuned_Testing_accuracy":test_accuracy,"Reconstruction_with_Predictive_Coding/fine_tuned_Training_accuracy":train_accuracy }
             wandb.log(metrics)
             loss_arr.append(avg_loss)
 
