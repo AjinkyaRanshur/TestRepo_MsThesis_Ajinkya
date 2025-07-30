@@ -62,7 +62,8 @@ def classification_loss_metric(net,dataloader,batch_size,device,criterion):
 
 def recon_pc_loss(net,dataloader,batch_size,beta,gamma,alpha,device,criterion,timesteps):
     
-    total_loss=0
+    total_loss=[]
+    test_loss=0
     for batch_idx,batch in enumerate(dataloader):
         images,labels=batch
         images,labels=images.to(device),labels.to(device)
@@ -75,30 +76,35 @@ def recon_pc_loss(net,dataloader,batch_size,beta,gamma,alpha,device,criterion,ti
         ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
 
         # Re-enable gradients after feedforward_pass overwrites the tensors
-        ft_AB_pc_temp = ft_AB_pc_temp.requires_grad_(True)
-        ft_BC_pc_temp = ft_BC_pc_temp.requires_grad_(True)
-        ft_CD_pc_temp = ft_CD_pc_temp.requires_grad_(True)
-        ft_DE_pc_temp = ft_DE_pc_temp.requires_grad_(True)
-        ft_EF_pc_temp = ft_EF_pc_temp.requires_grad_(True)
+        # Only enable gradients for the specific tensors that need them
+        ft_AB_pc_temp.requires_grad_(True)
+        ft_BC_pc_temp.requires_grad_(True)
+        ft_CD_pc_temp.requires_grad_(True)
+        ft_DE_pc_temp.requires_grad_(True)
 
         final_loss=0
 
         for i in range(timesteps):
+            #print("Timestep",i)
+            #print("Batch Id",batch_idx)
             ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,loss_of_layers=net.recon_predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,beta,gamma,alpha,images.size(0))
             final_loss+=loss_of_layers
 
         final_loss=final_loss/timesteps
-        total_loss+=final_loss
+        total_loss.append(final_loss.item())
         # Clear batch tensors
-        del ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp
+        del ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp,loss_of_layers,final_loss
         torch.cuda.empty_cache()
 
-    total_loss=total_loss/len(dataloader)
+    test_loss=np.mean(total_loss)
 
-    return total_loss
+    return test_loss
 
 
 def eval_pc_accuracy(net,dataloader,batch_size,beta,gamma,alpha,noise_type,noise_param,device,timesteps):
+
+    total_correct = np.zeros(timesteps + 1)  # ✅ Initialize here
+    total_samples = 0  # ✅ Initialize here
 
     for batch_id,batch in enumerate(dataloader):
         images,labels=batch
@@ -124,9 +130,8 @@ def eval_pc_accuracy(net,dataloader,batch_size,beta,gamma,alpha,noise_type,noise
         _,predicted=torch.max(output,1)
         total_correct[0]+=(predicted==labels).sum().item()
 
-        for i in range(timesteps):
-            
-            output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,_=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,beta,gamma,alpha,images.size(0))
+        for i in range(timesteps):  
+            output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,beta,gamma,alpha,images.size(0))
             _,predicted=torch.max(output,1)
             total_correct[i+1]+=(predicted==labels).sum().item()
 
@@ -139,9 +144,10 @@ def eval_pc_accuracy(net,dataloader,batch_size,beta,gamma,alpha,noise_type,noise
     return mean_acc
 
 
-def recon_loss(net,dataloader,batch_size,device,criterion):
+def recon_loss(net,dataloader,batch_size,device,criterion_recon):
     running_loss = []
-    
+   
+
     for batch_idx, batch in enumerate(dataloader):
         ft_AB = torch.zeros(batch_size, 6, 32, 32)
         ft_BC = torch.zeros(batch_size, 16, 16, 16)
@@ -149,7 +155,6 @@ def recon_loss(net,dataloader,batch_size,device,criterion):
         ft_DE = torch.zeros(batch_size,64,4,4)
         images, labels = batch
         images,labels=images.to(device),labels.to(device)
-        optimizer_bck.zero_grad()
         ft_AB,ft_BC,ft_CD,ft_DE,ft_EF,output=net.feedforward_pass(images,ft_AB,ft_BC,ft_CD,ft_DE)
         ft_BA,ft_CB,ft_DC,ft_ED,ft_FE,xpred = net.feedback_pass(output,ft_AB,ft_BC,ft_CD,ft_DE,ft_EF)
 

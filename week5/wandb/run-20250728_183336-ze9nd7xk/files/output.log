@@ -1,0 +1,61 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:0.24335351228104224
+Test Loss tensor(0.2011, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:1 and AverageLoss:0.11133873093006251
+Test Loss tensor(0.1442, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:2 and AverageLoss:0.08876861666169618
+Test Loss tensor(0.1231, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:3 and AverageLoss:0.07627358807779638
+Test Loss tensor(0.1078, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:4 and AverageLoss:0.06780480502930748
+Test Loss tensor(0.0986, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:5 and AverageLoss:0.06153229147653141
+Test Loss tensor(0.0912, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:6 and AverageLoss:0.05662392928739033
+Test Loss tensor(0.0853, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:7 and AverageLoss:0.05272683367857238
+Test Loss tensor(0.0802, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:8 and AverageLoss:0.04954601048737231
+Test Loss tensor(0.0768, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:9 and AverageLoss:0.04692484780460063
+Test Loss tensor(0.0737, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:10 and AverageLoss:0.04468683598329649
+Test Loss tensor(0.0706, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:11 and AverageLoss:0.04278075075744058
+Test Loss tensor(0.0683, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:12 and AverageLoss:0.04108217998843669
+Test Loss tensor(0.0660, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:13 and AverageLoss:0.03958867515063347
+Test Loss tensor(0.0639, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:14 and AverageLoss:0.03824267785072022
+Test Loss tensor(0.0624, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:15 and AverageLoss:0.03702429964985994
+Test Loss tensor(0.0604, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:16 and AverageLoss:0.035912628626198415
+Test Loss tensor(0.0592, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:17 and AverageLoss:0.03489571536326652
+Test Loss tensor(0.0579, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:18 and AverageLoss:0.03394586613397007
+Test Loss tensor(0.0564, device='cuda:1', grad_fn=<DivBackward0>)
+Epoch:19 and AverageLoss:0.033066000479757024
+Test Loss tensor(0.0554, device='cuda:1', grad_fn=<DivBackward0>)
+Model Save Sucessfully
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 304, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 244, in main
+    torch.save(net.state_dict(), f'/models/model_name/{model_name}_{iteration_index + 1 }.pth')
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 849, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 716, in _open_zipfile_writer
+    return container(name_or_buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 687, in __init__
+    super().__init__(torch._C.PyTorchFileWriter(self.name))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Parent directory /models/model_name does not exist.

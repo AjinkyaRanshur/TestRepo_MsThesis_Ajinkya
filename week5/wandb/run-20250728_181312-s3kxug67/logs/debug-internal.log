@@ -1,0 +1,7 @@
+{"time":"2025-07-28T18:13:12.84827698+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-07-28T18:13:13.204764264+02:00","level":"INFO","msg":"stream: created new stream","id":"s3kxug67"}
+{"time":"2025-07-28T18:13:13.204818305+02:00","level":"INFO","msg":"stream: started","id":"s3kxug67"}
+{"time":"2025-07-28T18:13:13.204883338+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"s3kxug67"}
+{"time":"2025-07-28T18:13:13.204930288+02:00","level":"INFO","msg":"sender: started","stream_id":"s3kxug67"}
+{"time":"2025-07-28T18:13:13.204949614+02:00","level":"INFO","msg":"handler: started","stream_id":"s3kxug67"}
+{"time":"2025-07-28T18:14:13.950495302+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Ajinkya_Training_Model_Reports/s3kxug67/file_stream\": dial tcp 35.186.228.49:443: connect: connection refused"}

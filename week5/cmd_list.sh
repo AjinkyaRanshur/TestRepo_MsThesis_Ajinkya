@@ -1,7 +1,7 @@
 #!/bin/bash
 
-start=0
-end=2
+start=1
+end=3
 
 
 for ((i=start;i<=end;i++)); do

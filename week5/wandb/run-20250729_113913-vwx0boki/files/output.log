@@ -1,0 +1,61 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:0.2342543693645226
+Test Loss 0.12894148756808874
+Epoch:1 and AverageLoss:0.10810845501511299
+Test Loss 0.0929189464902576
+Epoch:2 and AverageLoss:0.08463708120767417
+Test Loss 0.07768247295406801
+Epoch:3 and AverageLoss:0.07293570052136851
+Test Loss 0.06850833219440677
+Epoch:4 and AverageLoss:0.0652949601659537
+Test Loss 0.06211647051799146
+Epoch:5 and AverageLoss:0.05975111810218953
+Test Loss 0.05730162994771064
+Epoch:6 and AverageLoss:0.05551895734561069
+Test Loss 0.05357153826876532
+Epoch:7 and AverageLoss:0.052158466509312315
+Test Loss 0.05056600975273531
+Epoch:8 and AverageLoss:0.04940466792382243
+Test Loss 0.04802414265614521
+Epoch:9 and AverageLoss:0.04707457120423122
+Test Loss 0.04590147394168226
+Epoch:10 and AverageLoss:0.04509571907312974
+Test Loss 0.04404912851279295
+Epoch:11 and AverageLoss:0.04337093851450459
+Test Loss 0.04244418541276002
+Epoch:12 and AverageLoss:0.04182345566847135
+Test Loss 0.040991343840768066
+Epoch:13 and AverageLoss:0.040427923840863626
+Test Loss 0.039694927774275406
+Epoch:14 and AverageLoss:0.03913592297555236
+Test Loss 0.03848195773891256
+Epoch:15 and AverageLoss:0.037952040438838014
+Test Loss 0.03727628795217864
+Epoch:16 and AverageLoss:0.03682077746562031
+Test Loss 0.03620940998573847
+Epoch:17 and AverageLoss:0.03576119709998141
+Test Loss 0.03517808519963977
+Epoch:18 and AverageLoss:0.034736763104758296
+Test Loss 0.03414913835121861
+Epoch:19 and AverageLoss:0.033762471912347755
+Test Loss 0.033251925713465184
+Model Save Sucessfully
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 304, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 244, in main
+    torch.save(net.state_dict(), f'/models/model_name/{model_name}_{iteration_index + 1 }.pth')
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 849, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 716, in _open_zipfile_writer
+    return container(name_or_buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 687, in __init__
+    super().__init__(torch._C.PyTorchFileWriter(self.name))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Parent directory /models/model_name does not exist.

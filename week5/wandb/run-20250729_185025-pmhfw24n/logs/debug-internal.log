@@ -1,0 +1,15 @@
+{"time":"2025-07-29T18:50:25.381280968+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-07-29T18:50:25.818622207+02:00","level":"INFO","msg":"stream: created new stream","id":"pmhfw24n"}
+{"time":"2025-07-29T18:50:25.818679632+02:00","level":"INFO","msg":"stream: started","id":"pmhfw24n"}
+{"time":"2025-07-29T18:50:25.818690339+02:00","level":"INFO","msg":"handler: started","stream_id":"pmhfw24n"}
+{"time":"2025-07-29T18:50:25.818693745+02:00","level":"INFO","msg":"sender: started","stream_id":"pmhfw24n"}
+{"time":"2025-07-29T18:50:25.818724086+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"pmhfw24n"}
+{"time":"2025-07-29T20:08:56.609372673+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Ajinkya_Training_Model_Reports/pmhfw24n/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-07-29T22:23:26.299582813+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Ajinkya_Training_Model_Reports/pmhfw24n/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-07-29T23:12:11.422025617+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-29T23:12:11.666909873+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-07-29T23:12:11.674302349+02:00","level":"INFO","msg":"stream: closing","id":"pmhfw24n"}
+{"time":"2025-07-29T23:12:11.67432964+02:00","level":"INFO","msg":"handler: closed","stream_id":"pmhfw24n"}
+{"time":"2025-07-29T23:12:11.674349262+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"pmhfw24n"}
+{"time":"2025-07-29T23:12:11.674370642+02:00","level":"INFO","msg":"sender: closed","stream_id":"pmhfw24n"}
+{"time":"2025-07-29T23:12:11.674434302+02:00","level":"INFO","msg":"stream: closed","id":"pmhfw24n"}

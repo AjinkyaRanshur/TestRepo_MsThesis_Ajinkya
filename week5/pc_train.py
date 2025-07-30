@@ -21,7 +21,8 @@ def class_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
         loss_arr=[]
         for epoch in range(epochs):
             running_loss=[]
-
+            total_correct = np.zeros(timesteps + 1)  # ✅ Initialize here
+            total_samples = 0  # ✅ Initialize here
             for batch_idx,batch in enumerate(trainloader):
                 images,labels=batch
                 images,labels=images.to(device),labels.to(device)
@@ -45,7 +46,7 @@ def class_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
                 optimizer.zero_grad()
                 final_loss=0
                 for i in range(timesteps):
-                    output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,_=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,beta,gamma,alpha,images.size(0))
+                    output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,beta,gamma,alpha,images.size(0))
                     loss=criterion(output,labels)
                     final_loss+=loss
                     _,predicted=torch.max(output,1)
@@ -63,8 +64,8 @@ def class_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
             train_accuracy=np.mean(accuracy)
             avg_loss=np.mean(running_loss)
             print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
-            test_loss=recon_pc_loss(net,testloader,batch_size,device,criterion,timesteps)
-            test_accuracy=eval_pc_accuracy(net,testloader,beta,gamma,alpha,noise_type,noise_param,device,timesteps)
+            test_loss=recon_pc_loss(net,testloader,batch_size,beta,gamma,alpha,device,criterion,timesteps)
+            test_accuracy=eval_pc_accuracy(net,testloader,batch_size,beta,gamma,alpha,noise_type,noise_param,device,timesteps)
             metrics={"Classification_with_predictive_coding/train_loss":avg_loss,"Classification_with_predictive_coding/test_loss":test_loss,"Classification_with_predictive_coding/Testing_accuracy":test_accuracy,"Classification_with_predictive_coding/Training_accuracy":train_accuracy }
             wandb.log(metrics)
             loss_arr.append(avg_loss)

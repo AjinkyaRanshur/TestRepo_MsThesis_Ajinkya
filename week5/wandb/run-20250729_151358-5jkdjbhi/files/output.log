@@ -1,0 +1,41 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:2.3657352759710055
+Epoch:1 and AverageLoss:1.6018093220718073
+Epoch:2 and AverageLoss:1.4098102457992865
+Epoch:3 and AverageLoss:1.2742022282022345
+Epoch:4 and AverageLoss:1.1569042469534423
+Epoch:5 and AverageLoss:1.0562793487478095
+Epoch:6 and AverageLoss:0.9862353289523698
+Epoch:7 and AverageLoss:0.9192581605118559
+Epoch:8 and AverageLoss:0.8590376735343348
+Epoch:9 and AverageLoss:0.8038215902455322
+Epoch:10 and AverageLoss:0.7558895916585118
+Epoch:11 and AverageLoss:0.7159860913863267
+Epoch:12 and AverageLoss:0.683149616812806
+Epoch:13 and AverageLoss:0.6336028058358165
+Epoch:14 and AverageLoss:0.6017230221682497
+Epoch:15 and AverageLoss:0.5619420009805723
+Epoch:16 and AverageLoss:0.5304910552013865
+Epoch:17 and AverageLoss:0.5022161516844464
+Epoch:18 and AverageLoss:0.47178680291566094
+Epoch:19 and AverageLoss:0.44360561474509863
+Forward Training Succesful
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 304, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 226, in main
+    train_bool = training_using_ff_fb(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 99, in training_using_ff_fb
+    feedback_training(net, trainloader, testloader, lr, momentum, save_dir,epochs,seed,device,batch_size)
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/back_train.py", line 63, in feedback_training
+    testloss=recon_loss(net,testloader,batch_size,device,criterion_recon)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/eval_and_plotting.py", line 160, in recon_loss
+    lossAtoB = criterion_recon(ft_AB, ft_BA)
+               ^^^^^^^^^^^^^^^
+NameError: name 'criterion_recon' is not defined
