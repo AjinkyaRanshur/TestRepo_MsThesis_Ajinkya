@@ -1,0 +1,8 @@
+✓ WandB initialized in Online mode
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week6/main.py", line 175, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week6/main.py", line 125, in main
+    save_dir = os.path.join("result_folder", f"Seed_{seed}")
+                                                     ^^^^
+NameError: name 'seed' is not defined
