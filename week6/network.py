@@ -61,11 +61,11 @@ class Net(nn.Module):
 
     def predictive_coding_pass(self,x,ft_AB,ft_BC,ft_CD,ft_DE,ft_EF,beta,gamma,alpha,batch_size):
 
-        gamma_AB_fwd,gamma_BC_fwd,gamma_CD_fwd,gamma_DE_fwd=gamma
+        gamma_AB_fwd,gamma_BC_fwd,gamma_CD_fwd,gamma_DE_fwd=gamma[0]
 
-        beta_AB_bck,beta_BC_bck,beta_CD_bck,beta_DE_bck=beta
+        beta_AB_bck,beta_BC_bck,beta_CD_bck,beta_DE_bck=beta[0]
 
-        alpha_AB,alpha_BC,alpha_CD,alpha_DE=alpha
+        alpha_AB,alpha_BC,alpha_CD,alpha_DE=alpha[0]
 
         errorB=nn.functional.mse_loss(self.deconv1_fb(ft_AB),x)
         
@@ -131,11 +131,11 @@ class Net(nn.Module):
 
     def recon_predictive_coding_pass(self,x,ft_AB,ft_BC,ft_CD,ft_DE,beta,gamma,alpha,batch_size):
 
-        gamma_AB_fwd,gamma_BC_fwd,gamma_CD_fwd,gamma_DE_fwd=gamma
+        gamma_AB_fwd,gamma_BC_fwd,gamma_CD_fwd,gamma_DE_fwd=gamma[0]
 
-        beta_AB_bck,beta_BC_bck,beta_CD_bck,beta_DE_bck=beta
+        beta_AB_bck,beta_BC_bck,beta_CD_bck,beta_DE_bck=beta[0]
 
-        alpha_AB,alpha_BC,alpha_CD,alpha_DE=alpha
+        alpha_AB,alpha_BC,alpha_CD,alpha_DE=alpha[0]
 
         errorB=nn.functional.mse_loss(self.deconv1_fb(ft_AB),x)
 
