@@ -1,0 +1,20 @@
+{
+  "os": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+  "python": "CPython 3.12.11",
+  "startedAt": "2025-08-04T07:59:01.347244Z",
+  "args": [
+    "--config",
+    "config0"
+  ],
+  "program": "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week6/main.py",
+  "codePath": "week6/main.py",
+  "git": {
+    "remote": "https://github.com/AjinkyaRanshur/TestRepo_MsThesis_Ajinkya.git",
+    "commit": "bac59a032f9bcff795fa0466d4a7523f80295538"
+  },
+  "email": "ranshur.ajinkya.res@gmail.com",
+  "root": "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week6",
+  "host": "PORT-ETU-014",
+  "executable": "/home/ajinkya/miniconda3/envs/cuda_pyt/bin/python3",
+  "codePathLocal": "main.py"
+}
