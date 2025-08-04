@@ -87,7 +87,7 @@ def recon_pc_loss(net,dataloader,config):
         for i in range(config.timesteps):
             #print("Timestep",i)
             #print("Batch Id",batch_idx)
-            ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,loss_of_layers=net.recon_predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,config.beta,config.gamma,config.alpha,images.size(0))
+            ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,loss_of_layers=net.recon_predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
             final_loss+=loss_of_layers
 
         final_loss=final_loss/config.timesteps
@@ -131,7 +131,7 @@ def eval_pc_accuracy(net,dataloader,config):
         total_correct[0]+=(predicted==labels).sum().item()
 
         for i in range(config.timesteps):  
-            output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,config.beta,config.gamma,config.alpha,images.size(0))
+            output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
             _,predicted=torch.max(output,1)
             total_correct[i+1]+=(predicted==labels).sum().item()
 

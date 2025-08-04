@@ -95,7 +95,7 @@ def create_priors_dict(gammaset, betaset, alphaset):
     return hyp_dict
 
 
-def training_using_reconstruction_and_predicitve_coding(save_dir, trainloader, testloader, net,config):
+def training_using_reconstruction_and_predicitve_coding(net,save_dir, trainloader, testloader,config):
 
     
     recon_pc_training(net,trainloader,testloader,"train",config)
@@ -105,7 +105,7 @@ def training_using_reconstruction_and_predicitve_coding(save_dir, trainloader, t
     return True
 
 
-def fine_tuning_using_classification(save_dir, trainloader, testloader, net,config):
+def fine_tuning_using_classification(net,save_dir, trainloader, testloader,config):
     
     for iteration_index in range(8):
         print(f"The Iteration{iteration_index}:")
@@ -138,15 +138,14 @@ def main():
             torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
 
         if config.training_condition == "recon_pc_train":
-            train_bool = training_using_reconstruction_and_predicitve_coding(
-                save_dir, trainloader, testloader,config,"train")
+            train_bool = training_using_reconstruction_and_predicitve_coding(net,save_dir, trainloader, testloader,config)
             if train_bool == True:
                 torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
                 print("Training Sucessful")
                 
 
     if config.training_condition == "fine_tuning":
-        train_bool = fine_tuning_using_classification(save_dir, trainloader, testloader,config)
+        train_bool = fine_tuning_using_classification(net,save_dir, trainloader, testloader,config)
 
     end = time.time()
     diff = end - start
