@@ -17,11 +17,11 @@ class Net(nn.Module):
         self.conv2 = nn.Conv2d(in_channels=6,out_channels= 16,kernel_size= 5,stride=1,padding=2)
         self.conv3= nn.Conv2d(in_channels=16,out_channels= 32,kernel_size= 5,stride=1,padding=2)
         self.conv4= nn.Conv2d(in_channels=32,out_channels= 64,kernel_size= 5,stride=1,padding=2)
-        self.fc1 = nn.Linear(64*2*2, 128)
-        self.fc2 = nn.Linear(128, 100)
+        self.fc1 = nn.Linear(64*2*2, 84)
+        self.fc2 = nn.Linear(84, 10)
 
-        self.fc2_fb = nn.Linear(100, 128)
-        self.fc1_fb = nn.Linear(128, 64*2*2)
+        self.fc2_fb = nn.Linear(10, 84)
+        self.fc1_fb = nn.Linear(84, 64*2*2)
         self.deconv4_fb=nn.ConvTranspose2d(in_channels=64,out_channels=32,kernel_size=5,stride=1,padding=2)
         self.deconv3_fb=nn.ConvTranspose2d(in_channels=32,out_channels=16,kernel_size=5,stride=1,padding=2)
         self.deconv2_fb=nn.ConvTranspose2d(in_channels=16,out_channels=6,kernel_size=5,stride=1,padding=2)
@@ -125,9 +125,9 @@ class Net(nn.Module):
 
         output=self.fc2(relu_EF)
 
-        #loss_of_layers= errorB + errorC + errorD + errorE
+        loss_of_layers= errorB + errorC + errorD + errorE
         
-        return output,ft_AB_pc,ft_BC_pc,ft_CD_pc,ft_DE_pc,ft_EF_pc
+        return output,ft_AB_pc,ft_BC_pc,ft_CD_pc,ft_DE_pc,ft_EF_pc,loss_of_layers
 
     def recon_predictive_coding_pass(self,x,ft_AB,ft_BC,ft_CD,ft_DE,beta,gamma,alpha,batch_size):
 

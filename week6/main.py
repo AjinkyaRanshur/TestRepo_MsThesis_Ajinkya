@@ -110,11 +110,12 @@ def fine_tuning_using_classification(net,save_dir, trainloader, testloader,confi
     for iteration_index in range(8):
         print(f"The Iteration{iteration_index}:")
         print("================================")
-        net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}.pth',
-        map_location=device,weights_only=True))
-        train_bool=recon_pc_training(net,trainloader,testloader,gamma,beta,alpha,"fine_tuning",config)
+        net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',
+        map_location=config.device,weights_only=True))
+        train_bool=recon_pc_training(net,trainloader,testloader,"fine_tuning",config)
         if train_bool == True:
             torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
+            print("Model Saved Sucessfully")
 
     return train_bool
 
@@ -128,6 +129,9 @@ def main():
     net = Net().to(config.device)
     wandb.watch(net, log="all", log_freq=10)
     trainloader, testloader = train_test_loader(config.datasetpath)
+
+    if config.training_condition == "fine_tuning_classification":
+        train_bool = fine_tuning_using_classification(net,save_dir, trainloader, testloader,config)
 
     for iteration_index in range(8):
         
@@ -143,9 +147,6 @@ def main():
                 torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
                 print("Training Sucessful")
                 
-
-    if config.training_condition == "fine_tuning":
-        train_bool = fine_tuning_using_classification(net,save_dir, trainloader, testloader,config)
 
     end = time.time()
     diff = end - start

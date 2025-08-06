@@ -1,0 +1,14 @@
+{"time":"2025-08-04T16:21:15.297628322+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-08-04T16:21:15.635012519+02:00","level":"INFO","msg":"stream: created new stream","id":"710pujmw"}
+{"time":"2025-08-04T16:21:15.635082116+02:00","level":"INFO","msg":"stream: started","id":"710pujmw"}
+{"time":"2025-08-04T16:21:15.635127521+02:00","level":"INFO","msg":"sender: started","stream_id":"710pujmw"}
+{"time":"2025-08-04T16:21:15.635113202+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"710pujmw"}
+{"time":"2025-08-04T16:21:15.635125882+02:00","level":"INFO","msg":"handler: started","stream_id":"710pujmw"}
+{"time":"2025-08-04T21:24:01.384955998+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Ajinkya_Training_Model_Reports/710pujmw/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-08-04T22:38:57.065440808+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-04T22:38:57.321012786+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-08-04T22:38:57.326888269+02:00","level":"INFO","msg":"stream: closing","id":"710pujmw"}
+{"time":"2025-08-04T22:38:57.326905496+02:00","level":"INFO","msg":"handler: closed","stream_id":"710pujmw"}
+{"time":"2025-08-04T22:38:57.326917273+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"710pujmw"}
+{"time":"2025-08-04T22:38:57.326980936+02:00","level":"INFO","msg":"sender: closed","stream_id":"710pujmw"}
+{"time":"2025-08-04T22:38:57.326993718+02:00","level":"INFO","msg":"stream: closed","id":"710pujmw"}

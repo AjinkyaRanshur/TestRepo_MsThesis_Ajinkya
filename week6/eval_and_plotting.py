@@ -101,10 +101,12 @@ def recon_pc_loss(net,dataloader,config):
     return test_loss
 
 
-def eval_pc_accuracy(net,dataloader,config):
+def eval_pc_accuracy(net,dataloader,config,criterion):
 
     total_correct = np.zeros(config.timesteps + 1)  # ✅ Initialize here
     total_samples = 0  # ✅ Initialize here
+    running_loss=[]
+    val_recon_loss=[]
 
     for batch_id,batch in enumerate(dataloader):
         images,labels=batch
@@ -129,19 +131,30 @@ def eval_pc_accuracy(net,dataloader,config):
 
         _,predicted=torch.max(output,1)
         total_correct[0]+=(predicted==labels).sum().item()
-
+        final_loss=0
+        recon_loss=0
         for i in range(config.timesteps):  
-            output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
+            output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,loss_of_layers=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
+            loss=criterion(output,labels)
+            final_loss+=loss
+            recon_loss+=loss_of_layers
             _,predicted=torch.max(output,1)
             total_correct[i+1]+=(predicted==labels).sum().item()
 
         total_samples+=labels.size(0)
+        final_loss=final_loss/config.timesteps
+        recon_loss=recon_loss/config.timesteps
+        running_loss.append(final_loss.item())
+        val_recon_loss.append(recon_loss.item())
 
     accuracy=[100 * c /total_samples for c in total_correct]    
     accuracy=np.array(accuracy)
     mean_acc=np.mean(accuracy)
+    test_loss=np.mean(running_loss)
+    test_recon_loss=np.mean(val_recon_loss)
 
-    return mean_acc
+
+    return mean_acc,test_loss,test_recon_loss
 
 
 def recon_loss(net,dataloader,batch_size,device,criterion_recon):

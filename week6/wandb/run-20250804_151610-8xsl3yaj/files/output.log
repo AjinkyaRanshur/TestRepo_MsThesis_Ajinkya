@@ -1,0 +1,120 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:0.13420037123019737
+Test Loss 0.06543538776002353
+Epoch:1 and AverageLoss:0.05531031905156572
+Test Loss 0.04766425523388235
+Epoch:2 and AverageLoss:0.04306051802947698
+Test Loss 0.04504170745045324
+Epoch:3 and AverageLoss:0.037043496413761395
+Test Loss 0.033673878971345814
+Epoch:4 and AverageLoss:0.032510980473035744
+Test Loss 0.03031402375973478
+Epoch:5 and AverageLoss:0.029673025640837677
+Test Loss 0.028375495767480212
+Epoch:6 and AverageLoss:0.027588852612144502
+Test Loss 0.025880343033165873
+Epoch:7 and AverageLoss:0.02558046854232126
+Test Loss 0.02416860588083539
+Epoch:8 and AverageLoss:0.023929543931351598
+Test Loss 0.022728769863142245
+Epoch:9 and AverageLoss:0.022886685922246457
+Test Loss 0.023283683447332323
+Epoch:10 and AverageLoss:0.021753900905932915
+Test Loss 0.021822622187341316
+Epoch:11 and AverageLoss:0.020622266704202308
+Test Loss 0.02026271431034879
+Epoch:12 and AverageLoss:0.019903351212172862
+Test Loss 0.018767884496269347
+Epoch:13 and AverageLoss:0.019232421246407283
+Test Loss 0.02081229669761054
+Epoch:14 and AverageLoss:0.01864655983284154
+Test Loss 0.021663556394131877
+Epoch:15 and AverageLoss:0.0177640463189815
+Test Loss 0.01722385707205232
+Epoch:16 and AverageLoss:0.017340771510930317
+Test Loss 0.016992421243104
+Epoch:17 and AverageLoss:0.017131868828459622
+Test Loss 0.01631808942301741
+Epoch:18 and AverageLoss:0.016335603719115105
+Test Loss 0.016078086369494093
+Epoch:19 and AverageLoss:0.016110368616059613
+Test Loss 0.01673839811848689
+Model Save Sucessfully
+Training Sucessful
+The Iteration1:
+================================
+Epoch:0 and AverageLoss:0.015830261368409294
+Test Loss 0.015182370084184634
+Epoch:1 and AverageLoss:0.015488692294911045
+Test Loss 0.015290051439329039
+Epoch:2 and AverageLoss:0.015077103984535045
+Test Loss 0.014676053135926966
+Epoch:3 and AverageLoss:0.014879059801568917
+Test Loss 0.014512045980914485
+Epoch:4 and AverageLoss:0.01463039251058684
+Test Loss 0.014137043299365647
+Epoch:5 and AverageLoss:0.014195490466511768
+Test Loss 0.014569114374963544
+Epoch:6 and AverageLoss:0.014114237566719123
+Test Loss 0.013704094528868983
+Epoch:7 and AverageLoss:0.013912834465275031
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week6/main.py", line 173, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week6/main.py", line 141, in main
+    train_bool = training_using_reconstruction_and_predicitve_coding(net,save_dir, trainloader, testloader,config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week6/main.py", line 101, in training_using_reconstruction_and_predicitve_coding
+    recon_pc_training(net,trainloader,testloader,"train",config)
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week6/recon_pc_train.py", line 65, in recon_pc_training
+    for batch_idx,batch in enumerate(testloader):
+                           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 701, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 757, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torchvision/datasets/cifar.py", line 119, in __getitem__
+    img = self.transform(img)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torchvision/transforms/transforms.py", line 95, in __call__
+    img = t(img)
+          ^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torchvision/transforms/transforms.py", line 277, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torchvision/transforms/functional.py", line 350, in normalize
+    return F_t.normalize(tensor, mean=mean, std=std, inplace=inplace)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torchvision/transforms/_functional_tensor.py", line 917, in normalize
+    tensor = tensor.clone()
+             ^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7fd79c553420>
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 54, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 182, in teardown
+    self._router.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:

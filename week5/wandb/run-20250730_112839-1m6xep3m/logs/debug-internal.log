@@ -4,3 +4,4 @@
 {"time":"2025-07-30T11:28:40.303834779+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"1m6xep3m"}
 {"time":"2025-07-30T11:28:40.30385339+02:00","level":"INFO","msg":"handler: started","stream_id":"1m6xep3m"}
 {"time":"2025-07-30T11:28:40.303876836+02:00","level":"INFO","msg":"sender: started","stream_id":"1m6xep3m"}
+{"time":"2025-07-30T11:40:53.655352101+02:00","level":"INFO","msg":"stream: closing","id":"1m6xep3m"}

@@ -5,3 +5,23 @@ The Iteration0:
 ================================
 Epoch:0 and AverageLoss:4.062617586701728
 Epoch:1 and AverageLoss:2.2430958692984815
+Epoch:2 and AverageLoss:2.053005448387712
+Epoch:3 and AverageLoss:1.9179824554097011
+Epoch:4 and AverageLoss:1.7814994257734256
+Epoch:5 and AverageLoss:1.685640978691218
+Epoch:6 and AverageLoss:1.6113642417561367
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 305, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 247, in main
+    train_bool = fine_tuning(save_dir, trainloader, testloader, net,epochs,seed,device,timesteps,batch_size,noise_type,noise_param,model_path)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 161, in fine_tuning
+    train_bool = training_using_reconstruction_and_predicitve_coding(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/main.py", line 137, in training_using_reconstruction_and_predicitve_coding
+    recon_pc_training(
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week5/recon_pc_train.py", line 149, in recon_pc_training
+    total_correct[i+1]+=(predicted==labels).sum().item()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

@@ -101,11 +101,10 @@ def recon_pc_loss(net,dataloader,batch_size,beta,gamma,alpha,device,criterion,ti
     return test_loss
 
 
-def eval_pc_accuracy(net,dataloader,batch_size,beta,gamma,alpha,noise_type,noise_param,device,timesteps):
-
+def eval_pc_accuracy(net,dataloader,batch_size,beta,gamma,alpha,noise_type,noise_param,device,timesteps,criterion):
     total_correct = np.zeros(timesteps + 1)  # ✅ Initialize here
     total_samples = 0  # ✅ Initialize here
-
+    running_loss=[]
     for batch_id,batch in enumerate(dataloader):
         images,labels=batch
         #Adding noise to the image
@@ -126,22 +125,28 @@ def eval_pc_accuracy(net,dataloader,batch_size,beta,gamma,alpha,noise_type,noise
         ft_CD_pc_temp = ft_CD_pc_temp.requires_grad_(True)
         ft_DE_pc_temp = ft_DE_pc_temp.requires_grad_(True)
         ft_EF_pc_temp = ft_EF_pc_temp.requires_grad_(True)
-
+        
+        final_loss=0
         _,predicted=torch.max(output,1)
         total_correct[0]+=(predicted==labels).sum().item()
-
+        
         for i in range(timesteps):  
             output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,beta,gamma,alpha,images.size(0))
+            loss=criterion(output,labels)
+            final_loss+=loss
             _,predicted=torch.max(output,1)
             total_correct[i+1]+=(predicted==labels).sum().item()
 
+        final_loss=final_loss/timesteps
         total_samples+=labels.size(0)
+        running_loss.append(final_loss.item())
 
     accuracy=[100 * c /total_samples for c in total_correct]    
     accuracy=np.array(accuracy)
     mean_acc=np.mean(accuracy)
+    test_loss=np.mean(running_loss)
 
-    return mean_acc
+    return mean_acc,test_loss
 
 
 def recon_loss(net,dataloader,batch_size,device,criterion_recon):
