@@ -161,8 +161,8 @@ def recon_pc_training(net,trainloader,testloader,lr,momentum,save_dir,gamma,beta
             train_accuracy=np.mean(accuracy)
             avg_loss=np.mean(running_loss)
             print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
-            test_loss=recon_pc_loss(net,testloader,batch_size,beta,gamma,alpha,device,criterion,timesteps)
-            test_accuracy=eval_pc_accuracy(net,testloader,batch_size,beta,gamma,alpha,noise_type,noise_param,device,timesteps)
+
+            test_accuracy,test_loss=eval_pc_accuracy(net,testloader,batch_size,beta,gamma,alpha,noise_type,noise_param,device,timesteps,criterion)
             metrics={"Reconstruction_with_Predictive_Coding/fine_tuned_train_loss":avg_loss,"Reconstruction_with_Predictive_Coding/fine_tuned_test_loss":test_loss,"Reconstruction_with_Predictive_Coding/fine_tuned_Testing_accuracy":test_accuracy,"Reconstruction_with_Predictive_Coding/fine_tuned_Training_accuracy":train_accuracy }
             wandb.log(metrics)
             loss_arr.append(avg_loss)
