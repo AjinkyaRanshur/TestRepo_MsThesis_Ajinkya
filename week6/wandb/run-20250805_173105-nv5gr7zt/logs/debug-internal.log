@@ -1,7 +1,0 @@
-{"time":"2025-08-05T17:31:05.477616315+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
-{"time":"2025-08-05T17:31:05.822313845+02:00","level":"INFO","msg":"stream: created new stream","id":"nv5gr7zt"}
-{"time":"2025-08-05T17:31:05.822398193+02:00","level":"INFO","msg":"stream: started","id":"nv5gr7zt"}
-{"time":"2025-08-05T17:31:05.822415721+02:00","level":"INFO","msg":"sender: started","stream_id":"nv5gr7zt"}
-{"time":"2025-08-05T17:31:05.822417162+02:00","level":"INFO","msg":"handler: started","stream_id":"nv5gr7zt"}
-{"time":"2025-08-05T17:31:05.82244286+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"nv5gr7zt"}
-{"time":"2025-08-06T05:35:39.598119231+02:00","level":"INFO","msg":"api: retrying HTTP error","status":429,"url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Ajinkya_Training_Model_Reports/nv5gr7zt/file_stream","body":"{\"error\":\"rate limit exceeded\"}"}
