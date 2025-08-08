@@ -137,7 +137,7 @@ def eval_pc_accuracy(net,dataloader,config,criterion):
             output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,loss_of_layers=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
             loss=criterion(output,labels)
             final_loss+=loss
-            recon_loss+=loss_of_layers
+            recon_loss+=(loss_of_layers/4.0)
             _,predicted=torch.max(output,1)
             total_correct[i+1]+=(predicted==labels).sum().item()
 

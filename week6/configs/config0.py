@@ -3,10 +3,11 @@ import torch
 batch_size = 128
 epochs = 20
 seed = 42
-lr = 0.005 
+lr = 0.01 
 momentum = 0.9
 datasetpath = '/home/ajinkya/datasets'
 training_condition = "fine_tuning_classification"
+#training_condition="random_network_testing"
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
 print(f"CUDA available: {torch.cuda.is_available()}")
@@ -26,8 +27,8 @@ alphaset = [[0.01, 0.01, 0.01, 0.01]]
 model_name = "reconstruction_pc_class_train_balanced"
 noise_type="s&p"
 noise_param=0.0
-experiment_name = "Classification training Over 10 Timesteps with balanced Hyperparameters On Pretrained Models"
-
+#experiment_name = "Classification training Over 10 Timesteps with balanced Hyperparameters On Pretrained Models"
+experiment_name= "only dense fwd layers optimization"
 load_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week6/models/zp_models/fine_tune_classification_models/timesteps_10"
 save_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week6/models/zp_models/fine_tune_classification_models/timesteps_10"
 
