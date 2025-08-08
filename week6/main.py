@@ -13,7 +13,7 @@ from fwd_train import feedfwd_training
 from back_train import feedback_training
 from pc_train import class_pc_training
 from recon_pc_train import recon_pc_training
-from eval_and_plotting import plot_multiple_metrics
+from eval_and_plotting import eval_pc_accuracy,recon_pc_loss
 import random
 import os
 import sys
@@ -105,6 +105,20 @@ def training_using_reconstruction_and_predicitve_coding(net,save_dir, trainloade
     return True
 
 
+def reconstruction_testing_on_random_network(net,save_dir, trainloader, testloader,config):
+    
+    criterion=nn.CrossEntropyLoss()
+    print("This is a test to see the loss values when the network is not trained at all")
+    for i in range(10):
+        zp_test_loss=recon_pc_loss(net,trainloader,config)
+        print(f"Zp Model Recon Loss for epoch{i}",zp_test_loss)
+        pc_test_accuracy,pc_test_loss,pc_test_recon_loss=eval_pc_accuracy(net,trainloader,config,criterion)
+        print("My Preditive Coding Model with Dense layers")
+        print(f"Accuracy:{pc_test_accuracy} and Recon Loss:{pc_test_recon_loss}")
+
+    return None
+
+
 def fine_tuning_using_classification(net,save_dir, trainloader, testloader,config):
     
     for iteration_index in range(8):
@@ -132,6 +146,10 @@ def main():
 
     if config.training_condition == "fine_tuning_classification":
         train_bool = fine_tuning_using_classification(net,save_dir, trainloader, testloader,config)
+
+    if config.training_condition == "random_network_testing":
+            train_bool = reconstruction_testing_on_random_network(net,save_dir, trainloader, testloader,config)
+
 
     for iteration_index in range(8):
         
