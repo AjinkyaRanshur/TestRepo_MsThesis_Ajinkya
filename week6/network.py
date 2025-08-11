@@ -19,8 +19,8 @@ class Net(nn.Module):
         self.conv4= nn.Conv2d(in_channels=32,out_channels= 64,kernel_size= 5,stride=1,padding=2)
         self.fc1 = nn.Linear(64*2*2, 84)
         self.fc2 = nn.Linear(84, 10)
-
-        self.fc2_fb = nn.Linear(10, 84)
+        
+        self.fc2_fb = nn.Linear(10,84)
         self.fc1_fb = nn.Linear(84, 64*2*2)
         self.deconv4_fb=nn.ConvTranspose2d(in_channels=64,out_channels=32,kernel_size=5,stride=1,padding=2)
         self.deconv3_fb=nn.ConvTranspose2d(in_channels=32,out_channels=16,kernel_size=5,stride=1,padding=2)
@@ -124,6 +124,10 @@ class Net(nn.Module):
         relu_EF=F.relu(ft_EF_pc)
 
         output=self.fc2(relu_EF)
+        
+        #relu_FG=F.relu(ft_FG_pc)
+
+        #output=self.fc3(relu_FG)
 
         loss_of_layers= errorB + errorC + errorD + errorE
         
