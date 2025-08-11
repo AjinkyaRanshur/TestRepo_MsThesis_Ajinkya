@@ -20,3 +20,10 @@ config: {'learning_rate': 0.01, 'architecture': 'CNN', 'dataset': 'CIFAR-10', 'e
 2025-08-08 15:19:48,509 INFO    MainThread:3598883 [wandb_run.py:_redirect():2398] Redirects installed.
 2025-08-08 15:19:48,513 INFO    MainThread:3598883 [wandb_init.py:init():1075] run started, returning control to user process
 2025-08-08 15:19:51,394 INFO    MainThread:3598883 [wandb_watch.py:_watch():70] Watching
+2025-08-08 20:13:39,326 INFO    MainThread:3598883 [wandb_run.py:_finish():2224] finishing run ranshur-ajinkya-res-cerco/Ajinkya_Training_Model_Reports/9uwd8nnp
+2025-08-08 20:13:39,326 INFO    MainThread:3598883 [wandb_run.py:_atexit_cleanup():2423] got exitcode: 0
+2025-08-08 20:13:39,326 INFO    MainThread:3598883 [wandb_run.py:_restore():2405] restore
+2025-08-08 20:13:39,326 INFO    MainThread:3598883 [wandb_run.py:_restore():2411] restore done
+2025-08-08 20:13:40,217 INFO    MainThread:3598883 [wandb_run.py:_footer_history_summary_info():3903] rendering history
+2025-08-08 20:13:40,218 INFO    MainThread:3598883 [wandb_run.py:_footer_history_summary_info():3935] rendering summary
+2025-08-08 20:13:40,219 INFO    MainThread:3598883 [wandb_run.py:_footer_sync_info():3864] logging synced files
