@@ -1,0 +1,84 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:2.303300778274341
+Epoch:1 and AverageLoss:2.2998606268402257
+Epoch:2 and AverageLoss:2.2892173458548153
+Epoch:3 and AverageLoss:2.178829231530504
+Epoch:4 and AverageLoss:1.9946184383938685
+Epoch:5 and AverageLoss:1.8187949197066715
+Epoch:6 and AverageLoss:1.6817531655816471
+Epoch:7 and AverageLoss:1.6045789669846635
+Epoch:8 and AverageLoss:1.5487801415840987
+Epoch:9 and AverageLoss:1.493244712310069
+Epoch:10 and AverageLoss:1.4424734533290424
+Epoch:11 and AverageLoss:1.3981602173632064
+Epoch:12 and AverageLoss:1.353877915140918
+Epoch:13 and AverageLoss:1.309320255618571
+Epoch:14 and AverageLoss:1.2735746211712928
+Epoch:15 and AverageLoss:1.2340717913244692
+Epoch:16 and AverageLoss:1.1986380248423427
+Epoch:17 and AverageLoss:1.1641640833881506
+Epoch:18 and AverageLoss:1.1337723722848136
+Epoch:19 and AverageLoss:1.102629450885841
+Training Sucessful
+The Iteration1:
+================================
+Epoch:0 and AverageLoss:1.0723188774055228
+Epoch:1 and AverageLoss:1.040058244677151
+Epoch:2 and AverageLoss:1.0187306183073528
+Epoch:3 and AverageLoss:0.9846407914405588
+Epoch:4 and AverageLoss:0.9672094278628259
+Epoch:5 and AverageLoss:0.9391194504240284
+Epoch:6 and AverageLoss:0.91895460442204
+Epoch:7 and AverageLoss:0.8951764638771487
+Epoch:8 and AverageLoss:0.8814580182895027
+Epoch:9 and AverageLoss:0.8612932090259269
+Epoch:10 and AverageLoss:0.8378223285955542
+Epoch:11 and AverageLoss:0.8161335052431696
+Epoch:12 and AverageLoss:0.7971494470715828
+Epoch:13 and AverageLoss:0.7777430573692712
+Epoch:14 and AverageLoss:0.7628781922028193
+Epoch:15 and AverageLoss:0.750681508989895
+Epoch:16 and AverageLoss:0.7286984807694964
+Epoch:17 and AverageLoss:0.7140541382305458
+Epoch:18 and AverageLoss:0.6940911262846359
+Epoch:19 and AverageLoss:0.680507208685131
+Training Sucessful
+The Iteration2:
+================================
+Epoch:0 and AverageLoss:0.6659833857470461
+Epoch:1 and AverageLoss:0.6499565593574358
+Epoch:2 and AverageLoss:0.6318477950894924
+Epoch:3 and AverageLoss:0.6156792706998108
+Epoch:4 and AverageLoss:0.6059106843703238
+Epoch:5 and AverageLoss:0.585586794197102
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/andreas_study/main.py", line 225, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/andreas_study/main.py", line 193, in main
+    train_bool = class_pc_training(net,trainloader,testloader,"train",config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/andreas_study/pc_train.py", line 67, in class_pc_training
+    test_accuracy,test_loss,_=eval_pc_accuracy(net,testloader,config,criterion)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/andreas_study/eval_and_plotting.py", line 142, in eval_pc_accuracy
+    total_correct[i+1]+=(predicted==labels).sum().item()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7fb990c64c20>
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 54, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 182, in teardown
+    self._router.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:

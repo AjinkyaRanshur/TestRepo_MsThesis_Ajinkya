@@ -1,0 +1,143 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:2.303713891817176
+Epoch:1 and AverageLoss:2.300681001390033
+Epoch:2 and AverageLoss:2.2941320985174545
+Epoch:3 and AverageLoss:2.226359704571307
+Epoch:4 and AverageLoss:2.026868722322957
+Epoch:5 and AverageLoss:1.8773978411998895
+Epoch:6 and AverageLoss:1.7505052425062564
+Epoch:7 and AverageLoss:1.6617353087495965
+Epoch:8 and AverageLoss:1.588818813223973
+Epoch:9 and AverageLoss:1.5368646075353598
+Epoch:10 and AverageLoss:1.485361918159153
+Epoch:11 and AverageLoss:1.4305676639537372
+Epoch:12 and AverageLoss:1.3864337602234862
+Epoch:13 and AverageLoss:1.340857460675642
+Epoch:14 and AverageLoss:1.3012485068167567
+Epoch:15 and AverageLoss:1.258418759878944
+Epoch:16 and AverageLoss:1.217182941448963
+Epoch:17 and AverageLoss:1.189234519706053
+Epoch:18 and AverageLoss:1.1505505805430205
+Epoch:19 and AverageLoss:1.1143191354658903
+Training Sucessful
+The Iteration1:
+================================
+Epoch:0 and AverageLoss:1.0864442213417014
+Epoch:1 and AverageLoss:1.0610187090266392
+Epoch:2 and AverageLoss:1.0367322536685584
+Epoch:3 and AverageLoss:1.015958251703121
+Epoch:4 and AverageLoss:0.9906412969769725
+Epoch:5 and AverageLoss:0.967000593004934
+Epoch:6 and AverageLoss:0.947925695830294
+Epoch:7 and AverageLoss:0.9252882163847804
+Epoch:8 and AverageLoss:0.903933074163354
+Epoch:9 and AverageLoss:0.8925695638827351
+Epoch:10 and AverageLoss:0.8731376411359938
+Epoch:11 and AverageLoss:0.8496157700753273
+Epoch:12 and AverageLoss:0.8373728793905214
+Epoch:13 and AverageLoss:0.8180561870565195
+Epoch:14 and AverageLoss:0.7993808277427693
+Epoch:15 and AverageLoss:0.7882188500650703
+Epoch:16 and AverageLoss:0.7646062496068228
+Epoch:17 and AverageLoss:0.7564722363601255
+Epoch:18 and AverageLoss:0.7385907606090731
+Epoch:19 and AverageLoss:0.7207335719976888
+Training Sucessful
+The Iteration2:
+================================
+Epoch:0 and AverageLoss:0.7049348002199627
+Epoch:1 and AverageLoss:0.6904580582438222
+Epoch:2 and AverageLoss:0.667791430983702
+Epoch:3 and AverageLoss:0.6550713833945486
+Epoch:4 and AverageLoss:0.64729419243915
+Epoch:5 and AverageLoss:0.6270975895854823
+Epoch:6 and AverageLoss:0.6194851867987982
+Epoch:7 and AverageLoss:0.5997022987174256
+Epoch:8 and AverageLoss:0.5869875265966595
+Epoch:9 and AverageLoss:0.568056643618952
+Epoch:10 and AverageLoss:0.5580830109851135
+Epoch:11 and AverageLoss:0.5473499743987227
+Epoch:12 and AverageLoss:0.5305682538872789
+Epoch:13 and AverageLoss:0.5166439537502006
+Epoch:14 and AverageLoss:0.49744517251353737
+Epoch:15 and AverageLoss:0.4892851470986291
+Epoch:16 and AverageLoss:0.46599598263230774
+Epoch:17 and AverageLoss:0.45670110261653696
+Epoch:18 and AverageLoss:0.44668797561732093
+Epoch:19 and AverageLoss:0.4290348524632661
+Training Sucessful
+The Iteration3:
+================================
+Epoch:0 and AverageLoss:0.4128335692236186
+Epoch:1 and AverageLoss:0.40913781558003876
+Epoch:2 and AverageLoss:0.397835106000571
+Epoch:3 and AverageLoss:0.38411924879416787
+Epoch:4 and AverageLoss:0.3763610003778087
+Epoch:5 and AverageLoss:0.3558117738541435
+Epoch:6 and AverageLoss:0.3517058113651812
+Epoch:7 and AverageLoss:0.3270042843144873
+Epoch:8 and AverageLoss:0.31777799411502944
+Epoch:9 and AverageLoss:0.3129965887045312
+Epoch:10 and AverageLoss:0.3092253293146563
+Epoch:11 and AverageLoss:0.2928633535533305
+Epoch:12 and AverageLoss:0.27895734870753935
+Epoch:13 and AverageLoss:0.2684622490992936
+Epoch:14 and AverageLoss:0.26126119917463464
+Epoch:15 and AverageLoss:0.26556285421180603
+Epoch:16 and AverageLoss:0.24273246521001582
+Epoch:17 and AverageLoss:0.2450546059385895
+Epoch:18 and AverageLoss:0.21744042915075332
+Epoch:19 and AverageLoss:0.21154050092639215
+Training Sucessful
+The Iteration4:
+================================
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/andreas_study/main.py", line 225, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/andreas_study/main.py", line 193, in main
+    train_bool = class_pc_training(net,trainloader,testloader,"train",config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/andreas_study/pc_train.py", line 53, in class_pc_training
+    total_correct[i+1]+=(predicted==labels).sum().item()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7f7521960c20>
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 54, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 182, in teardown
+    self._router.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:
+Exception ignored in atexit callback: <bound method finalize._exitfunc of <class 'weakref.finalize'>>
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/weakref.py", line 666, in _exitfunc
+    f()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1176, in _close_pool_connections
+    conn.close()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/urllib3/connection.py", line 322, in close
+    super().close()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/http/client.py", line 1022, in close
+    sock.close()   # close it manually... there may be other refs
+    ^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/socket.py", line 505, in close
+    self._real_close()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/ssl.py", line 1310, in _real_close
+    super()._real_close()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/socket.py", line 497, in _real_close
+    def _real_close(self, _ss=_socket.socket):
+
+KeyboardInterrupt:

@@ -1,0 +1,75 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:2.303693009882557
+Epoch:1 and AverageLoss:2.2999509110742684
+Epoch:2 and AverageLoss:2.2841719437618644
+Epoch:3 and AverageLoss:2.1345609608961613
+Epoch:4 and AverageLoss:1.94690391360497
+Epoch:5 and AverageLoss:1.816348955339315
+Epoch:6 and AverageLoss:1.6821563669613429
+Epoch:7 and AverageLoss:1.5960989156547858
+Epoch:8 and AverageLoss:1.524078758395448
+Epoch:9 and AverageLoss:1.4619396657359844
+Epoch:10 and AverageLoss:1.417412439171149
+Epoch:11 and AverageLoss:1.3625058020864214
+Epoch:12 and AverageLoss:1.3053621005038827
+Epoch:13 and AverageLoss:1.2617253880111539
+Epoch:14 and AverageLoss:1.2282662355169958
+Epoch:15 and AverageLoss:1.1836774410033712
+Epoch:16 and AverageLoss:1.1447312016876376
+Epoch:17 and AverageLoss:1.1193155171919842
+Epoch:18 and AverageLoss:1.0842890222461856
+Epoch:19 and AverageLoss:1.04136903614414
+Training Sucessful
+The Iteration1:
+================================
+Epoch:0 and AverageLoss:1.0205654410683378
+Epoch:1 and AverageLoss:0.9926765250916384
+Epoch:2 and AverageLoss:0.9622425668093623
+Epoch:3 and AverageLoss:0.930897094765488
+Epoch:4 and AverageLoss:0.9061959689977218
+Epoch:5 and AverageLoss:0.8808161458190606
+Epoch:6 and AverageLoss:0.8646682610317152
+Epoch:7 and AverageLoss:0.8290904644800692
+Epoch:8 and AverageLoss:0.8245566280520692
+Epoch:9 and AverageLoss:0.7932235543825188
+Epoch:10 and AverageLoss:0.7679581988830956
+Epoch:11 and AverageLoss:0.7509655058383942
+Epoch:12 and AverageLoss:0.7329543871538979
+Epoch:13 and AverageLoss:0.7226894412721906
+Epoch:14 and AverageLoss:0.6896026408185765
+Epoch:15 and AverageLoss:0.6792243816414658
+Epoch:16 and AverageLoss:0.6475915154632257
+Epoch:17 and AverageLoss:0.6334143159340839
+Epoch:18 and AverageLoss:0.6170966454914638
+Epoch:19 and AverageLoss:0.595690409139711
+Training Sucessful
+The Iteration2:
+================================
+Epoch:0 and AverageLoss:0.587760965130767
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/andreas_study/main.py", line 224, in <module>
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/andreas_study/main.py", line 192, in main
+    if config.training_condition == "pc_train":
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/andreas_study/pc_train.py", line 53, in class_pc_training
+    total_correct[i+1]+=(predicted==labels).sum().item()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7f1d0ea84c20>
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 54, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 182, in teardown
+    self._router.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:
