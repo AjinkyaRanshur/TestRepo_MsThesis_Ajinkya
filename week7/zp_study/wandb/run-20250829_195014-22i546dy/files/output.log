@@ -1,0 +1,303 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:0.1952694570812423
+Test Loss 0.09770927729108665
+Epoch:1 and AverageLoss:0.0803964939111334
+Test Loss 0.06777748866360399
+Epoch:2 and AverageLoss:0.06039705622912673
+Test Loss 0.05413686880205251
+Epoch:3 and AverageLoss:0.049779760944264013
+Test Loss 0.04585284763310529
+Epoch:4 and AverageLoss:0.04290965337620672
+Test Loss 0.04015569558626489
+Epoch:5 and AverageLoss:0.03802883028602966
+Test Loss 0.035981910751213
+Epoch:6 and AverageLoss:0.034365820667475386
+Test Loss 0.03278122849385195
+Epoch:7 and AverageLoss:0.03150961306089026
+Test Loss 0.0302408179150352
+Epoch:8 and AverageLoss:0.02921555636693602
+Test Loss 0.028169719808841052
+Epoch:9 and AverageLoss:0.02732385478704177
+Test Loss 0.026442684964100016
+Model Save Sucessfully
+Training Sucessful
+The Iteration1:
+================================
+Epoch:0 and AverageLoss:0.02576728193256099
+Test Loss 0.02501046813175648
+Epoch:1 and AverageLoss:0.02440040686246379
+Test Loss 0.023742730340248423
+Epoch:2 and AverageLoss:0.023218253017653286
+Test Loss 0.022639590893176537
+Epoch:3 and AverageLoss:0.02218159110001896
+Test Loss 0.021666837431773354
+Epoch:4 and AverageLoss:0.02126066723023839
+Test Loss 0.020799523620288585
+Epoch:5 and AverageLoss:0.020438868733470703
+Test Loss 0.02002242004758195
+Epoch:6 and AverageLoss:0.019697162377483705
+Test Loss 0.019319638633463955
+Epoch:7 and AverageLoss:0.019027571058105628
+Test Loss 0.01868087447047988
+Epoch:8 and AverageLoss:0.018416285052743106
+Test Loss 0.01809639561496958
+Epoch:9 and AverageLoss:0.01785291195430262
+Test Loss 0.017558333074933367
+Model Save Sucessfully
+Training Sucessful
+The Iteration2:
+================================
+Epoch:0 and AverageLoss:0.017348247696943295
+Test Loss 0.017072414472416232
+Epoch:1 and AverageLoss:0.01686747882353223
+Test Loss 0.016610338647342935
+Epoch:2 and AverageLoss:0.016422640358376532
+Test Loss 0.016180701777810537
+Epoch:3 and AverageLoss:0.01600493932061869
+Test Loss 0.015778893522352358
+Epoch:4 and AverageLoss:0.01561557301236769
+Test Loss 0.015402510102036634
+Epoch:5 and AverageLoss:0.015249868966829594
+Test Loss 0.015048719011247158
+Epoch:6 and AverageLoss:0.014907491915023236
+Test Loss 0.01471496400529448
+Epoch:7 and AverageLoss:0.014582130667346213
+Test Loss 0.01440038875075458
+Epoch:8 and AverageLoss:0.014274645987374093
+Test Loss 0.01410192563611118
+Epoch:9 and AverageLoss:0.013984598695774517
+Test Loss 0.01381893000930925
+Model Save Sucessfully
+Training Sucessful
+The Iteration3:
+================================
+Epoch:0 and AverageLoss:0.013715670665587916
+Test Loss 0.013556068798503544
+Epoch:1 and AverageLoss:0.01345134343561309
+Test Loss 0.013299969555456427
+Epoch:2 and AverageLoss:0.013198957542705414
+Test Loss 0.013055654749557187
+Epoch:3 and AverageLoss:0.012961921189218531
+Test Loss 0.01282191480498148
+Epoch:4 and AverageLoss:0.01273248477093399
+Test Loss 0.012598789827544478
+Epoch:5 and AverageLoss:0.012514656392947944
+Test Loss 0.012384978240898138
+Epoch:6 and AverageLoss:0.012305910942023214
+Test Loss 0.012180133027177823
+Epoch:7 and AverageLoss:0.012103975405130545
+Test Loss 0.011983320282041273
+Epoch:8 and AverageLoss:0.011908929921267434
+Test Loss 0.011794095870720434
+Epoch:9 and AverageLoss:0.011724962902915142
+Test Loss 0.011612239883198767
+Model Save Sucessfully
+Training Sucessful
+The Iteration4:
+================================
+Epoch:0 and AverageLoss:0.011548603108376645
+Test Loss 0.011441019186867943
+Epoch:1 and AverageLoss:0.011377363582439435
+Test Loss 0.011272429052410247
+Epoch:2 and AverageLoss:0.011213294656761467
+Test Loss 0.011109487259689766
+Epoch:3 and AverageLoss:0.01105074934623278
+Test Loss 0.010952228562364096
+Epoch:4 and AverageLoss:0.010897731410858728
+Test Loss 0.010800808774236637
+Epoch:5 and AverageLoss:0.010747744380246343
+Test Loss 0.010653693181804464
+Epoch:6 and AverageLoss:0.01060228463014602
+Test Loss 0.010511658272316938
+Epoch:7 and AverageLoss:0.010462413668213292
+Test Loss 0.010374611668005775
+Epoch:8 and AverageLoss:0.010326971373785182
+Test Loss 0.010241552256047726
+Epoch:9 and AverageLoss:0.010196321746310615
+Test Loss 0.01011252715664951
+Model Save Sucessfully
+Training Sucessful
+The Iteration5:
+================================
+Epoch:0 and AverageLoss:0.010072140113624466
+Test Loss 0.00999047859465774
+Epoch:1 and AverageLoss:0.009948477091844125
+Test Loss 0.009869229991601992
+Epoch:2 and AverageLoss:0.009828961661557103
+Test Loss 0.00975126460713299
+Epoch:3 and AverageLoss:0.009712454612793214
+Test Loss 0.009637032894865621
+Epoch:4 and AverageLoss:0.009599562534285934
+Test Loss 0.009525949559822867
+Epoch:5 and AverageLoss:0.009489982098321933
+Test Loss 0.009418015132504927
+Epoch:6 and AverageLoss:0.009382475393793315
+Test Loss 0.009313225993721546
+Epoch:7 and AverageLoss:0.009280025499308352
+Test Loss 0.00921081885978391
+Epoch:8 and AverageLoss:0.009179306806057996
+Test Loss 0.009112180658627915
+Epoch:9 and AverageLoss:0.00908017904638215
+Test Loss 0.009014811873718907
+Model Save Sucessfully
+Training Sucessful
+The Iteration6:
+================================
+Epoch:0 and AverageLoss:0.008987040780579953
+Test Loss 0.008922872534375402
+Epoch:1 and AverageLoss:0.008893000158478917
+Test Loss 0.00883077310186021
+Epoch:2 and AverageLoss:0.008803589413623752
+Test Loss 0.008741323836147785
+Epoch:3 and AverageLoss:0.008714511784512902
+Test Loss 0.008654143513899438
+Epoch:4 and AverageLoss:0.008627606866657353
+Test Loss 0.008568918827591063
+Epoch:5 and AverageLoss:0.00854397909072659
+Test Loss 0.008486010428942457
+Epoch:6 and AverageLoss:0.008462143759421833
+Test Loss 0.008404879553738651
+Epoch:7 and AverageLoss:0.008381534341598868
+Test Loss 0.008325697099672088
+Epoch:8 and AverageLoss:0.008302627003911283
+Test Loss 0.008248226328080968
+Epoch:9 and AverageLoss:0.008226328558000305
+Test Loss 0.00817283715675526
+Model Save Sucessfully
+Training Sucessful
+The Iteration7:
+================================
+Epoch:0 and AverageLoss:0.00815371455638991
+Test Loss 0.008100773478987851
+Epoch:1 and AverageLoss:0.00807986007955716
+Test Loss 0.008028535779471262
+Epoch:2 and AverageLoss:0.008009262407994103
+Test Loss 0.007957959247022113
+Epoch:3 and AverageLoss:0.007939434081525601
+Test Loss 0.007889235757668561
+Epoch:4 and AverageLoss:0.007870645438561507
+Test Loss 0.007821495332342537
+Epoch:5 and AverageLoss:0.007802957755839809
+Test Loss 0.007755556067192479
+Epoch:6 and AverageLoss:0.007739441165619571
+Test Loss 0.007690876315618995
+Epoch:7 and AverageLoss:0.007674242917667417
+Test Loss 0.007627593636324134
+Epoch:8 and AverageLoss:0.007611498493901299
+Test Loss 0.007565629656744908
+Epoch:9 and AverageLoss:0.007550749877739288
+Test Loss 0.007505005266800334
+Model Save Sucessfully
+Training Sucessful
+The Iteration8:
+================================
+Epoch:0 and AverageLoss:0.007491067204329059
+Test Loss 0.007446817087033127
+Epoch:1 and AverageLoss:0.007432310612124326
+Test Loss 0.007388536435186486
+Epoch:2 and AverageLoss:0.007374930452755497
+Test Loss 0.007331458975478441
+Epoch:3 and AverageLoss:0.0073176569107662685
+Test Loss 0.007275267663305696
+Epoch:4 and AverageLoss:0.00726191734637865
+Test Loss 0.007220525312225653
+Epoch:5 and AverageLoss:0.007207304832365964
+Test Loss 0.0071668161869143385
+Epoch:6 and AverageLoss:0.007154047763084664
+Test Loss 0.007113713959727107
+Epoch:7 and AverageLoss:0.0071010381969458915
+Test Loss 0.007061834506030324
+Epoch:8 and AverageLoss:0.007050619607129137
+Test Loss 0.0070109500820878185
+Epoch:9 and AverageLoss:0.0069997965327233
+Test Loss 0.006960998365914897
+Model Save Sucessfully
+Training Sucessful
+The Iteration9:
+================================
+Epoch:0 and AverageLoss:0.006951562059886011
+Test Loss 0.006913275911791038
+Epoch:1 and AverageLoss:0.006901965562320884
+Test Loss 0.0068648285291428805
+Epoch:2 and AverageLoss:0.00685409995753442
+Test Loss 0.006817654936421144
+Epoch:3 and AverageLoss:0.006807562338945735
+Test Loss 0.006771000013745661
+Epoch:4 and AverageLoss:0.006761452172408857
+Test Loss 0.006725381152067758
+Epoch:5 and AverageLoss:0.006715621731346449
+Test Loss 0.006680457864569713
+Epoch:6 and AverageLoss:0.006671268603695399
+Test Loss 0.006636302806201238
+Epoch:7 and AverageLoss:0.006627760158227685
+Test Loss 0.00659289643097716
+Epoch:8 and AverageLoss:0.006584334537348784
+Test Loss 0.006550313834148117
+Epoch:9 and AverageLoss:0.006542003114500543
+Test Loss 0.00650834780823015
+Model Save Sucessfully
+Training Sucessful
+The Iteration10:
+================================
+Epoch:0 and AverageLoss:0.006500483111804708
+Test Loss 0.0064681816987599
+Epoch:1 and AverageLoss:0.00645999675568984
+Test Loss 0.00642733783402209
+Epoch:2 and AverageLoss:0.006420055721098048
+Test Loss 0.006387557704708999
+Epoch:3 and AverageLoss:0.006379765700167783
+Test Loss 0.006348219818046576
+Epoch:4 and AverageLoss:0.006341224663731311
+Test Loss 0.006309758270560186
+Epoch:5 and AverageLoss:0.006302169239496255
+Test Loss 0.006271368523328742
+Epoch:6 and AverageLoss:0.006264894905373873
+Test Loss 0.006233804033998447
+Epoch:7 and AverageLoss:0.006228201029360142
+Test Loss 0.006196907715565419
+Epoch:8 and AverageLoss:0.0061908289492416104
+Test Loss 0.006160625144603509
+Epoch:9 and AverageLoss:0.006154510811866854
+Test Loss 0.006125116821001225
+Model Save Sucessfully
+Training Sucessful
+The Iteration11:
+================================
+Epoch:0 and AverageLoss:0.006120176734569509
+Test Loss 0.006090376496645091
+Epoch:1 and AverageLoss:0.006084867146895136
+Test Loss 0.006055508215640542
+Epoch:2 and AverageLoss:0.0060497171059727215
+Test Loss 0.006021340259739869
+Epoch:3 and AverageLoss:0.006016216251541815
+Test Loss 0.00598759991647322
+Epoch:4 and AverageLoss:0.005982035642389751
+Test Loss 0.005954438455025607
+Epoch:5 and AverageLoss:0.005949583430976972
+Test Loss 0.005921534138814181
+Epoch:6 and AverageLoss:0.005916365216274167
+Test Loss 0.005889191698943135
+Epoch:7 and AverageLoss:0.005884364258040628
+Test Loss 0.005857283444014154
+Epoch:8 and AverageLoss:0.005853415159580043
+Test Loss 0.0058259052059412755
+Epoch:9 and AverageLoss:0.005821800141659616
+Test Loss 0.005794891386139619
+Model Save Sucessfully
+Training Sucessful
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/main.py", line 225, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/main.py", line 199, in main
+    accuracy_dict = testing_model(net,trainloader,testloader,config)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/main.py", line 155, in testing_model
+    class_pc_training(net,trainloader,testloader,"test",config)
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/pc_train.py", line 120, in class_pc_training
+    ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 6)

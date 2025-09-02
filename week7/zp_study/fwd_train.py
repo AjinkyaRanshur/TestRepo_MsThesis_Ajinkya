@@ -16,7 +16,7 @@ def feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir,epochs,seed
     net.train()
 
     forward_params = [
-    net.conv1, net.conv2, net.conv3,net.conv4,net.fc1, net.fc2]
+    net.conv1, net.conv2, net.conv3,net.conv4,net.fc1, net.fc2,net.fc3]
 
     for module in forward_params:
         for param in module.parameters():
@@ -45,7 +45,7 @@ def feedfwd_training(net,trainloader,testloader,lr,momentum,save_dir,epochs,seed
             images, labels = batch
             images,labels=images.to(device),labels.to(device)
             optimizer_fwd.zero_grad()
-            ft_AB,ft_BC,ft_CD,ft_DE,ft_EF,ypred = net.feedforward_pass(images,ft_AB,ft_BC,ft_CD,ft_DE)
+            ft_AB,ft_BC,ft_CD,ft_DE,ft_EF,ft_FG,ypred = net.feedforward_pass(images,ft_AB,ft_BC,ft_CD,ft_DE)
             loss = criterion(ypred, labels)
             loss.backward()
             optimizer_fwd.step()
