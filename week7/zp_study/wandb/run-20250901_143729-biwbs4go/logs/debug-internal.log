@@ -1,0 +1,12 @@
+{"time":"2025-09-01T14:37:29.802073765+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-01T14:37:30.180437305+02:00","level":"INFO","msg":"stream: created new stream","id":"biwbs4go"}
+{"time":"2025-09-01T14:37:30.180563267+02:00","level":"INFO","msg":"stream: started","id":"biwbs4go"}
+{"time":"2025-09-01T14:37:30.180589749+02:00","level":"INFO","msg":"handler: started","stream_id":"biwbs4go"}
+{"time":"2025-09-01T14:37:30.180689213+02:00","level":"INFO","msg":"sender: started","stream_id":"biwbs4go"}
+{"time":"2025-09-01T14:37:30.180724729+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"biwbs4go"}
+{"time":"2025-09-01T14:37:37.816069786+02:00","level":"INFO","msg":"stream: closing","id":"biwbs4go"}
+{"time":"2025-09-01T14:37:38.651921641+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-01T14:37:38.862105506+02:00","level":"INFO","msg":"handler: closed","stream_id":"biwbs4go"}
+{"time":"2025-09-01T14:37:38.862189604+02:00","level":"INFO","msg":"sender: closed","stream_id":"biwbs4go"}
+{"time":"2025-09-01T14:37:38.862190652+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"biwbs4go"}
+{"time":"2025-09-01T14:37:38.862347795+02:00","level":"INFO","msg":"stream: closed","id":"biwbs4go"}

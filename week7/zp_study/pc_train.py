@@ -32,7 +32,7 @@ def class_pc_training(net,trainloader,testloader,pc_train_bool,config):
                 ft_CD_pc_temp = torch.zeros(config.batch_size, 32, 8, 8).to(config.device)
                 ft_DE_pc_temp = torch.zeros(config.batch_size,64,4,4).to(config.device)
 
-                ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
+                ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,ft_FG_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
 
                 _,predicted=torch.max(output,1)
                 total_correct[0]+=(predicted==labels).sum().item()
@@ -46,7 +46,7 @@ def class_pc_training(net,trainloader,testloader,pc_train_bool,config):
                 optimizer.zero_grad()
                 final_loss=0
                 for i in range(config.timesteps):
-                    output,ft_AB_pc,ft_BC_pc,ft_CD_pc,ft_DE_pc,ft_EF_pc,_=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
+                    output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,ft_FG_pc_temp,_=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,ft_FG_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
                     loss=criterion(output,labels)
                     final_loss+=loss
                     _,predicted=torch.max(output,1)
@@ -117,7 +117,7 @@ def class_pc_training(net,trainloader,testloader,pc_train_bool,config):
             ft_CD_pc_temp = torch.zeros(config.batch_size, 32, 8, 8)
             ft_DE_pc_temp = torch.zeros(config.batch_size,64,4,4)
 
-            ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
+            ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,ft_FG_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
 
             # Re-enable gradients after feedforward_pass overwrites the tensors
             ft_AB_pc_temp = ft_AB_pc_temp.requires_grad_(True)
@@ -130,7 +130,7 @@ def class_pc_training(net,trainloader,testloader,pc_train_bool,config):
             total_correct[0]+=(predicted==labels).sum().item()
 
             for i in range(config.timesteps):
-                output,ft_AB_pc,ft_BC_pc,ft_CD_pc,ft_DE_pc,ft_EF_pc,_=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
+                output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,ft_FG_pc_temp,_=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,ft_FG_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
                 _,predicted=torch.max(output,1)
                 total_correct[i+1]+=(predicted==labels).sum().item()
 

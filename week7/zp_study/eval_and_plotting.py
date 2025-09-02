@@ -73,7 +73,7 @@ def recon_pc_loss(net,dataloader,config):
         ft_CD_pc_temp = torch.zeros(config.batch_size, 32, 8, 8).to(config.device)
         ft_DE_pc_temp = torch.zeros(config.batch_size,64,4,4).to(config.device)
 
-        ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
+        ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,ft_FG_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
 
         # Re-enable gradients after feedforward_pass overwrites the tensors
         # Only enable gradients for the specific tensors that need them
@@ -120,7 +120,7 @@ def eval_pc_accuracy(net,dataloader,config,criterion):
         ft_CD_pc_temp = torch.zeros(config.batch_size, 32, 8, 8)
         ft_DE_pc_temp = torch.zeros(config.batch_size,64,4,4)
 
-        ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
+        ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,ft_FG_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
 
         # Re-enable gradients after feedforward_pass overwrites the tensors
         ft_AB_pc_temp = ft_AB_pc_temp.requires_grad_(True)
@@ -134,7 +134,7 @@ def eval_pc_accuracy(net,dataloader,config,criterion):
         final_loss=0
         recon_loss=0
         for i in range(config.timesteps):  
-            output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,loss_of_layers=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
+            output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,ft_FG_pc_temp,loss_of_layers=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,ft_FG_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
             loss=criterion(output,labels)
             final_loss+=loss
             recon_loss+=(loss_of_layers/4.0)

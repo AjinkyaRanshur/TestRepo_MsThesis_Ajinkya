@@ -17,11 +17,13 @@ class Net(nn.Module):
         self.conv2 = nn.Conv2d(in_channels=6,out_channels= 16,kernel_size= 5,stride=1,padding=2)
         self.conv3= nn.Conv2d(in_channels=16,out_channels= 32,kernel_size= 5,stride=1,padding=2)
         self.conv4= nn.Conv2d(in_channels=32,out_channels= 64,kernel_size= 5,stride=1,padding=2)
-        self.fc1 = nn.Linear(64*2*2, 84)
-        self.fc2 = nn.Linear(84, 10)
+        self.fc1 = nn.Linear(64*2*2, 128)
+        self.fc2 = nn.Linear(128,64)
+        self.fc3 = nn.Linear(64, 10)
         
-        self.fc2_fb = nn.Linear(10,84)
-        self.fc1_fb = nn.Linear(84, 64*2*2)
+        self.fc3_fb = nn.Linear(10,64)
+        self.fc2_fb = nn.Linear(64,128)
+        self.fc1_fb = nn.Linear(128, 64*2*2)
         self.deconv4_fb=nn.ConvTranspose2d(in_channels=64,out_channels=32,kernel_size=5,stride=1,padding=2)
         self.deconv3_fb=nn.ConvTranspose2d(in_channels=32,out_channels=16,kernel_size=5,stride=1,padding=2)
         self.deconv2_fb=nn.ConvTranspose2d(in_channels=16,out_channels=6,kernel_size=5,stride=1,padding=2)
@@ -43,9 +45,11 @@ class Net(nn.Module):
         ft_DE_flat=torch.flatten(pooled_ft_DE,1)
         ft_EF = self.fc1(ft_DE_flat)
         relu_EF =  F.relu(ft_EF)
-        output = self.fc2(relu_EF)
+        ft_FG = self.fc2(relu_EF)
+        relu_FG = F.relu(ft_FG)
+        output= self.fc3(relu_FG)
 
-        return ft_AB,ft_BC,ft_CD,ft_DE,ft_EF,output
+        return ft_AB,ft_BC,ft_CD,ft_DE,ft_EF,ft_FG,output
     
     def feedback_pass(self,output,ft_AB,ft_BC,ft_CD,ft_DE,ft_EF):   
         ft_FE=self.fc2_fb(output)
@@ -59,7 +63,7 @@ class Net(nn.Module):
 
         return ft_BA, ft_CB, ft_DC, ft_ED,ft_FE,x
 
-    def predictive_coding_pass(self,x,ft_AB,ft_BC,ft_CD,ft_DE,ft_EF,beta,gamma,alpha,batch_size):
+    def predictive_coding_pass(self,x,ft_AB,ft_BC,ft_CD,ft_DE,ft_EF,ft_FG,beta,gamma,alpha,batch_size):
 
         gamma_AB_fwd,gamma_BC_fwd,gamma_CD_fwd,gamma_DE_fwd=gamma[0]
 
@@ -121,13 +125,17 @@ class Net(nn.Module):
 
         ft_EF_pc=self.fc1(ft_DE_flat)
 
-        relu_EF=F.relu(ft_EF_pc)
+        relu_EF = F.relu(ft_EF_pc)
 
-        output=self.fc2(relu_EF)
+        ft_FG_pc = self.fc2(relu_EF)
 
+        relu_FG = F.relu(ft_FG_pc)
+
+        output= self.fc3(relu_FG)
+        
         loss_of_layers= errorB + errorC + errorD + errorE
         
-        return output,ft_AB_pc,ft_BC_pc,ft_CD_pc,ft_DE_pc,ft_EF_pc,loss_of_layers
+        return output,ft_AB_pc,ft_BC_pc,ft_CD_pc,ft_DE_pc,ft_EF_pc,ft_FG_pc,loss_of_layers
 
     def recon_predictive_coding_pass(self,x,ft_AB,ft_BC,ft_CD,ft_DE,beta,gamma,alpha,batch_size):
 

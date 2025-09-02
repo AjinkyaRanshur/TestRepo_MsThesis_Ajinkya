@@ -174,7 +174,7 @@ def main():
             train_bool = reconstruction_testing_on_random_network(net,save_dir, trainloader, testloader,config)
 
     
-    for iteration_index in range(8):
+    for iteration_index in range(12):
         if config.training_condition == None:
             break
         print(f"The Iteration{iteration_index}:")
@@ -196,7 +196,7 @@ def main():
                 print("Training Sucessful")
 
 
-    accuracy_dict = testing_model(net,trainloader,testloader,config)
+    #accuracy_dict = testing_model(net,trainloader,testloader,config)
                 
 
     end = time.time()
