@@ -1,0 +1,171 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:2.3017002987434796
+Epoch:1 and AverageLoss:2.297113428945127
+Epoch:2 and AverageLoss:2.277599254837426
+Epoch:3 and AverageLoss:2.207332342177096
+Epoch:4 and AverageLoss:2.099217196864545
+Epoch:5 and AverageLoss:2.0101726018559294
+Epoch:6 and AverageLoss:1.9732154863874625
+Epoch:7 and AverageLoss:1.943962039240181
+Epoch:8 and AverageLoss:1.9164610165159415
+Epoch:9 and AverageLoss:1.8891928357541408
+Forward Training Succesful
+Training Sucessful
+The Iteration1:
+================================
+Epoch:0 and AverageLoss:1.8593779701710966
+Epoch:1 and AverageLoss:1.8392770836115493
+Epoch:2 and AverageLoss:1.8226674792101927
+Epoch:3 and AverageLoss:1.8034984903872167
+Epoch:4 and AverageLoss:1.7886250891039133
+Epoch:5 and AverageLoss:1.7708991784268937
+Epoch:6 and AverageLoss:1.7601156487794178
+Epoch:7 and AverageLoss:1.7490344660361405
+Epoch:8 and AverageLoss:1.7415922874075067
+Epoch:9 and AverageLoss:1.73309505839482
+Forward Training Succesful
+Training Sucessful
+The Iteration2:
+================================
+Epoch:0 and AverageLoss:1.723321019536089
+Epoch:1 and AverageLoss:1.7175046217715955
+Epoch:2 and AverageLoss:1.713432036092519
+Epoch:3 and AverageLoss:1.707507326779768
+Epoch:4 and AverageLoss:1.6975167340329846
+Epoch:5 and AverageLoss:1.6934225915947838
+Epoch:6 and AverageLoss:1.6885250678757573
+Epoch:7 and AverageLoss:1.680561939773657
+Epoch:8 and AverageLoss:1.6743174233399998
+Epoch:9 and AverageLoss:1.6680342035220408
+Forward Training Succesful
+Training Sucessful
+The Iteration3:
+================================
+Epoch:0 and AverageLoss:1.6673871498278645
+Epoch:1 and AverageLoss:1.6626796048620474
+Epoch:2 and AverageLoss:1.6560113606855387
+Epoch:3 and AverageLoss:1.6510260757582877
+Epoch:4 and AverageLoss:1.6499784529361579
+Epoch:5 and AverageLoss:1.6455185437751243
+Epoch:6 and AverageLoss:1.643064031820468
+Epoch:7 and AverageLoss:1.637493320133375
+Epoch:8 and AverageLoss:1.6335225364436274
+Epoch:9 and AverageLoss:1.632567126122887
+Forward Training Succesful
+Training Sucessful
+The Iteration4:
+================================
+Epoch:0 and AverageLoss:1.6267921741661209
+Epoch:1 and AverageLoss:1.6220792894778044
+Epoch:2 and AverageLoss:1.6225596535236328
+Epoch:3 and AverageLoss:1.616018230347987
+Epoch:4 and AverageLoss:1.6126310590587918
+Epoch:5 and AverageLoss:1.611096981541275
+Epoch:6 and AverageLoss:1.6084059242092434
+Epoch:7 and AverageLoss:1.6070941076864063
+Epoch:8 and AverageLoss:1.6023279870562541
+Epoch:9 and AverageLoss:1.6002783464348835
+Forward Training Succesful
+Training Sucessful
+The Iteration5:
+================================
+Epoch:0 and AverageLoss:1.5944316664620128
+Epoch:1 and AverageLoss:1.598327369031394
+Epoch:2 and AverageLoss:1.5927753399705034
+Epoch:3 and AverageLoss:1.587356722263424
+Epoch:4 and AverageLoss:1.5877539739584374
+Epoch:5 and AverageLoss:1.5837662305368487
+Epoch:6 and AverageLoss:1.5832134915129912
+Epoch:7 and AverageLoss:1.5767559935064877
+Epoch:8 and AverageLoss:1.5757440926168886
+Epoch:9 and AverageLoss:1.5706843134692259
+Forward Training Succesful
+Training Sucessful
+The Iteration6:
+================================
+Epoch:0 and AverageLoss:1.5719761101486127
+Epoch:1 and AverageLoss:1.5686357435972795
+Epoch:2 and AverageLoss:1.5658182585635758
+Epoch:3 and AverageLoss:1.5633284945012358
+Epoch:4 and AverageLoss:1.5614113118642432
+Epoch:5 and AverageLoss:1.5587080549401091
+Epoch:6 and AverageLoss:1.5537252438342786
+Epoch:7 and AverageLoss:1.556474492373064
+Epoch:8 and AverageLoss:1.5538742798368643
+Epoch:9 and AverageLoss:1.5539484161245243
+Forward Training Succesful
+Training Sucessful
+The Iteration7:
+================================
+Epoch:0 and AverageLoss:1.545635054788321
+Epoch:1 and AverageLoss:1.545466422729785
+Epoch:2 and AverageLoss:1.5463099400405689
+Epoch:3 and AverageLoss:1.5417175207601483
+Epoch:4 and AverageLoss:1.5429029992169432
+Epoch:5 and AverageLoss:1.5364798026926376
+Epoch:6 and AverageLoss:1.5338607081366926
+Epoch:7 and AverageLoss:1.5325187170292105
+Epoch:8 and AverageLoss:1.52923331480197
+Epoch:9 and AverageLoss:1.5260771266029924
+Forward Training Succesful
+Training Sucessful
+The Iteration8:
+================================
+Epoch:0 and AverageLoss:1.5297892605862045
+Epoch:1 and AverageLoss:1.5252369605671718
+Epoch:2 and AverageLoss:1.5206428897350341
+Epoch:3 and AverageLoss:1.5233295963853217
+Epoch:4 and AverageLoss:1.5192671837404257
+Epoch:5 and AverageLoss:1.513208413977757
+Epoch:6 and AverageLoss:1.514994662436073
+Epoch:7 and AverageLoss:1.515300992199832
+Epoch:8 and AverageLoss:1.5099025879369672
+Epoch:9 and AverageLoss:1.5102549611455034
+Forward Training Succesful
+Training Sucessful
+The Iteration9:
+================================
+Epoch:0 and AverageLoss:1.5065040152396083
+Epoch:1 and AverageLoss:1.50534065452683
+Epoch:2 and AverageLoss:1.5021194850697237
+Epoch:3 and AverageLoss:1.5009633964284912
+Epoch:4 and AverageLoss:1.5018114571071342
+Epoch:5 and AverageLoss:1.4960400853925349
+Epoch:6 and AverageLoss:1.4922759261582514
+Epoch:7 and AverageLoss:1.4943980893210682
+Epoch:8 and AverageLoss:1.4925794586196275
+Epoch:9 and AverageLoss:1.4922361407438507
+Forward Training Succesful
+Training Sucessful
+The Iteration10:
+================================
+Epoch:0 and AverageLoss:1.4881285846690693
+Epoch:1 and AverageLoss:1.4854422228415605
+Epoch:2 and AverageLoss:1.4857652230031044
+Epoch:3 and AverageLoss:1.4846589671986183
+Epoch:4 and AverageLoss:1.4824112138479872
+Epoch:5 and AverageLoss:1.4825018793725602
+Epoch:6 and AverageLoss:1.4788976831509328
+Epoch:7 and AverageLoss:1.4766619967682588
+Epoch:8 and AverageLoss:1.4780439629274256
+Epoch:9 and AverageLoss:1.4775382280349731
+Forward Training Succesful
+Training Sucessful
+The Iteration11:
+================================
+Epoch:0 and AverageLoss:1.4710660261266373
+Epoch:1 and AverageLoss:1.4732564410285267
+Epoch:2 and AverageLoss:1.4742292690155145
+Epoch:3 and AverageLoss:1.471893985862927
+Epoch:4 and AverageLoss:1.469870771898333
+Epoch:5 and AverageLoss:1.4709728837318128
+Epoch:6 and AverageLoss:1.4683849250569063
+Epoch:7 and AverageLoss:1.4635806489173713
+Epoch:8 and AverageLoss:1.4641094533988581
+Epoch:9 and AverageLoss:1.464995786661992
+Forward Training Succesful
+Training Sucessful

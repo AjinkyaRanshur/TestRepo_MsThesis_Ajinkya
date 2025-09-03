@@ -6,7 +6,7 @@ seed = 42
 lr = 0.001 
 momentum = 0.9
 datasetpath = '/home/ajinkya/datasets'
-training_condition="recon_pc_train"
+training_condition="fine_tuning"
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
 print(f"CUDA available: {torch.cuda.is_available()}")
@@ -19,15 +19,15 @@ print(f"Using device: {device}")
 
 timesteps = 10
 
-gammaset=[[0.33, 0.33, 0.33, 0.33]]
-betaset = [[0.33, 0.33, 0.33, 0.33]]
+gammaset=[[0.50, 0.50, 0.50, 0.50]]
+betaset = [[0.25, 0.25, 0.25, 0.25]]
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
-model_name = "pc_recon_train_high_fwd"
+model_name = "pc_class_train_balanced"
 noise_type="s&p"
 noise_param=0.0
-experiment_name= "balanced reconstruction training"
-load_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/models/recon_models"
-save_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/models/recon_models"
+experiment_name= "Training Using High Forward Parameters"
+load_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/models/testing_models"
+save_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/models/testing_models"
 
 

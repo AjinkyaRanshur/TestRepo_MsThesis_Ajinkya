@@ -1,0 +1,13 @@
+{"time":"2025-09-02T17:34:40.192712844+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-02T17:34:40.886708957+02:00","level":"INFO","msg":"stream: created new stream","id":"helki5o1"}
+{"time":"2025-09-02T17:34:40.886789002+02:00","level":"INFO","msg":"stream: started","id":"helki5o1"}
+{"time":"2025-09-02T17:34:40.886836442+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"helki5o1"}
+{"time":"2025-09-02T17:34:40.886876858+02:00","level":"INFO","msg":"handler: started","stream_id":"helki5o1"}
+{"time":"2025-09-02T17:34:40.886880476+02:00","level":"INFO","msg":"sender: started","stream_id":"helki5o1"}
+{"time":"2025-09-02T17:36:24.276425796+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-02T17:36:24.427944788+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 0-11, summary, console lines 3-14","runtime_seconds":0.150407441}],"total_operations":1}}
+{"time":"2025-09-02T17:36:24.507740113+02:00","level":"INFO","msg":"stream: closing","id":"helki5o1"}
+{"time":"2025-09-02T17:36:24.507790159+02:00","level":"INFO","msg":"handler: closed","stream_id":"helki5o1"}
+{"time":"2025-09-02T17:36:24.507812443+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"helki5o1"}
+{"time":"2025-09-02T17:36:24.507899948+02:00","level":"INFO","msg":"sender: closed","stream_id":"helki5o1"}
+{"time":"2025-09-02T17:36:24.507989248+02:00","level":"INFO","msg":"stream: closed","id":"helki5o1"}

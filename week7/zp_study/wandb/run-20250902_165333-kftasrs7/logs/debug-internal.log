@@ -1,0 +1,13 @@
+{"time":"2025-09-02T16:53:34.139455124+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-02T16:53:34.506447483+02:00","level":"INFO","msg":"stream: created new stream","id":"kftasrs7"}
+{"time":"2025-09-02T16:53:34.506545986+02:00","level":"INFO","msg":"stream: started","id":"kftasrs7"}
+{"time":"2025-09-02T16:53:34.506571378+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"kftasrs7"}
+{"time":"2025-09-02T16:53:34.506604908+02:00","level":"INFO","msg":"handler: started","stream_id":"kftasrs7"}
+{"time":"2025-09-02T16:53:34.506640033+02:00","level":"INFO","msg":"sender: started","stream_id":"kftasrs7"}
+{"time":"2025-09-02T16:55:28.173108959+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-02T16:55:28.419104437+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-02T16:55:28.430874943+02:00","level":"INFO","msg":"stream: closing","id":"kftasrs7"}
+{"time":"2025-09-02T16:55:28.430928723+02:00","level":"INFO","msg":"handler: closed","stream_id":"kftasrs7"}
+{"time":"2025-09-02T16:55:28.430949229+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"kftasrs7"}
+{"time":"2025-09-02T16:55:28.430980955+02:00","level":"INFO","msg":"sender: closed","stream_id":"kftasrs7"}
+{"time":"2025-09-02T16:55:28.431063185+02:00","level":"INFO","msg":"stream: closed","id":"kftasrs7"}
