@@ -1,0 +1,165 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:2.182599231105326
+Epoch:1 and AverageLoss:1.993016565852153
+Epoch:2 and AverageLoss:1.9095933928209192
+Epoch:3 and AverageLoss:1.8652427772731732
+Epoch:4 and AverageLoss:1.8442628237292589
+Epoch:5 and AverageLoss:1.8068017282754258
+Epoch:6 and AverageLoss:1.7920414639251006
+Epoch:7 and AverageLoss:1.7855714748582572
+Epoch:8 and AverageLoss:1.7643052049914894
+Epoch:9 and AverageLoss:1.746592203674414
+Forward Training Succesful
+Training Sucessful
+The Iteration1:
+================================
+Epoch:0 and AverageLoss:1.7376137740166901
+Epoch:1 and AverageLoss:1.7353754500903742
+Epoch:2 and AverageLoss:1.7231567171223634
+Epoch:3 and AverageLoss:1.7122500442787814
+Epoch:4 and AverageLoss:1.7101952407671057
+Epoch:5 and AverageLoss:1.701179532748659
+Epoch:6 and AverageLoss:1.6830880096196519
+Epoch:7 and AverageLoss:1.682225879805777
+Epoch:8 and AverageLoss:1.6799707949313971
+Epoch:9 and AverageLoss:1.6761190055886193
+Forward Training Succesful
+Training Sucessful
+The Iteration2:
+================================
+Epoch:0 and AverageLoss:1.6685348026587834
+Epoch:1 and AverageLoss:1.6596992945732059
+Epoch:2 and AverageLoss:1.6608693813119093
+Epoch:3 and AverageLoss:1.6480026507316647
+Epoch:4 and AverageLoss:1.6424224901077387
+Epoch:5 and AverageLoss:1.646771055048384
+Epoch:6 and AverageLoss:1.6299519438267973
+Epoch:7 and AverageLoss:1.6375725372977878
+Epoch:8 and AverageLoss:1.632413416262478
+Epoch:9 and AverageLoss:1.623518033405704
+Forward Training Succesful
+Training Sucessful
+The Iteration3:
+================================
+Epoch:0 and AverageLoss:1.6152292175975906
+Epoch:1 and AverageLoss:1.6168707953694532
+Epoch:2 and AverageLoss:1.6170772018335056
+Epoch:3 and AverageLoss:1.6135716362072683
+Epoch:4 and AverageLoss:1.609326032421473
+Epoch:5 and AverageLoss:1.6043013456227528
+Epoch:6 and AverageLoss:1.6048576508641548
+Epoch:7 and AverageLoss:1.5928950568904048
+Epoch:8 and AverageLoss:1.588321240661699
+Epoch:9 and AverageLoss:1.5971506096213066
+Forward Training Succesful
+Training Sucessful
+The Iteration4:
+================================
+Epoch:0 and AverageLoss:1.5925223833459723
+Epoch:1 and AverageLoss:1.5867631343929358
+Epoch:2 and AverageLoss:1.581595485167735
+Epoch:3 and AverageLoss:1.5793801515608492
+Epoch:4 and AverageLoss:1.5866843730287479
+Epoch:5 and AverageLoss:1.5804193425361457
+Epoch:6 and AverageLoss:1.573785281242312
+Epoch:7 and AverageLoss:1.574707011737482
+Epoch:8 and AverageLoss:1.5722928571579096
+Epoch:9 and AverageLoss:1.5759568909549957
+Forward Training Succesful
+Training Sucessful
+The Iteration5:
+================================
+Epoch:0 and AverageLoss:1.5695149319251176
+Epoch:1 and AverageLoss:1.5670847362264648
+Epoch:2 and AverageLoss:1.5697976356881964
+Epoch:3 and AverageLoss:1.5675883625474427
+Epoch:4 and AverageLoss:1.5598118774726262
+Epoch:5 and AverageLoss:1.566721415885574
+Epoch:6 and AverageLoss:1.5626481433048882
+Epoch:7 and AverageLoss:1.5623799538063576
+Epoch:8 and AverageLoss:1.561942145037834
+Epoch:9 and AverageLoss:1.5580137516836376
+Forward Training Succesful
+Training Sucessful
+The Iteration6:
+================================
+Epoch:0 and AverageLoss:1.5511836624511368
+Epoch:1 and AverageLoss:1.5436074495925318
+Epoch:2 and AverageLoss:1.5432878244868324
+Epoch:3 and AverageLoss:1.5445144871616607
+Epoch:4 and AverageLoss:1.5469946748460346
+Epoch:5 and AverageLoss:1.5387296630903278
+Epoch:6 and AverageLoss:1.538458468664028
+Epoch:7 and AverageLoss:1.5400266571118093
+Epoch:8 and AverageLoss:1.5349126383471672
+Epoch:9 and AverageLoss:1.532941424023465
+Forward Training Succesful
+Training Sucessful
+The Iteration7:
+================================
+Epoch:0 and AverageLoss:1.5363695176361163
+Epoch:1 and AverageLoss:1.5376469104186348
+Epoch:2 and AverageLoss:1.5280846293320132
+Epoch:3 and AverageLoss:1.5314464812998272
+Epoch:4 and AverageLoss:1.5292009353027929
+Epoch:5 and AverageLoss:1.5265186345180892
+Epoch:6 and AverageLoss:1.5237075578221275
+Epoch:7 and AverageLoss:1.5245639134550948
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/main.py", line 227, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/main.py", line 194, in main
+    train_bool = feedfwd_training(net,trainloader,testloader,config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/fwd_train.py", line 54, in feedfwd_training
+    for batch_idx, batch in enumerate(trainloader):
+                            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 701, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 757, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torchvision/datasets/cifar.py", line 119, in __getitem__
+    img = self.transform(img)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torchvision/transforms/transforms.py", line 95, in __call__
+    img = t(img)
+          ^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torchvision/transforms/transforms.py", line 277, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torchvision/transforms/functional.py", line 350, in normalize
+    return F_t.normalize(tensor, mean=mean, std=std, inplace=inplace)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torchvision/transforms/_functional_tensor.py", line 920, in normalize
+    mean = torch.as_tensor(mean, dtype=dtype, device=tensor.device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7fca867172e0>
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 54, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 182, in teardown
+    self._router.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:

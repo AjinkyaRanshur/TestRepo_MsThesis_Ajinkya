@@ -13,7 +13,7 @@ from wb_tracker import init_wandb
 from add_noise import noisy_img
 import torchvision.utils as vutils
 
-def class_pc_training(net,trainloader,testloader,pc_train_bool,config):
+def class_pc_training(net,trainloader,testloader,pc_train_bool,config,iteration_index):
 
     if pc_train_bool=="train":
         criterion=nn.CrossEntropyLoss()
@@ -142,8 +142,9 @@ def class_pc_training(net,trainloader,testloader,pc_train_bool,config):
 
         print("Accuracy at each timestep:")
         for i, acc in enumerate(accuracy):
+            label=int(iteration_index) * int(config.epochs)
             print(f"Timestep {i}: {acc:.2f}%")
-            wandb.log({"Timestep":i,"Accuracy":acc,"chance_level":10.00})
+            wandb.log({f"Accuracy_Over_TimeSteps_{config.model_name}/Timestep_{label}":i,f"Accuracy_{label}":acc})
 
 
         return accuracy

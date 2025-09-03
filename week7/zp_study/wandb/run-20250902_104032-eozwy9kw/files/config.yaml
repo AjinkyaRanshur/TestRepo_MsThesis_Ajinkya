@@ -1,0 +1,103 @@
+_wandb:
+    value:
+        cli_version: 0.21.0
+        e:
+            zo621qn2ikuavsu3jg0qck53q34fmwvs:
+                args:
+                    - --config
+                    - config0
+                codePath: week7/zp_study/main.py
+                codePathLocal: main.py
+                cpu_count: 24
+                cpu_count_logical: 48
+                cudaVersion: "11.4"
+                disk:
+                    /:
+                        total: "982822674432"
+                        used: "71707328512"
+                email: ranshur.ajinkya.res@gmail.com
+                executable: /home/ajinkya/miniconda3/envs/cuda_pyt/bin/python3
+                git:
+                    commit: 7d27f21d88a9d4b0c3b0ac07d0f48aecce96b2da
+                    remote: https://github.com/AjinkyaRanshur/TestRepo_MsThesis_Ajinkya.git
+                gpu: NVIDIA A40
+                gpu_count: 2
+                gpu_nvidia:
+                    - architecture: Ampere
+                      name: NVIDIA A40
+                      uuid: GPU-cdd97142-d693-3d4a-b7d8-baa6dd9f8560
+                    - architecture: Ampere
+                      name: NVIDIA A40
+                      uuid: GPU-4fb36b2c-8a1e-9677-ad65-199f5aa7fa8d
+                host: SRV-Calcul-SIC
+                memory:
+                    total: "269918322688"
+                os: Linux-5.15.0-136-generic-x86_64-with-glibc2.31
+                program: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/main.py
+                python: CPython 3.12.11
+                root: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study
+                startedAt: "2025-09-02T08:40:32.391471Z"
+                writerId: zo621qn2ikuavsu3jg0qck53q34fmwvs
+        m: []
+        python_version: 3.12.11
+        t:
+            "1":
+                - 1
+                - 41
+            "2":
+                - 1
+                - 41
+            "3":
+                - 1
+                - 13
+                - 16
+            "4": 3.12.11
+            "5": 0.21.0
+            "12": 0.21.0
+            "13": linux-x86_64
+Alpha_layer0:
+    value: 0.01
+Alpha_layer1:
+    value: 0.01
+Alpha_layer2:
+    value: 0.01
+Alpha_layer3:
+    value: 0.01
+Batch_size:
+    value: 128
+Beta_layer0:
+    value: 0.33
+Beta_layer1:
+    value: 0.33
+Beta_layer2:
+    value: 0.33
+Beta_layer3:
+    value: 0.33
+Gamma_layer0:
+    value: 0.33
+Gamma_layer1:
+    value: 0.33
+Gamma_layer2:
+    value: 0.33
+Gamma_layer3:
+    value: 0.33
+Model_Name:
+    value: pc_class_train_balanced
+architecture:
+    value: CNN
+dataset:
+    value: CIFAR-10
+epochs:
+    value: 10
+learning_rate:
+    value: 0.1
+momentum:
+    value: 0.9
+noise_param:
+    value: 0
+noise_type:
+    value: s&p
+timesteps:
+    value: 1
+training_condition:
+    value: fwd_train

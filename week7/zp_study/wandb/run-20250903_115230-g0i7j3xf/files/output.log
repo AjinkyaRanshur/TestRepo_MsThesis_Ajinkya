@@ -1,0 +1,197 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Accuracy at each timestep:
+Timestep 0: 10.00%
+Timestep 1: 10.00%
+Timestep 2: 10.00%
+Timestep 3: 10.00%
+Timestep 4: 10.00%
+Timestep 5: 10.00%
+Timestep 6: 10.00%
+Timestep 7: 10.00%
+Timestep 8: 10.00%
+Timestep 9: 10.00%
+Timestep 10: 10.00%
+Epoch:0 and AverageLoss:2.303261137374527 and Reconstruction Loss:0.018755625933408737
+Epoch:1 and AverageLoss:2.3028650960653945 and Reconstruction Loss:0.017238734290003777
+Epoch:2 and AverageLoss:2.3027941881848113 and Reconstruction Loss:0.01654057763516903
+Epoch:3 and AverageLoss:2.3028204837418578 and Reconstruction Loss:0.01747061125934124
+Epoch:4 and AverageLoss:2.302890133674797 and Reconstruction Loss:0.01909290812909603
+Epoch:5 and AverageLoss:2.3028057908158166 and Reconstruction Loss:0.018657511100172997
+Epoch:6 and AverageLoss:2.3028320961291224 and Reconstruction Loss:0.018890490755438805
+Epoch:7 and AverageLoss:2.3028192532336926 and Reconstruction Loss:0.019180072471499443
+Epoch:8 and AverageLoss:2.3028820073208234 and Reconstruction Loss:0.018160974606871605
+Epoch:9 and AverageLoss:2.3027632968200136 and Reconstruction Loss:0.01805030182003975
+Model Saved Sucessfully
+The Iteration1:
+================================
+Accuracy at each timestep:
+Timestep 0: 10.00%
+Timestep 1: 10.00%
+Timestep 2: 10.00%
+Timestep 3: 10.00%
+Timestep 4: 10.00%
+Timestep 5: 10.00%
+Timestep 6: 10.00%
+Timestep 7: 10.00%
+Timestep 8: 10.00%
+Timestep 9: 10.00%
+Timestep 10: 10.00%
+Epoch:0 and AverageLoss:2.302892259929491 and Reconstruction Loss:0.01955632120370865
+Epoch:1 and AverageLoss:2.3027940942808187 and Reconstruction Loss:0.019571613520383835
+Epoch:2 and AverageLoss:2.3028260204188356 and Reconstruction Loss:0.01896463893353939
+Epoch:3 and AverageLoss:2.3028446823129873 and Reconstruction Loss:0.01646864227950573
+Epoch:4 and AverageLoss:2.302833640057108 and Reconstruction Loss:0.018766766414046288
+Epoch:5 and AverageLoss:2.3028930331130164 and Reconstruction Loss:0.01994532160460949
+Epoch:6 and AverageLoss:2.302800563290296 and Reconstruction Loss:0.017278674989938736
+Epoch:7 and AverageLoss:2.302837085236064 and Reconstruction Loss:0.01883673667907715
+Epoch:8 and AverageLoss:2.302848477497735 and Reconstruction Loss:0.017608480527997017
+Epoch:9 and AverageLoss:2.3028180178473976 and Reconstruction Loss:0.018839513882994652
+Model Saved Sucessfully
+The Iteration2:
+================================
+Accuracy at each timestep:
+Timestep 0: 10.00%
+Timestep 1: 10.00%
+Timestep 2: 10.00%
+Timestep 3: 10.00%
+Timestep 4: 10.00%
+Timestep 5: 10.00%
+Timestep 6: 10.00%
+Timestep 7: 10.00%
+Timestep 8: 10.00%
+Timestep 9: 10.00%
+Timestep 10: 10.00%
+Epoch:0 and AverageLoss:2.3028038590765365 and Reconstruction Loss:0.018010804429650307
+Epoch:1 and AverageLoss:2.3028296265760653 and Reconstruction Loss:0.01668744534254074
+Epoch:2 and AverageLoss:2.3028446542637426 and Reconstruction Loss:0.017284337431192398
+Epoch:3 and AverageLoss:2.302827308245022 and Reconstruction Loss:0.018925409764051437
+Epoch:4 and AverageLoss:2.302836508397251 and Reconstruction Loss:0.017806535586714745
+Epoch:5 and AverageLoss:2.302875170012569 and Reconstruction Loss:0.019948890432715416
+Epoch:6 and AverageLoss:2.3028391261234917 and Reconstruction Loss:0.01787206158041954
+Epoch:7 and AverageLoss:2.3028694333322823 and Reconstruction Loss:0.017316114157438278
+Epoch:8 and AverageLoss:2.302817112954376 and Reconstruction Loss:0.01795857585966587
+Epoch:9 and AverageLoss:2.3028929593313077 and Reconstruction Loss:0.0188697911798954
+Model Saved Sucessfully
+The Iteration3:
+================================
+Accuracy at each timestep:
+Timestep 0: 10.00%
+Timestep 1: 10.00%
+Timestep 2: 10.00%
+Timestep 3: 10.00%
+Timestep 4: 10.00%
+Timestep 5: 10.00%
+Timestep 6: 10.00%
+Timestep 7: 10.00%
+Timestep 8: 10.00%
+Timestep 9: 10.00%
+Timestep 10: 10.00%
+Epoch:0 and AverageLoss:2.302802164536303 and Reconstruction Loss:0.01919015496969223
+Epoch:1 and AverageLoss:2.3028004828011595 and Reconstruction Loss:0.018908711150288582
+Epoch:2 and AverageLoss:2.302810043934971 and Reconstruction Loss:0.019218431785702705
+Epoch:3 and AverageLoss:2.3028237014780264 and Reconstruction Loss:0.018566491082310677
+Epoch:4 and AverageLoss:2.302823305130005 and Reconstruction Loss:0.018327686935663223
+Epoch:5 and AverageLoss:2.3028418072654158 and Reconstruction Loss:0.01969083584845066
+Epoch:6 and AverageLoss:2.302841090790146 and Reconstruction Loss:0.0175966527312994
+Epoch:7 and AverageLoss:2.302815478780995 and Reconstruction Loss:0.018689988180994987
+Epoch:8 and AverageLoss:2.3028194593346636 and Reconstruction Loss:0.016252106055617332
+Epoch:9 and AverageLoss:2.302829091201353 and Reconstruction Loss:0.0184867475181818
+Model Saved Sucessfully
+The Iteration4:
+================================
+Accuracy at each timestep:
+Timestep 0: 10.00%
+Timestep 1: 10.00%
+Timestep 2: 10.00%
+Timestep 3: 10.00%
+Timestep 4: 10.00%
+Timestep 5: 10.00%
+Timestep 6: 10.00%
+Timestep 7: 10.00%
+Timestep 8: 10.00%
+Timestep 9: 10.00%
+Timestep 10: 10.00%
+Epoch:0 and AverageLoss:2.3028359864373953 and Reconstruction Loss:0.020391268655657768
+Epoch:1 and AverageLoss:2.3028968502493465 and Reconstruction Loss:0.018493788316845894
+Epoch:2 and AverageLoss:2.302860366109082 and Reconstruction Loss:0.016464972868561745
+Epoch:3 and AverageLoss:2.3028056731309428 and Reconstruction Loss:0.018141761422157288
+Epoch:4 and AverageLoss:2.302805377394342 and Reconstruction Loss:0.018848303705453873
+Epoch:5 and AverageLoss:2.302832493696676 and Reconstruction Loss:0.019069863483309746
+Epoch:6 and AverageLoss:2.302836676692719 and Reconstruction Loss:0.016296589747071266
+Epoch:7 and AverageLoss:2.302813152522992 and Reconstruction Loss:0.017755191773176193
+Epoch:8 and AverageLoss:2.302855454442446 and Reconstruction Loss:0.017666321247816086
+Epoch:9 and AverageLoss:2.3028355016732767 and Reconstruction Loss:0.016926003620028496
+Model Saved Sucessfully
+The Iteration5:
+================================
+Accuracy at each timestep:
+Timestep 0: 10.00%
+Timestep 1: 10.00%
+Timestep 2: 10.00%
+Timestep 3: 10.00%
+Timestep 4: 10.00%
+Timestep 5: 10.00%
+Timestep 6: 10.00%
+Timestep 7: 10.00%
+Timestep 8: 10.00%
+Timestep 9: 10.00%
+Timestep 10: 10.00%
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/main.py", line 229, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/main.py", line 167, in main
+    train_bool = fine_tuning_using_classification(net,save_dir, trainloader, testloader,config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/main.py", line 129, in fine_tuning_using_classification
+    train_bool=recon_pc_training(net,trainloader,testloader,"fine_tuning",config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/recon_pc_train.py", line 161, in recon_pc_training
+    final_loss.backward()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/_tensor.py", line 581, in backward
+    torch.autograd.backward(
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/autograd/__init__.py", line 347, in backward
+    _engine_run_backward(
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/autograd/graph.py", line 825, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7f46e94e72e0>
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 54, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 182, in teardown
+    self._router.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:
+Exception ignored in atexit callback: <bound method finalize._exitfunc of <class 'weakref.finalize'>>
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/weakref.py", line 666, in _exitfunc
+    f()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1176, in _close_pool_connections
+    conn.close()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/urllib3/connection.py", line 322, in close
+    super().close()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/http/client.py", line 1022, in close
+    sock.close()   # close it manually... there may be other refs
+    ^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/socket.py", line 505, in close
+    self._real_close()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/ssl.py", line 1310, in _real_close
+    super()._real_close()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/socket.py", line 497, in _real_close
+    def _real_close(self, _ss=_socket.socket):
+
+KeyboardInterrupt:

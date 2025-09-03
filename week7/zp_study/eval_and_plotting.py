@@ -12,7 +12,7 @@ import os
 import wandb
 from PIL import Image
 
-def classification_accuracy_metric(net,dataloader,batch_size,device):
+def classification_accuracy_metric(net,dataloader,config):
     # Testing
     #net.eval()
     total_correct = 0

@@ -114,28 +114,18 @@ def reconstruction_testing_on_random_network(net,save_dir, trainloader, testload
         if train_bool == True:
             torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
             print("Model Saved Sucessfully")
- 
-   # criterion=nn.CrossEntropyLoss()
-   # print("This is a test to see the loss values when the network is not trained at all")
-   # for i in range(10):
-   #     zp_test_loss=recon_pc_loss(net,trainloader,config)
-   #     print(f"Zp Model Recon Loss for epoch{i}",zp_test_loss)
-   #     pc_test_accuracy,pc_test_loss,pc_test_recon_loss=eval_pc_accuracy(net,trainloader,config,criterion)
-   #     print("My Preditive Coding Model with Dense layers")
-   #     print(f"Accuracy:{pc_test_accuracy} and Recon Loss:{pc_test_recon_loss}")
-
-
 
     return None
 
 
 def fine_tuning_using_classification(net,save_dir, trainloader, testloader,config):
     
-    for iteration_index in range(8):
+    for iteration_index in range(12):
         print(f"The Iteration{iteration_index}:")
         print("================================")
         net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',
         map_location=config.device,weights_only=True))
+        accuracy_dict = testing_model(net,trainloader,testloader,config,iteration_index)
         train_bool=recon_pc_training(net,trainloader,testloader,"fine_tuning",config)
         if train_bool == True:
             torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
@@ -143,18 +133,24 @@ def fine_tuning_using_classification(net,save_dir, trainloader, testloader,confi
 
     return train_bool
 
+def classification_training():
 
-def testing_model(net,trainloader,testloader,config):
+        
+    return None
+
+def testing_model(net,trainloader,testloader,config,iteration_index):
     # net=Net()
     net.load_state_dict(
     torch.load(
-        f'{config.load_model_path}/{config.model_name}_1.pth',
+        f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',
         map_location=config.device,
          weights_only=True))
 
-    class_pc_training(net,trainloader,testloader,"test",config)
+    class_pc_training(net,trainloader,testloader,"test",config,iteration_index)
 
     return None
+
+
 
 
 def main():
@@ -190,10 +186,18 @@ def main():
                 print("Training Sucessful")
 
         if config.training_condition == "pc_train":
-            train_bool = class_pc_training(net,trainloader,testloader,"train",config)
+            accuracy_dict = testing_model(net,trainloader,testloader,config,iteration_index)
+            train_bool = class_pc_training(net,trainloader,testloader,"train",config,iteration_index)
             if train_bool == True:
                 torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
                 print("Training Sucessful")
+
+        if config.training_condition == "fwd_train":
+            train_bool = feedfwd_training(net,trainloader,testloader,config)
+            if train_bool == True:
+                torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
+                print("Training Sucessful")
+
 
 
     #accuracy_dict = testing_model(net,trainloader,testloader,config)
