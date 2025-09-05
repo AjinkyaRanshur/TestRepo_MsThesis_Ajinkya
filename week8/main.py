@@ -14,6 +14,7 @@ from back_train import feedback_training
 from pc_train import class_pc_training
 from recon_pc_train import recon_pc_training
 from eval_and_plotting import eval_pc_accuracy,recon_pc_loss
+from custom_dataset import MyDataset1
 import random
 import os
 import sys
@@ -133,6 +134,14 @@ def fine_tuning_using_classification(net,save_dir, trainloader, testloader,confi
     return train_bool
 
 
+def training_using_illusions(net,save_dir,illusion_trainloader,illusion_testloader,config):
+
+    for batch_idx,batch in enumerate(illusion_trainloader):
+        images,labels=batch
+        print(labels)
+
+    return None
+
 def testing_model(net,trainloader,testloader,config,iteration_index):
 
     net.load_state_dict(
@@ -177,6 +186,20 @@ def main():
             if train_bool == True:
                 torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
                 print("Training Sucessful")
+
+        if config.training_condition == "illusion_train":
+            transform_train = transforms.Compose([transforms.ToTensor(),])
+            transform_val   = transforms.Compose([transforms.ToTensor(),])
+            train_sets  = MyDataset1("/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/illusory0.1/test.txt",transform_train)
+            val_sets    = MyDataset1("/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/illusory0.1/test.txt",transform_val)
+            illusion_trainloader= torch.utils.data.DataLoader(train_sets, batch_size=config.batch_size, shuffle=True,  num_workers=4, drop_last=False)
+            illusion_testloader= torch.utils.data.DataLoader(train_sets, batch_size=config.batch_size, shuffle=True,  num_workers=4, drop_last=False)
+
+            train_bool = training_using_illusions(net,save_dir,illusion_trainloader,illusion_testloader,config)
+            if train_bool == True:
+                #torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
+                print("Training Sucessful")
+
 
     accuracy_dict = testing_model(net,trainloader,testloader,config,20)
                 
