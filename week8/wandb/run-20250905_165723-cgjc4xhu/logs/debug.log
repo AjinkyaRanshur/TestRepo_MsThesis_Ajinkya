@@ -20,3 +20,10 @@ config: {'learning_rate': 5e-05, 'architecture': 'CNN', 'dataset': 'CIFAR-10', '
 2025-09-05 16:57:24,403 INFO    MainThread:1979203 [wandb_run.py:_redirect():2398] Redirects installed.
 2025-09-05 16:57:24,405 INFO    MainThread:1979203 [wandb_init.py:init():1075] run started, returning control to user process
 2025-09-05 16:57:30,218 INFO    MainThread:1979203 [wandb_watch.py:_watch():70] Watching
+2025-09-05 17:02:45,617 INFO    MainThread:1979203 [wandb_run.py:_finish():2224] finishing run ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/cgjc4xhu
+2025-09-05 17:02:45,618 INFO    MainThread:1979203 [wandb_run.py:_atexit_cleanup():2423] got exitcode: 0
+2025-09-05 17:02:45,618 INFO    MainThread:1979203 [wandb_run.py:_restore():2405] restore
+2025-09-05 17:02:45,632 INFO    MainThread:1979203 [wandb_run.py:_restore():2411] restore done
+2025-09-05 17:02:46,459 INFO    MainThread:1979203 [wandb_run.py:_footer_history_summary_info():3903] rendering history
+2025-09-05 17:02:46,460 INFO    MainThread:1979203 [wandb_run.py:_footer_history_summary_info():3935] rendering summary
+2025-09-05 17:02:46,461 INFO    MainThread:1979203 [wandb_run.py:_footer_sync_info():3864] logging synced files

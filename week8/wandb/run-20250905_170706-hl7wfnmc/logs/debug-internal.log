@@ -1,0 +1,14 @@
+{"time":"2025-09-05T17:07:07.208754929+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T17:07:07.640201326+02:00","level":"INFO","msg":"stream: created new stream","id":"hl7wfnmc"}
+{"time":"2025-09-05T17:07:07.640257536+02:00","level":"INFO","msg":"stream: started","id":"hl7wfnmc"}
+{"time":"2025-09-05T17:07:07.640268154+02:00","level":"INFO","msg":"handler: started","stream_id":"hl7wfnmc"}
+{"time":"2025-09-05T17:07:07.640349759+02:00","level":"INFO","msg":"sender: started","stream_id":"hl7wfnmc"}
+{"time":"2025-09-05T17:07:07.640376033+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"hl7wfnmc"}
+{"time":"2025-09-05T17:09:38.415447382+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/hl7wfnmc/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-09-05T17:12:20.926328508+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T17:12:21.220756717+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-05T17:12:21.225230679+02:00","level":"INFO","msg":"stream: closing","id":"hl7wfnmc"}
+{"time":"2025-09-05T17:12:21.225254301+02:00","level":"INFO","msg":"handler: closed","stream_id":"hl7wfnmc"}
+{"time":"2025-09-05T17:12:21.22526654+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"hl7wfnmc"}
+{"time":"2025-09-05T17:12:21.225364405+02:00","level":"INFO","msg":"sender: closed","stream_id":"hl7wfnmc"}
+{"time":"2025-09-05T17:12:21.225380004+02:00","level":"INFO","msg":"stream: closed","id":"hl7wfnmc"}

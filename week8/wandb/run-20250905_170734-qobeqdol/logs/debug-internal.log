@@ -1,0 +1,13 @@
+{"time":"2025-09-05T17:07:35.195412626+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T17:07:35.945165757+02:00","level":"INFO","msg":"stream: created new stream","id":"qobeqdol"}
+{"time":"2025-09-05T17:07:35.945212054+02:00","level":"INFO","msg":"stream: started","id":"qobeqdol"}
+{"time":"2025-09-05T17:07:35.945225199+02:00","level":"INFO","msg":"handler: started","stream_id":"qobeqdol"}
+{"time":"2025-09-05T17:07:35.945236229+02:00","level":"INFO","msg":"sender: started","stream_id":"qobeqdol"}
+{"time":"2025-09-05T17:07:35.945276188+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"qobeqdol"}
+{"time":"2025-09-05T17:12:47.689400002+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T17:12:47.925086706+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-05T17:12:47.929172792+02:00","level":"INFO","msg":"stream: closing","id":"qobeqdol"}
+{"time":"2025-09-05T17:12:47.929189747+02:00","level":"INFO","msg":"handler: closed","stream_id":"qobeqdol"}
+{"time":"2025-09-05T17:12:47.929201938+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"qobeqdol"}
+{"time":"2025-09-05T17:12:47.92929644+02:00","level":"INFO","msg":"sender: closed","stream_id":"qobeqdol"}
+{"time":"2025-09-05T17:12:47.929304441+02:00","level":"INFO","msg":"stream: closed","id":"qobeqdol"}
