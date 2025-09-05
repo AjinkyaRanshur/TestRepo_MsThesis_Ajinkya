@@ -1,0 +1,14 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:2.3030362943649294 and Reconstruction Loss:0.004025715868920088
+Epoch:1 and AverageLoss:2.30186374130249 and Reconstruction Loss:0.003833494847640395
+Epoch:2 and AverageLoss:2.299908498954773 and Reconstruction Loss:0.00445214519277215
+Epoch:3 and AverageLoss:2.2962747325897217 and Reconstruction Loss:0.004578286316245794
+Epoch:4 and AverageLoss:2.2906964189529417 and Reconstruction Loss:0.004253427963703871
+Epoch:5 and AverageLoss:2.283050719833374 and Reconstruction Loss:0.004147002007812262
+Epoch:6 and AverageLoss:2.2733190259933473 and Reconstruction Loss:0.004008408170193434
+Exception in thread IntMsgThrException in threading.excepthook:Exception ignored in thread started by: <bound method Thread._bootstrap of <Thread(IntMsgThr, started daemon 139777778591488)>>Exception ignored in sys.unraisablehook: <built-in function unraisablehook>
+Epoch:7 and AverageLoss:2.262075650978088 and Reconstruction Loss:0.004456722643226385

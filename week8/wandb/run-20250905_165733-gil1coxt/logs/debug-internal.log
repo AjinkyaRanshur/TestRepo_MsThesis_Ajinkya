@@ -1,0 +1,6 @@
+{"time":"2025-09-05T16:57:33.886837398+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T16:57:34.235462516+02:00","level":"INFO","msg":"stream: created new stream","id":"gil1coxt"}
+{"time":"2025-09-05T16:57:34.235503423+02:00","level":"INFO","msg":"stream: started","id":"gil1coxt"}
+{"time":"2025-09-05T16:57:34.236659595+02:00","level":"INFO","msg":"handler: started","stream_id":"gil1coxt"}
+{"time":"2025-09-05T16:57:34.236689801+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"gil1coxt"}
+{"time":"2025-09-05T16:57:34.236881811+02:00","level":"INFO","msg":"sender: started","stream_id":"gil1coxt"}

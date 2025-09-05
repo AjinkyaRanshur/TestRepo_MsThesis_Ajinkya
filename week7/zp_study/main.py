@@ -125,7 +125,7 @@ def fine_tuning_using_classification(net,save_dir, trainloader, testloader,confi
         print("================================")
         net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',
         map_location=config.device,weights_only=True))
-        accuracy_dict = testing_model(net,trainloader,testloader,config,iteration_index)
+        #accuracy_dict = testing_model(net,trainloader,testloader,config,iteration_index)
         train_bool=recon_pc_training(net,trainloader,testloader,"fine_tuning",config)
         if train_bool == True:
             torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')

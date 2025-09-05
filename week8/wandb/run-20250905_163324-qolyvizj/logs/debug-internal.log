@@ -1,0 +1,13 @@
+{"time":"2025-09-05T16:33:24.848339652+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T16:33:25.190059508+02:00","level":"INFO","msg":"stream: created new stream","id":"qolyvizj"}
+{"time":"2025-09-05T16:33:25.190108576+02:00","level":"INFO","msg":"stream: started","id":"qolyvizj"}
+{"time":"2025-09-05T16:33:25.190133963+02:00","level":"INFO","msg":"sender: started","stream_id":"qolyvizj"}
+{"time":"2025-09-05T16:33:25.190138916+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"qolyvizj"}
+{"time":"2025-09-05T16:33:25.190154404+02:00","level":"INFO","msg":"handler: started","stream_id":"qolyvizj"}
+{"time":"2025-09-05T16:37:25.747706143+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T16:37:25.97341208+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-05T16:37:25.977285971+02:00","level":"INFO","msg":"stream: closing","id":"qolyvizj"}
+{"time":"2025-09-05T16:37:25.977304789+02:00","level":"INFO","msg":"handler: closed","stream_id":"qolyvizj"}
+{"time":"2025-09-05T16:37:25.97731464+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"qolyvizj"}
+{"time":"2025-09-05T16:37:25.977329576+02:00","level":"INFO","msg":"sender: closed","stream_id":"qolyvizj"}
+{"time":"2025-09-05T16:37:25.977403094+02:00","level":"INFO","msg":"stream: closed","id":"qolyvizj"}

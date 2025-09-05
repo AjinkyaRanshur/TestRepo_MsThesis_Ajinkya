@@ -1,0 +1,12 @@
+{"time":"2025-09-05T16:24:48.29314811+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T16:24:48.615986237+02:00","level":"INFO","msg":"stream: created new stream","id":"egzujert"}
+{"time":"2025-09-05T16:24:48.616051954+02:00","level":"INFO","msg":"stream: started","id":"egzujert"}
+{"time":"2025-09-05T16:24:48.616084035+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"egzujert"}
+{"time":"2025-09-05T16:24:48.616103275+02:00","level":"INFO","msg":"sender: started","stream_id":"egzujert"}
+{"time":"2025-09-05T16:24:48.616127548+02:00","level":"INFO","msg":"handler: started","stream_id":"egzujert"}
+{"time":"2025-09-05T16:25:18.137963563+02:00","level":"INFO","msg":"stream: closing","id":"egzujert"}
+{"time":"2025-09-05T16:25:18.647296121+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T16:25:18.9034199+02:00","level":"INFO","msg":"handler: closed","stream_id":"egzujert"}
+{"time":"2025-09-05T16:25:18.903458426+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"egzujert"}
+{"time":"2025-09-05T16:25:18.903515904+02:00","level":"INFO","msg":"sender: closed","stream_id":"egzujert"}
+{"time":"2025-09-05T16:25:18.903526987+02:00","level":"INFO","msg":"stream: closed","id":"egzujert"}
