@@ -1,0 +1,18 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 207, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 181, in main
+    accuracy_dict = testing_model(net,trainloader,testloader,config,20)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 144, in testing_model
+    class_pc_training(net,trainloader,testloader,"test",config,iteration_index)
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/pc_train.py", line 121, in class_pc_training
+    output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,loss_of_layers=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
+                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/network.py", line 111, in predictive_coding_pass
+    ft_CD_pc= gamma_CD_fwd*self.conv3(pooled_ft_BC_pc) + (1-gamma_CD_fwd-beta_CD_bck) * ft_CD + beta_CD_bck*self.deconv4_fb(self.upsample(ft_DE))-alpha_CD*scalingD*batch_size*reconstructionD
+              ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.00 MiB. GPU 0 has a total capacity of 44.56 GiB of which 30.31 MiB is free. Process 1946159 has 1.59 GiB memory in use. Process 1946163 has 1.59 GiB memory in use. Process 1946157 has 1.59 GiB memory in use. Process 1946181 has 1.59 GiB memory in use. Process 1946183 has 1.59 GiB memory in use. Process 1946156 has 1.49 GiB memory in use. Process 1946180 has 1.52 GiB memory in use. Process 1946168 has 1.57 GiB memory in use. Process 1946174 has 1.57 GiB memory in use. Process 1946172 has 1.45 GiB memory in use. Process 1946155 has 1.57 GiB memory in use. Process 1946179 has 1.49 GiB memory in use. Process 1946162 has 1.45 GiB memory in use. Process 1946167 has 1.43 GiB memory in use. Process 1946158 has 1.49 GiB memory in use. Process 1946177 has 1.50 GiB memory in use. Process 1946160 has 1.54 GiB memory in use. Process 1946166 has 1.48 GiB memory in use. Process 1946161 has 1.42 GiB memory in use. Including non-PyTorch memory, this process has 1.57 GiB memory in use. Process 1946175 has 1.43 GiB memory in use. Process 1946165 has 1.42 GiB memory in use. Process 1946171 has 1.42 GiB memory in use. Process 1946170 has 1.44 GiB memory in use. Process 1946173 has 1.42 GiB memory in use. Process 1946176 has 1.43 GiB memory in use. Process 1946178 has 1.34 GiB memory in use. Process 1946164 has 1.39 GiB memory in use. Process 1946169 has 1.34 GiB memory in use. Process 1946182 has 1.42 GiB memory in use. Of the allocated memory 98.93 MiB is allocated by PyTorch, and 19.07 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

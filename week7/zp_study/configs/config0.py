@@ -3,10 +3,10 @@ import torch
 batch_size = 128
 epochs = 10
 seed = 42
-lr = 0.01 
+lr = 0.0001 
 momentum = 0.9
 datasetpath = '/home/ajinkya/datasets'
-training_condition="fine_tuning_classification"
+training_condition="random_network_testing"
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
 print(f"CUDA available: {torch.cuda.is_available()}")

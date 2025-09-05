@@ -20,6 +20,7 @@ def class_pc_training(net,trainloader,testloader,pc_train_bool,config,iteration_
         optimizer=optim.SGD(net.parameters(),lr=config.lr,momentum=config.momentum)
         loss_arr=[]
         for epoch in range(config.epochs):
+            net.train()
             running_loss=[]
             total_correct = np.zeros(config.timesteps + 1)  # ✅ Initialize here
             total_samples = 0  # ✅ Initialize here
@@ -42,7 +43,7 @@ def class_pc_training(net,trainloader,testloader,pc_train_bool,config,iteration_
                 ft_BC_pc_temp.requires_grad_(True)
                 ft_CD_pc_temp.requires_grad_(True)
                 ft_DE_pc_temp.requires_grad_(True)
-                ft_EF_pc_temp.requires_grad_(True)
+
                 optimizer.zero_grad()
                 final_loss=0
                 for i in range(config.timesteps):
@@ -76,20 +77,6 @@ def class_pc_training(net,trainloader,testloader,pc_train_bool,config,iteration_
 
     if pc_train_bool=="test":
 
-        forward_params = [
-        net.conv1, net.conv2,net.conv3,net.conv4,net.fc1, net.fc2]
-
-        for module in forward_params:
-            for param in module.parameters():
-                param.requires_grad = False
-
-        feedback_params = [
-            net.deconv4_fb,net.deconv3_fb, net.fc2_fb, net.fc1_fb, 
-            net.deconv2_fb, net.deconv1_fb
-        ]
-        for module in feedback_params:
-            for param in module.parameters():
-                param.requires_grad = False
 
         
         total_correct=np.zeros(config.timesteps+1)

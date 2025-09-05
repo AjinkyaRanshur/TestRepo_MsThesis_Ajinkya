@@ -1,0 +1,67 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:2.3036042393930733 and Reconstruction Loss:0.19197729229927063
+Epoch:1 and AverageLoss:2.302874591344458 and Reconstruction Loss:0.1818416267633438
+Epoch:2 and AverageLoss:2.302560756883353 and Reconstruction Loss:0.20265482366085052
+Epoch:3 and AverageLoss:2.3023502308389414 and Reconstruction Loss:0.22788751125335693
+Epoch:4 and AverageLoss:2.3021863330050807 and Reconstruction Loss:0.20712263882160187
+Epoch:5 and AverageLoss:2.302032392043287 and Reconstruction Loss:0.22350001335144043
+Epoch:6 and AverageLoss:2.3018828420078052 and Reconstruction Loss:0.20200513303279877
+Epoch:7 and AverageLoss:2.301743501287592 and Reconstruction Loss:0.20102007687091827
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 202, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 161, in main
+    train_bool = reconstruction_testing_on_random_network(net,save_dir, trainloader, testloader,config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 113, in reconstruction_testing_on_random_network
+    train_bool=recon_pc_training(net,trainloader,testloader,"fine_tuning",config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/recon_pc_train.py", line 123, in recon_pc_training
+    for batch_idx,batch in enumerate(trainloader):
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 701, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 757, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torchvision/datasets/cifar.py", line 116, in __getitem__
+    img = Image.fromarray(img)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/PIL/Image.py", line 3338, in fromarray
+    return frombuffer(mode, size, obj, "raw", rawmode, 0, 1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/PIL/Image.py", line 3240, in frombuffer
+    return frombytes(mode, size, data, decoder_name, args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/PIL/Image.py", line 3167, in frombytes
+    im = new(mode, size)
+         ^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/PIL/Image.py", line 3119, in new
+    im = Image()
+         ^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/PIL/Image.py", line 549, in __init__
+    def __init__(self) -> None:
+
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7f8e0a9e76a0>
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 54, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 182, in teardown
+    self._router.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:

@@ -1,0 +1,99 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:2.302862010383606 and Reconstruction Loss:0.014212101697921753
+Epoch:1 and AverageLoss:2.3004870824813843 and Reconstruction Loss:0.015247884206473827
+Epoch:2 and AverageLoss:2.295177187538147 and Reconstruction Loss:0.016447236761450768
+Epoch:3 and AverageLoss:2.28571358833313 and Reconstruction Loss:0.014682787470519543
+Epoch:4 and AverageLoss:2.271250013542175 and Reconstruction Loss:0.014037283137440681
+Epoch:5 and AverageLoss:2.2536182723999025 and Reconstruction Loss:0.015592354349792004
+Epoch:6 and AverageLoss:2.234720574760437 and Reconstruction Loss:0.011937885545194149
+Epoch:7 and AverageLoss:2.2157710306167604 and Reconstruction Loss:0.014703325927257538
+Epoch:8 and AverageLoss:2.1978512519836424 and Reconstruction Loss:0.01433470007032156
+Epoch:9 and AverageLoss:2.1812298542022703 and Reconstruction Loss:0.014856544323265553
+Model Saved Sucessfully
+The Iteration1:
+================================
+Epoch:0 and AverageLoss:2.1661937670707703 and Reconstruction Loss:0.014048186130821705
+Epoch:1 and AverageLoss:2.1530415159225464 and Reconstruction Loss:0.0147162526845932
+Epoch:2 and AverageLoss:2.141134052181244 and Reconstruction Loss:0.013854855671525002
+Epoch:3 and AverageLoss:2.1304886034011843 and Reconstruction Loss:0.01587541401386261
+Epoch:4 and AverageLoss:2.1211415625572205 and Reconstruction Loss:0.013314816169440746
+Epoch:5 and AverageLoss:2.112792033958435 and Reconstruction Loss:0.013328653760254383
+Epoch:6 and AverageLoss:2.1053443920135497 and Reconstruction Loss:0.013611458241939545
+Epoch:7 and AverageLoss:2.0986545987129213 and Reconstruction Loss:0.01566232368350029
+Epoch:8 and AverageLoss:2.0926639558792113 and Reconstruction Loss:0.015041549690067768
+Epoch:9 and AverageLoss:2.087234693813324 and Reconstruction Loss:0.01619674265384674
+Model Saved Sucessfully
+The Iteration2:
+================================
+Epoch:0 and AverageLoss:2.0822778920173644 and Reconstruction Loss:0.015238468535244465
+Epoch:1 and AverageLoss:2.077477007484436 and Reconstruction Loss:0.01579223945736885
+Epoch:2 and AverageLoss:2.073196688079834 and Reconstruction Loss:0.013736411929130554
+Epoch:3 and AverageLoss:2.0695110350608825 and Reconstruction Loss:0.015605869702994823
+Epoch:4 and AverageLoss:2.0659275099754333 and Reconstruction Loss:0.014834967441856861
+Epoch:5 and AverageLoss:2.0628845701217653 and Reconstruction Loss:0.015093217603862286
+Epoch:6 and AverageLoss:2.0599283598899842 and Reconstruction Loss:0.012805257923901081
+Epoch:7 and AverageLoss:2.0573349609375 and Reconstruction Loss:0.01532821636646986
+Epoch:8 and AverageLoss:2.054810021495819 and Reconstruction Loss:0.01484876312315464
+Epoch:9 and AverageLoss:2.052391814804077 and Reconstruction Loss:0.013755378313362598
+Model Saved Sucessfully
+The Iteration3:
+================================
+Epoch:0 and AverageLoss:2.0500812912940978 and Reconstruction Loss:0.014000700786709785
+Epoch:1 and AverageLoss:2.047876491546631 and Reconstruction Loss:0.013754846528172493
+Epoch:2 and AverageLoss:2.0457030554771425 and Reconstruction Loss:0.013733846135437489
+Epoch:3 and AverageLoss:2.043656682872772 and Reconstruction Loss:0.015214905142784119
+Epoch:4 and AverageLoss:2.0415402817726136 and Reconstruction Loss:0.014490884728729725
+Epoch:5 and AverageLoss:2.0395492502212527 and Reconstruction Loss:0.016044745221734047
+Epoch:6 and AverageLoss:2.0375038210868834 and Reconstruction Loss:0.01358665432780981
+Epoch:7 and AverageLoss:2.035444479846954 and Reconstruction Loss:0.016500968486070633
+Epoch:8 and AverageLoss:2.033518659591675 and Reconstruction Loss:0.014181502163410187
+Epoch:9 and AverageLoss:2.0314916598320005 and Reconstruction Loss:0.014066777192056179
+Model Saved Sucessfully
+The Iteration4:
+================================
+Epoch:0 and AverageLoss:2.0294258746147156 and Reconstruction Loss:0.016756737604737282
+Epoch:1 and AverageLoss:2.027442005634308 and Reconstruction Loss:0.013676739297807217
+Epoch:2 and AverageLoss:2.025406565952301 and Reconstruction Loss:0.01583140157163143
+Epoch:3 and AverageLoss:2.023262384414673 and Reconstruction Loss:0.015290225856006145
+Epoch:4 and AverageLoss:2.0213546664237976 and Reconstruction Loss:0.012876353226602077
+Epoch:5 and AverageLoss:2.0192375819206236 and Reconstruction Loss:0.015595488250255585
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 191, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 147, in main
+    train_bool = fine_tuning_using_classification(net,save_dir, trainloader, testloader,config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 128, in fine_tuning_using_classification
+    train_bool=recon_pc_training(net,trainloader,testloader,"fine_tuning",config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/recon_pc_train.py", line 146, in recon_pc_training
+    output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,loss_of_layers=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
+                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/network.py", line 77, in predictive_coding_pass
+    reconstructionB=torch.autograd.grad(errorB,ft_AB,retain_graph=True)[0]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/autograd/__init__.py", line 496, in grad
+    result = _engine_run_backward(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/autograd/graph.py", line 825, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7f6be56b32e0>
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 54, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 182, in teardown
+    self._router.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:

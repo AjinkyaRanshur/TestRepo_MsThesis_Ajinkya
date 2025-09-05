@@ -127,7 +127,6 @@ def eval_pc_accuracy(net,dataloader,config,criterion):
         ft_BC_pc_temp = ft_BC_pc_temp.requires_grad_(True)
         ft_CD_pc_temp = ft_CD_pc_temp.requires_grad_(True)
         ft_DE_pc_temp = ft_DE_pc_temp.requires_grad_(True)
-        ft_EF_pc_temp = ft_EF_pc_temp.requires_grad_(True)
 
         _,predicted=torch.max(output,1)
         total_correct[0]+=(predicted==labels).sum().item()

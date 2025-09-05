@@ -1,0 +1,71 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Accuracy at each timestep:
+Timestep 0: 10.00%
+Timestep 1: 10.00%
+Timestep 2: 10.00%
+Timestep 3: 10.00%
+Timestep 4: 10.00%
+Timestep 5: 10.00%
+Timestep 6: 10.00%
+Timestep 7: 10.00%
+Timestep 8: 10.00%
+Timestep 9: 10.00%
+Timestep 10: 10.00%
+Epoch:0 and AverageLoss:2.3049956874164472 and Reconstruction Loss:0.020362606272101402
+Epoch:1 and AverageLoss:2.3036116151248707 and Reconstruction Loss:0.019740598276257515
+Epoch:2 and AverageLoss:2.303045203923569 and Reconstruction Loss:0.01811313070356846
+Epoch:3 and AverageLoss:2.3028014492805657 and Reconstruction Loss:0.01684207282960415
+Epoch:4 and AverageLoss:2.3026945090964626 and Reconstruction Loss:0.018192391842603683
+Epoch:5 and AverageLoss:2.302651024230606 and Reconstruction Loss:0.019123604521155357
+Epoch:6 and AverageLoss:2.302630180593037 and Reconstruction Loss:0.018797626718878746
+Epoch:7 and AverageLoss:2.302620840804351 and Reconstruction Loss:0.01868932507932186
+Epoch:8 and AverageLoss:2.302619129800431 and Reconstruction Loss:0.01779543049633503
+Epoch:9 and AverageLoss:2.3026208322676247 and Reconstruction Loss:0.01756693236529827
+Model Saved Sucessfully
+The Iteration1:
+================================
+Accuracy at each timestep:
+Timestep 0: 11.20%
+Timestep 1: 11.16%
+Timestep 2: 11.11%
+Timestep 3: 10.90%
+Timestep 4: 10.84%
+Timestep 5: 10.64%
+Timestep 6: 10.46%
+Timestep 7: 10.32%
+Timestep 8: 10.14%
+Timestep 9: 10.06%
+Timestep 10: 10.02%
+Epoch:0 and AverageLoss:2.302614741313183 and Reconstruction Loss:0.017389744520187378
+Epoch:1 and AverageLoss:2.302621214591024 and Reconstruction Loss:0.01926092617213726
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/main.py", line 229, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/main.py", line 167, in main
+    train_bool = fine_tuning_using_classification(net,save_dir, trainloader, testloader,config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/main.py", line 129, in fine_tuning_using_classification
+    train_bool=recon_pc_training(net,trainloader,testloader,"fine_tuning",config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week7/zp_study/recon_pc_train.py", line 156, in recon_pc_training
+    total_correct[i+1]+=(predicted==labels).sum().item()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7fd663af32e0>
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 54, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 182, in teardown
+    self._router.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:

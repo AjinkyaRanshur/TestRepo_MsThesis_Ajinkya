@@ -1,0 +1,12 @@
+{"time":"2025-09-05T16:24:48.365287019+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T16:24:48.687064537+02:00","level":"INFO","msg":"stream: created new stream","id":"nzhlcibo"}
+{"time":"2025-09-05T16:24:48.687135248+02:00","level":"INFO","msg":"stream: started","id":"nzhlcibo"}
+{"time":"2025-09-05T16:24:48.687166797+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"nzhlcibo"}
+{"time":"2025-09-05T16:24:48.68717909+02:00","level":"INFO","msg":"sender: started","stream_id":"nzhlcibo"}
+{"time":"2025-09-05T16:24:48.687216725+02:00","level":"INFO","msg":"handler: started","stream_id":"nzhlcibo"}
+{"time":"2025-09-05T16:25:19.186601242+02:00","level":"INFO","msg":"stream: closing","id":"nzhlcibo"}
+{"time":"2025-09-05T16:25:19.917694555+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T16:25:20.165267632+02:00","level":"INFO","msg":"handler: closed","stream_id":"nzhlcibo"}
+{"time":"2025-09-05T16:25:20.165346402+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"nzhlcibo"}
+{"time":"2025-09-05T16:25:20.165380326+02:00","level":"INFO","msg":"sender: closed","stream_id":"nzhlcibo"}
+{"time":"2025-09-05T16:25:20.165454485+02:00","level":"INFO","msg":"stream: closed","id":"nzhlcibo"}

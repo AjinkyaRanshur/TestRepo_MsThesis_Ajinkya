@@ -1,0 +1,203 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:2.300455379973897 and Reconstruction Loss:0.011154827661812305
+Epoch:1 and AverageLoss:2.178266288069508 and Reconstruction Loss:0.4664818346500397
+Epoch:2 and AverageLoss:2.0538531950367687 and Reconstruction Loss:0.4113512635231018
+Epoch:3 and AverageLoss:1.9671438715951828 and Reconstruction Loss:0.8233197331428528
+Epoch:4 and AverageLoss:1.9173271720061826 and Reconstruction Loss:1.0809752941131592
+Epoch:5 and AverageLoss:1.8372831853759257 and Reconstruction Loss:1.3795145750045776
+Epoch:6 and AverageLoss:1.778973950754346 and Reconstruction Loss:1.1493160724639893
+Epoch:7 and AverageLoss:1.7342205950061378 and Reconstruction Loss:1.863620638847351
+Epoch:8 and AverageLoss:1.680367317346051 and Reconstruction Loss:1.896588921546936
+Epoch:9 and AverageLoss:1.6525515586213992 and Reconstruction Loss:2.7249257564544678
+Epoch:10 and AverageLoss:1.6186090954734236 and Reconstruction Loss:1.8535763025283813
+Epoch:11 and AverageLoss:1.6032604723025465 and Reconstruction Loss:1.6639121770858765
+Epoch:12 and AverageLoss:1.582139074040191 and Reconstruction Loss:2.0646557807922363
+Epoch:13 and AverageLoss:1.5645383943987015 and Reconstruction Loss:3.0832326412200928
+Epoch:14 and AverageLoss:1.5466980315230388 and Reconstruction Loss:2.7082135677337646
+Epoch:15 and AverageLoss:1.5315475186423573 and Reconstruction Loss:4.085574150085449
+Epoch:16 and AverageLoss:1.5200596041691579 and Reconstruction Loss:3.2510039806365967
+Epoch:17 and AverageLoss:1.5001338461171025 and Reconstruction Loss:3.271850347518921
+Epoch:18 and AverageLoss:1.4803598122218686 and Reconstruction Loss:2.824585437774658
+Epoch:19 and AverageLoss:1.4736716948506776 and Reconstruction Loss:3.945159912109375
+Model Saved Sucessfully
+The Iteration1:
+================================
+Epoch:0 and AverageLoss:1.4636900397517798 and Reconstruction Loss:4.143738746643066
+Epoch:1 and AverageLoss:1.4477706175021199 and Reconstruction Loss:3.8879380226135254
+Epoch:2 and AverageLoss:1.4466016579162129 and Reconstruction Loss:3.5084588527679443
+Epoch:3 and AverageLoss:1.4268058950029066 and Reconstruction Loss:4.1976141929626465
+Epoch:4 and AverageLoss:1.416695579543443 and Reconstruction Loss:3.9263923168182373
+Epoch:5 and AverageLoss:1.4081239060062887 and Reconstruction Loss:4.0689802169799805
+Epoch:6 and AverageLoss:1.4009533218105736 and Reconstruction Loss:4.323179244995117
+Epoch:7 and AverageLoss:1.3921356759107937 and Reconstruction Loss:3.422311544418335
+Epoch:8 and AverageLoss:1.3784294131466799 and Reconstruction Loss:4.8580169677734375
+Epoch:9 and AverageLoss:1.369092736707624 and Reconstruction Loss:4.086635589599609
+Epoch:10 and AverageLoss:1.3642868346265515 and Reconstruction Loss:4.397202491760254
+Epoch:11 and AverageLoss:1.3557943502045653 and Reconstruction Loss:3.2379653453826904
+Epoch:12 and AverageLoss:1.351811770587931 and Reconstruction Loss:3.9742844104766846
+Epoch:13 and AverageLoss:1.3402248425861758 and Reconstruction Loss:4.7191290855407715
+Epoch:14 and AverageLoss:1.3280889814162193 and Reconstruction Loss:3.5007545948028564
+Epoch:15 and AverageLoss:1.319028530584272 and Reconstruction Loss:4.481201171875
+Epoch:16 and AverageLoss:1.3182972291546404 and Reconstruction Loss:5.571808815002441
+Epoch:17 and AverageLoss:1.309324367881736 and Reconstruction Loss:4.055690288543701
+Epoch:18 and AverageLoss:1.307005873726457 and Reconstruction Loss:4.48648738861084
+Epoch:19 and AverageLoss:1.2923768341083965 and Reconstruction Loss:4.683115005493164
+Model Saved Sucessfully
+The Iteration2:
+================================
+Epoch:0 and AverageLoss:1.2842165333840547 and Reconstruction Loss:5.341471195220947
+Epoch:1 and AverageLoss:1.28249162572729 and Reconstruction Loss:4.9308037757873535
+Epoch:2 and AverageLoss:1.2719616246650287 and Reconstruction Loss:4.539320468902588
+Epoch:3 and AverageLoss:1.2644915961853378 and Reconstruction Loss:5.191787242889404
+Epoch:4 and AverageLoss:1.257880185876051 and Reconstruction Loss:5.606420040130615
+Epoch:5 and AverageLoss:1.2539166385865272 and Reconstruction Loss:5.385873317718506
+Epoch:6 and AverageLoss:1.2423414135223154 and Reconstruction Loss:5.4477386474609375
+Epoch:7 and AverageLoss:1.2395967406689967 and Reconstruction Loss:4.732002258300781
+Epoch:8 and AverageLoss:1.233455130358791 and Reconstruction Loss:7.285521030426025
+Epoch:9 and AverageLoss:1.2276519995821102 and Reconstruction Loss:7.221166133880615
+Epoch:10 and AverageLoss:1.2198768489805938 and Reconstruction Loss:7.840196132659912
+Epoch:11 and AverageLoss:1.2162214551130524 and Reconstruction Loss:7.04589319229126
+Epoch:12 and AverageLoss:1.20791724286116 and Reconstruction Loss:6.358686923980713
+Epoch:13 and AverageLoss:1.207965033286063 and Reconstruction Loss:5.400325298309326
+Epoch:14 and AverageLoss:1.2035759102048167 and Reconstruction Loss:6.034757137298584
+Epoch:15 and AverageLoss:1.1944047272052911 and Reconstruction Loss:5.864505767822266
+Epoch:16 and AverageLoss:1.1926898921237272 and Reconstruction Loss:7.2860870361328125
+Epoch:17 and AverageLoss:1.1771353547225523 and Reconstruction Loss:6.785848140716553
+Epoch:18 and AverageLoss:1.1797253815719233 and Reconstruction Loss:7.567060947418213
+Epoch:19 and AverageLoss:1.1734070439472832 and Reconstruction Loss:5.860391139984131
+Model Saved Sucessfully
+The Iteration3:
+================================
+Epoch:0 and AverageLoss:1.1709129055747596 and Reconstruction Loss:7.221777439117432
+Epoch:1 and AverageLoss:1.1586215967107611 and Reconstruction Loss:6.393564701080322
+Epoch:2 and AverageLoss:1.1552169742181784 and Reconstruction Loss:6.142716884613037
+Epoch:3 and AverageLoss:1.1574534973525026 and Reconstruction Loss:6.872232913970947
+Epoch:4 and AverageLoss:1.1501525579511052 and Reconstruction Loss:7.182727813720703
+Epoch:5 and AverageLoss:1.1464193083746048 and Reconstruction Loss:7.086839199066162
+Epoch:6 and AverageLoss:1.1446028726789959 and Reconstruction Loss:7.911267280578613
+Epoch:7 and AverageLoss:1.140308741718302 and Reconstruction Loss:7.89471960067749
+Epoch:8 and AverageLoss:1.1319544047041012 and Reconstruction Loss:8.63630485534668
+Epoch:9 and AverageLoss:1.1260126827622923 and Reconstruction Loss:8.753905296325684
+Epoch:10 and AverageLoss:1.1256415819572976 and Reconstruction Loss:9.21132755279541
+Epoch:11 and AverageLoss:1.1197971401312161 and Reconstruction Loss:8.204124450683594
+Epoch:12 and AverageLoss:1.1114531758496218 and Reconstruction Loss:7.683940887451172
+Epoch:13 and AverageLoss:1.1049156708790517 and Reconstruction Loss:8.796330451965332
+Epoch:14 and AverageLoss:1.108573397864466 and Reconstruction Loss:8.013388633728027
+Epoch:15 and AverageLoss:1.099664229261296 and Reconstruction Loss:8.445326805114746
+Epoch:16 and AverageLoss:1.099031581750611 and Reconstruction Loss:9.267395973205566
+Epoch:17 and AverageLoss:1.0928999153549408 and Reconstruction Loss:9.392967224121094
+Epoch:18 and AverageLoss:1.088014391377149 and Reconstruction Loss:9.98432445526123
+Epoch:19 and AverageLoss:1.0895029919226762 and Reconstruction Loss:8.261494636535645
+Model Saved Sucessfully
+The Iteration4:
+================================
+Epoch:0 and AverageLoss:1.0882539441213583 and Reconstruction Loss:8.983656883239746
+Epoch:1 and AverageLoss:1.0819089812086062 and Reconstruction Loss:10.842883110046387
+Epoch:2 and AverageLoss:1.072394376368169 and Reconstruction Loss:9.684524536132812
+Epoch:3 and AverageLoss:1.071875763823614 and Reconstruction Loss:8.592228889465332
+Epoch:4 and AverageLoss:1.073965844443387 and Reconstruction Loss:10.143365859985352
+Epoch:5 and AverageLoss:1.0616912161907577 and Reconstruction Loss:10.942948341369629
+Epoch:6 and AverageLoss:1.059545807064037 and Reconstruction Loss:10.579352378845215
+Epoch:7 and AverageLoss:1.0553067761004125 and Reconstruction Loss:10.197610855102539
+Epoch:8 and AverageLoss:1.0524332724568788 and Reconstruction Loss:10.18676471710205
+Epoch:9 and AverageLoss:1.0513043251183942 and Reconstruction Loss:9.14500904083252
+Epoch:10 and AverageLoss:1.04327521391232 and Reconstruction Loss:9.085517883300781
+Epoch:11 and AverageLoss:1.0387370307427233 and Reconstruction Loss:11.096107482910156
+Epoch:12 and AverageLoss:1.0362745505159774 and Reconstruction Loss:9.407975196838379
+Epoch:13 and AverageLoss:1.0370699345608196 and Reconstruction Loss:12.417798042297363
+Epoch:14 and AverageLoss:1.0302990476798524 and Reconstruction Loss:10.542330741882324
+Epoch:15 and AverageLoss:1.0258775483007017 and Reconstruction Loss:10.68767261505127
+Epoch:16 and AverageLoss:1.0189070933310271 and Reconstruction Loss:10.269692420959473
+Epoch:17 and AverageLoss:1.0189651031323406 and Reconstruction Loss:12.759483337402344
+Epoch:18 and AverageLoss:1.018762809998544 and Reconstruction Loss:12.325812339782715
+Epoch:19 and AverageLoss:1.0184022541851034 and Reconstruction Loss:13.099052429199219
+Model Saved Sucessfully
+The Iteration5:
+================================
+Epoch:0 and AverageLoss:1.0074452160264524 and Reconstruction Loss:11.373194694519043
+Epoch:1 and AverageLoss:1.004148953863422 and Reconstruction Loss:12.02204418182373
+Epoch:2 and AverageLoss:1.0026766189833736 and Reconstruction Loss:13.901809692382812
+Epoch:3 and AverageLoss:0.9982913066359127 and Reconstruction Loss:13.186899185180664
+Epoch:4 and AverageLoss:0.9924719207122198 and Reconstruction Loss:11.815728187561035
+Epoch:5 and AverageLoss:0.9934125695082233 and Reconstruction Loss:12.31955623626709
+Epoch:6 and AverageLoss:0.9854531439064104 and Reconstruction Loss:12.821036338806152
+Epoch:7 and AverageLoss:0.9896431164363461 and Reconstruction Loss:17.092708587646484
+Epoch:8 and AverageLoss:0.9823853457370377 and Reconstruction Loss:14.279784202575684
+Epoch:9 and AverageLoss:0.9737433379568408 and Reconstruction Loss:13.957297325134277
+Epoch:10 and AverageLoss:0.97332586565286 and Reconstruction Loss:18.846240997314453
+Epoch:11 and AverageLoss:0.973806353633666 and Reconstruction Loss:17.814260482788086
+Epoch:12 and AverageLoss:0.963284206207451 and Reconstruction Loss:16.183063507080078
+Epoch:13 and AverageLoss:0.9671660436083899 and Reconstruction Loss:13.367764472961426
+Epoch:14 and AverageLoss:0.9641477241540504 and Reconstruction Loss:16.22128677368164
+Epoch:15 and AverageLoss:0.9592011822459033 and Reconstruction Loss:16.64151954650879
+Epoch:16 and AverageLoss:0.9558463197230073 and Reconstruction Loss:17.26687240600586
+Epoch:17 and AverageLoss:0.958709628685661 and Reconstruction Loss:14.037741661071777
+Epoch:18 and AverageLoss:0.9474958466446918 and Reconstruction Loss:17.824810028076172
+Epoch:19 and AverageLoss:0.9456028802620481 and Reconstruction Loss:16.780405044555664
+Model Saved Sucessfully
+The Iteration6:
+================================
+Epoch:0 and AverageLoss:0.9418475569971382 and Reconstruction Loss:19.112232208251953
+Epoch:1 and AverageLoss:0.942544498254576 and Reconstruction Loss:16.81005859375
+Epoch:2 and AverageLoss:0.9424278072993774 and Reconstruction Loss:18.569143295288086
+Epoch:3 and AverageLoss:0.9340505732599732 and Reconstruction Loss:14.190696716308594
+Epoch:4 and AverageLoss:0.9315017931296697 and Reconstruction Loss:17.85875701904297
+Epoch:5 and AverageLoss:0.9254974826522495 and Reconstruction Loss:21.90614891052246
+Epoch:6 and AverageLoss:0.9230770131816035 and Reconstruction Loss:19.391592025756836
+Epoch:7 and AverageLoss:0.9253861835545591 and Reconstruction Loss:16.921117782592773
+Epoch:8 and AverageLoss:0.9190601769005856 and Reconstruction Loss:17.847103118896484
+Epoch:9 and AverageLoss:0.9209239568246905 and Reconstruction Loss:20.191303253173828
+Epoch:10 and AverageLoss:0.9137605683273061 and Reconstruction Loss:19.467546463012695
+Epoch:11 and AverageLoss:0.907895638357343 and Reconstruction Loss:20.188617706298828
+Epoch:12 and AverageLoss:0.9083306825984164 and Reconstruction Loss:24.482759475708008
+Epoch:13 and AverageLoss:0.9050529943707654 and Reconstruction Loss:20.114227294921875
+Epoch:14 and AverageLoss:0.9005072545212554 and Reconstruction Loss:20.539854049682617
+Epoch:15 and AverageLoss:0.8993989922811308 and Reconstruction Loss:20.11299705505371
+Epoch:16 and AverageLoss:0.8944409140540511 and Reconstruction Loss:17.205360412597656
+Epoch:17 and AverageLoss:0.8914856293317303 and Reconstruction Loss:18.820518493652344
+Epoch:18 and AverageLoss:0.8912526635867556 and Reconstruction Loss:23.083900451660156
+Epoch:19 and AverageLoss:0.8925577249673321 and Reconstruction Loss:21.364437103271484
+Model Saved Sucessfully
+The Iteration7:
+================================
+Epoch:0 and AverageLoss:0.8848101723834377 and Reconstruction Loss:21.08033561706543
+Epoch:1 and AverageLoss:0.8806742803215066 and Reconstruction Loss:25.6153564453125
+Epoch:2 and AverageLoss:0.8810072882705943 and Reconstruction Loss:24.327199935913086
+Epoch:3 and AverageLoss:0.876346380509379 and Reconstruction Loss:20.713193893432617
+Epoch:4 and AverageLoss:0.8740015020760734 and Reconstruction Loss:22.57784080505371
+Epoch:5 and AverageLoss:0.8778416814706514 and Reconstruction Loss:21.819944381713867
+Epoch:6 and AverageLoss:0.8657657179381232 and Reconstruction Loss:24.05635643005371
+Epoch:7 and AverageLoss:0.8652300543492407 and Reconstruction Loss:28.044864654541016
+Epoch:8 and AverageLoss:0.8650562089422474 and Reconstruction Loss:23.056608200073242
+Epoch:9 and AverageLoss:0.8583389269116589 and Reconstruction Loss:23.5681209564209
+Epoch:10 and AverageLoss:0.8530412767549305 and Reconstruction Loss:24.52928924560547
+Epoch:11 and AverageLoss:0.8580031661731203 and Reconstruction Loss:24.676748275756836
+Epoch:12 and AverageLoss:0.8536303061658465 and Reconstruction Loss:28.90852928161621
+Epoch:13 and AverageLoss:0.8524732399169747 and Reconstruction Loss:26.53249168395996
+Epoch:14 and AverageLoss:0.8419247460182365 and Reconstruction Loss:24.722076416015625
+Epoch:15 and AverageLoss:0.8441726225416374 and Reconstruction Loss:29.2130184173584
+Epoch:16 and AverageLoss:0.857691414368427 and Reconstruction Loss:27.96590232849121
+Epoch:17 and AverageLoss:0.8447126769043906 and Reconstruction Loss:32.68115997314453
+Epoch:18 and AverageLoss:0.8333458530018701 and Reconstruction Loss:27.771310806274414
+Epoch:19 and AverageLoss:0.8358048645736617 and Reconstruction Loss:29.50168228149414
+Model Saved Sucessfully
+The Iteration0:
+================================
+The Iteration1:
+================================
+The Iteration2:
+================================
+The Iteration3:
+================================
+The Iteration4:
+================================
+The Iteration5:
+================================
+The Iteration6:
+================================
+The Iteration7:
+================================

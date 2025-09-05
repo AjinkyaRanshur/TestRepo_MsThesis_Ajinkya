@@ -1,0 +1,16 @@
+{"time":"2025-09-05T16:24:47.476732991+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T16:24:47.800693587+02:00","level":"INFO","msg":"stream: created new stream","id":"eh9dgiq6"}
+{"time":"2025-09-05T16:24:47.800765462+02:00","level":"INFO","msg":"stream: started","id":"eh9dgiq6"}
+{"time":"2025-09-05T16:24:47.800804898+02:00","level":"INFO","msg":"handler: started","stream_id":"eh9dgiq6"}
+{"time":"2025-09-05T16:24:47.800859882+02:00","level":"INFO","msg":"sender: started","stream_id":"eh9dgiq6"}
+{"time":"2025-09-05T16:24:47.800826333+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"eh9dgiq6"}
+{"time":"2025-09-05T16:27:33.787561089+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/eh9dgiq6/file_stream"}
+{"time":"2025-09-05T16:27:33.791842607+02:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/eh9dgiq6/file_stream: {\"error\":\"run understading_zhoyang's_training_method/eh9dgiq6 not found while streaming file\"}"}
+{"time":"2025-09-05T16:27:41.163868618+02:00","level":"INFO","msg":"stream: closing","id":"eh9dgiq6"}
+{"time":"2025-09-05T16:27:41.348204151+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2025-09-05T16:27:41.348369426+02:00","level":"ERROR","msg":"runfiles: CreateRunFiles returned error: returned error 404: {\"data\":{\"createRunFiles\":null},\"errors\":[{\"message\":\"run understading_zhoyang's_training_method/eh9dgiq6 not found during createRunFiles\",\"path\":[\"createRunFiles\"]}]}"}
+{"time":"2025-09-05T16:27:41.348611824+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T16:27:41.348705092+02:00","level":"INFO","msg":"handler: closed","stream_id":"eh9dgiq6"}
+{"time":"2025-09-05T16:27:41.348740596+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"eh9dgiq6"}
+{"time":"2025-09-05T16:27:41.348747226+02:00","level":"INFO","msg":"sender: closed","stream_id":"eh9dgiq6"}
+{"time":"2025-09-05T16:27:41.348857092+02:00","level":"INFO","msg":"stream: closed","id":"eh9dgiq6"}

@@ -1,0 +1,13 @@
+{"time":"2025-09-05T16:51:55.347785423+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T16:51:55.674008731+02:00","level":"INFO","msg":"stream: created new stream","id":"ddmgkatv"}
+{"time":"2025-09-05T16:51:55.674056373+02:00","level":"INFO","msg":"stream: started","id":"ddmgkatv"}
+{"time":"2025-09-05T16:51:55.674063921+02:00","level":"INFO","msg":"handler: started","stream_id":"ddmgkatv"}
+{"time":"2025-09-05T16:51:55.674067211+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ddmgkatv"}
+{"time":"2025-09-05T16:51:55.6740817+02:00","level":"INFO","msg":"sender: started","stream_id":"ddmgkatv"}
+{"time":"2025-09-05T16:55:41.42577691+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T16:55:41.76189888+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-05T16:55:41.77600231+02:00","level":"INFO","msg":"stream: closing","id":"ddmgkatv"}
+{"time":"2025-09-05T16:55:41.776023009+02:00","level":"INFO","msg":"handler: closed","stream_id":"ddmgkatv"}
+{"time":"2025-09-05T16:55:41.776035655+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ddmgkatv"}
+{"time":"2025-09-05T16:55:41.776041892+02:00","level":"INFO","msg":"sender: closed","stream_id":"ddmgkatv"}
+{"time":"2025-09-05T16:55:41.776152913+02:00","level":"INFO","msg":"stream: closed","id":"ddmgkatv"}

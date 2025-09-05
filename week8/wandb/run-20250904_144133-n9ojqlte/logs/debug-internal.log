@@ -1,0 +1,29 @@
+{"time":"2025-09-04T14:41:34.597774812+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-04T14:41:35.035039167+02:00","level":"INFO","msg":"stream: created new stream","id":"n9ojqlte"}
+{"time":"2025-09-04T14:41:35.035124335+02:00","level":"INFO","msg":"sender: started","stream_id":"n9ojqlte"}
+{"time":"2025-09-04T14:41:35.035123274+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"n9ojqlte"}
+{"time":"2025-09-04T14:41:35.035259151+02:00","level":"INFO","msg":"stream: started","id":"n9ojqlte"}
+{"time":"2025-09-04T14:41:35.035255053+02:00","level":"INFO","msg":"handler: started","stream_id":"n9ojqlte"}
+{"time":"2025-09-04T20:19:05.981940106+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/n9ojqlte/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-09-04T20:21:05.973126987+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-09-05T04:47:11.303855389+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/n9ojqlte/file_stream\": EOF"}
+{"time":"2025-09-05T04:52:11.302262134+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/n9ojqlte/file_stream\": EOF"}
+{"time":"2025-09-05T04:52:26.303258026+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/n9ojqlte/file_stream\": EOF"}
+{"time":"2025-09-05T04:52:28.579209867+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/n9ojqlte/file_stream\": EOF"}
+{"time":"2025-09-05T04:56:26.302882315+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/n9ojqlte/file_stream\": EOF"}
+{"time":"2025-09-05T04:56:28.676285596+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/n9ojqlte/file_stream\": EOF"}
+{"time":"2025-09-05T05:00:11.303104985+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/n9ojqlte/file_stream\": EOF"}
+{"time":"2025-09-05T05:02:11.303159467+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/n9ojqlte/file_stream\": EOF"}
+{"time":"2025-09-05T05:07:11.303090281+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/n9ojqlte/file_stream\": EOF"}
+{"time":"2025-09-05T05:07:13.733500311+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/n9ojqlte/file_stream\": EOF"}
+{"time":"2025-09-05T05:07:26.303535081+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/n9ojqlte/file_stream\": EOF"}
+{"time":"2025-09-05T05:07:56.304041474+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/n9ojqlte/file_stream\": EOF"}
+{"time":"2025-09-05T05:09:26.303144666+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/n9ojqlte/file_stream\": EOF"}
+{"time":"2025-09-05T05:10:41.302219035+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/n9ojqlte/file_stream\": EOF"}
+{"time":"2025-09-05T05:19:44.108060327+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading wandb-summary.json","runtime_seconds":0.819524637,"progress":"30.6KB/30.6KB"}],"total_operations":1}}
+{"time":"2025-09-05T05:19:44.121412135+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T05:19:44.449388318+02:00","level":"INFO","msg":"stream: closing","id":"n9ojqlte"}
+{"time":"2025-09-05T05:19:44.449440814+02:00","level":"INFO","msg":"handler: closed","stream_id":"n9ojqlte"}
+{"time":"2025-09-05T05:19:44.449462476+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"n9ojqlte"}
+{"time":"2025-09-05T05:19:44.449511081+02:00","level":"INFO","msg":"sender: closed","stream_id":"n9ojqlte"}
+{"time":"2025-09-05T05:19:44.449565561+02:00","level":"INFO","msg":"stream: closed","id":"n9ojqlte"}

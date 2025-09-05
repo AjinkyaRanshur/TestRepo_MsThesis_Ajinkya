@@ -1,0 +1,13 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 207, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 181, in main
+    accuracy_dict = testing_model(net,trainloader,testloader,config,20)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 140, in testing_model
+    f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',
+       ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'config5' has no attribute 'load_model_path'

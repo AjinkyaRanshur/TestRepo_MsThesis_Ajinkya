@@ -1,0 +1,6 @@
+{"time":"2025-09-05T16:57:18.65458542+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T16:57:19.099401576+02:00","level":"INFO","msg":"stream: created new stream","id":"nnaipbpy"}
+{"time":"2025-09-05T16:57:19.099496021+02:00","level":"INFO","msg":"stream: started","id":"nnaipbpy"}
+{"time":"2025-09-05T16:57:19.099574429+02:00","level":"INFO","msg":"sender: started","stream_id":"nnaipbpy"}
+{"time":"2025-09-05T16:57:19.09960512+02:00","level":"INFO","msg":"handler: started","stream_id":"nnaipbpy"}
+{"time":"2025-09-05T16:57:19.099570734+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"nnaipbpy"}
