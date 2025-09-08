@@ -1,0 +1,26 @@
+✓ WandB initialized in Online mode
+Loaded 2400 samples
+Filtered to classes: [0, 1]
+Class distribution: {0: 1200, 1: 1200}
+Loaded 4800 samples
+Filtered to classes: [0, 1, 2, 3]
+Class distribution: {2: 1200, 3: 1200, 0: 1200, 1: 1200}
+The Iteration0:
+================================
+Visualizing training dataset samples...
+Logged batch 1 with labels: [1, 0, 1, 1, 1, 0, 0, 1]
+Logged batch 2 with labels: [1, 0, 0, 0, 0, 0, 0, 0]
+Logged batch 3 with labels: [1, 0, 1, 1, 0, 1, 1, 1]
+Visualizing test dataset samples...
+Logged batch 1 with labels: [0, 1, 1, 0, 1, 0, 1, 0]
+Logged batch 2 with labels: [0, 1, 1, 0, 1, 1, 1, 0]
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 281, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 249, in main
+    train_bool = illusion_pc_training(net,trainloader, testloader,"train",config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/illusion_pc_train.py", line 130, in illusion_pc_training
+    print(f"Epoch:{epoch} and AverageLoss:{avg_loss}")
+                                           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'avg_loss' where it is not associated with a value

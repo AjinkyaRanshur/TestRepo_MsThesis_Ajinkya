@@ -1,0 +1,23 @@
+✓ WandB initialized in Online mode
+Loaded 2400 samples
+Filtered to classes: [0, 1]
+Class distribution: {0: 1200, 1: 1200}
+Loaded 4800 samples
+Filtered to classes: [0, 1, 2, 3]
+Class distribution: {2: 1200, 3: 1200, 0: 1200, 1: 1200}
+The Iteration0:
+================================
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 298, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 247, in main
+    train_bool = fine_tuning_using_illusions(net,save_dir, trainloader, testloader,config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 207, in fine_tuning_using_illusions
+    net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/module.py", line 2584, in load_state_dict
+    raise RuntimeError(
+RuntimeError: Error(s) in loading state_dict for Net:
+	size mismatch for fc3.weight: copying a param with shape torch.Size([10, 84]) from checkpoint, the shape in current model is torch.Size([2, 84]).
+	size mismatch for fc3.bias: copying a param with shape torch.Size([10]) from checkpoint, the shape in current model is torch.Size([2]).
+	size mismatch for fc3_fb.weight: copying a param with shape torch.Size([84, 10]) from checkpoint, the shape in current model is torch.Size([84, 2]).

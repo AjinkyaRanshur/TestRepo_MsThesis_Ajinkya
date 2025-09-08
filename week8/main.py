@@ -25,6 +25,8 @@ import wandb
 import argparse
 import importlib
 from PIL import Image
+import torchvision.utils as vutils
+
 
 start = time.time()
 
@@ -199,6 +201,94 @@ def fine_tuning_using_classification(net,save_dir, trainloader, testloader,confi
 
     return train_bool
 
+def fine_tuning_using_illusions(net,save_dir, trainloader, testloader,config):
+
+    for iteration_index in range(20):
+        print(f"The Iteration{iteration_index}:")
+        print("================================")
+        net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',
+        map_location=config.device,weights_only=True))
+        train_bool=illusion_pc_training(net,trainloader, testloader,"fine_tuning",config)
+        if train_bool == True:
+            torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
+            print("Model Saved Sucessfully")
+
+    return train_bool
+
+def recon_vs_original(net, dataloader, config, n_images=8, epoch=None, phase="train",iteration_index=15):
+
+    net.load_state_dict(torch.load(
+        f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',
+        map_location=config.device,
+         weights_only=True))
+
+    net.eval()
+
+    data_iter=iter(dataloader)
+    images,labels=next(data_iter)
+
+    images = images[:n_images].to(config.device)
+    labels = labels[:n_images]
+
+    with torch.no_grad():
+        # Initialize feature tensors
+        ft_AB = torch.zeros(n_images, 6, 32, 32).to(config.device)
+        ft_BC = torch.zeros(n_images, 16, 16, 16).to(config.device)
+        ft_CD = torch.zeros(n_images, 32, 8, 8).to(config.device)
+        ft_DE = torch.zeros(n_images, 64, 4, 4).to(config.device)
+
+        # Forward pass
+        ft_AB, ft_BC, ft_CD, ft_DE, ft_EF, ft_FG, output = net.feedforward_pass(
+            images, ft_AB, ft_BC, ft_CD, ft_DE
+        )
+
+        # Feedback pass for reconstruction
+        ft_BA, ft_CB, ft_DC, ft_ED, ft_FE, ft_GF, reconstructed = net.feedback_pass(
+            output, ft_AB, ft_BC, ft_CD, ft_DE, ft_EF, ft_FG
+        )
+
+        # Create side-by-side comparison
+        comparison_images = torch.zeros(n_images * 2, 3, 32, 32)
+
+        # Alternate original and reconstructed images
+        for i in range(n_images):
+            comparison_images[i * 2] = images[i].cpu()      # Original
+            comparison_images[i * 2 + 1] = reconstructed[i].cpu()  # Reconstructed
+    
+    # Create grid: 2 rows (original, reconstructed) x n_images columns
+    grid = vutils.make_grid(comparison_images, nrow=n_images, padding=2, normalize=False)
+    
+    # Convert to numpy for matplotlib
+    grid_np = grid.permute(1, 2, 0).numpy()
+    
+    # Create matplotlib figure
+    fig, ax = plt.subplots(figsize=(15, 6))
+    ax.imshow(grid_np)
+    ax.axis('off')
+    
+    # Add title and labels
+    epoch_str = f"Epoch {epoch}" if epoch is not None else ""
+    ax.set_title(f'Image Reconstruction Comparison - {phase.capitalize()} {epoch_str}\n'
+                 f'Top Row: Original Images, Bottom Row: Reconstructed Images', 
+                 fontsize=14, pad=20)
+    
+    # Add text annotations for clarity
+    ax.text(0.02, 0.15, 'Original', transform=ax.transAxes, fontsize=12, 
+            color='white', bbox=dict(boxstyle='round', facecolor='black', alpha=0.8))
+    ax.text(0.02, 0.85, 'Reconstructed', transform=ax.transAxes, fontsize=12,
+            color='white', bbox=dict(boxstyle='round', facecolor='black', alpha=0.8))
+    
+    plt.tight_layout()
+    
+    # Log to wandb
+    wandb.log({
+        f"Reconstruction_Comparison/{phase}": wandb.Image(fig, 
+            caption=f"Original vs Reconstructed - {phase} {epoch_str}")
+    })
+    
+    plt.close(fig)  # Close figure to save memory
+
+    return True
 
 def testing_model(net,trainloader,testloader,config,iteration_index):
 
@@ -228,9 +318,15 @@ def main():
 
     if config.training_condition == "random_network_testing":
             train_bool = reconstruction_testing_on_random_network(net,save_dir, trainloader, testloader,config)
+    
+    if config.training_condition == "illusion_train":
+        train_bool = fine_tuning_using_illusions(net,save_dir, trainloader, testloader,config)
+
+    if config.training_condition == "recon_comparison":
+        train_bool = recon_vs_original(net, testloader, config, n_images=8)
 
 
-    for iteration_index in range(20):
+    for iteration_index in range(2):
         if config.training_condition == None:
             break
         print(f"The Iteration{iteration_index}:")
@@ -246,9 +342,9 @@ def main():
                 print("Training Sucessful")
 
         if config.training_condition == "illusion_train":
-            train_bool = illusion_pc_training(net,trainloader, testloader,"train",config)
+            train_bool = illusion_pc_training(net,trainloader, testloader,"fine_tuning",config)
             if train_bool == True:
-                #torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
+                torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
                 print("Training Sucessful")
 
 
