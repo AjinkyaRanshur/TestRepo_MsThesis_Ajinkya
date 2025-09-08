@@ -4,3 +4,10 @@
 {"time":"2025-09-05T17:28:33.04418872+02:00","level":"INFO","msg":"handler: started","stream_id":"5oxymlmt"}
 {"time":"2025-09-05T17:28:33.044221863+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"5oxymlmt"}
 {"time":"2025-09-05T17:28:33.044428889+02:00","level":"INFO","msg":"sender: started","stream_id":"5oxymlmt"}
+{"time":"2025-09-05T17:33:26.485909701+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T17:33:26.582364239+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.096303609}],"total_operations":1}}
+{"time":"2025-09-05T17:33:26.743962909+02:00","level":"INFO","msg":"stream: closing","id":"5oxymlmt"}
+{"time":"2025-09-05T17:33:26.74398372+02:00","level":"INFO","msg":"handler: closed","stream_id":"5oxymlmt"}
+{"time":"2025-09-05T17:33:26.743995472+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"5oxymlmt"}
+{"time":"2025-09-05T17:33:26.744009066+02:00","level":"INFO","msg":"sender: closed","stream_id":"5oxymlmt"}
+{"time":"2025-09-05T17:33:26.744092979+02:00","level":"INFO","msg":"stream: closed","id":"5oxymlmt"}

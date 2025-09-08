@@ -1,0 +1,13 @@
+{"time":"2025-09-05T17:55:11.155661319+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T17:55:11.689105613+02:00","level":"INFO","msg":"stream: created new stream","id":"dho3wikh"}
+{"time":"2025-09-05T17:55:11.689153549+02:00","level":"INFO","msg":"stream: started","id":"dho3wikh"}
+{"time":"2025-09-05T17:55:11.690382954+02:00","level":"INFO","msg":"handler: started","stream_id":"dho3wikh"}
+{"time":"2025-09-05T17:55:11.690418162+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"dho3wikh"}
+{"time":"2025-09-05T17:55:11.690655842+02:00","level":"INFO","msg":"sender: started","stream_id":"dho3wikh"}
+{"time":"2025-09-05T17:59:22.772384222+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T17:59:23.10086503+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.328323864}],"total_operations":1}}
+{"time":"2025-09-05T17:59:23.125998116+02:00","level":"INFO","msg":"stream: closing","id":"dho3wikh"}
+{"time":"2025-09-05T17:59:23.126009612+02:00","level":"INFO","msg":"handler: closed","stream_id":"dho3wikh"}
+{"time":"2025-09-05T17:59:23.126018456+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"dho3wikh"}
+{"time":"2025-09-05T17:59:23.126091857+02:00","level":"INFO","msg":"sender: closed","stream_id":"dho3wikh"}
+{"time":"2025-09-05T17:59:23.12610455+02:00","level":"INFO","msg":"stream: closed","id":"dho3wikh"}

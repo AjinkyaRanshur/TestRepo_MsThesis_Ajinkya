@@ -1,0 +1,13 @@
+{"time":"2025-09-05T18:17:32.111595663+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T18:17:32.445133939+02:00","level":"INFO","msg":"stream: created new stream","id":"knoggekn"}
+{"time":"2025-09-05T18:17:32.44518603+02:00","level":"INFO","msg":"stream: started","id":"knoggekn"}
+{"time":"2025-09-05T18:17:32.445203875+02:00","level":"INFO","msg":"handler: started","stream_id":"knoggekn"}
+{"time":"2025-09-05T18:17:32.445217223+02:00","level":"INFO","msg":"sender: started","stream_id":"knoggekn"}
+{"time":"2025-09-05T18:17:32.445229644+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"knoggekn"}
+{"time":"2025-09-05T18:21:33.7412333+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T18:21:34.086313503+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-05T18:21:34.08959973+02:00","level":"INFO","msg":"stream: closing","id":"knoggekn"}
+{"time":"2025-09-05T18:21:34.089614258+02:00","level":"INFO","msg":"handler: closed","stream_id":"knoggekn"}
+{"time":"2025-09-05T18:21:34.089627819+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"knoggekn"}
+{"time":"2025-09-05T18:21:34.089630575+02:00","level":"INFO","msg":"sender: closed","stream_id":"knoggekn"}
+{"time":"2025-09-05T18:21:34.089729844+02:00","level":"INFO","msg":"stream: closed","id":"knoggekn"}

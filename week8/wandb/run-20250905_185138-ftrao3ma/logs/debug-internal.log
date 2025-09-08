@@ -1,0 +1,13 @@
+{"time":"2025-09-05T18:51:38.336003623+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T18:51:38.757613817+02:00","level":"INFO","msg":"stream: created new stream","id":"ftrao3ma"}
+{"time":"2025-09-05T18:51:38.757655913+02:00","level":"INFO","msg":"stream: started","id":"ftrao3ma"}
+{"time":"2025-09-05T18:51:38.7589143+02:00","level":"INFO","msg":"handler: started","stream_id":"ftrao3ma"}
+{"time":"2025-09-05T18:51:38.758969202+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ftrao3ma"}
+{"time":"2025-09-05T18:51:38.758847548+02:00","level":"INFO","msg":"sender: started","stream_id":"ftrao3ma"}
+{"time":"2025-09-05T18:52:59.039538135+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T18:52:59.14812536+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.108457879}],"total_operations":1}}
+{"time":"2025-09-05T18:53:08.671998426+02:00","level":"INFO","msg":"stream: closing","id":"ftrao3ma"}
+{"time":"2025-09-05T18:53:08.672016558+02:00","level":"INFO","msg":"handler: closed","stream_id":"ftrao3ma"}
+{"time":"2025-09-05T18:53:08.672026824+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ftrao3ma"}
+{"time":"2025-09-05T18:53:08.672036333+02:00","level":"INFO","msg":"sender: closed","stream_id":"ftrao3ma"}
+{"time":"2025-09-05T18:53:08.672107582+02:00","level":"INFO","msg":"stream: closed","id":"ftrao3ma"}
