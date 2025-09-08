@@ -1,0 +1,13 @@
+{"time":"2025-09-05T18:05:08.138358911+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T18:05:08.565310698+02:00","level":"INFO","msg":"stream: created new stream","id":"ukakrf4j"}
+{"time":"2025-09-05T18:05:08.565353288+02:00","level":"INFO","msg":"stream: started","id":"ukakrf4j"}
+{"time":"2025-09-05T18:05:08.565435187+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ukakrf4j"}
+{"time":"2025-09-05T18:05:08.565626194+02:00","level":"INFO","msg":"handler: started","stream_id":"ukakrf4j"}
+{"time":"2025-09-05T18:05:08.565641558+02:00","level":"INFO","msg":"sender: started","stream_id":"ukakrf4j"}
+{"time":"2025-09-05T18:09:08.445659642+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T18:09:08.667556061+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-05T18:09:08.670931234+02:00","level":"INFO","msg":"stream: closing","id":"ukakrf4j"}
+{"time":"2025-09-05T18:09:08.670948279+02:00","level":"INFO","msg":"handler: closed","stream_id":"ukakrf4j"}
+{"time":"2025-09-05T18:09:08.670958295+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ukakrf4j"}
+{"time":"2025-09-05T18:09:08.670964938+02:00","level":"INFO","msg":"sender: closed","stream_id":"ukakrf4j"}
+{"time":"2025-09-05T18:09:08.671034841+02:00","level":"INFO","msg":"stream: closed","id":"ukakrf4j"}

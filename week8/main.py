@@ -7,6 +7,7 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+from torch.utils.data import Dataset
 from torch.utils.tensorboard import SummaryWriter
 from network import Net as Net
 from fwd_train import feedfwd_training
@@ -14,7 +15,7 @@ from back_train import feedback_training
 from pc_train import class_pc_training
 from recon_pc_train import recon_pc_training
 from eval_and_plotting import eval_pc_accuracy,recon_pc_loss
-from custom_dataset import MyDataset1
+from illusion_pc_train import illusion_pc_training
 import random
 import os
 import sys
@@ -23,6 +24,7 @@ from wb_tracker import init_wandb
 import wandb
 import argparse
 import importlib
+from PIL import Image
 
 start = time.time()
 
@@ -54,31 +56,96 @@ def set_seed(seed):
     # disable auto-optimization
     torch.backends.cudnn.benchmark = False
 
+class FilteredShapeDataset(Dataset):
+    def __init__(self, txt_path, transform=None, filter_classes=None):
+        """
+        Dataset that can filter specific classes
 
-def train_test_loader(datasetpath):
+        Args:
+            txt_path: path to your data file
+            transform: image transforms
+            filter_classes: list of classes to include (e.g., [0, 1] for training)
+                          None means include all classes (for testing)
+        """
+        self.data = []
+        self.transform = transform
+
+        with open(txt_path, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    parts = line.split()
+                    img_path = parts[0]
+                    label = int(parts[1])
+
+                    # Filter classes if specified
+                    if filter_classes is None or label in filter_classes:
+                        shape_type = int(parts[2]) if parts[2] != '-1' else -1
+                        x1, y1, x2, y2 = map(float, parts[3:7])
+                        noise1, noise2 = map(float, parts[7:9])
+
+                        self.data.append({
+                            'path': img_path,
+                            'label': label,
+                            'shape_type': shape_type,
+                            'bbox': [x1, y1, x2, y2],
+                            'noise': [noise1, noise2]
+                        })
+
+        print(f"Loaded {len(self.data)} samples")
+        if filter_classes:
+            print(f"Filtered to classes: {filter_classes}")
+            # Count samples per class
+            class_counts = {}
+            for item in self.data:
+                label = item['label']
+                class_counts[label] = class_counts.get(label, 0) + 1
+            print("Class distribution:", class_counts)
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        item = self.data[idx]
+        image = Image.open(item['path']).convert('RGB')
+
+        if self.transform:
+            image = self.transform(image)
+
+        return image, item['label']
+
+def train_test_loader(datasetpath,illusion_bool):
     # Normalizing the images
     #Andrea's nromalization is different figure out why
 
     transform = transforms.Compose(
         [transforms.ToTensor(), transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))])
 
-    trainset = torchvision.datasets.CIFAR10(
-    root=datasetpath,
-    train=True,
-    download=True,
-    transform=transform)
+    if illusion_bool == True:
+        trainset = FilteredShapeDataset(datasetpath, transform, filter_classes=[0, 1])
+        trainloader=torch.utils.data.DataLoader(trainset, batch_size=config.batch_size, shuffle=True, num_workers=0)
+        testset= FilteredShapeDataset(datasetpath, transform, filter_classes=[0,1,2,3])
+        testloader=torch.utils.data.DataLoader(trainset, batch_size=config.batch_size, shuffle=True, num_workers=0)
 
-    trainloader = torch.utils.data.DataLoader(
-    trainset, batch_size=config.batch_size, shuffle=True, num_workers=0)
+    else:
 
-    testset = torchvision.datasets.CIFAR10(
-    root=datasetpath,
-    train=False,
-    download=True,
-     transform=transform)
+        trainset = torchvision.datasets.CIFAR10(
+        root=datasetpath,
+        train=True,
+        download=True,
+        transform=transform)
 
-    testloader = torch.utils.data.DataLoader(
-    testset, batch_size=config.batch_size, shuffle=False, num_workers=0)
+        trainloader = torch.utils.data.DataLoader(
+        trainset, batch_size=config.batch_size, shuffle=True, num_workers=0)
+
+        testset = torchvision.datasets.CIFAR10(
+        root=datasetpath,
+        train=False,
+        download=True,
+        transform=transform)
+
+        testloader = torch.utils.data.DataLoader(
+        testset, batch_size=config.batch_size, shuffle=False, num_workers=0)
 
     return trainloader, testloader
 
@@ -97,7 +164,6 @@ def create_priors_dict(gammaset, betaset, alphaset):
 
 
 def training_using_reconstruction_and_predicitve_coding(net,save_dir, trainloader, testloader,config):
-
     
     recon_pc_training(net,trainloader,testloader,"train",config)
 
@@ -134,14 +200,6 @@ def fine_tuning_using_classification(net,save_dir, trainloader, testloader,confi
     return train_bool
 
 
-def training_using_illusions(net,save_dir,illusion_trainloader,illusion_testloader,config):
-
-    for batch_idx,batch in enumerate(illusion_trainloader):
-        images,labels=batch
-        print(labels)
-
-    return None
-
 def testing_model(net,trainloader,testloader,config,iteration_index):
 
     net.load_state_dict(
@@ -163,7 +221,7 @@ def main():
     file_path = os.path.join(save_dir, f"Accuracy_Stats_{config.seed}.txt")
     net = Net().to(config.device)
     wandb.watch(net, log="all", log_freq=10)
-    trainloader, testloader = train_test_loader(config.datasetpath)
+    trainloader, testloader = train_test_loader(config.datasetpath,config.illusion_dataset_bool)
 
     if config.training_condition == "fine_tuning_classification":
         train_bool = fine_tuning_using_classification(net,save_dir, trainloader, testloader,config)
@@ -188,14 +246,7 @@ def main():
                 print("Training Sucessful")
 
         if config.training_condition == "illusion_train":
-            transform_train = transforms.Compose([transforms.ToTensor(),])
-            transform_val   = transforms.Compose([transforms.ToTensor(),])
-            train_sets  = MyDataset1("/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/illusory0.1/test.txt",transform_train)
-            val_sets    = MyDataset1("/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/illusory0.1/test.txt",transform_val)
-            illusion_trainloader= torch.utils.data.DataLoader(train_sets, batch_size=config.batch_size, shuffle=True,  num_workers=4, drop_last=False)
-            illusion_testloader= torch.utils.data.DataLoader(train_sets, batch_size=config.batch_size, shuffle=True,  num_workers=4, drop_last=False)
-
-            train_bool = training_using_illusions(net,save_dir,illusion_trainloader,illusion_testloader,config)
+            train_bool = illusion_pc_training(net,trainloader, testloader,"train",config)
             if train_bool == True:
                 #torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
                 print("Training Sucessful")

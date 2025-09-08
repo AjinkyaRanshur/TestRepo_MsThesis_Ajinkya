@@ -8,7 +8,7 @@ wandb.login()
 def init_wandb(batch_size, epochs, lr, momentum, seed, device, training_condition,timesteps, gammaset, betaset, alphaset, datasetpath,name,noise_type,noise_param,model_name):
 
     wandb.init(
-        project="understading_zhoyang's_training_method",
+        project="random_dumping_projects",
         name=name,
         mode="online",
         config={

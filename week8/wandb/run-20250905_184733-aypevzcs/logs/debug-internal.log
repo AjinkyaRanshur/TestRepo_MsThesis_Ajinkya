@@ -1,0 +1,13 @@
+{"time":"2025-09-05T18:47:34.121946464+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T18:47:34.446090479+02:00","level":"INFO","msg":"stream: created new stream","id":"aypevzcs"}
+{"time":"2025-09-05T18:47:34.44613961+02:00","level":"INFO","msg":"stream: started","id":"aypevzcs"}
+{"time":"2025-09-05T18:47:34.446158182+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"aypevzcs"}
+{"time":"2025-09-05T18:47:34.446174777+02:00","level":"INFO","msg":"handler: started","stream_id":"aypevzcs"}
+{"time":"2025-09-05T18:47:34.446232669+02:00","level":"INFO","msg":"sender: started","stream_id":"aypevzcs"}
+{"time":"2025-09-05T18:51:57.368375153+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T18:51:57.579832833+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-05T18:51:57.582820724+02:00","level":"INFO","msg":"stream: closing","id":"aypevzcs"}
+{"time":"2025-09-05T18:51:57.58284473+02:00","level":"INFO","msg":"handler: closed","stream_id":"aypevzcs"}
+{"time":"2025-09-05T18:51:57.582857273+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"aypevzcs"}
+{"time":"2025-09-05T18:51:57.582868416+02:00","level":"INFO","msg":"sender: closed","stream_id":"aypevzcs"}
+{"time":"2025-09-05T18:51:57.582941012+02:00","level":"INFO","msg":"stream: closed","id":"aypevzcs"}

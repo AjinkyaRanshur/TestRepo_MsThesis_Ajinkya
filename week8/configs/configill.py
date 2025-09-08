@@ -5,7 +5,7 @@ epochs = 10
 seed = 42
 lr = 0.00005 
 momentum = 0.9
-datasetpath = '/home/ajinkya/datasets'
+datasetpath = 'data/illusory0.1/test.txt'
 training_condition="illusion_train"
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
@@ -23,12 +23,12 @@ gammaset=[[0.33, 0.33, 0.33, 0.33]]
 betaset = [[0.33, 0.33, 0.33, 0.33]]
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
-model_name = "pc_recon_train_t1"
+model_name = "pc_class_train_balanced"
 noise_type="s&p"
 noise_param=0.0
 
-experiment_name= "Reconstruction Training Using 1 timestep"
-load_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/models/recon_models/timesteps1"
-save_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/models/recon_models/timesteps1"
+experiment_name= "Illusion runningtest"
+load_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/models/classification_models"
+save_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/models/classification_models"
 
-
+illusion_dataset_bool=True

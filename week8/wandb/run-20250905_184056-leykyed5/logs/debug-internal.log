@@ -1,0 +1,13 @@
+{"time":"2025-09-05T18:40:56.391833649+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T18:40:56.925015215+02:00","level":"INFO","msg":"stream: created new stream","id":"leykyed5"}
+{"time":"2025-09-05T18:40:56.925085839+02:00","level":"INFO","msg":"stream: started","id":"leykyed5"}
+{"time":"2025-09-05T18:40:56.926246318+02:00","level":"INFO","msg":"sender: started","stream_id":"leykyed5"}
+{"time":"2025-09-05T18:40:56.926297747+02:00","level":"INFO","msg":"handler: started","stream_id":"leykyed5"}
+{"time":"2025-09-05T18:40:56.926308296+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"leykyed5"}
+{"time":"2025-09-05T18:45:35.518738823+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T18:45:35.750788603+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-05T18:45:35.754232775+02:00","level":"INFO","msg":"stream: closing","id":"leykyed5"}
+{"time":"2025-09-05T18:45:35.754246675+02:00","level":"INFO","msg":"handler: closed","stream_id":"leykyed5"}
+{"time":"2025-09-05T18:45:35.754258699+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"leykyed5"}
+{"time":"2025-09-05T18:45:35.754345948+02:00","level":"INFO","msg":"sender: closed","stream_id":"leykyed5"}
+{"time":"2025-09-05T18:45:35.754358534+02:00","level":"INFO","msg":"stream: closed","id":"leykyed5"}

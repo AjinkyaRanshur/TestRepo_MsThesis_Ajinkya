@@ -1,0 +1,14 @@
+{"time":"2025-09-05T18:21:18.815355377+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-05T18:21:19.237831518+02:00","level":"INFO","msg":"stream: created new stream","id":"v1pysmw0"}
+{"time":"2025-09-05T18:21:19.237883418+02:00","level":"INFO","msg":"stream: started","id":"v1pysmw0"}
+{"time":"2025-09-05T18:21:19.238261221+02:00","level":"INFO","msg":"handler: started","stream_id":"v1pysmw0"}
+{"time":"2025-09-05T18:21:19.238333828+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"v1pysmw0"}
+{"time":"2025-09-05T18:21:19.23861264+02:00","level":"INFO","msg":"sender: started","stream_id":"v1pysmw0"}
+{"time":"2025-09-05T18:25:20.186365666+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-05T18:25:20.594779674+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading data","runtime_seconds":30.74855604}],"total_operations":1}}
+{"time":"2025-09-05T18:25:50.004981536+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/understading_zhoyang's_training_method/v1pysmw0/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-09-05T18:25:52.671692816+02:00","level":"INFO","msg":"stream: closing","id":"v1pysmw0"}
+{"time":"2025-09-05T18:25:52.671714292+02:00","level":"INFO","msg":"handler: closed","stream_id":"v1pysmw0"}
+{"time":"2025-09-05T18:25:52.671730133+02:00","level":"INFO","msg":"sender: closed","stream_id":"v1pysmw0"}
+{"time":"2025-09-05T18:25:52.671724931+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"v1pysmw0"}
+{"time":"2025-09-05T18:25:52.671828061+02:00","level":"INFO","msg":"stream: closed","id":"v1pysmw0"}
