@@ -1,0 +1,40 @@
+✓ WandB initialized in Online mode
+Loaded 2400 samples
+Filtered to classes: [0, 1]
+Class distribution: {0: 1200, 1: 1200}
+Loaded 4800 samples
+Filtered to classes: [0, 1, 2, 3]
+Class distribution: {2: 1200, 3: 1200, 0: 1200, 1: 1200}
+The Iteration0:
+================================
+Visualizing training dataset samples...
+Logged batch 1 with labels: [1, 0, 0, 0, 0, 0, 0, 0]
+Logged batch 2 with labels: [1, 0, 0, 1, 1, 0, 0, 0]
+Logged batch 3 with labels: [1, 0, 1, 1, 0, 0, 0, 0]
+Visualizing test dataset samples...
+Logged batch 1 with labels: [1, 0, 0, 1, 1, 1, 1, 1]
+Logged batch 2 with labels: [0, 1, 1, 1, 0, 1, 0, 1]
+Epoch:0 and AverageLoss:2.4138508876164755
+Epoch:1 and AverageLoss:1.9553417523701986
+Epoch:2 and AverageLoss:1.617453283071518
+Epoch:3 and AverageLoss:1.4289320449034373
+Epoch:4 and AverageLoss:1.3126506904760997
+Epoch:5 and AverageLoss:1.2203050712744394
+Epoch:6 and AverageLoss:1.142044734954834
+Epoch:7 and AverageLoss:1.075865594546
+Epoch:8 and AverageLoss:1.017619832356771
+Epoch:9 and AverageLoss:0.9644292304913203
+Training Sucessful
+The Iteration1:
+================================
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 281, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 239, in main
+    net.load_state_dict(
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/module.py", line 2584, in load_state_dict
+    raise RuntimeError(
+RuntimeError: Error(s) in loading state_dict for Net:
+	size mismatch for fc3.weight: copying a param with shape torch.Size([10, 84]) from checkpoint, the shape in current model is torch.Size([2, 84]).
+	size mismatch for fc3.bias: copying a param with shape torch.Size([10]) from checkpoint, the shape in current model is torch.Size([2]).
+	size mismatch for fc3_fb.weight: copying a param with shape torch.Size([84, 10]) from checkpoint, the shape in current model is torch.Size([84, 2]).

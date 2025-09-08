@@ -32,7 +32,7 @@ def recon_pc_training(net,trainloader,testloader,pc_train_bool,config):
                 ft_CD_pc_temp = torch.zeros(config.batch_size, 32, 8, 8).to(config.device)
                 ft_DE_pc_temp = torch.zeros(config.batch_size,64,4,4).to(config.device)
 
-                ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,ft_FG_ppc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
+                ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp = net.feedforward_pass_no_dense(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
 
                 # In pc_train.py training loop       
                 ft_AB_pc_temp.requires_grad_(True)
@@ -81,8 +81,6 @@ def recon_pc_training(net,trainloader,testloader,pc_train_bool,config):
                 ft_DE_pc_temp.requires_grad_(True)
 
                 final_loss=0
-                #ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,loss_of_layers=net.recon_predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,beta,gamma,alpha,images.size(0))
-
 
                 for i in range(config.timesteps):
                     ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,loss_of_layers=net.recon_predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
@@ -107,9 +105,7 @@ def recon_pc_training(net,trainloader,testloader,pc_train_bool,config):
     if pc_train_bool=="fine_tuning":
         criterion=nn.CrossEntropyLoss()
         #optimizer=optim.SGD(net.parameters(),lr=config.lr,momentum=config.momentum)
-        optimizer= optim.Adam(list(net.fc1.parameters())+list(net.fc2.parameters()), lr=config.lr)
-        #optimizer= optim.SGD(list(net.deconv4_fb.parameters())+ list(net.conv4.parameters())+list(net.fc1.parameters())+list(net.fc2.parameters())+list(net.fc2_fb.parameters())+list(net.fc1_fb.parameters()), lr=config.lr, momentum=config.momentum)
-
+        optimizer= optim.Adam(list(net.fc1.parameters())+list(net.fc2.parameters())+list(net.fc3.parameters()), lr=config.lr)
         loss_arr=[]
         ##In zhoyang's paper finetuning was for only 25 epochs
         for epoch in range(config.epochs):

@@ -1,0 +1,10 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 370, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 319, in main
+    train_bool = recon_vs_original(net, dataloader, config, n_images=8)
+                                        ^^^^^^^^^^
+NameError: name 'dataloader' is not defined. Did you mean: 'trainloader'?

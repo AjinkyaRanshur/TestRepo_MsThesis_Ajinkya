@@ -1,0 +1,61 @@
+✓ WandB initialized in Online mode
+Loaded 2400 samples
+Filtered to classes: [0, 1]
+Class distribution: {0: 1200, 1: 1200}
+Loaded 4800 samples
+Filtered to classes: [0, 1, 2, 3]
+Class distribution: {2: 1200, 3: 1200, 0: 1200, 1: 1200}
+The Iteration0:
+================================
+Visualizing training dataset samples...
+Logged batch 1 with labels: [1, 1, 0, 0, 1, 1, 0, 0]
+Logged batch 2 with labels: [1, 1, 0, 1, 1, 1, 0, 0]
+Logged batch 3 with labels: [1, 1, 0, 0, 1, 0, 1, 1]
+Visualizing test dataset samples...
+Logged batch 1 with labels: [1, 1, 0, 0, 1, 0, 0, 1]
+Logged batch 2 with labels: [0, 0, 0, 1, 1, 1, 1, 1]
+Epoch:0 and AverageLoss:1.8110671818256379
+Epoch:1 and AverageLoss:1.4796533107757568
+Epoch:2 and AverageLoss:1.2868666350841522
+Epoch:3 and AverageLoss:1.1656675239404042
+Epoch:4 and AverageLoss:1.0729043463865915
+Epoch:5 and AverageLoss:0.9926052818695704
+Epoch:6 and AverageLoss:0.9230291992425919
+Epoch:7 and AverageLoss:0.8618224124113719
+Epoch:8 and AverageLoss:0.806724970539411
+Epoch:9 and AverageLoss:0.7565711667140325
+Training Sucessful
+The Iteration1:
+================================
+Visualizing training dataset samples...
+Logged batch 1 with labels: [1, 1, 1, 0, 0, 1, 1, 1]
+Logged batch 2 with labels: [1, 0, 1, 0, 1, 1, 0, 1]
+Logged batch 3 with labels: [0, 1, 0, 1, 1, 0, 0, 1]
+Visualizing test dataset samples...
+Logged batch 1 with labels: [1, 0, 0, 0, 1, 0, 1, 1]
+Logged batch 2 with labels: [0, 1, 1, 1, 0, 1, 0, 1]
+Epoch:0 and AverageLoss:0.7024140576521556
+Epoch:1 and AverageLoss:0.6445832033952077
+Epoch:2 and AverageLoss:0.5944195200999578
+Epoch:3 and AverageLoss:0.5506839573383331
+Epoch:4 and AverageLoss:0.5127135227123897
+Epoch:5 and AverageLoss:0.47965771208206814
+Epoch:6 and AverageLoss:0.4508582924803098
+Epoch:7 and AverageLoss:0.4256594737370809
+Epoch:8 and AverageLoss:0.4035339742898941
+Epoch:9 and AverageLoss:0.383868936697642
+Training Sucessful
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 281, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 255, in main
+    accuracy_dict = testing_model(net,trainloader,testloader,config,20)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 205, in testing_model
+    net.load_state_dict(
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/module.py", line 2584, in load_state_dict
+    raise RuntimeError(
+RuntimeError: Error(s) in loading state_dict for Net:
+	size mismatch for fc3.weight: copying a param with shape torch.Size([10, 84]) from checkpoint, the shape in current model is torch.Size([2, 84]).
+	size mismatch for fc3.bias: copying a param with shape torch.Size([10]) from checkpoint, the shape in current model is torch.Size([2]).
+	size mismatch for fc3_fb.weight: copying a param with shape torch.Size([84, 10]) from checkpoint, the shape in current model is torch.Size([84, 2]).

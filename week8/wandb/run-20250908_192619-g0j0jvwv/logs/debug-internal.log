@@ -1,0 +1,7 @@
+{"time":"2025-09-08T19:26:19.229792432+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-08T19:26:19.564165081+02:00","level":"INFO","msg":"stream: created new stream","id":"g0j0jvwv"}
+{"time":"2025-09-08T19:26:19.564213621+02:00","level":"INFO","msg":"stream: started","id":"g0j0jvwv"}
+{"time":"2025-09-08T19:26:19.564230414+02:00","level":"INFO","msg":"sender: started","stream_id":"g0j0jvwv"}
+{"time":"2025-09-08T19:26:19.564229029+02:00","level":"INFO","msg":"handler: started","stream_id":"g0j0jvwv"}
+{"time":"2025-09-08T19:26:19.564273616+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"g0j0jvwv"}
+{"time":"2025-09-08T19:39:24.838719067+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/g0j0jvwv/file_stream\": dial tcp: lookup api.wandb.ai on 127.0.0.53:53: read udp 127.0.0.1:41491->127.0.0.53:53: i/o timeout"}

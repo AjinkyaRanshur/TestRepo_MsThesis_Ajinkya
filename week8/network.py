@@ -50,9 +50,22 @@ class Net(nn.Module):
         output = self.fc3(relu_FG)
 
         return ft_AB,ft_BC,ft_CD,ft_DE,ft_EF,ft_FG,output
-    
+   
+    def feedforward_pass_no_dense(self, x,ft_AB,ft_BC,ft_CD,ft_DE):
+
+        ft_AB = self.conv1(x)
+        pooled_ft_AB,_=self.pool(F.relu(ft_AB))
+        ft_BC = self.conv2(pooled_ft_AB)
+        pooled_ft_BC,_=self.pool(F.relu(ft_BC))
+        ft_CD = self.conv3(pooled_ft_BC)
+        pooled_ft_CD,_=self.pool(F.relu(ft_CD))
+        ft_DE = self.conv4(pooled_ft_CD)
+
+        return ft_AB,ft_BC,ft_CD,ft_DE
+
+
     def feedback_pass(self,output,ft_AB,ft_BC,ft_CD,ft_DE,ft_EF,ft_FG):
-        ft_GF=self.fc3_fb(ouput)
+        ft_GF=self.fc3_fb(output)
         ft_FE=self.fc2_fb(ft_FG)
         ft_ED=self.fc1_fb(ft_EF)
         ft_ED=ft_ED.view(-1,64,2,2)

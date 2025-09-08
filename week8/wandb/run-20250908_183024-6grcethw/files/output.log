@@ -1,0 +1,34 @@
+✓ WandB initialized in Online mode
+Loaded 2400 samples
+Filtered to classes: [0, 1]
+Class distribution: {0: 1200, 1: 1200}
+Loaded 4800 samples
+Filtered to classes: [0, 1, 2, 3]
+Class distribution: {2: 1200, 3: 1200, 0: 1200, 1: 1200}
+The Iteration0:
+================================
+Visualizing training dataset samples...
+Logged batch 1 with labels: [0, 1, 0, 0, 0, 1, 1, 0]
+Logged batch 2 with labels: [0, 1, 0, 0, 1, 1, 0, 0]
+Logged batch 3 with labels: [1, 1, 0, 0, 0, 1, 1, 1]
+Visualizing test dataset samples...
+Logged batch 1 with labels: [0, 0, 1, 1, 0, 0, 1, 0]
+Logged batch 2 with labels: [0, 1, 0, 0, 0, 1, 1, 0]
+The Iteration1:
+================================
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 281, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 240, in main
+    torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 1319, in load
+    with _open_file_like(f, "rb") as opened_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 659, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 640, in __init__
+    super().__init__(open(name, mode))
+                     ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/models/visual_illusions/pc_illu_train_t1_1.pth'

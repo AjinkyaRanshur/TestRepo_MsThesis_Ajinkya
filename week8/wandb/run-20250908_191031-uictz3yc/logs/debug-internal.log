@@ -1,0 +1,13 @@
+{"time":"2025-09-08T19:10:32.910402847+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-08T19:10:33.601951669+02:00","level":"INFO","msg":"stream: created new stream","id":"uictz3yc"}
+{"time":"2025-09-08T19:10:33.601994547+02:00","level":"INFO","msg":"stream: started","id":"uictz3yc"}
+{"time":"2025-09-08T19:10:33.602007366+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"uictz3yc"}
+{"time":"2025-09-08T19:10:33.602041431+02:00","level":"INFO","msg":"sender: started","stream_id":"uictz3yc"}
+{"time":"2025-09-08T19:10:33.602047657+02:00","level":"INFO","msg":"handler: started","stream_id":"uictz3yc"}
+{"time":"2025-09-08T19:39:24.838486299+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/uictz3yc/file_stream\": dial tcp: lookup api.wandb.ai on 127.0.0.53:53: read udp 127.0.0.1:42272->127.0.0.53:53: i/o timeout"}
+{"time":"2025-09-08T19:46:08.937826334+02:00","level":"INFO","msg":"stream: closing","id":"uictz3yc"}
+{"time":"2025-09-08T19:46:09.581107919+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-08T19:46:09.849812611+02:00","level":"INFO","msg":"handler: closed","stream_id":"uictz3yc"}
+{"time":"2025-09-08T19:46:09.849874443+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"uictz3yc"}
+{"time":"2025-09-08T19:46:09.849892067+02:00","level":"INFO","msg":"sender: closed","stream_id":"uictz3yc"}
+{"time":"2025-09-08T19:46:09.850007446+02:00","level":"INFO","msg":"stream: closed","id":"uictz3yc"}
