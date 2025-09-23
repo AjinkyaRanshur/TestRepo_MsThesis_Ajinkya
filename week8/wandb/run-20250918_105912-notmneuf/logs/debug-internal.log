@@ -1,8 +1,0 @@
-{"time":"2025-09-18T10:59:12.484994978+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
-{"time":"2025-09-18T10:59:12.808275583+02:00","level":"INFO","msg":"stream: created new stream","id":"notmneuf"}
-{"time":"2025-09-18T10:59:12.808350319+02:00","level":"INFO","msg":"stream: started","id":"notmneuf"}
-{"time":"2025-09-18T10:59:12.80835668+02:00","level":"INFO","msg":"handler: started","stream_id":"notmneuf"}
-{"time":"2025-09-18T10:59:12.808371548+02:00","level":"INFO","msg":"sender: started","stream_id":"notmneuf"}
-{"time":"2025-09-18T10:59:12.808406015+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"notmneuf"}
-{"time":"2025-09-18T10:59:58.323999753+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/notmneuf/file_stream"}
-{"time":"2025-09-18T10:59:58.324044358+02:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/notmneuf/file_stream: {\"error\":\"run Sequential_Training_Results/notmneuf not found while streaming file\"}"}

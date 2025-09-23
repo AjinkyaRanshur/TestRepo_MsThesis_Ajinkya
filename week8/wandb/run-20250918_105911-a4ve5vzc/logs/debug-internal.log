@@ -1,8 +1,0 @@
-{"time":"2025-09-18T10:59:11.953242131+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
-{"time":"2025-09-18T10:59:12.298672751+02:00","level":"INFO","msg":"stream: created new stream","id":"a4ve5vzc"}
-{"time":"2025-09-18T10:59:12.298743498+02:00","level":"INFO","msg":"stream: started","id":"a4ve5vzc"}
-{"time":"2025-09-18T10:59:12.298775874+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"a4ve5vzc"}
-{"time":"2025-09-18T10:59:12.298792998+02:00","level":"INFO","msg":"handler: started","stream_id":"a4ve5vzc"}
-{"time":"2025-09-18T10:59:12.298864683+02:00","level":"INFO","msg":"sender: started","stream_id":"a4ve5vzc"}
-{"time":"2025-09-18T10:59:58.133873679+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/a4ve5vzc/file_stream"}
-{"time":"2025-09-18T10:59:58.13392504+02:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/a4ve5vzc/file_stream: {\"error\":\"run Sequential_Training_Results/a4ve5vzc not found while streaming file\"}"}

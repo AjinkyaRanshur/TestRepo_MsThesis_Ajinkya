@@ -1,8 +1,0 @@
-{"time":"2025-09-18T10:59:12.168438355+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
-{"time":"2025-09-18T10:59:12.49296286+02:00","level":"INFO","msg":"stream: created new stream","id":"ui6i1iob"}
-{"time":"2025-09-18T10:59:12.493038421+02:00","level":"INFO","msg":"stream: started","id":"ui6i1iob"}
-{"time":"2025-09-18T10:59:12.493057661+02:00","level":"INFO","msg":"handler: started","stream_id":"ui6i1iob"}
-{"time":"2025-09-18T10:59:12.493061328+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ui6i1iob"}
-{"time":"2025-09-18T10:59:12.493067797+02:00","level":"INFO","msg":"sender: started","stream_id":"ui6i1iob"}
-{"time":"2025-09-18T10:59:58.337364443+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/ui6i1iob/file_stream"}
-{"time":"2025-09-18T10:59:58.337449453+02:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/ui6i1iob/file_stream: {\"error\":\"run Sequential_Training_Results/ui6i1iob not found while streaming file\"}"}
