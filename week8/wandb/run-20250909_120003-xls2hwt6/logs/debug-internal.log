@@ -1,0 +1,12 @@
+{"time":"2025-09-09T12:00:04.04743502+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T12:00:04.393795046+02:00","level":"INFO","msg":"stream: created new stream","id":"xls2hwt6"}
+{"time":"2025-09-09T12:00:04.393836254+02:00","level":"INFO","msg":"stream: started","id":"xls2hwt6"}
+{"time":"2025-09-09T12:00:04.393867526+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"xls2hwt6"}
+{"time":"2025-09-09T12:00:04.393885633+02:00","level":"INFO","msg":"sender: started","stream_id":"xls2hwt6"}
+{"time":"2025-09-09T12:00:04.393913908+02:00","level":"INFO","msg":"handler: started","stream_id":"xls2hwt6"}
+{"time":"2025-09-09T12:00:09.017024681+02:00","level":"INFO","msg":"stream: closing","id":"xls2hwt6"}
+{"time":"2025-09-09T12:00:09.670023308+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T12:00:09.913252493+02:00","level":"INFO","msg":"handler: closed","stream_id":"xls2hwt6"}
+{"time":"2025-09-09T12:00:09.913294439+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"xls2hwt6"}
+{"time":"2025-09-09T12:00:09.913322655+02:00","level":"INFO","msg":"sender: closed","stream_id":"xls2hwt6"}
+{"time":"2025-09-09T12:00:09.913352566+02:00","level":"INFO","msg":"stream: closed","id":"xls2hwt6"}

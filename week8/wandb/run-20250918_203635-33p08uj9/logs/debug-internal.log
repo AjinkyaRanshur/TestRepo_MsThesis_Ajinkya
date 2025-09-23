@@ -1,0 +1,14 @@
+{"time":"2025-09-18T20:36:35.585269994+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T20:36:36.008707272+02:00","level":"INFO","msg":"stream: created new stream","id":"33p08uj9"}
+{"time":"2025-09-18T20:36:36.008747843+02:00","level":"INFO","msg":"stream: started","id":"33p08uj9"}
+{"time":"2025-09-18T20:36:36.008761845+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"33p08uj9"}
+{"time":"2025-09-18T20:36:36.008839228+02:00","level":"INFO","msg":"handler: started","stream_id":"33p08uj9"}
+{"time":"2025-09-18T20:36:36.008889816+02:00","level":"INFO","msg":"sender: started","stream_id":"33p08uj9"}
+{"time":"2025-09-18T20:37:36.906372171+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/33p08uj9/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-09-18T20:43:35.297783829+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T20:43:35.39480295+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.096840588}],"total_operations":1}}
+{"time":"2025-09-18T20:43:35.538868327+02:00","level":"INFO","msg":"stream: closing","id":"33p08uj9"}
+{"time":"2025-09-18T20:43:35.538881713+02:00","level":"INFO","msg":"handler: closed","stream_id":"33p08uj9"}
+{"time":"2025-09-18T20:43:35.538892694+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"33p08uj9"}
+{"time":"2025-09-18T20:43:35.538952444+02:00","level":"INFO","msg":"sender: closed","stream_id":"33p08uj9"}
+{"time":"2025-09-18T20:43:35.538959561+02:00","level":"INFO","msg":"stream: closed","id":"33p08uj9"}

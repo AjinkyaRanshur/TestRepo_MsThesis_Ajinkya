@@ -1,0 +1,14 @@
+{"time":"2025-09-18T13:36:45.199819135+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T13:36:45.735220411+02:00","level":"INFO","msg":"stream: created new stream","id":"dbk4xtjq"}
+{"time":"2025-09-18T13:36:45.735260098+02:00","level":"INFO","msg":"stream: started","id":"dbk4xtjq"}
+{"time":"2025-09-18T13:36:45.735277535+02:00","level":"INFO","msg":"handler: started","stream_id":"dbk4xtjq"}
+{"time":"2025-09-18T13:36:45.735279467+02:00","level":"INFO","msg":"sender: started","stream_id":"dbk4xtjq"}
+{"time":"2025-09-18T13:36:45.735333938+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"dbk4xtjq"}
+{"time":"2025-09-18T13:38:16.114804149+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-09-18T13:44:37.151141729+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T13:44:37.281352799+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.130025635}],"total_operations":1}}
+{"time":"2025-09-18T13:44:37.406738291+02:00","level":"INFO","msg":"stream: closing","id":"dbk4xtjq"}
+{"time":"2025-09-18T13:44:37.406753214+02:00","level":"INFO","msg":"handler: closed","stream_id":"dbk4xtjq"}
+{"time":"2025-09-18T13:44:37.406762795+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"dbk4xtjq"}
+{"time":"2025-09-18T13:44:37.406821312+02:00","level":"INFO","msg":"sender: closed","stream_id":"dbk4xtjq"}
+{"time":"2025-09-18T13:44:37.406833683+02:00","level":"INFO","msg":"stream: closed","id":"dbk4xtjq"}

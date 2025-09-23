@@ -1,0 +1,13 @@
+{"time":"2025-09-09T18:40:03.02041211+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T18:40:03.387040692+02:00","level":"INFO","msg":"stream: created new stream","id":"tsor5me4"}
+{"time":"2025-09-09T18:40:03.387121307+02:00","level":"INFO","msg":"stream: started","id":"tsor5me4"}
+{"time":"2025-09-09T18:40:03.387154453+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"tsor5me4"}
+{"time":"2025-09-09T18:40:03.387174306+02:00","level":"INFO","msg":"handler: started","stream_id":"tsor5me4"}
+{"time":"2025-09-09T18:40:03.38724219+02:00","level":"INFO","msg":"sender: started","stream_id":"tsor5me4"}
+{"time":"2025-09-09T18:40:23.12915233+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T18:40:23.330002243+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.200553788}],"total_operations":1}}
+{"time":"2025-09-09T18:40:23.381724554+02:00","level":"INFO","msg":"stream: closing","id":"tsor5me4"}
+{"time":"2025-09-09T18:40:23.381755252+02:00","level":"INFO","msg":"handler: closed","stream_id":"tsor5me4"}
+{"time":"2025-09-09T18:40:23.381772992+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"tsor5me4"}
+{"time":"2025-09-09T18:40:23.381845182+02:00","level":"INFO","msg":"sender: closed","stream_id":"tsor5me4"}
+{"time":"2025-09-09T18:40:23.381891738+02:00","level":"INFO","msg":"stream: closed","id":"tsor5me4"}

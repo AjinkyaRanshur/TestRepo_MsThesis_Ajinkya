@@ -5,7 +5,7 @@ epochs = 10
 seed = 42
 lr = 0.00005 
 momentum = 0.9
-datasetpath = 'data/illusory0.1/test.txt'
+datasetpath = "data/visual_illusion_dataset"
 training_condition="illusion_train"
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
@@ -23,12 +23,13 @@ gammaset=[[0.33, 0.33, 0.33, 0.33]]
 betaset = [[0.33, 0.33, 0.33, 0.33]]
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
-model_name = "pc_illu_train_t1"
+model_name = "pc_class_illusion_t1"
 noise_type="s&p"
 noise_param=0.0
 
-experiment_name= "Illusion runningtest"
-load_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/models/visual_illusions"
-save_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/models/visual_illusions"
+experiment_name= "Illusion Trail Trainnig"
+load_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/models/visual_illusions/"
+save_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/models/visual_illusions/"
 
 illusion_dataset_bool=True
+

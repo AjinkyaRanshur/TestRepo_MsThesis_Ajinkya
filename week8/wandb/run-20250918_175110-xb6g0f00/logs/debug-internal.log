@@ -1,0 +1,14 @@
+{"time":"2025-09-18T17:51:10.563086853+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T17:51:10.897129107+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": dial tcp 35.186.228.49:443: connect: connection refused"}
+{"time":"2025-09-18T17:51:13.177684388+02:00","level":"INFO","msg":"stream: created new stream","id":"xb6g0f00"}
+{"time":"2025-09-18T17:51:13.177737448+02:00","level":"INFO","msg":"stream: started","id":"xb6g0f00"}
+{"time":"2025-09-18T17:51:13.177769583+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"xb6g0f00"}
+{"time":"2025-09-18T17:51:13.177800591+02:00","level":"INFO","msg":"handler: started","stream_id":"xb6g0f00"}
+{"time":"2025-09-18T17:51:13.177872628+02:00","level":"INFO","msg":"sender: started","stream_id":"xb6g0f00"}
+{"time":"2025-09-18T17:59:03.5202538+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T17:59:03.642300173+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.12188555}],"total_operations":1}}
+{"time":"2025-09-18T17:59:03.735871414+02:00","level":"INFO","msg":"stream: closing","id":"xb6g0f00"}
+{"time":"2025-09-18T17:59:03.735899166+02:00","level":"INFO","msg":"handler: closed","stream_id":"xb6g0f00"}
+{"time":"2025-09-18T17:59:03.735913007+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"xb6g0f00"}
+{"time":"2025-09-18T17:59:03.735921601+02:00","level":"INFO","msg":"sender: closed","stream_id":"xb6g0f00"}
+{"time":"2025-09-18T17:59:03.736016289+02:00","level":"INFO","msg":"stream: closed","id":"xb6g0f00"}

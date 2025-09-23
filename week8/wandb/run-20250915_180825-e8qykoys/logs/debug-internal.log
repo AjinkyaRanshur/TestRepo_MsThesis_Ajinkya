@@ -1,0 +1,15 @@
+{"time":"2025-09-15T18:08:25.959471156+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T18:08:26.608792944+02:00","level":"INFO","msg":"stream: created new stream","id":"e8qykoys"}
+{"time":"2025-09-15T18:08:26.608831899+02:00","level":"INFO","msg":"stream: started","id":"e8qykoys"}
+{"time":"2025-09-15T18:08:26.609911214+02:00","level":"INFO","msg":"sender: started","stream_id":"e8qykoys"}
+{"time":"2025-09-15T18:08:26.609969365+02:00","level":"INFO","msg":"handler: started","stream_id":"e8qykoys"}
+{"time":"2025-09-15T18:08:26.609974858+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"e8qykoys"}
+{"time":"2025-09-15T18:09:27.210495728+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/e8qykoys/file_stream\": dial tcp 35.186.228.49:443: connect: connection refused"}
+{"time":"2025-09-15T18:12:12.210466659+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/e8qykoys/file_stream\": dial tcp 35.186.228.49:443: connect: connection refused"}
+{"time":"2025-09-15T18:17:39.466439859+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T18:17:39.742931857+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T18:17:39.746890887+02:00","level":"INFO","msg":"stream: closing","id":"e8qykoys"}
+{"time":"2025-09-15T18:17:39.746903019+02:00","level":"INFO","msg":"handler: closed","stream_id":"e8qykoys"}
+{"time":"2025-09-15T18:17:39.746911412+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"e8qykoys"}
+{"time":"2025-09-15T18:17:39.746977524+02:00","level":"INFO","msg":"sender: closed","stream_id":"e8qykoys"}
+{"time":"2025-09-15T18:17:39.746987421+02:00","level":"INFO","msg":"stream: closed","id":"e8qykoys"}

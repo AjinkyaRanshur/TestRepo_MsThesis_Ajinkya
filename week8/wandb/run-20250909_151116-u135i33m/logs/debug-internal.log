@@ -1,0 +1,14 @@
+{"time":"2025-09-09T15:11:16.940955259+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T15:11:17.365755909+02:00","level":"INFO","msg":"stream: created new stream","id":"u135i33m"}
+{"time":"2025-09-09T15:11:17.365829842+02:00","level":"INFO","msg":"stream: started","id":"u135i33m"}
+{"time":"2025-09-09T15:11:17.365871298+02:00","level":"INFO","msg":"handler: started","stream_id":"u135i33m"}
+{"time":"2025-09-09T15:11:17.365860997+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"u135i33m"}
+{"time":"2025-09-09T15:11:17.365952816+02:00","level":"INFO","msg":"sender: started","stream_id":"u135i33m"}
+{"time":"2025-09-09T15:11:36.061287218+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": unexpected EOF"}
+{"time":"2025-09-09T15:11:37.031524013+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"updating run metadata","runtime_seconds":1.005536787,"error_status":"retrying: Post \"https://api.wandb.ai/graphql\": unexpected EOF"}],"total_operations":1}}
+{"time":"2025-09-09T15:11:39.025175791+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T15:11:39.507183539+02:00","level":"INFO","msg":"stream: closing","id":"u135i33m"}
+{"time":"2025-09-09T15:11:39.507216733+02:00","level":"INFO","msg":"handler: closed","stream_id":"u135i33m"}
+{"time":"2025-09-09T15:11:39.507236546+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"u135i33m"}
+{"time":"2025-09-09T15:11:39.507306504+02:00","level":"INFO","msg":"sender: closed","stream_id":"u135i33m"}
+{"time":"2025-09-09T15:11:39.507372071+02:00","level":"INFO","msg":"stream: closed","id":"u135i33m"}

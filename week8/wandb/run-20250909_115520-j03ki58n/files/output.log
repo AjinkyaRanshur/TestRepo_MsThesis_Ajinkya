@@ -1,0 +1,8 @@
+✓ WandB initialized in Online mode
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 446, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 381, in main
+    trainloader, testloader = train_test_loader(config.datasetpath,config.illusion_dataset_bool)
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'config416' has no attribute 'illusion_dataset_bool'

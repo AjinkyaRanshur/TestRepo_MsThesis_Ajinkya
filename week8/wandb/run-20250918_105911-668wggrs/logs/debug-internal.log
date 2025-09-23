@@ -1,0 +1,8 @@
+{"time":"2025-09-18T10:59:12.032357536+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T10:59:12.357239725+02:00","level":"INFO","msg":"stream: created new stream","id":"668wggrs"}
+{"time":"2025-09-18T10:59:12.357302192+02:00","level":"INFO","msg":"stream: started","id":"668wggrs"}
+{"time":"2025-09-18T10:59:12.357338657+02:00","level":"INFO","msg":"sender: started","stream_id":"668wggrs"}
+{"time":"2025-09-18T10:59:12.357337197+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"668wggrs"}
+{"time":"2025-09-18T10:59:12.357346801+02:00","level":"INFO","msg":"handler: started","stream_id":"668wggrs"}
+{"time":"2025-09-18T10:59:58.047806219+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/668wggrs/file_stream"}
+{"time":"2025-09-18T10:59:58.047876982+02:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/668wggrs/file_stream: {\"error\":\"run Sequential_Training_Results/668wggrs not found while streaming file\"}"}

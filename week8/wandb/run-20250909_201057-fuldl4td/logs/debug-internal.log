@@ -1,0 +1,13 @@
+{"time":"2025-09-09T20:10:57.743996687+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T20:10:58.122398485+02:00","level":"INFO","msg":"stream: created new stream","id":"fuldl4td"}
+{"time":"2025-09-09T20:10:58.122460411+02:00","level":"INFO","msg":"stream: started","id":"fuldl4td"}
+{"time":"2025-09-09T20:10:58.122492739+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"fuldl4td"}
+{"time":"2025-09-09T20:10:58.12250754+02:00","level":"INFO","msg":"handler: started","stream_id":"fuldl4td"}
+{"time":"2025-09-09T20:10:58.122533021+02:00","level":"INFO","msg":"sender: started","stream_id":"fuldl4td"}
+{"time":"2025-09-09T20:11:18.510204568+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T20:11:18.769854768+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-09T20:11:18.776386366+02:00","level":"INFO","msg":"stream: closing","id":"fuldl4td"}
+{"time":"2025-09-09T20:11:18.776417388+02:00","level":"INFO","msg":"handler: closed","stream_id":"fuldl4td"}
+{"time":"2025-09-09T20:11:18.776434965+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"fuldl4td"}
+{"time":"2025-09-09T20:11:18.776503699+02:00","level":"INFO","msg":"sender: closed","stream_id":"fuldl4td"}
+{"time":"2025-09-09T20:11:18.776549343+02:00","level":"INFO","msg":"stream: closed","id":"fuldl4td"}

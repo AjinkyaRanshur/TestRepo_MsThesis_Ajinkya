@@ -1,0 +1,13 @@
+{"time":"2025-09-09T21:00:20.279841488+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T21:00:20.649475442+02:00","level":"INFO","msg":"stream: created new stream","id":"zlcnas5k"}
+{"time":"2025-09-09T21:00:20.649544781+02:00","level":"INFO","msg":"stream: started","id":"zlcnas5k"}
+{"time":"2025-09-09T21:00:20.649575733+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"zlcnas5k"}
+{"time":"2025-09-09T21:00:20.649589876+02:00","level":"INFO","msg":"sender: started","stream_id":"zlcnas5k"}
+{"time":"2025-09-09T21:00:20.649676011+02:00","level":"INFO","msg":"handler: started","stream_id":"zlcnas5k"}
+{"time":"2025-09-09T21:00:40.376435544+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T21:00:40.717209448+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.34053409}],"total_operations":1}}
+{"time":"2025-09-09T21:00:40.803601842+02:00","level":"INFO","msg":"stream: closing","id":"zlcnas5k"}
+{"time":"2025-09-09T21:00:40.803631865+02:00","level":"INFO","msg":"handler: closed","stream_id":"zlcnas5k"}
+{"time":"2025-09-09T21:00:40.803649848+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"zlcnas5k"}
+{"time":"2025-09-09T21:00:40.803727449+02:00","level":"INFO","msg":"sender: closed","stream_id":"zlcnas5k"}
+{"time":"2025-09-09T21:00:40.803769644+02:00","level":"INFO","msg":"stream: closed","id":"zlcnas5k"}

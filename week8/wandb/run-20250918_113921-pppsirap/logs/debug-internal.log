@@ -1,0 +1,13 @@
+{"time":"2025-09-18T11:39:21.398729107+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T11:39:21.874738837+02:00","level":"INFO","msg":"stream: created new stream","id":"pppsirap"}
+{"time":"2025-09-18T11:39:21.874788003+02:00","level":"INFO","msg":"stream: started","id":"pppsirap"}
+{"time":"2025-09-18T11:39:21.876371098+02:00","level":"INFO","msg":"handler: started","stream_id":"pppsirap"}
+{"time":"2025-09-18T11:39:21.87641163+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"pppsirap"}
+{"time":"2025-09-18T11:39:21.87667898+02:00","level":"INFO","msg":"sender: started","stream_id":"pppsirap"}
+{"time":"2025-09-18T11:47:26.467483874+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T11:47:26.546431667+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.078779714}],"total_operations":1}}
+{"time":"2025-09-18T11:47:26.692724409+02:00","level":"INFO","msg":"stream: closing","id":"pppsirap"}
+{"time":"2025-09-18T11:47:26.692741356+02:00","level":"INFO","msg":"handler: closed","stream_id":"pppsirap"}
+{"time":"2025-09-18T11:47:26.692751645+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"pppsirap"}
+{"time":"2025-09-18T11:47:26.69283437+02:00","level":"INFO","msg":"sender: closed","stream_id":"pppsirap"}
+{"time":"2025-09-18T11:47:26.692844214+02:00","level":"INFO","msg":"stream: closed","id":"pppsirap"}

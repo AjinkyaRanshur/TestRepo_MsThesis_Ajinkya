@@ -1,0 +1,13 @@
+{"time":"2025-09-09T16:44:11.028470312+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T16:44:11.395396167+02:00","level":"INFO","msg":"stream: created new stream","id":"lbaru4yn"}
+{"time":"2025-09-09T16:44:11.395458131+02:00","level":"INFO","msg":"stream: started","id":"lbaru4yn"}
+{"time":"2025-09-09T16:44:11.395493351+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"lbaru4yn"}
+{"time":"2025-09-09T16:44:11.395504176+02:00","level":"INFO","msg":"handler: started","stream_id":"lbaru4yn"}
+{"time":"2025-09-09T16:44:11.395602707+02:00","level":"INFO","msg":"sender: started","stream_id":"lbaru4yn"}
+{"time":"2025-09-09T16:44:31.129330822+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T16:44:31.228951871+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.099428633}],"total_operations":1}}
+{"time":"2025-09-09T16:44:31.418705289+02:00","level":"INFO","msg":"stream: closing","id":"lbaru4yn"}
+{"time":"2025-09-09T16:44:31.418735179+02:00","level":"INFO","msg":"handler: closed","stream_id":"lbaru4yn"}
+{"time":"2025-09-09T16:44:31.41875248+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"lbaru4yn"}
+{"time":"2025-09-09T16:44:31.418817485+02:00","level":"INFO","msg":"sender: closed","stream_id":"lbaru4yn"}
+{"time":"2025-09-09T16:44:31.41886768+02:00","level":"INFO","msg":"stream: closed","id":"lbaru4yn"}

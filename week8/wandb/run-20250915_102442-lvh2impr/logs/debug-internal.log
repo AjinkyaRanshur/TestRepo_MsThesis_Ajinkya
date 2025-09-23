@@ -1,0 +1,13 @@
+{"time":"2025-09-15T10:24:43.24737543+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T10:24:43.678207695+02:00","level":"INFO","msg":"stream: created new stream","id":"lvh2impr"}
+{"time":"2025-09-15T10:24:43.678250397+02:00","level":"INFO","msg":"stream: started","id":"lvh2impr"}
+{"time":"2025-09-15T10:24:43.679392386+02:00","level":"INFO","msg":"handler: started","stream_id":"lvh2impr"}
+{"time":"2025-09-15T10:24:43.679421297+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"lvh2impr"}
+{"time":"2025-09-15T10:24:43.67960858+02:00","level":"INFO","msg":"sender: started","stream_id":"lvh2impr"}
+{"time":"2025-09-15T10:33:53.865723277+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T10:33:54.081812234+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T10:33:54.08662043+02:00","level":"INFO","msg":"stream: closing","id":"lvh2impr"}
+{"time":"2025-09-15T10:33:54.086638862+02:00","level":"INFO","msg":"handler: closed","stream_id":"lvh2impr"}
+{"time":"2025-09-15T10:33:54.086650267+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"lvh2impr"}
+{"time":"2025-09-15T10:33:54.086655921+02:00","level":"INFO","msg":"sender: closed","stream_id":"lvh2impr"}
+{"time":"2025-09-15T10:33:54.086751842+02:00","level":"INFO","msg":"stream: closed","id":"lvh2impr"}

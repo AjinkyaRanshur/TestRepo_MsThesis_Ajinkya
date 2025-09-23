@@ -1,0 +1,13 @@
+{"time":"2025-09-18T16:54:21.698201078+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T16:54:22.233092406+02:00","level":"INFO","msg":"stream: created new stream","id":"cikc30yl"}
+{"time":"2025-09-18T16:54:22.233149599+02:00","level":"INFO","msg":"stream: started","id":"cikc30yl"}
+{"time":"2025-09-18T16:54:22.233172225+02:00","level":"INFO","msg":"handler: started","stream_id":"cikc30yl"}
+{"time":"2025-09-18T16:54:22.233230929+02:00","level":"INFO","msg":"sender: started","stream_id":"cikc30yl"}
+{"time":"2025-09-18T16:54:22.233298183+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"cikc30yl"}
+{"time":"2025-09-18T17:03:52.854352055+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T17:03:53.083227112+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-18T17:03:53.087207702+02:00","level":"INFO","msg":"stream: closing","id":"cikc30yl"}
+{"time":"2025-09-18T17:03:53.08722187+02:00","level":"INFO","msg":"handler: closed","stream_id":"cikc30yl"}
+{"time":"2025-09-18T17:03:53.087233322+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"cikc30yl"}
+{"time":"2025-09-18T17:03:53.087304508+02:00","level":"INFO","msg":"sender: closed","stream_id":"cikc30yl"}
+{"time":"2025-09-18T17:03:53.087312792+02:00","level":"INFO","msg":"stream: closed","id":"cikc30yl"}

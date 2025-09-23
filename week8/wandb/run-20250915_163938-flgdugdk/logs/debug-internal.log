@@ -1,0 +1,13 @@
+{"time":"2025-09-15T16:39:38.947007594+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T16:39:39.464660089+02:00","level":"INFO","msg":"stream: created new stream","id":"flgdugdk"}
+{"time":"2025-09-15T16:39:39.464735371+02:00","level":"INFO","msg":"stream: started","id":"flgdugdk"}
+{"time":"2025-09-15T16:39:39.464740745+02:00","level":"INFO","msg":"handler: started","stream_id":"flgdugdk"}
+{"time":"2025-09-15T16:39:39.46483872+02:00","level":"INFO","msg":"sender: started","stream_id":"flgdugdk"}
+{"time":"2025-09-15T16:39:39.464870034+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"flgdugdk"}
+{"time":"2025-09-15T16:49:17.586190569+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T16:49:17.841894671+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T16:49:17.845914238+02:00","level":"INFO","msg":"stream: closing","id":"flgdugdk"}
+{"time":"2025-09-15T16:49:17.845934151+02:00","level":"INFO","msg":"handler: closed","stream_id":"flgdugdk"}
+{"time":"2025-09-15T16:49:17.845947981+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"flgdugdk"}
+{"time":"2025-09-15T16:49:17.846025016+02:00","level":"INFO","msg":"sender: closed","stream_id":"flgdugdk"}
+{"time":"2025-09-15T16:49:17.846035144+02:00","level":"INFO","msg":"stream: closed","id":"flgdugdk"}

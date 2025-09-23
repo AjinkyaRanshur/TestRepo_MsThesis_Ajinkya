@@ -1,0 +1,13 @@
+{"time":"2025-09-15T12:15:37.055107369+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T12:15:37.580728195+02:00","level":"INFO","msg":"stream: created new stream","id":"t26solue"}
+{"time":"2025-09-15T12:15:37.58076941+02:00","level":"INFO","msg":"stream: started","id":"t26solue"}
+{"time":"2025-09-15T12:15:37.58235952+02:00","level":"INFO","msg":"handler: started","stream_id":"t26solue"}
+{"time":"2025-09-15T12:15:37.582410877+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"t26solue"}
+{"time":"2025-09-15T12:15:37.582642491+02:00","level":"INFO","msg":"sender: started","stream_id":"t26solue"}
+{"time":"2025-09-15T12:25:34.190527217+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T12:25:34.529875777+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T12:25:34.532967463+02:00","level":"INFO","msg":"stream: closing","id":"t26solue"}
+{"time":"2025-09-15T12:25:34.532979133+02:00","level":"INFO","msg":"handler: closed","stream_id":"t26solue"}
+{"time":"2025-09-15T12:25:34.533001692+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"t26solue"}
+{"time":"2025-09-15T12:25:34.533050329+02:00","level":"INFO","msg":"sender: closed","stream_id":"t26solue"}
+{"time":"2025-09-15T12:25:34.533090082+02:00","level":"INFO","msg":"stream: closed","id":"t26solue"}

@@ -1,0 +1,13 @@
+{"time":"2025-09-15T12:56:19.205911847+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T12:56:19.539006133+02:00","level":"INFO","msg":"stream: created new stream","id":"huta900i"}
+{"time":"2025-09-15T12:56:19.539065908+02:00","level":"INFO","msg":"handler: started","stream_id":"huta900i"}
+{"time":"2025-09-15T12:56:19.539090049+02:00","level":"INFO","msg":"stream: started","id":"huta900i"}
+{"time":"2025-09-15T12:56:19.539120587+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"huta900i"}
+{"time":"2025-09-15T12:56:19.544453495+02:00","level":"INFO","msg":"sender: started","stream_id":"huta900i"}
+{"time":"2025-09-15T13:07:50.713937457+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T13:07:51.008553697+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T13:07:51.012842715+02:00","level":"INFO","msg":"stream: closing","id":"huta900i"}
+{"time":"2025-09-15T13:07:51.012866771+02:00","level":"INFO","msg":"handler: closed","stream_id":"huta900i"}
+{"time":"2025-09-15T13:07:51.012875057+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"huta900i"}
+{"time":"2025-09-15T13:07:51.012927494+02:00","level":"INFO","msg":"sender: closed","stream_id":"huta900i"}
+{"time":"2025-09-15T13:07:51.012956471+02:00","level":"INFO","msg":"stream: closed","id":"huta900i"}

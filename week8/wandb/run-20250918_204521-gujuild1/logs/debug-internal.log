@@ -1,0 +1,13 @@
+{"time":"2025-09-18T20:45:22.226505728+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T20:45:22.65409576+02:00","level":"INFO","msg":"stream: created new stream","id":"gujuild1"}
+{"time":"2025-09-18T20:45:22.654146482+02:00","level":"INFO","msg":"stream: started","id":"gujuild1"}
+{"time":"2025-09-18T20:45:22.655398526+02:00","level":"INFO","msg":"handler: started","stream_id":"gujuild1"}
+{"time":"2025-09-18T20:45:22.655433054+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"gujuild1"}
+{"time":"2025-09-18T20:45:22.655691527+02:00","level":"INFO","msg":"sender: started","stream_id":"gujuild1"}
+{"time":"2025-09-18T20:51:41.728291681+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T20:51:41.985917387+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-18T20:51:41.990098749+02:00","level":"INFO","msg":"stream: closing","id":"gujuild1"}
+{"time":"2025-09-18T20:51:41.990118736+02:00","level":"INFO","msg":"handler: closed","stream_id":"gujuild1"}
+{"time":"2025-09-18T20:51:41.99012983+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"gujuild1"}
+{"time":"2025-09-18T20:51:41.990183599+02:00","level":"INFO","msg":"sender: closed","stream_id":"gujuild1"}
+{"time":"2025-09-18T20:51:41.990191997+02:00","level":"INFO","msg":"stream: closed","id":"gujuild1"}

@@ -1,0 +1,13 @@
+{"time":"2025-09-15T20:07:58.362531978+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T20:07:58.704964931+02:00","level":"INFO","msg":"stream: created new stream","id":"dnd7iubi"}
+{"time":"2025-09-15T20:07:58.705019038+02:00","level":"INFO","msg":"stream: started","id":"dnd7iubi"}
+{"time":"2025-09-15T20:07:58.70628821+02:00","level":"INFO","msg":"handler: started","stream_id":"dnd7iubi"}
+{"time":"2025-09-15T20:07:58.706325989+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"dnd7iubi"}
+{"time":"2025-09-15T20:07:58.70656657+02:00","level":"INFO","msg":"sender: started","stream_id":"dnd7iubi"}
+{"time":"2025-09-15T20:14:26.65403497+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T20:14:26.896073202+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T20:14:26.899977904+02:00","level":"INFO","msg":"stream: closing","id":"dnd7iubi"}
+{"time":"2025-09-15T20:14:26.899989907+02:00","level":"INFO","msg":"handler: closed","stream_id":"dnd7iubi"}
+{"time":"2025-09-15T20:14:26.899998758+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"dnd7iubi"}
+{"time":"2025-09-15T20:14:26.900042717+02:00","level":"INFO","msg":"sender: closed","stream_id":"dnd7iubi"}
+{"time":"2025-09-15T20:14:26.900056832+02:00","level":"INFO","msg":"stream: closed","id":"dnd7iubi"}

@@ -1,0 +1,13 @@
+{"time":"2025-09-18T20:46:50.272077699+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T20:46:50.791377459+02:00","level":"INFO","msg":"stream: created new stream","id":"vhftpmll"}
+{"time":"2025-09-18T20:46:50.791411843+02:00","level":"INFO","msg":"stream: started","id":"vhftpmll"}
+{"time":"2025-09-18T20:46:50.79261136+02:00","level":"INFO","msg":"handler: started","stream_id":"vhftpmll"}
+{"time":"2025-09-18T20:46:50.792644301+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"vhftpmll"}
+{"time":"2025-09-18T20:46:50.795815131+02:00","level":"INFO","msg":"sender: started","stream_id":"vhftpmll"}
+{"time":"2025-09-18T20:53:42.057356395+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T20:53:42.289170917+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-18T20:53:42.293391591+02:00","level":"INFO","msg":"stream: closing","id":"vhftpmll"}
+{"time":"2025-09-18T20:53:42.293406112+02:00","level":"INFO","msg":"handler: closed","stream_id":"vhftpmll"}
+{"time":"2025-09-18T20:53:42.293417126+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"vhftpmll"}
+{"time":"2025-09-18T20:53:42.293475502+02:00","level":"INFO","msg":"sender: closed","stream_id":"vhftpmll"}
+{"time":"2025-09-18T20:53:42.293486102+02:00","level":"INFO","msg":"stream: closed","id":"vhftpmll"}

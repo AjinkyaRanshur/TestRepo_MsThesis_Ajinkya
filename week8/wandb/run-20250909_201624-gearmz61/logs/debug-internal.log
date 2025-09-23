@@ -1,0 +1,13 @@
+{"time":"2025-09-09T20:16:25.089050546+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T20:16:25.463770897+02:00","level":"INFO","msg":"stream: created new stream","id":"gearmz61"}
+{"time":"2025-09-09T20:16:25.463831994+02:00","level":"INFO","msg":"stream: started","id":"gearmz61"}
+{"time":"2025-09-09T20:16:25.463862771+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"gearmz61"}
+{"time":"2025-09-09T20:16:25.463884606+02:00","level":"INFO","msg":"handler: started","stream_id":"gearmz61"}
+{"time":"2025-09-09T20:16:25.463973785+02:00","level":"INFO","msg":"sender: started","stream_id":"gearmz61"}
+{"time":"2025-09-09T20:16:45.278182672+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T20:16:45.518738558+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-09T20:16:45.525342626+02:00","level":"INFO","msg":"stream: closing","id":"gearmz61"}
+{"time":"2025-09-09T20:16:45.525373255+02:00","level":"INFO","msg":"handler: closed","stream_id":"gearmz61"}
+{"time":"2025-09-09T20:16:45.525391551+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"gearmz61"}
+{"time":"2025-09-09T20:16:45.525468551+02:00","level":"INFO","msg":"sender: closed","stream_id":"gearmz61"}
+{"time":"2025-09-09T20:16:45.525521546+02:00","level":"INFO","msg":"stream: closed","id":"gearmz61"}

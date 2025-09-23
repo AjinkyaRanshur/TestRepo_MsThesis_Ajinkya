@@ -1,0 +1,13 @@
+{"time":"2025-09-18T14:47:08.444927799+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T14:47:08.871073831+02:00","level":"INFO","msg":"stream: created new stream","id":"cjsckorg"}
+{"time":"2025-09-18T14:47:08.871127995+02:00","level":"INFO","msg":"stream: started","id":"cjsckorg"}
+{"time":"2025-09-18T14:47:08.871136964+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"cjsckorg"}
+{"time":"2025-09-18T14:47:08.871290616+02:00","level":"INFO","msg":"sender: started","stream_id":"cjsckorg"}
+{"time":"2025-09-18T14:47:08.871358673+02:00","level":"INFO","msg":"handler: started","stream_id":"cjsckorg"}
+{"time":"2025-09-18T14:56:45.206002582+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T14:56:45.474714756+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-18T14:56:45.478424144+02:00","level":"INFO","msg":"stream: closing","id":"cjsckorg"}
+{"time":"2025-09-18T14:56:45.478446198+02:00","level":"INFO","msg":"handler: closed","stream_id":"cjsckorg"}
+{"time":"2025-09-18T14:56:45.478459074+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"cjsckorg"}
+{"time":"2025-09-18T14:56:45.478491405+02:00","level":"INFO","msg":"sender: closed","stream_id":"cjsckorg"}
+{"time":"2025-09-18T14:56:45.478561494+02:00","level":"INFO","msg":"stream: closed","id":"cjsckorg"}

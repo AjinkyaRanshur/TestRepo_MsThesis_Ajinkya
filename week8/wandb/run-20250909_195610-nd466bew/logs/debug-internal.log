@@ -1,0 +1,13 @@
+{"time":"2025-09-09T19:56:10.376844275+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T19:56:10.752326377+02:00","level":"INFO","msg":"stream: created new stream","id":"nd466bew"}
+{"time":"2025-09-09T19:56:10.752394924+02:00","level":"INFO","msg":"stream: started","id":"nd466bew"}
+{"time":"2025-09-09T19:56:10.752432382+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"nd466bew"}
+{"time":"2025-09-09T19:56:10.752442666+02:00","level":"INFO","msg":"sender: started","stream_id":"nd466bew"}
+{"time":"2025-09-09T19:56:10.752523776+02:00","level":"INFO","msg":"handler: started","stream_id":"nd466bew"}
+{"time":"2025-09-09T19:56:29.981355164+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T19:56:30.112849422+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.13128158}],"total_operations":1}}
+{"time":"2025-09-09T19:56:30.253721415+02:00","level":"INFO","msg":"stream: closing","id":"nd466bew"}
+{"time":"2025-09-09T19:56:30.253750765+02:00","level":"INFO","msg":"handler: closed","stream_id":"nd466bew"}
+{"time":"2025-09-09T19:56:30.253768966+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"nd466bew"}
+{"time":"2025-09-09T19:56:30.253787508+02:00","level":"INFO","msg":"sender: closed","stream_id":"nd466bew"}
+{"time":"2025-09-09T19:56:30.25387227+02:00","level":"INFO","msg":"stream: closed","id":"nd466bew"}

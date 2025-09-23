@@ -1,0 +1,21 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 450, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 424, in main
+    accuracy_dict = testing_model(net,trainloader,testloader,config,20)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 363, in testing_model
+    torch.load(
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 1319, in load
+    with _open_file_like(f, "rb") as opened_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 659, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 640, in __init__
+    super().__init__(open(name, mode))
+                     ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/models/recon_models/timesteps1/pc_class_train_balanced_20.pth'

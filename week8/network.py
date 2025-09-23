@@ -19,9 +19,9 @@ class Net(nn.Module):
         self.conv4= nn.Conv2d(in_channels=32,out_channels= 64,kernel_size= 5,stride=1,padding=2)
         self.fc1 = nn.Linear(64*2*2, 512)
         self.fc2=  nn.Linear(512,84)
-        self.fc3 = nn.Linear(84, 10)
+        self.fc3 = nn.Linear(84, 2)
         
-        self.fc3_fb = nn.Linear(10,84)
+        self.fc3_fb = nn.Linear(2,84)
         self.fc2_fb = nn.Linear(84,512)
         self.fc1_fb = nn.Linear(512, 64*2*2)
         self.deconv4_fb=nn.ConvTranspose2d(in_channels=64,out_channels=32,kernel_size=5,stride=1,padding=2)

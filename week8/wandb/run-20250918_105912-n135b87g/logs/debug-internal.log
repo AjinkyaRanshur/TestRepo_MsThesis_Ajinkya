@@ -1,0 +1,16 @@
+{"time":"2025-09-18T10:59:12.451894446+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T10:59:12.776539261+02:00","level":"INFO","msg":"stream: created new stream","id":"n135b87g"}
+{"time":"2025-09-18T10:59:12.776626001+02:00","level":"INFO","msg":"stream: started","id":"n135b87g"}
+{"time":"2025-09-18T10:59:12.776653546+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"n135b87g"}
+{"time":"2025-09-18T10:59:12.776666456+02:00","level":"INFO","msg":"handler: started","stream_id":"n135b87g"}
+{"time":"2025-09-18T10:59:12.776858944+02:00","level":"INFO","msg":"sender: started","stream_id":"n135b87g"}
+{"time":"2025-09-18T10:59:58.550941604+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/n135b87g/file_stream"}
+{"time":"2025-09-18T10:59:58.551007156+02:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/n135b87g/file_stream: {\"error\":\"run Sequential_Training_Results/n135b87g not found while streaming file\"}"}
+{"time":"2025-09-18T11:04:41.405920832+02:00","level":"INFO","msg":"stream: closing","id":"n135b87g"}
+{"time":"2025-09-18T11:04:41.589406413+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2025-09-18T11:04:41.589535462+02:00","level":"ERROR","msg":"runfiles: CreateRunFiles returned error: returned error 404: {\"data\":{\"createRunFiles\":null},\"errors\":[{\"message\":\"run Sequential_Training_Results/n135b87g not found during createRunFiles\",\"path\":[\"createRunFiles\"]}]}"}
+{"time":"2025-09-18T11:04:41.589977967+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T11:04:41.590035489+02:00","level":"INFO","msg":"handler: closed","stream_id":"n135b87g"}
+{"time":"2025-09-18T11:04:41.590060994+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"n135b87g"}
+{"time":"2025-09-18T11:04:41.590293577+02:00","level":"INFO","msg":"sender: closed","stream_id":"n135b87g"}
+{"time":"2025-09-18T11:04:41.590303512+02:00","level":"INFO","msg":"stream: closed","id":"n135b87g"}

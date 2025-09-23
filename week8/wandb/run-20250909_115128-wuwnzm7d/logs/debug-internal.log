@@ -1,0 +1,13 @@
+{"time":"2025-09-09T11:51:29.316984795+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T11:51:29.670325966+02:00","level":"INFO","msg":"stream: created new stream","id":"wuwnzm7d"}
+{"time":"2025-09-09T11:51:29.670397804+02:00","level":"INFO","msg":"stream: started","id":"wuwnzm7d"}
+{"time":"2025-09-09T11:51:29.670448742+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"wuwnzm7d"}
+{"time":"2025-09-09T11:51:29.670453689+02:00","level":"INFO","msg":"handler: started","stream_id":"wuwnzm7d"}
+{"time":"2025-09-09T11:51:29.670496355+02:00","level":"INFO","msg":"sender: started","stream_id":"wuwnzm7d"}
+{"time":"2025-09-09T11:51:29.839148863+02:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/graphql","body":"{\"errors\":[{\"message\":\"An internal error occurred. Please contact support.\",\"path\":[\"upsertBucket\"]}],\"data\":{\"upsertBucket\":null}}"}
+{"time":"2025-09-09T11:51:36.933268299+02:00","level":"INFO","msg":"stream: closing","id":"wuwnzm7d"}
+{"time":"2025-09-09T11:51:37.6468338+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T11:51:37.89662353+02:00","level":"INFO","msg":"handler: closed","stream_id":"wuwnzm7d"}
+{"time":"2025-09-09T11:51:37.896688601+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"wuwnzm7d"}
+{"time":"2025-09-09T11:51:37.896722081+02:00","level":"INFO","msg":"sender: closed","stream_id":"wuwnzm7d"}
+{"time":"2025-09-09T11:51:37.896820713+02:00","level":"INFO","msg":"stream: closed","id":"wuwnzm7d"}

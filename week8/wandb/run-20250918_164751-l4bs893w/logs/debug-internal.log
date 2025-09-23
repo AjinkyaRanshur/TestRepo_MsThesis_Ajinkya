@@ -1,0 +1,13 @@
+{"time":"2025-09-18T16:47:51.317060162+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T16:47:52.14514375+02:00","level":"INFO","msg":"stream: created new stream","id":"l4bs893w"}
+{"time":"2025-09-18T16:47:52.145187047+02:00","level":"INFO","msg":"stream: started","id":"l4bs893w"}
+{"time":"2025-09-18T16:47:52.147964295+02:00","level":"INFO","msg":"handler: started","stream_id":"l4bs893w"}
+{"time":"2025-09-18T16:47:52.147975686+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"l4bs893w"}
+{"time":"2025-09-18T16:47:52.148014138+02:00","level":"INFO","msg":"sender: started","stream_id":"l4bs893w"}
+{"time":"2025-09-18T16:56:27.172448859+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T16:56:27.246528033+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.073915956}],"total_operations":1}}
+{"time":"2025-09-18T16:56:27.470670133+02:00","level":"INFO","msg":"stream: closing","id":"l4bs893w"}
+{"time":"2025-09-18T16:56:27.470691842+02:00","level":"INFO","msg":"handler: closed","stream_id":"l4bs893w"}
+{"time":"2025-09-18T16:56:27.470711175+02:00","level":"INFO","msg":"sender: closed","stream_id":"l4bs893w"}
+{"time":"2025-09-18T16:56:27.470703159+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"l4bs893w"}
+{"time":"2025-09-18T16:56:27.470786649+02:00","level":"INFO","msg":"stream: closed","id":"l4bs893w"}

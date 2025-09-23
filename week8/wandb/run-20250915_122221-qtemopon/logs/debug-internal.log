@@ -1,0 +1,13 @@
+{"time":"2025-09-15T12:22:21.694686171+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T12:22:22.156828169+02:00","level":"INFO","msg":"stream: created new stream","id":"qtemopon"}
+{"time":"2025-09-15T12:22:22.156872227+02:00","level":"INFO","msg":"stream: started","id":"qtemopon"}
+{"time":"2025-09-15T12:22:22.156892918+02:00","level":"INFO","msg":"sender: started","stream_id":"qtemopon"}
+{"time":"2025-09-15T12:22:22.156910306+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"qtemopon"}
+{"time":"2025-09-15T12:22:22.15699175+02:00","level":"INFO","msg":"handler: started","stream_id":"qtemopon"}
+{"time":"2025-09-15T12:30:54.592977853+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T12:30:54.825482643+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T12:30:54.832955058+02:00","level":"INFO","msg":"stream: closing","id":"qtemopon"}
+{"time":"2025-09-15T12:30:54.832974073+02:00","level":"INFO","msg":"handler: closed","stream_id":"qtemopon"}
+{"time":"2025-09-15T12:30:54.832988168+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"qtemopon"}
+{"time":"2025-09-15T12:30:54.833088432+02:00","level":"INFO","msg":"sender: closed","stream_id":"qtemopon"}
+{"time":"2025-09-15T12:30:54.833099849+02:00","level":"INFO","msg":"stream: closed","id":"qtemopon"}

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 start=0
-end=323
-N=10  # Number of parallel jobs
+end=1079
+N=15  # Number of parallel jobs
 
 pids=()
 

@@ -1,0 +1,13 @@
+{"time":"2025-09-09T15:49:49.716665044+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T15:49:50.088176244+02:00","level":"INFO","msg":"stream: created new stream","id":"uncppyli"}
+{"time":"2025-09-09T15:49:50.088245787+02:00","level":"INFO","msg":"stream: started","id":"uncppyli"}
+{"time":"2025-09-09T15:49:50.088281919+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"uncppyli"}
+{"time":"2025-09-09T15:49:50.088298631+02:00","level":"INFO","msg":"sender: started","stream_id":"uncppyli"}
+{"time":"2025-09-09T15:49:50.0884022+02:00","level":"INFO","msg":"handler: started","stream_id":"uncppyli"}
+{"time":"2025-09-09T15:50:09.849122758+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T15:50:09.936966945+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.087510123}],"total_operations":1}}
+{"time":"2025-09-09T15:50:10.15364651+02:00","level":"INFO","msg":"stream: closing","id":"uncppyli"}
+{"time":"2025-09-09T15:50:10.15367913+02:00","level":"INFO","msg":"handler: closed","stream_id":"uncppyli"}
+{"time":"2025-09-09T15:50:10.153697765+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"uncppyli"}
+{"time":"2025-09-09T15:50:10.153761994+02:00","level":"INFO","msg":"sender: closed","stream_id":"uncppyli"}
+{"time":"2025-09-09T15:50:10.153808323+02:00","level":"INFO","msg":"stream: closed","id":"uncppyli"}

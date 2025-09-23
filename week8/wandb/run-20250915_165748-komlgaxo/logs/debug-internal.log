@@ -1,0 +1,13 @@
+{"time":"2025-09-15T16:57:48.567004866+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T16:57:49.100399238+02:00","level":"INFO","msg":"stream: created new stream","id":"komlgaxo"}
+{"time":"2025-09-15T16:57:49.100449623+02:00","level":"INFO","msg":"stream: started","id":"komlgaxo"}
+{"time":"2025-09-15T16:57:49.101908209+02:00","level":"INFO","msg":"handler: started","stream_id":"komlgaxo"}
+{"time":"2025-09-15T16:57:49.101957448+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"komlgaxo"}
+{"time":"2025-09-15T16:57:49.102187571+02:00","level":"INFO","msg":"sender: started","stream_id":"komlgaxo"}
+{"time":"2025-09-15T17:05:52.074713857+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T17:05:52.334175572+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T17:05:52.337590565+02:00","level":"INFO","msg":"stream: closing","id":"komlgaxo"}
+{"time":"2025-09-15T17:05:52.337602893+02:00","level":"INFO","msg":"handler: closed","stream_id":"komlgaxo"}
+{"time":"2025-09-15T17:05:52.337611343+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"komlgaxo"}
+{"time":"2025-09-15T17:05:52.337665038+02:00","level":"INFO","msg":"sender: closed","stream_id":"komlgaxo"}
+{"time":"2025-09-15T17:05:52.337673607+02:00","level":"INFO","msg":"stream: closed","id":"komlgaxo"}

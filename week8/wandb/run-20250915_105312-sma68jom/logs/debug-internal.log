@@ -1,0 +1,13 @@
+{"time":"2025-09-15T10:53:12.624915553+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T10:53:12.967825919+02:00","level":"INFO","msg":"stream: created new stream","id":"sma68jom"}
+{"time":"2025-09-15T10:53:12.967871465+02:00","level":"INFO","msg":"stream: started","id":"sma68jom"}
+{"time":"2025-09-15T10:53:12.96902755+02:00","level":"INFO","msg":"handler: started","stream_id":"sma68jom"}
+{"time":"2025-09-15T10:53:12.969069198+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"sma68jom"}
+{"time":"2025-09-15T10:53:12.969284707+02:00","level":"INFO","msg":"sender: started","stream_id":"sma68jom"}
+{"time":"2025-09-15T11:02:30.283862949+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T11:02:30.504435835+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T11:02:30.507736994+02:00","level":"INFO","msg":"stream: closing","id":"sma68jom"}
+{"time":"2025-09-15T11:02:30.50775611+02:00","level":"INFO","msg":"handler: closed","stream_id":"sma68jom"}
+{"time":"2025-09-15T11:02:30.507764184+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"sma68jom"}
+{"time":"2025-09-15T11:02:30.507829436+02:00","level":"INFO","msg":"sender: closed","stream_id":"sma68jom"}
+{"time":"2025-09-15T11:02:30.507836627+02:00","level":"INFO","msg":"stream: closed","id":"sma68jom"}

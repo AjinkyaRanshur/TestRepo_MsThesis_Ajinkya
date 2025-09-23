@@ -1,0 +1,14 @@
+✓ WandB initialized in Online mode
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 480, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 411, in main
+    trainloader, testloader = train_test_loader(config.datasetpath,config.illusion_dataset_bool)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 155, in train_test_loader
+    trainset=SquareDataset(os.path.join(DATA_DIR, "metadata.csv"), DATA_DIR,classes_for_use=["Square", "Random"],transform=transform)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 48, in __init__
+    self.metadata = pd.read_csv(csv_file)
+                    ^^
+NameError: name 'pd' is not defined

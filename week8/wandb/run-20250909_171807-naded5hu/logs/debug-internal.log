@@ -1,0 +1,13 @@
+{"time":"2025-09-09T17:18:07.231770585+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T17:18:07.591685033+02:00","level":"INFO","msg":"stream: created new stream","id":"naded5hu"}
+{"time":"2025-09-09T17:18:07.591742654+02:00","level":"INFO","msg":"stream: started","id":"naded5hu"}
+{"time":"2025-09-09T17:18:07.591789484+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"naded5hu"}
+{"time":"2025-09-09T17:18:07.591799267+02:00","level":"INFO","msg":"handler: started","stream_id":"naded5hu"}
+{"time":"2025-09-09T17:18:07.591872205+02:00","level":"INFO","msg":"sender: started","stream_id":"naded5hu"}
+{"time":"2025-09-09T17:18:27.258242859+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T17:18:27.378389739+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.119930413}],"total_operations":1}}
+{"time":"2025-09-09T17:18:27.513334106+02:00","level":"INFO","msg":"stream: closing","id":"naded5hu"}
+{"time":"2025-09-09T17:18:27.513363993+02:00","level":"INFO","msg":"handler: closed","stream_id":"naded5hu"}
+{"time":"2025-09-09T17:18:27.513381186+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"naded5hu"}
+{"time":"2025-09-09T17:18:27.513460549+02:00","level":"INFO","msg":"sender: closed","stream_id":"naded5hu"}
+{"time":"2025-09-09T17:18:27.513504234+02:00","level":"INFO","msg":"stream: closed","id":"naded5hu"}

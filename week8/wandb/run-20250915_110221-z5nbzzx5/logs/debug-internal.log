@@ -1,0 +1,15 @@
+{"time":"2025-09-15T11:02:21.886795398+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T11:02:22.333629756+02:00","level":"INFO","msg":"stream: created new stream","id":"z5nbzzx5"}
+{"time":"2025-09-15T11:02:22.33367249+02:00","level":"INFO","msg":"stream: started","id":"z5nbzzx5"}
+{"time":"2025-09-15T11:02:22.333719646+02:00","level":"INFO","msg":"handler: started","stream_id":"z5nbzzx5"}
+{"time":"2025-09-15T11:02:22.333750614+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"z5nbzzx5"}
+{"time":"2025-09-15T11:02:22.333725176+02:00","level":"INFO","msg":"sender: started","stream_id":"z5nbzzx5"}
+{"time":"2025-09-15T11:09:53.000647907+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/z5nbzzx5/file_stream\": dial tcp 35.186.228.49:443: connect: connection refused"}
+{"time":"2025-09-15T11:10:08.00060307+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/z5nbzzx5/file_stream\": dial tcp 35.186.228.49:443: connect: connection refused"}
+{"time":"2025-09-15T11:10:37.639072477+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T11:10:37.740583681+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.101331387}],"total_operations":1}}
+{"time":"2025-09-15T11:10:37.848801023+02:00","level":"INFO","msg":"stream: closing","id":"z5nbzzx5"}
+{"time":"2025-09-15T11:10:37.84881544+02:00","level":"INFO","msg":"handler: closed","stream_id":"z5nbzzx5"}
+{"time":"2025-09-15T11:10:37.848824659+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"z5nbzzx5"}
+{"time":"2025-09-15T11:10:37.848892195+02:00","level":"INFO","msg":"sender: closed","stream_id":"z5nbzzx5"}
+{"time":"2025-09-15T11:10:37.84889989+02:00","level":"INFO","msg":"stream: closed","id":"z5nbzzx5"}

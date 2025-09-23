@@ -1,0 +1,13 @@
+{"time":"2025-09-15T15:21:32.493009047+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T15:21:32.932834327+02:00","level":"INFO","msg":"stream: created new stream","id":"81yusdhi"}
+{"time":"2025-09-15T15:21:32.932879138+02:00","level":"INFO","msg":"stream: started","id":"81yusdhi"}
+{"time":"2025-09-15T15:21:32.934138214+02:00","level":"INFO","msg":"handler: started","stream_id":"81yusdhi"}
+{"time":"2025-09-15T15:21:32.934179787+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"81yusdhi"}
+{"time":"2025-09-15T15:21:32.934398349+02:00","level":"INFO","msg":"sender: started","stream_id":"81yusdhi"}
+{"time":"2025-09-15T15:31:59.395471223+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T15:31:59.649208151+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T15:31:59.652581242+02:00","level":"INFO","msg":"stream: closing","id":"81yusdhi"}
+{"time":"2025-09-15T15:31:59.652594113+02:00","level":"INFO","msg":"handler: closed","stream_id":"81yusdhi"}
+{"time":"2025-09-15T15:31:59.652605199+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"81yusdhi"}
+{"time":"2025-09-15T15:31:59.652676191+02:00","level":"INFO","msg":"sender: closed","stream_id":"81yusdhi"}
+{"time":"2025-09-15T15:31:59.652688904+02:00","level":"INFO","msg":"stream: closed","id":"81yusdhi"}

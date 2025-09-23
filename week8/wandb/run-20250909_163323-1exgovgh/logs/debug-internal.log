@@ -1,0 +1,13 @@
+{"time":"2025-09-09T16:33:23.709276624+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T16:33:24.077894062+02:00","level":"INFO","msg":"stream: created new stream","id":"1exgovgh"}
+{"time":"2025-09-09T16:33:24.077957246+02:00","level":"INFO","msg":"stream: started","id":"1exgovgh"}
+{"time":"2025-09-09T16:33:24.078005171+02:00","level":"INFO","msg":"handler: started","stream_id":"1exgovgh"}
+{"time":"2025-09-09T16:33:24.077991486+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"1exgovgh"}
+{"time":"2025-09-09T16:33:24.0780956+02:00","level":"INFO","msg":"sender: started","stream_id":"1exgovgh"}
+{"time":"2025-09-09T16:33:43.709196489+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T16:33:43.753833784+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.044352281}],"total_operations":1}}
+{"time":"2025-09-09T16:33:44.014514424+02:00","level":"INFO","msg":"stream: closing","id":"1exgovgh"}
+{"time":"2025-09-09T16:33:44.014545166+02:00","level":"INFO","msg":"handler: closed","stream_id":"1exgovgh"}
+{"time":"2025-09-09T16:33:44.014562535+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"1exgovgh"}
+{"time":"2025-09-09T16:33:44.014629748+02:00","level":"INFO","msg":"sender: closed","stream_id":"1exgovgh"}
+{"time":"2025-09-09T16:33:44.014680225+02:00","level":"INFO","msg":"stream: closed","id":"1exgovgh"}
