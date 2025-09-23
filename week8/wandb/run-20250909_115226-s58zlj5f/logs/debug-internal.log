@@ -1,0 +1,13 @@
+{"time":"2025-09-09T11:52:26.870111695+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T11:52:27.110024244+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": dial tcp 35.186.228.49:443: connect: connection refused"}
+{"time":"2025-09-09T11:52:29.720506744+02:00","level":"INFO","msg":"stream: created new stream","id":"s58zlj5f"}
+{"time":"2025-09-09T11:52:29.720663161+02:00","level":"INFO","msg":"stream: started","id":"s58zlj5f"}
+{"time":"2025-09-09T11:52:29.720759004+02:00","level":"INFO","msg":"handler: started","stream_id":"s58zlj5f"}
+{"time":"2025-09-09T11:52:29.720722847+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"s58zlj5f"}
+{"time":"2025-09-09T11:52:29.720744585+02:00","level":"INFO","msg":"sender: started","stream_id":"s58zlj5f"}
+{"time":"2025-09-09T11:52:33.198872917+02:00","level":"INFO","msg":"stream: closing","id":"s58zlj5f"}
+{"time":"2025-09-09T11:52:33.877205095+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T11:52:34.118451167+02:00","level":"INFO","msg":"handler: closed","stream_id":"s58zlj5f"}
+{"time":"2025-09-09T11:52:34.118483884+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"s58zlj5f"}
+{"time":"2025-09-09T11:52:34.118500461+02:00","level":"INFO","msg":"sender: closed","stream_id":"s58zlj5f"}
+{"time":"2025-09-09T11:52:34.118548907+02:00","level":"INFO","msg":"stream: closed","id":"s58zlj5f"}

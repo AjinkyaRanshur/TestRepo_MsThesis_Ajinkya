@@ -1,0 +1,13 @@
+{"time":"2025-09-18T17:46:23.627625795+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T17:46:24.15119239+02:00","level":"INFO","msg":"stream: created new stream","id":"kyza9db2"}
+{"time":"2025-09-18T17:46:24.151234115+02:00","level":"INFO","msg":"stream: started","id":"kyza9db2"}
+{"time":"2025-09-18T17:46:24.152453913+02:00","level":"INFO","msg":"handler: started","stream_id":"kyza9db2"}
+{"time":"2025-09-18T17:46:24.15248633+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"kyza9db2"}
+{"time":"2025-09-18T17:46:24.152696433+02:00","level":"INFO","msg":"sender: started","stream_id":"kyza9db2"}
+{"time":"2025-09-18T17:53:14.540783602+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T17:53:14.68272084+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.141808442}],"total_operations":1}}
+{"time":"2025-09-18T17:53:14.756600477+02:00","level":"INFO","msg":"stream: closing","id":"kyza9db2"}
+{"time":"2025-09-18T17:53:14.75662112+02:00","level":"INFO","msg":"handler: closed","stream_id":"kyza9db2"}
+{"time":"2025-09-18T17:53:14.756633056+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"kyza9db2"}
+{"time":"2025-09-18T17:53:14.756677203+02:00","level":"INFO","msg":"sender: closed","stream_id":"kyza9db2"}
+{"time":"2025-09-18T17:53:14.756762037+02:00","level":"INFO","msg":"stream: closed","id":"kyza9db2"}

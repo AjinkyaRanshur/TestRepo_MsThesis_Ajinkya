@@ -1,0 +1,13 @@
+{"time":"2025-09-18T18:26:26.391118359+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T18:26:26.812740035+02:00","level":"INFO","msg":"stream: created new stream","id":"ltuczryr"}
+{"time":"2025-09-18T18:26:26.812813067+02:00","level":"INFO","msg":"sender: started","stream_id":"ltuczryr"}
+{"time":"2025-09-18T18:26:26.81279638+02:00","level":"INFO","msg":"stream: started","id":"ltuczryr"}
+{"time":"2025-09-18T18:26:26.814978801+02:00","level":"INFO","msg":"handler: started","stream_id":"ltuczryr"}
+{"time":"2025-09-18T18:26:26.816794521+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ltuczryr"}
+{"time":"2025-09-18T18:32:17.18327655+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T18:32:17.396911433+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-18T18:32:17.400385387+02:00","level":"INFO","msg":"stream: closing","id":"ltuczryr"}
+{"time":"2025-09-18T18:32:17.400403495+02:00","level":"INFO","msg":"handler: closed","stream_id":"ltuczryr"}
+{"time":"2025-09-18T18:32:17.400412543+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ltuczryr"}
+{"time":"2025-09-18T18:32:17.400458263+02:00","level":"INFO","msg":"sender: closed","stream_id":"ltuczryr"}
+{"time":"2025-09-18T18:32:17.400476193+02:00","level":"INFO","msg":"stream: closed","id":"ltuczryr"}

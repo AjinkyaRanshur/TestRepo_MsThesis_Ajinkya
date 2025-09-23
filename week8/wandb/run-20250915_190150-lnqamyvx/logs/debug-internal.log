@@ -1,0 +1,13 @@
+{"time":"2025-09-15T19:01:51.131225751+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T19:01:51.673567783+02:00","level":"INFO","msg":"stream: created new stream","id":"lnqamyvx"}
+{"time":"2025-09-15T19:01:51.673613581+02:00","level":"INFO","msg":"stream: started","id":"lnqamyvx"}
+{"time":"2025-09-15T19:01:51.673638683+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"lnqamyvx"}
+{"time":"2025-09-15T19:01:51.673622684+02:00","level":"INFO","msg":"handler: started","stream_id":"lnqamyvx"}
+{"time":"2025-09-15T19:01:51.673635822+02:00","level":"INFO","msg":"sender: started","stream_id":"lnqamyvx"}
+{"time":"2025-09-15T19:08:58.82498317+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T19:08:58.884391782+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.059232168}],"total_operations":1}}
+{"time":"2025-09-15T19:08:59.172885895+02:00","level":"INFO","msg":"stream: closing","id":"lnqamyvx"}
+{"time":"2025-09-15T19:08:59.172898768+02:00","level":"INFO","msg":"handler: closed","stream_id":"lnqamyvx"}
+{"time":"2025-09-15T19:08:59.172907904+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"lnqamyvx"}
+{"time":"2025-09-15T19:08:59.172968447+02:00","level":"INFO","msg":"sender: closed","stream_id":"lnqamyvx"}
+{"time":"2025-09-15T19:08:59.172975341+02:00","level":"INFO","msg":"stream: closed","id":"lnqamyvx"}

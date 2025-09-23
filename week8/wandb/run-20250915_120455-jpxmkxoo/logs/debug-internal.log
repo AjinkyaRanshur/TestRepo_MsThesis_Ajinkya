@@ -1,0 +1,14 @@
+{"time":"2025-09-15T12:04:55.621731761+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T12:04:56.247291886+02:00","level":"INFO","msg":"stream: created new stream","id":"jpxmkxoo"}
+{"time":"2025-09-15T12:04:56.247369332+02:00","level":"INFO","msg":"stream: started","id":"jpxmkxoo"}
+{"time":"2025-09-15T12:04:56.248648157+02:00","level":"INFO","msg":"handler: started","stream_id":"jpxmkxoo"}
+{"time":"2025-09-15T12:04:56.24870387+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"jpxmkxoo"}
+{"time":"2025-09-15T12:04:56.248994864+02:00","level":"INFO","msg":"sender: started","stream_id":"jpxmkxoo"}
+{"time":"2025-09-15T12:14:42.046887424+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/jpxmkxoo/file_stream\": dial tcp 35.186.228.49:443: connect: connection refused"}
+{"time":"2025-09-15T12:15:22.199890859+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T12:15:22.224231191+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.024136669}],"total_operations":1}}
+{"time":"2025-09-15T12:15:22.466554953+02:00","level":"INFO","msg":"stream: closing","id":"jpxmkxoo"}
+{"time":"2025-09-15T12:15:22.46658269+02:00","level":"INFO","msg":"handler: closed","stream_id":"jpxmkxoo"}
+{"time":"2025-09-15T12:15:22.466599467+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"jpxmkxoo"}
+{"time":"2025-09-15T12:15:22.466620551+02:00","level":"INFO","msg":"sender: closed","stream_id":"jpxmkxoo"}
+{"time":"2025-09-15T12:15:22.466679223+02:00","level":"INFO","msg":"stream: closed","id":"jpxmkxoo"}

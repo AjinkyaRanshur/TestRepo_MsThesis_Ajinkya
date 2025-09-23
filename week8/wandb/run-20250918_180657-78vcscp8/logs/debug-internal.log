@@ -1,0 +1,13 @@
+{"time":"2025-09-18T18:06:57.555734104+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T18:06:57.879856967+02:00","level":"INFO","msg":"stream: created new stream","id":"78vcscp8"}
+{"time":"2025-09-18T18:06:57.8799365+02:00","level":"INFO","msg":"stream: started","id":"78vcscp8"}
+{"time":"2025-09-18T18:06:57.889553063+02:00","level":"INFO","msg":"handler: started","stream_id":"78vcscp8"}
+{"time":"2025-09-18T18:06:57.889606481+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"78vcscp8"}
+{"time":"2025-09-18T18:06:57.889713303+02:00","level":"INFO","msg":"sender: started","stream_id":"78vcscp8"}
+{"time":"2025-09-18T18:14:56.574242654+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T18:14:56.809726279+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-18T18:14:56.81486315+02:00","level":"INFO","msg":"stream: closing","id":"78vcscp8"}
+{"time":"2025-09-18T18:14:56.814878821+02:00","level":"INFO","msg":"handler: closed","stream_id":"78vcscp8"}
+{"time":"2025-09-18T18:14:56.814891903+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"78vcscp8"}
+{"time":"2025-09-18T18:14:56.814967916+02:00","level":"INFO","msg":"sender: closed","stream_id":"78vcscp8"}
+{"time":"2025-09-18T18:14:56.814977103+02:00","level":"INFO","msg":"stream: closed","id":"78vcscp8"}

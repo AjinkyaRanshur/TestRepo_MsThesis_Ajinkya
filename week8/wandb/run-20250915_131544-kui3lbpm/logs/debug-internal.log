@@ -1,0 +1,13 @@
+{"time":"2025-09-15T13:15:45.569795473+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T13:15:46.289020731+02:00","level":"INFO","msg":"stream: created new stream","id":"kui3lbpm"}
+{"time":"2025-09-15T13:15:46.289126009+02:00","level":"INFO","msg":"stream: started","id":"kui3lbpm"}
+{"time":"2025-09-15T13:15:46.289182971+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"kui3lbpm"}
+{"time":"2025-09-15T13:15:46.289331129+02:00","level":"INFO","msg":"handler: started","stream_id":"kui3lbpm"}
+{"time":"2025-09-15T13:15:46.28934547+02:00","level":"INFO","msg":"sender: started","stream_id":"kui3lbpm"}
+{"time":"2025-09-15T13:26:55.6330566+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T13:26:55.880798469+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T13:26:55.887771427+02:00","level":"INFO","msg":"stream: closing","id":"kui3lbpm"}
+{"time":"2025-09-15T13:26:55.887811367+02:00","level":"INFO","msg":"handler: closed","stream_id":"kui3lbpm"}
+{"time":"2025-09-15T13:26:55.887825476+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"kui3lbpm"}
+{"time":"2025-09-15T13:26:55.887924588+02:00","level":"INFO","msg":"sender: closed","stream_id":"kui3lbpm"}
+{"time":"2025-09-15T13:26:55.887940564+02:00","level":"INFO","msg":"stream: closed","id":"kui3lbpm"}

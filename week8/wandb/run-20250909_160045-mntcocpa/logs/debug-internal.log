@@ -1,0 +1,13 @@
+{"time":"2025-09-09T16:00:45.631241004+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T16:00:46.010233285+02:00","level":"INFO","msg":"stream: created new stream","id":"mntcocpa"}
+{"time":"2025-09-09T16:00:46.010298356+02:00","level":"INFO","msg":"stream: started","id":"mntcocpa"}
+{"time":"2025-09-09T16:00:46.010341049+02:00","level":"INFO","msg":"handler: started","stream_id":"mntcocpa"}
+{"time":"2025-09-09T16:00:46.010331196+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"mntcocpa"}
+{"time":"2025-09-09T16:00:46.010422988+02:00","level":"INFO","msg":"sender: started","stream_id":"mntcocpa"}
+{"time":"2025-09-09T16:01:05.544062568+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T16:01:05.870779385+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-09T16:01:05.87734361+02:00","level":"INFO","msg":"stream: closing","id":"mntcocpa"}
+{"time":"2025-09-09T16:01:05.877374576+02:00","level":"INFO","msg":"handler: closed","stream_id":"mntcocpa"}
+{"time":"2025-09-09T16:01:05.877392447+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"mntcocpa"}
+{"time":"2025-09-09T16:01:05.877460258+02:00","level":"INFO","msg":"sender: closed","stream_id":"mntcocpa"}
+{"time":"2025-09-09T16:01:05.877507851+02:00","level":"INFO","msg":"stream: closed","id":"mntcocpa"}

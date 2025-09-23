@@ -1,0 +1,14 @@
+{"time":"2025-09-18T20:06:40.527797923+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T20:06:41.042890252+02:00","level":"INFO","msg":"stream: created new stream","id":"lyitty0l"}
+{"time":"2025-09-18T20:06:41.042944563+02:00","level":"INFO","msg":"stream: started","id":"lyitty0l"}
+{"time":"2025-09-18T20:06:41.042953496+02:00","level":"INFO","msg":"handler: started","stream_id":"lyitty0l"}
+{"time":"2025-09-18T20:06:41.042974312+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"lyitty0l"}
+{"time":"2025-09-18T20:06:41.043152731+02:00","level":"INFO","msg":"sender: started","stream_id":"lyitty0l"}
+{"time":"2025-09-18T20:09:41.788440552+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/lyitty0l/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-09-18T20:14:20.077365702+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T20:14:20.293755803+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-18T20:14:20.297031461+02:00","level":"INFO","msg":"stream: closing","id":"lyitty0l"}
+{"time":"2025-09-18T20:14:20.297043616+02:00","level":"INFO","msg":"handler: closed","stream_id":"lyitty0l"}
+{"time":"2025-09-18T20:14:20.297052852+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"lyitty0l"}
+{"time":"2025-09-18T20:14:20.297111555+02:00","level":"INFO","msg":"sender: closed","stream_id":"lyitty0l"}
+{"time":"2025-09-18T20:14:20.297118881+02:00","level":"INFO","msg":"stream: closed","id":"lyitty0l"}

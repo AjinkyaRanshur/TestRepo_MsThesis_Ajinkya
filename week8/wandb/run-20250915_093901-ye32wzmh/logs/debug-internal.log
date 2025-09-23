@@ -1,0 +1,13 @@
+{"time":"2025-09-15T09:39:01.902779085+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T09:39:02.21987207+02:00","level":"INFO","msg":"stream: created new stream","id":"ye32wzmh"}
+{"time":"2025-09-15T09:39:02.219956207+02:00","level":"INFO","msg":"stream: started","id":"ye32wzmh"}
+{"time":"2025-09-15T09:39:02.2199585+02:00","level":"INFO","msg":"handler: started","stream_id":"ye32wzmh"}
+{"time":"2025-09-15T09:39:02.220008667+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ye32wzmh"}
+{"time":"2025-09-15T09:39:02.21999843+02:00","level":"INFO","msg":"sender: started","stream_id":"ye32wzmh"}
+{"time":"2025-09-15T09:45:29.056139047+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T09:45:29.272675765+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T09:45:29.284798393+02:00","level":"INFO","msg":"stream: closing","id":"ye32wzmh"}
+{"time":"2025-09-15T09:45:29.284819008+02:00","level":"INFO","msg":"handler: closed","stream_id":"ye32wzmh"}
+{"time":"2025-09-15T09:45:29.284830943+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ye32wzmh"}
+{"time":"2025-09-15T09:45:29.284880082+02:00","level":"INFO","msg":"sender: closed","stream_id":"ye32wzmh"}
+{"time":"2025-09-15T09:45:29.284933611+02:00","level":"INFO","msg":"stream: closed","id":"ye32wzmh"}

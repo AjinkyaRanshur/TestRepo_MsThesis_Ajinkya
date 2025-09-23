@@ -1,0 +1,12 @@
+{"time":"2025-09-09T11:51:29.303616355+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T11:51:29.6864492+02:00","level":"INFO","msg":"stream: created new stream","id":"vim8fjym"}
+{"time":"2025-09-09T11:51:29.686526869+02:00","level":"INFO","msg":"stream: started","id":"vim8fjym"}
+{"time":"2025-09-09T11:51:29.686573414+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"vim8fjym"}
+{"time":"2025-09-09T11:51:29.686567394+02:00","level":"INFO","msg":"handler: started","stream_id":"vim8fjym"}
+{"time":"2025-09-09T11:51:29.686662917+02:00","level":"INFO","msg":"sender: started","stream_id":"vim8fjym"}
+{"time":"2025-09-09T11:51:36.489370137+02:00","level":"INFO","msg":"stream: closing","id":"vim8fjym"}
+{"time":"2025-09-09T11:51:37.142815212+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T11:51:37.421094306+02:00","level":"INFO","msg":"handler: closed","stream_id":"vim8fjym"}
+{"time":"2025-09-09T11:51:37.421167195+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"vim8fjym"}
+{"time":"2025-09-09T11:51:37.421179539+02:00","level":"INFO","msg":"sender: closed","stream_id":"vim8fjym"}
+{"time":"2025-09-09T11:51:37.421308441+02:00","level":"INFO","msg":"stream: closed","id":"vim8fjym"}

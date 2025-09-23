@@ -1,0 +1,13 @@
+{"time":"2025-09-18T17:05:23.95069952+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T17:05:24.479167837+02:00","level":"INFO","msg":"stream: created new stream","id":"etcdhc53"}
+{"time":"2025-09-18T17:05:24.479207528+02:00","level":"INFO","msg":"stream: started","id":"etcdhc53"}
+{"time":"2025-09-18T17:05:24.486723313+02:00","level":"INFO","msg":"sender: started","stream_id":"etcdhc53"}
+{"time":"2025-09-18T17:05:24.486814696+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"etcdhc53"}
+{"time":"2025-09-18T17:05:24.486819552+02:00","level":"INFO","msg":"handler: started","stream_id":"etcdhc53"}
+{"time":"2025-09-18T17:14:54.663747025+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T17:14:54.941501824+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-18T17:14:54.959588857+02:00","level":"INFO","msg":"stream: closing","id":"etcdhc53"}
+{"time":"2025-09-18T17:14:54.95960726+02:00","level":"INFO","msg":"handler: closed","stream_id":"etcdhc53"}
+{"time":"2025-09-18T17:14:54.959619189+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"etcdhc53"}
+{"time":"2025-09-18T17:14:54.959702478+02:00","level":"INFO","msg":"sender: closed","stream_id":"etcdhc53"}
+{"time":"2025-09-18T17:14:54.95971028+02:00","level":"INFO","msg":"stream: closed","id":"etcdhc53"}

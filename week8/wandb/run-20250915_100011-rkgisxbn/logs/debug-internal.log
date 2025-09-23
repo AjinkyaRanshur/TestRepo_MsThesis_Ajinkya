@@ -1,0 +1,13 @@
+{"time":"2025-09-15T10:00:11.445907832+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T10:00:11.875907826+02:00","level":"INFO","msg":"stream: created new stream","id":"rkgisxbn"}
+{"time":"2025-09-15T10:00:11.875976079+02:00","level":"INFO","msg":"stream: started","id":"rkgisxbn"}
+{"time":"2025-09-15T10:00:11.877168655+02:00","level":"INFO","msg":"handler: started","stream_id":"rkgisxbn"}
+{"time":"2025-09-15T10:00:11.877198659+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"rkgisxbn"}
+{"time":"2025-09-15T10:00:11.877405103+02:00","level":"INFO","msg":"sender: started","stream_id":"rkgisxbn"}
+{"time":"2025-09-15T10:08:26.208152081+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T10:08:26.45175189+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T10:08:26.456347241+02:00","level":"INFO","msg":"stream: closing","id":"rkgisxbn"}
+{"time":"2025-09-15T10:08:26.456363497+02:00","level":"INFO","msg":"handler: closed","stream_id":"rkgisxbn"}
+{"time":"2025-09-15T10:08:26.45637307+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"rkgisxbn"}
+{"time":"2025-09-15T10:08:26.456444926+02:00","level":"INFO","msg":"sender: closed","stream_id":"rkgisxbn"}
+{"time":"2025-09-15T10:08:26.456453827+02:00","level":"INFO","msg":"stream: closed","id":"rkgisxbn"}

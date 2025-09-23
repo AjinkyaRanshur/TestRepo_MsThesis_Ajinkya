@@ -1,0 +1,8 @@
+{"time":"2025-09-18T10:59:11.949965527+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T10:59:12.31773229+02:00","level":"INFO","msg":"stream: created new stream","id":"gnlm324f"}
+{"time":"2025-09-18T10:59:12.317785888+02:00","level":"INFO","msg":"stream: started","id":"gnlm324f"}
+{"time":"2025-09-18T10:59:12.317808939+02:00","level":"INFO","msg":"handler: started","stream_id":"gnlm324f"}
+{"time":"2025-09-18T10:59:12.317813253+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"gnlm324f"}
+{"time":"2025-09-18T10:59:12.317839232+02:00","level":"INFO","msg":"sender: started","stream_id":"gnlm324f"}
+{"time":"2025-09-18T10:59:58.059379925+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/gnlm324f/file_stream"}
+{"time":"2025-09-18T10:59:58.05943829+02:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/gnlm324f/file_stream: {\"error\":\"run Sequential_Training_Results/gnlm324f not found while streaming file\"}"}

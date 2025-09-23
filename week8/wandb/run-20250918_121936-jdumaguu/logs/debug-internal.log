@@ -1,0 +1,13 @@
+{"time":"2025-09-18T12:19:37.010010087+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T12:19:37.536010922+02:00","level":"INFO","msg":"stream: created new stream","id":"jdumaguu"}
+{"time":"2025-09-18T12:19:37.536060532+02:00","level":"INFO","msg":"stream: started","id":"jdumaguu"}
+{"time":"2025-09-18T12:19:37.536206334+02:00","level":"INFO","msg":"handler: started","stream_id":"jdumaguu"}
+{"time":"2025-09-18T12:19:37.536227826+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"jdumaguu"}
+{"time":"2025-09-18T12:19:37.53632042+02:00","level":"INFO","msg":"sender: started","stream_id":"jdumaguu"}
+{"time":"2025-09-18T12:26:52.734937554+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T12:26:52.966027785+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-18T12:26:52.969215927+02:00","level":"INFO","msg":"stream: closing","id":"jdumaguu"}
+{"time":"2025-09-18T12:26:52.969230761+02:00","level":"INFO","msg":"handler: closed","stream_id":"jdumaguu"}
+{"time":"2025-09-18T12:26:52.969239153+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"jdumaguu"}
+{"time":"2025-09-18T12:26:52.969243564+02:00","level":"INFO","msg":"sender: closed","stream_id":"jdumaguu"}
+{"time":"2025-09-18T12:26:52.969300883+02:00","level":"INFO","msg":"stream: closed","id":"jdumaguu"}

@@ -1,0 +1,15 @@
+{"time":"2025-09-18T19:33:55.535921629+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T19:33:56.050398872+02:00","level":"INFO","msg":"stream: created new stream","id":"agrs5hig"}
+{"time":"2025-09-18T19:33:56.05046491+02:00","level":"INFO","msg":"stream: started","id":"agrs5hig"}
+{"time":"2025-09-18T19:33:56.050537992+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"agrs5hig"}
+{"time":"2025-09-18T19:33:56.050729296+02:00","level":"INFO","msg":"handler: started","stream_id":"agrs5hig"}
+{"time":"2025-09-18T19:33:56.050748892+02:00","level":"INFO","msg":"sender: started","stream_id":"agrs5hig"}
+{"time":"2025-09-18T19:37:41.93668281+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/agrs5hig/file_stream\": dial tcp 35.186.228.49:443: connect: connection refused"}
+{"time":"2025-09-18T19:40:41.936916783+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/agrs5hig/file_stream\": dial tcp 35.186.228.49:443: connect: connection refused"}
+{"time":"2025-09-18T19:40:52.574228907+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T19:40:52.605020996+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.030609762}],"total_operations":1}}
+{"time":"2025-09-18T19:40:52.810206651+02:00","level":"INFO","msg":"stream: closing","id":"agrs5hig"}
+{"time":"2025-09-18T19:40:52.81022127+02:00","level":"INFO","msg":"handler: closed","stream_id":"agrs5hig"}
+{"time":"2025-09-18T19:40:52.810231428+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"agrs5hig"}
+{"time":"2025-09-18T19:40:52.810292578+02:00","level":"INFO","msg":"sender: closed","stream_id":"agrs5hig"}
+{"time":"2025-09-18T19:40:52.810300016+02:00","level":"INFO","msg":"stream: closed","id":"agrs5hig"}

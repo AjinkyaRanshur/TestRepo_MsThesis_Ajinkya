@@ -1,0 +1,21 @@
+{
+  "os":  "Linux-5.15.0-136-generic-x86_64-with-glibc2.31",
+  "python":  "CPython 3.12.11",
+  "startedAt":  "2025-09-09T09:59:25.286387Z",
+  "args":  [
+    "--config",
+    "config866"
+  ],
+  "program":  "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py",
+  "codePath":  "week8/main.py",
+  "codePathLocal":  "main.py",
+  "git":  {
+    "remote":  "https://github.com/AjinkyaRanshur/TestRepo_MsThesis_Ajinkya.git",
+    "commit":  "9e14c0d84e3d88ce34a99d12525e321a311afad5"
+  },
+  "email":  "ranshur.ajinkya.res@gmail.com",
+  "root":  "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8",
+  "host":  "SRV-Calcul-SIC",
+  "executable":  "/home/ajinkya/miniconda3/envs/cuda_pyt/bin/python3",
+  "writerId":  "6c6aqbhqr54tczirpcsz2exhfrpbgeop"
+}

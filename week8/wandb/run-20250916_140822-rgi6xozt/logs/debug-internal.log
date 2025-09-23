@@ -1,0 +1,15 @@
+{"time":"2025-09-16T14:08:22.535590408+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-16T14:08:22.867624382+02:00","level":"INFO","msg":"stream: created new stream","id":"rgi6xozt"}
+{"time":"2025-09-16T14:08:22.867689565+02:00","level":"INFO","msg":"stream: started","id":"rgi6xozt"}
+{"time":"2025-09-16T14:08:22.867709191+02:00","level":"INFO","msg":"handler: started","stream_id":"rgi6xozt"}
+{"time":"2025-09-16T14:08:22.867740793+02:00","level":"INFO","msg":"sender: started","stream_id":"rgi6xozt"}
+{"time":"2025-09-16T14:08:22.867813528+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"rgi6xozt"}
+{"time":"2025-09-16T16:53:00.195421702+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/rgi6xozt/file_stream\": dial tcp 35.186.228.49:443: connect: connection refused"}
+{"time":"2025-09-16T16:59:15.331483936+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/rgi6xozt/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-09-16T18:21:29.425555607+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-16T18:21:29.666323695+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 201-203, summary, console lines 303-305","runtime_seconds":0.230858376}],"total_operations":1}}
+{"time":"2025-09-16T18:21:29.79884422+02:00","level":"INFO","msg":"stream: closing","id":"rgi6xozt"}
+{"time":"2025-09-16T18:21:29.798888631+02:00","level":"INFO","msg":"handler: closed","stream_id":"rgi6xozt"}
+{"time":"2025-09-16T18:21:29.798917107+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"rgi6xozt"}
+{"time":"2025-09-16T18:21:29.798948872+02:00","level":"INFO","msg":"sender: closed","stream_id":"rgi6xozt"}
+{"time":"2025-09-16T18:21:29.799052463+02:00","level":"INFO","msg":"stream: closed","id":"rgi6xozt"}

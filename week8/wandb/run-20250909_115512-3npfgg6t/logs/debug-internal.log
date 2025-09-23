@@ -1,0 +1,13 @@
+{"time":"2025-09-09T11:55:12.915181829+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T11:55:13.264279869+02:00","level":"INFO","msg":"stream: created new stream","id":"3npfgg6t"}
+{"time":"2025-09-09T11:55:13.264352209+02:00","level":"INFO","msg":"stream: started","id":"3npfgg6t"}
+{"time":"2025-09-09T11:55:13.264364764+02:00","level":"INFO","msg":"handler: started","stream_id":"3npfgg6t"}
+{"time":"2025-09-09T11:55:13.264399536+02:00","level":"INFO","msg":"sender: started","stream_id":"3npfgg6t"}
+{"time":"2025-09-09T11:55:13.264471476+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"3npfgg6t"}
+{"time":"2025-09-09T11:55:13.868418463+02:00","level":"ERROR","msg":"file transfer: upload: failed to upload: 400 Bad Request","task":"DefaultUploadTask{FileKind: 1, Path: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/wandb/run-20250909_115512-3npfgg6t/files/wandb-metadata.json, Name: wandb-metadata.json, Url: https://storage.googleapis.com/wandb-production.appspot.com/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/3npfgg6t/wandb-metadata.json?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gorilla-files-url-signer-man%40wandb-production.iam.gserviceaccount.com%2F20250909%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250909T100436Z&X-Goog-Expires=86399&X-Goog-Signature=90869db187400b80c36f28e3c4b59e66d4d4e47a9ba994a58393b8592206afec809e429fb6ae1f6b4709ef04be6bd5da9cc2211d52dc16972ce5358d4fc0f76df28dda8c93f6a214ac90f59cd75f0f7dd546711a7e9dc7902c769e40d87b289a471ab613db95ec14e2be26a77805360e8beaf5d19d715248e1443f166f3c9769ec7da0bd5c28ce7c1be984e1a08b095a9231ea51bc30c90eeb7246f79321ad6a1a2af195a99ec5b4a296c183534ae0019ea0b7b2348c51519e2f225c20fe9cc58b1dc46f55a940b03cf4b7f08aa8747ad2072638dfc6813cc8a187f950882fecb85d7fa754139e9e017ba5f865dcb23dd223a80769341e7e2fcf3349d21d63b6&X-Goog-SignedHeaders=host&X-User=ranshur-ajinkya-res, Size: 755}"}
+{"time":"2025-09-09T11:55:18.799516081+02:00","level":"INFO","msg":"stream: closing","id":"3npfgg6t"}
+{"time":"2025-09-09T11:55:19.313724396+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T11:55:19.585286787+02:00","level":"INFO","msg":"handler: closed","stream_id":"3npfgg6t"}
+{"time":"2025-09-09T11:55:19.585317805+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"3npfgg6t"}
+{"time":"2025-09-09T11:55:19.58532751+02:00","level":"INFO","msg":"sender: closed","stream_id":"3npfgg6t"}
+{"time":"2025-09-09T11:55:19.585375485+02:00","level":"INFO","msg":"stream: closed","id":"3npfgg6t"}

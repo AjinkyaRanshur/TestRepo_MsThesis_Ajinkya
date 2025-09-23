@@ -1,0 +1,14 @@
+{"time":"2025-09-18T20:08:16.634599304+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T20:08:17.052313456+02:00","level":"INFO","msg":"stream: created new stream","id":"coqohe0a"}
+{"time":"2025-09-18T20:08:17.052361334+02:00","level":"INFO","msg":"stream: started","id":"coqohe0a"}
+{"time":"2025-09-18T20:08:17.053542981+02:00","level":"INFO","msg":"sender: started","stream_id":"coqohe0a"}
+{"time":"2025-09-18T20:08:17.053616158+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"coqohe0a"}
+{"time":"2025-09-18T20:08:17.053617848+02:00","level":"INFO","msg":"handler: started","stream_id":"coqohe0a"}
+{"time":"2025-09-18T20:09:17.941905088+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/coqohe0a/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-09-18T20:14:40.480003837+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T20:14:40.590821341+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.110641975}],"total_operations":1}}
+{"time":"2025-09-18T20:14:40.713643792+02:00","level":"INFO","msg":"stream: closing","id":"coqohe0a"}
+{"time":"2025-09-18T20:14:40.713660137+02:00","level":"INFO","msg":"handler: closed","stream_id":"coqohe0a"}
+{"time":"2025-09-18T20:14:40.713671625+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"coqohe0a"}
+{"time":"2025-09-18T20:14:40.713730613+02:00","level":"INFO","msg":"sender: closed","stream_id":"coqohe0a"}
+{"time":"2025-09-18T20:14:40.713738715+02:00","level":"INFO","msg":"stream: closed","id":"coqohe0a"}

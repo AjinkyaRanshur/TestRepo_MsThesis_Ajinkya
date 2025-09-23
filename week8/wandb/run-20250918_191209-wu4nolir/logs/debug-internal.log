@@ -1,0 +1,13 @@
+{"time":"2025-09-18T19:12:10.04987922+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T19:12:10.478400803+02:00","level":"INFO","msg":"stream: created new stream","id":"wu4nolir"}
+{"time":"2025-09-18T19:12:10.478478555+02:00","level":"INFO","msg":"stream: started","id":"wu4nolir"}
+{"time":"2025-09-18T19:12:10.479717509+02:00","level":"INFO","msg":"handler: started","stream_id":"wu4nolir"}
+{"time":"2025-09-18T19:12:10.479748852+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"wu4nolir"}
+{"time":"2025-09-18T19:12:10.47997557+02:00","level":"INFO","msg":"sender: started","stream_id":"wu4nolir"}
+{"time":"2025-09-18T19:19:09.476251471+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"updating run metadata","runtime_seconds":1.047130529}],"total_operations":1}}
+{"time":"2025-09-18T19:19:09.993468357+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T19:19:10.268441483+02:00","level":"INFO","msg":"stream: closing","id":"wu4nolir"}
+{"time":"2025-09-18T19:19:10.268464157+02:00","level":"INFO","msg":"handler: closed","stream_id":"wu4nolir"}
+{"time":"2025-09-18T19:19:10.268474847+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"wu4nolir"}
+{"time":"2025-09-18T19:19:10.268536125+02:00","level":"INFO","msg":"sender: closed","stream_id":"wu4nolir"}
+{"time":"2025-09-18T19:19:10.26856934+02:00","level":"INFO","msg":"stream: closed","id":"wu4nolir"}

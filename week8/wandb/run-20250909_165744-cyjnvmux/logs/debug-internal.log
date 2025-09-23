@@ -1,0 +1,13 @@
+{"time":"2025-09-09T16:57:44.844148139+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T16:57:45.225187476+02:00","level":"INFO","msg":"stream: created new stream","id":"cyjnvmux"}
+{"time":"2025-09-09T16:57:45.225255379+02:00","level":"INFO","msg":"stream: started","id":"cyjnvmux"}
+{"time":"2025-09-09T16:57:45.225281998+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"cyjnvmux"}
+{"time":"2025-09-09T16:57:45.225305138+02:00","level":"INFO","msg":"sender: started","stream_id":"cyjnvmux"}
+{"time":"2025-09-09T16:57:45.225388441+02:00","level":"INFO","msg":"handler: started","stream_id":"cyjnvmux"}
+{"time":"2025-09-09T16:58:05.643517695+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T16:58:05.91633168+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-09T16:58:05.923018552+02:00","level":"INFO","msg":"stream: closing","id":"cyjnvmux"}
+{"time":"2025-09-09T16:58:05.923051947+02:00","level":"INFO","msg":"handler: closed","stream_id":"cyjnvmux"}
+{"time":"2025-09-09T16:58:05.923070955+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"cyjnvmux"}
+{"time":"2025-09-09T16:58:05.923089211+02:00","level":"INFO","msg":"sender: closed","stream_id":"cyjnvmux"}
+{"time":"2025-09-09T16:58:05.923176964+02:00","level":"INFO","msg":"stream: closed","id":"cyjnvmux"}

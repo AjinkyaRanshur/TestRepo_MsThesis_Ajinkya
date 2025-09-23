@@ -1,0 +1,13 @@
+{"time":"2025-09-18T17:59:16.164163457+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T17:59:16.58696991+02:00","level":"INFO","msg":"stream: created new stream","id":"sewymkyf"}
+{"time":"2025-09-18T17:59:16.587008802+02:00","level":"INFO","msg":"stream: started","id":"sewymkyf"}
+{"time":"2025-09-18T17:59:16.588215057+02:00","level":"INFO","msg":"handler: started","stream_id":"sewymkyf"}
+{"time":"2025-09-18T17:59:16.588246386+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"sewymkyf"}
+{"time":"2025-09-18T17:59:16.58846697+02:00","level":"INFO","msg":"sender: started","stream_id":"sewymkyf"}
+{"time":"2025-09-18T18:06:49.552879855+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T18:06:49.788134006+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-18T18:06:49.791478841+02:00","level":"INFO","msg":"stream: closing","id":"sewymkyf"}
+{"time":"2025-09-18T18:06:49.791496555+02:00","level":"INFO","msg":"handler: closed","stream_id":"sewymkyf"}
+{"time":"2025-09-18T18:06:49.791506944+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"sewymkyf"}
+{"time":"2025-09-18T18:06:49.791554998+02:00","level":"INFO","msg":"sender: closed","stream_id":"sewymkyf"}
+{"time":"2025-09-18T18:06:49.791597659+02:00","level":"INFO","msg":"stream: closed","id":"sewymkyf"}

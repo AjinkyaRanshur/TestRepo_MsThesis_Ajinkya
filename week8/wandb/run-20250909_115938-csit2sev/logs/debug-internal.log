@@ -1,0 +1,12 @@
+{"time":"2025-09-09T11:59:38.409514995+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T11:59:38.779453829+02:00","level":"INFO","msg":"stream: created new stream","id":"csit2sev"}
+{"time":"2025-09-09T11:59:38.779522253+02:00","level":"INFO","msg":"stream: started","id":"csit2sev"}
+{"time":"2025-09-09T11:59:38.779538017+02:00","level":"INFO","msg":"handler: started","stream_id":"csit2sev"}
+{"time":"2025-09-09T11:59:38.779596707+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"csit2sev"}
+{"time":"2025-09-09T11:59:38.779593908+02:00","level":"INFO","msg":"sender: started","stream_id":"csit2sev"}
+{"time":"2025-09-09T11:59:43.388104167+02:00","level":"INFO","msg":"stream: closing","id":"csit2sev"}
+{"time":"2025-09-09T11:59:44.073980635+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T11:59:44.307325753+02:00","level":"INFO","msg":"handler: closed","stream_id":"csit2sev"}
+{"time":"2025-09-09T11:59:44.307406519+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"csit2sev"}
+{"time":"2025-09-09T11:59:44.307430231+02:00","level":"INFO","msg":"sender: closed","stream_id":"csit2sev"}
+{"time":"2025-09-09T11:59:44.307552514+02:00","level":"INFO","msg":"stream: closed","id":"csit2sev"}

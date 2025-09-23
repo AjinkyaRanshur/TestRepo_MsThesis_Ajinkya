@@ -1,0 +1,13 @@
+{"time":"2025-09-15T18:07:28.298286461+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T18:07:28.830585424+02:00","level":"INFO","msg":"stream: created new stream","id":"fcsuiqfs"}
+{"time":"2025-09-15T18:07:28.830624503+02:00","level":"INFO","msg":"stream: started","id":"fcsuiqfs"}
+{"time":"2025-09-15T18:07:28.83645903+02:00","level":"INFO","msg":"handler: started","stream_id":"fcsuiqfs"}
+{"time":"2025-09-15T18:07:28.836501088+02:00","level":"INFO","msg":"sender: started","stream_id":"fcsuiqfs"}
+{"time":"2025-09-15T18:07:28.83653572+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"fcsuiqfs"}
+{"time":"2025-09-15T18:16:40.899632631+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T18:16:41.130443508+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T18:16:41.133790891+02:00","level":"INFO","msg":"stream: closing","id":"fcsuiqfs"}
+{"time":"2025-09-15T18:16:41.133805968+02:00","level":"INFO","msg":"handler: closed","stream_id":"fcsuiqfs"}
+{"time":"2025-09-15T18:16:41.133815037+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"fcsuiqfs"}
+{"time":"2025-09-15T18:16:41.133819564+02:00","level":"INFO","msg":"sender: closed","stream_id":"fcsuiqfs"}
+{"time":"2025-09-15T18:16:41.13387437+02:00","level":"INFO","msg":"stream: closed","id":"fcsuiqfs"}

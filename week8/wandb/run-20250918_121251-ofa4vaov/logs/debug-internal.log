@@ -1,0 +1,13 @@
+{"time":"2025-09-18T12:12:52.093863511+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T12:12:52.530595486+02:00","level":"INFO","msg":"stream: created new stream","id":"ofa4vaov"}
+{"time":"2025-09-18T12:12:52.530637115+02:00","level":"INFO","msg":"stream: started","id":"ofa4vaov"}
+{"time":"2025-09-18T12:12:52.531830981+02:00","level":"INFO","msg":"handler: started","stream_id":"ofa4vaov"}
+{"time":"2025-09-18T12:12:52.531863236+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ofa4vaov"}
+{"time":"2025-09-18T12:12:52.532085416+02:00","level":"INFO","msg":"sender: started","stream_id":"ofa4vaov"}
+{"time":"2025-09-18T12:19:46.554952111+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T12:19:46.809473112+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-18T12:19:46.815070789+02:00","level":"INFO","msg":"stream: closing","id":"ofa4vaov"}
+{"time":"2025-09-18T12:19:46.815084117+02:00","level":"INFO","msg":"handler: closed","stream_id":"ofa4vaov"}
+{"time":"2025-09-18T12:19:46.815094358+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ofa4vaov"}
+{"time":"2025-09-18T12:19:46.815151763+02:00","level":"INFO","msg":"sender: closed","stream_id":"ofa4vaov"}
+{"time":"2025-09-18T12:19:46.815158406+02:00","level":"INFO","msg":"stream: closed","id":"ofa4vaov"}

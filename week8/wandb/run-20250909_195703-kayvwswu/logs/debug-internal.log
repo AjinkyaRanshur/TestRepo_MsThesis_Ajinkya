@@ -1,0 +1,13 @@
+{"time":"2025-09-09T19:57:03.840401778+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T19:57:04.214805334+02:00","level":"INFO","msg":"stream: created new stream","id":"kayvwswu"}
+{"time":"2025-09-09T19:57:04.214867885+02:00","level":"INFO","msg":"stream: started","id":"kayvwswu"}
+{"time":"2025-09-09T19:57:04.21489744+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"kayvwswu"}
+{"time":"2025-09-09T19:57:04.214915442+02:00","level":"INFO","msg":"sender: started","stream_id":"kayvwswu"}
+{"time":"2025-09-09T19:57:04.214961857+02:00","level":"INFO","msg":"handler: started","stream_id":"kayvwswu"}
+{"time":"2025-09-09T19:57:23.852316033+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T19:57:24.138475134+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-09T19:57:24.144946018+02:00","level":"INFO","msg":"stream: closing","id":"kayvwswu"}
+{"time":"2025-09-09T19:57:24.144978659+02:00","level":"INFO","msg":"handler: closed","stream_id":"kayvwswu"}
+{"time":"2025-09-09T19:57:24.144996429+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"kayvwswu"}
+{"time":"2025-09-09T19:57:24.145017204+02:00","level":"INFO","msg":"sender: closed","stream_id":"kayvwswu"}
+{"time":"2025-09-09T19:57:24.145101127+02:00","level":"INFO","msg":"stream: closed","id":"kayvwswu"}

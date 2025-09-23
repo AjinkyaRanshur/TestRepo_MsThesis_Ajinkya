@@ -1,0 +1,13 @@
+{"time":"2025-09-15T10:30:38.496604098+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T10:30:39.025126293+02:00","level":"INFO","msg":"stream: created new stream","id":"jaili25l"}
+{"time":"2025-09-15T10:30:39.025157121+02:00","level":"INFO","msg":"stream: started","id":"jaili25l"}
+{"time":"2025-09-15T10:30:39.025168989+02:00","level":"INFO","msg":"handler: started","stream_id":"jaili25l"}
+{"time":"2025-09-15T10:30:39.02518122+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"jaili25l"}
+{"time":"2025-09-15T10:30:39.025313056+02:00","level":"INFO","msg":"sender: started","stream_id":"jaili25l"}
+{"time":"2025-09-15T10:39:26.896520174+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T10:39:27.161646994+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T10:39:27.165538382+02:00","level":"INFO","msg":"stream: closing","id":"jaili25l"}
+{"time":"2025-09-15T10:39:27.165556741+02:00","level":"INFO","msg":"handler: closed","stream_id":"jaili25l"}
+{"time":"2025-09-15T10:39:27.165565055+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"jaili25l"}
+{"time":"2025-09-15T10:39:27.165637394+02:00","level":"INFO","msg":"sender: closed","stream_id":"jaili25l"}
+{"time":"2025-09-15T10:39:27.165657049+02:00","level":"INFO","msg":"stream: closed","id":"jaili25l"}

@@ -1,0 +1,13 @@
+{"time":"2025-09-15T16:49:28.667405735+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T16:49:29.014962193+02:00","level":"INFO","msg":"stream: created new stream","id":"hezlpyoz"}
+{"time":"2025-09-15T16:49:29.015004209+02:00","level":"INFO","msg":"stream: started","id":"hezlpyoz"}
+{"time":"2025-09-15T16:49:29.016196848+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"hezlpyoz"}
+{"time":"2025-09-15T16:49:29.016223876+02:00","level":"INFO","msg":"sender: started","stream_id":"hezlpyoz"}
+{"time":"2025-09-15T16:49:29.016326841+02:00","level":"INFO","msg":"handler: started","stream_id":"hezlpyoz"}
+{"time":"2025-09-15T16:57:24.291406864+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T16:57:24.523596247+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T16:57:24.542826464+02:00","level":"INFO","msg":"stream: closing","id":"hezlpyoz"}
+{"time":"2025-09-15T16:57:24.542850209+02:00","level":"INFO","msg":"handler: closed","stream_id":"hezlpyoz"}
+{"time":"2025-09-15T16:57:24.542861056+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"hezlpyoz"}
+{"time":"2025-09-15T16:57:24.542924374+02:00","level":"INFO","msg":"sender: closed","stream_id":"hezlpyoz"}
+{"time":"2025-09-15T16:57:24.542932529+02:00","level":"INFO","msg":"stream: closed","id":"hezlpyoz"}

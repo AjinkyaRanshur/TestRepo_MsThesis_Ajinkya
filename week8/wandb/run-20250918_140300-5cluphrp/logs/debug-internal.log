@@ -1,0 +1,13 @@
+{"time":"2025-09-18T14:03:00.583622265+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T14:03:01.211273698+02:00","level":"INFO","msg":"stream: created new stream","id":"5cluphrp"}
+{"time":"2025-09-18T14:03:01.211327436+02:00","level":"INFO","msg":"stream: started","id":"5cluphrp"}
+{"time":"2025-09-18T14:03:01.211350724+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"5cluphrp"}
+{"time":"2025-09-18T14:03:01.211596753+02:00","level":"INFO","msg":"handler: started","stream_id":"5cluphrp"}
+{"time":"2025-09-18T14:03:01.211623823+02:00","level":"INFO","msg":"sender: started","stream_id":"5cluphrp"}
+{"time":"2025-09-18T14:10:57.835406191+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T14:10:58.075683266+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-18T14:10:58.080824412+02:00","level":"INFO","msg":"stream: closing","id":"5cluphrp"}
+{"time":"2025-09-18T14:10:58.080837189+02:00","level":"INFO","msg":"handler: closed","stream_id":"5cluphrp"}
+{"time":"2025-09-18T14:10:58.080846806+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"5cluphrp"}
+{"time":"2025-09-18T14:10:58.080902388+02:00","level":"INFO","msg":"sender: closed","stream_id":"5cluphrp"}
+{"time":"2025-09-18T14:10:58.080914346+02:00","level":"INFO","msg":"stream: closed","id":"5cluphrp"}

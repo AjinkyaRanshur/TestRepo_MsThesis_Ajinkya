@@ -1,0 +1,13 @@
+{"time":"2025-09-09T16:57:17.345495995+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T16:57:17.722574209+02:00","level":"INFO","msg":"stream: created new stream","id":"juwpgszi"}
+{"time":"2025-09-09T16:57:17.722641057+02:00","level":"INFO","msg":"stream: started","id":"juwpgszi"}
+{"time":"2025-09-09T16:57:17.722675046+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"juwpgszi"}
+{"time":"2025-09-09T16:57:17.722691789+02:00","level":"INFO","msg":"handler: started","stream_id":"juwpgszi"}
+{"time":"2025-09-09T16:57:17.722766321+02:00","level":"INFO","msg":"sender: started","stream_id":"juwpgszi"}
+{"time":"2025-09-09T16:57:38.150892612+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T16:57:38.416351032+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.265301082}],"total_operations":1}}
+{"time":"2025-09-09T16:57:38.443703092+02:00","level":"INFO","msg":"stream: closing","id":"juwpgszi"}
+{"time":"2025-09-09T16:57:38.443734412+02:00","level":"INFO","msg":"handler: closed","stream_id":"juwpgszi"}
+{"time":"2025-09-09T16:57:38.443752397+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"juwpgszi"}
+{"time":"2025-09-09T16:57:38.443823411+02:00","level":"INFO","msg":"sender: closed","stream_id":"juwpgszi"}
+{"time":"2025-09-09T16:57:38.443867292+02:00","level":"INFO","msg":"stream: closed","id":"juwpgszi"}

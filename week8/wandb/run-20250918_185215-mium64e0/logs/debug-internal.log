@@ -1,0 +1,13 @@
+{"time":"2025-09-18T18:52:16.035381723+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T18:52:16.567640306+02:00","level":"INFO","msg":"stream: created new stream","id":"mium64e0"}
+{"time":"2025-09-18T18:52:16.56769105+02:00","level":"INFO","msg":"stream: started","id":"mium64e0"}
+{"time":"2025-09-18T18:52:16.568822134+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"mium64e0"}
+{"time":"2025-09-18T18:52:16.568914494+02:00","level":"INFO","msg":"sender: started","stream_id":"mium64e0"}
+{"time":"2025-09-18T18:52:16.568972205+02:00","level":"INFO","msg":"handler: started","stream_id":"mium64e0"}
+{"time":"2025-09-18T18:59:12.094049245+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T18:59:12.298108135+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-18T18:59:12.301416061+02:00","level":"INFO","msg":"stream: closing","id":"mium64e0"}
+{"time":"2025-09-18T18:59:12.301433561+02:00","level":"INFO","msg":"handler: closed","stream_id":"mium64e0"}
+{"time":"2025-09-18T18:59:12.301442888+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"mium64e0"}
+{"time":"2025-09-18T18:59:12.301449271+02:00","level":"INFO","msg":"sender: closed","stream_id":"mium64e0"}
+{"time":"2025-09-18T18:59:12.301495781+02:00","level":"INFO","msg":"stream: closed","id":"mium64e0"}

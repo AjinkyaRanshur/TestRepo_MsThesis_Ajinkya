@@ -1,0 +1,13 @@
+{"time":"2025-09-15T10:10:43.929718932+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T10:10:44.465533509+02:00","level":"INFO","msg":"stream: created new stream","id":"ib53ewmr"}
+{"time":"2025-09-15T10:10:44.465577403+02:00","level":"INFO","msg":"stream: started","id":"ib53ewmr"}
+{"time":"2025-09-15T10:10:44.471210196+02:00","level":"INFO","msg":"handler: started","stream_id":"ib53ewmr"}
+{"time":"2025-09-15T10:10:44.471229874+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ib53ewmr"}
+{"time":"2025-09-15T10:10:44.471630055+02:00","level":"INFO","msg":"sender: started","stream_id":"ib53ewmr"}
+{"time":"2025-09-15T10:20:53.473273309+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T10:20:53.681774571+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T10:20:53.684881658+02:00","level":"INFO","msg":"stream: closing","id":"ib53ewmr"}
+{"time":"2025-09-15T10:20:53.684897689+02:00","level":"INFO","msg":"handler: closed","stream_id":"ib53ewmr"}
+{"time":"2025-09-15T10:20:53.684907862+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ib53ewmr"}
+{"time":"2025-09-15T10:20:53.684978675+02:00","level":"INFO","msg":"sender: closed","stream_id":"ib53ewmr"}
+{"time":"2025-09-15T10:20:53.684988904+02:00","level":"INFO","msg":"stream: closed","id":"ib53ewmr"}

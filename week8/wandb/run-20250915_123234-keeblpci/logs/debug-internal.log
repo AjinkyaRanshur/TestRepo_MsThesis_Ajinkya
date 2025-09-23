@@ -1,0 +1,13 @@
+{"time":"2025-09-15T12:32:34.865171112+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T12:32:35.425952833+02:00","level":"INFO","msg":"stream: created new stream","id":"keeblpci"}
+{"time":"2025-09-15T12:32:35.425993895+02:00","level":"INFO","msg":"stream: started","id":"keeblpci"}
+{"time":"2025-09-15T12:32:35.426008303+02:00","level":"INFO","msg":"handler: started","stream_id":"keeblpci"}
+{"time":"2025-09-15T12:32:35.426011701+02:00","level":"INFO","msg":"sender: started","stream_id":"keeblpci"}
+{"time":"2025-09-15T12:32:35.426030548+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"keeblpci"}
+{"time":"2025-09-15T12:42:15.194667591+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T12:42:15.437285481+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-15T12:42:15.44481369+02:00","level":"INFO","msg":"stream: closing","id":"keeblpci"}
+{"time":"2025-09-15T12:42:15.444825988+02:00","level":"INFO","msg":"handler: closed","stream_id":"keeblpci"}
+{"time":"2025-09-15T12:42:15.444833609+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"keeblpci"}
+{"time":"2025-09-15T12:42:15.444902808+02:00","level":"INFO","msg":"sender: closed","stream_id":"keeblpci"}
+{"time":"2025-09-15T12:42:15.444914574+02:00","level":"INFO","msg":"stream: closed","id":"keeblpci"}

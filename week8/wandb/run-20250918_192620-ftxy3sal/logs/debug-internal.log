@@ -1,0 +1,13 @@
+{"time":"2025-09-18T19:26:20.397175082+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T19:26:20.924955113+02:00","level":"INFO","msg":"stream: created new stream","id":"ftxy3sal"}
+{"time":"2025-09-18T19:26:20.924989453+02:00","level":"INFO","msg":"stream: started","id":"ftxy3sal"}
+{"time":"2025-09-18T19:26:20.92604021+02:00","level":"INFO","msg":"handler: started","stream_id":"ftxy3sal"}
+{"time":"2025-09-18T19:26:20.926065623+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ftxy3sal"}
+{"time":"2025-09-18T19:26:20.926229567+02:00","level":"INFO","msg":"sender: started","stream_id":"ftxy3sal"}
+{"time":"2025-09-18T19:33:17.392819088+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T19:33:17.485717708+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.092705282}],"total_operations":1}}
+{"time":"2025-09-18T19:33:17.724459106+02:00","level":"INFO","msg":"stream: closing","id":"ftxy3sal"}
+{"time":"2025-09-18T19:33:17.724472956+02:00","level":"INFO","msg":"handler: closed","stream_id":"ftxy3sal"}
+{"time":"2025-09-18T19:33:17.724482507+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ftxy3sal"}
+{"time":"2025-09-18T19:33:17.724542302+02:00","level":"INFO","msg":"sender: closed","stream_id":"ftxy3sal"}
+{"time":"2025-09-18T19:33:17.724550388+02:00","level":"INFO","msg":"stream: closed","id":"ftxy3sal"}

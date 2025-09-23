@@ -1,0 +1,16 @@
+{"time":"2025-09-09T13:09:41.330661226+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T13:09:41.682780766+02:00","level":"INFO","msg":"stream: created new stream","id":"yxecvosc"}
+{"time":"2025-09-09T13:09:41.682821365+02:00","level":"INFO","msg":"stream: started","id":"yxecvosc"}
+{"time":"2025-09-09T13:09:41.684168314+02:00","level":"INFO","msg":"handler: started","stream_id":"yxecvosc"}
+{"time":"2025-09-09T13:09:41.684201507+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"yxecvosc"}
+{"time":"2025-09-09T13:09:41.684419932+02:00","level":"INFO","msg":"sender: started","stream_id":"yxecvosc"}
+{"time":"2025-09-09T13:17:11.166951973+02:00","level":"INFO","msg":"stream: closing","id":"yxecvosc"}
+{"time":"2025-09-09T13:17:11.354871302+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2025-09-09T13:17:11.354989793+02:00","level":"ERROR","msg":"runfiles: CreateRunFiles returned error: returned error 404: {\"data\":{\"createRunFiles\":null},\"errors\":[{\"message\":\"run Sequential_Model_Tests_Results/yxecvosc not found during createRunFiles\",\"path\":[\"createRunFiles\"]}]}"}
+{"time":"2025-09-09T13:17:11.355424902+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T13:17:11.539876522+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/yxecvosc/file_stream"}
+{"time":"2025-09-09T13:17:11.53994606+02:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/yxecvosc/file_stream: {\"error\":\"run Sequential_Model_Tests_Results/yxecvosc not found while streaming file\"}"}
+{"time":"2025-09-09T13:17:11.540125837+02:00","level":"INFO","msg":"handler: closed","stream_id":"yxecvosc"}
+{"time":"2025-09-09T13:17:11.540147117+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"yxecvosc"}
+{"time":"2025-09-09T13:17:11.540233501+02:00","level":"INFO","msg":"sender: closed","stream_id":"yxecvosc"}
+{"time":"2025-09-09T13:17:11.540242362+02:00","level":"INFO","msg":"stream: closed","id":"yxecvosc"}

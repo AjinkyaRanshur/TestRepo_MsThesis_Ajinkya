@@ -26,7 +26,7 @@ import argparse
 import importlib
 from PIL import Image
 import torchvision.utils as vutils
-
+import pandas as pd
 
 start = time.time()
 
@@ -41,6 +41,33 @@ classes = (
     'horse',
     'ship',
      'truck')
+
+
+class SquareDataset(Dataset):
+    def __init__(self, csv_file, img_dir, classes_for_use, transform=None):
+        self.metadata = pd.read_csv(csv_file)
+        self.metadata = self.metadata[self.metadata['Class'].isin(
+            classes_for_use)]
+        self.img_dir = img_dir
+        self.transform = transform
+        self.metadata['Label'] = self.metadata['Class'].apply(
+            lambda x: 1 if x == "Square" else 0)
+
+    def __len__(self):
+        return len(self.metadata)
+
+    def __getitem__(self, idx):
+        img_name = os.path.join(self.img_dir, self.metadata.iloc[idx]['Class'],
+                                self.metadata.iloc[idx]['filename'])
+        image = Image.open(img_name).convert("L")
+        if self.transform:
+            image = self.transform(image)
+        label = torch.tensor(
+            self.metadata.iloc[idx]['Label'],
+            dtype=torch.float32)
+        cls_name = self.metadata.iloc[idx]['Class']
+        return image, label, cls_name
+
 
 def set_seed(seed):
 
@@ -124,10 +151,13 @@ def train_test_loader(datasetpath,illusion_bool):
         [transforms.ToTensor(), transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))])
 
     if illusion_bool == True:
-        trainset = FilteredShapeDataset(datasetpath, transform, filter_classes=[0, 1])
+        DATA_DIR = datasetpath
+        trainset=SquareDataset(os.path.join(DATA_DIR, "metadata.csv"), DATA_DIR,classes_for_use=["Square", "Random"],transform=transform)
         trainloader=torch.utils.data.DataLoader(trainset, batch_size=config.batch_size, shuffle=True, num_workers=0)
-        testset= FilteredShapeDataset(datasetpath, transform, filter_classes=[0,1,2,3])
-        testloader=torch.utils.data.DataLoader(trainset, batch_size=config.batch_size, shuffle=True, num_workers=0)
+        testset=SquareDataset(os.path.join(DATA_DIR, "metadata.csv"), DATA_DIR,classes_for_use=["Square", "Random", "All-in", "All-out"],transform=transform)
+        testloader=torch.utils.data.DataLoader(testset, batch_size=config.batch_size, shuffle=False, num_workers=0)
+
+        
 
     else:
 
@@ -203,71 +233,125 @@ def fine_tuning_using_classification(net,save_dir, trainloader, testloader,confi
 
 def fine_tuning_using_illusions(net,save_dir, trainloader, testloader,config):
 
-    for iteration_index in range(20):
+    for iteration_index in range(2):
         print(f"The Iteration{iteration_index}:")
         print("================================")
         net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',
         map_location=config.device,weights_only=True))
-        train_bool=illusion_pc_training(net,trainloader, testloader,"fine_tuning",config)
+        train_bool=illusioin_pc_training(net,trainloader, testloader,"fine_tuning",config)
         if train_bool == True:
             torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
             print("Model Saved Sucessfully")
 
     return train_bool
 
-def recon_vs_original(net, dataloader, config, n_images=8, epoch=None, phase="train",iteration_index=15):
-
-    net.load_state_dict(torch.load(
-        f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',
-        map_location=config.device,
-         weights_only=True))
+def recon_vs_original(net, dataloader, config, n_images=8, epoch=None, phase="train", iteration_index=15):
+    """
+    Compare original images with their reconstructions from the network.
+    
+    Args:
+        net: Neural network model
+        dataloader: Data loader for images
+        config: Configuration object with device, model paths, etc.
+        n_images: Number of images to compare (default 8)
+        epoch: Current epoch number (optional)
+        phase: Training phase ("train" or "test")
+        iteration_index: Model iteration to load
+    """
+    
+    # Load the trained model
+    try:
+        net.load_state_dict(torch.load(
+            f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',
+            map_location=config.device,
+            weights_only=True))
+        print(f"✓ Loaded model from iteration {iteration_index}")
+    except FileNotFoundError:
+        print(f"✗ Model file not found: {config.load_model_path}/{config.model_name}_{iteration_index}.pth")
+        return False
+    except Exception as e:
+        print(f"✗ Error loading model: {e}")
+        return False
 
     net.eval()
 
-    data_iter=iter(dataloader)
-    images,labels=next(data_iter)
+    # Get a batch of images
+    try:
+        data_iter = iter(dataloader)
+        images, labels = next(data_iter)
+    except StopIteration:
+        print("✗ No data available in dataloader")
+        return False
 
+    # Ensure we don't exceed available images
+    actual_batch_size = images.size(0)
+    n_images = min(n_images, actual_batch_size)
+    
     images = images[:n_images].to(config.device)
     labels = labels[:n_images]
 
     with torch.no_grad():
-        # Initialize feature tensors
+        # Initialize feature tensors with correct batch size
         ft_AB = torch.zeros(n_images, 6, 32, 32).to(config.device)
         ft_BC = torch.zeros(n_images, 16, 16, 16).to(config.device)
         ft_CD = torch.zeros(n_images, 32, 8, 8).to(config.device)
         ft_DE = torch.zeros(n_images, 64, 4, 4).to(config.device)
 
         # Forward pass
-        ft_AB, ft_BC, ft_CD, ft_DE, ft_EF, ft_FG, output = net.feedforward_pass(
-            images, ft_AB, ft_BC, ft_CD, ft_DE
-        )
+        try:
+            ft_AB, ft_BC, ft_CD, ft_DE, ft_EF, ft_FG, output = net.feedforward_pass(
+                images, ft_AB, ft_BC, ft_CD, ft_DE
+            )
+        except Exception as e:
+            print(f"✗ Error in feedforward pass: {e}")
+            return False
 
         # Feedback pass for reconstruction
-        ft_BA, ft_CB, ft_DC, ft_ED, ft_FE, ft_GF, reconstructed = net.feedback_pass(
-            output, ft_AB, ft_BC, ft_CD, ft_DE, ft_EF, ft_FG
-        )
+        try:
+            ft_BA, ft_CB, ft_DC, ft_ED, ft_FE, ft_GF, reconstructed = net.feedback_pass(
+                output, ft_AB, ft_BC, ft_CD, ft_DE, ft_EF, ft_FG
+            )
+        except Exception as e:
+            print(f"✗ Error in feedback pass: {e}")
+            return False
 
-        # Create side-by-side comparison
+        # Normalize images for proper visualization
+        # Move to CPU and detach from computation graph
+        original_imgs = images.detach().cpu()
+        reconstructed_imgs = reconstructed.detach().cpu()
+        
+        # Denormalize images (reverse CIFAR-10 normalization)
+        mean = torch.tensor([0.4914, 0.4822, 0.4465]).view(1, 3, 1, 1)
+        std = torch.tensor([0.2470, 0.2435, 0.2616]).view(1, 3, 1, 1)
+        
+        original_imgs = original_imgs * std + mean
+        reconstructed_imgs = reconstructed_imgs * std + mean
+        
+        # Clamp to valid range [0, 1]
+        original_imgs = torch.clamp(original_imgs, 0, 1)
+        reconstructed_imgs = torch.clamp(reconstructed_imgs, 0, 1)
+
+        # Create comparison grid
         comparison_images = torch.zeros(n_images * 2, 3, 32, 32)
 
         # Alternate original and reconstructed images
         for i in range(n_images):
-            comparison_images[i * 2] = images[i].cpu()      # Original
-            comparison_images[i * 2 + 1] = reconstructed[i].cpu()  # Reconstructed
+            comparison_images[i * 2] = original_imgs[i]           # Original
+            comparison_images[i * 2 + 1] = reconstructed_imgs[i]  # Reconstructed
     
-    # Create grid: 2 rows (original, reconstructed) x n_images columns
+    # Create grid: 2 rows x n_images columns
     grid = vutils.make_grid(comparison_images, nrow=n_images, padding=2, normalize=False)
     
     # Convert to numpy for matplotlib
     grid_np = grid.permute(1, 2, 0).numpy()
     
     # Create matplotlib figure
-    fig, ax = plt.subplots(figsize=(15, 6))
+    fig, ax = plt.subplots(figsize=(max(15, n_images * 2), 6))
     ax.imshow(grid_np)
     ax.axis('off')
     
     # Add title and labels
-    epoch_str = f"Epoch {epoch}" if epoch is not None else ""
+    epoch_str = f"Epoch {epoch}" if epoch is not None else f"Iteration {iteration_index}"
     ax.set_title(f'Image Reconstruction Comparison - {phase.capitalize()} {epoch_str}\n'
                  f'Top Row: Original Images, Bottom Row: Reconstructed Images', 
                  fontsize=14, pad=20)
@@ -281,12 +365,25 @@ def recon_vs_original(net, dataloader, config, n_images=8, epoch=None, phase="tr
     plt.tight_layout()
     
     # Log to wandb
-    wandb.log({
-        f"Reconstruction_Comparison/{phase}": wandb.Image(fig, 
-            caption=f"Original vs Reconstructed - {phase} {epoch_str}")
-    })
+    try:
+        wandb.log({
+            f"Reconstruction_Comparison/{phase}": wandb.Image(fig, 
+                caption=f"Original vs Reconstructed - {phase} {epoch_str}")
+        })
+        print(f"✓ Logged reconstruction comparison to wandb")
+    except Exception as e:
+        print(f"✗ Error logging to wandb: {e}")
     
     plt.close(fig)  # Close figure to save memory
+    
+    # Calculate and log reconstruction loss
+    with torch.no_grad():
+        recon_loss = F.mse_loss(reconstructed_imgs, original_imgs).item()
+        try:
+            wandb.log({f"Reconstruction_Loss/{phase}": recon_loss})
+            print(f"✓ Reconstruction MSE Loss: {recon_loss:.6f}")
+        except Exception as e:
+            print(f"✗ Error logging reconstruction loss: {e}")
 
     return True
 
@@ -313,6 +410,10 @@ def main():
     wandb.watch(net, log="all", log_freq=10)
     trainloader, testloader = train_test_loader(config.datasetpath,config.illusion_dataset_bool)
 
+
+
+
+
     if config.training_condition == "fine_tuning_classification":
         train_bool = fine_tuning_using_classification(net,save_dir, trainloader, testloader,config)
 
@@ -323,10 +424,12 @@ def main():
         train_bool = fine_tuning_using_illusions(net,save_dir, trainloader, testloader,config)
 
     if config.training_condition == "recon_comparison":
-        train_bool = recon_vs_original(net, testloader, config, n_images=8)
+        success = recon_vs_original(net, testloader, config, n_images=8, iteration_index=15)
+        if not success:
+            print("Failed to generate reconstruction comparison")
 
 
-    for iteration_index in range(2):
+    for iteration_index in range(20):
         if config.training_condition == None:
             break
         print(f"The Iteration{iteration_index}:")

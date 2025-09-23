@@ -1,0 +1,13 @@
+{"time":"2025-09-18T17:38:05.820392189+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T17:38:06.35401792+02:00","level":"INFO","msg":"stream: created new stream","id":"xmdepp2d"}
+{"time":"2025-09-18T17:38:06.354061306+02:00","level":"INFO","msg":"stream: started","id":"xmdepp2d"}
+{"time":"2025-09-18T17:38:06.355231885+02:00","level":"INFO","msg":"handler: started","stream_id":"xmdepp2d"}
+{"time":"2025-09-18T17:38:06.355261484+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"xmdepp2d"}
+{"time":"2025-09-18T17:38:06.355443236+02:00","level":"INFO","msg":"sender: started","stream_id":"xmdepp2d"}
+{"time":"2025-09-18T17:45:00.955285352+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T17:45:01.069823124+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.114405513}],"total_operations":1}}
+{"time":"2025-09-18T17:45:01.167913072+02:00","level":"INFO","msg":"stream: closing","id":"xmdepp2d"}
+{"time":"2025-09-18T17:45:01.167927179+02:00","level":"INFO","msg":"handler: closed","stream_id":"xmdepp2d"}
+{"time":"2025-09-18T17:45:01.167936616+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"xmdepp2d"}
+{"time":"2025-09-18T17:45:01.167996863+02:00","level":"INFO","msg":"sender: closed","stream_id":"xmdepp2d"}
+{"time":"2025-09-18T17:45:01.168003713+02:00","level":"INFO","msg":"stream: closed","id":"xmdepp2d"}

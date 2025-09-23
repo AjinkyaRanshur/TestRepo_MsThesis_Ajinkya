@@ -1,0 +1,14 @@
+{"time":"2025-09-18T12:02:28.695327485+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-18T12:02:29.131462807+02:00","level":"INFO","msg":"stream: created new stream","id":"rg749ovv"}
+{"time":"2025-09-18T12:02:29.131516928+02:00","level":"INFO","msg":"stream: started","id":"rg749ovv"}
+{"time":"2025-09-18T12:02:29.132696156+02:00","level":"INFO","msg":"sender: started","stream_id":"rg749ovv"}
+{"time":"2025-09-18T12:02:29.132743317+02:00","level":"INFO","msg":"handler: started","stream_id":"rg749ovv"}
+{"time":"2025-09-18T12:02:29.132766415+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"rg749ovv"}
+{"time":"2025-09-18T12:05:59.760110926+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/rg749ovv/file_stream\": dial tcp 35.186.228.49:443: connect: connection refused"}
+{"time":"2025-09-18T12:09:36.31234889+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-18T12:09:36.581472144+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-18T12:09:36.590214851+02:00","level":"INFO","msg":"stream: closing","id":"rg749ovv"}
+{"time":"2025-09-18T12:09:36.590227483+02:00","level":"INFO","msg":"handler: closed","stream_id":"rg749ovv"}
+{"time":"2025-09-18T12:09:36.590236652+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"rg749ovv"}
+{"time":"2025-09-18T12:09:36.59029666+02:00","level":"INFO","msg":"sender: closed","stream_id":"rg749ovv"}
+{"time":"2025-09-18T12:09:36.59030682+02:00","level":"INFO","msg":"stream: closed","id":"rg749ovv"}

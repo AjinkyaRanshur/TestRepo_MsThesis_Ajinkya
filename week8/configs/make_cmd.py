@@ -5,7 +5,7 @@ iters = 0
 # use linspace to avoid floating point drift
 gamma_values = np.round(np.linspace(0.13, 0.63, 6), 2)
 beta_values = np.round(np.linspace(0.13, 0.63, 6), 2)
-alpha_values = np.round(np.linspace(0.01, 0.09, 9), 3)
+alpha_values = np.round(np.linspace(0.01, 0.3, 30), 3)
 
 for gamma in gamma_values:
     gamma=float(gamma)
@@ -37,13 +37,14 @@ gammaset = [{insert_gamma}]
 betaset = [{insert_beta}]
 alphaset = [{insert_alpha}]
 
-model_name = "pc_class_train_balanced"
+model_name = "pc_class_train_balanced_t1"
 noise_type = "s&p"
 noise_param = 0.00
 experiment_name = "Testing Model on Beta {beta} and Gamma {gamma} and Alpha {alpha}"
 
-load_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/models/classification_models"
-save_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/models/classification_models"
+load_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/models/classification_models/recon_t1_timesteps1"
+save_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/models/classification_models/recon_t1_timesteps1"
+illusion_dataset_bool=False
 
 '''
             with open(f"config{iters}.py", "w") as f:

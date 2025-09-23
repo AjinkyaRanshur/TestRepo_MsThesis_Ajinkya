@@ -1,0 +1,16 @@
+{"time":"2025-09-09T13:17:32.202230416+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T13:17:32.582984873+02:00","level":"INFO","msg":"stream: created new stream","id":"8dmt3jlv"}
+{"time":"2025-09-09T13:17:32.58302639+02:00","level":"INFO","msg":"stream: started","id":"8dmt3jlv"}
+{"time":"2025-09-09T13:17:32.583046489+02:00","level":"INFO","msg":"sender: started","stream_id":"8dmt3jlv"}
+{"time":"2025-09-09T13:17:32.58304706+02:00","level":"INFO","msg":"handler: started","stream_id":"8dmt3jlv"}
+{"time":"2025-09-09T13:17:32.583065536+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"8dmt3jlv"}
+{"time":"2025-09-09T13:19:33.329103103+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/8dmt3jlv/file_stream"}
+{"time":"2025-09-09T13:19:33.329180494+02:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/8dmt3jlv/file_stream: {\"error\":\"run Sequential_Model_Tests_Results/8dmt3jlv not found while streaming file\"}"}
+{"time":"2025-09-09T13:20:35.185119537+02:00","level":"INFO","msg":"stream: closing","id":"8dmt3jlv"}
+{"time":"2025-09-09T13:20:35.385928952+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2025-09-09T13:20:35.386038309+02:00","level":"ERROR","msg":"runfiles: CreateRunFiles returned error: returned error 404: {\"data\":{\"createRunFiles\":null},\"errors\":[{\"message\":\"run Sequential_Model_Tests_Results/8dmt3jlv not found during createRunFiles\",\"path\":[\"createRunFiles\"]}]}"}
+{"time":"2025-09-09T13:20:35.386831787+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T13:20:35.386913563+02:00","level":"INFO","msg":"handler: closed","stream_id":"8dmt3jlv"}
+{"time":"2025-09-09T13:20:35.386943388+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"8dmt3jlv"}
+{"time":"2025-09-09T13:20:35.386984136+02:00","level":"INFO","msg":"sender: closed","stream_id":"8dmt3jlv"}
+{"time":"2025-09-09T13:20:35.387022549+02:00","level":"INFO","msg":"stream: closed","id":"8dmt3jlv"}

@@ -1,0 +1,13 @@
+{"time":"2025-09-15T18:53:10.770875663+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T18:53:11.100692277+02:00","level":"INFO","msg":"stream: created new stream","id":"lufz240g"}
+{"time":"2025-09-15T18:53:11.100731964+02:00","level":"INFO","msg":"stream: started","id":"lufz240g"}
+{"time":"2025-09-15T18:53:11.100743925+02:00","level":"INFO","msg":"handler: started","stream_id":"lufz240g"}
+{"time":"2025-09-15T18:53:11.100763412+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"lufz240g"}
+{"time":"2025-09-15T18:53:11.100752376+02:00","level":"INFO","msg":"sender: started","stream_id":"lufz240g"}
+{"time":"2025-09-15T19:00:36.035365887+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T19:00:36.202822193+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.16733141}],"total_operations":1}}
+{"time":"2025-09-15T19:00:36.279387453+02:00","level":"INFO","msg":"stream: closing","id":"lufz240g"}
+{"time":"2025-09-15T19:00:36.279401254+02:00","level":"INFO","msg":"handler: closed","stream_id":"lufz240g"}
+{"time":"2025-09-15T19:00:36.27941056+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"lufz240g"}
+{"time":"2025-09-15T19:00:36.279464043+02:00","level":"INFO","msg":"sender: closed","stream_id":"lufz240g"}
+{"time":"2025-09-15T19:00:36.279471077+02:00","level":"INFO","msg":"stream: closed","id":"lufz240g"}

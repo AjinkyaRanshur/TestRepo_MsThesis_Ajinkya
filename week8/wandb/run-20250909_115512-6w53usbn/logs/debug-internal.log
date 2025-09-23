@@ -1,0 +1,12 @@
+{"time":"2025-09-09T11:55:12.767029418+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T11:55:13.095200923+02:00","level":"INFO","msg":"stream: created new stream","id":"6w53usbn"}
+{"time":"2025-09-09T11:55:13.095277442+02:00","level":"INFO","msg":"stream: started","id":"6w53usbn"}
+{"time":"2025-09-09T11:55:13.095286672+02:00","level":"INFO","msg":"handler: started","stream_id":"6w53usbn"}
+{"time":"2025-09-09T11:55:13.095293648+02:00","level":"INFO","msg":"sender: started","stream_id":"6w53usbn"}
+{"time":"2025-09-09T11:55:13.095327783+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"6w53usbn"}
+{"time":"2025-09-09T11:55:18.670624123+02:00","level":"INFO","msg":"stream: closing","id":"6w53usbn"}
+{"time":"2025-09-09T11:55:19.137636816+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T11:55:19.41899481+02:00","level":"INFO","msg":"handler: closed","stream_id":"6w53usbn"}
+{"time":"2025-09-09T11:55:19.419029383+02:00","level":"INFO","msg":"sender: closed","stream_id":"6w53usbn"}
+{"time":"2025-09-09T11:55:19.419031189+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"6w53usbn"}
+{"time":"2025-09-09T11:55:19.419091974+02:00","level":"INFO","msg":"stream: closed","id":"6w53usbn"}

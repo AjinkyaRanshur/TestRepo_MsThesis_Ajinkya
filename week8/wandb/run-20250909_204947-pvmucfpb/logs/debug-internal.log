@@ -1,0 +1,14 @@
+{"time":"2025-09-09T20:49:47.363953915+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T20:49:47.929702074+02:00","level":"INFO","msg":"stream: created new stream","id":"pvmucfpb"}
+{"time":"2025-09-09T20:49:47.929762101+02:00","level":"INFO","msg":"stream: started","id":"pvmucfpb"}
+{"time":"2025-09-09T20:49:47.929793708+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"pvmucfpb"}
+{"time":"2025-09-09T20:49:47.929802777+02:00","level":"INFO","msg":"sender: started","stream_id":"pvmucfpb"}
+{"time":"2025-09-09T20:49:47.929891544+02:00","level":"INFO","msg":"handler: started","stream_id":"pvmucfpb"}
+{"time":"2025-09-09T20:49:48.500412482+02:00","level":"ERROR","msg":"file transfer: upload: failed to upload: 400 Bad Request","task":"DefaultUploadTask{FileKind: 1, Path: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/wandb/run-20250909_204947-pvmucfpb/files/wandb-metadata.json, Name: wandb-metadata.json, Url: https://storage.googleapis.com/wandb-production.appspot.com/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/pvmucfpb/wandb-metadata.json?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gorilla-files-url-signer-man%40wandb-production.iam.gserviceaccount.com%2F20250909%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250909T185912Z&X-Goog-Expires=86399&X-Goog-Signature=8b26cc0317ad61bd3f5fea0c71d1176466596029cdebd57233abc988aa4bee88cec9a78540e64ef6009f287ceaf27ea8f593fb27983beda9850393370ad76bd41b91721c0b65013a27b86e75a78d23b621646c0be90b4aa970543e44c51100aedea44935fc14b717f3c32547006bb4f91cddcbea79061f7bb10dc232a5f960bed2cc1febf72ddc439d7ce1a8f938d03c69c06447e0a77d9b57626178beb16d01253a483b2b067c46d96f7659b350678388071e779a72be10cf7c08dc82aa7e3d255f487db48e33ce050d49ac932e2cd0453c5241b56230bbcde9813b56a6228d73b305bd47618c04a19328832fdcfdd2b37e32e53158d1f30ec346c17cdd1877&X-Goog-SignedHeaders=host&X-User=ranshur-ajinkya-res, Size: 755}"}
+{"time":"2025-09-09T20:50:08.224877959+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T20:50:08.527422659+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-09-09T20:50:08.534605153+02:00","level":"INFO","msg":"stream: closing","id":"pvmucfpb"}
+{"time":"2025-09-09T20:50:08.534635265+02:00","level":"INFO","msg":"handler: closed","stream_id":"pvmucfpb"}
+{"time":"2025-09-09T20:50:08.53465304+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"pvmucfpb"}
+{"time":"2025-09-09T20:50:08.534676181+02:00","level":"INFO","msg":"sender: closed","stream_id":"pvmucfpb"}
+{"time":"2025-09-09T20:50:08.534763372+02:00","level":"INFO","msg":"stream: closed","id":"pvmucfpb"}

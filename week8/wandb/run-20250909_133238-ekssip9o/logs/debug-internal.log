@@ -1,0 +1,13 @@
+{"time":"2025-09-09T13:32:38.30928505+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T13:32:38.675388637+02:00","level":"INFO","msg":"stream: created new stream","id":"ekssip9o"}
+{"time":"2025-09-09T13:32:38.675463598+02:00","level":"INFO","msg":"stream: started","id":"ekssip9o"}
+{"time":"2025-09-09T13:32:38.675490982+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ekssip9o"}
+{"time":"2025-09-09T13:32:38.67550741+02:00","level":"INFO","msg":"handler: started","stream_id":"ekssip9o"}
+{"time":"2025-09-09T13:32:38.675661473+02:00","level":"INFO","msg":"sender: started","stream_id":"ekssip9o"}
+{"time":"2025-09-09T13:32:58.895040106+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.197427933,"progress":"350B/350B"},{"desc":"uploading wandb-summary.json","runtime_seconds":0.197403468,"progress":"189B/189B"}],"total_operations":2}}
+{"time":"2025-09-09T13:32:59.311854557+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T13:32:59.548192527+02:00","level":"INFO","msg":"stream: closing","id":"ekssip9o"}
+{"time":"2025-09-09T13:32:59.548222354+02:00","level":"INFO","msg":"handler: closed","stream_id":"ekssip9o"}
+{"time":"2025-09-09T13:32:59.548240456+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ekssip9o"}
+{"time":"2025-09-09T13:32:59.548308148+02:00","level":"INFO","msg":"sender: closed","stream_id":"ekssip9o"}
+{"time":"2025-09-09T13:32:59.548360842+02:00","level":"INFO","msg":"stream: closed","id":"ekssip9o"}

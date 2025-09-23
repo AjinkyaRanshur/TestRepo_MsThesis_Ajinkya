@@ -1,0 +1,5 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Exception in thread IntMsgThrException in threading.excepthook:Exception ignored in thread started by: <bound method Thread._bootstrap of <Thread(IntMsgThr, started daemon 140133267867392)>>Exception ignored in sys.unraisablehook: <built-in function unraisablehook>
+Accuracy at each timestep:

@@ -1,0 +1,13 @@
+{"time":"2025-09-15T16:11:02.97081172+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-15T16:11:03.497617823+02:00","level":"INFO","msg":"stream: created new stream","id":"tv9munkc"}
+{"time":"2025-09-15T16:11:03.497978436+02:00","level":"INFO","msg":"stream: started","id":"tv9munkc"}
+{"time":"2025-09-15T16:11:03.500894917+02:00","level":"INFO","msg":"handler: started","stream_id":"tv9munkc"}
+{"time":"2025-09-15T16:11:03.501569356+02:00","level":"INFO","msg":"sender: started","stream_id":"tv9munkc"}
+{"time":"2025-09-15T16:11:03.501569266+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"tv9munkc"}
+{"time":"2025-09-15T16:20:24.781727538+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-15T16:20:25.192371944+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.410499244}],"total_operations":1}}
+{"time":"2025-09-15T16:20:25.279714662+02:00","level":"INFO","msg":"stream: closing","id":"tv9munkc"}
+{"time":"2025-09-15T16:20:25.279729834+02:00","level":"INFO","msg":"handler: closed","stream_id":"tv9munkc"}
+{"time":"2025-09-15T16:20:25.279739257+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"tv9munkc"}
+{"time":"2025-09-15T16:20:25.279813534+02:00","level":"INFO","msg":"sender: closed","stream_id":"tv9munkc"}
+{"time":"2025-09-15T16:20:25.279825731+02:00","level":"INFO","msg":"stream: closed","id":"tv9munkc"}

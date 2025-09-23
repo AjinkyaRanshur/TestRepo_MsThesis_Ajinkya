@@ -1,0 +1,13 @@
+{"time":"2025-09-09T13:29:55.129566156+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T13:29:55.51814171+02:00","level":"INFO","msg":"stream: created new stream","id":"6x27gits"}
+{"time":"2025-09-09T13:29:55.518210194+02:00","level":"INFO","msg":"stream: started","id":"6x27gits"}
+{"time":"2025-09-09T13:29:55.518242269+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"6x27gits"}
+{"time":"2025-09-09T13:29:55.518257094+02:00","level":"INFO","msg":"handler: started","stream_id":"6x27gits"}
+{"time":"2025-09-09T13:29:55.518335367+02:00","level":"INFO","msg":"sender: started","stream_id":"6x27gits"}
+{"time":"2025-09-09T13:30:15.289511361+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T13:30:15.407871119+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 1-12, summary, console lines 3-14","runtime_seconds":0.118139281}],"total_operations":1}}
+{"time":"2025-09-09T13:30:15.552887255+02:00","level":"INFO","msg":"stream: closing","id":"6x27gits"}
+{"time":"2025-09-09T13:30:15.552922018+02:00","level":"INFO","msg":"handler: closed","stream_id":"6x27gits"}
+{"time":"2025-09-09T13:30:15.552940527+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"6x27gits"}
+{"time":"2025-09-09T13:30:15.55296371+02:00","level":"INFO","msg":"sender: closed","stream_id":"6x27gits"}
+{"time":"2025-09-09T13:30:15.553077024+02:00","level":"INFO","msg":"stream: closed","id":"6x27gits"}

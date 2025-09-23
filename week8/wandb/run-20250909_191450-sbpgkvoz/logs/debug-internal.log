@@ -1,0 +1,14 @@
+{"time":"2025-09-09T19:14:50.658393589+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T19:14:51.040092305+02:00","level":"INFO","msg":"stream: created new stream","id":"sbpgkvoz"}
+{"time":"2025-09-09T19:14:51.040171591+02:00","level":"INFO","msg":"stream: started","id":"sbpgkvoz"}
+{"time":"2025-09-09T19:14:51.040202273+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"sbpgkvoz"}
+{"time":"2025-09-09T19:14:51.040219236+02:00","level":"INFO","msg":"sender: started","stream_id":"sbpgkvoz"}
+{"time":"2025-09-09T19:14:51.040294375+02:00","level":"INFO","msg":"handler: started","stream_id":"sbpgkvoz"}
+{"time":"2025-09-09T19:15:10.891064703+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T19:15:11.211234398+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading console lines 0-0","runtime_seconds":19.709463005}],"total_operations":1}}
+{"time":"2025-09-09T19:15:51.68701646+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/sbpgkvoz/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-09-09T19:15:54.415091009+02:00","level":"INFO","msg":"stream: closing","id":"sbpgkvoz"}
+{"time":"2025-09-09T19:15:54.415130559+02:00","level":"INFO","msg":"handler: closed","stream_id":"sbpgkvoz"}
+{"time":"2025-09-09T19:15:54.415156624+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"sbpgkvoz"}
+{"time":"2025-09-09T19:15:54.415210666+02:00","level":"INFO","msg":"sender: closed","stream_id":"sbpgkvoz"}
+{"time":"2025-09-09T19:15:54.415283748+02:00","level":"INFO","msg":"stream: closed","id":"sbpgkvoz"}

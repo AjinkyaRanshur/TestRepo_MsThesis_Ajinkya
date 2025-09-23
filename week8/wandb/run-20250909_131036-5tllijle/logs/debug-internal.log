@@ -1,0 +1,16 @@
+{"time":"2025-09-09T13:10:36.35546714+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T13:10:36.696218867+02:00","level":"INFO","msg":"stream: created new stream","id":"5tllijle"}
+{"time":"2025-09-09T13:10:36.696268567+02:00","level":"INFO","msg":"stream: started","id":"5tllijle"}
+{"time":"2025-09-09T13:10:36.696283805+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"5tllijle"}
+{"time":"2025-09-09T13:10:36.696405919+02:00","level":"INFO","msg":"handler: started","stream_id":"5tllijle"}
+{"time":"2025-09-09T13:10:36.696423061+02:00","level":"INFO","msg":"sender: started","stream_id":"5tllijle"}
+{"time":"2025-09-09T13:17:07.643430612+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/5tllijle/file_stream"}
+{"time":"2025-09-09T13:17:07.654016128+02:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/5tllijle/file_stream: {\"error\":\"run Sequential_Model_Tests_Results/5tllijle not found while streaming file\"}"}
+{"time":"2025-09-09T13:20:23.676587201+02:00","level":"INFO","msg":"stream: closing","id":"5tllijle"}
+{"time":"2025-09-09T13:20:23.864319741+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2025-09-09T13:20:23.864444327+02:00","level":"ERROR","msg":"runfiles: CreateRunFiles returned error: returned error 404: {\"data\":{\"createRunFiles\":null},\"errors\":[{\"message\":\"run Sequential_Model_Tests_Results/5tllijle not found during createRunFiles\",\"path\":[\"createRunFiles\"]}]}"}
+{"time":"2025-09-09T13:20:23.864941787+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T13:20:23.865010988+02:00","level":"INFO","msg":"handler: closed","stream_id":"5tllijle"}
+{"time":"2025-09-09T13:20:23.865034661+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"5tllijle"}
+{"time":"2025-09-09T13:20:23.865255333+02:00","level":"INFO","msg":"sender: closed","stream_id":"5tllijle"}
+{"time":"2025-09-09T13:20:23.865265667+02:00","level":"INFO","msg":"stream: closed","id":"5tllijle"}

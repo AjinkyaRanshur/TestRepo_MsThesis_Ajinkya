@@ -1,0 +1,16 @@
+{"time":"2025-09-09T13:09:45.363883644+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T13:09:45.801511197+02:00","level":"INFO","msg":"stream: created new stream","id":"s4o0dq70"}
+{"time":"2025-09-09T13:09:45.801559553+02:00","level":"INFO","msg":"handler: started","stream_id":"s4o0dq70"}
+{"time":"2025-09-09T13:09:45.801575889+02:00","level":"INFO","msg":"stream: started","id":"s4o0dq70"}
+{"time":"2025-09-09T13:09:45.801591736+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"s4o0dq70"}
+{"time":"2025-09-09T13:09:45.806895488+02:00","level":"INFO","msg":"sender: started","stream_id":"s4o0dq70"}
+{"time":"2025-09-09T13:17:01.594254736+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/s4o0dq70/file_stream"}
+{"time":"2025-09-09T13:17:01.594329275+02:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/s4o0dq70/file_stream: {\"error\":\"run Sequential_Model_Tests_Results/s4o0dq70 not found while streaming file\"}"}
+{"time":"2025-09-09T13:17:19.389887465+02:00","level":"INFO","msg":"stream: closing","id":"s4o0dq70"}
+{"time":"2025-09-09T13:17:19.604919707+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2025-09-09T13:17:19.60502241+02:00","level":"ERROR","msg":"runfiles: CreateRunFiles returned error: returned error 404: {\"data\":{\"createRunFiles\":null},\"errors\":[{\"message\":\"run Sequential_Model_Tests_Results/s4o0dq70 not found during createRunFiles\",\"path\":[\"createRunFiles\"]}]}"}
+{"time":"2025-09-09T13:17:19.605159763+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T13:17:19.605218377+02:00","level":"INFO","msg":"handler: closed","stream_id":"s4o0dq70"}
+{"time":"2025-09-09T13:17:19.605239664+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"s4o0dq70"}
+{"time":"2025-09-09T13:17:19.605297394+02:00","level":"INFO","msg":"sender: closed","stream_id":"s4o0dq70"}
+{"time":"2025-09-09T13:17:19.605306332+02:00","level":"INFO","msg":"stream: closed","id":"s4o0dq70"}

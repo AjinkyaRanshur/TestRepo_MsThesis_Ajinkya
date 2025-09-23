@@ -1,0 +1,16 @@
+{"time":"2025-09-09T13:10:36.721651554+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-09-09T13:10:37.162600912+02:00","level":"INFO","msg":"stream: created new stream","id":"nzls9ye6"}
+{"time":"2025-09-09T13:10:37.162634447+02:00","level":"INFO","msg":"stream: started","id":"nzls9ye6"}
+{"time":"2025-09-09T13:10:37.162645852+02:00","level":"INFO","msg":"handler: started","stream_id":"nzls9ye6"}
+{"time":"2025-09-09T13:10:37.162685913+02:00","level":"INFO","msg":"sender: started","stream_id":"nzls9ye6"}
+{"time":"2025-09-09T13:10:37.162705638+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"nzls9ye6"}
+{"time":"2025-09-09T13:17:08.151955352+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/nzls9ye6/file_stream"}
+{"time":"2025-09-09T13:17:08.152228642+02:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/ranshur-ajinkya-res-cerco/Sequential_Model_Tests_Results/nzls9ye6/file_stream: {\"error\":\"run Sequential_Model_Tests_Results/nzls9ye6 not found while streaming file\"}"}
+{"time":"2025-09-09T13:20:27.011701853+02:00","level":"INFO","msg":"stream: closing","id":"nzls9ye6"}
+{"time":"2025-09-09T13:20:27.199740548+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2025-09-09T13:20:27.199872899+02:00","level":"ERROR","msg":"runfiles: CreateRunFiles returned error: returned error 404: {\"data\":{\"createRunFiles\":null},\"errors\":[{\"message\":\"run Sequential_Model_Tests_Results/nzls9ye6 not found during createRunFiles\",\"path\":[\"createRunFiles\"]}]}"}
+{"time":"2025-09-09T13:20:27.200260614+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-09T13:20:27.200319379+02:00","level":"INFO","msg":"handler: closed","stream_id":"nzls9ye6"}
+{"time":"2025-09-09T13:20:27.200339412+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"nzls9ye6"}
+{"time":"2025-09-09T13:20:27.200378001+02:00","level":"INFO","msg":"sender: closed","stream_id":"nzls9ye6"}
+{"time":"2025-09-09T13:20:27.200411792+02:00","level":"INFO","msg":"stream: closed","id":"nzls9ye6"}
