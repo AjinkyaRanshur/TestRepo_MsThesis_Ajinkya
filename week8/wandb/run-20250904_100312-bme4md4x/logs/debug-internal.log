@@ -1,6 +1,0 @@
-{"time":"2025-09-04T10:03:12.487987934+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
-{"time":"2025-09-04T10:03:12.849797889+02:00","level":"INFO","msg":"stream: created new stream","id":"bme4md4x"}
-{"time":"2025-09-04T10:03:12.849860259+02:00","level":"INFO","msg":"stream: started","id":"bme4md4x"}
-{"time":"2025-09-04T10:03:12.849894499+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"bme4md4x"}
-{"time":"2025-09-04T10:03:12.849908102+02:00","level":"INFO","msg":"handler: started","stream_id":"bme4md4x"}
-{"time":"2025-09-04T10:03:12.849989277+02:00","level":"INFO","msg":"sender: started","stream_id":"bme4md4x"}
