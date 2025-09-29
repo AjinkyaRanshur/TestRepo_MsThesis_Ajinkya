@@ -435,23 +435,34 @@ def main():
         print(f"The Iteration{iteration_index}:")
         print("================================")
         if iteration_index != 0:
-            net.load_state_dict(
-            torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
+            state_dict = torch.load(
+            f"{config.load_model_path}/{config.model_name}_{iteration_index}.pth",
+            map_location=config.device,weights_only=True
+            )
+            net.load_state_dict(state_dict, strict=False)
+
 
         if config.training_condition == "recon_pc_train":
             train_bool = training_using_reconstruction_and_predicitve_coding(net,save_dir, trainloader, testloader,config)
             if train_bool == True:
-                torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
+                # Specify exactly which layers you want to save
+                layers_to_save = [
+                'conv1.weight', 'conv1.bias',
+                'conv2.weight', 'conv2.bias', 
+                'conv3.weight', 'conv3.bias',
+                'conv4.weight', 'conv4.bias',
+                'deconv1_fb.weight', 'deconv1_fb.bias',
+                'deconv2_fb.weight', 'deconv2_fb.bias',
+                'deconv3_fb.weight', 'deconv3_fb.bias',
+                'deconv4_fb.weight', 'deconv4_fb.bias',
+                ]
+                # Collect only the selected layers from state_dict
+                filtered_state = {k: v for k, v in net.state_dict().items() if k in layers_to_save}
+                torch.save(filtered_state,f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
                 print("Training Sucessful")
 
-        if config.training_condition == "illusion_train":
-            train_bool = illusion_pc_training(net,trainloader, testloader,"fine_tuning",config)
-            if train_bool == True:
-                torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
-                print("Training Sucessful")
 
-
-    accuracy_dict = testing_model(net,trainloader,testloader,config,20)
+    #accuracy_dict = testing_model(net,trainloader,testloader,config,20)
                 
 
     end = time.time()
