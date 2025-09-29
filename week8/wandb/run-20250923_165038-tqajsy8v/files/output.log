@@ -1,0 +1,38 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:0.2647543902397156
+Test Loss 0.12318228107690811
+Epoch:1 and AverageLoss:0.09120268254876136
+Test Loss 0.06919531540572643
+Epoch:2 and AverageLoss:0.05769766867756843
+Test Loss 0.04843002369999885
+Epoch:3 and AverageLoss:0.042607899579405785
+Test Loss 0.03751941114664078
+Epoch:4 and AverageLoss:0.03390879785269499
+Test Loss 0.03062735092639923
+Epoch:5 and AverageLoss:0.02814537844210863
+Test Loss 0.02578903900831938
+Epoch:6 and AverageLoss:0.024016862304508686
+Test Loss 0.02228548552840948
+Epoch:7 and AverageLoss:0.02096434636861086
+Test Loss 0.019674669444561005
+Epoch:8 and AverageLoss:0.018681862149387597
+Test Loss 0.017701661881059406
+Epoch:9 and AverageLoss:0.016970794490724802
+Test Loss 0.016249415114521982
+Model Save Sucessfully
+Training Sucessful
+The Iteration1:
+================================
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 487, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week8/main.py", line 438, in main
+    net.load_state_dict(
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/modules/module.py", line 2584, in load_state_dict
+    raise RuntimeError(
+RuntimeError: Error(s) in loading state_dict for Net:
+	Missing key(s) in state_dict: "fc1.weight", "fc1.bias", "fc2.weight", "fc2.bias", "fc3.weight", "fc3.bias", "fc3_fb.weight", "fc3_fb.bias", "fc2_fb.weight", "fc2_fb.bias", "fc1_fb.weight", "fc1_fb.bias".
