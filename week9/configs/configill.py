@@ -5,7 +5,7 @@ epochs = 10
 seed = 42
 lr = 0.00005 
 momentum = 0.9
-datasetpath = '/home/ajinkya/visual_illusion_dataset'
+datasetpath = "data/visual_illusion_dataset"
 training_condition="illusion_train"
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
