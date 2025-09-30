@@ -1,0 +1,55 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:0.41378818821907043
+Test Loss 0.17685360419750212
+Epoch:1 and AverageLoss:0.12531256784200667
+Test Loss 0.0886892514526844
+Epoch:2 and AverageLoss:0.06896044637560844
+Test Loss 0.053402472600340846
+Epoch:3 and AverageLoss:0.043841092582046985
+Test Loss 0.0357688093110919
+Epoch:4 and AverageLoss:0.03018275320082903
+Test Loss 0.025276835523545742
+Epoch:5 and AverageLoss:0.021637584044784306
+Test Loss 0.018378370855003594
+Epoch:6 and AverageLoss:0.01591952284052968
+Test Loss 0.01369249477237463
+Epoch:7 and AverageLoss:0.012003526160120964
+Test Loss 0.010464850280433893
+Epoch:8 and AverageLoss:0.009279523147270083
+Test Loss 0.008185769684612751
+Epoch:9 and AverageLoss:0.007353700856491924
+Test Loss 0.006568387970328331
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_1.pth
+Model Save Sucessfully
+The Iteration1:
+================================
+/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py:106: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=config.device)
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 239, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 222, in main
+    decide_training_model(config.training_condition, save_dir, trainloader, testloader, config,iteration_index)
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 204, in decide_training_model
+    result=cond_to_func[condition]()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 198, in <lambda>
+    "recon_pc_train":lambda: training_using_reconstruction_and_predicitve_coding(save_dir, trainloader, testloader, config,iteration_index),
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 106, in training_using_reconstruction_and_predicitve_coding
+    checkpoint = torch.load(checkpoint_path, map_location=config.device)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 1319, in load
+    with _open_file_like(f, "rb") as opened_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 659, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 640, in __init__
+    super().__init__(open(name, mode))
+                     ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_0.pth'

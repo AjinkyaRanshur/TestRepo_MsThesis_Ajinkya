@@ -102,7 +102,8 @@ def train_test_loader(datasetpath,illusion_bool):
 def training_using_reconstruction_and_predicitve_coding(save_dir, trainloader, testloader,config,iteration_index):
     net = Net(num_classes=10).to(config.device)
     if iteration_index != 0:
-        checkpoint = torch.load("{config.load_model_path}/{config.model_name}_{iteration_index}.pth")
+        checkpoint_path = f"{config.load_model_path}/{config.model_name}_1.pth"
+        checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
         net.conv1.load_state_dict(checkpoint["conv1"])
         net.conv2.load_state_dict(checkpoint["conv2"])
         net.conv3.load_state_dict(checkpoint["conv3"])
@@ -115,6 +116,7 @@ def training_using_reconstruction_and_predicitve_coding(save_dir, trainloader, t
     recon_pc_training(net,trainloader,testloader,"train",config)
 
     # Save only conv layers
+    save_path = f'{config.save_model_path}/{config.model_name}_{iteration_index + 1}.pth'
     torch.save({
         "conv1": net.conv1.state_dict(),
         "conv2": net.conv2.state_dict(),
@@ -124,8 +126,9 @@ def training_using_reconstruction_and_predicitve_coding(save_dir, trainloader, t
         "deconv2_fb": net.deconv2_fb.state_dict(),
         "deconv3_fb": net.deconv3_fb.state_dict(),
         "deconv4_fb": net.deconv4_fb.state_dict(),
+    }, save_path)
 
-    }, f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
+    print(f"Model Saved Successfully to: {save_path}")
 
     print("Model Save Sucessfully")
 
@@ -136,7 +139,9 @@ def fine_tuning_using_classification(save_dir, trainloader, testloader,config,it
     
     net = Net(num_classes=10).to(config.device)
     if iteration_index == 0:
-        checkpoint = torch.load("{config.load_model_path}/{config.model_name}_{iteration_index}.pth")
+        checkpoint_path = f"{config.load_model_path}/{config.model_name}"
+        checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
+
         net.conv1.load_state_dict(checkpoint["conv1"])
         net.conv2.load_state_dict(checkpoint["conv2"])
         net.conv3.load_state_dict(checkpoint["conv3"])
@@ -146,7 +151,7 @@ def fine_tuning_using_classification(save_dir, trainloader, testloader,config,it
         net.deconv3_fb.load_state_dict(checkpoint["deconv3_fb"])
         net.deconv4_fb.load_state_dict(checkpoint["deconv4_fb"])
 
-else:
+    else:
         net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
 
     train_bool=recon_pc_training(net,trainloader,testloader,"fine_tuning",config)
@@ -154,7 +159,6 @@ else:
     if train_bool == True:
         torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
         print("Model Saved Sucessfully")
-
 
     return train_bool
 
@@ -164,7 +168,8 @@ def fine_tuning_using_illusions(save_dir, trainloader, testloader,config,iterati
     net = Net(num_classes=2).to(config.device)
 
     if iteration_index == 0:
-        checkpoint = torch.load("{config.load_model_path}/{config.model_name}_{iteration_index}.pth")
+        checkpoint_path = f"{config.load_model_path}/{config.model_name}"
+        checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
         net.conv1.load_state_dict(checkpoint["conv1"])
         net.conv2.load_state_dict(checkpoint["conv2"])
         net.conv3.load_state_dict(checkpoint["conv3"])
@@ -174,10 +179,10 @@ def fine_tuning_using_illusions(save_dir, trainloader, testloader,config,iterati
         net.deconv3_fb.load_state_dict(checkpoint["deconv3_fb"])
         net.deconv4_fb.load_state_dict(checkpoint["deconv4_fb"])
 
-else:
+    else:
         net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
 
-    train_bool=illusioin_pc_training(net,trainloader,testloader,"fine_tuning",config)
+    train_bool=illusion_pc_training(net,trainloader,testloader,"fine_tuning",config)
 
     if train_bool == True:
         torch.save(net.state_dict(), f'{config.save_model_path}/{config.model_name}_{iteration_index + 1 }.pth')
@@ -194,17 +199,19 @@ def decide_training_model(condition,save_dir, trainloader, testloader, config,it
             "fine_tuning_classification": lambda:fine_tuning_using_classification(save_dir, trainloader, testloader,config,iteration_index),
             "random_network_testing": lambda:reconstruction_testing_on_random_network(save_dir, trainloader, testloader,config,iteration_index),
             "illusion_train": lambda:fine_tuning_using_illusions(save_dir, trainloader, testloader,config,iteration_index),
-            "recon_comparison": lambda:recon_vs_original(testloader, config, n_images=8, iteration_index=15) ,
-            "feedforward_training": lambda:}
+            "recon_comparison": lambda:recon_vs_original(testloader, config, n_images=8, iteration_index=15)}
 
-    True=cond_to_func[condition]()
+    result=cond_to_func[condition]()
 
-    return None
+    return result
 
 
 
 def main():
     init_wandb(config.batch_size,config.epochs,config.lr,config.momentum,config.seed,config.device,config.training_condition,config.timesteps,config.gammaset,config.betaset,config.alphaset,config.datasetpath,config.experiment_name,config.noise_type,config.noise_param,config.model_name)
+    save_dir = os.path.join("result_folder", f"Seed_{config.seed}")
+    os.makedirs(save_dir, exist_ok=True)
+    file_path = os.path.join(save_dir, f"Accuracy_Stats_{config.seed}.txt")
 
     trainloader, testloader = train_test_loader(config.datasetpath,config.illusion_dataset_bool)
     for iteration_index in range(config.iterations):
@@ -214,13 +221,8 @@ def main():
         print("================================")
         decide_training_model(config.training_condition, save_dir, trainloader, testloader, config,iteration_index)
         
-
-
-
-
-
-
-
+def load_config(config_name):
+    return importlib.import_module(config_name)
 
 # This line ensures safe multiprocessing
 if __name__ == "__main__":

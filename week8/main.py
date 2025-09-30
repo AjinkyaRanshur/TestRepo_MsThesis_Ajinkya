@@ -156,7 +156,6 @@ def train_test_loader(datasetpath,illusion_bool):
         trainloader=torch.utils.data.DataLoader(trainset, batch_size=config.batch_size, shuffle=True, num_workers=0)
         testset=SquareDataset(os.path.join(DATA_DIR, "metadata.csv"), DATA_DIR,classes_for_use=["Square", "Random", "All-in", "All-out"],transform=transform)
         testloader=torch.utils.data.DataLoader(testset, batch_size=config.batch_size, shuffle=False, num_workers=0)
-
         
 
     else:

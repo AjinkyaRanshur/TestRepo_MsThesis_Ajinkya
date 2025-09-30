@@ -1,0 +1,483 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:0.39047545516490934
+Test Loss 0.13363779559731484
+Epoch:1 and AverageLoss:0.09712221540212632
+Test Loss 0.07233094596862794
+Epoch:2 and AverageLoss:0.05748469524383545
+Test Loss 0.04566673864424229
+Epoch:3 and AverageLoss:0.03822781764417887
+Test Loss 0.03182573571801186
+Epoch:4 and AverageLoss:0.027129026117920875
+Test Loss 0.022925204895436764
+Epoch:5 and AverageLoss:0.019684774585068225
+Test Loss 0.016774357140064238
+Epoch:6 and AverageLoss:0.014584017457067966
+Test Loss 0.012607262998819351
+Epoch:7 and AverageLoss:0.011094543339312077
+Test Loss 0.009706023246049881
+Epoch:8 and AverageLoss:0.008628436195477844
+Test Loss 0.007618444260209798
+Epoch:9 and AverageLoss:0.006827894599735737
+Test Loss 0.00608451515622437
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_1.pth
+Model Save Sucessfully
+The Iteration1:
+================================
+Epoch:0 and AverageLoss:0.005360843089595437
+Test Loss 0.0047052448699250815
+Epoch:1 and AverageLoss:0.004261787721887231
+Test Loss 0.003849093264900148
+Epoch:2 and AverageLoss:0.0035457629973068834
+Test Loss 0.003253593956120312
+Epoch:3 and AverageLoss:0.0030350070687010884
+Test Loss 0.0028156824745237826
+Epoch:4 and AverageLoss:0.0026461100076325236
+Test Loss 0.0024776900028809904
+Epoch:5 and AverageLoss:0.0023435207633301616
+Test Loss 0.002211562856566161
+Epoch:6 and AverageLoss:0.002102097638323903
+Test Loss 0.001987337562255561
+Epoch:7 and AverageLoss:0.0018977211360819638
+Test Loss 0.0018022863967344165
+Epoch:8 and AverageLoss:0.0017292505354620515
+Test Loss 0.0016494986014440657
+Epoch:9 and AverageLoss:0.0015881340476684273
+Test Loss 0.0015172403091564775
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_2.pth
+Model Save Sucessfully
+The Iteration2:
+================================
+Epoch:0 and AverageLoss:0.005406058918684721
+Test Loss 0.004748615158721804
+Epoch:1 and AverageLoss:0.0042854134621098635
+Test Loss 0.0038639501007273792
+Epoch:2 and AverageLoss:0.0035550704043358565
+Test Loss 0.003260692035779357
+Epoch:3 and AverageLoss:0.0030383638877421616
+Test Loss 0.0028192867273464798
+Epoch:4 and AverageLoss:0.0026489611452445386
+Test Loss 0.002477251642383635
+Epoch:5 and AverageLoss:0.0023432667026296256
+Test Loss 0.0022218824797309933
+Epoch:6 and AverageLoss:0.00209852343974635
+Test Loss 0.001983788078185171
+Epoch:7 and AverageLoss:0.0018937687376514077
+Test Loss 0.0017966377628035844
+Epoch:8 and AverageLoss:0.0017233273938298225
+Test Loss 0.001643162638414651
+Epoch:9 and AverageLoss:0.0015808718592859804
+Test Loss 0.001511240172199905
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_3.pth
+Model Save Sucessfully
+The Iteration3:
+================================
+Epoch:0 and AverageLoss:0.005391503567807376
+Test Loss 0.004733135310932994
+Epoch:1 and AverageLoss:0.0042791895553469655
+Test Loss 0.0038592315083369614
+Epoch:2 and AverageLoss:0.0035596767872571947
+Test Loss 0.0032653888203203678
+Epoch:3 and AverageLoss:0.0030440035773441195
+Test Loss 0.0028243741411715746
+Epoch:4 and AverageLoss:0.00265595611743629
+Test Loss 0.0024829335850663483
+Epoch:5 and AverageLoss:0.0023495342450216413
+Test Loss 0.002209001671522856
+Epoch:6 and AverageLoss:0.002101257471833378
+Test Loss 0.0019854807681404054
+Epoch:7 and AverageLoss:0.0018968076382763683
+Test Loss 0.0018018739530816675
+Epoch:8 and AverageLoss:0.001727275722566992
+Test Loss 0.001645986163057387
+Epoch:9 and AverageLoss:0.001583655549492687
+Test Loss 0.001513429586775601
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_4.pth
+Model Save Sucessfully
+The Iteration4:
+================================
+Epoch:0 and AverageLoss:0.005366030273213983
+Test Loss 0.004710603957995772
+Epoch:1 and AverageLoss:0.0042624525796622036
+Test Loss 0.0038493267791345717
+Epoch:2 and AverageLoss:0.0035460826620459557
+Test Loss 0.003253407886251807
+Epoch:3 and AverageLoss:0.0030316773258149622
+Test Loss 0.0028123985743150116
+Epoch:4 and AverageLoss:0.002646477931924164
+Test Loss 0.0024774901680648326
+Epoch:5 and AverageLoss:0.00234567294139415
+Test Loss 0.0022101562120951713
+Epoch:6 and AverageLoss:0.0021034369609318673
+Test Loss 0.0019872249285690486
+Epoch:7 and AverageLoss:0.0018990071035921573
+Test Loss 0.001803238588385284
+Epoch:8 and AverageLoss:0.0017265005769208073
+Test Loss 0.0016431493815034627
+Epoch:9 and AverageLoss:0.0015847711784765124
+Test Loss 0.001517223495990038
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_5.pth
+Model Save Sucessfully
+The Iteration5:
+================================
+Epoch:0 and AverageLoss:0.005382242410257459
+Test Loss 0.004731463814154267
+Epoch:1 and AverageLoss:0.004273312653787434
+Test Loss 0.0038558950470760464
+Epoch:2 and AverageLoss:0.0035575265536084773
+Test Loss 0.0032640332840383054
+Epoch:3 and AverageLoss:0.003043409148789942
+Test Loss 0.002823588072322309
+Epoch:4 and AverageLoss:0.00265546936634928
+Test Loss 0.0024854902820661664
+Epoch:5 and AverageLoss:0.0023491895406506954
+Test Loss 0.0022099488228559494
+Epoch:6 and AverageLoss:0.002102751331590116
+Test Loss 0.00198823717283085
+Epoch:7 and AverageLoss:0.0018995584465563297
+Test Loss 0.0018019928629510104
+Epoch:8 and AverageLoss:0.0017313081840984524
+Test Loss 0.0016494899298995732
+Epoch:9 and AverageLoss:0.0015874145900830626
+Test Loss 0.001517777919769287
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_6.pth
+Model Save Sucessfully
+The Iteration6:
+================================
+Epoch:0 and AverageLoss:0.005360726632736623
+Test Loss 0.004709186897613108
+Epoch:1 and AverageLoss:0.004256103397347033
+Test Loss 0.003842554279603064
+Epoch:2 and AverageLoss:0.0035392891282215715
+Test Loss 0.0032498031221330167
+Epoch:3 and AverageLoss:0.0030305508729070426
+Test Loss 0.002815332350321114
+Epoch:4 and AverageLoss:0.002648969603329897
+Test Loss 0.002479487964883447
+Epoch:5 and AverageLoss:0.0023449404729530216
+Test Loss 0.0022053918037563563
+Epoch:6 and AverageLoss:0.0020987077527679504
+Test Loss 0.0019861225923523307
+Epoch:7 and AverageLoss:0.0018973721671849489
+Test Loss 0.0018028071313165128
+Epoch:8 and AverageLoss:0.0017281516572460532
+Test Loss 0.001646430301014334
+Epoch:9 and AverageLoss:0.0015849478608928622
+Test Loss 0.0015159325702115893
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_7.pth
+Model Save Sucessfully
+The Iteration7:
+================================
+Epoch:0 and AverageLoss:0.005387390721216798
+Test Loss 0.004728620929643512
+Epoch:1 and AverageLoss:0.004270764114335179
+Test Loss 0.003854147337377071
+Epoch:2 and AverageLoss:0.003547435688972473
+Test Loss 0.003255204327404499
+Epoch:3 and AverageLoss:0.0030345735335722567
+Test Loss 0.0028159264093264936
+Epoch:4 and AverageLoss:0.002644819013029337
+Test Loss 0.002473253421019763
+Epoch:5 and AverageLoss:0.002341433701850474
+Test Loss 0.002205184627324343
+Epoch:6 and AverageLoss:0.0020973574705421927
+Test Loss 0.001982395488768816
+Epoch:7 and AverageLoss:0.0018940563373267651
+Test Loss 0.001799120282754302
+Epoch:8 and AverageLoss:0.0017233030203729867
+Test Loss 0.001640834564343095
+Epoch:9 and AverageLoss:0.0015815469301305712
+Test Loss 0.0015147019904106856
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_8.pth
+Model Save Sucessfully
+The Iteration8:
+================================
+Epoch:0 and AverageLoss:0.005353084417618811
+Test Loss 0.004693153537809849
+Epoch:1 and AverageLoss:0.004245122822001577
+Test Loss 0.003830284632742405
+Epoch:2 and AverageLoss:0.003530100685916841
+Test Loss 0.0032398559795692563
+Epoch:3 and AverageLoss:0.003022206593491137
+Test Loss 0.0028037362778559325
+Epoch:4 and AverageLoss:0.002641216880362481
+Test Loss 0.002473855453077704
+Epoch:5 and AverageLoss:0.002345984664093703
+Test Loss 0.0022127318731509148
+Epoch:6 and AverageLoss:0.0021024316899478437
+Test Loss 0.0019867283469066025
+Epoch:7 and AverageLoss:0.001899409931153059
+Test Loss 0.001804199641570449
+Epoch:8 and AverageLoss:0.0017292894103564322
+Test Loss 0.0016459835995920004
+Epoch:9 and AverageLoss:0.0015840663119219243
+Test Loss 0.001515937709249556
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_9.pth
+Model Save Sucessfully
+The Iteration9:
+================================
+Epoch:0 and AverageLoss:0.005422321730107069
+Test Loss 0.0047703080857172606
+Epoch:1 and AverageLoss:0.004310214241966605
+Test Loss 0.0038876285292208197
+Epoch:2 and AverageLoss:0.003576950525864959
+Test Loss 0.0032762004770338533
+Epoch:3 and AverageLoss:0.00305689085945487
+Test Loss 0.0028394997073337438
+Epoch:4 and AverageLoss:0.00267028590394184
+Test Loss 0.0024979662457481028
+Epoch:5 and AverageLoss:0.0023651707517914474
+Test Loss 0.0022252308558672667
+Epoch:6 and AverageLoss:0.0021149794295430182
+Test Loss 0.001998534564394504
+Epoch:7 and AverageLoss:0.0019095007558353246
+Test Loss 0.0018137818425893785
+Epoch:8 and AverageLoss:0.0017369314406067134
+Test Loss 0.0016558411805890501
+Epoch:9 and AverageLoss:0.001593240778706968
+Test Loss 0.0015254718004725873
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_10.pth
+Model Save Sucessfully
+The Iteration10:
+================================
+Epoch:0 and AverageLoss:0.005361112777143717
+Test Loss 0.004707686070352793
+Epoch:1 and AverageLoss:0.004257521181553602
+Test Loss 0.003846034834161401
+Epoch:2 and AverageLoss:0.003538589740730822
+Test Loss 0.0032485239766538144
+Epoch:3 and AverageLoss:0.003023826253414154
+Test Loss 0.0028036660058423876
+Epoch:4 and AverageLoss:0.0026328823576681317
+Test Loss 0.0024609556579962373
+Epoch:5 and AverageLoss:0.002331524438597262
+Test Loss 0.002197594207711518
+Epoch:6 and AverageLoss:0.0020906889758072794
+Test Loss 0.0019805941288359463
+Epoch:7 and AverageLoss:0.0018919430553913116
+Test Loss 0.0017968609067611396
+Epoch:8 and AverageLoss:0.001722134650312364
+Test Loss 0.0016406899080611765
+Epoch:9 and AverageLoss:0.0015788229152560234
+Test Loss 0.0015111654344946146
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_11.pth
+Model Save Sucessfully
+The Iteration11:
+================================
+Epoch:0 and AverageLoss:0.005379143784008921
+Test Loss 0.004725932686589658
+Epoch:1 and AverageLoss:0.0042714940687641504
+Test Loss 0.0038517917189747094
+Epoch:2 and AverageLoss:0.0035454020831733944
+Test Loss 0.003255318535491824
+Epoch:3 and AverageLoss:0.0030318617150187493
+Test Loss 0.0028128326199948787
+Epoch:4 and AverageLoss:0.0026471087113954126
+Test Loss 0.00247705616010353
+Epoch:5 and AverageLoss:0.002343143147788942
+Test Loss 0.0022025536042638125
+Epoch:6 and AverageLoss:0.0020951351310126484
+Test Loss 0.0019803189183585346
+Epoch:7 and AverageLoss:0.0018923869763500989
+Test Loss 0.0017990025086328388
+Epoch:8 and AverageLoss:0.0017247018354944884
+Test Loss 0.00164240244589746
+Epoch:9 and AverageLoss:0.00158094638036564
+Test Loss 0.0015129678412340582
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_12.pth
+Model Save Sucessfully
+The Iteration12:
+================================
+Epoch:0 and AverageLoss:0.005383151926100254
+Test Loss 0.004726808958686888
+Epoch:1 and AverageLoss:0.004271686119772494
+Test Loss 0.003853693015873432
+Epoch:2 and AverageLoss:0.0035510299921035766
+Test Loss 0.0032566802529618143
+Epoch:3 and AverageLoss:0.0030361463839188216
+Test Loss 0.0028170707141980528
+Epoch:4 and AverageLoss:0.0026476057048887016
+Test Loss 0.002477197797037661
+Epoch:5 and AverageLoss:0.0023441792492754757
+Test Loss 0.002206384232267737
+Epoch:6 and AverageLoss:0.002099803194962442
+Test Loss 0.001983386877924204
+Epoch:7 and AverageLoss:0.0018952670061029495
+Test Loss 0.0017990943980403244
+Epoch:8 and AverageLoss:0.0017257231287658215
+Test Loss 0.001643423767760396
+Epoch:9 and AverageLoss:0.0015822165105491876
+Test Loss 0.0015116867106407881
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_13.pth
+Model Save Sucessfully
+The Iteration13:
+================================
+Epoch:0 and AverageLoss:0.005389832557551563
+Test Loss 0.0047289861477911475
+Epoch:1 and AverageLoss:0.004272946376912296
+Test Loss 0.0038584101386368273
+Epoch:2 and AverageLoss:0.0035510680124163627
+Test Loss 0.003262503950856626
+Epoch:3 and AverageLoss:0.0030394123373553156
+Test Loss 0.0028212427431717514
+Epoch:4 and AverageLoss:0.002648916945978999
+Test Loss 0.0024767097323201595
+Epoch:5 and AverageLoss:0.002344455687794834
+Test Loss 0.0022090133810415864
+Epoch:6 and AverageLoss:0.002103840306494385
+Test Loss 0.001990497670136392
+Epoch:7 and AverageLoss:0.0019024761543609203
+Test Loss 0.0018062841654755174
+Epoch:8 and AverageLoss:0.0017319001087918878
+Test Loss 0.0016495030280202626
+Epoch:9 and AverageLoss:0.001588324961438775
+Test Loss 0.0015181331825442612
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_14.pth
+Model Save Sucessfully
+The Iteration14:
+================================
+Epoch:0 and AverageLoss:0.005431953397206962
+Test Loss 0.004778814574703574
+Epoch:1 and AverageLoss:0.004311485254950821
+Test Loss 0.003891298088245094
+Epoch:2 and AverageLoss:0.0035803222386166455
+Test Loss 0.0032847615173086523
+Epoch:3 and AverageLoss:0.0030551788048818708
+Test Loss 0.002831151930615306
+Epoch:4 and AverageLoss:0.002661728773918003
+Test Loss 0.002490589483175427
+Epoch:5 and AverageLoss:0.0023562839971855284
+Test Loss 0.0022191243902780116
+Epoch:6 and AverageLoss:0.002110999691206962
+Test Loss 0.002000775021035224
+Epoch:7 and AverageLoss:0.0019052698929794133
+Test Loss 0.0018073001080192626
+Epoch:8 and AverageLoss:0.0017340114108286798
+Test Loss 0.0016512072957120835
+Epoch:9 and AverageLoss:0.0015894408729858697
+Test Loss 0.0015217555677518248
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_15.pth
+Model Save Sucessfully
+The Iteration15:
+================================
+Epoch:0 and AverageLoss:0.005383602001518011
+Test Loss 0.004723170816898346
+Epoch:1 and AverageLoss:0.004269238764047623
+Test Loss 0.003851550696417689
+Epoch:2 and AverageLoss:0.003556936701014638
+Test Loss 0.0032654648376628757
+Epoch:3 and AverageLoss:0.0030429585959762333
+Test Loss 0.002821299573406577
+Epoch:4 and AverageLoss:0.002653478920087218
+Test Loss 0.002481112325564027
+Epoch:5 and AverageLoss:0.002347293959185481
+Test Loss 0.002208504197187722
+Epoch:6 and AverageLoss:0.0020994897092692553
+Test Loss 0.001985662446822971
+Epoch:7 and AverageLoss:0.001897241285815835
+Test Loss 0.0018024496776051818
+Epoch:8 and AverageLoss:0.00172888148650527
+Test Loss 0.0016522447671741248
+Epoch:9 and AverageLoss:0.0015858533442020416
+Test Loss 0.0015162586378864944
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_16.pth
+Model Save Sucessfully
+The Iteration16:
+================================
+Epoch:0 and AverageLoss:0.005347536589019
+Test Loss 0.004687460119836033
+Epoch:1 and AverageLoss:0.0042425823476165535
+Test Loss 0.0038287262246012688
+Epoch:2 and AverageLoss:0.0035268057717010378
+Test Loss 0.0032342184372246264
+Epoch:3 and AverageLoss:0.0030198833126574755
+Test Loss 0.0028043749276548623
+Epoch:4 and AverageLoss:0.002641422508470714
+Test Loss 0.0024786556726321576
+Epoch:5 and AverageLoss:0.002342149817571044
+Test Loss 0.002203248183708638
+Epoch:6 and AverageLoss:0.0020958729567937553
+Test Loss 0.0019821845311671494
+Epoch:7 and AverageLoss:0.001893704778701067
+Test Loss 0.0017975531588308514
+Epoch:8 and AverageLoss:0.0017243194372393192
+Test Loss 0.0016450184527784587
+Epoch:9 and AverageLoss:0.0015823214487172663
+Test Loss 0.00151378539763391
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_17.pth
+Model Save Sucessfully
+The Iteration17:
+================================
+Epoch:0 and AverageLoss:0.0053590182237327096
+Test Loss 0.0047002132870256905
+Epoch:1 and AverageLoss:0.004250452346540988
+Test Loss 0.003834316411986947
+Epoch:2 and AverageLoss:0.003533483747206628
+Test Loss 0.003249176997691393
+Epoch:3 and AverageLoss:0.0030254029758274557
+Test Loss 0.0028102973885834217
+Epoch:4 and AverageLoss:0.002640774077549577
+Test Loss 0.0024722609613090753
+Epoch:5 and AverageLoss:0.0023391135033220055
+Test Loss 0.0022038405584171414
+Epoch:6 and AverageLoss:0.002099904841929674
+Test Loss 0.001988440837711096
+Epoch:7 and AverageLoss:0.0018999805439263583
+Test Loss 0.0018021005718037485
+Epoch:8 and AverageLoss:0.001728450265340507
+Test Loss 0.0016453190459869802
+Epoch:9 and AverageLoss:0.001582968478742987
+Test Loss 0.001515765521209687
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_18.pth
+Model Save Sucessfully
+The Iteration18:
+================================
+Epoch:0 and AverageLoss:0.005395038083568215
+Test Loss 0.004739450119435787
+Epoch:1 and AverageLoss:0.004285209189914167
+Test Loss 0.003867565991356969
+Epoch:2 and AverageLoss:0.003566712337359786
+Test Loss 0.0032772217141464354
+Epoch:3 and AverageLoss:0.0030519821794703604
+Test Loss 0.0028313080687075855
+Epoch:4 and AverageLoss:0.0026625539483502506
+Test Loss 0.002490764947142452
+Epoch:5 and AverageLoss:0.002355957455653697
+Test Loss 0.0022164402487687765
+Epoch:6 and AverageLoss:0.0021094927911646665
+Test Loss 0.0019950911570340395
+Epoch:7 and AverageLoss:0.0019046038731001318
+Test Loss 0.0018106457572430372
+Epoch:8 and AverageLoss:0.0017336794526316226
+Test Loss 0.0016534496895037592
+Epoch:9 and AverageLoss:0.0015886515916325153
+Test Loss 0.0015185302994214
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_19.pth
+Model Save Sucessfully
+The Iteration19:
+================================
+Epoch:0 and AverageLoss:0.005389367653802038
+Test Loss 0.004732896185480058
+Epoch:1 and AverageLoss:0.004278163486532867
+Test Loss 0.00386078033875674
+Epoch:2 and AverageLoss:0.0035573569448664783
+Test Loss 0.003268128290772438
+Epoch:3 and AverageLoss:0.0030379090294241906
+Test Loss 0.002821127579547465
+Epoch:4 and AverageLoss:0.0026514764815568923
+Test Loss 0.0024981482974253595
+Epoch:5 and AverageLoss:0.002347849037963897
+Test Loss 0.002208207114599645
+Epoch:6 and AverageLoss:0.00210391328567639
+Test Loss 0.0019926911224611103
+Epoch:7 and AverageLoss:0.0019057747998274862
+Test Loss 0.0018122940380126237
+Epoch:8 and AverageLoss:0.0017335773712955414
+Test Loss 0.001650352381169796
+Epoch:9 and AverageLoss:0.0015933201438747347
+Test Loss 0.0015275488533079624
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_20.pth
+Model Save Sucessfully

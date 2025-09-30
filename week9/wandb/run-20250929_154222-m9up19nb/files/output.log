@@ -1,0 +1,108 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:0.2949859468817711
+Test Loss 0.12381479164958001
+Epoch:1 and AverageLoss:0.09092015754282474
+Test Loss 0.06688659423589706
+Epoch:2 and AverageLoss:0.05376012859642506
+Test Loss 0.04314492109417915
+Epoch:3 and AverageLoss:0.036227614434063436
+Test Loss 0.0302820612937212
+Epoch:4 and AverageLoss:0.02590951200723648
+Test Loss 0.021963473193347453
+Epoch:5 and AverageLoss:0.018887853038311003
+Test Loss 0.01608519446477294
+Epoch:6 and AverageLoss:0.013959288314729928
+Test Loss 0.012042737059295178
+Epoch:7 and AverageLoss:0.01061639997586608
+Test Loss 0.009314059775322675
+Epoch:8 and AverageLoss:0.008319673127308488
+Test Loss 0.007412273187190294
+Epoch:9 and AverageLoss:0.0066862985871732235
+Test Loss 0.006017368052154779
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_1.pth
+Model Save Sucessfully
+The Iteration1:
+================================
+Epoch:0 and AverageLoss:0.00539794199615717
+Test Loss 0.004807363788597286
+Epoch:1 and AverageLoss:0.004387440369836986
+Test Loss 0.003999715387821198
+Epoch:2 and AverageLoss:0.003711982808634639
+Test Loss 0.003432634617201984
+Epoch:3 and AverageLoss:0.003210470618493855
+Test Loss 0.0029948117332533
+Epoch:4 and AverageLoss:0.002822401306219399
+Test Loss 0.0026517276018857955
+Epoch:5 and AverageLoss:0.0025119043093174698
+Test Loss 0.002369960865471512
+Epoch:6 and AverageLoss:0.002257372738793492
+Test Loss 0.002141829158645123
+Epoch:7 and AverageLoss:0.0020450219638645647
+Test Loss 0.0019558233465068043
+Epoch:8 and AverageLoss:0.0018705032753758132
+Test Loss 0.0017860023332759737
+Epoch:9 and AverageLoss:0.0017202284138649702
+Test Loss 0.0016481188591569661
+Model Saved Successfully to: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1/pc_recon_train_t1_2.pth
+Model Save Sucessfully
+The Iteration2:
+================================
+Epoch:0 and AverageLoss:0.00538084171731025
+Test Loss 0.004788606144487858
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 239, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 222, in main
+    decide_training_model(config.training_condition, save_dir, trainloader, testloader, config,iteration_index)
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 204, in decide_training_model
+    result=cond_to_func[condition]()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 198, in <lambda>
+    "recon_pc_train":lambda: training_using_reconstruction_and_predicitve_coding(save_dir, trainloader, testloader, config,iteration_index),
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 116, in training_using_reconstruction_and_predicitve_coding
+    recon_pc_training(net,trainloader,testloader,"train",config)
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/recon_pc_train.py", line 33, in recon_pc_training
+    ft_DE_pc_temp = torch.zeros(config.batch_size,64,4,4).to(config.device)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7f670a045760>
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 54, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 182, in teardown
+    self._router.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:
+Exception ignored in atexit callback: <bound method finalize._exitfunc of <class 'weakref.finalize'>>
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/weakref.py", line 666, in _exitfunc
+    f()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1176, in _close_pool_connections
+    conn.close()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/urllib3/connection.py", line 322, in close
+    super().close()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/http/client.py", line 1022, in close
+    sock.close()   # close it manually... there may be other refs
+    ^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/socket.py", line 505, in close
+    self._real_close()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/ssl.py", line 1310, in _real_close
+    super()._real_close()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/socket.py", line 497, in _real_close
+    def _real_close(self, _ss=_socket.socket):
+
+KeyboardInterrupt:
