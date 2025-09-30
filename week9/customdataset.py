@@ -1,7 +1,10 @@
 import pandas as pd
 import os
+import torch  # FIXED: Added missing import
 import torchvision.transforms as transforms
 from PIL import Image
+from torch.utils.data import Dataset  # FIXED: Added missing import
+
 
 class SquareDataset(Dataset):
     def __init__(self, csv_file, img_dir, classes_for_use, transform=None):

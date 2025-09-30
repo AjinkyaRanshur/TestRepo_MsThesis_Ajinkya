@@ -1,0 +1,54 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:0.36103722501397134
+Test Loss 0.14285656237602234
+Epoch:1 and AverageLoss:0.10783892741203308
+Test Loss 0.08077964016795158
+Epoch:2 and AverageLoss:0.06399146822094917
+Test Loss 0.050352162271738055
+Epoch:3 and AverageLoss:0.041480024388432506
+Test Loss 0.03385527220368385
+Epoch:4 and AverageLoss:0.02855018341988325
+Test Loss 0.023922570794820786
+Epoch:5 and AverageLoss:0.020629716816544533
+Test Loss 0.01764810723811388
+Epoch:6 and AverageLoss:0.015386787582933903
+Test Loss 0.013276467353105545
+Epoch:7 and AverageLoss:0.011648033323138952
+Test Loss 0.010125707622617483
+Epoch:8 and AverageLoss:0.008981252922490239
+Test Loss 0.00790775409527123
+Epoch:9 and AverageLoss:0.007099611495062709
+Test Loss 0.006338430352509022
+Model Save Sucessfully
+The Iteration1:
+================================
+/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py:105: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load("{config.load_model_path}/{config.model_name}_{iteration_index}.pth")
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 233, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 216, in main
+    decide_training_model(config.training_condition, save_dir, trainloader, testloader, config,iteration_index)
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 198, in decide_training_model
+    result=cond_to_func[condition]()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 192, in <lambda>
+    "recon_pc_train":lambda: training_using_reconstruction_and_predicitve_coding(save_dir, trainloader, testloader, config,iteration_index),
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 105, in training_using_reconstruction_and_predicitve_coding
+    checkpoint = torch.load("{config.load_model_path}/{config.model_name}_{iteration_index}.pth")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 1319, in load
+    with _open_file_like(f, "rb") as opened_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 659, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/serialization.py", line 640, in __init__
+    super().__init__(open(name, mode))
+                     ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '{config.load_model_path}/{config.model_name}_{iteration_index}.pth'
