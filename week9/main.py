@@ -64,20 +64,18 @@ def set_seed(seed):
 
 def train_test_loader(datasetpath,illusion_bool):
     # Normalizing the images
-    #Andrea's nromalization is different figure out why
-
-    transform = transforms.Compose(
-        [transforms.ToTensor(), transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))])
-
+    #Andrea's nromalization is different figure out why    
+    transform = transforms.Compose([transforms.ToTensor(),
+                transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))
+                ])
     if illusion_bool == True:
         DATA_DIR = datasetpath
         trainset=SquareDataset(os.path.join(DATA_DIR, "metadata.csv"), DATA_DIR,classes_for_use=["Square", "Random"],transform=transform)
-        trainloader=torch.utils.data.DataLoader(trainset, batch_size=config.batch_size, shuffle=True, num_workers=0)
+        trainloader=torch.utils.data.DataLoader(trainset, batch_size=config.batch_size, shuffle=True, num_workers=0,drop_last=True)
         testset=SquareDataset(os.path.join(DATA_DIR, "metadata.csv"), DATA_DIR,classes_for_use=["Square", "Random", "All-in", "All-out"],transform=transform)
-        testloader=torch.utils.data.DataLoader(testset, batch_size=config.batch_size, shuffle=False, num_workers=0)
+        testloader=torch.utils.data.DataLoader(testset, batch_size=config.batch_size, shuffle=False, num_workers=0,drop_last=True)
 
     else:
-
         trainset = torchvision.datasets.CIFAR10(
         root=datasetpath,
         train=True,
