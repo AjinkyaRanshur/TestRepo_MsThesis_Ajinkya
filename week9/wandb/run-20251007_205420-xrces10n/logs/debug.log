@@ -1,0 +1,35 @@
+2025-10-07 20:54:20,071 INFO    MainThread:267108 [wandb_setup.py:_flush():80] Current SDK version is 0.21.0
+2025-10-07 20:54:20,071 INFO    MainThread:267108 [wandb_setup.py:_flush():80] Configure stats pid to 267108
+2025-10-07 20:54:20,071 INFO    MainThread:267108 [wandb_setup.py:_flush():80] Loading settings from /home/ajinkya/.config/wandb/settings
+2025-10-07 20:54:20,071 INFO    MainThread:267108 [wandb_setup.py:_flush():80] Loading settings from /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/wandb/settings
+2025-10-07 20:54:20,071 INFO    MainThread:267108 [wandb_setup.py:_flush():80] Loading settings from environment variables
+2025-10-07 20:54:20,072 INFO    MainThread:267108 [wandb_init.py:setup_run_log_directory():703] Logging user logs to /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/wandb/run-20251007_205420-xrces10n/logs/debug.log
+2025-10-07 20:54:20,072 INFO    MainThread:267108 [wandb_init.py:setup_run_log_directory():704] Logging internal logs to /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/wandb/run-20251007_205420-xrces10n/logs/debug-internal.log
+2025-10-07 20:54:20,072 INFO    MainThread:267108 [wandb_init.py:init():830] calling init triggers
+2025-10-07 20:54:20,072 INFO    MainThread:267108 [wandb_init.py:init():835] wandb.init called with sweep_config: {}
+config: {'learning_rate': 5e-05, 'architecture': 'CNN', 'dataset': 'CIFAR-10', 'epochs': 10, 'Batch_size': 40, 'momentum': 0.9, 'timesteps': 10, 'training_condition': None, 'Model_Name': 'pc_classt1_recon_t1_0', 'Gamma_layer0': 0.53, 'Gamma_layer1': 0.53, 'Gamma_layer2': 0.53, 'Gamma_layer3': 0.53, 'Beta_layer0': 0.23, 'Beta_layer1': 0.23, 'Beta_layer2': 0.23, 'Beta_layer3': 0.23, 'Alpha_layer0': 0.01, 'Alpha_layer1': 0.01, 'Alpha_layer2': 0.01, 'Alpha_layer3': 0.01, 'noise_type': 's&p', 'noise_param': 0.0, '_wandb': {}}
+2025-10-07 20:54:20,072 INFO    MainThread:267108 [wandb_init.py:init():871] starting backend
+2025-10-07 20:54:20,281 INFO    MainThread:267108 [wandb_init.py:init():874] sending inform_init request
+2025-10-07 20:54:20,286 INFO    MainThread:267108 [wandb_init.py:init():882] backend started and connected
+2025-10-07 20:54:20,292 INFO    MainThread:267108 [wandb_init.py:init():953] updated telemetry
+2025-10-07 20:54:20,297 INFO    MainThread:267108 [wandb_init.py:init():977] communicating run to backend with 90.0 second timeout
+2025-10-07 20:54:20,858 INFO    MainThread:267108 [wandb_init.py:init():1029] starting run threads in backend
+2025-10-07 20:54:20,866 WARNING MainThread:267108 [wandb_init.py:init():1610] [no run ID] interrupted
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/wandb_init.py", line 1606, in init
+    return wi.init(run_settings, run_config, run_printer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/wandb_init.py", line 1074, in init
+    run._on_start()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 2482, in _on_start
+    self._backend.interface.publish_python_packages(working_set())
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/interface.py", line 347, in publish_python_packages
+    for pkg in working_set:
+               ^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/util.py", line 1938, in working_set
+    yield InstalledDistribution(key=d.metadata["Name"], version=d.version)
+                                    ^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/importlib/metadata/__init__.py", line 452, in metadata
+    return _adapters.Message(email.message_from_string(text))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

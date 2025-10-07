@@ -1,0 +1,12 @@
+{"time":"2025-10-07T19:34:53.712995309+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-10-07T19:34:54.06979497+02:00","level":"INFO","msg":"stream: created new stream","id":"ldi770tl"}
+{"time":"2025-10-07T19:34:54.0698546+02:00","level":"INFO","msg":"stream: started","id":"ldi770tl"}
+{"time":"2025-10-07T19:34:54.069894968+02:00","level":"INFO","msg":"sender: started","stream_id":"ldi770tl"}
+{"time":"2025-10-07T19:34:54.069887145+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ldi770tl"}
+{"time":"2025-10-07T19:34:54.069992417+02:00","level":"INFO","msg":"handler: started","stream_id":"ldi770tl"}
+{"time":"2025-10-07T19:35:22.453072388+02:00","level":"INFO","msg":"stream: closing","id":"ldi770tl"}
+{"time":"2025-10-07T19:35:22.878864663+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-10-07T19:35:23.119264798+02:00","level":"INFO","msg":"handler: closed","stream_id":"ldi770tl"}
+{"time":"2025-10-07T19:35:23.119362137+02:00","level":"INFO","msg":"sender: closed","stream_id":"ldi770tl"}
+{"time":"2025-10-07T19:35:23.119355521+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ldi770tl"}
+{"time":"2025-10-07T19:35:23.119465036+02:00","level":"INFO","msg":"stream: closed","id":"ldi770tl"}

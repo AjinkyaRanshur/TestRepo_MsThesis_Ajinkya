@@ -1,0 +1,79 @@
+CUDA available: True
+CUDA device count: 2
+Using CUDA device: cuda:1
+CUDA device name:NVIDIA A40
+CUDA memory allocated: 0.00 GB
+Using device: cuda:1
+✓ WandB initialized in Online mode
+=================================
+Class: Square,Total:2178
+Timestep 0:85.583104%
+Timestep 1:84.756657%
+Timestep 2:84.435262%
+Timestep 3:84.618916%
+Timestep 4:84.894399%
+Timestep 5:85.491276%
+Timestep 6:86.088154%
+Timestep 7:86.593205%
+Timestep 8:87.144169%
+Timestep 9:87.465565%
+Timestep 10:88.062443%
+
+
+=================================
+Class: Random,Total:2334
+Timestep 0:10.454156%
+Timestep 1:7.754927%
+Timestep 2:6.683805%
+Timestep 3:6.640960%
+Timestep 4:7.026564%
+Timestep 5:7.883462%
+Timestep 6:9.897172%
+Timestep 7:12.082262%
+Timestep 8:14.695801%
+Timestep 9:17.566410%
+Timestep 10:20.865467%
+
+
+=================================
+Class: All-in,Total:2364
+Timestep 0:13.959391%
+Timestep 1:11.125212%
+Timestep 2:10.067682%
+Timestep 3:9.940778%
+Timestep 4:10.786802%
+Timestep 5:12.436548%
+Timestep 6:14.128596%
+Timestep 7:16.074450%
+Timestep 8:18.824027%
+Timestep 9:21.489002%
+Timestep 10:24.957699%
+
+
+=================================
+Class: All-out,Total:2364
+Timestep 0:7.402707%
+Timestep 1:5.837563%
+Timestep 2:5.076142%
+Timestep 3:4.864636%
+Timestep 4:5.456853%
+Timestep 5:6.218274%
+Timestep 6:7.275804%
+Timestep 7:9.475465%
+Timestep 8:12.309645%
+Timestep 9:15.059222%
+Timestep 10:18.866328%
+
+
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mIllusion Training Using 10 timestep with Recon 1 timesteps[0m at: [34mhttps://wandb.ai/ranshur-ajinkya-res-cerco/random_dumping_projects/runs/2xrdktq4[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251007_210838-2xrdktq4/logs[0m
+
+--- STDERR ---
+wandb: Currently logged in as: ranshur-ajinkya-res (ranshur-ajinkya-res-cerco) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.21.0
+wandb: Run data is saved locally in /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/wandb/run-20251007_210838-2xrdktq4
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run Illusion Training Using 10 timestep with Recon 1 timesteps
+wandb: ⭐️ View project at https://wandb.ai/ranshur-ajinkya-res-cerco/random_dumping_projects
+wandb: 🚀 View run at https://wandb.ai/ranshur-ajinkya-res-cerco/random_dumping_projects/runs/2xrdktq4
