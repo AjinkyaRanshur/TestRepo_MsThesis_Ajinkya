@@ -216,7 +216,10 @@ def cifar_testing(trainloader,testloader,config,iteration_index):
     class_pc_training(net,trainloader,testloader,"test",config,iteration_index)
     return None
 
-def illusion_testing():
+def illusion_testing(trainloader,testloader,config,iteration_index):
+    net = Net(num_classes=2).to(config.device)
+    net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
+    illusion_pc_training(net, trainloader, testloader,"test", config)
 
     return None
 
@@ -236,8 +239,7 @@ def main():
         decide_training_model(config.training_condition, save_dir, trainloader, testloader, config,iteration_index)
 
     if config.illusion_dataset_bool == True:
-        print("random")
-        
+        illusion_testing(trainloader,validationloader,config,15)
     else:
         cifar_testing(trainloader,testloader,config,15)
         

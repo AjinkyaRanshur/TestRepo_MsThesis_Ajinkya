@@ -1,0 +1,13 @@
+{"time":"2025-10-07T21:12:24.344598459+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-10-07T21:12:24.677972945+02:00","level":"INFO","msg":"stream: created new stream","id":"f3ag2wtl"}
+{"time":"2025-10-07T21:12:24.678029195+02:00","level":"INFO","msg":"stream: started","id":"f3ag2wtl"}
+{"time":"2025-10-07T21:12:24.678064182+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"f3ag2wtl"}
+{"time":"2025-10-07T21:12:24.678070936+02:00","level":"INFO","msg":"handler: started","stream_id":"f3ag2wtl"}
+{"time":"2025-10-07T21:12:24.678083237+02:00","level":"INFO","msg":"sender: started","stream_id":"f3ag2wtl"}
+{"time":"2025-10-07T21:12:25.181058796+02:00","level":"ERROR","msg":"file transfer: upload: failed to upload: 400 Bad Request","task":"DefaultUploadTask{FileKind: 1, Path: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/wandb/run-20251007_211224-f3ag2wtl/files/wandb-metadata.json, Name: wandb-metadata.json, Url: https://storage.googleapis.com/wandb-production.appspot.com/ranshur-ajinkya-res-cerco/random_dumping_projects/f3ag2wtl/wandb-metadata.json?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gorilla-files-url-signer-man%40wandb-production.iam.gserviceaccount.com%2F20251007%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20251007T192316Z&X-Goog-Expires=86399&X-Goog-Signature=a3567d6b21d27b64c0ee15a9c1c53a209ba00efc7e4ee6cc74a12b478410215dcdbc208e0714d1ec5334f21f7200d28a56ee8c189043945b7185dcc64cbf95eeb68a630a79e2341785f6ee7766586073609be8a65ee2b132f2cf6a04bb2a3e0d80e186f9685495433692d7ca49ab8265e2e46a33cfeaaa8ac9af5d982ada0f4f1b605ced242f54a746f9916bc548d754040160787c828699b62f39e38deb378fb1b9361cfad0625031889e0e71637f67b475599c86db0a80c595b97e6b81656a9a2d68b3b489daf4cb719415f83f9e4d9736b007a6eb30ae8af754ba51d17289a50246d1e5da0871d65a22a00cae10f6c52229379701545a42656fcb9592a7e0&X-Goog-SignedHeaders=host&X-User=ranshur-ajinkya-res, Size: 759}"}
+{"time":"2025-10-07T21:12:48.98588251+02:00","level":"INFO","msg":"stream: closing","id":"f3ag2wtl"}
+{"time":"2025-10-07T21:12:49.485023074+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-10-07T21:12:49.712261914+02:00","level":"INFO","msg":"handler: closed","stream_id":"f3ag2wtl"}
+{"time":"2025-10-07T21:12:49.712310345+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"f3ag2wtl"}
+{"time":"2025-10-07T21:12:49.712342368+02:00","level":"INFO","msg":"sender: closed","stream_id":"f3ag2wtl"}
+{"time":"2025-10-07T21:12:49.712371381+02:00","level":"INFO","msg":"stream: closed","id":"f3ag2wtl"}
