@@ -155,6 +155,62 @@ def eval_pc_accuracy(net,dataloader,config,criterion):
 
     return mean_acc,test_loss,test_recon_loss
 
+def eval_pc_ill_accuracy(net,dataloader,config,criterion):
+
+    total_correct = np.zeros(config.timesteps + 1)  # ✅ Initialize here
+    total_samples = 0  # ✅ Initialize here
+    running_loss=[]
+    val_recon_loss=[]
+
+    for images,labels,_ in dataloader:
+        #Adding noise to the image
+        #images=noisy_img(images,noise_type,noise_param)
+        
+        # Move data to the same device as the model
+        images, labels = images.to(config.device), labels.to(config.device)
+        ft_AB_pc_temp = torch.zeros(config.batch_size, 6, 32, 32)
+        ft_BC_pc_temp = torch.zeros(config.batch_size, 16, 16, 16)
+        ft_CD_pc_temp = torch.zeros(config.batch_size, 32, 8, 8)
+        ft_DE_pc_temp = torch.zeros(config.batch_size,64,4,4)
+
+        ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,ft_FG_pc_temp,output = net.feedforward_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
+
+        # Re-enable gradients after feedforward_pass overwrites the tensors
+        ft_AB_pc_temp = ft_AB_pc_temp.requires_grad_(True)
+        ft_BC_pc_temp = ft_BC_pc_temp.requires_grad_(True)
+        ft_CD_pc_temp = ft_CD_pc_temp.requires_grad_(True)
+        ft_DE_pc_temp = ft_DE_pc_temp.requires_grad_(True)
+
+        _,predicted=torch.max(output,1)
+        total_correct[0]+=(predicted==labels).sum().item()
+        final_loss=0
+        recon_loss=0
+        for i in range(config.timesteps):  
+            output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,loss_of_layers=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
+            loss=criterion(output,labels)
+            final_loss+=loss
+            recon_loss+=(loss_of_layers/4.0)
+            _,predicted=torch.max(output,1)
+            total_correct[i+1]+=(predicted==labels).sum().item()
+
+        total_samples+=labels.size(0)
+        final_loss=final_loss/config.timesteps
+        recon_loss=recon_loss/config.timesteps
+        running_loss.append(final_loss.item())
+        val_recon_loss.append(recon_loss.item())
+
+    accuracy=[100 * c /total_samples for c in total_correct]    
+    accuracy=np.array(accuracy)
+    mean_acc=np.mean(accuracy)
+    test_loss=np.mean(running_loss)
+    test_recon_loss=np.mean(val_recon_loss)
+
+
+    return mean_acc,test_loss,test_recon_loss
+
+
+
+
 
 def recon_loss(net,dataloader,batch_size,device,criterion_recon):
     running_loss = []

@@ -1,0 +1,13 @@
+{"time":"2025-10-06T16:59:12.707173817+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-10-06T16:59:13.076723149+02:00","level":"INFO","msg":"stream: created new stream","id":"coghepfe"}
+{"time":"2025-10-06T16:59:13.076820119+02:00","level":"INFO","msg":"stream: started","id":"coghepfe"}
+{"time":"2025-10-06T16:59:13.076863364+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"coghepfe"}
+{"time":"2025-10-06T16:59:13.07688303+02:00","level":"INFO","msg":"sender: started","stream_id":"coghepfe"}
+{"time":"2025-10-06T16:59:13.076957384+02:00","level":"INFO","msg":"handler: started","stream_id":"coghepfe"}
+{"time":"2025-10-06T17:42:13.764632704+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Sequential_Training_Results/coghepfe/file_stream\": dial tcp 35.186.228.49:443: connect: connection refused"}
+{"time":"2025-10-06T17:55:55.909012128+02:00","level":"INFO","msg":"stream: closing","id":"coghepfe"}
+{"time":"2025-10-06T17:55:56.863777212+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-10-06T17:55:57.121609656+02:00","level":"INFO","msg":"handler: closed","stream_id":"coghepfe"}
+{"time":"2025-10-06T17:55:57.12166758+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"coghepfe"}
+{"time":"2025-10-06T17:55:57.121675343+02:00","level":"INFO","msg":"sender: closed","stream_id":"coghepfe"}
+{"time":"2025-10-06T17:55:57.121757487+02:00","level":"INFO","msg":"stream: closed","id":"coghepfe"}

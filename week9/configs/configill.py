@@ -23,7 +23,7 @@ gammaset=[[0.33, 0.33, 0.33, 0.33]]
 betaset = [[0.33, 0.33, 0.33, 0.33]]
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
-model_name = "pc_illusiont1_recon_t1_0.pth"
+model_name = "pc_illusiont1_recon_t1_0"
 noise_type="s&p"
 noise_param=0.0
 

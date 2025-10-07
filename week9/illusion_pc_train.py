@@ -6,7 +6,7 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from eval_and_plotting import classification_accuracy_metric,classification_loss_metric,plot_metrics,recon_pc_loss,eval_pc_accuracy
+from eval_and_plotting import classification_accuracy_metric,classification_loss_metric,plot_metrics,recon_pc_loss,eval_pc_accuracy,eval_pc_ill_accuracy
 import os
 import wandb
 from wb_tracker import init_wandb
@@ -27,7 +27,7 @@ def illusion_pc_training(net,trainloader,testloader,pc_train_bool,config):
             total_samples = 0  # ✅ Initialize here
             net.train()
             for images,labels,_ in trainloader:
-                images,labels=images.to(config.device),labels.to(config.device).unsqueeze(1)
+                images,labels=images.to(config.device),labels.to(config.device)
                 ft_AB_pc_temp = torch.zeros(config.batch_size, 6, 32, 32).to(config.device)
                 ft_BC_pc_temp = torch.zeros(config.batch_size, 16, 16, 16).to(config.device)
                 ft_CD_pc_temp = torch.zeros(config.batch_size, 32, 8, 8).to(config.device)
@@ -74,10 +74,10 @@ def illusion_pc_training(net,trainloader,testloader,pc_train_bool,config):
             avg_recon_loss=np.mean(val_recon_loss)
             print(f"Epoch:{epoch} and AverageLoss:{avg_loss} and Reconstruction Loss:{train_recon_loss}")
             net.eval()
-            test_accuracy,test_loss,test_recon_loss=eval_pc_accuracy(net,testloader,config,criterion)
-            #metrics={"Fine_Tuning_With_Classification/train_loss":avg_loss,"Fine_Tuning_With_Classification/test_loss":test_loss,"Fine_Tuning_With_Classification/Test_Accuracy":test_accuracy,"Fine_Tuning_With_Classification/Training_accuracy":train_accuracy,"Fine_Tuning_With_Classification/Recon_Training_loss":avg_recon_loss,"Fine_Tuning_With_Classification/Recon_Testing_loss":test_recon_loss }
-            #wandb.log(metrics)
-            #loss_arr.append(avg_loss)
+            test_accuracy,test_loss,test_recon_loss=eval_pc_ill_accuracy(net,testloader,config,criterion)
+            metrics={"Fine_Tuning_With_Classification/train_loss":avg_loss,"Fine_Tuning_With_Classification/test_loss":test_loss,"Fine_Tuning_With_Classification/Test_Accuracy":test_accuracy,"Fine_Tuning_With_Classification/Training_accuracy":train_accuracy,"Fine_Tuning_With_Classification/Recon_Training_loss":avg_recon_loss,"Fine_Tuning_With_Classification/Recon_Testing_loss":test_recon_loss }
+            wandb.log(metrics)
+            loss_arr.append(avg_loss)
 
         return True
 
