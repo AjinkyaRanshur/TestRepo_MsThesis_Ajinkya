@@ -7,7 +7,7 @@ lr = 0.00005
 momentum = 0.9
 datasetpath = '/home/ajinkya/datasets'
 training_condition="fine_tuning_classification"
-device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 print(f"CUDA available: {torch.cuda.is_available()}")
 print(f"CUDA device count: {torch.cuda.device_count()}")
@@ -23,7 +23,7 @@ gammaset=[[0.33, 0.33, 0.33, 0.33]]
 betaset = [[0.33, 0.33, 0.33, 0.33]]
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
-model_name = "pc_classt1_recon_t1_0.pth"
+model_name = "pc_classt1_recon_t1_0"
 noise_type="s&p"
 noise_param=0.0
 

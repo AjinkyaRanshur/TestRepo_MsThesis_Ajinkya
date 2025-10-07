@@ -1,0 +1,57 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:2.3035999055862426 and Reconstruction Loss:0.000183262032805942
+Epoch:1 and AverageLoss:2.302150044822693 and Reconstruction Loss:0.00021422169811557978
+Epoch:2 and AverageLoss:2.2987588466644286 and Reconstruction Loss:0.00021364956046454608
+Epoch:3 and AverageLoss:2.284670622062683 and Reconstruction Loss:0.00019208966114092618
+Epoch:4 and AverageLoss:2.246383721733093 and Reconstruction Loss:0.00017751431732904166
+Epoch:5 and AverageLoss:2.189261267662048 and Reconstruction Loss:0.00018780038226395845
+Epoch:6 and AverageLoss:2.1396977638244628 and Reconstruction Loss:0.00030955762485973537
+Epoch:7 and AverageLoss:2.108578321838379 and Reconstruction Loss:0.00018912281666416675
+Epoch:8 and AverageLoss:2.0899903475761414 and Reconstruction Loss:0.00019920727936550975
+Epoch:9 and AverageLoss:2.078245297908783 and Reconstruction Loss:0.0001972019817912951
+Model Saved Sucessfully
+The Iteration1:
+================================
+Epoch:0 and AverageLoss:2.0702534531593324 and Reconstruction Loss:0.00021522169117815793
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 243, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 226, in main
+    decide_training_model(config.training_condition, save_dir, trainloader, testloader, config,iteration_index)
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 208, in decide_training_model
+    result=cond_to_func[condition]()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 203, in <lambda>
+    "fine_tuning_classification": lambda:fine_tuning_using_classification(save_dir, trainloader, testloader,config,iteration_index),
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 161, in fine_tuning_using_classification
+    train_bool=recon_pc_training(net,trainloader,testloader,"fine_tuning",config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/recon_pc_train.py", line 142, in recon_pc_training
+    output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,loss_of_layers=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
+                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/network.py", line 101, in predictive_coding_pass
+    errorC=nn.functional.mse_loss(self.deconv2_fb(self.upsample(ft_BC)),ft_AB)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/torch/nn/functional.py", line 3792, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7f5b81de96c0>
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 54, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 182, in teardown
+    self._router.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:

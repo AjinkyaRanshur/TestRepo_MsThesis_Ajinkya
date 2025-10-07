@@ -22,11 +22,11 @@ class SquareDataset(Dataset):
     def __getitem__(self, idx):
         img_name = os.path.join(self.img_dir, self.metadata.iloc[idx]['Class'],
                                 self.metadata.iloc[idx]['filename'])
-        image = Image.open(img_name).convert("L")
+        image = Image.open(img_name).convert("RGB")
         if self.transform:
             image = self.transform(image)
         label = torch.tensor(
             self.metadata.iloc[idx]['Label'],
-            dtype=torch.float32)
+            dtype=torch.long)
         cls_name = self.metadata.iloc[idx]['Class']
         return image, label, cls_name

@@ -7,7 +7,7 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from torch.utils.data import Dataset
+from torch.utils.data import Dataset,random_split,DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from network import Net as Net
 from fwd_train import feedfwd_training
@@ -70,10 +70,15 @@ def train_test_loader(datasetpath,illusion_bool):
                 ])
     if illusion_bool == True:
         DATA_DIR = datasetpath
-        trainset=SquareDataset(os.path.join(DATA_DIR, "metadata.csv"), DATA_DIR,classes_for_use=["Square", "Random"],transform=transform)
-        trainloader=torch.utils.data.DataLoader(trainset, batch_size=config.batch_size, shuffle=True, num_workers=0,drop_last=True)
-        testset=SquareDataset(os.path.join(DATA_DIR, "metadata.csv"), DATA_DIR,classes_for_use=["Square", "Random", "All-in", "All-out"],transform=transform)
-        testloader=torch.utils.data.DataLoader(testset, batch_size=config.batch_size, shuffle=False, num_workers=0,drop_last=True)
+        full_trainset=SquareDataset(os.path.join(DATA_DIR, "metadata.csv"), DATA_DIR,classes_for_use=["Square", "Random"],transform=transform)
+        validation_set=SquareDataset(os.path.join(DATA_DIR, "metadata.csv"), DATA_DIR,classes_for_use=["Square", "Random", "All-in", "All-out"],transform=transform)
+        train_size=int(0.7 * len(full_trainset))
+        test_size=len(full_trainset) - train_size
+        generator = torch.Generator().manual_seed(42)  # fixed seed for reproducibility
+        train_subset, test_subset = random_split(full_trainset, [train_size, test_size], generator=generator)
+        trainloader=DataLoader(train_subset, batch_size=config.batch_size, shuffle=True, num_workers=0, drop_last=True)
+        testloader=DataLoader(test_subset, batch_size=config.batch_size, shuffle=False, num_workers=0, drop_last=True)
+        validationloader=DataLoader(validation_set, batch_size=config.batch_size, shuffle=False, num_workers=0, drop_last=True)
 
     else:
         trainset = torchvision.datasets.CIFAR10(
@@ -93,14 +98,15 @@ def train_test_loader(datasetpath,illusion_bool):
 
         testloader = torch.utils.data.DataLoader(
         testset, batch_size=config.batch_size, shuffle=False, num_workers=0)
-
-    return trainloader, testloader
+    
+        validationloader=0
+    return trainloader, testloader,validationloader
 
 
 def training_using_reconstruction_and_predicitve_coding(save_dir, trainloader, testloader,config,iteration_index):
     net = Net(num_classes=10).to(config.device)
     if iteration_index != 0:
-        checkpoint_path = f"{config.load_model_path}/{config.model_name}_1.pth"
+        checkpoint_path = f"{config.load_model_path}/{config.model_name}_{iteration_index}.pth"
         checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
         net.conv1.load_state_dict(checkpoint["conv1"])
         net.conv2.load_state_dict(checkpoint["conv2"])
@@ -137,7 +143,7 @@ def fine_tuning_using_classification(save_dir, trainloader, testloader,config,it
     
     net = Net(num_classes=10).to(config.device)
     if iteration_index == 0:
-        checkpoint_path = f"{config.load_model_path}/{config.model_name}"
+        checkpoint_path = f"{config.load_model_path}/{config.model_name}.pth"
         checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
 
         net.conv1.load_state_dict(checkpoint["conv1"])
@@ -166,7 +172,7 @@ def fine_tuning_using_illusions(save_dir, trainloader, testloader,config,iterati
     net = Net(num_classes=2).to(config.device)
 
     if iteration_index == 0:
-        checkpoint_path = f"{config.load_model_path}/{config.model_name}"
+        checkpoint_path = f"{config.load_model_path}/{config.model_name}.pth"
         checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
         net.conv1.load_state_dict(checkpoint["conv1"])
         net.conv2.load_state_dict(checkpoint["conv2"])
@@ -197,12 +203,22 @@ def decide_training_model(condition,save_dir, trainloader, testloader, config,it
             "fine_tuning_classification": lambda:fine_tuning_using_classification(save_dir, trainloader, testloader,config,iteration_index),
             "random_network_testing": lambda:reconstruction_testing_on_random_network(save_dir, trainloader, testloader,config,iteration_index),
             "illusion_train": lambda:fine_tuning_using_illusions(save_dir, trainloader, testloader,config,iteration_index),
+            "illusion_train": lambda:fine_tuning_using_illusions(save_dir, trainloader, testloader,config,iteration_index),
             "recon_comparison": lambda:recon_vs_original(testloader, config, n_images=8, iteration_index=15)}
 
     result=cond_to_func[condition]()
 
     return result
 
+def cifar_testing(trainloader,testloader,config,iteration_index):
+    net = Net(num_classes=10).to(config.device)
+    net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
+    class_pc_training(net,trainloader,testloader,"test",config,iteration_index)
+    return None
+
+def illusion_testing():
+
+    return None
 
 
 def main():
@@ -211,13 +227,19 @@ def main():
     os.makedirs(save_dir, exist_ok=True)
     file_path = os.path.join(save_dir, f"Accuracy_Stats_{config.seed}.txt")
 
-    trainloader, testloader = train_test_loader(config.datasetpath,config.illusion_dataset_bool)
+    trainloader, testloader,validationloader= train_test_loader(config.datasetpath,config.illusion_dataset_bool)
     for iteration_index in range(config.iterations):
         if config.training_condition == None:
             break
         print(f"The Iteration{iteration_index}:")
         print("================================")
         decide_training_model(config.training_condition, save_dir, trainloader, testloader, config,iteration_index)
+
+    if config.illusion_dataset_bool == True:
+        print("random")
+        
+    else:
+        cifar_testing(trainloader,testloader,config,15)
         
 def load_config(config_name):
     return importlib.import_module(config_name)
