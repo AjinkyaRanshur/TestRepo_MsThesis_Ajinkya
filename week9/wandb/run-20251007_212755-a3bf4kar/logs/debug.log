@@ -19,3 +19,4 @@ config: {'learning_rate': 5e-05, 'architecture': 'CNN', 'dataset': 'CIFAR-10', '
 2025-10-07 21:27:56,085 INFO    MainThread:333273 [wandb_run.py:_redirect():2375] Wrapping output streams.
 2025-10-07 21:27:56,085 INFO    MainThread:333273 [wandb_run.py:_redirect():2398] Redirects installed.
 2025-10-07 21:27:56,087 INFO    MainThread:333273 [wandb_init.py:init():1075] run started, returning control to user process
+2025-10-07 21:28:26,086 INFO    MsgRouterThr:333273 [mailbox.py:close():129] [no run ID] Closing mailbox, abandoning 2 handles.

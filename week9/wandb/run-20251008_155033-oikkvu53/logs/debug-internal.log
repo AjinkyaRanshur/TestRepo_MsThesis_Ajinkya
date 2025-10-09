@@ -1,0 +1,6 @@
+{"time":"2025-10-08T15:50:34.180308391+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-10-08T15:50:34.541492061+02:00","level":"INFO","msg":"stream: created new stream","id":"oikkvu53"}
+{"time":"2025-10-08T15:50:34.541532561+02:00","level":"INFO","msg":"stream: started","id":"oikkvu53"}
+{"time":"2025-10-08T15:50:34.542881155+02:00","level":"INFO","msg":"handler: started","stream_id":"oikkvu53"}
+{"time":"2025-10-08T15:50:34.542920786+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"oikkvu53"}
+{"time":"2025-10-08T15:50:34.543125251+02:00","level":"INFO","msg":"sender: started","stream_id":"oikkvu53"}

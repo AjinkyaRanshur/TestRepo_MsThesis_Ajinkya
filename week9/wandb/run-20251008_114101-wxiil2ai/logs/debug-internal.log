@@ -1,0 +1,12 @@
+{"time":"2025-10-08T11:41:01.911179654+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-10-08T11:41:02.253184684+02:00","level":"INFO","msg":"stream: created new stream","id":"wxiil2ai"}
+{"time":"2025-10-08T11:41:02.253250938+02:00","level":"INFO","msg":"stream: started","id":"wxiil2ai"}
+{"time":"2025-10-08T11:41:02.25327255+02:00","level":"INFO","msg":"sender: started","stream_id":"wxiil2ai"}
+{"time":"2025-10-08T11:41:02.253271775+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"wxiil2ai"}
+{"time":"2025-10-08T11:41:02.253311155+02:00","level":"INFO","msg":"handler: started","stream_id":"wxiil2ai"}
+{"time":"2025-10-08T11:41:28.611910303+02:00","level":"INFO","msg":"stream: closing","id":"wxiil2ai"}
+{"time":"2025-10-08T11:41:29.03670535+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-10-08T11:41:29.243061156+02:00","level":"INFO","msg":"handler: closed","stream_id":"wxiil2ai"}
+{"time":"2025-10-08T11:41:29.243112505+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"wxiil2ai"}
+{"time":"2025-10-08T11:41:29.243132379+02:00","level":"INFO","msg":"sender: closed","stream_id":"wxiil2ai"}
+{"time":"2025-10-08T11:41:29.243219774+02:00","level":"INFO","msg":"stream: closed","id":"wxiil2ai"}

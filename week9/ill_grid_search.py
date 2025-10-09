@@ -88,9 +88,9 @@ def run_experiment(gamma, beta):
     # Compute max accuracy per class
     max_acc_per_class = {cls: max(accs) if accs else 0.0 for cls, accs in class_accuracies.items()}
 
-    max_acc_per_class = {cls: sum(accs)/len(accs) if accs else 0.0 for cls, accs in class_accuracies.items()}
+    #max_acc_per_class = {cls: sum(accs)/len(accs) if accs else 0.0 for cls, accs in class_accuracies.items()}
     for cls, acc in max_acc_per_class.items():
-        print(f"Mean accuracy for class {cls}: {acc:.2f}%")
+        print(f"Max accuracy for class {cls}: {acc:.2f}%")
 
     return max_acc_per_class
 
@@ -134,12 +134,12 @@ for cls in all_classes:
         annot=True,
         fmt=".2f",
         cmap="RdYlGn",
-        cbar_kws={"label": f"Mean Accuracy (%) - Class {cls}"}
+        cbar_kws={"label": f"Max Accuracy (%) - Class {cls}"}
     )
     plt.gca().invert_yaxis()
     plt.xlabel("Gamma", fontsize=14)
     plt.ylabel("Beta", fontsize=14)
-    plt.title(f"Mean Accuracy Heatmap for Class '{cls}' With Illusion Training on 10 Timesteps", fontsize=16)
+    plt.title(f"Max Accuracy Heatmap for Class '{cls}' With Illusion Training on 1 Timesteps", fontsize=16)
     plt.tight_layout()
     heatmap_path = os.path.join(HEATMAP_DIR, f"heatmap_{cls}.png")
     plt.savefig(heatmap_path, dpi=300)
@@ -163,7 +163,7 @@ for cls in all_classes:
     print(f"\nBest configuration for class '{cls}':")
     print(f"Gamma = {best_gamma:.2f}")
     print(f"Beta  = {best_beta:.2f}")
-    print(f"Mean Accuracy = {best_acc:.2f}%")
+    print(f"Max Accuracy = {best_acc:.2f}%")
 
 print("\nAll logs saved in 'logs/' directory.")
 print("All heatmaps saved in 'heatmaps/' directory.")
