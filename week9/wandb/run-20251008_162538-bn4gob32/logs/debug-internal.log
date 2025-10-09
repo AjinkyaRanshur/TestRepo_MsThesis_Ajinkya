@@ -1,0 +1,12 @@
+{"time":"2025-10-08T16:25:38.279161243+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-10-08T16:25:38.840261407+02:00","level":"INFO","msg":"stream: created new stream","id":"bn4gob32"}
+{"time":"2025-10-08T16:25:38.8403449+02:00","level":"INFO","msg":"stream: started","id":"bn4gob32"}
+{"time":"2025-10-08T16:25:38.840377246+02:00","level":"INFO","msg":"handler: started","stream_id":"bn4gob32"}
+{"time":"2025-10-08T16:25:38.840375736+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"bn4gob32"}
+{"time":"2025-10-08T16:25:38.840429321+02:00","level":"INFO","msg":"sender: started","stream_id":"bn4gob32"}
+{"time":"2025-10-08T16:26:05.161886289+02:00","level":"INFO","msg":"stream: closing","id":"bn4gob32"}
+{"time":"2025-10-08T16:26:05.591917934+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-10-08T16:26:06.047827943+02:00","level":"INFO","msg":"handler: closed","stream_id":"bn4gob32"}
+{"time":"2025-10-08T16:26:06.047906147+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"bn4gob32"}
+{"time":"2025-10-08T16:26:06.047931692+02:00","level":"INFO","msg":"sender: closed","stream_id":"bn4gob32"}
+{"time":"2025-10-08T16:26:06.048056894+02:00","level":"INFO","msg":"stream: closed","id":"bn4gob32"}

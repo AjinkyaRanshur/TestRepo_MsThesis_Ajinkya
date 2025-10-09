@@ -19,8 +19,8 @@ print(f"Using device: {device}")
 
 timesteps = 10
 
-gammaset = [[0.13, 0.13, 0.13, 0.13]]
-betaset = [[0.23, 0.23, 0.23, 0.23]]
+gammaset=[[0.33, 0.33, 0.33, 0.33]]
+betaset = [[0.33, 0.33, 0.33, 0.33]]
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
 model_name = "pc_illusiont10_recon_t1_0"

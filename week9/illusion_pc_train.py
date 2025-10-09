@@ -123,10 +123,10 @@ def illusion_pc_training(net, trainloader, testloader, pc_train_bool, config):
         for images, labels, cls_names in testloader:
             images, labels = images.to(config.device), labels.to(config.device)
 
-            ft_AB_pc_temp = torch.zeros(config.batch_size, 6, 32, 32)
-            ft_BC_pc_temp = torch.zeros(config.batch_size, 16, 16, 16)
-            ft_CD_pc_temp = torch.zeros(config.batch_size, 32, 8, 8)
-            ft_DE_pc_temp = torch.zeros(config.batch_size, 64, 4, 4)
+            ft_AB_pc_temp = torch.zeros(config.batch_size, 6, 32, 32).to(config.device)
+            ft_BC_pc_temp = torch.zeros(config.batch_size, 16, 16, 16).to(config.device)
+            ft_CD_pc_temp = torch.zeros(config.batch_size, 32, 8, 8).to(config.device)
+            ft_DE_pc_temp = torch.zeros(config.batch_size,64,4,4).to(config.device)
 
             ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp, ft_EF_pc_temp, ft_FG_pc_temp, output = net.feedforward_pass(
                 images, ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp)
@@ -164,7 +164,7 @@ def illusion_pc_training(net, trainloader, testloader, pc_train_bool, config):
             print("=================================")
             print(f"Class: {cls_name},Total:{total}")
             for t, acc in enumerate(accuracy_over_timesteps):
-                print(f"Timestep {t}:{acc:2f}%")
+                print(f"Timestep {t}:  {acc:2f}%")
             print("\n")
 
         return None

@@ -19,8 +19,8 @@ print(f"Using device: {device}")
 
 timesteps = 10
 
-gammaset = [[0.33, 0.33, 0.33, 0.33]]
-betaset = [[0.13, 0.13, 0.13, 0.13]]
+gammaset = [[0.33, 0.33, 0.33, 0.33]]  # Beta Decreasing
+betaset = [[0.53, 0.33, 0.13, 0.33]]  # Beta Decreasing
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
 model_name = "pc_classt1_recon_t1_0"

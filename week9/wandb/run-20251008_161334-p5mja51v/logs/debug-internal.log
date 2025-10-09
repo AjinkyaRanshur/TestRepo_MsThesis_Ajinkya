@@ -1,0 +1,13 @@
+{"time":"2025-10-08T16:13:34.91635377+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-10-08T16:13:35.25987671+02:00","level":"INFO","msg":"stream: created new stream","id":"p5mja51v"}
+{"time":"2025-10-08T16:13:35.259924745+02:00","level":"INFO","msg":"stream: started","id":"p5mja51v"}
+{"time":"2025-10-08T16:13:35.259936888+02:00","level":"INFO","msg":"handler: started","stream_id":"p5mja51v"}
+{"time":"2025-10-08T16:13:35.259962895+02:00","level":"INFO","msg":"sender: started","stream_id":"p5mja51v"}
+{"time":"2025-10-08T16:13:35.259985365+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"p5mja51v"}
+{"time":"2025-10-08T16:14:04.607535478+02:00","level":"INFO","msg":"stream: closing","id":"p5mja51v"}
+{"time":"2025-10-08T16:14:05.104439769+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-10-08T16:14:05.107575501+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/random_dumping_projects/p5mja51v/file_stream\": EOF"}
+{"time":"2025-10-08T16:14:07.751321798+02:00","level":"INFO","msg":"handler: closed","stream_id":"p5mja51v"}
+{"time":"2025-10-08T16:14:07.751393792+02:00","level":"INFO","msg":"sender: closed","stream_id":"p5mja51v"}
+{"time":"2025-10-08T16:14:07.751393508+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"p5mja51v"}
+{"time":"2025-10-08T16:14:07.751488212+02:00","level":"INFO","msg":"stream: closed","id":"p5mja51v"}
