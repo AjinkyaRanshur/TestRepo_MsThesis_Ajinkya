@@ -1,0 +1,59 @@
+✓ WandB initialized in Online mode
+=================================
+Class: Square,Total:2178
+Timestep 0:  86.271809%
+Timestep 1:  87.281910%
+Timestep 2:  88.567493%
+Timestep 3:  89.623508%
+Timestep 4:  91.000918%
+Timestep 5:  91.919192%
+Timestep 6:  92.699725%
+Timestep 7:  93.342516%
+Timestep 8:  93.985308%
+Timestep 9:  94.260790%
+Timestep 10:  94.811754%
+
+
+=================================
+Class: Random,Total:2334
+Timestep 0:  6.255356%
+Timestep 1:  7.754927%
+Timestep 2:  10.968295%
+Timestep 3:  16.666667%
+Timestep 4:  22.964867%
+Timestep 5:  29.905741%
+Timestep 6:  37.960583%
+Timestep 7:  44.173093%
+Timestep 8:  49.057412%
+Timestep 9:  51.756641%
+Timestep 10:  54.241645%
+
+
+=================================
+Class: All-in,Total:2364
+Timestep 0:  8.756345%
+Timestep 1:  10.702200%
+Timestep 2:  14.382403%
+Timestep 3:  20.812183%
+Timestep 4:  27.326565%
+Timestep 5:  35.321489%
+Timestep 6:  42.470389%
+Timestep 7:  47.800338%
+Timestep 8:  52.326565%
+Timestep 9:  55.626058%
+Timestep 10:  58.502538%
+
+
+=================================
+Class: All-out,Total:2364
+Timestep 0:  4.272420%
+Timestep 1:  5.245347%
+Timestep 2:  7.910321%
+Timestep 3:  12.944162%
+Timestep 4:  20.812183%
+Timestep 5:  29.399323%
+Timestep 6:  36.886633%
+Timestep 7:  43.020305%
+Timestep 8:  47.504230%
+Timestep 9:  49.830795%
+Timestep 10:  51.692047%

@@ -1,0 +1,12 @@
+✓ WandB initialized in Online mode
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 261, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 242, in main
+    illusion_testing(trainloader,validationloader,config,15)
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 222, in illusion_testing
+    illusion_pc_training(net, trainloader, testloader,"test", config)
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/illusion_pc_train.py", line 155, in illusion_pc_training
+    if predicted[i].item() == 1:
+       ^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

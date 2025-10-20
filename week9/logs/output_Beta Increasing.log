@@ -1,33 +1,79 @@
 CUDA available: True
 CUDA device count: 2
-Using CUDA device: cuda:0
+Using CUDA device: cuda:1
 CUDA device name:NVIDIA A40
 CUDA memory allocated: 0.00 GB
-Using device: cuda:0
+Using device: cuda:1
 ✓ WandB initialized in Online mode
-Files already downloaded and verified
-Files already downloaded and verified
-Accuracy at each timestep:
-Timestep 0: 35.46%
-Timestep 1: 35.48%
-Timestep 2: 35.17%
-Timestep 3: 34.69%
-Timestep 4: 33.95%
-Timestep 5: 33.24%
-Timestep 6: 32.76%
-Timestep 7: 31.85%
-Timestep 8: 31.25%
-Timestep 9: 30.84%
-Timestep 10: 30.19%
+=================================
+Class: Square,Total:2178
+Timestep 0:  86.271809%
+Timestep 1:  88.108356%
+Timestep 2:  89.439853%
+Timestep 3:  90.863177%
+Timestep 4:  91.965106%
+Timestep 5:  92.929293%
+Timestep 6:  93.709826%
+Timestep 7:  94.398531%
+Timestep 8:  94.949495%
+Timestep 9:  95.224977%
+Timestep 10:  95.592287%
+
+
+=================================
+Class: Random,Total:2334
+Timestep 0:  6.255356%
+Timestep 1:  8.783205%
+Timestep 2:  14.138817%
+Timestep 3:  20.865467%
+Timestep 4:  29.220223%
+Timestep 5:  36.889460%
+Timestep 6:  44.258783%
+Timestep 7:  49.271637%
+Timestep 8:  52.570694%
+Timestep 9:  55.698372%
+Timestep 10:  58.440446%
+
+
+=================================
+Class: All-in,Total:2364
+Timestep 0:  8.756345%
+Timestep 1:  12.013536%
+Timestep 2:  17.893401%
+Timestep 3:  25.380711%
+Timestep 4:  33.037225%
+Timestep 5:  41.751269%
+Timestep 6:  47.419628%
+Timestep 7:  52.115059%
+Timestep 8:  55.837563%
+Timestep 9:  58.756345%
+Timestep 10:  61.294416%
+
+
+=================================
+Class: All-out,Total:2364
+Timestep 0:  4.272420%
+Timestep 1:  6.260575%
+Timestep 2:  11.082910%
+Timestep 3:  19.289340%
+Timestep 4:  28.722504%
+Timestep 5:  36.590525%
+Timestep 6:  43.062606%
+Timestep 7:  48.350254%
+Timestep 8:  50.930626%
+Timestep 9:  53.934010%
+Timestep 10:  56.302876%
+
+
 [1;34mwandb[0m: 
-[1;34mwandb[0m: 🚀 View run [33mClassification Training Using 1 timestep with Recon 1 timesteps[0m at: [34mhttps://wandb.ai/ranshur-ajinkya-res-cerco/random_dumping_projects/runs/v8an1bgh[0m
-[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251009_192844-v8an1bgh/logs[0m
+[1;34mwandb[0m: 🚀 View run [33mIllusion Training Using 1 timestep with Recon 1 timesteps[0m at: [34mhttps://wandb.ai/ranshur-ajinkya-res-cerco/random_dumping_projects/runs/lzo1099u[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251017_163300-lzo1099u/logs[0m
 
 --- STDERR ---
 wandb: Currently logged in as: ranshur-ajinkya-res (ranshur-ajinkya-res-cerco) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
 wandb: Tracking run with wandb version 0.21.0
-wandb: Run data is saved locally in /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/wandb/run-20251009_192844-v8an1bgh
+wandb: Run data is saved locally in /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/wandb/run-20251017_163300-lzo1099u
 wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run Classification Training Using 1 timestep with Recon 1 timesteps
+wandb: Syncing run Illusion Training Using 1 timestep with Recon 1 timesteps
 wandb: ⭐️ View project at https://wandb.ai/ranshur-ajinkya-res-cerco/random_dumping_projects
-wandb: 🚀 View run at https://wandb.ai/ranshur-ajinkya-res-cerco/random_dumping_projects/runs/v8an1bgh
+wandb: 🚀 View run at https://wandb.ai/ranshur-ajinkya-res-cerco/random_dumping_projects/runs/lzo1099u

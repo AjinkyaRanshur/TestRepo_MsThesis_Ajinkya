@@ -1,0 +1,119 @@
+✓ WandB initialized in Online mode
+=================================
+Class: Square,Total:2178
+Timestep 0:  0.000000%
+Timestep 1:  0.000000%
+Timestep 2:  0.000000%
+Timestep 3:  0.000000%
+Timestep 4:  0.000000%
+Timestep 5:  0.000000%
+Timestep 6:  0.000000%
+Timestep 7:  0.000000%
+Timestep 8:  0.000000%
+Timestep 9:  0.000000%
+Timestep 10:  0.000000%
+
+
+*********************************
+Probability of Being Square
+Timestep 0:  0.488437%
+Timestep 1:  0.488438%
+Timestep 2:  0.488440%
+Timestep 3:  0.488441%
+Timestep 4:  0.488443%
+Timestep 5:  0.488445%
+Timestep 6:  0.488446%
+Timestep 7:  0.488447%
+Timestep 8:  0.488448%
+Timestep 9:  0.488449%
+Timestep 10:  0.488450%
+
+
+=================================
+Class: Random,Total:2334
+Timestep 0:  0.000000%
+Timestep 1:  0.000000%
+Timestep 2:  0.000000%
+Timestep 3:  0.000000%
+Timestep 4:  0.000000%
+Timestep 5:  0.000000%
+Timestep 6:  0.000000%
+Timestep 7:  0.000000%
+Timestep 8:  0.000000%
+Timestep 9:  0.000000%
+Timestep 10:  0.000000%
+
+
+*********************************
+Probability of Being Square
+Timestep 0:  0.488407%
+Timestep 1:  0.488408%
+Timestep 2:  0.488412%
+Timestep 3:  0.488415%
+Timestep 4:  0.488419%
+Timestep 5:  0.488422%
+Timestep 6:  0.488426%
+Timestep 7:  0.488428%
+Timestep 8:  0.488431%
+Timestep 9:  0.488433%
+Timestep 10:  0.488435%
+
+
+=================================
+Class: All-in,Total:2364
+Timestep 0:  0.000000%
+Timestep 1:  0.000000%
+Timestep 2:  0.000000%
+Timestep 3:  0.000000%
+Timestep 4:  0.000000%
+Timestep 5:  0.000000%
+Timestep 6:  0.000000%
+Timestep 7:  0.000000%
+Timestep 8:  0.000000%
+Timestep 9:  0.000000%
+Timestep 10:  0.000000%
+
+
+*********************************
+Probability of Being Square
+Timestep 0:  0.488401%
+Timestep 1:  0.488404%
+Timestep 2:  0.488407%
+Timestep 3:  0.488411%
+Timestep 4:  0.488415%
+Timestep 5:  0.488419%
+Timestep 6:  0.488422%
+Timestep 7:  0.488425%
+Timestep 8:  0.488427%
+Timestep 9:  0.488429%
+Timestep 10:  0.488431%
+
+
+=================================
+Class: All-out,Total:2364
+Timestep 0:  0.000000%
+Timestep 1:  0.000000%
+Timestep 2:  0.000000%
+Timestep 3:  0.000000%
+Timestep 4:  0.000000%
+Timestep 5:  0.000000%
+Timestep 6:  0.000000%
+Timestep 7:  0.000000%
+Timestep 8:  0.000000%
+Timestep 9:  0.000000%
+Timestep 10:  0.000000%
+
+
+*********************************
+Probability of Being Square
+Timestep 0:  0.488414%
+Timestep 1:  0.488416%
+Timestep 2:  0.488418%
+Timestep 3:  0.488421%
+Timestep 4:  0.488424%
+Timestep 5:  0.488427%
+Timestep 6:  0.488430%
+Timestep 7:  0.488432%
+Timestep 8:  0.488434%
+Timestep 9:  0.488436%
+Timestep 10:  0.488437%

@@ -14,7 +14,7 @@ SUMMARY_DIR = "summaries"
 
 # "mean" → take average accuracy across timesteps
 # "max"  → take max accuracy across timesteps
-ACCURACY_MODE = "mean"   # <---- change this to "mean" if desired
+ACCURACY_MODE = "max"   # <---- change this to "mean" if desired
 
 # Predefined gamma/beta patterns to test
 PATTERNS = {
