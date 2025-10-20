@@ -20,7 +20,7 @@ print(f"Using device: {device}")
 timesteps = 10
 
 gammaset = [[0.33, 0.33, 0.33, 0.33]]  # Beta Decreasing
-betaset = [[0.53, 0.33, 0.13, 0.33]]  # Beta Decreasing
+betaset = [[0.33, 0.33, 0.33, 0.33]]  # Beta Decreasing
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
 model_name = "pc_classt1_recon_t1_0"
@@ -31,6 +31,6 @@ experiment_name= "Classification Training Using 1 timestep with Recon 1 timestep
 load_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/classification_models/class_t1"
 save_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/classification_models/class_t1"
 
-illusion_dataset_bool=False
+illusion_dataset_bool=True
 
 iterations = 20

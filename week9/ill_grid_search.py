@@ -134,6 +134,8 @@ for cls in all_classes:
         annot=True,
         fmt=".2f",
         cmap="RdYlGn",
+        vmin=0,
+        vmax=100,
         cbar_kws={"label": f"Max Accuracy (%) - Class {cls}"}
     )
     plt.gca().invert_yaxis()

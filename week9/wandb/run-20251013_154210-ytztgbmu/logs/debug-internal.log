@@ -1,0 +1,12 @@
+{"time":"2025-10-13T15:42:10.912334579+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-10-13T15:42:11.266973405+02:00","level":"INFO","msg":"stream: created new stream","id":"ytztgbmu"}
+{"time":"2025-10-13T15:42:11.26705213+02:00","level":"INFO","msg":"stream: started","id":"ytztgbmu"}
+{"time":"2025-10-13T15:42:11.267091008+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ytztgbmu"}
+{"time":"2025-10-13T15:42:11.267092124+02:00","level":"INFO","msg":"handler: started","stream_id":"ytztgbmu"}
+{"time":"2025-10-13T15:42:11.267172285+02:00","level":"INFO","msg":"sender: started","stream_id":"ytztgbmu"}
+{"time":"2025-10-13T15:42:35.598346891+02:00","level":"INFO","msg":"stream: closing","id":"ytztgbmu"}
+{"time":"2025-10-13T15:42:36.473367114+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-10-13T15:42:36.751150027+02:00","level":"INFO","msg":"handler: closed","stream_id":"ytztgbmu"}
+{"time":"2025-10-13T15:42:36.751229718+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ytztgbmu"}
+{"time":"2025-10-13T15:42:36.751252076+02:00","level":"INFO","msg":"sender: closed","stream_id":"ytztgbmu"}
+{"time":"2025-10-13T15:42:36.751362482+02:00","level":"INFO","msg":"stream: closed","id":"ytztgbmu"}

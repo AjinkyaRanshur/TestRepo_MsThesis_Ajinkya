@@ -13,8 +13,13 @@ class SquareDataset(Dataset):
             classes_for_use)]
         self.img_dir = img_dir
         self.transform = transform
+
+        # Create a mapping of class names to indices
+        self.class_to_idx = {cls: idx for idx, cls in enumerate(classes_for_use)}
+        
+        # Map class names to their corresponding indices
         self.metadata['Label'] = self.metadata['Class'].apply(
-            lambda x: 1 if x == "Square" else 0)
+            lambda x: self.class_to_idx[x])
 
     def __len__(self):
         return len(self.metadata)

@@ -1,0 +1,39 @@
+✓ WandB initialized in Online mode
+The Iteration0:
+================================
+Epoch:0 and AverageLoss:0.6922675597516796 and Reconstruction Loss:0.003032068721950054
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 274, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 252, in main
+    decide_training_model(config.training_condition, save_dir, trainloader, testloader, config,iteration_index)
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 222, in decide_training_model
+    result=cond_to_func[condition]()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 219, in <lambda>
+    "illusion_train": lambda:fine_tuning_using_illusions(save_dir, trainloader, testloader,config,iteration_index),
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 202, in fine_tuning_using_illusions
+    train_bool=illusion_pc_training(net,trainloader,testloader,"fine_tuning",config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/illusion_pc_train.py", line 98, in illusion_pc_training
+    test_accuracy, test_loss, test_recon_loss = eval_pc_ill_accuracy(
+                                                ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/eval_and_plotting.py", line 194, in eval_pc_ill_accuracy
+    total_correct[i+1]+=(predicted==labels).sum().item()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7ff33a3a2b60>
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 54, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 182, in teardown
+    self._router.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:

@@ -7,7 +7,7 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from torch.utils.data import Dataset,random_split,DataLoader
+from torch.utils.data import Dataset,random_split,DataLoader,Subset
 from torch.utils.tensorboard import SummaryWriter
 from network import Net as Net
 from fwd_train import feedfwd_training
@@ -28,6 +28,7 @@ import importlib
 from PIL import Image
 import torchvision.utils as vutils
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
 start = time.time()
 
@@ -72,13 +73,24 @@ def train_test_loader(datasetpath,illusion_bool):
         DATA_DIR = datasetpath
         full_trainset=SquareDataset(os.path.join(DATA_DIR, "metadata.csv"), DATA_DIR,classes_for_use=["Square", "Random"],transform=transform)
         validation_set=SquareDataset(os.path.join(DATA_DIR, "metadata.csv"), DATA_DIR,classes_for_use=["Square", "Random", "All-in", "All-out"],transform=transform)
-        train_size=int(0.7 * len(full_trainset))
-        test_size=len(full_trainset) - train_size
-        generator = torch.Generator().manual_seed(42)  # fixed seed for reproducibility
-        train_subset, test_subset = random_split(full_trainset, [train_size, test_size], generator=generator)
-        trainloader=DataLoader(train_subset, batch_size=config.batch_size, shuffle=True, num_workers=0, drop_last=True)
-        testloader=DataLoader(test_subset, batch_size=config.batch_size, shuffle=False, num_workers=0, drop_last=True)
-        validationloader=DataLoader(validation_set, batch_size=config.batch_size, shuffle=False, num_workers=0, drop_last=True)
+        labels=np.array([full_trainset[i][1] for i in range(len(full_trainset))])
+
+        # Stratified split (70% train, 30% test)
+        train_idx, test_idx = train_test_split(
+            np.arange(len(full_trainset)),
+            test_size=0.3,
+            random_state=42,
+            stratify=labels
+        )
+
+        # Subset creation
+        train_subset = Subset(full_trainset, train_idx)
+        test_subset = Subset(full_trainset, test_idx)
+
+        # DataLoaders
+        trainloader = DataLoader(train_subset, batch_size=config.batch_size, shuffle=True, num_workers=0, drop_last=True)
+        testloader = DataLoader(test_subset, batch_size=config.batch_size, shuffle=False, num_workers=0, drop_last=True)
+        validationloader = DataLoader(validation_set, batch_size=config.batch_size, shuffle=False, num_workers=0, drop_last=True)
 
     else:
         trainset = torchvision.datasets.CIFAR10(
@@ -137,6 +149,11 @@ def training_using_reconstruction_and_predicitve_coding(save_dir, trainloader, t
     print("Model Save Sucessfully")
 
     return True
+
+def reconstruction_testing_on_random_network(net,save_dir, trainloader, testloader,config):
+    
+
+    return None
 
 
 def fine_tuning_using_classification(save_dir, trainloader, testloader,config,iteration_index):
@@ -218,7 +235,18 @@ def cifar_testing(trainloader,testloader,config,iteration_index):
 
 def illusion_testing(trainloader,testloader,config,iteration_index):
     net = Net(num_classes=2).to(config.device)
-    net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
+    checkpoint_path = f"{config.load_model_path}/{config.model_name}_{iteration_index}.pth"
+    checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
+    net.conv1.load_state_dict(checkpoint["conv1"])
+    net.conv2.load_state_dict(checkpoint["conv2"])
+    net.conv3.load_state_dict(checkpoint["conv3"])
+    net.conv4.load_state_dict(checkpoint["conv4"])
+    net.deconv1_fb.load_state_dict(checkpoint["deconv1_fb"])
+    net.deconv2_fb.load_state_dict(checkpoint["deconv2_fb"])
+    net.deconv3_fb.load_state_dict(checkpoint["deconv3_fb"])
+    net.deconv4_fb.load_state_dict(checkpoint["deconv4_fb"])
+
+    #net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
     illusion_pc_training(net, trainloader, testloader,"test", config)
 
     return None
@@ -239,7 +267,7 @@ def main():
         decide_training_model(config.training_condition, save_dir, trainloader, testloader, config,iteration_index)
 
     if config.illusion_dataset_bool == True:
-        illusion_testing(trainloader,validationloader,config,15)
+        illusion_testing(trainloader,validationloader,config,20)
     else:
         cifar_testing(trainloader,testloader,config,15)
         

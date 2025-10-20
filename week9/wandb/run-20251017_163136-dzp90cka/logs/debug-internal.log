@@ -1,0 +1,12 @@
+{"time":"2025-10-17T16:31:36.615903112+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-10-17T16:31:36.98185989+02:00","level":"INFO","msg":"stream: created new stream","id":"dzp90cka"}
+{"time":"2025-10-17T16:31:36.981940599+02:00","level":"INFO","msg":"stream: started","id":"dzp90cka"}
+{"time":"2025-10-17T16:31:36.981972069+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"dzp90cka"}
+{"time":"2025-10-17T16:31:36.981998875+02:00","level":"INFO","msg":"handler: started","stream_id":"dzp90cka"}
+{"time":"2025-10-17T16:31:36.982095088+02:00","level":"INFO","msg":"sender: started","stream_id":"dzp90cka"}
+{"time":"2025-10-17T16:31:58.336111305+02:00","level":"INFO","msg":"stream: closing","id":"dzp90cka"}
+{"time":"2025-10-17T16:31:58.789685496+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-10-17T16:31:59.031508691+02:00","level":"INFO","msg":"handler: closed","stream_id":"dzp90cka"}
+{"time":"2025-10-17T16:31:59.031572556+02:00","level":"INFO","msg":"sender: closed","stream_id":"dzp90cka"}
+{"time":"2025-10-17T16:31:59.031558988+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"dzp90cka"}
+{"time":"2025-10-17T16:31:59.031699333+02:00","level":"INFO","msg":"stream: closed","id":"dzp90cka"}

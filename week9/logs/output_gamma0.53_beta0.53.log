@@ -7,73 +7,73 @@ Using device: cuda:1
 ✓ WandB initialized in Online mode
 =================================
 Class: Square,Total:2178
-Timestep 0:86.271809%
-Timestep 1:89.623508%
-Timestep 2:92.607897%
-Timestep 3:94.214876%
-Timestep 4:95.316804%
-Timestep 5:96.005510%
-Timestep 6:96.326905%
-Timestep 7:96.602388%
-Timestep 8:96.786042%
-Timestep 9:96.969697%
-Timestep 10:97.061524%
+Timestep 0:  86.271809%
+Timestep 1:  89.623508%
+Timestep 2:  92.607897%
+Timestep 3:  94.214876%
+Timestep 4:  95.316804%
+Timestep 5:  96.005510%
+Timestep 6:  96.326905%
+Timestep 7:  96.602388%
+Timestep 8:  96.786042%
+Timestep 9:  96.969697%
+Timestep 10:  97.061524%
 
 
 =================================
 Class: Random,Total:2334
-Timestep 0:6.255356%
-Timestep 1:17.952014%
-Timestep 2:38.474722%
-Timestep 3:51.885176%
-Timestep 4:59.554413%
-Timestep 5:66.066838%
-Timestep 6:72.793488%
-Timestep 7:77.677806%
-Timestep 8:80.719794%
-Timestep 9:82.862039%
-Timestep 10:84.490146%
+Timestep 0:  6.255356%
+Timestep 1:  17.952014%
+Timestep 2:  38.474722%
+Timestep 3:  51.885176%
+Timestep 4:  59.554413%
+Timestep 5:  66.066838%
+Timestep 6:  72.793488%
+Timestep 7:  77.677806%
+Timestep 8:  80.719794%
+Timestep 9:  82.862039%
+Timestep 10:  84.490146%
 
 
 =================================
 Class: All-in,Total:2364
-Timestep 0:8.756345%
-Timestep 1:22.461929%
-Timestep 2:43.104907%
-Timestep 3:55.795262%
-Timestep 4:62.732657%
-Timestep 5:70.473773%
-Timestep 6:77.453469%
-Timestep 7:81.429780%
-Timestep 8:84.348562%
-Timestep 9:86.421320%
-Timestep 10:87.901861%
+Timestep 0:  8.756345%
+Timestep 1:  22.461929%
+Timestep 2:  43.104907%
+Timestep 3:  55.795262%
+Timestep 4:  62.732657%
+Timestep 5:  70.473773%
+Timestep 6:  77.453469%
+Timestep 7:  81.429780%
+Timestep 8:  84.348562%
+Timestep 9:  86.421320%
+Timestep 10:  87.901861%
 
 
 =================================
 Class: All-out,Total:2364
-Timestep 0:4.272420%
-Timestep 1:14.720812%
-Timestep 2:37.563452%
-Timestep 3:50.253807%
-Timestep 4:57.106599%
-Timestep 5:63.959391%
-Timestep 6:70.600677%
-Timestep 7:76.565144%
-Timestep 8:80.033841%
-Timestep 9:82.191201%
-Timestep 10:83.587140%
+Timestep 0:  4.272420%
+Timestep 1:  14.720812%
+Timestep 2:  37.563452%
+Timestep 3:  50.253807%
+Timestep 4:  57.106599%
+Timestep 5:  63.959391%
+Timestep 6:  70.600677%
+Timestep 7:  76.565144%
+Timestep 8:  80.033841%
+Timestep 9:  82.191201%
+Timestep 10:  83.587140%
 
 
 [1;34mwandb[0m: 
-[1;34mwandb[0m: 🚀 View run [33mIllusion Training Using 1 timestep with Recon 1 timesteps[0m at: [34mhttps://wandb.ai/ranshur-ajinkya-res-cerco/random_dumping_projects/runs/k4xauf2p[0m
-[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251008_120451-k4xauf2p/logs[0m
+[1;34mwandb[0m: 🚀 View run [33mIllusion Training Using 1 timestep with Recon 1 timesteps[0m at: [34mhttps://wandb.ai/ranshur-ajinkya-res-cerco/random_dumping_projects/runs/rnnka67z[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251018_131113-rnnka67z/logs[0m
 
 --- STDERR ---
 wandb: Currently logged in as: ranshur-ajinkya-res (ranshur-ajinkya-res-cerco) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
 wandb: Tracking run with wandb version 0.21.0
-wandb: Run data is saved locally in /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/wandb/run-20251008_120451-k4xauf2p
+wandb: Run data is saved locally in /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/wandb/run-20251018_131113-rnnka67z
 wandb: Run `wandb offline` to turn off syncing.
 wandb: Syncing run Illusion Training Using 1 timestep with Recon 1 timesteps
 wandb: ⭐️ View project at https://wandb.ai/ranshur-ajinkya-res-cerco/random_dumping_projects
-wandb: 🚀 View run at https://wandb.ai/ranshur-ajinkya-res-cerco/random_dumping_projects/runs/k4xauf2p
+wandb: 🚀 View run at https://wandb.ai/ranshur-ajinkya-res-cerco/random_dumping_projects/runs/rnnka67z

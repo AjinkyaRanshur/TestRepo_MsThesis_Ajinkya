@@ -1,0 +1,11 @@
+✓ WandB initialized in Online mode
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 267, in <module>
+    main()
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 239, in main
+    trainloader, testloader,validationloader= train_test_loader(config.datasetpath,config.illusion_dataset_bool)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 87, in train_test_loader
+    validationloader=DataLoader(validation_set, batch_size=config.batch_size, shuffle=False, num_workers=0, drop_last=True)
+                                ^^^^^^^^^^^^^^
+NameError: name 'validation_set' is not defined
