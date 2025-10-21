@@ -8,8 +8,8 @@ import re
 # ======================================================
 # Configuration
 # ======================================================
-GAMMA_VALUES = np.arange(0.13, 0.54, 0.1)
-BETA_VALUES = np.arange(0.13, 0.54, 0.1)
+GAMMA_VALUES = np.arange(0.13, 0.53, 0.1)
+BETA_VALUES = np.arange(0.13, 0.53, 0.1)
 CONFIG_FILE = "configs/configilltest.py"
 LOG_DIR = "logs"
 HEATMAP_DIR = "heatmaps"
@@ -141,7 +141,7 @@ for cls in all_classes:
     plt.gca().invert_yaxis()
     plt.xlabel("Gamma", fontsize=14)
     plt.ylabel("Beta", fontsize=14)
-    plt.title(f"Max Accuracy Heatmap for Class '{cls}' With Illusion Training on 1 Timesteps", fontsize=16)
+    plt.title(f"Max Accuracy Heatmap for Class '{cls}' for Model Trianed on Illusion Dataset with PC dynamics", fontsize=11)
     plt.tight_layout()
     heatmap_path = os.path.join(HEATMAP_DIR, f"heatmap_{cls}.png")
     plt.savefig(heatmap_path, dpi=300)

@@ -14,7 +14,7 @@ SUMMARY_DIR = "summaries"
 
 # "mean" → take average accuracy across timesteps
 # "max"  → take max accuracy across timesteps
-ACCURACY_MODE = "max"   # <---- change this to "mean" if desired
+ACCURACY_MODE = "mean"   # <---- change this to "mean" if desired
 
 # Predefined gamma/beta patterns to test
 PATTERNS = {
@@ -23,6 +23,7 @@ PATTERNS = {
     "Gamma Decreasing": {"gamma": [0.53, 0.33, 0.13, 0.33], "beta": [0.33, 0.33, 0.33, 0.33]},
     "Beta Increasing": {"gamma": [0.33, 0.33, 0.33, 0.33], "beta": [0.13, 0.33, 0.53, 0.33]},
     "Beta Decreasing": {"gamma": [0.33, 0.33, 0.33, 0.33], "beta": [0.53, 0.33, 0.13, 0.33]},
+    "Beta Inc. & Gamma Dec.": {"gamma": [0.53, 0.33, 0.13, 0.33], "beta": [0.13, 0.33, 0.53, 0.33]}
 }
 
 # Create directories
@@ -76,33 +77,57 @@ def run_experiment(pattern_name):
         f.write("\n--- STDERR ---\n")
         f.write(result.stderr)
 
+    # Combine stdout + stderr for parsing
     combined_output = result.stdout + "\n" + result.stderr
+
+    # ======================================================
+    # PARSING SECTION
+    # ======================================================
     class_accuracies = {}
     current_class = None
 
     for line in combined_output.splitlines():
         line = line.strip()
-        class_match = re.match(r'^Class:\s*([^,]+),', line)
-        if class_match:
-            current_class = class_match.group(1).strip()
-            class_accuracies[current_class] = []
+
+        # --- Detect new class ---
+        if line.startswith("Class:"):
+            match = re.search(r"Class:\s*([^,]+)", line)
+            if match:
+                current_class = match.group(1).strip()
+                class_accuracies[current_class] = []
             continue
 
-        if current_class:
-            timestep_match = re.match(r'^Timestep\s*\d+\s*:\s*([0-9]+\.[0-9]+)%', line)
-            if timestep_match:
-                acc = float(timestep_match.group(1))
+        # --- Detect timestep accuracy ---
+        if current_class is not None:
+            match = re.search(r"Timestep\s*\d+\s*:\s*([0-9]+(?:\.[0-9]+)?)%", line)
+            if match:
+                acc = float(match.group(1))
                 class_accuracies[current_class].append(acc)
 
-    # Compute mean or max accuracy across timesteps
+    # ======================================================
+    # COMPUTE MEAN OR MAX
+    # ======================================================
     if ACCURACY_MODE == "mean":
-        acc_dict = {cls: np.mean(accs) if accs else 0.0 for cls, accs in class_accuracies.items()}
+        acc_dict = {
+            cls: np.mean(accs) if accs else 0.0
+            for cls, accs in class_accuracies.items()
+        }
     else:
-        acc_dict = {cls: max(accs) if accs else 0.0 for cls, accs in class_accuracies.items()}
+        acc_dict = {
+            cls: max(accs) if accs else 0.0
+            for cls, accs in class_accuracies.items()
+        }
 
+    # ======================================================
+    # PRINT SUMMARY
+    # ======================================================
+    print("\n📊 Summary of parsed results:")
     for cls, acc in acc_dict.items():
-        print(f"  {cls}: {acc:.2f}% ({ACCURACY_MODE})")
+        n = len(class_accuracies[cls])
+        print(f"  {cls:<10}: {acc:.2f}% ({ACCURACY_MODE}, {n} timesteps)")
+
     return acc_dict
+
 
 
 # ======================================================
@@ -139,8 +164,9 @@ for i, cls in enumerate(classes):
 
 plt.xticks(x + width * (len(classes) - 1) / 2, patterns, rotation=15)
 plt.ylabel(f"{ACCURACY_MODE.capitalize()} Accuracy (%)")
-plt.title(f"{ACCURACY_MODE.capitalize()} Accuracy per Pattern on Models Trained with 1 Timestep for the Illusion Dataset")
+plt.title(f"{ACCURACY_MODE.capitalize()} Accuracy per Pattern on Models Trained with 10 Timestep for the Illusion Dataset")
 plt.legend(title="Class", bbox_to_anchor=(1.05, 1), loc="upper left")
+plt.ylim(0,100)
 plt.tight_layout()
 plt.savefig(os.path.join(SUMMARY_DIR, f"{ACCURACY_MODE}_accuracy_pattern_summary.png"), dpi=300)
 plt.close()
