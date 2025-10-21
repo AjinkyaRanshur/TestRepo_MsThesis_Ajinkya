@@ -1,0 +1,47 @@
+{
+  "os":  "Linux-5.15.0-136-generic-x86_64-with-glibc2.31",
+  "python":  "CPython 3.12.11",
+  "startedAt":  "2025-10-20T14:04:58.402600Z",
+  "args":  [
+    "--config",
+    "configilltest"
+  ],
+  "program":  "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py",
+  "codePath":  "week9/main.py",
+  "codePathLocal":  "main.py",
+  "git":  {
+    "remote":  "https://github.com/AjinkyaRanshur/TestRepo_MsThesis_Ajinkya.git",
+    "commit":  "8a9e33f6430536bef0cc4c222642d44d5de0a897"
+  },
+  "email":  "ranshur.ajinkya.res@gmail.com",
+  "root":  "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9",
+  "host":  "SRV-Calcul-SIC",
+  "executable":  "/home/ajinkya/miniconda3/envs/cuda_pyt/bin/python3",
+  "cpu_count":  24,
+  "cpu_count_logical":  48,
+  "gpu":  "NVIDIA A40",
+  "gpu_count":  2,
+  "disk":  {
+    "/":  {
+      "total":  "982822674432",
+      "used":  "72194842624"
+    }
+  },
+  "memory":  {
+    "total":  "269918322688"
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA A40",
+      "architecture":  "Ampere",
+      "uuid":  "GPU-cdd97142-d693-3d4a-b7d8-baa6dd9f8560"
+    },
+    {
+      "name":  "NVIDIA A40",
+      "architecture":  "Ampere",
+      "uuid":  "GPU-4fb36b2c-8a1e-9677-ad65-199f5aa7fa8d"
+    }
+  ],
+  "cudaVersion":  "11.4",
+  "writerId":  "3wqmg3zcrqkqpmb32beqjdri52401eav"
+}

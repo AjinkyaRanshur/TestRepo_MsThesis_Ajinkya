@@ -235,30 +235,32 @@ def cifar_testing(trainloader,testloader,config,iteration_index):
 
 def illusion_testing(trainloader,testloader,config,iteration_index):
     net = Net(num_classes=2).to(config.device)
-    checkpoint_path = f"{config.load_model_path}/{config.model_name}_{iteration_index}.pth"
-    checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
-    net.conv1.load_state_dict(checkpoint["conv1"])
-    net.conv2.load_state_dict(checkpoint["conv2"])
-    net.conv3.load_state_dict(checkpoint["conv3"])
-    net.conv4.load_state_dict(checkpoint["conv4"])
-    net.deconv1_fb.load_state_dict(checkpoint["deconv1_fb"])
-    net.deconv2_fb.load_state_dict(checkpoint["deconv2_fb"])
-    net.deconv3_fb.load_state_dict(checkpoint["deconv3_fb"])
-    net.deconv4_fb.load_state_dict(checkpoint["deconv4_fb"])
-
-    #net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
+#    checkpoint_path = f"{config.load_model_path}/{config.model_name}_{iteration_index}.pth"
+#    checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
+#    net.conv1.load_state_dict(checkpoint["conv1"])
+#    net.conv2.load_state_dict(checkpoint["conv2"])
+#    net.conv3.load_state_dict(checkpoint["conv3"])
+#    net.conv4.load_state_dict(checkpoint["conv4"])
+#    net.deconv1_fb.load_state_dict(checkpoint["deconv1_fb"])
+#    net.deconv2_fb.load_state_dict(checkpoint["deconv2_fb"])
+#    net.deconv3_fb.load_state_dict(checkpoint["deconv3_fb"])
+#    net.deconv4_fb.load_state_dict(checkpoint["deconv4_fb"])
+#
+    net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
     illusion_pc_training(net, trainloader, testloader,"test", config)
 
     return None
 
 
-def main():
+def main(config):
     init_wandb(config.batch_size,config.epochs,config.lr,config.momentum,config.seed,config.device,config.training_condition,config.timesteps,config.gammaset,config.betaset,config.alphaset,config.datasetpath,config.experiment_name,config.noise_type,config.noise_param,config.model_name)
     save_dir = os.path.join("result_folder", f"Seed_{config.seed}")
     os.makedirs(save_dir, exist_ok=True)
     file_path = os.path.join(save_dir, f"Accuracy_Stats_{config.seed}.txt")
 
     trainloader, testloader,validationloader= train_test_loader(config.datasetpath,config.illusion_dataset_bool)
+
+    accuracy_transfer=True
     for iteration_index in range(config.iterations):
         if config.training_condition == None:
             break
@@ -267,9 +269,16 @@ def main():
         decide_training_model(config.training_condition, save_dir, trainloader, testloader, config,iteration_index)
 
     if config.illusion_dataset_bool == True:
-        illusion_testing(trainloader,validationloader,config,20)
+        #for images, labels, cls_names in testloader:
+        #    print("Labels",labels,"Class Names",cls_names)
+        accuracy_over_classes=illusion_testing(trainloader,validationloader,config,20)
+        accuracy_transfer=accuracy_over_classes
     else:
-        cifar_testing(trainloader,testloader,config,15)
+        accuracy_over_timesteps=cifar_testing(trainloader,testloader,config,15)
+        accuracy_transfer=accuracy_over_classes
+
+
+    return accuracy_transfer
         
 def load_config(config_name):
     return importlib.import_module(config_name)
@@ -286,7 +295,7 @@ if __name__ == "__main__":
 
     config = load_config(args.config)
 
-    main()
+    main(config)
 
 
 

@@ -1,0 +1,15 @@
+✓ WandB initialized in Online mode
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/Experiments_Scripts.py", line 35, in <module>
+    results=run_and_analyze("configilltest")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/Experiments_Scripts.py", line 22, in run_and_analyze
+    results=main(config)
+            ^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 261, in main
+    trainloader, testloader,validationloader= train_test_loader(config.datasetpath,config.illusion_dataset_bool)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 91, in train_test_loader
+    trainloader = DataLoader(train_subset, batch_size=config.batch_size, shuffle=True, num_workers=0, drop_last=True)
+                                                      ^^^^^^
+NameError: name 'config' is not defined

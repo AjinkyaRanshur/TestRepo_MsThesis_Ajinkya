@@ -1,0 +1,59 @@
+✓ WandB initialized in Online mode
+=================================
+Class: Square, Total Samples: 2178
+Timestep 0: 71.94%
+Timestep 1: 71.09%
+Timestep 2: 70.79%
+Timestep 3: 71.02%
+Timestep 4: 71.53%
+Timestep 5: 72.14%
+Timestep 6: 72.73%
+Timestep 7: 73.24%
+Timestep 8: 73.67%
+Timestep 9: 74.02%
+Timestep 10: 74.29%
+
+
+=================================
+Class: Random, Total Samples: 2334
+Timestep 0: 19.46%
+Timestep 1: 17.78%
+Timestep 2: 17.26%
+Timestep 3: 17.79%
+Timestep 4: 18.95%
+Timestep 5: 20.38%
+Timestep 6: 21.87%
+Timestep 7: 23.29%
+Timestep 8: 24.54%
+Timestep 9: 25.62%
+Timestep 10: 26.51%
+
+
+=================================
+Class: All-in, Total Samples: 2364
+Timestep 0: 22.27%
+Timestep 1: 20.50%
+Timestep 2: 19.99%
+Timestep 3: 20.61%
+Timestep 4: 21.89%
+Timestep 5: 23.47%
+Timestep 6: 25.09%
+Timestep 7: 26.62%
+Timestep 8: 27.97%
+Timestep 9: 29.11%
+Timestep 10: 30.06%
+
+
+=================================
+Class: All-out, Total Samples: 2364
+Timestep 0: 17.39%
+Timestep 1: 15.91%
+Timestep 2: 15.51%
+Timestep 3: 16.07%
+Timestep 4: 17.19%
+Timestep 5: 18.58%
+Timestep 6: 20.01%
+Timestep 7: 21.36%
+Timestep 8: 22.57%
+Timestep 9: 23.61%
+Timestep 10: 24.47%

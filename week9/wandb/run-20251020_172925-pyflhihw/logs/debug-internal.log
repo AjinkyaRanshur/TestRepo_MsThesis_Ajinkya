@@ -1,0 +1,12 @@
+{"time":"2025-10-20T17:29:25.445638404+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-10-20T17:29:25.82291492+02:00","level":"INFO","msg":"stream: created new stream","id":"pyflhihw"}
+{"time":"2025-10-20T17:29:25.823002495+02:00","level":"INFO","msg":"stream: started","id":"pyflhihw"}
+{"time":"2025-10-20T17:29:25.823037487+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"pyflhihw"}
+{"time":"2025-10-20T17:29:25.823070203+02:00","level":"INFO","msg":"handler: started","stream_id":"pyflhihw"}
+{"time":"2025-10-20T17:29:25.823158897+02:00","level":"INFO","msg":"sender: started","stream_id":"pyflhihw"}
+{"time":"2025-10-20T17:29:50.1425751+02:00","level":"INFO","msg":"stream: closing","id":"pyflhihw"}
+{"time":"2025-10-20T17:29:50.593600049+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-10-20T17:29:50.839980848+02:00","level":"INFO","msg":"handler: closed","stream_id":"pyflhihw"}
+{"time":"2025-10-20T17:29:50.840053089+02:00","level":"INFO","msg":"sender: closed","stream_id":"pyflhihw"}
+{"time":"2025-10-20T17:29:50.840031876+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"pyflhihw"}
+{"time":"2025-10-20T17:29:50.840154855+02:00","level":"INFO","msg":"stream: closed","id":"pyflhihw"}
