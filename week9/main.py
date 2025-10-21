@@ -63,7 +63,7 @@ def set_seed(seed):
 
 
 
-def train_test_loader(datasetpath,illusion_bool):
+def train_test_loader(datasetpath,illusion_bool,config):
     # Normalizing the images
     #Andrea's nromalization is different figure out why    
     transform = transforms.Compose([transforms.ToTensor(),
@@ -258,7 +258,7 @@ def main(config):
     os.makedirs(save_dir, exist_ok=True)
     file_path = os.path.join(save_dir, f"Accuracy_Stats_{config.seed}.txt")
 
-    trainloader, testloader,validationloader= train_test_loader(config.datasetpath,config.illusion_dataset_bool)
+    trainloader, testloader,validationloader= train_test_loader(config.datasetpath,config.illusion_dataset_bool,config)
 
     accuracy_transfer=True
     for iteration_index in range(config.iterations):
@@ -271,13 +271,12 @@ def main(config):
     if config.illusion_dataset_bool == True:
         #for images, labels, cls_names in testloader:
         #    print("Labels",labels,"Class Names",cls_names)
-        accuracy_over_classes=illusion_testing(trainloader,validationloader,config,20)
-        accuracy_transfer=accuracy_over_classes
+        accuracy_transfer=illusion_testing(trainloader,validationloader,config,20)
     else:
-        accuracy_over_timesteps=cifar_testing(trainloader,testloader,config,15)
-        accuracy_transfer=accuracy_over_classes
+        accuracy_transfer=cifar_testing(trainloader,testloader,config,15)
 
-
+    
+    print(accuracy_transfer)
     return accuracy_transfer
         
 def load_config(config_name):

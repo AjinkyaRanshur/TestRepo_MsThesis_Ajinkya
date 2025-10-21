@@ -204,5 +204,5 @@ def illusion_pc_training(net, trainloader, testloader, pc_train_bool, config):
                 print(f"Timestep {t}: {acc:.2f}%")
             print("\n")
 
-        return None
+        return mean_probs
 
