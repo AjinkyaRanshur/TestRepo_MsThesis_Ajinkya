@@ -20,6 +20,7 @@ def run_and_analyze(config_name):
     sys.path.append(os.path.abspath("configs"))
     config=load_config(config_name)
     results=main(config)
+    print(results)
 
     return results
 
