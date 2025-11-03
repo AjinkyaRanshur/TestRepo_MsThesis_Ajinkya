@@ -1,0 +1,26 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+[0.52305377 0.5491126  0.5288284  0.5390385  0.43733543 0.55102336
+ 0.52331746 0.4739569  0.5278794  0.6503163  0.5069538  0.5458758
+ 0.4797638  0.3971052  0.52574563 0.38772464 0.5420342  0.5304714
+ 0.6115078  0.44131097 0.48755148 0.5639165  0.5667054  0.5316773
+ 0.4775361  0.4473368  0.54503876 0.5085367  0.5162136  0.5634102
+ 0.5962294  0.60018814 0.49128187 0.6341508  0.591343   0.55527824
+ 0.53701    0.50435084 0.5443308  0.49966478]
+TypeError: only length-1 arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 305, in <module>
+    main(config)
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 284, in main
+    accuracy_transfer=cifar_testing_illusion_trained_model(trainloader,testloader,config,15)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py", line 240, in cifar_testing_illusion_trained_model
+    illusion_pc_training_custom(net,trainloader,testloader,"test",config,iteration_index)
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/custom_ill_train.py", line 122, in illusion_pc_training_custom
+    total_correct[0]+=square_probs
+    ~~~~~~~~~~~~~^^^
+ValueError: setting an array element with a sequence.

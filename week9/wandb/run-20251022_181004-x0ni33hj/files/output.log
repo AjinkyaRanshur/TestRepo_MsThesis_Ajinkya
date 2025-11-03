@@ -1,0 +1,33 @@
+✓ WandB initialized in Online mode
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy at each timestep:
+Timestep 0: 45.24%
+Timestep 1: 44.50%
+Timestep 2: 44.37%
+Timestep 3: 44.85%
+Timestep 4: 45.73%
+Timestep 5: 46.81%
+Timestep 6: 47.96%
+Timestep 7: 49.09%
+Timestep 8: 50.14%
+Timestep 9: 51.10%
+Timestep 10: 51.95%
+Traceback (most recent call last):
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/Experiments_Scripts.py", line 76, in <module>
+    train_bool=traj_plots("Timesteps","Probability Of a Being a Square",f"Performance of Model(Trained with Pc Dynamics) on Cifar 10",results,add_prefix_title)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/Experiments_Scripts.py", line 14, in traj_plots
+    plt.plot(len(accuracy_data), accuracy_data, linewidth=2, markersize=6)
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/matplotlib/pyplot.py", line 3829, in plot
+    return gca().plot(
+           ^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/matplotlib/axes/_axes.py", line 1777, in plot
+    lines = [*self._get_lines(self, *args, data=data, **kwargs)]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/matplotlib/axes/_base.py", line 297, in __call__
+    yield from self._plot_args(
+               ^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/matplotlib/axes/_base.py", line 494, in _plot_args
+    raise ValueError(f"x and y must have same first dimension, but "
+ValueError: x and y must have same first dimension, but have shapes (1,) and (11,)

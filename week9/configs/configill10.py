@@ -23,14 +23,14 @@ gammaset=[[0.33, 0.33, 0.33, 0.33]]
 betaset = [[0.33, 0.33, 0.33, 0.33]]
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
-model_name = "pc_illusiont10_recon_t1_noise"
+model_name = "pc_illusiont10_recon_t10_noise"
 noise_type="s&p"
 noise_param=0.0
 
-experiment_name= "Illusion Training Using 10 timestep with Recon 1 timesteps On Noisy Images"
+experiment_name= "Illusion Training Using 10 timestep with Recon 10 timesteps On Noisy Images"
 load_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/illusion_trained_models/illusion_t10"
 save_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/illusion_trained_models/illusion_t10"
 
 illusion_dataset_bool=True
 
-iterations = 20
+iterations = 30

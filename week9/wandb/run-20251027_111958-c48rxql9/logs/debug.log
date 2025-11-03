@@ -1,0 +1,45 @@
+2025-10-27 11:19:58,108 INFO    MainThread:2721102 [wandb_setup.py:_flush():80] Current SDK version is 0.21.0
+2025-10-27 11:19:58,108 INFO    MainThread:2721102 [wandb_setup.py:_flush():80] Configure stats pid to 2721102
+2025-10-27 11:19:58,108 INFO    MainThread:2721102 [wandb_setup.py:_flush():80] Loading settings from /home/ajinkya/.config/wandb/settings
+2025-10-27 11:19:58,108 INFO    MainThread:2721102 [wandb_setup.py:_flush():80] Loading settings from /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/wandb/settings
+2025-10-27 11:19:58,108 INFO    MainThread:2721102 [wandb_setup.py:_flush():80] Loading settings from environment variables
+2025-10-27 11:19:58,108 INFO    MainThread:2721102 [wandb_init.py:setup_run_log_directory():703] Logging user logs to /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/wandb/run-20251027_111958-c48rxql9/logs/debug.log
+2025-10-27 11:19:58,108 INFO    MainThread:2721102 [wandb_init.py:setup_run_log_directory():704] Logging internal logs to /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/wandb/run-20251027_111958-c48rxql9/logs/debug-internal.log
+2025-10-27 11:19:58,108 INFO    MainThread:2721102 [wandb_init.py:init():830] calling init triggers
+2025-10-27 11:19:58,108 INFO    MainThread:2721102 [wandb_init.py:init():835] wandb.init called with sweep_config: {}
+config: {'learning_rate': 5e-05, 'architecture': 'CNN', 'dataset': 'CIFAR-10', 'epochs': 10, 'Batch_size': 40, 'momentum': 0.9, 'timesteps': 100, 'training_condition': None, 'Model_Name': 'pc_illusiont10_recon_t10_noise', 'Gamma_layer0': 0.33, 'Gamma_layer1': 0.33, 'Gamma_layer2': 0.33, 'Gamma_layer3': 0.33, 'Beta_layer0': 0.33, 'Beta_layer1': 0.33, 'Beta_layer2': 0.33, 'Beta_layer3': 0.33, 'Alpha_layer0': 0.01, 'Alpha_layer1': 0.01, 'Alpha_layer2': 0.01, 'Alpha_layer3': 0.01, 'noise_type': 's&p', 'noise_param': 0.0, '_wandb': {}}
+2025-10-27 11:19:58,108 INFO    MainThread:2721102 [wandb_init.py:init():871] starting backend
+2025-10-27 11:19:58,329 INFO    MainThread:2721102 [wandb_init.py:init():874] sending inform_init request
+2025-10-27 11:19:58,338 INFO    MainThread:2721102 [wandb_init.py:init():882] backend started and connected
+2025-10-27 11:19:58,348 INFO    MainThread:2721102 [wandb_init.py:init():953] updated telemetry
+2025-10-27 11:19:58,357 INFO    MainThread:2721102 [wandb_init.py:init():977] communicating run to backend with 90.0 second timeout
+2025-10-27 11:19:58,754 WARNING MainThread:2721102 [wandb_init.py:init():1610] [no run ID] interrupted
+Traceback (most recent call last):
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/wandb_init.py", line 1606, in init
+    return wi.init(run_settings, run_config, run_printer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/wandb_init.py", line 996, in init
+    result = wait_with_progress(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/mailbox/wait_with_progress.py", line 24, in wait_with_progress
+    return wait_all_with_progress(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/mailbox/wait_with_progress.py", line 70, in wait_all_with_progress
+    return _wait_handles(handle_list, timeout=progress_after)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/mailbox/wait_with_progress.py", line 110, in _wait_handles
+    results.append(handle.wait_or(timeout=remaining_timeout))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/mailbox/mailbox_handle.py", line 118, in wait_or
+    return self._fn(self._handle.wait_or(timeout=timeout))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/site-packages/wandb/sdk/mailbox/response_handle.py", line 84, in wait_or
+    if not self._event.wait(timeout=timeout):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 655, in wait
+    signaled = self._cond.wait(timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ajinkya/miniconda3/envs/cuda_pyt/lib/python3.12/threading.py", line 359, in wait
+    gotit = waiter.acquire(True, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

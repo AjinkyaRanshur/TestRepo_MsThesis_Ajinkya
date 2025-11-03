@@ -114,13 +114,19 @@ def class_pc_training(net,trainloader,testloader,pc_train_bool,config,iteration_
             ft_CD_pc_temp = ft_CD_pc_temp.requires_grad_(True)
             ft_DE_pc_temp = ft_DE_pc_temp.requires_grad_(True)
 
-            _,predicted=torch.max(output,1)
-            total_correct[0]+=(predicted==labels).sum().item()
+            #_,predicted=torch.max(output,1)
+            #total_correct[0]+=(predicted==labels).sum().item()
+            probs = F.softmax(output, dim=1)
+            square_probs=probs[:,1].detach().cpu().numpy()
+            total_correct[0]+=square_probs
 
             for i in range(config.timesteps):
                 output,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,loss_of_layers=net.predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
-                _,predicted=torch.max(output,1)
-                total_correct[i+1]+=(predicted==labels).sum().item()
+                #_,predicted=torch.max(output,1)
+                #total_correct[i+1]+=(predicted==labels).sum().item()
+                probs = F.softmax(output, dim=1)
+                square_probs=probs[:,1].detach().cpu().numpy()
+                total_correct[i+1]+=square_probs
 
             total_samples+=labels.size(0)
 

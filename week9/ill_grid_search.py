@@ -10,7 +10,8 @@ import re
 # ======================================================
 GAMMA_VALUES = np.arange(0.13, 0.53, 0.1)
 BETA_VALUES = np.arange(0.13, 0.53, 0.1)
-CONFIG_FILE = "configs/configilltest.py"
+file_version="configilltest10"
+CONFIG_FILE = f"configs/{file_version}.py"
 LOG_DIR = "logs"
 HEATMAP_DIR = "heatmaps"
 
@@ -49,7 +50,7 @@ def run_experiment(gamma, beta):
     env["MKL_THREADING_LAYER"] = "GNU"
 
     result = subprocess.run(
-        ["python3", "main.py", "--config", "configilltest"],
+        ["python3", "main.py", "--config", f"{file_version}"],
         capture_output=True,
         text=True,
         env=env
