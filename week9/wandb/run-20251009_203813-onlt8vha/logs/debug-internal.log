@@ -1,6 +1,0 @@
-{"time":"2025-10-09T20:38:13.944733052+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
-{"time":"2025-10-09T20:38:14.301326875+02:00","level":"INFO","msg":"stream: created new stream","id":"onlt8vha"}
-{"time":"2025-10-09T20:38:14.301362187+02:00","level":"INFO","msg":"stream: started","id":"onlt8vha"}
-{"time":"2025-10-09T20:38:14.301380749+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"onlt8vha"}
-{"time":"2025-10-09T20:38:14.301391481+02:00","level":"INFO","msg":"sender: started","stream_id":"onlt8vha"}
-{"time":"2025-10-09T20:38:14.301441688+02:00","level":"INFO","msg":"handler: started","stream_id":"onlt8vha"}
