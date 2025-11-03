@@ -8,13 +8,13 @@ import re
 # ======================================================
 # CONFIGURATION
 # ======================================================
-CONFIG_FILE = "configs/configilltest.py"
+CONFIG_FILE = "configs/configilltest10.py"
 LOG_DIR = "logs"
 SUMMARY_DIR = "summaries"
 
 # "mean" → take average accuracy across timesteps
 # "max"  → take max accuracy across timesteps
-ACCURACY_MODE = "mean"   # <---- change this to "mean" if desired
+ACCURACY_MODE = "max"   # <---- change this to "mean" if desired
 
 # Predefined gamma/beta patterns to test
 PATTERNS = {
@@ -64,7 +64,7 @@ def run_experiment(pattern_name):
     env["MKL_THREADING_LAYER"] = "GNU"
 
     result = subprocess.run(
-        ["python3", "main.py", "--config", "configilltest"],
+        ["python3", "main.py", "--config", "configilltest10"],
         capture_output=True,
         text=True,
         env=env

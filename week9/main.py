@@ -16,6 +16,7 @@ from pc_train import class_pc_training
 from recon_pc_train import recon_pc_training
 from eval_and_plotting import eval_pc_accuracy,recon_pc_loss
 from illusion_pc_train import illusion_pc_training
+from custom_ill_train import illusion_pc_training_custom
 from customdataset import SquareDataset
 import random
 import os
@@ -233,23 +234,29 @@ def cifar_testing(trainloader,testloader,config,iteration_index):
     class_pc_training(net,trainloader,testloader,"test",config,iteration_index)
     return None
 
+def cifar_testing_illusion_trained_model(trainloader,testloader,config,iteration_index):
+    net = Net(num_classes=2).to(config.device)
+    net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
+    results=illusion_pc_training_custom(net,trainloader,testloader,"test",config,iteration_index)
+    return results
+
 def illusion_testing(trainloader,testloader,config,iteration_index):
     net = Net(num_classes=2).to(config.device)
-#    checkpoint_path = f"{config.load_model_path}/{config.model_name}_{iteration_index}.pth"
-#    checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
-#    net.conv1.load_state_dict(checkpoint["conv1"])
-#    net.conv2.load_state_dict(checkpoint["conv2"])
-#    net.conv3.load_state_dict(checkpoint["conv3"])
-#    net.conv4.load_state_dict(checkpoint["conv4"])
-#    net.deconv1_fb.load_state_dict(checkpoint["deconv1_fb"])
-#    net.deconv2_fb.load_state_dict(checkpoint["deconv2_fb"])
-#    net.deconv3_fb.load_state_dict(checkpoint["deconv3_fb"])
-#    net.deconv4_fb.load_state_dict(checkpoint["deconv4_fb"])
-#
-    net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
-    illusion_pc_training(net, trainloader, testloader,"test", config)
+   # checkpoint_path = f"{config.load_model_path}/{config.model_name}.pth"
+   # checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
+   # net.conv1.load_state_dict(checkpoint["conv1"])
+   # net.conv2.load_state_dict(checkpoint["conv2"])
+   # net.conv3.load_state_dict(checkpoint["conv3"])
+   # net.conv4.load_state_dict(checkpoint["conv4"])
+   # net.deconv1_fb.load_state_dict(checkpoint["deconv1_fb"])
+   # net.deconv2_fb.load_state_dict(checkpoint["deconv2_fb"])
+   # net.deconv3_fb.load_state_dict(checkpoint["deconv3_fb"])
+   # net.deconv4_fb.load_state_dict(checkpoint["deconv4_fb"])
 
-    return None
+    net.load_state_dict(torch.load(f'{config.load_model_path}/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
+    results=illusion_pc_training(net, trainloader, testloader,"test", config)
+
+    return results
 
 
 def main(config):
@@ -271,12 +278,13 @@ def main(config):
     if config.illusion_dataset_bool == True:
         #for images, labels, cls_names in testloader:
         #    print("Labels",labels,"Class Names",cls_names)
-        accuracy_transfer=illusion_testing(trainloader,validationloader,config,20)
+        accuracy_transfer=illusion_testing(trainloader,validationloader,config,2)
     else:
-        accuracy_transfer=cifar_testing(trainloader,testloader,config,15)
+        #accuracy_transfer=cifar_testing(trainloader,testloader,config,15)
+        accuracy_transfer=cifar_testing_illusion_trained_model(trainloader,testloader,config,15)
 
     
-    print(accuracy_transfer)
+    #print(accuracy_transfer)
     return accuracy_transfer
         
 def load_config(config_name):

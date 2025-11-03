@@ -1,0 +1,62 @@
+✓ WandB initialized in Online mode
+=================================
+Class: Square, Total Samples: 2178
+Timestep 0: 50.75%
+Timestep 1: 50.75%
+Timestep 2: 50.75%
+Timestep 3: 50.75%
+Timestep 4: 50.75%
+Timestep 5: 50.75%
+Timestep 6: 50.75%
+Timestep 7: 50.75%
+Timestep 8: 50.75%
+Timestep 9: 50.75%
+Timestep 10: 50.75%
+
+
+=================================
+Class: Random, Total Samples: 2334
+Timestep 0: 50.75%
+Timestep 1: 50.75%
+Timestep 2: 50.75%
+Timestep 3: 50.75%
+Timestep 4: 50.75%
+Timestep 5: 50.75%
+Timestep 6: 50.75%
+Timestep 7: 50.75%
+Timestep 8: 50.75%
+Timestep 9: 50.75%
+Timestep 10: 50.75%
+
+
+=================================
+Class: All-in, Total Samples: 2364
+Timestep 0: 50.75%
+Timestep 1: 50.75%
+Timestep 2: 50.75%
+Timestep 3: 50.75%
+Timestep 4: 50.75%
+Timestep 5: 50.75%
+Timestep 6: 50.75%
+Timestep 7: 50.75%
+Timestep 8: 50.75%
+Timestep 9: 50.75%
+Timestep 10: 50.75%
+
+
+=================================
+Class: All-out, Total Samples: 2364
+Timestep 0: 50.75%
+Timestep 1: 50.75%
+Timestep 2: 50.75%
+Timestep 3: 50.75%
+Timestep 4: 50.75%
+Timestep 5: 50.75%
+Timestep 6: 50.75%
+Timestep 7: 50.75%
+Timestep 8: 50.75%
+Timestep 9: 50.75%
+Timestep 10: 50.75%
+
+
+Plot Saved Successfully

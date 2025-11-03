@@ -17,19 +17,19 @@ if torch.cuda.is_available():
     print(f"CUDA memory allocated: {torch.cuda.memory_allocated(device) / 1024**3:.2f} GB")
 print(f"Using device: {device}")
 
-timesteps = 1
+timesteps = 10
 
 gammaset=[[0.33, 0.33, 0.33, 0.33]]
 betaset = [[0.33, 0.33, 0.33, 0.33]]
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
-model_name = "pc_recon_train_t1"
+model_name = "pc_recon_train_t10"
 noise_type="s&p"
 noise_param=0.0
 
-experiment_name= "Reconstruction Training Using 1 timestep"
-load_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1"
-save_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps1"
+experiment_name= "Reconstruction Training Using 10 timestep"
+load_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps10"
+save_model_path="/home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/models/recon_models/timesteps10"
 
 illusion_dataset_bool=False
 

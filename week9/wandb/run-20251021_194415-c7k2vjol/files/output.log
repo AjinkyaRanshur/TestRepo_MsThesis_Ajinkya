@@ -1,0 +1,63 @@
+✓ WandB initialized in Online mode
+=================================
+Class: Square, Total Samples: 2178
+Timestep 0: 71.94%
+Timestep 1: 70.36%
+Timestep 2: 70.19%
+Timestep 3: 70.79%
+Timestep 4: 71.67%
+Timestep 5: 72.55%
+Timestep 6: 73.34%
+Timestep 7: 74.00%
+Timestep 8: 74.54%
+Timestep 9: 74.96%
+Timestep 10: 75.29%
+
+
+=================================
+Class: Random, Total Samples: 2334
+Timestep 0: 19.46%
+Timestep 1: 16.53%
+Timestep 2: 16.45%
+Timestep 3: 17.96%
+Timestep 4: 20.23%
+Timestep 5: 22.83%
+Timestep 6: 25.47%
+Timestep 7: 27.96%
+Timestep 8: 30.21%
+Timestep 9: 32.17%
+Timestep 10: 33.83%
+
+
+=================================
+Class: All-in, Total Samples: 2364
+Timestep 0: 22.27%
+Timestep 1: 19.17%
+Timestep 2: 19.11%
+Timestep 3: 20.74%
+Timestep 4: 23.18%
+Timestep 5: 25.94%
+Timestep 6: 28.68%
+Timestep 7: 31.25%
+Timestep 8: 33.54%
+Timestep 9: 35.53%
+Timestep 10: 37.20%
+
+
+=================================
+Class: All-out, Total Samples: 2364
+Timestep 0: 17.39%
+Timestep 1: 14.82%
+Timestep 2: 14.88%
+Timestep 3: 16.40%
+Timestep 4: 18.64%
+Timestep 5: 21.20%
+Timestep 6: 23.80%
+Timestep 7: 26.26%
+Timestep 8: 28.49%
+Timestep 9: 30.43%
+Timestep 10: 32.08%
+
+
+{'Square': {'predictions': [[np.float32(0.9724864), np.float32(0.92460465), np.float32(0.9638511), np.float32(0.8715218), np.float32(0.9481611), np.float32(0.86857486), np.float32(0.9584939), np.float32(0.90160406), np.float32(0.95623064), np.float32(0.9251835), np.float32(0.9761297), np.float32(0.9726279), np.float32(0.8658227), np.float32(0.90064216), np.float32(0.5374138), np.float32(0.71911025), np.float32(0.42916524), np.float32(0.85116696), np.float32(0.6311112), np.float32(0.8384571), np.float32(0.64487195), np.float32(0.9509524), np.float32(0.9747028), np.float32(0.87572587), np.float32(0.9315103), np.float32(0.8746999), np.float32(0.8912517), np.float32(0.7442358), np.float32(0.90042037), np.float32(0.7867704), np.float32(0.91047096), np.float32(0.7518229), np.float32(0.95434654), np.float32(0.95679814), np.float32(0.6084198), np.float32(0.5938856), np.float32(0.25025928), np.float32(0.46011975), np.float32(0.16046569), np.float32(0.5527119), np.float32(0.22259064), np.float32(0.54654974), np.float32(0.24413869), np.float32(0.7195261), np.float32(0.9629179), np.float32(0.47633827), np.float32(0.7617227), np.float32(0.49650428), np.float32(0.72178906), np.float32(0.3824583), np.float32(0.81487685), np.float32(0.36077908), np.float32(0.6300358), np.float32(0.27444077), np.float32(0.7575586), np.float32(0.9282555), np.float32(0.26594484), np.float32(0.44608277), np.float32(0.07425226), np.float32(0.12709916), np.float32(0.0408917), np.float32(0.2728017), np.float32(0.12629122), np.float32(0.49064234), np.float32(0.064533), np.float32(0.42199406), np.float32(0.9221083), np.float32(0.2685926), np.float32(0.5212161), np.float32(0.095903866), np.float32(0.2461999), np.float32(0.036654975), np.float32(0.45896623), np.float32(0.23897685), np.float32(0.6918942), np.float32(0.17839396), np.float32(0.5962807), np.float32(0.81396407), np.float32(0.18692462), np.float32(0.32136708), np.float32(0.03257775), np.float32(0.101870894), np.float32(0.011908069), np.float32(0.2586436), np.float32(0.05407535), np.float32(0.3618078), np.float32(0.077657476), np.float32(0.6561329), np.float32(0.9237076), np.float32(0.2333181), np.float32(0.5557066), np.float32(0.12092161), np.float32(0.28553885), np.float32(0.012203453), np.float32(0.3228606), np.float32(0.1351745), np.float32(0.69130987), np.float32(0.118218236), np.float32(0.73705775), np.float32(0.8827985), np.float32(0.36330214), np.float32(0.6802101), np.float32(0.29472265), np.float32(0.40761453), np.float32(0.07317274), np.float32(0.58972377), np.float32(0.36838302), np.float32(0.7699469), np.float32(0.14046122), np.float32(0.82318676), np.float32(0.96489775), np.float32(0.84559476), np.float32(0.92026204), np.float32(0.894756), np.float32(0.9350963), np.float32(0.7176371), np.float32(0.92382294), np.float32(0.8310322), np.float32(0.96334416), np.float32(0.8246843), np.float32(0.9743489), np.float32(0.96262676), np.float32(0.9466749), np.float32(0.9544794), np.float32(0.92593354), np.float32(0.90070057), np.float32(0.92259437), np.float32(0.9576314), np.float32(0.89498734), np.float32(0.94873685), np.float32(0.9324085), np.float32(0.9651056), np.float32(0.96627986), np.float32(0.93269306), np.float32(0.94219005), np.float32(0.77229744), np.float32(0.8141398), np.float32(0.76941353), np.float32(0.8702782), np.float32(0.66095054), np.float32(0.82700217), np.float32(0.7962472), np.float32(0.9369164), np.float32(0.96200913), np.float32(0.9525589), np.float32(0.92368156), np.float32(0.7917232), np.float32(0.68359363), np.float32(0.71986437), np.float32(0.86098015), np.float32(0.72272426), np.float32(0.743656), np.float32(0.78925234), np.float32(0.9372404), np.float32(0.92711616), np.float32(0.8713001), np.float32(0.8237974), np.float32(0.52504885), np.float32(0.64270186), np.float32(0.47412586), np.float32(0.641097), np.float32(0.24764647), np.float32(0.53052497), np.float32(0.57633936), np.float32(0.7760644), np.float32(0.8967439), np.float32(0.77393967), np.float32(0.66468996), np.float32(0.40618536), np.float32(0.4794737), np.float32(0.40459394), np.float32(0.60514796), np.float32(
+{'Square': {'predictions': [[np.float32(0.9724864), np.float32(0.92460465), np.float32(0.9638511), np.float32(0.8715218), np.float32(0.9481611), np.float32(0.86857486), np.float32(0.9584939), np.float32(0.90160406), np.float32(0.95623064), np.float32(0.9251835), np.float32(0.9761297), np.float32(0.9726279), np.float32(0.8658227), np.float32(0.90064216), np.float32(0.5374138), np.float32(0.71911025), np.float32(0.42916524), np.float32(0.85116696), np.float32(0.6311112), np.float32(0.8384571), np.float32(0.64487195), np.float32(0.9509524), np.float32(0.9747028), np.float32(0.87572587), np.float32(0.9315103), np.float32(0.8746999), np.float32(0.8912517), np.float32(0.7442358), np.float32(0.90042037), np.float32(0.7867704), np.float32(0.91047096), np.float32(0.7518229), np.float32(0.95434654), np.float32(0.95679814), np.float32(0.6084198), np.float32(0.5938856), np.float32(0.25025928), np.float32(0.46011975), np.float32(0.16046569), np.float32(0.5527119), np.float32(0.22259064), np.float32(0.54654974), np.float32(0.24413869), np.float32(0.7195261), np.float32(0.9629179), np.float32(0.47633827), np.float32(0.7617227), np.float32(0.49650428), np.float32(0.72178906), np.float32(0.3824583), np.float32(0.81487685), np.float32(0.36077908), np.float32(0.6300358), np.float32(0.27444077), np.float32(0.7575586), np.float32(0.9282555), np.float32(0.26594484), np.float32(0.44608277), np.float32(0.07425226), np.float32(0.12709916), np.float32(0.0408917), np.float32(0.2728017), np.float32(0.12629122), np.float32(0.49064234), np.float32(0.064533), np.float32(0.42199406), np.float32(0.9221083), np.float32(0.2685926), np.float32(0.5212161), np.float32(0.095903866), np.float32(0.2461999), np.float32(0.036654975), np.float32(0.45896623), np.float32(0.23897685), np.float32(0.6918942), np.float32(0.17839396), np.float32(0.5962807), np.float32(0.81396407), np.float32(0.18692462), np.float32(0.32136708), np.float32(0.03257775), np.float32(0.101870894), np.float32(0.011908069), np.float32(0.2586436), np.float32(0.05407535), np.float32(0.3618078), np.float32(0.077657476), np.float32(0.6561329), np.float32(0.9237076), np.float32(0.2333181), np.float32(0.5557066), np.float32(0.12092161), np.float32(0.28553885), np.float32(0.012203453), np.float32(0.3228606), np.float32(0.1351745), np.float32(0.69130987), np.float32(0.118218236), np.float32(0.73705775), np.float32(0.8827985), np.float32(0.36330214), np.float32(0.6802101), np.float32(0.29472265), np.float32(0.40761453), np.float32(0.07317274), np.float32(0.58972377), np.float32(0.36838302), np.float32(0.7699469), np.float32(0.14046122), np.float32(0.82318676), np.float32(0.96489775), np.float32(0.84559476), np.float32(0.92026204), np.float32(0.894756), np.float32(0.9350963), np.float32(0.7176371), np.float32(0.92382294), np.float32(0.8310322), np.float32(0.96334416), np.float32(0.8246843), np.float32(0.9743489), np.float32(0.96262676), np.float32(0.9466749), np.float32(0.9544794), np.float32(0.92593354), np.float32(0.90070057), np.float32(0.92259437), np.float32(0.9576314), np.float32(0.89498734), np.float32(0.94873685), np.float32(0.9324085), np.float32(0.9651056), np.float32(0.96627986), np.float32(0.93269306), np.float32(0.94219005), np.float32(0.77229744), np.float32(0.8141398), np.float32(0.76941353), np.float32(0.8702782), np.float32(0.66095054), np.float32(0.82700217), np.float32(0.7962472), np.float32(0.9369164), np.float32(0.96200913), np.float32(0.9525589), np.float32(0.92368156), np.float32(0.7917232), np.float32(0.68359363), np.float32(0.71986437), np.float32(0.86098015), np.float32(0.72272426), np.float32(0.743656), np.float32(0.78925234), np.float32(0.9372404), np.float32(0.92711616), np.float32(0.8713001), np.float32(0.8237974), np.float32(0.52504885), np.float32(0.64270186), np.float32(0.47412586), np.float32(0.641097), np.float32(0.24764647), np.float32(0.53052497), np.float32(0.57633936), np.float32(0.7760644), np.float32(0.8967439), np.float32(0.77393967), np.float32(0.66468996), np.float32(0.40618536), np.float32(0.4794737), np.float32(0.40459394), np.float32(0.60514796), np.float32(

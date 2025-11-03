@@ -1,0 +1,1 @@
+{"Fine_Tuning/recon_test_loss":0.0015569814131595194,"_runtime":14241,"Fine_Tuning/train_accuracy":99.3999671214861,"Fine_Tuning/recon_train_loss":0.03522438772576802,"Fine_Tuning/test_accuracy":99.89304812834224,"_step":299,"Fine_Tuning/test_loss":0.007607643959893133,"_wandb":{"runtime":14241},"_timestamp":1.7613358780500185e+09,"Fine_Tuning/train_loss":0.015552876274991181}

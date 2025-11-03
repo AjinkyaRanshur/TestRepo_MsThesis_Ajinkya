@@ -1,0 +1,12 @@
+{"time":"2025-10-30T12:10:10.891241783+01:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-10-30T12:10:11.292056101+01:00","level":"INFO","msg":"stream: created new stream","id":"kpcertrf"}
+{"time":"2025-10-30T12:10:11.292124501+01:00","level":"INFO","msg":"stream: started","id":"kpcertrf"}
+{"time":"2025-10-30T12:10:11.292157348+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"kpcertrf"}
+{"time":"2025-10-30T12:10:11.292184816+01:00","level":"INFO","msg":"handler: started","stream_id":"kpcertrf"}
+{"time":"2025-10-30T12:10:11.29223509+01:00","level":"INFO","msg":"sender: started","stream_id":"kpcertrf"}
+{"time":"2025-10-30T12:12:05.658880806+01:00","level":"INFO","msg":"stream: closing","id":"kpcertrf"}
+{"time":"2025-10-30T12:12:06.19402185+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-10-30T12:12:06.417264839+01:00","level":"INFO","msg":"handler: closed","stream_id":"kpcertrf"}
+{"time":"2025-10-30T12:12:06.417335653+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"kpcertrf"}
+{"time":"2025-10-30T12:12:06.417349016+01:00","level":"INFO","msg":"sender: closed","stream_id":"kpcertrf"}
+{"time":"2025-10-30T12:12:06.417482275+01:00","level":"INFO","msg":"stream: closed","id":"kpcertrf"}

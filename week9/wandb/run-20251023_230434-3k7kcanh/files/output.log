@@ -1,0 +1,449 @@
+✓ WandB initialized in Online mode
+The Iteration0:
+================================
+Epoch:0 | AvgLoss:0.6927 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.6925 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.6923 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.6922 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.6923 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.6921 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.6915 | ReconLoss:0.0490
+Epoch:7 | AvgLoss:0.6914 | ReconLoss:0.0490
+Epoch:8 | AvgLoss:0.6915 | ReconLoss:0.0490
+Epoch:9 | AvgLoss:0.6911 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration1:
+================================
+Epoch:0 | AvgLoss:0.6904 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.6896 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.6886 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.6873 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.6857 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.6838 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.6810 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.6776 | ReconLoss:0.0490
+Epoch:8 | AvgLoss:0.6735 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.6680 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration2:
+================================
+Epoch:0 | AvgLoss:0.6600 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.6522 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.6432 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.6343 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.6228 | ReconLoss:0.0490
+Epoch:5 | AvgLoss:0.6118 | ReconLoss:0.0490
+Epoch:6 | AvgLoss:0.5991 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.5875 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.5735 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.5666 | ReconLoss:0.0490
+Model Saved Sucessfully
+The Iteration3:
+================================
+Epoch:0 | AvgLoss:0.5527 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.5467 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.5334 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.5247 | ReconLoss:0.0490
+Epoch:4 | AvgLoss:0.5154 | ReconLoss:0.0490
+Epoch:5 | AvgLoss:0.5073 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.5013 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.4923 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.4844 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.4772 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration4:
+================================
+Epoch:0 | AvgLoss:0.4710 | ReconLoss:0.0490
+Epoch:1 | AvgLoss:0.4673 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.4571 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.4539 | ReconLoss:0.0490
+Epoch:4 | AvgLoss:0.4464 | ReconLoss:0.0490
+Epoch:5 | AvgLoss:0.4361 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.4345 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.4317 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.4258 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.4208 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration5:
+================================
+Epoch:0 | AvgLoss:0.4148 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.4157 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.4135 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.4018 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.4004 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.3974 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.3984 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.3894 | ReconLoss:0.0490
+Epoch:8 | AvgLoss:0.3959 | ReconLoss:0.0490
+Epoch:9 | AvgLoss:0.3865 | ReconLoss:0.0488
+Model Saved Sucessfully
+The Iteration6:
+================================
+Epoch:0 | AvgLoss:0.3854 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.3778 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.3778 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.3735 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.3786 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.3726 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.3813 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.3701 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.3692 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.3683 | ReconLoss:0.0490
+Model Saved Sucessfully
+The Iteration7:
+================================
+Epoch:0 | AvgLoss:0.3602 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.3667 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.3646 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.3565 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.3649 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.3534 | ReconLoss:0.0490
+Epoch:6 | AvgLoss:0.3541 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.3540 | ReconLoss:0.0488
+Epoch:8 | AvgLoss:0.3510 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.3501 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration8:
+================================
+Epoch:0 | AvgLoss:0.3491 | ReconLoss:0.0490
+Epoch:1 | AvgLoss:0.3558 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.3465 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.3489 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.3417 | ReconLoss:0.0490
+Epoch:5 | AvgLoss:0.3430 | ReconLoss:0.0490
+Epoch:6 | AvgLoss:0.3427 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.3448 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.3384 | ReconLoss:0.0490
+Epoch:9 | AvgLoss:0.3432 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration9:
+================================
+Epoch:0 | AvgLoss:0.3410 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.3372 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.3318 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.3425 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.3355 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.3359 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.3410 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.3314 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.3340 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.3377 | ReconLoss:0.0490
+Model Saved Sucessfully
+The Iteration10:
+================================
+Epoch:0 | AvgLoss:0.3443 | ReconLoss:0.0488
+Epoch:1 | AvgLoss:0.3263 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.3390 | ReconLoss:0.0490
+Epoch:3 | AvgLoss:0.3238 | ReconLoss:0.0488
+Epoch:4 | AvgLoss:0.3327 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.3232 | ReconLoss:0.0490
+Epoch:6 | AvgLoss:0.3249 | ReconLoss:0.0490
+Epoch:7 | AvgLoss:0.3322 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.3319 | ReconLoss:0.0490
+Epoch:9 | AvgLoss:0.3301 | ReconLoss:0.0490
+Model Saved Sucessfully
+The Iteration11:
+================================
+Epoch:0 | AvgLoss:0.3201 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.3310 | ReconLoss:0.0490
+Epoch:2 | AvgLoss:0.3196 | ReconLoss:0.0490
+Epoch:3 | AvgLoss:0.3285 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.3239 | ReconLoss:0.0490
+Epoch:5 | AvgLoss:0.3222 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.3234 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.3210 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.3219 | ReconLoss:0.0490
+Epoch:9 | AvgLoss:0.3228 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration12:
+================================
+Epoch:0 | AvgLoss:0.3153 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.3309 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.3190 | ReconLoss:0.0490
+Epoch:3 | AvgLoss:0.3205 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.3182 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.3195 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.3097 | ReconLoss:0.0490
+Epoch:7 | AvgLoss:0.3099 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.3099 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.3161 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration13:
+================================
+Epoch:0 | AvgLoss:0.3230 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.3121 | ReconLoss:0.0488
+Epoch:2 | AvgLoss:0.3142 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.3082 | ReconLoss:0.0488
+Epoch:4 | AvgLoss:0.3126 | ReconLoss:0.0490
+Epoch:5 | AvgLoss:0.3147 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.3094 | ReconLoss:0.0490
+Epoch:7 | AvgLoss:0.3085 | ReconLoss:0.0490
+Epoch:8 | AvgLoss:0.3070 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.3087 | ReconLoss:0.0490
+Model Saved Sucessfully
+The Iteration14:
+================================
+Epoch:0 | AvgLoss:0.3129 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.3035 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.3057 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.3049 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.2976 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.3134 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.3068 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.3069 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.3030 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.3027 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration15:
+================================
+Epoch:0 | AvgLoss:0.3019 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.3029 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.3021 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.3080 | ReconLoss:0.0490
+Epoch:4 | AvgLoss:0.3084 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.3036 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.2983 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.2965 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.3001 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.3031 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration16:
+================================
+Epoch:0 | AvgLoss:0.2961 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.2946 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.2971 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.2884 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.3026 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.2944 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.2954 | ReconLoss:0.0490
+Epoch:7 | AvgLoss:0.2914 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.2957 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.2979 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration17:
+================================
+Epoch:0 | AvgLoss:0.2941 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.2961 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.2957 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.2959 | ReconLoss:0.0490
+Epoch:4 | AvgLoss:0.2943 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.2935 | ReconLoss:0.0490
+Epoch:6 | AvgLoss:0.2912 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.2935 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.2948 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.2914 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration18:
+================================
+Epoch:0 | AvgLoss:0.3001 | ReconLoss:0.0488
+Epoch:1 | AvgLoss:0.2879 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.2936 | ReconLoss:0.0490
+Epoch:3 | AvgLoss:0.3017 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.2924 | ReconLoss:0.0490
+Epoch:5 | AvgLoss:0.2929 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.2973 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.2870 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.2895 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.2831 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration19:
+================================
+Epoch:0 | AvgLoss:0.2815 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.2934 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.2922 | ReconLoss:0.0490
+Epoch:3 | AvgLoss:0.2912 | ReconLoss:0.0490
+Epoch:4 | AvgLoss:0.2869 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.2863 | ReconLoss:0.0490
+Epoch:6 | AvgLoss:0.2842 | ReconLoss:0.0490
+Epoch:7 | AvgLoss:0.2921 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.2852 | ReconLoss:0.0490
+Epoch:9 | AvgLoss:0.2896 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration20:
+================================
+Epoch:0 | AvgLoss:0.2833 | ReconLoss:0.0490
+Epoch:1 | AvgLoss:0.2903 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.2900 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.2931 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.2866 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.2907 | ReconLoss:0.0490
+Epoch:6 | AvgLoss:0.2851 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.2856 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.2743 | ReconLoss:0.0490
+Epoch:9 | AvgLoss:0.2862 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration21:
+================================
+Epoch:0 | AvgLoss:0.2845 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.2811 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.2751 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.2760 | ReconLoss:0.0490
+Epoch:4 | AvgLoss:0.2859 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.2817 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.2784 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.2779 | ReconLoss:0.0490
+Epoch:8 | AvgLoss:0.2825 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.2867 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration22:
+================================
+Epoch:0 | AvgLoss:0.2826 | ReconLoss:0.0490
+Epoch:1 | AvgLoss:0.2709 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.2771 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.2748 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.2727 | ReconLoss:0.0490
+Epoch:5 | AvgLoss:0.2729 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.2734 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.2694 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.2655 | ReconLoss:0.0490
+Epoch:9 | AvgLoss:0.2689 | ReconLoss:0.0490
+Model Saved Sucessfully
+The Iteration23:
+================================
+Epoch:0 | AvgLoss:0.2701 | ReconLoss:0.0490
+Epoch:1 | AvgLoss:0.2699 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.2667 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.2600 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.2670 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.2648 | ReconLoss:0.0490
+Epoch:6 | AvgLoss:0.2649 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.2663 | ReconLoss:0.0488
+Epoch:8 | AvgLoss:0.2587 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.2619 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration24:
+================================
+Epoch:0 | AvgLoss:0.2629 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.2614 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.2632 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.2559 | ReconLoss:0.0490
+Epoch:4 | AvgLoss:0.2570 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.2581 | ReconLoss:0.0490
+Epoch:6 | AvgLoss:0.2570 | ReconLoss:0.0488
+Epoch:7 | AvgLoss:0.2568 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.2590 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.2527 | ReconLoss:0.0490
+Model Saved Sucessfully
+The Iteration25:
+================================
+Epoch:0 | AvgLoss:0.2498 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.2506 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.2518 | ReconLoss:0.0490
+Epoch:3 | AvgLoss:0.2572 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.2543 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.2467 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.2470 | ReconLoss:0.0488
+Epoch:7 | AvgLoss:0.2494 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.2512 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.2432 | ReconLoss:0.0490
+Model Saved Sucessfully
+The Iteration26:
+================================
+Epoch:0 | AvgLoss:0.2447 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.2425 | ReconLoss:0.0490
+Epoch:2 | AvgLoss:0.2425 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.2448 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.2443 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.2425 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.2422 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.2468 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.2376 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.2468 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration27:
+================================
+Epoch:0 | AvgLoss:0.2448 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.2372 | ReconLoss:0.0488
+Epoch:2 | AvgLoss:0.2455 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.2407 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.2439 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.2447 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.2397 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.2371 | ReconLoss:0.0490
+Epoch:8 | AvgLoss:0.2335 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.2407 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration28:
+================================
+Epoch:0 | AvgLoss:0.2346 | ReconLoss:0.0490
+Epoch:1 | AvgLoss:0.2441 | ReconLoss:0.0489
+Epoch:2 | AvgLoss:0.2354 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.2388 | ReconLoss:0.0489
+Epoch:4 | AvgLoss:0.2326 | ReconLoss:0.0490
+Epoch:5 | AvgLoss:0.2409 | ReconLoss:0.0489
+Epoch:6 | AvgLoss:0.2306 | ReconLoss:0.0490
+Epoch:7 | AvgLoss:0.2358 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.2310 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.2386 | ReconLoss:0.0489
+Model Saved Sucessfully
+The Iteration29:
+================================
+Epoch:0 | AvgLoss:0.2356 | ReconLoss:0.0489
+Epoch:1 | AvgLoss:0.2338 | ReconLoss:0.0490
+Epoch:2 | AvgLoss:0.2316 | ReconLoss:0.0489
+Epoch:3 | AvgLoss:0.2275 | ReconLoss:0.0488
+Epoch:4 | AvgLoss:0.2358 | ReconLoss:0.0489
+Epoch:5 | AvgLoss:0.2377 | ReconLoss:0.0490
+Epoch:6 | AvgLoss:0.2274 | ReconLoss:0.0489
+Epoch:7 | AvgLoss:0.2336 | ReconLoss:0.0489
+Epoch:8 | AvgLoss:0.2312 | ReconLoss:0.0489
+Epoch:9 | AvgLoss:0.2253 | ReconLoss:0.0490
+Model Saved Sucessfully
+=================================
+Class: Square, Total Samples: 2178
+Timestep 0: 93.77%
+Timestep 1: 93.00%
+Timestep 2: 92.49%
+Timestep 3: 92.37%
+Timestep 4: 92.55%
+Timestep 5: 92.89%
+Timestep 6: 93.28%
+Timestep 7: 93.66%
+Timestep 8: 94.01%
+Timestep 9: 94.32%
+Timestep 10: 94.59%
+
+
+=================================
+Class: Random, Total Samples: 2334
+Timestep 0: 15.28%
+Timestep 1: 10.17%
+Timestep 2: 7.19%
+Timestep 3: 6.04%
+Timestep 4: 5.88%
+Timestep 5: 6.33%
+Timestep 6: 7.20%
+Timestep 7: 8.43%
+Timestep 8: 9.94%
+Timestep 9: 11.67%
+Timestep 10: 13.55%
+
+
+=================================
+Class: All-in, Total Samples: 2364
+Timestep 0: 20.31%
+Timestep 1: 14.08%
+Timestep 2: 10.20%
+Timestep 3: 8.65%
+Timestep 4: 8.46%
+Timestep 5: 9.08%
+Timestep 6: 10.28%
+Timestep 7: 11.94%
+Timestep 8: 13.94%
+Timestep 9: 16.17%
+Timestep 10: 18.54%
+
+
+=================================
+Class: All-out, Total Samples: 2364
+Timestep 0: 11.67%
+Timestep 1: 7.65%
+Timestep 2: 5.41%
+Timestep 3: 4.60%
+Timestep 4: 4.54%
+Timestep 5: 4.93%
+Timestep 6: 5.67%
+Timestep 7: 6.70%
+Timestep 8: 7.99%
+Timestep 9: 9.48%
+Timestep 10: 11.12%

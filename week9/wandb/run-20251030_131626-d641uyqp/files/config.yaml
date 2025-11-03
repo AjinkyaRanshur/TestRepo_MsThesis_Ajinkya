@@ -1,0 +1,106 @@
+_wandb:
+    value:
+        cli_version: 0.21.0
+        e:
+            1d4ioaa9021ir6cggsunaovheus99pmh:
+                args:
+                    - --config
+                    - configilltest10
+                codePath: week9/main.py
+                codePathLocal: main.py
+                cpu_count: 24
+                cpu_count_logical: 48
+                cudaVersion: "11.4"
+                disk:
+                    /:
+                        total: "982822674432"
+                        used: "72180342784"
+                email: ranshur.ajinkya.res@gmail.com
+                executable: /home/ajinkya/miniconda3/envs/cuda_pyt/bin/python3
+                git:
+                    commit: d53b4c19d52e3cb78cd27520cf21e830d9b96850
+                    remote: https://github.com/AjinkyaRanshur/TestRepo_MsThesis_Ajinkya.git
+                gpu: NVIDIA A40
+                gpu_count: 2
+                gpu_nvidia:
+                    - architecture: Ampere
+                      name: NVIDIA A40
+                      uuid: GPU-cdd97142-d693-3d4a-b7d8-baa6dd9f8560
+                    - architecture: Ampere
+                      name: NVIDIA A40
+                      uuid: GPU-4fb36b2c-8a1e-9677-ad65-199f5aa7fa8d
+                host: SRV-Calcul-SIC
+                memory:
+                    total: "269918322688"
+                os: Linux-5.15.0-136-generic-x86_64-with-glibc2.31
+                program: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9/main.py
+                python: CPython 3.12.11
+                root: /home/ajinkya/projects/TestRepo_MsThesis_Ajinkya/week9
+                startedAt: "2025-10-30T12:16:26.973809Z"
+                writerId: 1d4ioaa9021ir6cggsunaovheus99pmh
+        m: []
+        python_version: 3.12.11
+        t:
+            "1":
+                - 1
+                - 5
+                - 41
+                - 53
+            "2":
+                - 1
+                - 5
+                - 41
+                - 53
+            "3":
+                - 13
+                - 16
+            "4": 3.12.11
+            "5": 0.21.0
+            "12": 0.21.0
+            "13": linux-x86_64
+Alpha_layer0:
+    value: 0.33
+Alpha_layer1:
+    value: 0.33
+Alpha_layer2:
+    value: 0.33
+Alpha_layer3:
+    value: 0.33
+Batch_size:
+    value: 40
+Beta_layer0:
+    value: 0.33
+Beta_layer1:
+    value: 0.13
+Beta_layer2:
+    value: 0.33
+Beta_layer3:
+    value: 0.33
+Gamma_layer0:
+    value: 0.33
+Gamma_layer1:
+    value: 0.13
+Gamma_layer2:
+    value: 0.33
+Gamma_layer3:
+    value: 0.33
+Model_Name:
+    value: pc_illusiont10_recon_t10_noise
+architecture:
+    value: CNN
+dataset:
+    value: CIFAR-10
+epochs:
+    value: 10
+learning_rate:
+    value: 5e-05
+momentum:
+    value: 0.9
+noise_param:
+    value: 0
+noise_type:
+    value: s&p
+timesteps:
+    value: 100
+training_condition:
+    value: null

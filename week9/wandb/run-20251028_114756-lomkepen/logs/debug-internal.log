@@ -1,0 +1,12 @@
+{"time":"2025-10-28T11:47:56.577853679+01:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-10-28T11:47:56.945508182+01:00","level":"INFO","msg":"stream: created new stream","id":"lomkepen"}
+{"time":"2025-10-28T11:47:56.945592971+01:00","level":"INFO","msg":"stream: started","id":"lomkepen"}
+{"time":"2025-10-28T11:47:56.94562668+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"lomkepen"}
+{"time":"2025-10-28T11:47:56.945637853+01:00","level":"INFO","msg":"sender: started","stream_id":"lomkepen"}
+{"time":"2025-10-28T11:47:56.945735866+01:00","level":"INFO","msg":"handler: started","stream_id":"lomkepen"}
+{"time":"2025-10-28T11:49:54.324298452+01:00","level":"INFO","msg":"stream: closing","id":"lomkepen"}
+{"time":"2025-10-28T11:49:54.834418739+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-10-28T11:49:55.078282573+01:00","level":"INFO","msg":"handler: closed","stream_id":"lomkepen"}
+{"time":"2025-10-28T11:49:55.07836089+01:00","level":"INFO","msg":"sender: closed","stream_id":"lomkepen"}
+{"time":"2025-10-28T11:49:55.078338548+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"lomkepen"}
+{"time":"2025-10-28T11:49:55.078535008+01:00","level":"INFO","msg":"stream: closed","id":"lomkepen"}
