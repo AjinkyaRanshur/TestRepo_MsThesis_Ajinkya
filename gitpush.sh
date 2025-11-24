@@ -1,18 +1,22 @@
 #!/bin/bash
-###########################
 
-echo What message do you want to put?
+echo "Enter commit message:"
 read message
 
-#########################
+# Determine current branch
+branch=$(git rev-parse --abbrev-ref HEAD)
 
-# add all added/modified files
+echo "[INFO] Current branch: $branch"
+
+# Stage changes
 git add -A
-# commit changes
+
+# Commit
 git commit -m "$message"
-# push to git remote repository
-git push origin main
-###########################
-echo Press Enter...
+
+# Push to the same branch
+git push origin "$branch"
+
+echo "Done. Press Enter..."
 read
 
