@@ -150,7 +150,7 @@ def run_and_analyze():
     results = main(config)
     return results
 
-def update_config(gamma_pattern, beta_pattern, pattern_name, model_name, timesteps, iterations=4,train_cond):
+def update_config(gamma_pattern, beta_pattern, pattern_name, model_name, timesteps, iterations=4,train_cond,datasetpath):
     """Update the config file with new parameters."""
     with open(CONFIG_FILE, "r") as f:
         lines = f.readlines()
@@ -171,7 +171,9 @@ def update_config(gamma_pattern, beta_pattern, pattern_name, model_name, timeste
             elif stripped.startswith("experiment_name"):
                 f.write(f'experiment_name = "Testing {model_name} with {pattern_name} pattern at {timesteps} timesteps"\n')
 	    elif stripped.startswith("training_condition"):
-		f.write("training_condition={train_cond}")
+		f.write(f"training_condition={train_cond}")
+	    elif stripped.startswith("datasetpath"):
+                f.write(f"datasetpath={datasetpath}")
             else:
                 f.write(line)
 
@@ -336,7 +338,7 @@ def train_single_pattern(pattern_name, pattern_values, recon_timesteps,class_tim
     
     try:
         print_status("Updating configuration...", "running")
-        update_config(gamma_pattern, beta_pattern, pattern_name, model_name, train_timesteps, iterations,"illusion_train")
+        update_config(gamma_pattern, beta_pattern, pattern_name, model_name, train_timesteps, iterations,"illusion_train","data/visual_illusion_dataset")
         
         print_status("Starting training...", "running")
         results = run_and_analyze()
@@ -392,7 +394,7 @@ def test_single_pattern(pattern_name, pattern_values, model_name,recon_timesteps
     
     try:
         print_status("Updating configuration...", "running")
-        update_config(gamma_pattern, beta_pattern, pattern_name, model_name, test_timesteps, iterations=1,None)
+        update_config(gamma_pattern, beta_pattern, pattern_name, model_name, test_timesteps, iterations=1,None,"data/visual_illusion_dataset")
         
         print_status("Running evaluation...", "running")
         spinner(1, "Loading model")
@@ -585,7 +587,7 @@ def plot_grid_heatmap(gamma_values, beta_values, illusion_matrix, model_name, re
 # ============================================================
 # RECONSTRUCTION TRAINING FUNCTIONS
 # ============================================================
-def train_reconstruction_single_pattern(pattern_name, pattern_values, recon_timesteps):
+def train_reconstruction_single_pattern(pattern_name, pattern_values, recon_timesteps,iterations):
     """Train reconstruction for a single pattern."""
     gamma_pattern = pattern_values["gamma"]
     beta_pattern = pattern_values["beta"]
@@ -605,7 +607,7 @@ def train_reconstruction_single_pattern(pattern_name, pattern_values, recon_time
         print_status("Updating configuration...", "running")
         # Note: For reconstruction, class_timesteps = recon_timesteps (they're the same during recon phase)
         update_config(gamma_pattern, beta_pattern, pattern_name, model_name, 
-                     recon_timesteps, recon_timesteps, iterations=1,"recon_pc_train")
+                     recon_timesteps, recon_timesteps, iterations,"recon_pc_train","/home/yuvraj.belani/ajinkya/datasets/")
         
         print_status("Starting reconstruction training...", "running")
         results = run_and_analyze()
@@ -698,7 +700,7 @@ def run_grid_search(trained_pattern_name, model_config, test_timesteps):
             
             		try:
                 		update_config(gamma_pattern, beta_pattern, f"Grid_g{gamma:.2f}_b{beta:.2f}", 
-                            		model_name, test_timesteps, iterations=1,None)
+                            		model_name, test_timesteps, iterations=1,None,"data/visual_illusion_dataset")
                 		results = run_and_analyze()
                 
                 		if results:
@@ -759,8 +761,8 @@ def run():
 			#Train Single Pattern
 			pattern_name, pattern_values = select_pattern()
 			if pattern_name:
-				recon_timesteps= get_reconstruction_params()
-				train_reconstruction_single_pattern(pattern_name, pattern_values, recon_timesteps)
+				recon_timesteps, iterations = get_training_params()
+				train_reconstruction_single_pattern(pattern_name, pattern_values, recon_timesteps,iterations)
                             	input("\nPress ENTER to continue...")
 		    elif recon_choice == "2":
                         # Train all patterns
