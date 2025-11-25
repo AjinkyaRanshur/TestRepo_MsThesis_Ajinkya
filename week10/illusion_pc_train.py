@@ -32,6 +32,16 @@ def illusion_pc_training(net, trainloader, testloader, pc_train_bool, config):
 
         loss_arr = []
 
+	# ✅ ADD THIS: Initialize metrics history
+        metrics_history = {
+            'train_loss': [],
+            'test_loss': [],
+            'train_acc': [],
+            'test_acc': [],
+            'train_recon_loss': [],
+            'test_recon_loss': []
+        }
+
         # Fine-tuning (as in Zhoyang's paper, ~25 epochs)
         for epoch in range(config.epochs):
             running_loss = []
@@ -123,6 +133,14 @@ def illusion_pc_training(net, trainloader, testloader, pc_train_bool, config):
             test_accuracy, test_loss, test_recon_loss = eval_pc_ill_accuracy(
                 net, testloader, config, criterion)
 
+            # ✅ ADD THIS: Store metrics
+            metrics_history['train_loss'].append(avg_loss)
+            metrics_history['test_loss'].append(test_loss)
+            metrics_history['train_acc'].append(train_accuracy)
+            metrics_history['test_acc'].append(test_accuracy)
+            metrics_history['train_recon_loss'].append(avg_recon_loss)
+            metrics_history['test_recon_loss'].append(test_recon_loss)
+
             metrics = {
                 "Fine_Tuning/train_loss": avg_loss,
                 "Fine_Tuning/test_loss": test_loss,
@@ -131,7 +149,11 @@ def illusion_pc_training(net, trainloader, testloader, pc_train_bool, config):
                 "Fine_Tuning/recon_train_loss": avg_recon_loss,
                 "Fine_Tuning/recon_test_loss": test_recon_loss,
             }
-            loss_arr.append(avg_loss)
+
+        # ✅ ADD THIS: Save metrics after training
+        from eval_and_plotting import save_training_metrics, plot_training_curves
+        save_training_metrics(metrics_history, config.save_model_path, config.model_name)
+        plot_training_curves(metrics_history, config.save_model_path, config.model_name)
 
         return True
 

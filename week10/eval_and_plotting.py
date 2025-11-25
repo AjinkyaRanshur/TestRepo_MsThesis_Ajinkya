@@ -10,6 +10,7 @@ import torch.optim as optim
 import os
 import wandb
 from PIL import Image
+import json
 
 def classification_accuracy_metric(net,dataloader,batch_size,device):
     # Testing
@@ -287,5 +288,92 @@ def plot_multiple_metrics(x,y_dict,save_dir,xtitle,ytitle,title,savetitle,seed):
     })
 
     return True
+
+
+def save_training_metrics(metrics_history, save_dir, model_name):
+    """Save training metrics to JSON file."""
+    os.makedirs(save_dir, exist_ok=True)
+    filepath = os.path.join(save_dir, f"metrics_{model_name}.json")
+    
+    with open(filepath, 'w') as f:
+        json.dump(metrics_history, f, indent=2)
+    
+    print(f"Metrics saved to: {filepath}")
+    return filepath
+
+
+def plot_training_curves(metrics_history, save_dir, model_name):
+    """Plot training and validation curves."""
+    os.makedirs(save_dir, exist_ok=True)
+    
+    epochs = range(1, len(metrics_history['train_loss']) + 1)
+    
+    # Determine number of subplots needed
+    has_accuracy = 'train_acc' in metrics_history and metrics_history['train_acc']
+    has_recon = 'train_recon_loss' in metrics_history and metrics_history['train_recon_loss']
+    
+    if has_recon:
+        # 3 subplots: Loss, Accuracy, Reconstruction Loss
+        fig, axes = plt.subplots(1, 3, figsize=(20, 5))
+    else:
+        # 2 subplots: Loss, Accuracy
+        fig, axes = plt.subplots(1, 2, figsize=(15, 5))
+    
+    # ========================================
+    # SUBPLOT 1: Classification/Task Loss
+    # ========================================
+    axes[0].plot(epochs, metrics_history['train_loss'], 'b-', label='Train Loss', linewidth=2, marker='o', markersize=4)
+    if 'test_loss' in metrics_history and metrics_history['test_loss']:
+        axes[0].plot(epochs, metrics_history['test_loss'], 'r-', label='Test Loss', linewidth=2, marker='s', markersize=4)
+    axes[0].set_xlabel('Epoch', fontsize=12, fontweight='bold')
+    axes[0].set_ylabel('Loss', fontsize=12, fontweight='bold')
+    axes[0].set_title('Classification Loss', fontsize=14, fontweight='bold')
+    axes[0].legend(loc='best', fontsize=10)
+    axes[0].grid(True, alpha=0.3, linestyle='--')
+    
+    # ========================================
+    # SUBPLOT 2: Accuracy
+    # ========================================
+    if has_accuracy:
+        axes[1].plot(epochs, metrics_history['train_acc'], 'b-', label='Train Acc', linewidth=2, marker='o', markersize=4)
+        if 'test_acc' in metrics_history and metrics_history['test_acc']:
+            axes[1].plot(epochs, metrics_history['test_acc'], 'r-', label='Test Acc', linewidth=2, marker='s', markersize=4)
+        axes[1].set_xlabel('Epoch', fontsize=12, fontweight='bold')
+        axes[1].set_ylabel('Accuracy (%)', fontsize=12, fontweight='bold')
+        axes[1].set_title('Classification Accuracy', fontsize=14, fontweight='bold')
+        axes[1].set_ylim([0, 100])
+        axes[1].legend(loc='best', fontsize=10)
+        axes[1].grid(True, alpha=0.3, linestyle='--')
+    else:
+        axes[1].text(0.5, 0.5, 'No Accuracy Data\n(Reconstruction Training Only)', 
+                     ha='center', va='center', fontsize=14, fontweight='bold',
+                     bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
+        axes[1].axis('off')
+    
+    # ========================================
+    # SUBPLOT 3: Reconstruction Loss (if available)
+    # ========================================
+    if has_recon:
+        axes[2].plot(epochs, metrics_history['train_recon_loss'], 'g-', label='Train Recon Loss', 
+                     linewidth=2, marker='o', markersize=4)
+        if 'test_recon_loss' in metrics_history and metrics_history['test_recon_loss']:
+            axes[2].plot(epochs, metrics_history['test_recon_loss'], 'orange', label='Test Recon Loss', 
+                         linewidth=2, marker='s', markersize=4)
+        axes[2].set_xlabel('Epoch', fontsize=12, fontweight='bold')
+        axes[2].set_ylabel('Reconstruction Loss', fontsize=12, fontweight='bold')
+        axes[2].set_title('Predictive Coding Reconstruction Loss', fontsize=14, fontweight='bold')
+        axes[2].legend(loc='best', fontsize=10)
+        axes[2].grid(True, alpha=0.3, linestyle='--')
+    
+    # Overall title
+    fig.suptitle(f'Training Metrics: {model_name}', fontsize=16, fontweight='bold', y=1.02)
+    plt.tight_layout()
+    
+    filepath = os.path.join(save_dir, f"training_curves_{model_name}.png")
+    plt.savefig(filepath, dpi=300, bbox_inches='tight')
+    plt.close()
+    
+    print(f"Training curves saved to: {filepath}")
+    return filepath
 
 
