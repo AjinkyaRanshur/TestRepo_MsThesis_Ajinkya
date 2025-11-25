@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import time
+from tqdm import tqdm
 
 # init colorama for Windows
 init(autoreset=True)
@@ -57,7 +58,12 @@ PATTERNS = {
 }
 
 # Available trained timesteps
-AVAILABLE_TIMESTEPS = [1, 10]
+AVAILABLE_MODELS = {
+    "recon_t1_class_t1": {"recon": 1, "class": 1},
+    "recon_t1_class_t10": {"recon": 1, "class": 10},
+    "recon_t10_class_t1": {"recon": 10, "class": 1},
+    "recon_t10_class_t10": {"recon": 10, "class": 10},
+}
 
 # ============================================================
 # UTILITY FUNCTIONS
@@ -72,9 +78,27 @@ def sanitize_name(name):
     """Convert pattern name to valid filename."""
     return name.lower().replace(' ', '_').replace('.', '').replace('&', 'and')
 
-def get_model_name(pattern_name, trained_timesteps):
-    """Generate model name based on pattern and training timesteps."""
-    return f"pc_illusiont{trained_timesteps}_recon_noise_{sanitize_name(pattern_name)}_t{trained_timesteps}"
+# REPLACE get_model_name function:
+def get_model_name(pattern_name, recon_timesteps, class_timesteps=None):
+    """
+    Generate model name based on pattern and training timesteps.
+    
+    Args:
+        pattern_name: Name of the pattern
+        recon_timesteps: Timesteps used for reconstruction training
+        class_timesteps: Timesteps used for classification training (optional)
+    
+    Returns:
+        Model name in format: pc_recon_t{R}_class_t{C}_{pattern}
+        or pc_recon_t{R}_{pattern} if class_timesteps is None
+    """
+    sanitized = sanitize_name(pattern_name)
+    
+    if class_timesteps is not None:
+        return f"pc_recon_t{recon_timesteps}_class_t{class_timesteps}_{sanitized}"
+    else:
+        # For reconstruction-only models
+        return f"pc_recon_t{recon_timesteps}_{sanitized}"
 
 def progress_bar(current, total, prefix="Progress", length=40):
     """Display a progress bar."""
@@ -126,7 +150,7 @@ def run_and_analyze():
     results = main(config)
     return results
 
-def update_config(gamma_pattern, beta_pattern, pattern_name, model_name, timesteps=10, iterations=4):
+def update_config(gamma_pattern, beta_pattern, pattern_name, model_name, timesteps, iterations=4):
     """Update the config file with new parameters."""
     with open(CONFIG_FILE, "r") as f:
         lines = f.readlines()
@@ -207,16 +231,19 @@ def select_trained_timesteps():
     banner("Select Model")
     print(Fore.YELLOW + "Select the model based on training timesteps:\n")
     
-    for idx, ts in enumerate(AVAILABLE_TIMESTEPS, 1):
-        print(Fore.GREEN + f" [{idx}] Model trained with {ts} timesteps")
+    model_names = list(AVAILABLE_MODELS.keys())
+    for idx, model_key in enumerate(model_names, 1):
+        recon_t = AVAILABLE_MODELS[model_key]["recon"]
+        class_t = AVAILABLE_MODELS[model_key]["class"]
+        print(Fore.GREEN + f" [{idx}] Recon: {recon_t}t, Classification: {class_t}t")
     print(Fore.RED + " [0] Back\n")
     
     try:
         choice = int(input(Fore.WHITE + "Enter choice: "))
         if choice == 0:
             return None
-        if 1 <= choice <= len(AVAILABLE_TIMESTEPS):
-            return AVAILABLE_TIMESTEPS[choice - 1]
+        if 1 <= choice <= len(model_names):
+            return AVAILABLE_MODELS[model_names[choice - 1]]
     except ValueError:
         pass
     
@@ -286,24 +313,32 @@ def get_training_params():
 # ============================================================
 # TRAINING FUNCTIONS
 # ============================================================
-def train_single_pattern(pattern_name, pattern_values, timesteps, iterations):
+
+def reconstruction_training():
+
+	return results
+
+
+def train_single_pattern(pattern_name, pattern_values, recon_timesteps,class_timesteps,iterations):
     """Train a single pattern."""
     gamma_pattern = pattern_values["gamma"]
     beta_pattern = pattern_values["beta"]
-    model_name = get_model_name(pattern_name, timesteps)
+    model_name = get_model_name(pattern_name,recon_timesteps,class_timesteps)
     
-    print_box("Training Configuration", [
+    print_box(" Classification Training Configuration", [
         f"Pattern: {pattern_name}",
         f"Model: {model_name}",
         f"Gamma: {gamma_pattern}",
         f"Beta: {beta_pattern}",
         f"Timesteps: {timesteps}",
         f"Iterations: {iterations}"
+	f"Recon Timesteps:{recon_timesteps}",
+	f"Class Timesteps:{class_timesteps}"
     ])
     
     try:
         print_status("Updating configuration...", "running")
-        update_config(gamma_pattern, beta_pattern, pattern_name, model_name, timesteps, iterations)
+        update_config(gamma_pattern, beta_pattern, pattern_name, model_name, train_timesteps, iterations)
         
         print_status("Starting training...", "running")
         results = run_and_analyze()
@@ -321,12 +356,14 @@ def train_all_patterns(timesteps, iterations):
     
     total = len(PATTERNS)
     results = {}
+
+    with tqdm(total=len(PATTERNS),desc="Training Patterns",unit="pattern",bar_format='{l_bar}{bar:30}{r_bar}' ) as pbar:
     
-    for idx, (pattern_name, pattern_values) in enumerate(PATTERNS.items(), 1):
-        progress_bar(idx, total, "Overall Progress")
-        print(f"\n\n{Fore.MAGENTA}[{idx}/{total}] Training {pattern_name}...")
-        result = train_single_pattern(pattern_name, pattern_values, timesteps, iterations)
-        results[pattern_name] = result
+    	for idx, (pattern_name, pattern_values) in enumerate(PATTERNS.items(), 1):
+		pbar.set_postfix_str(f"Current: {pattern_name}")
+        	result = train_single_pattern(pattern_name, pattern_values,recon_timesteps,class_timesteps)
+        	results[pattern_name] = result
+		pbar.update(1)
     
     # Summary
     print("\n")
@@ -341,14 +378,14 @@ def train_all_patterns(timesteps, iterations):
 # ============================================================
 # TESTING FUNCTIONS
 # ============================================================
-def test_single_pattern(pattern_name, pattern_values, model_name, trained_timesteps, test_timesteps):
+def test_single_pattern(pattern_name, pattern_values, model_name,recon_timesteps, class_timesteps,test_timesteps):
     """Test a single pattern on a specific model."""
     gamma_pattern = pattern_values["gamma"]
     beta_pattern = pattern_values["beta"]
     
     print_box("Testing Configuration", [
         f"Model: {model_name}",
-        f"Trained with: {trained_timesteps} timesteps",
+        f"Trained with: recon_t{recon_timesteps}, class_t{class_timesteps}",
         f"Testing pattern: {pattern_name}",
         f"Test timesteps: {test_timesteps}",
         f"Gamma: {gamma_pattern}",
@@ -369,33 +406,47 @@ def test_single_pattern(pattern_name, pattern_values, model_name, trained_timest
         print_status(f"Testing failed: {str(e)}", "error")
         return None
 
-def test_model_all_patterns(trained_pattern_name, trained_timesteps, test_timesteps):
+def test_model_all_patterns(trained_pattern_name,model_config, test_timesteps):
     """Test a model against all patterns."""
     clear()
     banner("Testing All Patterns")
-    
-    model_name = get_model_name(trained_pattern_name, trained_timesteps)
-    total = len(PATTERNS)
+
+    recon_t = model_config["recon"]
+    class_t = model_config["class"]
+    model_name = get_model_name(trained_pattern_name, recon_t, class_t)
+
     all_results = {}
     
     print_status(f"Testing model: {model_name}", "info")
     print_status(f"Against all {total} patterns\n", "info")
+
+    with tqdm(total=len(PATTERNS),desc="Testing Patterns",unit="pattern",bar_format='{l_bar}{bar:30}{r_bar}') as pbar:
     
-    for idx, (pattern_name, pattern_values) in enumerate(PATTERNS.items(), 1):
-        progress_bar(idx, total, "Testing Progress")
-        print(f"\n{Fore.CYAN}  Pattern: {pattern_name}")
-        
-        results = test_single_pattern(pattern_name, pattern_values, model_name, trained_timesteps, test_timesteps)
-        if results:
-            # Extract max accuracy per class
-            class_results = {}
-            for cls_name in ["Square", "Random", "All-in", "All-out"]:
-                if cls_name in results:
-                    mean_probs = [np.mean(p) * 100 for p in results[cls_name]["predictions"]]
-                    class_results[cls_name] = max(mean_probs)
-            all_results[pattern_name] = class_results
+    	for pattern_name, pattern_values in PATTERNS.items():
+        	pbar.set_postfix_str(f"Current: {pattern_name}")
+            
+            	results = test_single_pattern(pattern_name, pattern_values, model_name, 
+                                         recon_t, class_t, test_timesteps)
+            	if results:
+                	# Extract max accuracy per class
+                	class_results = {}
+                	for cls_name in ["Square", "Random", "All-in", "All-out"]:
+                    		if cls_name in results:
+                        		mean_probs = [np.mean(p) * 100 for p in results[cls_name]["predictions"]]
+                        		class_results[cls_name] = max(mean_probs)
+                	all_results[pattern_name] = class_results
+                
+                	# Plot trajectory for this pattern
+                	plot_trajectory(results, pattern_name, model_name, recon_t,class_t test_timesteps)
+            
+            	pbar.update(1)
     
     print("\n")
+    
+    # Plot bar chart summary
+    if all_results:
+        plot_pattern_comparison_bar(all_results, model_name, recon_t)
+	
     return all_results
 
 def test_all_models_all_patterns(test_timesteps):
@@ -404,21 +455,25 @@ def test_all_models_all_patterns(test_timesteps):
     banner("Full Model Evaluation")
     
     all_model_results = {}
+
+    model_names = list(AVAILABLE_MODELS.keys())
     
-    for trained_ts in AVAILABLE_TIMESTEPS:
+    for idx,model_key in enumerate(model_names,1):
+	recon_t = AVAILABLE_MODELS[model_key]["recon"]
+        class_t = AVAILABLE_MODELS[model_key]["class"]
         print(f"\n{Fore.YELLOW}{'='*60}")
-        print(f"{Fore.YELLOW}Models trained with {trained_ts} timesteps")
+        print(f"{Fore.YELLOW}Models trained with Reconstruction: {recon_t} timesteps and Classfication : {class_t} timesteps")
         print(f"{Fore.YELLOW}{'='*60}")
         
         for pattern_name in PATTERNS.keys():
-            model_name = get_model_name(pattern_name, trained_ts)
+            model_name = get_model_name(pattern_name,recon_timesteps,class_timesteps)
             print(f"\n{Fore.MAGENTA}Testing model: {model_name}")
             
             model_results = {}
             for test_pattern_name, test_pattern_values in PATTERNS.items():
                 results = test_single_pattern(
                     test_pattern_name, test_pattern_values,
-                    model_name, trained_ts, test_timesteps
+                    model_name, recon_timesteps,class_timesteps, test_timesteps
                 )
                 if results:
                     class_results = {}
@@ -435,7 +490,7 @@ def test_all_models_all_patterns(test_timesteps):
 # ============================================================
 # PLOTTING FUNCTIONS
 # ============================================================
-def plot_trajectory(results, pattern_name, model_name, trained_timesteps, test_timesteps):
+def plot_trajectory(results, pattern_name, model_name,recon_timesteps,class_timesteps, test_timesteps):
     """Plot accuracy trajectory over timesteps."""
     accuracy_data = {}
     
@@ -460,7 +515,7 @@ def plot_trajectory(results, pattern_name, model_name, trained_timesteps, test_t
     plt.legend(loc='best', fontsize=10)
     
     # Save with organized naming
-    filename = f"traj_model-t{trained_timesteps}_{sanitize_name(pattern_name)}_test-t{test_timesteps}.png"
+    filename = f"traj_model-train_recont{recon_timesteps}_classt{class_timesteps}_{sanitize_name(pattern_name)}_test-t{test_timesteps}.png"
     filepath = os.path.join(TRAJECTORIES_DIR, filename)
     plt.savefig(filepath, dpi=300, bbox_inches='tight')
     plt.close()
@@ -468,7 +523,7 @@ def plot_trajectory(results, pattern_name, model_name, trained_timesteps, test_t
     print_status(f"Trajectory plot saved: {filepath}", "success")
     return filepath
 
-def plot_pattern_comparison_bar(results_per_pattern, model_name, trained_timesteps):
+def plot_pattern_comparison_bar(results_per_pattern, model_name, recon_timesteps,class_timesteps):
     """Plot bar chart comparing all patterns for a single model."""
     patterns = list(results_per_pattern.keys())
     classes = ["Square", "Random", "All-in", "All-out"]
@@ -491,7 +546,7 @@ def plot_pattern_comparison_bar(results_per_pattern, model_name, trained_timeste
     plt.ylim(0, 100)
     plt.tight_layout()
     
-    filename = f"bar_model-t{trained_timesteps}_{sanitize_name(model_name.replace('pc_illusiont10_recon_noise_', ''))}.png"
+    filename = f"bar_model-train_recont{recon_timesteps}_classt{class_timesteps}_{sanitize_name(model_name.replace('pc_illusiont10_recon_noise_', ''))}.png"
     filepath = os.path.join(BAR_PLOTS_DIR, filename)
     plt.savefig(filepath, dpi=300, bbox_inches='tight')
     plt.close()
@@ -499,7 +554,7 @@ def plot_pattern_comparison_bar(results_per_pattern, model_name, trained_timeste
     print_status(f"Bar plot saved: {filepath}", "success")
     return filepath
 
-def plot_grid_heatmap(gamma_values, beta_values, illusion_matrix, model_name, trained_timesteps):
+def plot_grid_heatmap(gamma_values, beta_values, illusion_matrix, model_name, recon_timesteps,class_timesteps):
     """Plot heatmap for grid search results."""
     plt.figure(figsize=(10, 8))
     
@@ -521,7 +576,7 @@ def plot_grid_heatmap(gamma_values, beta_values, illusion_matrix, model_name, tr
     plt.title(f"Illusion Index Heatmap\nModel: {model_name} (trained {trained_timesteps} timesteps)", fontsize=13)
     plt.tight_layout()
     
-    filename = f"heatmap_model-t{trained_timesteps}_{sanitize_name(model_name.replace('pc_illusiont10_recon_noise_', ''))}.png"
+    filename = f"heatmap_model-t{trained_recont{recon_timesteps}_classt{class_timesteps}_{sanitize_name(model_name.replace('pc_illusiont10_recon_noise_', ''))}.png"
     filepath = os.path.join(HEATMAPS_DIR, filename)
     plt.savefig(filepath, dpi=300, bbox_inches='tight')
     plt.close()
@@ -532,15 +587,18 @@ def plot_grid_heatmap(gamma_values, beta_values, illusion_matrix, model_name, tr
 # ============================================================
 # GRID SEARCH FUNCTION
 # ============================================================
-def run_grid_search(trained_pattern_name, trained_timesteps, test_timesteps):
+def run_grid_search(trained_pattern_name, model_config, test_timesteps):
     """Run grid search over gamma and beta values."""
     clear()
     banner("Grid Search")
+
+    recon_t=model_config["recon"]
+    class_t=model_config["class"]
     
-    model_name = get_model_name(trained_pattern_name, trained_timesteps)
+    model_name = get_model_name(trained_pattern_name, recon_timesteps,class_timesteps)
     
-    GAMMA_VALUES = np.arange(0.13, 0.54, 0.1)
-    BETA_VALUES = np.arange(0.13, 0.54, 0.1)
+    GAMMA_VALUES = np.arange(0.13, 0.44, 0.1)
+    BETA_VALUES = np.arange(0.13, 0.44, 0.1)
     
     results_dict = {}
     total = len(GAMMA_VALUES) * len(BETA_VALUES)
@@ -553,29 +611,31 @@ def run_grid_search(trained_pattern_name, trained_timesteps, test_timesteps):
         f"Total experiments: {total}"
     ])
     
-    for gamma in GAMMA_VALUES:
-        for beta in BETA_VALUES:
-            count += 1
-            progress_bar(count, total, "Grid Search")
+    with tqdm(total=total,desc="Grid Search",unit="config",bar_format='{l_bar}{bar:30}{r_bar}') as pbar:
+    	for gamma in GAMMA_VALUES:
+        	for beta in BETA_VALUES:
+            		pbar.set_postfix_str(f"γ={gamma:.2f}, β={beta:.2f}")
+            		gamma_pattern = [gamma, gamma, gamma, gamma]
+            		beta_pattern = [beta, beta, beta, beta]
             
-            gamma_pattern = [gamma, gamma, gamma, gamma]
-            beta_pattern = [beta, beta, beta, beta]
-            
-            try:
-                update_config(gamma_pattern, beta_pattern, f"Grid_g{gamma:.2f}_b{beta:.2f}", 
-                            model_name, test_timesteps, iterations=1)
-                results = run_and_analyze()
+            		try:
+                		update_config(gamma_pattern, beta_pattern, f"Grid_g{gamma:.2f}_b{beta:.2f}", 
+                            		model_name, test_timesteps, iterations=1)
+                		results = run_and_analyze()
                 
-                if results:
-                    class_results = {}
-                    for cls_name in ["Square", "Random", "All-in", "All-out"]:
-                        if cls_name in results:
-                            mean_probs = [np.mean(p) * 100 for p in results[cls_name]["predictions"]]
-                            class_results[cls_name] = max(mean_probs)
-                    results_dict[(gamma, beta)] = class_results
-            except Exception as e:
-                print(f"\n{Fore.RED}Error at gamma={gamma:.2f}, beta={beta:.2f}: {e}")
-                results_dict[(gamma, beta)] = {}
+                		if results:
+                    			class_results = {}
+                    			for cls_name in ["Square", "Random", "All-in", "All-out"]:
+                        			if cls_name in results:
+                            				mean_probs = [np.mean(p) * 100 for p in results[cls_name]["predictions"]]
+                            				class_results[cls_name] = max(mean_probs)
+                    			results_dict[(gamma, beta)] = class_results
+            		except Exception as e:
+                	print(f"\n{Fore.RED}Error at gamma={gamma:.2f}, beta={beta:.2f}: {e}")
+                	results_dict[(gamma, beta)] = {}
+			
+			pbar.update(1)
+
     
     # Build illusion matrix
     illusion_matrix = np.zeros((len(BETA_VALUES), len(GAMMA_VALUES)))
@@ -592,7 +652,7 @@ def run_grid_search(trained_pattern_name, trained_timesteps, test_timesteps):
             illusion_matrix[i, j] = illusion_index
     
     print("\n")
-    plot_grid_heatmap(GAMMA_VALUES, BETA_VALUES, illusion_matrix, model_name, trained_timesteps)
+    plot_grid_heatmap(GAMMA_VALUES, BETA_VALUES, illusion_matrix, model_name, recon_timesteps,class_timesteps)
     
     return results_dict, illusion_matrix
 
@@ -671,8 +731,8 @@ def run():
                         
                         if cl == "1":
                             # Test single model with single pattern
-                            trained_timesteps = select_trained_timesteps()
-                            if trained_timesteps is None:
+                            model_config = select_trained_timesteps()
+                            if model_config is None:
                                 continue
                             
                             trained_pattern, trained_values = select_pattern()
@@ -685,22 +745,22 @@ def run():
                                 continue
                             
                             test_timesteps = get_test_timesteps()
-                            model_name = get_model_name(trained_pattern, trained_timesteps)
+                            model_name = get_model_name(trained_pattern, model_config["recon"], model_config["class"])
                             
                             results = test_single_pattern(
-                                test_pattern, test_values,
-                                model_name, trained_timesteps, test_timesteps
-                            )
+        			test_pattern, test_values,
+        			model_name, model_config["recon"], model_config["class"], test_timesteps
+    				)
                             
                             if results:
-                                plot_trajectory(results, test_pattern, model_name, trained_timesteps, test_timesteps)
+                                plot_trajectory(results, test_pattern, model_name, model_config["recon"], test_timesteps)
                             
                             input("\nPress ENTER to continue...")
                             
                         elif cl == "2":
                             # Test single model with all patterns
-                            trained_timesteps = select_trained_timesteps()
-                            if trained_timesteps is None:
+                            model_config = select_trained_timesteps()
+                            if model_config is None:
                                 continue
                             
                             trained_pattern, _ = select_pattern()
@@ -708,51 +768,59 @@ def run():
                                 continue
                             
                             test_timesteps = get_test_timesteps()
-                            model_name = get_model_name(trained_pattern, trained_timesteps)
-                            
-                            all_results = test_model_all_patterns(trained_pattern, trained_timesteps, test_timesteps)
-                            
-                            if all_results:
-                                plot_pattern_comparison_bar(all_results, model_name, trained_timesteps)
-                                
-                                # Also plot trajectory for each pattern
-                                for pattern_name, pattern_values in PATTERNS.items():
-                                    results = test_single_pattern(
-                                        pattern_name, pattern_values,
-                                        model_name, trained_timesteps, test_timesteps
-                                    )
-                                    if results:
-                                        plot_trajectory(results, pattern_name, model_name, trained_timesteps, test_timesteps)
+
+                            all_results = test_model_all_patterns(trained_pattern, model_config, test_timesteps)
                             
                             input("\nPress ENTER to continue...")
                             
                         elif cl == "3":
-                            # Test all models with all patterns
-                            test_timesteps = get_test_timesteps()
-                            
-                            confirm = input(Fore.YELLOW + f"\nThis will test {len(AVAILABLE_TIMESTEPS) * len(PATTERNS)} models. Continue? (y/n): ").lower()
-                            if confirm == 'y':
-                                all_model_results = test_all_models_all_patterns(test_timesteps)
-                                
-                                # Generate summary plots for each model
-                                for trained_ts in AVAILABLE_TIMESTEPS:
-                                    for pattern_name in PATTERNS.keys():
-                                        model_name = get_model_name(pattern_name, trained_ts)
-                                        model_key = f"{pattern_name}_t{trained_ts}"
-                                        
-                                        if model_key in all_model_results:
-                                            plot_pattern_comparison_bar(
-                                                all_model_results[model_key],
-                                                model_name, trained_ts
-                                            )
-                                
-                                print_status("All evaluations complete!", "success")
-                            
-                            input("\nPress ENTER to continue...")
+                                # Test all models with all patterns
+	    			test_timesteps = get_test_timesteps()
+    
+    				total_models = len(AVAILABLE_MODELS) * len(PATTERNS)
+    				confirm = input(Fore.YELLOW + f"\nThis will test {total_models} model-pattern combinations. Continue? (y/n): ").lower()
+    				if confirm == 'y':
+        				all_model_results = {}
+        
+        				with tqdm(total=total_models, desc="Testing All Models", unit="test") as pbar:
+            					for model_key, model_config in AVAILABLE_MODELS.items():
+                					for pattern_name in PATTERNS.keys():
+                    						pbar.set_postfix_str(f"{model_key} - {pattern_name}")
+                    
+                    						model_name = get_model_name(pattern_name, model_config["recon"], model_config["class"])
+                    
+                    						model_results = {}
+                    						for test_pattern_name, test_pattern_values in PATTERNS.items():
+                        						results = test_single_pattern(
+                            						test_pattern_name, test_pattern_values,
+                            						model_name, model_config["recon"], model_config["class"], test_timesteps
+                        						)
+                        					if results:
+                            						class_results = {}
+                            						for cls_name in ["Square", "Random", "All-in", "All-out"]:
+                                						if cls_name in results:
+                                    							mean_probs = [np.mean(p) * 100 for p in results[cls_name]["predictions"]]
+                                    							class_results[cls_name] = max(mean_probs)
+                            						model_results[test_pattern_name] = class_results
+                    
+                    						all_model_results[f"{pattern_name}_{model_key}"] = model_results
+                    
+                    						# Generate bar plot for this model
+                    						if model_results:
+                        						plot_pattern_comparison_bar(
+                            						model_results,
+                            						model_name, model_config["recon"]
+                        						)
+                    
+                    						pbar.update(1)
+        
+        				print_status("All evaluations complete!", "success")
+    
+    				input("\nPress ENTER to continue...")
                             
                         elif cl == "4":
                             # Grid search
-                            trained_timesteps = select_trained_timesteps()
+                            model_config = select_trained_timesteps()
                             if trained_timesteps is None:
                                 continue
                             
@@ -764,7 +832,7 @@ def run():
                             
                             confirm = input(Fore.YELLOW + "\nGrid search may take a while. Continue? (y/n): ").lower()
                             if confirm == 'y':
-                                run_grid_search(trained_pattern, trained_timesteps, test_timesteps)
+                                run_grid_search(trained_pattern, model_config, test_timesteps)
                             
                             input("\nPress ENTER to continue...")
                             
