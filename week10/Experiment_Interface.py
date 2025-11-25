@@ -150,7 +150,7 @@ def run_and_analyze():
     results = main(config)
     return results
 
-def update_config(gamma_pattern, beta_pattern, pattern_name, model_name, timesteps, iterations=4):
+def update_config(gamma_pattern, beta_pattern, pattern_name, model_name, timesteps, iterations=4,train_cond):
     """Update the config file with new parameters."""
     with open(CONFIG_FILE, "r") as f:
         lines = f.readlines()
@@ -170,6 +170,8 @@ def update_config(gamma_pattern, beta_pattern, pattern_name, model_name, timeste
                 f.write(f"iterations = {iterations}\n")
             elif stripped.startswith("experiment_name"):
                 f.write(f'experiment_name = "Testing {model_name} with {pattern_name} pattern at {timesteps} timesteps"\n')
+	    elif stripped.startswith("training_condition"):
+		f.write("training_condition={train_cond}")
             else:
                 f.write(line)
 
@@ -314,10 +316,6 @@ def get_training_params():
 # TRAINING FUNCTIONS
 # ============================================================
 
-def reconstruction_training():
-
-	return results
-
 
 def train_single_pattern(pattern_name, pattern_values, recon_timesteps,class_timesteps,iterations):
     """Train a single pattern."""
@@ -338,7 +336,7 @@ def train_single_pattern(pattern_name, pattern_values, recon_timesteps,class_tim
     
     try:
         print_status("Updating configuration...", "running")
-        update_config(gamma_pattern, beta_pattern, pattern_name, model_name, train_timesteps, iterations)
+        update_config(gamma_pattern, beta_pattern, pattern_name, model_name, train_timesteps, iterations,"illusion_train")
         
         print_status("Starting training...", "running")
         results = run_and_analyze()
@@ -394,7 +392,7 @@ def test_single_pattern(pattern_name, pattern_values, model_name,recon_timesteps
     
     try:
         print_status("Updating configuration...", "running")
-        update_config(gamma_pattern, beta_pattern, pattern_name, model_name, test_timesteps, iterations=1)
+        update_config(gamma_pattern, beta_pattern, pattern_name, model_name, test_timesteps, iterations=1,None)
         
         print_status("Running evaluation...", "running")
         spinner(1, "Loading model")
@@ -585,6 +583,86 @@ def plot_grid_heatmap(gamma_values, beta_values, illusion_matrix, model_name, re
     return filepath
 
 # ============================================================
+# RECONSTRUCTION TRAINING FUNCTIONS
+# ============================================================
+def train_reconstruction_single_pattern(pattern_name, pattern_values, recon_timesteps):
+    """Train reconstruction for a single pattern."""
+    gamma_pattern = pattern_values["gamma"]
+    beta_pattern = pattern_values["beta"]
+    # For reconstruction, we don't have classification timesteps yet
+    model_name = get_model_name(pattern_name, recon_timesteps, class_timesteps=None)
+    
+    print_box("Reconstruction Training Configuration", [
+        f"Pattern: {pattern_name}",
+        f"Model: {model_name}",
+        f"Gamma: {gamma_pattern}",
+        f"Beta: {beta_pattern}",
+        f"Recon Timesteps: {recon_timesteps}",
+        f"Task: Unsupervised Reconstruction"
+    ])
+    
+    try:
+        print_status("Updating configuration...", "running")
+        # Note: For reconstruction, class_timesteps = recon_timesteps (they're the same during recon phase)
+        update_config(gamma_pattern, beta_pattern, pattern_name, model_name, 
+                     recon_timesteps, recon_timesteps, iterations=1,"recon_pc_train")
+        
+        print_status("Starting reconstruction training...", "running")
+        results = run_and_analyze()
+        
+        print_status(f"Reconstruction training completed for {pattern_name}", "success")
+        return results
+    except Exception as e:
+        print_status(f"Reconstruction training failed: {str(e)}", "error")
+        return None
+
+
+def train_reconstruction_all_patterns(recon_timesteps):
+    """Train reconstruction for all patterns sequentially."""
+    clear()
+    banner("Reconstruction Training")
+    
+    results = {}
+    
+    # ✅ USE TQDM
+    with tqdm(total=len(PATTERNS), desc="Training Reconstruction", unit="pattern", 
+              bar_format='{l_bar}{bar:30}{r_bar}') as pbar:
+        for pattern_name, pattern_values in PATTERNS.items():
+            pbar.set_postfix_str(f"Current: {pattern_name}")
+            result = train_reconstruction_single_pattern(pattern_name, pattern_values, recon_timesteps)
+            results[pattern_name] = result
+            pbar.update(1)
+    
+    # Summary
+    print("\n")
+    summary_lines = []
+    for name, result in results.items():
+        status = "✓ Success" if result is not None else "✗ Failed"
+        summary_lines.append(f"{name}: {status}")
+    
+    print_box("RECONSTRUCTION TRAINING SUMMARY", summary_lines, Fore.GREEN)
+    
+    input("\nPress ENTER to continue...")
+    return results
+
+
+def get_reconstruction_params():
+    """Get reconstruction training parameters from user."""
+    clear()
+    banner("Reconstruction Parameters")
+    print(Fore.YELLOW + "Configure reconstruction training parameters:\n")
+    
+    try:
+        recon_timesteps = int(input(Fore.WHITE + "Enter number of PC timesteps for reconstruction (default 10): ") or "10")
+        print(Fore.CYAN + f"\nNote: Training will use {recon_timesteps} timesteps for predictive coding updates.")
+    except ValueError:
+        print(Fore.RED + "Invalid input, using default (10)")
+        recon_timesteps = 10
+    
+    return recon_timesteps
+
+
+# ============================================================
 # GRID SEARCH FUNCTION
 # ============================================================
 def run_grid_search(trained_pattern_name, model_config, test_timesteps):
@@ -620,7 +698,7 @@ def run_grid_search(trained_pattern_name, model_config, test_timesteps):
             
             		try:
                 		update_config(gamma_pattern, beta_pattern, f"Grid_g{gamma:.2f}_b{beta:.2f}", 
-                            		model_name, test_timesteps, iterations=1)
+                            		model_name, test_timesteps, iterations=1,None)
                 		results = run_and_analyze()
                 
                 		if results:
@@ -670,8 +748,33 @@ def run():
                 if t == "1":
                     clear()
                     banner("Reconstruction Training")
-                    print(Fore.YELLOW + "Coming soon...")
-                    input("\nPress ENTER to go back...")
+                    print(Fore.YELLOW + "Reconstruction Training Options:\n")
+                    print(Fore.GREEN + " [1] Train Single Pattern")
+                    print(Fore.GREEN + " [2] Train All Patterns")
+                    print(Fore.RED   + " [0] Back\n")
+                    
+                    recon_choice = input(Fore.WHITE + "Enter choice: ")
+		    
+		    if recon_choice == "1":
+			#Train Single Pattern
+			pattern_name, pattern_values = select_pattern()
+			if pattern_name:
+				recon_timesteps= get_reconstruction_params()
+				train_reconstruction_single_pattern(pattern_name, pattern_values, recon_timesteps)
+                            	input("\nPress ENTER to continue...")
+		    elif recon_choice == "2":
+                        # Train all patterns
+                        recon_timesteps = get_reconstruction_params()
+                        confirm = input(Fore.YELLOW + f"\nTrain reconstruction for all {len(PATTERNS)} patterns? (y/n): ").lower()
+                        if confirm == 'y':
+                            train_reconstruction_all_patterns(recon_timesteps)
+                    
+                    elif recon_choice == "0":
+                        continue
+
+                    else:
+                        print(Fore.RED + "Invalid option!")
+                        input("Press ENTER...")
                     
                 elif t == "2":
                     while True:

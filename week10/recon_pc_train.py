@@ -92,10 +92,29 @@ def recon_pc_training(net,trainloader,testloader,pc_train_bool,config):
                 torch.cuda.empty_cache()
         
             test_loss=np.mean(val_loss)
-            print("Test Loss",test_loss)
+            print(f"Test Loss: {test_loss:.4f}")
+            
+            # ✅ Store metrics
+            metrics_history['train_loss'].append(avg_loss)
+            metrics_history['test_loss'].append(test_loss)
     
-            metrics={f"Reconstruction_Training_with_Timesteps {config.timesteps}/train_loss":avg_loss,f"Reconstruction_Training_with_Timesteps {config.timesteps}/test_loss":test_loss}
-            loss_arr.append(avg_loss)
+            metrics={
+                f"Reconstruction_Training_with_Timesteps_{config.timesteps}/train_loss":avg_loss,
+                f"Reconstruction_Training_with_Timesteps_{config.timesteps}/test_loss":test_loss
+            }
+
+        # ✅ ADD THIS: Save metrics and plot after all epochs
+        from eval_and_plotting import save_training_metrics, plot_training_curves
+        
+        print("\n" + "="*60)
+        print_status = lambda msg, status: print(f"{'✓' if status=='success' else 'ℹ'} {msg}")
+        print_status("Saving training metrics...", "info")
+        
+        save_training_metrics(metrics_history, config.save_model_path, config.model_name)
+        plot_training_curves(metrics_history, config.save_model_path, config.model_name)
+        
+        print_status("Training complete! Metrics and plots saved.", "success")
+        print("="*60 + "\n")
 
         return True
 
