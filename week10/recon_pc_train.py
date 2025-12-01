@@ -11,10 +11,11 @@ import os
 from add_noise import noisy_img
 import torchvision.utils as vutils
 
-def recon_pc_training(net,trainloader,testloader,pc_train_bool,config):
+def recon_pc_training(net,trainloader,testloader,pc_train_bool,config,metrics_history):
 
     if pc_train_bool=="train":
         criterion=nn.CrossEntropyLoss()
+        #metrics_history = {'train_loss': [], 'test_loss': []}
         optimizer = optim.Adam(list(net.deconv4_fb.parameters())+list(net.deconv3_fb.parameters())+list(net.deconv2_fb.parameters())+list(net.deconv1_fb.parameters())+ list(net.conv1.parameters())+list(net.conv2.parameters())+list(net.conv3.parameters())+list(net.conv4.parameters()), lr=config.lr)
         loss_arr=[]
         for epoch in range(config.epochs):
@@ -104,19 +105,19 @@ def recon_pc_training(net,trainloader,testloader,pc_train_bool,config):
             }
 
         # ✅ ADD THIS: Save metrics and plot after all epochs
-        from eval_and_plotting import save_training_metrics, plot_training_curves
+        #from eval_and_plotting import save_training_metrics, plot_training_curves
         
-        print("\n" + "="*60)
-        print_status = lambda msg, status: print(f"{'✓' if status=='success' else 'ℹ'} {msg}")
-        print_status("Saving training metrics...", "info")
+        #print("\n" + "="*60)
+        #print_status = lambda msg, status: print(f"{'✓' if status=='success' else 'ℹ'} {msg}")
+        #print_status("Saving training metrics...", "info")
         
-        save_training_metrics(metrics_history, config.save_model_path, config.model_name)
-        plot_training_curves(metrics_history, config.save_model_path, config.model_name)
+        #save_training_metrics(metrics_history, config.save_model_path, config.model_name)
+        #plot_training_curves(metrics_history, config.save_model_path, config.model_name)
         
-        print_status("Training complete! Metrics and plots saved.", "success")
-        print("="*60 + "\n")
+        #print_status("Training complete! Metrics and plots saved.", "success")
+        #print("="*60 + "\n")
 
-        return True
+        return metrics_history
 
     if pc_train_bool=="fine_tuning":
         criterion=nn.CrossEntropyLoss()
