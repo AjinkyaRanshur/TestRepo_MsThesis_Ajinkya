@@ -11,7 +11,7 @@ import os
 from add_noise import noisy_img
 import torchvision.utils as vutils
 
-def class_pc_training(net,trainloader,testloader,pc_train_bool,config,iteration_index):
+def class_pc_training(net,trainloader,testloader,pc_train_bool,config,iteration_index,metrics_history):
 
     if pc_train_bool=="train":
         criterion=nn.CrossEntropyLoss()

@@ -1,0 +1,15 @@
+{
+  "experiment_type": "reconstruction",
+  "patterns": [
+    "Uniform",
+    "Gamma Increasing",
+    "Gamma Decreasing",
+    "Beta Increasing",
+    "Beta Decreasing",
+    "Beta Inc & Gamma Dec"
+  ],
+  "recon_timesteps": 10,
+  "iterations": 20,
+  "datasetpath": "/home/ajinkyar/datasets/",
+  "log_dir": "experiment_logs/recon_t10"
+}
