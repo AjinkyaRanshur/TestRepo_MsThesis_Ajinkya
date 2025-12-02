@@ -10,6 +10,7 @@ import torch.optim as optim
 import os
 from PIL import Image
 import json
+from add_noise import noisy_img
 
 def classification_accuracy_metric(net,dataloader,batch_size,device):
     # Testing

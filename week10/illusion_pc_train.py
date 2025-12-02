@@ -42,10 +42,10 @@ def illusion_pc_training(net, trainloader, testloader, pc_train_bool, config,met
             net.train()
 
             for images, labels, _ in trainloader:
-                images = images.to(config.device)
+                images_orig = images.to(config.device)
                 labels = labels.to(config.device)
                 for noise in np.arange(0, 0.35, 0.05):
-                    images = noisy_img(images, "gauss", round(noise, 2))
+                    images = noisy_img(images_orig.clone(), "gauss", round(noise, 2))
 
                     # Temporary feature tensors
                     ft_AB_pc_temp = torch.zeros(

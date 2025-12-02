@@ -41,6 +41,11 @@ classes = (
     'ship',
      'truck')
 
+BASE_RESULTS_DIR = "result_folder"
+TRAINING_DIR = os.path.join(BASE_RESULTS_DIR, "training_plots")
+os.makedirs(TRAINING_DIR, exist_ok=True)
+
+
 def set_seed(seed):
 
     # for random module
@@ -184,7 +189,7 @@ def fine_tuning_using_illusions(save_dir, trainloader, testloader,config,iterati
     net = Net(num_classes=2).to(config.device)
 
     if iteration_index == 0:
-        checkpoint_path = f"{config.load_model_path}/recon_models/{config.model_name}_15.pth"
+        checkpoint_path = f"{config.load_model_path}/recon_models/pc_recon_t10_uniform_15.pth"
         checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
         net.conv1.load_state_dict(checkpoint["conv1"])
         net.conv2.load_state_dict(checkpoint["conv2"])
@@ -289,8 +294,8 @@ def main(config):
     print_status = lambda msg, status: print(f"{'✓' if status=='success' else 'ℹ'} {msg}")
     print_status("Saving training metrics...", "info")
 
-    save_training_metrics(metrics_history, config.save_model_path, config.model_name)
-    plot_training_curves(metrics_history, config.save_model_path, config.model_name)
+    save_training_metrics(metrics_history,TRAINING_DIR, config.model_name)
+    plot_training_curves(metrics_history, TRAINING_DIR, config.model_name)
 
     print_status("Training complete! Metrics and plots saved.", "success")
     print("="*60 + "\n")

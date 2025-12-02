@@ -358,7 +358,6 @@ def train_single_pattern(pattern_name, pattern_values, recon_timesteps,class_tim
         f"Model: {model_name}",
         f"Gamma: {gamma_pattern}",
         f"Beta: {beta_pattern}",
-        f"Timesteps: {timesteps}",
         f"Iterations: {iterations}"
 	f"Recon Timesteps:{recon_timesteps}",
 	f"Class Timesteps:{class_timesteps}"
@@ -366,7 +365,7 @@ def train_single_pattern(pattern_name, pattern_values, recon_timesteps,class_tim
     
     try:
         print_status("Updating configuration...", "running")
-        update_config(gamma_pattern, beta_pattern, pattern_name, model_name, train_timesteps, iterations,"illusion_train","data/visual_illusion_dataset")
+        update_config(gamma_pattern, beta_pattern, pattern_name, model_name, class_timesteps, iterations,"illusion_train","data/visual_illusion_dataset")
         
         print_status("Starting training...", "running")
         results = run_and_analyze()
@@ -397,8 +396,8 @@ def train_all_patterns(timesteps, iterations):
             result = train_single_pattern(
                 pattern_name,
                 pattern_values,
-                recon_timesteps,
-                class_timesteps
+                timesteps,
+                timesteps,iterations
             )
             results[pattern_name] = result
             pbar.update(1)
@@ -951,6 +950,7 @@ def run():
                                 timesteps, iterations = get_training_params()
                                 train_single_pattern(
                                     pattern_name, pattern_values,
+				    timesteps,
                                     timesteps, iterations
                                 )
                                 input("\nPress ENTER to continue...")
