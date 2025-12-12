@@ -1,6 +1,6 @@
-#AGENDA TO TAKE CARE OF
+# AGENDA TO TAKE CARE OF
 
-##Overview
+## Overview
 We have fu*** around a lot so now you get the basic idea about what to do some scripts require new features to be added some new script need to be added to make the general experience smoother here a list of things we need to do
 
 
