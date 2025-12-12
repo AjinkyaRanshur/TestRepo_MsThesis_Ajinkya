@@ -196,6 +196,9 @@ def update_config(
                 )
 
             elif stripped.startswith("training_condition"):
+              if train_cond == None:
+                f.write(f'training_condition = {train_cond}\n')
+              else:
                 f.write(f'training_condition = "{train_cond}"\n')
 
             elif stripped.startswith("datasetpath"):
@@ -670,7 +673,7 @@ def plot_grid_heatmap(gamma_values, beta_values, illusion_matrix, model_name,
         fmt=".2f",
         cmap="coolwarm",
         vmin=0,
-        vmax=max(1.6, np.max(illusion_matrix)),
+        vmax=2.0,
         cbar_kws={"label": "Illusion Index"}
     )
 

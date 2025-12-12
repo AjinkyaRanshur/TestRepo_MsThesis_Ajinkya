@@ -177,7 +177,7 @@ def fine_tuning_using_classification(save_dir, trainloader, testloader,config,it
 
     metrics_history=recon_pc_training(net,trainloader,testloader,"fine_tuning",config,metrics_history)
 
-    if train_bool == True:
+    if metrics_history:
         torch.save(net.state_dict(), f'{config.save_model_path}/cifar10_models/{config.model_name}_{iteration_index + 1 }.pth')
         print("Model Saved Sucessfully")
 
@@ -205,7 +205,7 @@ def fine_tuning_using_illusions(save_dir, trainloader, testloader,config,iterati
 
     metrics_history=illusion_pc_training(net,trainloader,testloader,"fine_tuning",config,metrics_history)
 
-    if train_bool == True:
+    if metrics_history:
         torch.save(net.state_dict(), f'{config.save_model_path}/illusion_models/{config.model_name}_{iteration_index + 1 }.pth')
         print("Model Saved Sucessfully")
 
@@ -233,13 +233,13 @@ def cifar_testing(trainloader,testloader,config,iteration_index):
     results=class_pc_training(net,trainloader,testloader,"test",config,iteration_index)
     return results
 
-def cifar_testing_illusion_trained_model(trainloader,testloader,config,iteration_index):
+def cifar_testing_illusion_trained_model(trainloader,testloader,config,iteration_index,metrics_history):
     net = Net(num_classes=2).to(config.device)
     net.load_state_dict(torch.load(f'{config.load_model_path}/illusion_models/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
-    results=illusion_pc_training_custom(net,trainloader,testloader,"test",config,iteration_index)
+    results=illusion_pc_training_custom(net,trainloader,testloader,"test",config,iteration_index,metrics_history)
     return results
 
-def illusion_testing(trainloader,testloader,config,iteration_index):
+def illusion_testing(trainloader,testloader,config,iteration_index,metrics_history):
     net = Net(num_classes=2).to(config.device)
    # checkpoint_path = f"{config.load_model_path}/{config.model_name}.pth"
    # checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
@@ -253,7 +253,7 @@ def illusion_testing(trainloader,testloader,config,iteration_index):
    # net.deconv4_fb.load_state_dict(checkpoint["deconv4_fb"])
 
     net.load_state_dict(torch.load(f'{config.load_model_path}/illusion_models/{config.model_name}_{iteration_index}.pth',map_location=config.device,weights_only=True))
-    results=illusion_pc_training(net, trainloader, testloader,"test", config)
+    results=illusion_pc_training(net, trainloader, testloader,"test", config,metrics_history)
 
     return results
 
@@ -262,10 +262,14 @@ def get_metrics_initialize(train_cond):
 	
     if train_cond == "recon_pc_train":
        metrics_history = {'train_loss': [], 'test_loss': []}
-    if train_cond == "fine_tuning_classification":
-       metrics_history = {'train_loss': [], 'test_loss': [],'train_acc':[],'test_acc':[],'train_recon_loss':[],'recon_test_loss':[]}
-    if train_cond == "illusion_train":
-       metrics_history = {'train_loss': [], 'test_loss': [],'train_acc':[],'test_acc':[],'train_recon_loss':[],'recon_test_loss':[]}
+    elif train_cond == "fine_tuning_classification":
+       metrics_history = {'train_loss': [], 'test_loss': [],'train_acc':[],'test_acc':[],'train_recon_loss':[],'test_recon_loss':[]}
+    elif train_cond == "illusion_train":
+       metrics_history = {'train_loss': [], 'test_loss': [],'train_acc':[],'test_acc':[],'train_recon_loss':[],'test_recon_loss':[]}
+    elif train_cond == None:
+       metrics_history = {'train_loss': [], 'test_loss': [],'train_acc':[],'test_acc':[],'train_recon_loss':[],'test_recon_loss':[]}
+    else:
+       metrics_history = {'train_loss': [], 'test_loss': [],'train_acc':[],'test_acc':[],'train_recon_loss':[],'test_recon_loss':[]}
     
     return metrics_history
 
@@ -288,23 +292,23 @@ def main(config):
         metrics_history=decide_training_model(config.training_condition, save_dir, trainloader, testloader, config,iteration_index,metrics_history)
 
      #✅ ADD THIS: Save metrics and plot after all epochs
-    from eval_and_plotting import save_training_metrics, plot_training_curves
+    #from eval_and_plotting import save_training_metrics, plot_training_curves
 
-    print("\n" + "="*60)
-    print_status = lambda msg, status: print(f"{'✓' if status=='success' else 'ℹ'} {msg}")
-    print_status("Saving training metrics...", "info")
+    #print("\n" + "="*60)
+    #print_status = lambda msg, status: print(f"{'✓' if status=='success' else 'ℹ'} {msg}")
+    #print_status("Saving training metrics...", "info")
 
-    save_training_metrics(metrics_history,TRAINING_DIR, config.model_name)
-    plot_training_curves(metrics_history, TRAINING_DIR, config.model_name)
+    #save_training_metrics(metrics_history,TRAINING_DIR, config.model_name)
+    #plot_training_curves(metrics_history, TRAINING_DIR, config.model_name)
 
-    print_status("Training complete! Metrics and plots saved.", "success")
-    print("="*60 + "\n")
+    #print_status("Training complete! Metrics and plots saved.", "success")
+    #print("="*60 + "\n")
 
     if config.illusion_dataset_bool == True:
-        accuracy_transfer=illusion_testing(trainloader,validationloader,config,2)
+        accuracy_transfer=illusion_testing(trainloader,validationloader,config,2,metrics_history)
     else:
         #accuracy_transfer=cifar_testing(trainloader,testloader,config,15)
-        accuracy_transfer=cifar_testing_illusion_trained_model(trainloader,testloader,config,15)
+        accuracy_transfer=cifar_testing_illusion_trained_model(trainloader,testloader,config,15,metrics_history)
 
     return accuracy_transfer
         

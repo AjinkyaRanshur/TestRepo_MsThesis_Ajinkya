@@ -6,7 +6,7 @@ seed = 42
 lr = 0.00005 
 momentum = 0.9
 datasetpath = "data/visual_illusion_dataset"
-training_condition = "illusion_train"
+training_condition = None
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 print(f"CUDA available: {torch.cuda.is_available()}")
@@ -17,20 +17,20 @@ if torch.cuda.is_available():
     print(f"CUDA memory allocated: {torch.cuda.memory_allocated(device) / 1024**3:.2f} GB")
 print(f"Using device: {device}")
 
-timesteps = 10
+timesteps = 100
 
-gammaset = [[0.13, 0.33, 0.53, 0.33]]  # pattern: Gamma Increasing
-betaset = [[0.33, 0.33, 0.33, 0.33]]  # pattern: Gamma Increasing
+gammaset = [[0.43, 0.43, 0.43, 0.43]]  # pattern: Grid_g0.43_b0.43
+betaset = [[0.43, 0.43, 0.43, 0.43]]  # pattern: Grid_g0.43_b0.43
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
 model_name = "pc_recon_t10_class_t10_gamma_increasing"
 noise_type="s&p"
 noise_param=0.0
 
-experiment_name = "Testing pc_recon_t10_class_t10_gamma_increasing with Gamma Increasing pattern at 10 timesteps"
+experiment_name = "Testing pc_recon_t10_class_t10_gamma_increasing with Grid_g0.43_b0.43 pattern at 100 timesteps"
 load_model_path="/home/ajinkyar/TestRepo_MsThesis_Ajinkya/week10/models"
 save_model_path="/home/ajinkyar/TestRepo_MsThesis_Ajinkya/week10/models"
 
 illusion_dataset_bool=True
 
-iterations = 4
+iterations = 1
