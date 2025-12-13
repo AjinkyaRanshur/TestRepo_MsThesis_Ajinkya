@@ -40,7 +40,7 @@ class SquareDataset(Dataset):
         cls_name = row["Class"]
 
         # NEW: load illusion ground-truth perception
-        should_see = row["should_see"]
+        should_see = row["Should_See"]
 
         return image, label, cls_name, should_see
 

@@ -13,11 +13,11 @@ from torch.utils.tensorboard import SummaryWriter
 
 # Functions Imports for ease of life :))
 from network import Net as Net
-from pc_train import class_pc_training
+#from pc_train import class_pc_training
 from recon_pc_train import recon_pc_training
 from illusion_pc_train import illusion_pc_training
-from customdataset import SquareDataset,ShapesDataset
-from eval_and_plotting import save_training_metrics, plot_training_curve
+from customdataset import SquareDataset
+#from eval_and_plotting import save_training_metrics, plot_training_curve
 
 # Utility Functions
 import random
@@ -57,7 +57,7 @@ def train_test_loader(illusion_bool,config):
                 ])
     if illusion_bool == "illusion":
         DATA_DIR = config.classification_datasetpath
-        full_basic_random=SquareDataset(os.path.join(DATA_DIR, "metadata.csv"), DATA_DIR,classes_for_use=["square","rectangle","trapezium","triangle","hexagon","random"],transform=transform)
+        full_basic_random=SquareDataset(os.path.join(DATA_DIR, "dataset_metadata.csv"), DATA_DIR,classes_for_use=["square","rectangle","trapezium","triangle","hexagon","random"],transform=transform)
         
         labels = np.array([full_basic_random[i][1] for i in range(len(full_basic_random))])
 
@@ -92,20 +92,20 @@ def train_test_loader(illusion_bool,config):
         all_out_indices = [i for i in range(len(all_in_out_dataset))
                    if all_in_out_dataset[i][1] == "all_out"]
 
-         # Randomly sample so test classes balanced
-         rng = np.random.default_rng(42)
-         chosen_all_in  = rng.choice(all_in_indices,  num_per_class, replace=False)
-         chosen_all_out = rng.choice(all_out_indices, num_per_class, replace=False)
+        # Randomly sample so test classes balanced
+        rng = np.random.default_rng(config.seed)
+        chosen_all_in  = rng.choice(all_in_indices,  num_per_class, replace=False)
+        chosen_all_out = rng.choice(all_out_indices, num_per_class, replace=False)
 
-         # Build test set by merging:
-         # - the 20% basic+random (val_idx)
-         # - num_per_class of all_in
-         # - num_per_class of all_out
-         test_indices = list(val_idx) + chosen_all_in.tolist() + chosen_all_out.tolist()
+        # Build test set by merging:
+        # - the 20% basic+random (val_idx)
+        # - num_per_class of all_in
+        # - num_per_class of all_out
+        test_indices = list(val_idx) + chosen_all_in.tolist() + chosen_all_out.tolist()
 
-         # Create unified test dataset by merging two sources
-         # Trick: we wrap both datasets inside a CombinedDataset
-         class CombinedDataset(Dataset):
+        # Create unified test dataset by merging two sources
+        # Trick: we wrap both datasets inside a CombinedDataset
+        class CombinedDataset(Dataset):
               def __init__(self, basic_random, illusion, val_idx, allin_idx, allout_idx):
                   self.basic_random = basic_random
                   self.illusion = illusion
@@ -120,15 +120,15 @@ def train_test_loader(illusion_bool,config):
                      adj = real_idx - len(self.basic_random)
                      return self.illusion[adj]
 
-         test_set = CombinedDataset(full_basic_random, all_in_out_dataset,
+        test_set = CombinedDataset(full_basic_random, all_in_out_dataset,
                            val_idx, chosen_all_in, chosen_all_out)
 
-         # ------------------------------------------------------------------
-         # 4. Dataloaders
-         # ------------------------------------------------------------------
-         trainloader = DataLoader(train_set, batch_size=config.batch_size, shuffle=True)
-         valloader   = DataLoader(val_set,   batch_size=config.batch_size, shuffle=False)
-         testloader  = DataLoader(test_set,  batch_size=config.batch_size, shuffle=False)
+        # ------------------------------------------------------------------
+        # 4. Dataloaders
+        # ------------------------------------------------------------------
+        trainloader = DataLoader(train_set, batch_size=config.batch_size, shuffle=True)
+        valloader   = DataLoader(val_set,   batch_size=config.batch_size, shuffle=False)
+        testloader  = DataLoader(test_set,  batch_size=config.batch_size, shuffle=False)
 
     else:
         trainset = torchvision.datasets.CIFAR10(
@@ -153,7 +153,7 @@ def train_test_loader(illusion_bool,config):
     return trainloader, testloader,validationloader
 
 def recon_training_cifar(trainloader, testloader,config,metrics_history):
-    net = Net(num_classes=10).to(config.device)
+    net = Net(num_classes=config.classification_neurons).to(config.device)
     
     checkpoint_path = f"{config.load_model_path}/recon_models/{config.model_name}.pth"
     checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
@@ -175,7 +175,7 @@ def recon_training_cifar(trainloader, testloader,config,metrics_history):
 
 def classification_training_shapes(class_trainloader,class_validationloader,class_testingloader,recon_trainingloader,config,metrics_history):
 
-    net = Net(num_classes=6).to(config.device)
+    net = Net(num_classes=config.classification_neurons).to(config.device)
     
     # Set to whichever value for using the recon model
     iteration_index=15
@@ -205,7 +205,7 @@ def get_metrics_initialize(train_cond):
     else :
        metrics_history = {'train_loss': [], 'test_loss': [],'train_acc':[],'test_acc':[],'train_recon_loss':[],'test_recon_loss':[]}
 
-   return metrics_history
+    return metrics_history
 
 
 def decide_training_model(config,metrics_history):
@@ -226,7 +226,7 @@ def main(config):
     
     metrics_history=get_metrics_initialize(config.training_condition)
     metrics_history= decide_training_model(config,metrics_history)
-
+    set_seed(config.seed)
     
 
 
