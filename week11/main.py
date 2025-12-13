@@ -173,9 +173,12 @@ def recon_training_cifar(trainloader, testloader,config,metrics_history):
     return metrics_history
 
 
-def classification_training_shapes(trainloader, testloader,config,iteration_index,metrics_history):
+def classification_training_shapes(class_trainloader,class_validationloader,class_testingloader,recon_trainingloader,config,metrics_history):
 
     net = Net(num_classes=6).to(config.device)
+    
+    # Set to whichever value for using the recon model
+    iteration_index=15
 
     checkpoint_path = f"{config.load_model_path}/recon_models/{config.model_name}_{iteration_index}.pth"
     checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
@@ -188,7 +191,7 @@ def classification_training_shapes(trainloader, testloader,config,iteration_inde
     net.deconv3_fb.load_state_dict(checkpoint["deconv3_fb"])
     net.deconv4_fb.load_state_dict(checkpoint["deconv4_fb"])
 
-    metrics_history=illusion_pc_training(net,trainloader,testloader,"fine_tuning",config,metrics_history)
+    metrics_history=illusion_pc_training(class_trainloader,class_validationloader,class_testingloader,recon_trainingloader,"fine_tuning",config,metrics_history)
 
 
     return metrics_history

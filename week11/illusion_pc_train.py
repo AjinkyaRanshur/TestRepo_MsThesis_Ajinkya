@@ -9,11 +9,10 @@ import torch.optim as optim
 import os
 from add_noise import noisy_img
 import torchvision.utils as vutils
-from eval_and_plotting
+from eval_and_plotting import recon_pc_loss
 
 
-
-def illusion_pc_training(net, trainloader, testloader, pc_train_bool, config,metrics_history):
+def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_testdata,pc_train_bool, config,metrics_history):
 
     if pc_train_bool == "fine_tuning":
         criterion = nn.CrossEntropyLoss()
@@ -111,11 +110,11 @@ def illusion_pc_training(net, trainloader, testloader, pc_train_bool, config,met
             avg_recon_loss = np.mean(val_recon_loss)
 
             print(
-                f"Epoch:{epoch} | AvgLoss:{avg_loss:.4f} | ReconLoss:{avg_recon_loss:.4f}")
+                f"Epoch:{epoch} | AvgLoss:{avg_loss:.4f} ")
 
             net.eval()
-            test_accuracy, test_loss, test_recon_loss = eval_pc_ill_accuracy(
-                net, testloader, config, criterion)
+            test_accuracy, test_loss = eval_pc_ill_accuracy(net, validationloader, config, criterion)
+            recon_loss = recon_pc_loss(net,cifar10_testdata,config)
 
             # ✅ ADD THIS: Store metrics
             metrics_history['train_loss'].append(avg_loss)
@@ -124,15 +123,6 @@ def illusion_pc_training(net, trainloader, testloader, pc_train_bool, config,met
             metrics_history['test_acc'].append(test_accuracy)
             metrics_history['train_recon_loss'].append(avg_recon_loss)
             metrics_history['test_recon_loss'].append(test_recon_loss)
-
-            metrics = {
-                "Fine_Tuning/train_loss": avg_loss,
-                "Fine_Tuning/test_loss": test_loss,
-                "Fine_Tuning/test_accuracy": test_accuracy,
-                "Fine_Tuning/train_accuracy": train_accuracy,
-                "Fine_Tuning/recon_train_loss": avg_recon_loss,
-                "Fine_Tuning/recon_test_loss": test_recon_loss,
-            }
 
 
         return metrics_history
@@ -144,6 +134,10 @@ def illusion_pc_training(net, trainloader, testloader, pc_train_bool, config,met
         # Store results per class
         class_results = {
             "Square": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
+            "rectangle": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
+            "trapezium": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
+            "triangle": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
+            "hexagon": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
             "Random": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
             "All-in": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
             "All-out": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
@@ -151,7 +145,7 @@ def illusion_pc_training(net, trainloader, testloader, pc_train_bool, config,met
 
         net.eval()
 
-        for images, labels, cls_names in testloader:
+        for images, labels, cls_names in validationloader:
             images_orig, labels = images.to(config.device), labels.to(config.device)
 
             for cls_name in cls_names:

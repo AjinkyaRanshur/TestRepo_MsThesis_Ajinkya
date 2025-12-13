@@ -9,7 +9,7 @@ import torch.optim as optim
 import os
 from add_noise import noisy_img
 import torchvision.utils as vutils
-from eval_and_plotting
+from eval_and_plotting import recon_pc_loss
 
 def recon_pc_training(net,trainloader,testloader,pc_train_bool,config,metrics_history):
 
@@ -18,6 +18,7 @@ def recon_pc_training(net,trainloader,testloader,pc_train_bool,config,metrics_hi
         #metrics_history = {'train_loss': [], 'test_loss': []}
         optimizer = optim.Adam(list(net.deconv4_fb.parameters())+list(net.deconv3_fb.parameters())+list(net.deconv2_fb.parameters())+list(net.deconv1_fb.parameters())+ list(net.conv1.parameters())+list(net.conv2.parameters())+list(net.conv3.parameters())+list(net.conv4.parameters()), lr=config.lr)
         loss_arr=[]
+        iteration_index=0
         for epoch in range(config.epochs):
             running_loss=[]
             val_loss=[]            
@@ -61,48 +62,29 @@ def recon_pc_training(net,trainloader,testloader,pc_train_bool,config,metrics_hi
             test_loss=0
             ##Set to eval to avoid memory constraints
             net.eval()
-            for batch_idx,batch in enumerate(testloader):
-                images,labels=batch
-                images,labels=images.to(config.device),labels.to(config.device)
-
-                ft_AB_pc_temp = torch.zeros(config.batch_size, 6, 32, 32).to(config.device)
-                ft_BC_pc_temp = torch.zeros(config.batch_size, 16, 16, 16).to(config.device)
-                ft_CD_pc_temp = torch.zeros(config.batch_size, 32, 8, 8).to(config.device)
-                ft_DE_pc_temp = torch.zeros(config.batch_size,64,4,4).to(config.device)
-
-                ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp = net.feedforward_pass_no_dense(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
-
-                # Re-enable gradients after feedforward_pass overwrites the tensors
-                # Only enable gradients for the specific tensors that need them
-                ft_AB_pc_temp.requires_grad_(True)
-                ft_BC_pc_temp.requires_grad_(True)
-                ft_CD_pc_temp.requires_grad_(True)
-                ft_DE_pc_temp.requires_grad_(True)
-
-                final_loss=0
-
-                for i in range(config.timesteps):
-                    ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,loss_of_layers=net.recon_predictive_coding_pass(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,config.betaset,config.gammaset,config.alphaset,images.size(0))
-                    final_loss+=loss_of_layers
-
-                final_loss=final_loss/config.timesteps
-                val_loss.append(final_loss.item())
-
-                # Clear batch tensors
-                del ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp,loss_of_layers
-                torch.cuda.empty_cache()
-        
-            test_loss=np.mean(val_loss)
+            test_loss=recon_pc_loss(net,testloader,config)
             print(f"Test Loss: {test_loss:.4f}")
             
             # ✅ Store metrics
             metrics_history['train_loss'].append(avg_loss)
             metrics_history['test_loss'].append(test_loss)
+            if int(epoch) % 10 == 0:
+               iteration_index= iteration_index +1
+               save_path = f'{config.save_model_path}/recon_models/{config.model_name}_{iteration_index}.pth'
+               torch.save({
+                   "conv1": net.conv1.state_dict(),
+                   "conv2": net.conv2.state_dict(),
+                   "conv3": net.conv3.state_dict(),
+                   "conv4": net.conv4.state_dict(),
+                   "deconv1_fb": net.deconv1_fb.state_dict(),
+                   "deconv2_fb": net.deconv2_fb.state_dict(),
+                   "deconv3_fb": net.deconv3_fb.state_dict(),
+                   "deconv4_fb": net.deconv4_fb.state_dict(),
+               }, save_path)
+
+               print(f"Model Saved Successfully to: {save_path}")
+               print("Model Save Sucessfully")
     
-            metrics={
-                f"Reconstruction_Training_with_Timesteps_{config.timesteps}/train_loss":avg_loss,
-                f"Reconstruction_Training_with_Timesteps_{config.timesteps}/test_loss":test_loss
-            }
 
         return metrics_history
 
