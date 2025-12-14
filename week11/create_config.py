@@ -1,6 +1,8 @@
 import os
 import sys
 
+BASE_DIR="configs/base_config.py"
+CONFIG_FILE=BASE_DIR
 
 def update_config(
     gamma_pattern,
@@ -8,9 +10,10 @@ def update_config(
     pattern_name,
     model_name,
     timesteps,
-    iterations,
     train_cond,
-    datasetpath
+    last_neurons,
+    seed,
+    lr
 ):
     """Update the config file with new parameters."""
     with open(CONFIG_FILE, "r") as f:
@@ -34,12 +37,18 @@ def update_config(
 
             elif stripped.startswith("model_name"):
                 f.write(f'model_name = "{model_name}"\n')
+	    
+            elif stripped.startswith("seed"):
+                f.write(f'seed = {seed}\n')
+
+	    elif stripped.startswith("lr"):
+                f.write(f'lr = {lr}\n')
 
             elif stripped.startswith("timesteps"):
                 f.write(f"timesteps = {timesteps}\n")
-
-            elif stripped.startswith("iterations"):
-                f.write(f"iterations = {iterations}\n")
+	    
+            elif stripped.startswith("classification_neurons"):
+                f.write(f"classification_neurons = {last_neurons}\n")
 
             elif stripped.startswith("experiment_name"):
                 f.write(
@@ -53,17 +62,67 @@ def update_config(
               else:
                 f.write(f'training_condition = "{train_cond}"\n')
 
-            elif stripped.startswith("datasetpath"):
-                f.write(f'datasetpath = "{datasetpath}"\n')
 
             else:
                 f.write(line)
 
 #USED TO CREATE MULTIPLE CONFIG FILES FROM JSON FILE IN CASE WE NEED TO PERFORM MULTIPLE EXPERIMENTS
-def create_config_files()
+def create_config_files(seeds,patterns,train_cond,epochs,lr_list,timesteps,model_name,last_neurons):
 
+	config_paths=[]
+	
+	exp_id=0
 
-return None
+	# Pattern definitions
+	PATTERNS = {
+    	"Uniform": {
+        	"gamma": [0.33, 0.33, 0.33, 0.33],
+        	"beta": [0.33, 0.33, 0.33, 0.33]
+    	},
+    	"Gamma Increasing": {
+        	"gamma": [0.13, 0.33, 0.53, 0.33],
+        	"beta": [0.33, 0.33, 0.33, 0.33]
+    	},
+    	"Gamma Decreasing": {
+        	"gamma": [0.53, 0.33, 0.13, 0.33],
+        	"beta": [0.33, 0.33, 0.33, 0.33]
+    	},
+    	"Beta Increasing": {
+        	"gamma": [0.33, 0.33, 0.33, 0.33],
+        	"beta": [0.13, 0.33, 0.53, 0.33]
+    	},
+    	"Beta Decreasing": {
+        	"gamma": [0.33, 0.33, 0.33, 0.33],
+        	"beta": [0.53, 0.33, 0.13, 0.33]
+    	},
+    	"Beta Inc & Gamma Dec": {
+        	"gamma": [0.53, 0.33, 0.13, 0.33],
+        	"beta": [0.13, 0.33, 0.53, 0.33]
+    	}
+	}
+	
+	for seed,pattern,lr,timestep,model in itertools.product(seeds,patterns,lr_list,timesteps,model_name):
+		model_name=generate_model_name(pattern,seed,train_cond,recon_timesteps)
+		json_file=model_tracker()	
+		gamma_pattern=PATTERNS[pattern]["gamma"]
+		beta_pattern=PATTERNS[pattern]["beta"]
+		
+		cfg_path=f"configs/generated/config_{exp_id}.py"
+		
+		CONFIG_FILE=cfg_path
+		with open(BASE_DIR) as f:
+			base=f.read()
+		with open(cfg_path,"w") as f:
+			f.write(base)
+
+		update_config(gamma_pattern,beta_pattern,model_name,timesteps,train_cond,seed,lr)
+		
+		config_paths.append()
+		exp_id += 1
+
+	print(f"Generated {len(config_paths)} config files")
+
+return config_paths
 
 
 

@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import time
 from tqdm import tqdm
+from utils import clear,banner
+from menu_options import slurm_entries,job_runnning,main_menu,train_menu,classification_train_menu,test_menu,classification_models
 
 # init colorama for Windows
 init(autoreset=True)
@@ -49,6 +51,31 @@ PATTERNS = {
 
 
 
+def run():
+    while True:
+        job_type=job_running()
+        if job_type == "1":
+	   base_config=slurm_entries()
+           something=create_slurm_script(base_config)
+           submitted_info=sbatch_submission()
+
+	elif job_type =="2":
+         choice = main_menu()
+	 if choice == "1":
+	 elif choice == "2":
+	 elif choice == "3":
+	 elif choice == "0":
+	    clear()
+            banner("GoodBye!")
+            break
+	 else:
+	     print(Fore.RED + "Invalid option!")
+             input("Press ENTER...")
+
+
+
+if __name__ == "__main__":
+    run()
 
 
 

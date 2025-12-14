@@ -87,10 +87,15 @@ def train_test_loader(illusion_bool,config):
 
         # Filter dataset indices per class
         all_in_indices  = [i for i in range(len(all_in_out_dataset))
-                   if all_in_out_dataset[i][1] == "all_in"]
+                   if all_in_out_dataset[i][2] == "all_in"]
 
         all_out_indices = [i for i in range(len(all_in_out_dataset))
-                   if all_in_out_dataset[i][1] == "all_out"]
+                   if all_in_out_dataset[i][2] == "all_out"]
+
+        # ✅ Add debug prints to verify
+        print(f"Found {len(all_in_indices)} all_in images")
+        print(f"Found {len(all_out_indices)} all_out images")
+        print(f"Need {num_per_class} images per class")
 
         # Randomly sample so test classes balanced
         rng = np.random.default_rng(config.seed)
@@ -127,7 +132,7 @@ def train_test_loader(illusion_bool,config):
         # 4. Dataloaders
         # ------------------------------------------------------------------
         trainloader = DataLoader(train_set, batch_size=config.batch_size, shuffle=True)
-        valloader   = DataLoader(val_set,   batch_size=config.batch_size, shuffle=False)
+        validationloader   = DataLoader(val_set,   batch_size=config.batch_size, shuffle=False)
         testloader  = DataLoader(test_set,  batch_size=config.batch_size, shuffle=False)
 
     else:
@@ -154,17 +159,6 @@ def train_test_loader(illusion_bool,config):
 
 def recon_training_cifar(trainloader, testloader,config,metrics_history):
     net = Net(num_classes=config.classification_neurons).to(config.device)
-    
-    checkpoint_path = f"{config.load_model_path}/recon_models/{config.model_name}.pth"
-    checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
-    net.conv1.load_state_dict(checkpoint["conv1"])
-    net.conv2.load_state_dict(checkpoint["conv2"])
-    net.conv3.load_state_dict(checkpoint["conv3"])
-    net.conv4.load_state_dict(checkpoint["conv4"])
-    net.deconv1_fb.load_state_dict(checkpoint["deconv1_fb"])
-    net.deconv2_fb.load_state_dict(checkpoint["deconv2_fb"])
-    net.deconv3_fb.load_state_dict(checkpoint["deconv3_fb"])
-    net.deconv4_fb.load_state_dict(checkpoint["deconv4_fb"])
 
     metrics_history=recon_pc_training(net,trainloader,testloader,"train",config,metrics_history)
 

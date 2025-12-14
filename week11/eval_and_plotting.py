@@ -27,7 +27,7 @@ def recon_pc_loss(net,dataloader,config):
         ft_CD_pc_temp = torch.zeros(config.batch_size, 32, 8, 8).to(config.device)
         ft_DE_pc_temp = torch.zeros(config.batch_size,64,4,4).to(config.device)
 
-        ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp,ft_EF_pc_temp,output = net.feedforward_pass_no_dense(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
+        ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp = net.feedforward_pass_no_dense(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
 
         # Re-enable gradients after feedforward_pass overwrites the tensors
         # Only enable gradients for the specific tensors that need them

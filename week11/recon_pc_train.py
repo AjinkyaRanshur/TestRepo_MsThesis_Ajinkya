@@ -68,7 +68,7 @@ def recon_pc_training(net,trainloader,testloader,pc_train_bool,config,metrics_hi
             # ✅ Store metrics
             metrics_history['train_loss'].append(avg_loss)
             metrics_history['test_loss'].append(test_loss)
-            if int(epoch) % 10 == 0:
+            if epoch % 10 == 0:
                iteration_index= iteration_index +1
                save_path = f'{config.save_model_path}/recon_models/{config.model_name}_{iteration_index}.pth'
                torch.save({
