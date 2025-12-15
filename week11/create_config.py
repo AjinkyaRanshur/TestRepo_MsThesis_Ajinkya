@@ -19,6 +19,8 @@ def update_config(
     last_neurons,
     seed,
     lr,
+    base_recon_model=None,
+    checkpoint_epoch=None
 ):
     """Update the config file with new parameters."""
     with open(CONFIG_FILE, "r") as f:
@@ -66,12 +68,18 @@ def update_config(
                     f.write(f"training_condition = {train_cond}\n")
                 else:
                     f.write(f'training_condition = "{train_cond}"\n')
-
+            
+            # Add classification-specific fields
+            elif train_cond == "classification_training_shapes":
+                if "# Classification training fields" in line:
+                    f.write(f"base_recon_model = \"{base_recon_model}\"\n")
+                    f.write(f"checkpoint_epoch = {checkpoint_epoch}\n")
+                else:
+                    f.write(line)
             else:
                 f.write(line)
 
 
-# USED TO CREATE MULTIPLE CONFIG FILES FROM JSON FILE
 def create_config_files(
     seeds,
     patterns,
@@ -80,14 +88,16 @@ def create_config_files(
     lr_list,
     timesteps,
     last_neurons,
+    base_recon_models=None,  # List of base reconstruction models
+    checkpoint_epochs=None    # Which checkpoint to use
 ):
     """
     Create multiple config files from parameters for batch experiments.
-    Returns list of config file paths and their associated model IDs.
+    Returns list of config file paths and their associated model names.
     """
 
     config_paths = []
-    model_ids = []
+    model_names = []
 
     exp_id = 0
 
@@ -119,63 +129,125 @@ def create_config_files(
         },
     }
 
+    # Create configs directory
+    os.makedirs("configs", exist_ok=True)
 
-    for seed, pattern, lr, timestep in itertools.product(
-        seeds, patterns, lr_list, timesteps
-    ):
-        # Generate model name
-        model_name = generate_model_name(
-            pattern=pattern,
-            seed=seed,
-            train_cond=train_cond,
-            recon_timesteps=timestep,
-        )
+    # If classification training, iterate over base models too
+    if train_cond == "classification_training_shapes" and base_recon_models:
+        for base_model in base_recon_models:
+            for checkpoint_epoch in checkpoint_epochs:
+                for seed, pattern, lr, timestep in itertools.product(
+                    seeds, patterns, lr_list, timesteps
+                ):
+                    # Generate model name
+                    model_name = f"class_{base_model}_chk{checkpoint_epoch}_{pattern}_seed{seed}"
 
-        tracker = get_tracker()
-        config_dict = {
-            "pattern": pattern,
-            "seed": seed,
-            "train_cond": train_cond,
-            "lr": lr,
-            "timesteps": timestep,
-            "last_neurons": last_neurons,
-            "epochs": epochs[0] if isinstance(epochs, list) else epochs,
-        }
+                    tracker = get_tracker()
+                    config_dict = {
+                        "pattern": pattern,
+                        "seed": seed,
+                        "train_cond": train_cond,
+                        "lr": lr,
+                        "timesteps": timestep,
+                        "last_neurons": last_neurons,
+                        "epochs": epochs[0] if isinstance(epochs, list) else epochs,
+                        "base_recon_model": base_model,
+                        "checkpoint_epoch": checkpoint_epoch
+                    }
+                    tracker.register_model(model_name, config_dict)
 
+                    gamma_pattern = PATTERNS[pattern]["gamma"]
+                    beta_pattern = PATTERNS[pattern]["beta"]
 
-        gamma_pattern = PATTERNS[pattern]["gamma"]
-        beta_pattern = PATTERNS[pattern]["beta"]
+                    cfg_path = f"configs/config_{exp_id}.py"
+                    cfg_command = f"config_{exp_id}"
+                    
+                    global CONFIG_FILE
+                    CONFIG_FILE = cfg_path
 
-        cfg_path = f"configs/config_{exp_id}.py"
-        cfg_command=f"config_{exp_id}"
-        # Update the config file
-        global CONFIG_FILE
-        CONFIG_FILE = cfg_path
+                    with open(BASE_DIR) as f:
+                        base = f.read()
 
-        with open(BASE_DIR) as f:
-            base = f.read()
+                    # Add classification-specific fields if needed
+                    if train_cond == "classification_training_shapes":
+                        base += "\n# Classification training fields\n"
 
-        with open(cfg_path, "w") as f:
-            f.write(base)
+                    with open(cfg_path, "w") as f:
+                        f.write(base)
 
-        update_config(
-            gamma_pattern,
-            beta_pattern,
-	    pattern,
-            model_name,
-            timestep,
-            train_cond,
-	    last_neurons,
-            seed,
-            lr,
-        )
+                    update_config(
+                        gamma_pattern,
+                        beta_pattern,
+                        pattern,
+                        model_name,
+                        timestep,
+                        train_cond,
+                        last_neurons,
+                        seed,
+                        lr,
+                        base_recon_model=base_model,
+                        checkpoint_epoch=checkpoint_epoch
+                    )
 
-        config_paths.append(cfg_command)
-        model_ids.append(model_name)
-        exp_id += 1
+                    config_paths.append(cfg_command)
+                    model_names.append(model_name)
+                    exp_id += 1
+    else:
+        # Reconstruction training (original logic)
+        for seed, pattern, lr, timestep in itertools.product(
+            seeds, patterns, lr_list, timesteps
+        ):
+            model_name = generate_model_name(
+                pattern=pattern,
+                seed=seed,
+                train_cond=train_cond,
+                recon_timesteps=timestep,
+            )
+
+            tracker = get_tracker()
+            config_dict = {
+                "pattern": pattern,
+                "seed": seed,
+                "train_cond": train_cond,
+                "lr": lr,
+                "timesteps": timestep,
+                "last_neurons": last_neurons,
+                "epochs": epochs[0] if isinstance(epochs, list) else epochs,
+            }
+            tracker.register_model(model_name, config_dict)
+
+            gamma_pattern = PATTERNS[pattern]["gamma"]
+            beta_pattern = PATTERNS[pattern]["beta"]
+
+            cfg_path = f"configs/config_{exp_id}.py"
+            cfg_command = f"config_{exp_id}"
+            
+            global CONFIG_FILE
+            CONFIG_FILE = cfg_path
+
+            with open(BASE_DIR) as f:
+                base = f.read()
+
+            with open(cfg_path, "w") as f:
+                f.write(base)
+
+            update_config(
+                gamma_pattern,
+                beta_pattern,
+                pattern,
+                model_name,
+                timestep,
+                train_cond,
+                last_neurons,
+                seed,
+                lr,
+            )
+
+            config_paths.append(cfg_command)
+            model_names.append(model_name)
+            exp_id += 1
 
     print(f"Generated {len(config_paths)} config files")
-    print(f"Registered {len(model_ids)} models in tracker")
+    print(f"Registered {len(model_names)} models in tracker")
 
-    return config_paths, model_ids
-
+    return config_paths, model_names

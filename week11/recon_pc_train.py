@@ -11,7 +11,7 @@ from add_noise import noisy_img
 import torchvision.utils as vutils
 from eval_and_plotting import recon_pc_loss
 
-def recon_pc_training(net,trainloader,testloader,pc_train_bool,config,metrics_history):
+def recon_pc_training(net,trainloader,testloader,pc_train_bool,config,metrics_history,model_name):
 
     if pc_train_bool=="train":
         criterion=nn.CrossEntropyLoss()
@@ -70,7 +70,7 @@ def recon_pc_training(net,trainloader,testloader,pc_train_bool,config,metrics_hi
             metrics_history['test_loss'].append(test_loss)
             if epoch % 10 == 0:
                iteration_index= iteration_index +1
-               save_path = f'{config.save_model_path}/recon_models/{config.model_name}_{iteration_index}.pth'
+               save_path = f'{config.save_model_path}/recon_models/{model_name}_{iteration_index}.pth'
                torch.save({
                    "conv1": net.conv1.state_dict(),
                    "conv2": net.conv2.state_dict(),
@@ -80,10 +80,14 @@ def recon_pc_training(net,trainloader,testloader,pc_train_bool,config,metrics_hi
                    "deconv2_fb": net.deconv2_fb.state_dict(),
                    "deconv3_fb": net.deconv3_fb.state_dict(),
                    "deconv4_fb": net.deconv4_fb.state_dict(),
-               }, save_path)
+               }, save_path
 
                print(f"Model Saved Successfully to: {save_path}")
                print("Model Save Sucessfully")
+	       
+               from model_tracking import get_tracker
+	       tracker = get_tracker()
+	       tracker.set_checkpoint_path(model_name,save_path)
     
 
         return metrics_history

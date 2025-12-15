@@ -13,39 +13,145 @@ import json
 from add_noise import noisy_img
 
 
+def plot_test_trajectory(class_results, model_name, config):
+    """
+    Plot trajectory of illusion perception across timesteps
+    All classes shown in a single plot
+    """
 
-def plot_trajectory(results, pattern_name, model_name,recon_timesteps,class_timesteps, test_timesteps):
-    """Plot accuracy trajectory over timesteps."""
-    accuracy_data = {}
-    
-    for cls_name in ["Square", "Random", "All-in", "All-out"]:
-        if cls_name in results:
-            mean_probs = [np.mean(p) * 100 for p in results[cls_name]["predictions"]]
-            timesteps_range = list(range(len(mean_probs)))
-            accuracy_data[cls_name] = {'timesteps': timesteps_range, 'values': mean_probs}
-    
-    plt.figure(figsize=(12, 6))
-    colors = {'Square': '#2ecc71', 'Random': '#3498db', 'All-in': '#e74c3c', 'All-out': '#9b59b6'}
-    
-    for cls_name, data in accuracy_data.items():
-        plt.plot(data['timesteps'], data['values'], linestyle='-', linewidth=2, markersize=6,
-                label=cls_name, color=colors.get(cls_name, '#95a5a6'))
-    
-    plt.xlabel('Timesteps', fontsize=12)
-    plt.ylabel('Probability of Being A Shape (%)', fontsize=12)
+    os.makedirs("plots/test_trajectories", exist_ok=True)
+
+    # Create single figure + axis
+    plt.figure(figsize=(10, 6))
+    plt.title(f'Illusion Trajectory: {model_name}',
+              fontsize=16, fontweight='bold')
+
+    # Define colors
+    colors = {
+        'square': '#2ecc71',
+        'rectangle': '#3498db',
+        'trapezium': '#e74c3c',
+        'triangle': '#9b59b6',
+        'hexagon': '#f39c12',
+        'random': '#34495e',
+        'all_in': '#e67e22',
+        'all_out': '#1abc9c'
+    }
+
+    # Plot ALL classes on the same axis
+    for cls_name, cls_data in class_results.items():
+        if cls_data["total"] == 0:
+            continue
+
+        mean_probs = [
+            np.mean(p) * 100 if len(p) > 0 else 0.0
+            for p in cls_data["predictions"]
+        ]
+
+        timesteps = range(len(mean_probs))
+
+        plt.plot(
+            timesteps,
+            mean_probs,
+            linewidth=2,
+            marker='o',
+            markersize=5,
+            label=cls_name.replace('_', ' ').title(),
+            color=colors.get(cls_name, '#95a5a6')
+        )
+
+    plt.xlabel('Timestep', fontsize=12)
+    plt.ylabel('Probability of being a shape(%)', fontsize=12)
     plt.ylim(0, 100)
-    plt.title(f'PC Dynamics Trajectory\nModel: {model_name} | Test Pattern: {pattern_name}', fontsize=14)
+    plt.legend(fontsize=10)
     plt.grid(True, alpha=0.3)
-    plt.legend(loc='best', fontsize=10)
-    
-    # Save with organized naming
-    filename = f"traj_model-train_recont{recon_timesteps}_classt{class_timesteps}_{sanitize_name(pattern_name)}_test-t{test_timesteps}.png"
-    filepath = os.path.join(TRAJECTORIES_DIR, filename)
-    plt.savefig(filepath, dpi=300, bbox_inches='tight')
-    plt.close()
-    
-    print_status(f"Trajectory plot saved: {filepath}", "success")
-    return filepath
+
+    plt.tight_layout()
+    plt.savefig(f"plots/test_trajectories/{model_name}_trajectory_timesteps{config.timesteps}.png", dpi=300)
+    plt.show()
+
+
+def plot_training_metrics(metrics_history, model_name, config):
+    """
+    Plot training metrics for classification models.
+    Creates separate figures for:
+    - classification loss
+    - accuracy
+    - reconstruction loss
+    Only plots metrics that exist in metrics_history.
+    """
+    import os
+    import matplotlib.pyplot as plt
+
+    os.makedirs("plots/training_metrics", exist_ok=True)
+
+    epochs = range(1, len(metrics_history["train_loss"]) + 1)
+
+    # --------------------------------------------------
+    # 1. Classification Loss
+    # --------------------------------------------------
+    if "train_loss" in metrics_history and "test_loss" in metrics_history:
+        plt.figure(figsize=(8, 6))
+        plt.plot(epochs, metrics_history["train_loss"],
+                 label="Train Loss", linewidth=2)
+        plt.plot(epochs, metrics_history["test_loss"],
+                 label="Test Loss", linewidth=2)
+
+        plt.xlabel("Epoch")
+        plt.ylabel("Classification Loss")
+        plt.title(f"Classification Loss: {model_name}")
+        plt.legend()
+        plt.grid(alpha=0.3)
+
+        save_path = f"plots/training_metrics/{model_name}_loss.png"
+        plt.tight_layout()
+        plt.savefig(save_path, dpi=300)
+        plt.close()
+
+    # --------------------------------------------------
+    # 2. Accuracy
+    # --------------------------------------------------
+    if "train_acc" in metrics_history and "test_acc" in metrics_history:
+        plt.figure(figsize=(8, 6))
+        plt.plot(epochs, metrics_history["train_acc"],
+                 label="Train Accuracy", linewidth=2)
+        plt.plot(epochs, metrics_history["test_acc"],
+                 label="Test Accuracy", linewidth=2)
+
+        plt.xlabel("Epoch")
+        plt.ylabel("Accuracy (%)")
+        plt.title(f"Classification Accuracy: {model_name}")
+        plt.legend()
+        plt.grid(alpha=0.3)
+
+        save_path = f"plots/training_metrics/{model_name}_accuracy.png"
+        plt.tight_layout()
+        plt.savefig(save_path, dpi=300)
+        plt.close()
+
+    # --------------------------------------------------
+    # 3. Reconstruction Loss
+    # --------------------------------------------------
+    if "train_recon_loss" in metrics_history and "test_recon_loss" in metrics_history:
+        plt.figure(figsize=(8, 6))
+        plt.plot(epochs, metrics_history["train_recon_loss"],
+                 label="Train Recon Loss", linewidth=2)
+        plt.plot(epochs, metrics_history["test_recon_loss"],
+                 label="Test Recon Loss", linewidth=2)
+
+        plt.xlabel("Epoch")
+        plt.ylabel("Reconstruction Loss")
+        plt.title(f"Reconstruction Loss: {model_name}")
+        plt.legend()
+        plt.grid(alpha=0.3)
+
+        save_path = f"plots/training_metrics/{model_name}_recon_loss.png"
+        plt.tight_layout()
+        plt.savefig(save_path, dpi=300)
+        plt.close()
+
+    print("Training metric plots saved.")
+
 
 
 def plot_pattern_comparison_bar(results_per_pattern, model_name, recon_timesteps,class_timesteps):

@@ -124,6 +124,34 @@ def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_te
             metrics_history['train_recon_loss'].append(avg_recon_loss)
             metrics_history['test_recon_loss'].append(test_recon_loss)
 
+	    
+
+	    # Save checkpoint every 10 epochs
+            if epoch % 10 == 0:
+                os.makedirs(f'{config.save_model_path}/classification_models', exist_ok=True)
+                save_path = f'{config.save_model_path}/classification_models/{model_name}_epoch{epoch}.pth'
+                
+                torch.save({
+                    "conv1": net.conv1.state_dict(),
+                    "conv2": net.conv2.state_dict(),
+                    "conv3": net.conv3.state_dict(),
+                    "conv4": net.conv4.state_dict(),
+                    "fc1": net.fc1.state_dict(),
+                    "fc2": net.fc2.state_dict(),
+                    "fc3": net.fc3.state_dict(),
+                    "deconv1_fb": net.deconv1_fb.state_dict(),
+                    "deconv2_fb": net.deconv2_fb.state_dict(),
+                    "deconv3_fb": net.deconv3_fb.state_dict(),
+                    "deconv4_fb": net.deconv4_fb.state_dict(),
+                    "epoch": epoch,
+                    "train_loss": avg_loss,
+                    "test_loss": test_loss,
+                    "train_acc": train_accuracy,
+                    "test_acc": test_accuracy
+                }, save_path)
+                
+                print(f"Checkpoint saved: {save_path}")
+
 
         return metrics_history
 
@@ -230,14 +258,29 @@ def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_te
        			)
 
         # Compute mean probability per timestep for each class
-         for cls_name in class_results:
-             total = class_results[cls_name]["total"]
-             mean_probs = [ np.mean(p) * 100 for p in class_results[cls_name]["predictions"]]
-             print("=================================")
-             print(f"Class: {cls_name}, Total Samples: {total}")
-             for t, acc in enumerate(mean_probs):
-                 print(f"Timestep {t}: {acc:.2f}%")
-             print("\n")
+	        # Compute mean probability per timestep for each class
+        print("\n" + "="*80)
+        print("ILLUSION TESTING RESULTS")
+        print("="*80)
+        
+        for cls_name in class_results:
+            if class_results[cls_name]["total"] == 0:
+                continue
+            
+            total = class_results[cls_name]["total"]
+            mean_probs = [np.mean(p) * 100 if len(p) > 0 else 0.0 
+                         for p in class_results[cls_name]["predictions"]]
+            
+            print(f"\nClass: {cls_name.upper()}")
+            print(f"Total Samples: {total}")
+            print("-" * 40)
+            for t, prob in enumerate(mean_probs):
+                print(f"  Timestep {t}: {prob:.2f}%")
+            print()
+
+        # Save trajectory plot
+        from eval_and_plotting import plot_test_trajectory
+        plot_test_trajectory(class_results, model_name, config)
  
         return class_results
 

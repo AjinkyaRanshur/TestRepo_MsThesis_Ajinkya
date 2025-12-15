@@ -52,10 +52,15 @@ def set_seed(seed):
 def train_test_loader(illusion_bool,config):
     # Normalizing the images
     #Andrea's nromalization is different figure out why    
-    transform = transforms.Compose([transforms.ToTensor(),
-                transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))
-                ])
+   
     if illusion_bool == "illusion":
+	
+	transform = transforms.Compose([
+            transforms.Resize((32, 32)),  # Resize to match CIFAR-10
+            transforms.ToTensor(),
+            transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))
+        ])
+
         DATA_DIR = config.classification_datasetpath
         full_basic_random=SquareDataset(os.path.join(DATA_DIR, "dataset_metadata.csv"), DATA_DIR,classes_for_use=["square","rectangle","trapezium","triangle","hexagon","random"],transform=transform)
         
@@ -136,6 +141,13 @@ def train_test_loader(illusion_bool,config):
         testloader  = DataLoader(test_set,  batch_size=config.batch_size, shuffle=False)
 
     else:
+
+	# Transform for CIFAR-10: already 32x32
+        transform = transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))
+        ])
+	
         trainset = torchvision.datasets.CIFAR10(
         root=config.recon_datasetpath,
         train=True,
@@ -157,25 +169,32 @@ def train_test_loader(illusion_bool,config):
         validationloader=0
     return trainloader, testloader,validationloader
 
-def recon_training_cifar(trainloader, testloader,config,metrics_history):
+def recon_training_cifar(trainloader, testloader,config,metrics_history,model_name):
     net = Net(num_classes=config.classification_neurons).to(config.device)
 
-    metrics_history=recon_pc_training(net,trainloader,testloader,"train",config,metrics_history)
+    metrics_history=recon_pc_training(net,trainloader,testloader,"train",config,metrics_history,model_name)
 
     print("Model Save Sucessfully")
 
     return metrics_history
 
 
-def classification_training_shapes(class_trainloader,class_validationloader,class_testingloader,recon_trainingloader,config,metrics_history):
+def classification_training_shapes(class_trainloader,class_validationloader,class_testingloader,recon_trainingloader,config,metrics_history,model_name):
 
     net = Net(num_classes=config.classification_neurons).to(config.device)
     
     # Set to whichever value for using the recon model
-    iteration_index=15
+    # Extract base model info from config
+    base_model_name = config.base_recon_model  # e.g., "pc_recon10_Uniform_seed42"
+    checkpoint_epoch = config.checkpoint_epoch  # Which epoch checkpoint to use
 
-    checkpoint_path = f"{config.load_model_path}/recon_models/{config.model_name}_{iteration_index}.pth"
+    checkpoint_path = f"{config.load_model_path}/recon_models/{base_model_name}_{checkpoint_epoch}.pth"
+	
+  
+    print(f"Loading checkpoint: {checkpoint_path}")
     checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
+
+
     net.conv1.load_state_dict(checkpoint["conv1"])
     net.conv2.load_state_dict(checkpoint["conv2"])
     net.conv3.load_state_dict(checkpoint["conv3"])
@@ -185,7 +204,9 @@ def classification_training_shapes(class_trainloader,class_validationloader,clas
     net.deconv3_fb.load_state_dict(checkpoint["deconv3_fb"])
     net.deconv4_fb.load_state_dict(checkpoint["deconv4_fb"])
 
-    metrics_history=illusion_pc_training(class_trainloader,class_validationloader,class_testingloader,recon_trainingloader,"fine_tuning",config,metrics_history)
+    print(f"Checkpoint loaded successfully from epoch {checkpoint_epoch}")
+
+    metrics_history=illusion_pc_training(net,class_trainloader,class_validationloader,class_testingloader,recon_trainingloader,"fine_tuning",config,metrics_history,model_name)
 
 
     return metrics_history
@@ -202,13 +223,13 @@ def get_metrics_initialize(train_cond):
     return metrics_history
 
 
-def decide_training_model(config,metrics_history):
+def decide_training_model(config,metrics_history,model_name):
     recon_training_lr,recon_validation_lr,_=train_test_loader("reconstruction",config)
     class_training_lr,class_validation_lr,class_testing_lr=train_test_loader("illusion",config)
 
     cond_to_func={
-            "recon_pc_train":lambda: recon_training_cifar(recon_training_lr,recon_validation_lr,config,metrics_history),
-            "classification_training_shapes": lambda:classification_training_shapes(class_training_lr,class_validation_lr,class_testing_lr,recon_training_lr,config,metrics_history),
+            "recon_pc_train":lambda: recon_training_cifar(recon_training_lr,recon_validation_lr,config,metrics_history,model_name),
+            "classification_training_shapes": lambda:classification_training_shapes(class_training_lr,class_validation_lr,class_testing_lr,recon_training_lr,config,metrics_history,model_name),
     }
 
     result=cond_to_func[config.training_condition]()
@@ -216,24 +237,29 @@ def decide_training_model(config,metrics_history):
     return result
 
 
-def main(config,model_id=None):
+def main(config,model_name=None):
     
     from model_tracking import get_tracker
     
     # Update status to training
-    if model_id:
+    if model_name:
         tracker = get_tracker()
-        tracker.update_status(model_id, "training")
+        tracker.update_status(model_name, "training")
     
     metrics_history=get_metrics_initialize(config.training_condition)
-    metrics_history= decide_training_model(config,metrics_history)
+
+    metrics_history= decide_training_model(config,metrics_history,model_name)
+    
+    # Save final training metrics plot
+    from eval_and_plotting import plot_training_metrics
+    plot_training_metrics(metrics_history, model_name, config)
+
     set_seed(config.seed)
    
     # Update status to completed and save metrics
-    if model_id:
-        tracker.update_status(model_id, "completed")
+    if model_name:
+        tracker.update_status(model_name, "completed")
     
-
 
 def load_config(config_name):
     return importlib.import_module(config_name)
