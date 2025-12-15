@@ -34,7 +34,7 @@ def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_te
 
             net.train()
 
-            for images, labels, _ in trainloader:
+            for images, labels, _,_ in trainloader:
                 images_orig = images.to(config.device)
                 labels = labels.to(config.device)
                 for noise in np.arange(0, 0.35, 0.05):
@@ -131,21 +131,24 @@ def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_te
     # TEST MODE
     # ------------------------------------------------------------
     if pc_train_bool == "test":
-        # Store results per class
-        class_results = {
-            "Square": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
-            "rectangle": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
-            "trapezium": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
-            "triangle": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
-            "hexagon": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
-            "Random": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
-            "All-in": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
-            "All-out": {"predictions": [[] for _ in range(config.timesteps + 1)], "total": 0},
-        }
+        
+ 
+	class_to_idx = validationloader.dataset.dataset.class_to_idx
+
+	class_results = {
+    	cls: {
+        	"predictions": [[] for _ in range(config.timesteps + 1)],
+        	"total": 0
+    	}
+   	 for cls in class_to_idx.keys()
+	}
+
+	}
+
 
         net.eval()
 
-        for images, labels, cls_names in validationloader:
+        for images, labels, cls_names,should_see in validationloader:
             images_orig, labels = images.to(config.device), labels.to(config.device)
 
             for cls_name in cls_names:
@@ -176,13 +179,24 @@ def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_te
                     ft_BC_pc_temp.requires_grad_(True)
                     ft_CD_pc_temp.requires_grad_(True)
                     ft_DE_pc_temp.requires_grad_(True)
+                 
+		    
+                    probs = F.softmax(output, dim=1).detach().cpu().numpy()
 
-                    probs = F.softmax(output, dim=1)
-                    square_probs = probs[:, 0].detach().cpu().numpy()
+		    for i, cls_name in enumerate(cls_names):
+    			class_results[cls_name]["total"] += 1
 
-                    for i, cls_name in enumerate(cls_names):
-                        class_results[cls_name]["predictions"][0].append(
-                            square_probs[i])
+    			if cls_name in ["all_in", "all_out", "random"]:
+        			perceived_class = should_see[i]          # illusion percept
+    			else:
+        			perceived_class = cls_name               # physical class
+
+    			perceived_idx = class_to_idx[perceived_class]
+
+    			class_results[cls_name]["predictions"][0].append(
+        			probs[i, perceived_idx]
+    			)
+
 
 
                     # Predictive coding timesteps
@@ -200,25 +214,30 @@ def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_te
                             images.size(0),
                         )
 
-                        probs = F.softmax(output, dim=1)
-                        square_probs = probs[:, 0].detach().cpu().numpy()
+                        probs = F.softmax(output, dim=1).detach().cpu().numpy()
 
-                        for i, cls_name in enumerate(cls_names):
-                            class_results[cls_name]["predictions"][t +
-                                                                1].append(square_probs[i])
+		        for i, cls_name in enumerate(cls_names):
+
+        			if cls_name in ["all_in", "all_out", "random"]:
+            				perceived_class = should_see[i]
+			        else:
+            				perceived_class = cls_name
+
+        		perceived_idx = class_to_idx[perceived_class]
+
+        		class_results[cls_name]["predictions"][t + 1].append(
+            			probs[i, perceived_idx]
+       			)
 
         # Compute mean probability per timestep for each class
-#         for cls_name in ["Square", "Random", "All-in", "All-out"]:
-#             total = class_results[cls_name]["total"]
-#             mean_probs = [
-#                 np.mean(p) *
-#                 100 for p in class_results[cls_name]["predictions"]]
-# 
-#             print("=================================")
-#             print(f"Class: {cls_name}, Total Samples: {total}")
-#             for t, acc in enumerate(mean_probs):
-#                 print(f"Timestep {t}: {acc:.2f}%")
-#             print("\n")
-# 
+         for cls_name in class_results:
+             total = class_results[cls_name]["total"]
+             mean_probs = [ np.mean(p) * 100 for p in class_results[cls_name]["predictions"]]
+             print("=================================")
+             print(f"Class: {cls_name}, Total Samples: {total}")
+             for t, acc in enumerate(mean_probs):
+                 print(f"Timestep {t}: {acc:.2f}%")
+             print("\n")
+ 
         return class_results
 
