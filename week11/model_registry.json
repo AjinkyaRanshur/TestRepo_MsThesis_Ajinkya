@@ -1,0 +1,43 @@
+{
+  "models": {
+    "pc_recon10_Uniform_seed42": {
+      "config": {
+        "pattern": "Uniform",
+        "seed": 42,
+        "train_cond": "recon_pc_train",
+        "lr": 5e-05,
+        "timesteps": 10,
+        "last_neurons": 10,
+        "epochs": 200
+      },
+      "status": "completed",
+      "created_at": "2025-12-15T01:26:04.678363",
+      "training_started": "2025-12-15T01:44:09.330469",
+      "training_completed": "2025-12-15T07:57:45.305609",
+      "metrics": {},
+      "checkpoint_path": null,
+      "type": "recon_pc_train"
+    },
+    "null": {
+      "config": {
+        "pattern": "Uniform",
+        "seed": 42,
+        "train_cond": "recoc_train",
+        "lr": 5e-05,
+        "timesteps": 10,
+        "last_neurons": 10,
+        "epochs": 10
+      },
+      "status": "submitted",
+      "created_at": "2025-12-15T01:31:45.344992",
+      "training_started": null,
+      "training_completed": null,
+      "metrics": {},
+      "checkpoint_path": null,
+      "type": "recoc_train"
+    }
+  },
+  "metadata": {
+    "last_updated": "2025-12-15T07:57:45.354978"
+  }
+}

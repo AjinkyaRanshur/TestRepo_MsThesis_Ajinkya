@@ -216,11 +216,22 @@ def decide_training_model(config,metrics_history):
     return result
 
 
-def main(config):
+def main(config,model_id=None):
+    
+    from model_tracking import get_tracker
+    
+    # Update status to training
+    if model_id:
+        tracker = get_tracker()
+        tracker.update_status(model_id, "training")
     
     metrics_history=get_metrics_initialize(config.training_condition)
     metrics_history= decide_training_model(config,metrics_history)
     set_seed(config.seed)
+   
+    # Update status to completed and save metrics
+    if model_id:
+        tracker.update_status(model_id, "completed")
     
 
 
@@ -232,6 +243,8 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=str, required=True)
+    parser.add_argument("--model-name", type=str, default=None, 
+                       help="Model ID from tracking system")
     args = parser.parse_args()
 
     # Add config directory to Python path
@@ -239,7 +252,7 @@ if __name__ == "__main__":
 
     config = load_config(args.config)
 
-    main(config)
+    main(config,args.model_name)
 
 
 

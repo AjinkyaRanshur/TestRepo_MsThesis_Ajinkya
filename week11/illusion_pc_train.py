@@ -54,7 +54,7 @@ def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_te
                         config.batch_size, 64, 4, 4).to(
                         config.device)
 
-                    ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp, ft_EF_pc_temp, ft_FG_ppc_temp, output = net.feedforward_pass(
+                    ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp, ft_EF_pc_temp, ft_FG_pc_temp, output = net.feedforward_pass(
                         images, ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp)
 
                     _, predicted = torch.max(output, 1)
@@ -208,17 +208,17 @@ def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_te
                                                                 1].append(square_probs[i])
 
         # Compute mean probability per timestep for each class
-        for cls_name in ["Square", "Random", "All-in", "All-out"]:
-            total = class_results[cls_name]["total"]
-            mean_probs = [
-                np.mean(p) *
-                100 for p in class_results[cls_name]["predictions"]]
-
-            print("=================================")
-            print(f"Class: {cls_name}, Total Samples: {total}")
-            for t, acc in enumerate(mean_probs):
-                print(f"Timestep {t}: {acc:.2f}%")
-            print("\n")
-
+#         for cls_name in ["Square", "Random", "All-in", "All-out"]:
+#             total = class_results[cls_name]["total"]
+#             mean_probs = [
+#                 np.mean(p) *
+#                 100 for p in class_results[cls_name]["predictions"]]
+# 
+#             print("=================================")
+#             print(f"Class: {cls_name}, Total Samples: {total}")
+#             for t, acc in enumerate(mean_probs):
+#                 print(f"Timestep {t}: {acc:.2f}%")
+#             print("\n")
+# 
         return class_results
 
