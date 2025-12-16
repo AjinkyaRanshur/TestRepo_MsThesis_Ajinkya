@@ -281,7 +281,7 @@ def eval_pc_ill_accuracy(net, dataloader, config, criterion):
     running_loss = []
     val_recon_loss = []
     
-    for images, labels, _ in dataloader:
+    for images, labels, _, _ in dataloader:
 
         # Move to device
         images, labels = images.to(config.device), labels.to(config.device)
@@ -350,7 +350,7 @@ def eval_pc_ill_accuracy(net, dataloader, config, criterion):
     test_loss = np.mean(running_loss)
     test_recon_loss = np.mean(val_recon_loss)
 
-    return mean_acc, test_loss, test_recon_loss
+    return mean_acc, test_loss
 
 
 

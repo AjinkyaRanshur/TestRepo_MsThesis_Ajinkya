@@ -7,7 +7,7 @@ lr = 0.0001
 momentum = 0.9
 classification_datasetpath="data/visual_illusion_dataset"
 recon_datasetpath="/home/ajinkyar/datasets"
-training_condition = "classification_training_shapes"
+training_condition = "illusion_testing"
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 classification_neurons = 6
 
@@ -35,6 +35,5 @@ save_model_path="/home/ajinkyar/ml_models"
 
 
 
-
 base_recon_model = "pc_recon10_Uniform_seed42"
-checkpoint_epoch = 15
+checkpoint_epoch = 20

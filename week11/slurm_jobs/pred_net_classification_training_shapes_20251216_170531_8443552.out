@@ -1,0 +1,24 @@
+==========================================
+SLURM_CLUSTER_NAME = param-brahma
+SLURM_ARRAY_JOB_ID = 
+SLURM_ARRAY_TASK_ID = 
+SLURM_ARRAY_TASK_COUNT = 
+SLURM_ARRAY_TASK_MAX = 
+SLURM_ARRAY_TASK_MIN = 
+SLURM_JOB_ACCOUNT = collins
+SLURM_JOB_ID = 8443552
+SLURM_JOB_NAME = pred_net_classification_training_shapes_20251216_170531
+SLURM_JOB_NODELIST = gpu028
+SLURM_JOB_USER = ajinkyar
+SLURM_JOB_UID = 7397
+SLURM_JOB_PARTITION = gpu
+SLURM_TASK_PID = 4830
+SLURM_SUBMIT_DIR = /home/ajinkyar/TestRepo_MsThesis_Ajinkya/week11
+SLURM_CPUS_ON_NODE = 4
+SLURM_NTASKS = 1
+SLURM_TASK_PID = 4830
+==========================================
+Job started at Tue Dec 16 17:04:54 IST 2025
+Running 1 experiments
+Job ID: 8443552
+Started job 1 (Model: class_pc_recon10_Uniform_seed42_chk15_Uniform_seed42) on GPU 0

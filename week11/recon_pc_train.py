@@ -80,15 +80,14 @@ def recon_pc_training(net,trainloader,testloader,pc_train_bool,config,metrics_hi
                    "deconv2_fb": net.deconv2_fb.state_dict(),
                    "deconv3_fb": net.deconv3_fb.state_dict(),
                    "deconv4_fb": net.deconv4_fb.state_dict(),
-               }, save_path
+               }, save_path)
 
                print(f"Model Saved Successfully to: {save_path}")
                print("Model Save Sucessfully")
-	       
+               
                from model_tracking import get_tracker
-	       tracker = get_tracker()
-	       tracker.set_checkpoint_path(model_name,save_path)
-    
+               tracker = get_tracker()
+               tracker.set_checkpoint_path(model_name,save_path)
 
         return metrics_history
 

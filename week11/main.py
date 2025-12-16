@@ -55,7 +55,7 @@ def train_test_loader(illusion_bool,config):
    
     if illusion_bool == "illusion":
 	
-	transform = transforms.Compose([
+        transform = transforms.Compose([
             transforms.Resize((32, 32)),  # Resize to match CIFAR-10
             transforms.ToTensor(),
             transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))
@@ -192,7 +192,7 @@ def classification_training_shapes(class_trainloader,class_validationloader,clas
 	
   
     print(f"Loading checkpoint: {checkpoint_path}")
-    checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=True)
+    checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=False)
 
 
     net.conv1.load_state_dict(checkpoint["conv1"])
@@ -207,6 +207,30 @@ def classification_training_shapes(class_trainloader,class_validationloader,clas
     print(f"Checkpoint loaded successfully from epoch {checkpoint_epoch}")
 
     metrics_history=illusion_pc_training(net,class_trainloader,class_validationloader,class_testingloader,recon_trainingloader,"fine_tuning",config,metrics_history,model_name)
+
+
+    return metrics_history
+
+
+
+def illusion_testing(class_trainloader,class_validationloader,class_testingloader,recon_trainingloader,config,metrics_history,model_name):
+
+    net = Net(num_classes=config.classification_neurons).to(config.device)
+
+    # Set to whichever value for using the recon model
+    # Extract base model info from config
+    base_model_name = config.model_name  # e.g., "pc_recon10_Uniform_seed42"
+    checkpoint_epoch = config.checkpoint_epoch  # Which epoch checkpoint to use
+
+    checkpoint_path = f"{config.load_model_path}/classification_models/{base_model_name}_epoch{checkpoint_epoch}.pth"
+
+
+    print(f"Loading checkpoint: {checkpoint_path}")
+    checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=False)
+
+    print(f"Checkpoint loaded successfully from epoch {checkpoint_epoch}")
+
+    metrics_history=illusion_pc_training(net,class_trainloader,class_validationloader,class_testingloader,recon_trainingloader,"test",config,metrics_history,model_name)
 
 
     return metrics_history
@@ -230,6 +254,7 @@ def decide_training_model(config,metrics_history,model_name):
     cond_to_func={
             "recon_pc_train":lambda: recon_training_cifar(recon_training_lr,recon_validation_lr,config,metrics_history,model_name),
             "classification_training_shapes": lambda:classification_training_shapes(class_training_lr,class_validation_lr,class_testing_lr,recon_training_lr,config,metrics_history,model_name),
+	    "illusion_testing": lambda:illusion_testing(class_training_lr,class_validation_lr,class_testing_lr,recon_training_lr,config,metrics_history,model_name),
     }
 
     result=cond_to_func[config.training_condition]()
@@ -279,7 +304,6 @@ if __name__ == "__main__":
     config = load_config(args.config)
 
     main(config,args.model_name)
-
 
 
 

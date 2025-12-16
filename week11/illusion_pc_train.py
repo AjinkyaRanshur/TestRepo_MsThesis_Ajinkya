@@ -9,10 +9,11 @@ import torch.optim as optim
 import os
 from add_noise import noisy_img
 import torchvision.utils as vutils
-from eval_and_plotting import recon_pc_loss
+from eval_and_plotting import recon_pc_loss,eval_pc_ill_accuracy
 
 
-def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_testdata,pc_train_bool, config,metrics_history):
+def illusion_pc_training(net, trainloader, validationloader, testloader,
+                         cifar10_testdata, pc_train_bool, config, metrics_history,model_name):
 
     if pc_train_bool == "fine_tuning":
         criterion = nn.CrossEntropyLoss()
@@ -34,11 +35,13 @@ def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_te
 
             net.train()
 
-            for images, labels, _,_ in trainloader:
+            for images, labels, _, _ in trainloader:
                 images_orig = images.to(config.device)
                 labels = labels.to(config.device)
                 for noise in np.arange(0, 0.35, 0.05):
-                    images = noisy_img(images_orig.clone(), "gauss", round(noise, 2))
+                    images = noisy_img(
+                        images_orig.clone(), "gauss", round(
+                            noise, 2))
 
                     # Temporary feature tensors
                     ft_AB_pc_temp = torch.zeros(
@@ -113,8 +116,9 @@ def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_te
                 f"Epoch:{epoch} | AvgLoss:{avg_loss:.4f} ")
 
             net.eval()
-            test_accuracy, test_loss = eval_pc_ill_accuracy(net, validationloader, config, criterion)
-            recon_loss = recon_pc_loss(net,cifar10_testdata,config)
+            test_accuracy, test_loss = eval_pc_ill_accuracy(
+                net, validationloader, config, criterion)
+            test_recon_loss = recon_pc_loss(net, cifar10_testdata, config)
 
             # ✅ ADD THIS: Store metrics
             metrics_history['train_loss'].append(avg_loss)
@@ -124,13 +128,13 @@ def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_te
             metrics_history['train_recon_loss'].append(avg_recon_loss)
             metrics_history['test_recon_loss'].append(test_recon_loss)
 
-	    
-
-	    # Save checkpoint every 10 epochs
+            # Save checkpoint every 10 epochs
             if epoch % 10 == 0:
-                os.makedirs(f'{config.save_model_path}/classification_models', exist_ok=True)
+                os.makedirs(
+                    f'{config.save_model_path}/classification_models',
+                    exist_ok=True)
                 save_path = f'{config.save_model_path}/classification_models/{model_name}_epoch{epoch}.pth'
-                
+
                 torch.save({
                     "conv1": net.conv1.state_dict(),
                     "conv2": net.conv2.state_dict(),
@@ -149,9 +153,8 @@ def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_te
                     "train_acc": train_accuracy,
                     "test_acc": test_accuracy
                 }, save_path)
-                
-                print(f"Checkpoint saved: {save_path}")
 
+                print(f"Checkpoint saved: {save_path}")
 
         return metrics_history
 
@@ -159,118 +162,114 @@ def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_te
     # TEST MODE
     # ------------------------------------------------------------
     if pc_train_bool == "test":
-        
- 
-	class_to_idx = validationloader.dataset.dataset.class_to_idx
 
-	class_results = {
-    	cls: {
-        	"predictions": [[] for _ in range(config.timesteps + 1)],
-        	"total": 0
-    	}
-   	 for cls in class_to_idx.keys()
-	}
+        class_to_idx = validationloader.dataset.dataset.class_to_idx
 
-	}
-
+        class_results = {
+            cls: {
+                "predictions": [[] for _ in range(config.timesteps + 1)],
+                "total": 0
+            }
+            for cls in class_to_idx.keys()}
 
         net.eval()
 
-        for images, labels, cls_names,should_see in validationloader:
-            images_orig, labels = images.to(config.device), labels.to(config.device)
+        for images, labels, cls_names, should_see in validationloader:
+            images_orig, labels = images.to(
+                config.device), labels.to(
+                config.device)
 
             for cls_name in cls_names:
                 class_results[cls_name]["total"] += 1
 
             for noise in np.arange(0, 0.35, 0.05):
-                    images = noisy_img(images_orig.clone(), "gauss", round(noise, 2))
+                images = noisy_img(
+                    images_orig.clone(), "gauss", round(
+                        noise, 2))
 
-                    ft_AB_pc_temp = torch.zeros(
-                        config.batch_size, 6, 32, 32).to(
-                        config.device)
-                    ft_BC_pc_temp = torch.zeros(
-                        config.batch_size, 16, 16, 16).to(
-                        config.device)
-                    ft_CD_pc_temp = torch.zeros(
-                        config.batch_size, 32, 8, 8).to(
-                        config.device)
-                    ft_DE_pc_temp = torch.zeros(
-                        config.batch_size, 64, 4, 4).to(
-                        config.device)
+                ft_AB_pc_temp = torch.zeros(
+                    config.batch_size, 6, 32, 32).to(
+                    config.device)
+                ft_BC_pc_temp = torch.zeros(
+                    config.batch_size, 16, 16, 16).to(
+                    config.device)
+                ft_CD_pc_temp = torch.zeros(
+                    config.batch_size, 32, 8, 8).to(
+                    config.device)
+                ft_DE_pc_temp = torch.zeros(
+                    config.batch_size, 64, 4, 4).to(
+                    config.device)
 
-                    ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp, ft_EF_pc_temp, ft_FG_pc_temp, output = net.feedforward_pass(
-                        images, ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp
+                ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp, ft_EF_pc_temp, ft_FG_pc_temp, output = net.feedforward_pass(
+                    images, ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp
+                )
+
+                # Re-enable gradients
+                ft_AB_pc_temp.requires_grad_(True)
+                ft_BC_pc_temp.requires_grad_(True)
+                ft_CD_pc_temp.requires_grad_(True)
+                ft_DE_pc_temp.requires_grad_(True)
+
+                probs = F.softmax(output, dim=1).detach().cpu().numpy()
+
+                for i, cls_name in enumerate(cls_names):
+                    class_results[cls_name]["total"] += 1
+
+                    if cls_name in ["all_in", "all_out", "random"]:
+                        # illusion percept
+                        perceived_class = should_see[i]
+                    else:
+                        perceived_class = cls_name               # physical class
+
+                    perceived_idx = class_to_idx[perceived_class]
+
+                    class_results[cls_name]["predictions"][0].append(
+                        probs[i, perceived_idx]
                     )
 
-                    # Re-enable gradients
-                    ft_AB_pc_temp.requires_grad_(True)
-                    ft_BC_pc_temp.requires_grad_(True)
-                    ft_CD_pc_temp.requires_grad_(True)
-                    ft_DE_pc_temp.requires_grad_(True)
-                 
-		    
+                # Predictive coding timesteps
+                for t in range(config.timesteps):
+                    output, ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp, ft_EF_pc_temp, _ = net.predictive_coding_pass(
+                        images,
+                        ft_AB_pc_temp,
+                        ft_BC_pc_temp,
+                        ft_CD_pc_temp,
+                        ft_DE_pc_temp,
+                        ft_EF_pc_temp,
+                        config.betaset,
+                        config.gammaset,
+                        config.alphaset,
+                        images.size(0),
+                    )
+
                     probs = F.softmax(output, dim=1).detach().cpu().numpy()
 
-		    for i, cls_name in enumerate(cls_names):
-    			class_results[cls_name]["total"] += 1
+                    for i, cls_name in enumerate(cls_names):
 
-    			if cls_name in ["all_in", "all_out", "random"]:
-        			perceived_class = should_see[i]          # illusion percept
-    			else:
-        			perceived_class = cls_name               # physical class
+                        if cls_name in ["all_in", "all_out", "random"]:
+                            perceived_class = should_see[i]
+                        else:
+                            perceived_class = cls_name
 
-    			perceived_idx = class_to_idx[perceived_class]
+                        perceived_idx = class_to_idx[perceived_class]
 
-    			class_results[cls_name]["predictions"][0].append(
-        			probs[i, perceived_idx]
-    			)
-
-
-
-                    # Predictive coding timesteps
-                    for t in range(config.timesteps):
-                        output, ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp, ft_EF_pc_temp, _ = net.predictive_coding_pass(
-                            images,
-                            ft_AB_pc_temp,
-                            ft_BC_pc_temp,
-                            ft_CD_pc_temp,
-                            ft_DE_pc_temp,
-                            ft_EF_pc_temp,
-                            config.betaset,
-                            config.gammaset,
-                            config.alphaset,
-                            images.size(0),
-                        )
-
-                        probs = F.softmax(output, dim=1).detach().cpu().numpy()
-
-		        for i, cls_name in enumerate(cls_names):
-
-        			if cls_name in ["all_in", "all_out", "random"]:
-            				perceived_class = should_see[i]
-			        else:
-            				perceived_class = cls_name
-
-        		perceived_idx = class_to_idx[perceived_class]
-
-        		class_results[cls_name]["predictions"][t + 1].append(
-            			probs[i, perceived_idx]
-       			)
+                        class_results[cls_name]["predictions"][t + 1].append(
+                            probs[i, perceived_idx])
 
         # Compute mean probability per timestep for each class
-	        # Compute mean probability per timestep for each class
-        print("\n" + "="*80)
+                # Compute mean probability per timestep for each class
+        print("\n" + "=" * 80)
         print("ILLUSION TESTING RESULTS")
-        print("="*80)
-        
+        print("=" * 80)
+
         for cls_name in class_results:
             if class_results[cls_name]["total"] == 0:
                 continue
-            
+
             total = class_results[cls_name]["total"]
-            mean_probs = [np.mean(p) * 100 if len(p) > 0 else 0.0 
-                         for p in class_results[cls_name]["predictions"]]
-            
+            mean_probs = [np.mean(p) * 100 if len(p) > 0 else 0.0
+                          for p in class_results[cls_name]["predictions"]]
+
             print(f"\nClass: {cls_name.upper()}")
             print(f"Total Samples: {total}")
             print("-" * 40)
@@ -281,6 +280,5 @@ def illusion_pc_training(net, trainloader,validationloader,testloader,cifar10_te
         # Save trajectory plot
         from eval_and_plotting import plot_test_trajectory
         plot_test_trajectory(class_results, model_name, config)
- 
-        return class_results
 
+        return class_results

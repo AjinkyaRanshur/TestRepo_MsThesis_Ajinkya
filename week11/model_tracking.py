@@ -60,7 +60,7 @@ class ModelTracker:
         if model_name in self.registry["models"]:
             self.registry["models"][model_name]["metrics"].update(metrics)
             self._save_registry()
-    
+ 
     def set_checkpoint_path(self, model_name: str, path: str):
         """Set model checkpoint path"""
         if model_name in self.registry["models"]:
@@ -86,7 +86,14 @@ class ModelTracker:
             for name, mdata in self.registry["models"].items()
             if mdata.get("type") == "recon_pc_train" and mdata.get("status") == "completed"
         ]
-    
+    def get_completed_classification_models(self) -> List[Dict]:
+        """Get all completed classification models for testing"""
+        return [
+            {"name": name, **mdata}
+            for name, mdata in self.registry["models"].items()
+            if mdata.get("type") == "classification_training_shapes" and mdata.get("status") == "completed"
+        ]
+
     def list_all_models(self, filter_status: Optional[str] = None) -> List[Dict]:
         """List all models, optionally filtered by status"""
         models = [
@@ -190,3 +197,8 @@ def update_model_status(model_name: str, status: str):
 def get_completed_recon_models() -> List[Dict]:
     """Quick access to completed reconstruction models"""
     return get_tracker().get_completed_recon_models()
+
+
+def get_completed_classification_models() -> List[Dict]:
+    """Quick access to completed reconstruction models"""
+    return get_tracker().get_completed_classification_models()

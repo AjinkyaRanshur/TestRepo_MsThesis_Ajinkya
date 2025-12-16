@@ -99,6 +99,8 @@ def create_config_files(
     config_paths = []
     model_names = []
 
+    global CONFIG_FILE
+
     exp_id = 0
 
     # Pattern definitions
@@ -162,7 +164,6 @@ def create_config_files(
                     cfg_path = f"configs/config_{exp_id}.py"
                     cfg_command = f"config_{exp_id}"
                     
-                    global CONFIG_FILE
                     CONFIG_FILE = cfg_path
 
                     with open(BASE_DIR) as f:
@@ -222,7 +223,6 @@ def create_config_files(
             cfg_path = f"configs/config_{exp_id}.py"
             cfg_command = f"config_{exp_id}"
             
-            global CONFIG_FILE
             CONFIG_FILE = cfg_path
 
             with open(BASE_DIR) as f:
