@@ -48,126 +48,214 @@ def set_seed(seed):
     # disable auto-optimization
     torch.backends.cudnn.benchmark = False
 
-
-def train_test_loader(illusion_bool,config):
-    # Normalizing the images
-    #Andrea's nromalization is different figure out why    
-   
+def train_test_loader(illusion_bool, config):
+    """
+    Creates train/validation/test dataloaders.
+    
+    For illusion dataset:
+    - Training: 80% of basic shapes (square, rectangle, trapezium, triangle, hexagon, random)
+    - Validation: 20% of basic shapes (non-overlapping with training)
+    - Testing: All of validation set + equal number of all_in and all_out samples
+    """
+    
     if illusion_bool == "illusion":
-	
+        from customdataset import SquareDataset
+        import torchvision.transforms as transforms
+        
         transform = transforms.Compose([
-            transforms.Resize((32, 32)),  # Resize to match CIFAR-10
+            transforms.Resize((32, 32)),
             transforms.ToTensor(),
             transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))
         ])
 
         DATA_DIR = config.classification_datasetpath
-        full_basic_random=SquareDataset(os.path.join(DATA_DIR, "dataset_metadata.csv"), DATA_DIR,classes_for_use=["square","rectangle","trapezium","triangle","hexagon","random"],transform=transform)
         
-        labels = np.array([full_basic_random[i][1] for i in range(len(full_basic_random))])
-
-        train_idx, val_idx = train_test_split(
-         np.arange(len(full_basic_random)),
-         test_size=0.2,
-         random_state=42,
-         stratify=labels
-         )
-
-        train_set = Subset(full_basic_random, train_idx)
-        val_set   = Subset(full_basic_random, val_idx)
-
-        ALL_IN_OUT = ["all_in", "all_out"]
-
-        all_in_out_dataset = SquareDataset(
-        os.path.join(DATA_DIR, "dataset_metadata.csv"),
-        DATA_DIR,
-        classes_for_use=ALL_IN_OUT,
-        transform=transform
+        # ----------------------------------------------------------------
+        # Load basic shapes + random (for training/validation)
+        # ----------------------------------------------------------------
+        BASIC_CLASSES = ["square", "rectangle", "trapezium", "triangle", "hexagon", "random"]
+        
+        basic_dataset = SquareDataset(
+            os.path.join(DATA_DIR, "dataset_metadata.csv"), 
+            DATA_DIR,
+            classes_for_use=BASIC_CLASSES,
+            transform=transform
         )
-
-        # Count how many per class are needed:
-        # number needed from each = size of val_set / 6
-        # because val_set contains 6 classes (5 basic + random)
-        num_per_class = len(val_set) // 6
-
-        # Filter dataset indices per class
-        all_in_indices  = [i for i in range(len(all_in_out_dataset))
-                   if all_in_out_dataset[i][2] == "all_in"]
-
-        all_out_indices = [i for i in range(len(all_in_out_dataset))
-                   if all_in_out_dataset[i][2] == "all_out"]
-
-        # ✅ Add debug prints to verify
+        
+        # Split into train (80%) and validation (20%)
+        # Using stratify ensures EQUAL distribution across all 6 classes
+        labels = np.array([basic_dataset[i][1] for i in range(len(basic_dataset))])
+        
+        train_idx, val_idx = train_test_split(
+            np.arange(len(basic_dataset)),
+            test_size=0.2,
+            random_state=config.seed,
+            stratify=labels  # This ensures equal class distribution
+        )
+        
+        train_set = Subset(basic_dataset, train_idx)
+        val_set = Subset(basic_dataset, val_idx)
+        
+        print(f"Training set: {len(train_set)} samples")
+        print(f"Validation set: {len(val_set)} samples")
+        
+        # Verify class balance in validation set
+        val_class_counts = {}
+        for idx in val_idx:
+            label = labels[idx]
+            class_name = BASIC_CLASSES[label]
+            val_class_counts[class_name] = val_class_counts.get(class_name, 0) + 1
+        
+        print("Validation set class distribution:")
+        for class_name, count in sorted(val_class_counts.items()):
+            print(f"  {class_name}: {count} samples")
+        
+        # ----------------------------------------------------------------
+        # Load illusion images (all_in, all_out) for testing
+        # ----------------------------------------------------------------
+        ILLUSION_CLASSES = ["all_in", "all_out"]
+        
+        illusion_dataset = SquareDataset(
+            os.path.join(DATA_DIR, "dataset_metadata.csv"),
+            DATA_DIR,
+            classes_for_use=ILLUSION_CLASSES,
+            transform=transform
+        )
+        
+        # Get indices for each illusion class
+        all_in_indices = [i for i in range(len(illusion_dataset))
+                         if illusion_dataset[i][2] == "all_in"]
+        all_out_indices = [i for i in range(len(illusion_dataset))
+                          if illusion_dataset[i][2] == "all_out"]
+        
         print(f"Found {len(all_in_indices)} all_in images")
         print(f"Found {len(all_out_indices)} all_out images")
-        print(f"Need {num_per_class} images per class")
-
-        # Randomly sample so test classes balanced
+        
+        # Sample equal number from each illusion class (same as validation set size)
+        num_per_illusion_class = len(val_set) // len(BASIC_CLASSES)
+        
         rng = np.random.default_rng(config.seed)
-        chosen_all_in  = rng.choice(all_in_indices,  num_per_class, replace=False)
-        chosen_all_out = rng.choice(all_out_indices, num_per_class, replace=False)
-
-        # Build test set by merging:
-        # - the 20% basic+random (val_idx)
-        # - num_per_class of all_in
-        # - num_per_class of all_out
-        test_indices = list(val_idx) + chosen_all_in.tolist() + chosen_all_out.tolist()
-
-        # Create unified test dataset by merging two sources
-        # Trick: we wrap both datasets inside a CombinedDataset
-        class CombinedDataset(Dataset):
-              def __init__(self, basic_random, illusion, val_idx, allin_idx, allout_idx):
-                  self.basic_random = basic_random
-                  self.illusion = illusion
-                  self.indices = list(val_idx) + list(allin_idx) + list(allout_idx)
-              def __len__(self):
-                  return len(self.indices)
-              def __getitem__(self, idx):
-                  real_idx = self.indices[idx]
-                  if real_idx < len(self.basic_random):
-                     return self.basic_random[real_idx]
-                  else:
-                     adj = real_idx - len(self.basic_random)
-                     return self.illusion[adj]
-
-        test_set = CombinedDataset(full_basic_random, all_in_out_dataset,
-                           val_idx, chosen_all_in, chosen_all_out)
-
-        # ------------------------------------------------------------------
-        # 4. Dataloaders
-        # ------------------------------------------------------------------
-        trainloader = DataLoader(train_set, batch_size=config.batch_size, shuffle=True)
-        validationloader   = DataLoader(val_set,   batch_size=config.batch_size, shuffle=False)
-        testloader  = DataLoader(test_set,  batch_size=config.batch_size, shuffle=False)
+        chosen_all_in = rng.choice(all_in_indices, num_per_illusion_class, replace=False)
+        chosen_all_out = rng.choice(all_out_indices, num_per_illusion_class, replace=False)
+        
+        print(f"Sampling {num_per_illusion_class} images per illusion class")
+        
+        # ----------------------------------------------------------------
+        # Create combined test dataset
+        # ----------------------------------------------------------------
+        class CombinedTestDataset(Dataset):
+            """Combines validation basic shapes with illusion samples"""
+            def __init__(self, basic_dataset, illusion_dataset, val_idx, allin_idx, allout_idx):
+                self.basic_dataset = basic_dataset
+                self.illusion_dataset = illusion_dataset
+                
+                # Store which indices belong to which dataset
+                self.val_idx = list(val_idx)
+                self.allin_idx = list(allin_idx)
+                self.allout_idx = list(allout_idx)
+                
+                self.total_len = len(val_idx) + len(allin_idx) + len(allout_idx)
+                
+            def __len__(self):
+                return self.total_len
+            
+            def __getitem__(self, idx):
+                # First part: validation basic shapes
+                if idx < len(self.val_idx):
+                    real_idx = self.val_idx[idx]
+                    return self.basic_dataset[real_idx]
+                
+                # Second part: all_in samples
+                elif idx < len(self.val_idx) + len(self.allin_idx):
+                    offset = idx - len(self.val_idx)
+                    real_idx = self.allin_idx[offset]
+                    return self.illusion_dataset[real_idx]
+                
+                # Third part: all_out samples
+                else:
+                    offset = idx - len(self.val_idx) - len(self.allin_idx)
+                    real_idx = self.allout_idx[offset]
+                    return self.illusion_dataset[real_idx]
+        
+        test_set = CombinedTestDataset(
+            basic_dataset, 
+            illusion_dataset,
+            val_idx, 
+            chosen_all_in, 
+            chosen_all_out
+        )
+        
+        print(f"Test set: {len(test_set)} samples")
+        print(f"  - {len(val_idx)} basic shapes")
+        print(f"  - {len(chosen_all_in)} all_in")
+        print(f"  - {len(chosen_all_out)} all_out")
+        
+        # ----------------------------------------------------------------
+        # Create DataLoaders
+        # ----------------------------------------------------------------
+        trainloader = DataLoader(
+            train_set, 
+            batch_size=config.batch_size, 
+            shuffle=True
+        )
+        
+        validationloader = DataLoader(
+            val_set, 
+            batch_size=config.batch_size, 
+            shuffle=False
+        )
+        
+        testloader = DataLoader(
+            test_set, 
+            batch_size=config.batch_size, 
+            shuffle=False
+        )
+        
+        return trainloader, validationloader, testloader
 
     else:
-
-	# Transform for CIFAR-10: already 32x32
+        # CIFAR-10 dataset (reconstruction training)
+        import torchvision
+        import torchvision.transforms as transforms
+        
         transform = transforms.Compose([
             transforms.ToTensor(),
             transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))
         ])
-	
+        
         trainset = torchvision.datasets.CIFAR10(
-        root=config.recon_datasetpath,
-        train=True,
-        download=True,
-        transform=transform)
-
+            root=config.recon_datasetpath,
+            train=True,
+            download=True,
+            transform=transform
+        )
+        
         trainloader = torch.utils.data.DataLoader(
-        trainset, batch_size=config.batch_size, shuffle=True, num_workers=0)
-
+            trainset, 
+            batch_size=config.batch_size, 
+            shuffle=True, 
+            num_workers=0
+        )
+        
         testset = torchvision.datasets.CIFAR10(
-        root=config.recon_datasetpath,
-        train=False,
-        download=True,
-        transform=transform)
-
+            root=config.recon_datasetpath,
+            train=False,
+            download=True,
+            transform=transform
+        )
+        
         testloader = torch.utils.data.DataLoader(
-        testset, batch_size=config.batch_size, shuffle=False, num_workers=0)
-    
-        validationloader=0
-    return trainloader, testloader,validationloader
+            testset, 
+            batch_size=config.batch_size, 
+            shuffle=False, 
+            num_workers=0
+        )
+        
+        validationloader = None
+        
+        return trainloader, testloader, validationloader
+
+
 
 def recon_training_cifar(trainloader, testloader,config,metrics_history,model_name):
     net = Net(num_classes=config.classification_neurons).to(config.device)
