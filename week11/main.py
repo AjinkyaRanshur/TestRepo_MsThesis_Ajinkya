@@ -55,7 +55,7 @@ def train_test_loader(illusion_bool, config):
     For illusion dataset:
     - Training: 80% of basic shapes (square, rectangle, trapezium, triangle, hexagon, random)
     - Validation: 20% of basic shapes (non-overlapping with training)
-    - Testing: All of validation set + equal number of all_in and all_out samples
+    - Testing: Validation set + equal samples from all_in and all_out (ALL 8 classes)
     """
     
     if illusion_bool == "illusion":
@@ -71,68 +71,95 @@ def train_test_loader(illusion_bool, config):
         DATA_DIR = config.classification_datasetpath
         
         # ----------------------------------------------------------------
-        # Load basic shapes + random (for training/validation)
+        # Load ALL 8 classes together to get consistent class_to_idx
+        # ----------------------------------------------------------------
+        ALL_CLASSES = ["square", "rectangle", "trapezium", "triangle", "hexagon", "random", "all_in", "all_out"]
+        
+        full_dataset = SquareDataset(
+            os.path.join(DATA_DIR, "dataset_metadata.csv"), 
+            DATA_DIR,
+            classes_for_use=ALL_CLASSES,
+            transform=transform
+        )
+        
+        print(f"Full dataset: {len(full_dataset)} samples")
+        print(f"Class mapping (ALL classes): {full_dataset.class_to_idx}")
+        
+        # ----------------------------------------------------------------
+        # Split basic shapes (first 6 classes) into train/validation
         # ----------------------------------------------------------------
         BASIC_CLASSES = ["square", "rectangle", "trapezium", "triangle", "hexagon", "random"]
         
-        basic_dataset = SquareDataset(
-            os.path.join(DATA_DIR, "dataset_metadata.csv"), 
-            DATA_DIR,
-            classes_for_use=BASIC_CLASSES,
-            transform=transform
-        )
+        # Get indices for basic shapes only
+        basic_indices = []
+        basic_labels = []
         
-        # Split into train (80%) and validation (20%)
-        # Using stratify ensures EQUAL distribution across all 6 classes
-        labels = np.array([basic_dataset[i][1] for i in range(len(basic_dataset))])
+        for i in range(len(full_dataset)):
+            _, label, cls_name, _ = full_dataset[i]
+            if cls_name in BASIC_CLASSES:
+                basic_indices.append(i)
+                basic_labels.append(label.item())
         
+        basic_indices = np.array(basic_indices)
+        basic_labels = np.array(basic_labels)
+        
+        print(f"\nBasic shapes: {len(basic_indices)} samples")
+        
+        # Count samples per class
+        basic_class_counts = {}
+        for idx in basic_indices:
+            _, label, cls_name, _ = full_dataset[idx]
+            basic_class_counts[cls_name] = basic_class_counts.get(cls_name, 0) + 1
+        
+        print("Basic class distribution:")
+        for cls_name in BASIC_CLASSES:
+            count = basic_class_counts.get(cls_name, 0)
+            print(f"  {cls_name}: {count} samples")
+        
+        # Split with stratification
         train_idx, val_idx = train_test_split(
-            np.arange(len(basic_dataset)),
+            basic_indices,
             test_size=0.2,
             random_state=config.seed,
-            stratify=labels  # This ensures equal class distribution
+            stratify=basic_labels
         )
         
-        train_set = Subset(basic_dataset, train_idx)
-        val_set = Subset(basic_dataset, val_idx)
+        train_set = Subset(full_dataset, train_idx)
+        val_set = Subset(full_dataset, val_idx)
         
-        print(f"Training set: {len(train_set)} samples")
+        print(f"\nTraining set: {len(train_set)} samples")
         print(f"Validation set: {len(val_set)} samples")
         
-        # Verify class balance in validation set
+        # Verify validation class balance
         val_class_counts = {}
         for idx in val_idx:
-            label = labels[idx]
-            class_name = BASIC_CLASSES[label]
-            val_class_counts[class_name] = val_class_counts.get(class_name, 0) + 1
+            _, label, cls_name, _ = full_dataset[idx]
+            val_class_counts[cls_name] = val_class_counts.get(cls_name, 0) + 1
         
         print("Validation set class distribution:")
-        for class_name, count in sorted(val_class_counts.items()):
-            print(f"  {class_name}: {count} samples")
+        for cls_name in sorted(val_class_counts.keys()):
+            print(f"  {cls_name}: {val_class_counts[cls_name]} samples")
         
         # ----------------------------------------------------------------
-        # Load illusion images (all_in, all_out) for testing
+        # Get illusion images (all_in, all_out) for testing
         # ----------------------------------------------------------------
-        ILLUSION_CLASSES = ["all_in", "all_out"]
+        all_in_indices = []
+        all_out_indices = []
         
-        illusion_dataset = SquareDataset(
-            os.path.join(DATA_DIR, "dataset_metadata.csv"),
-            DATA_DIR,
-            classes_for_use=ILLUSION_CLASSES,
-            transform=transform
-        )
+        for i in range(len(full_dataset)):
+            _, _, cls_name, _ = full_dataset[i]
+            if cls_name == "all_in":
+                all_in_indices.append(i)
+            elif cls_name == "all_out":
+                all_out_indices.append(i)
         
-        # Get indices for each illusion class
-        all_in_indices = [i for i in range(len(illusion_dataset))
-                         if illusion_dataset[i][2] == "all_in"]
-        all_out_indices = [i for i in range(len(illusion_dataset))
-                          if illusion_dataset[i][2] == "all_out"]
-        
-        print(f"Found {len(all_in_indices)} all_in images")
+        print(f"\nFound {len(all_in_indices)} all_in images")
         print(f"Found {len(all_out_indices)} all_out images")
         
-        # Sample equal number from each illusion class (same as validation set size)
-        num_per_illusion_class = len(val_set) // len(BASIC_CLASSES)
+        # Sample equal number from each illusion class
+        # Match the smallest class count in validation set
+        samples_per_class = min(val_class_counts.values())
+        num_per_illusion_class = samples_per_class
         
         rng = np.random.default_rng(config.seed)
         chosen_all_in = rng.choice(all_in_indices, num_per_illusion_class, replace=False)
@@ -141,54 +168,25 @@ def train_test_loader(illusion_bool, config):
         print(f"Sampling {num_per_illusion_class} images per illusion class")
         
         # ----------------------------------------------------------------
-        # Create combined test dataset
+        # Create test set: validation + illusion samples
         # ----------------------------------------------------------------
-        class CombinedTestDataset(Dataset):
-            """Combines validation basic shapes with illusion samples"""
-            def __init__(self, basic_dataset, illusion_dataset, val_idx, allin_idx, allout_idx):
-                self.basic_dataset = basic_dataset
-                self.illusion_dataset = illusion_dataset
-                
-                # Store which indices belong to which dataset
-                self.val_idx = list(val_idx)
-                self.allin_idx = list(allin_idx)
-                self.allout_idx = list(allout_idx)
-                
-                self.total_len = len(val_idx) + len(allin_idx) + len(allout_idx)
-                
-            def __len__(self):
-                return self.total_len
-            
-            def __getitem__(self, idx):
-                # First part: validation basic shapes
-                if idx < len(self.val_idx):
-                    real_idx = self.val_idx[idx]
-                    return self.basic_dataset[real_idx]
-                
-                # Second part: all_in samples
-                elif idx < len(self.val_idx) + len(self.allin_idx):
-                    offset = idx - len(self.val_idx)
-                    real_idx = self.allin_idx[offset]
-                    return self.illusion_dataset[real_idx]
-                
-                # Third part: all_out samples
-                else:
-                    offset = idx - len(self.val_idx) - len(self.allin_idx)
-                    real_idx = self.allout_idx[offset]
-                    return self.illusion_dataset[real_idx]
+        test_indices = np.concatenate([val_idx, chosen_all_in, chosen_all_out])
+        test_set = Subset(full_dataset, test_indices)
         
-        test_set = CombinedTestDataset(
-            basic_dataset, 
-            illusion_dataset,
-            val_idx, 
-            chosen_all_in, 
-            chosen_all_out
-        )
-        
-        print(f"Test set: {len(test_set)} samples")
+        print(f"\nTest set: {len(test_set)} samples")
         print(f"  - {len(val_idx)} basic shapes")
         print(f"  - {len(chosen_all_in)} all_in")
         print(f"  - {len(chosen_all_out)} all_out")
+        
+        # Verify test set class distribution
+        test_class_counts = {}
+        for idx in test_indices:
+            _, _, cls_name, _ = full_dataset[idx]
+            test_class_counts[cls_name] = test_class_counts.get(cls_name, 0) + 1
+        
+        print("\nTest set class distribution:")
+        for cls_name in sorted(test_class_counts.keys()):
+            print(f"  {cls_name}: {test_class_counts[cls_name]} samples")
         
         # ----------------------------------------------------------------
         # Create DataLoaders
@@ -254,7 +252,6 @@ def train_test_loader(illusion_bool, config):
         validationloader = None
         
         return trainloader, testloader, validationloader
-
 
 
 def recon_training_cifar(trainloader, testloader,config,metrics_history,model_name):

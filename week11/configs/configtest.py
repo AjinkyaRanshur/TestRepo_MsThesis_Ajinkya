@@ -19,7 +19,7 @@ if torch.cuda.is_available():
     print(f"CUDA memory allocated: {torch.cuda.memory_allocated(device) / 1024**3:.2f} GB")
 print(f"Using device: {device}")
 
-timesteps = 10
+timesteps = 100
 
 gammaset = [[0.33, 0.33, 0.33, 0.33]]  # pattern: Uniform
 betaset = [[0.33, 0.33, 0.33, 0.33]]  # pattern: Uniform
@@ -36,4 +36,4 @@ save_model_path="/home/ajinkyar/ml_models"
 
 
 base_recon_model = "pc_recon10_Uniform_seed42"
-checkpoint_epoch = 20
+checkpoint_epoch = 40
