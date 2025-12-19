@@ -19,6 +19,7 @@ def update_config(
     last_neurons,
     seed,
     lr,
+    epochs,
     base_recon_model=None,
     checkpoint_epoch=None
 ):
@@ -44,6 +45,9 @@ def update_config(
 
             elif stripped.startswith("model_name"):
                 f.write(f'model_name = "{model_name}"\n')
+
+            elif stripped.startswith("epochs"):
+                f.write(f'epochs = {epochs[0]}\n')
 
             elif stripped.startswith("seed"):
                 f.write(f"seed = {seed}\n")
@@ -142,7 +146,8 @@ def create_config_files(
                     seeds, patterns, lr_list, timesteps
                 ):
                     # Generate model name
-                    model_name = f"class_{base_model}_chk{checkpoint_epoch}_{pattern}_seed{seed}"
+                 
+                    model_name = f"{base_model}_chk{checkpoint_epoch}_class_t{timestep}_{pattern}_seed{seed}"
 
                     tracker = get_tracker()
                     config_dict = {
@@ -186,6 +191,7 @@ def create_config_files(
                         last_neurons,
                         seed,
                         lr,
+                        epochs,
                         base_recon_model=base_model,
                         checkpoint_epoch=checkpoint_epoch
                     )
@@ -241,6 +247,7 @@ def create_config_files(
                 last_neurons,
                 seed,
                 lr,
+                epochs
             )
 
             config_paths.append(cfg_command)

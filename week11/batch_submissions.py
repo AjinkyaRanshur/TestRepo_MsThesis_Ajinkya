@@ -71,7 +71,7 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
         f"#SBATCH --cpus-per-task=4",
         f"#SBATCH --gres=gpu:{gpus_needed}",
         f"#SBATCH --partition=gpu",
-        f"#SBATCH --time=24:00:00",
+        f"#SBATCH --time=4-00:00:00",
         f"#SBATCH --mem=32G",
         "",
         "# Load your environment",

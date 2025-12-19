@@ -1,8 +1,0 @@
-{
-  "slurm_job_id": "8442607",
-  "script_path": "slurm_jobs/pred_net_recoc_train_20251215_013145.sh",
-  "model_names": [
-    null
-  ],
-  "submitted_at": "2025-12-15T01:32:05.799408"
-}

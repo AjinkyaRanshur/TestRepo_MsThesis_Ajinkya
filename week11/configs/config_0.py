@@ -3,7 +3,7 @@ import torch
 batch_size = 40
 epochs = 200
 seed = 42
-lr = 0.0001
+lr = 5e-05
 momentum = 0.9
 classification_datasetpath="data/visual_illusion_dataset"
 recon_datasetpath="/home/ajinkyar/datasets"
@@ -25,11 +25,11 @@ gammaset = [[0.33, 0.33, 0.33, 0.33]]  # pattern: Uniform
 betaset = [[0.33, 0.33, 0.33, 0.33]]  # pattern: Uniform
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
-model_name = "class_pc_recon10_Uniform_seed42_chk15_Uniform_seed42"
+model_name = "pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42"
 noise_type="s&p"
 noise_param=0.0
 
-experiment_name = "Testing class_pc_recon10_Uniform_seed42_chk15_Uniform_seed42 with Uniform pattern at 10 timesteps"
+experiment_name = "Testing pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42 with Uniform pattern at 10 timesteps"
 load_model_path="/home/ajinkyar/ml_models"
 save_model_path="/home/ajinkyar/ml_models"
 

@@ -25,7 +25,7 @@ gammaset = [[0.33, 0.33, 0.33, 0.33]]  # pattern: Uniform
 betaset = [[0.33, 0.33, 0.33, 0.33]]  # pattern: Uniform
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
-model_name = "class_pc_recon10_Uniform_seed42_chk15_Uniform_seed42"
+model_name = "pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42"
 noise_type="s&p"
 noise_param=0.0
 
@@ -36,4 +36,4 @@ save_model_path="/home/ajinkyar/ml_models"
 
 
 base_recon_model = "pc_recon10_Uniform_seed42"
-checkpoint_epoch = 40
+checkpoint_epoch = 130

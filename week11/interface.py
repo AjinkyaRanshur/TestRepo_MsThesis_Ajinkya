@@ -73,8 +73,8 @@ def run():
                 base_config = slurm_entries()
             elif training_type == "2":
                 base_config = slurm_classification_entries()
-	    elif training_type == "3":
-		base_config = slurm_testing_entries()
+            elif training_type == "3":     
+                base_config = slurm_testing_entries()
 
             if base_config:
                 from batch_submissions import create_slurm_script, submit_sbatch

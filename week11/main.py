@@ -53,9 +53,9 @@ def train_test_loader(illusion_bool, config):
     Creates train/validation/test dataloaders.
     
     For illusion dataset:
-    - Training: 80% of basic shapes (square, rectangle, trapezium, triangle, hexagon, random)
-    - Validation: 20% of basic shapes (non-overlapping with training)
-    - Testing: Validation set + equal samples from all_in and all_out (ALL 8 classes)
+    - Training: 70% of basic shapes + random (stratified by should_see for random)
+    - Validation: 30% of basic shapes + random (stratified by should_see for random)
+    - Testing: Validation set + matched samples from all_in/all_out
     """
     
     if illusion_bool == "illusion":
@@ -71,9 +71,11 @@ def train_test_loader(illusion_bool, config):
         DATA_DIR = config.classification_datasetpath
         
         # ----------------------------------------------------------------
-        # Load ALL 8 classes together to get consistent class_to_idx
+        # Load ALL 8 classes together
         # ----------------------------------------------------------------
-        ALL_CLASSES = ["square", "rectangle", "trapezium", "triangle", "hexagon", "random", "all_in", "all_out"]
+        ALL_CLASSES = ["square", "rectangle", "trapezium", "triangle", "hexagon", 
+                       "random", "all_in", "all_out"]
+        BASIC_CLASSES = ["square", "rectangle", "trapezium", "triangle", "hexagon", "random"]
         
         full_dataset = SquareDataset(
             os.path.join(DATA_DIR, "dataset_metadata.csv"), 
@@ -86,111 +88,133 @@ def train_test_loader(illusion_bool, config):
         print(f"Class mapping (ALL classes): {full_dataset.class_to_idx}")
         
         # ----------------------------------------------------------------
-        # Split basic shapes (first 6 classes) into train/validation
+        # STEP 1: Separate indices by class
         # ----------------------------------------------------------------
-        BASIC_CLASSES = ["square", "rectangle", "trapezium", "triangle", "hexagon", "random"]
-        
-        # Get indices for basic shapes only
-        basic_indices = []
-        basic_labels = []
+        basic_shape_indices = {cls: [] for cls in ["square", "rectangle", "trapezium", 
+                                                    "triangle", "hexagon"]}
+        random_indices_by_should_see = {}
+        illusion_indices = {"all_in": [], "all_out": []}
         
         for i in range(len(full_dataset)):
-            _, label, cls_name, _ = full_dataset[i]
-            if cls_name in BASIC_CLASSES:
-                basic_indices.append(i)
-                basic_labels.append(label.item())
+            _, _, cls_name, should_see = full_dataset[i]
+            
+            if cls_name in basic_shape_indices:
+                basic_shape_indices[cls_name].append(i)
+            elif cls_name == "random":
+                if should_see not in random_indices_by_should_see:
+                    random_indices_by_should_see[should_see] = []
+                random_indices_by_should_see[should_see].append(i)
+            elif cls_name in illusion_indices:
+                illusion_indices[cls_name].append(i)
         
-        basic_indices = np.array(basic_indices)
-        basic_labels = np.array(basic_labels)
+        print(f"\nInitial class distribution:")
+        for cls in ["square", "rectangle", "trapezium", "triangle", "hexagon"]:
+            print(f"  {cls}: {len(basic_shape_indices[cls])} samples")
+        print(f"  random: {sum(len(v) for v in random_indices_by_should_see.values())} samples")
+        for see_cls, indices in random_indices_by_should_see.items():
+            print(f"    → should_see '{see_cls}': {len(indices)}")
         
-        print(f"\nBasic shapes: {len(basic_indices)} samples")
+        # ----------------------------------------------------------------
+        # STEP 2: Split basic shapes 70-30
+        # ----------------------------------------------------------------
+        train_indices = []
+        val_indices = []
         
-        # Count samples per class
-        basic_class_counts = {}
-        for idx in basic_indices:
-            _, label, cls_name, _ = full_dataset[idx]
-            basic_class_counts[cls_name] = basic_class_counts.get(cls_name, 0) + 1
+        for cls_name, indices in basic_shape_indices.items():
+            indices = np.array(indices)
+            train_idx, val_idx = train_test_split(
+                indices,
+                test_size=0.3,
+                random_state=config.seed
+            )
+            train_indices.extend(train_idx)
+            val_indices.extend(val_idx)
         
-        print("Basic class distribution:")
-        for cls_name in BASIC_CLASSES:
-            count = basic_class_counts.get(cls_name, 0)
-            print(f"  {cls_name}: {count} samples")
+        # ----------------------------------------------------------------
+        # STEP 3: Split random 70-30 STRATIFIED by should_see
+        # ----------------------------------------------------------------
+        for should_see_cls, indices in random_indices_by_should_see.items():
+            indices = np.array(indices)
+            train_idx, val_idx = train_test_split(
+                indices,
+                test_size=0.3,
+                random_state=config.seed
+            )
+            train_indices.extend(train_idx)
+            val_indices.extend(val_idx)
         
-        # Split with stratification
-        train_idx, val_idx = train_test_split(
-            basic_indices,
-            test_size=0.2,
-            random_state=config.seed,
-            stratify=basic_labels
-        )
+        train_indices = np.array(train_indices)
+        val_indices = np.array(val_indices)
         
-        train_set = Subset(full_dataset, train_idx)
-        val_set = Subset(full_dataset, val_idx)
+        print(f"\nTraining set: {len(train_indices)} samples")
+        print(f"Validation set: {len(val_indices)} samples")
         
-        print(f"\nTraining set: {len(train_set)} samples")
-        print(f"Validation set: {len(val_set)} samples")
-        
-        # Verify validation class balance
+        # Analyze validation set to determine illusion sampling
         val_class_counts = {}
-        for idx in val_idx:
-            _, label, cls_name, _ = full_dataset[idx]
+        val_should_see_counts = {}
+        for idx in val_indices:
+            _, _, cls_name, should_see = full_dataset[idx]
             val_class_counts[cls_name] = val_class_counts.get(cls_name, 0) + 1
+            if cls_name == "random":
+                val_should_see_counts[should_see] = val_should_see_counts.get(should_see, 0) + 1
         
-        print("Validation set class distribution:")
+        print(f"Validation class distribution:")
         for cls_name in sorted(val_class_counts.keys()):
             print(f"  {cls_name}: {val_class_counts[cls_name]} samples")
         
         # ----------------------------------------------------------------
-        # Get illusion images (all_in, all_out) for testing
+        # STEP 4: Sample all_in and all_out for test set
         # ----------------------------------------------------------------
-        all_in_indices = []
-        all_out_indices = []
-        
-        for i in range(len(full_dataset)):
-            _, _, cls_name, _ = full_dataset[i]
-            if cls_name == "all_in":
-                all_in_indices.append(i)
-            elif cls_name == "all_out":
-                all_out_indices.append(i)
-        
-        print(f"\nFound {len(all_in_indices)} all_in images")
-        print(f"Found {len(all_out_indices)} all_out images")
-        
-        # Sample equal number from each illusion class
-        # Match the smallest class count in validation set
-        samples_per_class = min(val_class_counts.values())
-        num_per_illusion_class = samples_per_class
-        
+        # Match the should_see distribution from validation's random class
         rng = np.random.default_rng(config.seed)
-        chosen_all_in = rng.choice(all_in_indices, num_per_illusion_class, replace=False)
-        chosen_all_out = rng.choice(all_out_indices, num_per_illusion_class, replace=False)
+        test_illusion_indices = []
         
-        print(f"Sampling {num_per_illusion_class} images per illusion class")
+        print(f"\nSampling illusions to match validation random distribution:")
+        for illusion_cls in ["all_in", "all_out"]:
+            # Group indices by should_see
+            indices_by_should_see = {}
+            for idx in illusion_indices[illusion_cls]:
+                _, _, cls_name, should_see = full_dataset[idx]
+                if should_see not in indices_by_should_see:
+                    indices_by_should_see[should_see] = []
+                indices_by_should_see[should_see].append(idx)
+            
+            # Sample from each should_see group
+            for should_see_cls, count_needed in val_should_see_counts.items():
+                available = indices_by_should_see.get(should_see_cls, [])
+                if len(available) >= count_needed:
+                    sampled = rng.choice(available, count_needed, replace=False)
+                else:
+                    print(f"  WARNING: {illusion_cls} has only {len(available)} samples "
+                          f"for should_see={should_see_cls}, need {count_needed}")
+                    sampled = available
+                test_illusion_indices.extend(sampled)
+            
+            print(f"  {illusion_cls}: sampled {len(test_illusion_indices) // 2} samples")
         
         # ----------------------------------------------------------------
-        # Create test set: validation + illusion samples
+        # STEP 5: Create test set = validation + sampled illusions
         # ----------------------------------------------------------------
-        test_indices = np.concatenate([val_idx, chosen_all_in, chosen_all_out])
-        test_set = Subset(full_dataset, test_indices)
+        test_indices = np.concatenate([val_indices, test_illusion_indices])
         
-        print(f"\nTest set: {len(test_set)} samples")
-        print(f"  - {len(val_idx)} basic shapes")
-        print(f"  - {len(chosen_all_in)} all_in")
-        print(f"  - {len(chosen_all_out)} all_out")
-        
-        # Verify test set class distribution
+        # Verify test set distribution
         test_class_counts = {}
         for idx in test_indices:
             _, _, cls_name, _ = full_dataset[idx]
             test_class_counts[cls_name] = test_class_counts.get(cls_name, 0) + 1
         
-        print("\nTest set class distribution:")
+        print(f"\nTest set: {len(test_indices)} samples")
+        print(f"Test set class distribution:")
         for cls_name in sorted(test_class_counts.keys()):
             print(f"  {cls_name}: {test_class_counts[cls_name]} samples")
         
         # ----------------------------------------------------------------
         # Create DataLoaders
         # ----------------------------------------------------------------
+        train_set = Subset(full_dataset, train_indices)
+        val_set = Subset(full_dataset, val_indices)
+        test_set = Subset(full_dataset, test_indices)
+        
         trainloader = DataLoader(
             train_set, 
             batch_size=config.batch_size, 

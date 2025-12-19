@@ -243,7 +243,7 @@ def slurm_classification_entries():
     batch_size = parse_list(batch_input, int)
     
     # Get learning rate
-    lr_input = input("Learning rate (default 0.0001): ").strip() or "0.0001"
+    lr_input = input("Learning rate (default 0.00005): ").strip() or "0.00005"
     lr = parse_list(lr_input, float)
     
     # Get timesteps
