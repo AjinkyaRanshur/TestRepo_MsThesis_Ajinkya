@@ -61,16 +61,16 @@
         "pattern": "Uniform",
         "seed": 42,
         "train_cond": "classification_training_shapes",
-        "lr": 5e-05,
+        "lr": 0.0001,
         "timesteps": 10,
         "last_neurons": 6,
         "epochs": 200,
         "base_recon_model": "pc_recon10_Uniform_seed42",
         "checkpoint_epoch": 15
       },
-      "status": "training",
-      "created_at": "2025-12-18T00:31:27.471728",
-      "training_started": "2025-12-19T07:20:22.872002",
+      "status": "submitted",
+      "created_at": "2025-12-19T14:46:26.440723",
+      "training_started": null,
       "training_completed": null,
       "metrics": {},
       "checkpoint_path": null,
@@ -78,6 +78,6 @@
     }
   },
   "metadata": {
-    "last_updated": "2025-12-19T07:20:22.930154"
+    "last_updated": "2025-12-19T14:46:27.469669"
   }
 }
