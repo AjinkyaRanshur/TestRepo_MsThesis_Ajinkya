@@ -5,8 +5,8 @@ epochs = 200
 seed = 42
 lr = 5e-05
 momentum = 0.9
-classification_datasetpath="data/visual_illusion_dataset"
-recon_datasetpath="/home/ajinkyar/datasets"
+classification_datasetpath=r"data/visual_illusion_dataset"
+recon_datasetpath="D:\Ms_Thesis\datasets"
 training_condition = "classification_training_shapes"
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 classification_neurons = 6
@@ -30,8 +30,8 @@ noise_type="s&p"
 noise_param=0.0
 
 experiment_name = "Testing pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42 with Uniform pattern at 10 timesteps"
-load_model_path="/home/ajinkyar/ml_models"
-save_model_path="/home/ajinkyar/ml_models"
+load_model_path=r"D:\Ms_Thesis\ml_models"
+save_model_path=r"D:\Ms_Thesis\ml_models"
 
 
 
