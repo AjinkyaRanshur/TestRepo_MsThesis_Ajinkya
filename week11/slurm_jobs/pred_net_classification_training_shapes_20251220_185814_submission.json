@@ -1,0 +1,8 @@
+{
+  "slurm_job_id": "8444550",
+  "script_path": "slurm_jobs/pred_net_classification_training_shapes_20251220_185814.sh",
+  "model_names": [
+    "pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42"
+  ],
+  "submitted_at": "2025-12-20T18:58:16.303259"
+}

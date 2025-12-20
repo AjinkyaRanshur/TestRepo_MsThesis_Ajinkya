@@ -126,13 +126,13 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
                 total_samples += labels.size(0) * num_noise_levels
 
                 running_loss.append(avg_classification_loss.item())
-                classification_losses.append(avg_classification_loss.item())
+                classificaton_losses.append(avg_classification_loss.item())
                 reconstruction_losses.append(avg_reconstruction_loss)
 
             accuracy = [100 * c / total_samples for c in total_correct]
             train_accuracy = np.mean(accuracy)
             avg_loss = np.mean(running_loss)
-            avg_class_loss = np.mean(classification_losses)
+            avg_class_loss = np.mean(classificaton_losses)
             avg_recon_loss = np.mean(reconstruction_losses)
 
             print(f"Epoch {epoch:3d} | "
@@ -307,3 +307,4 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
         plot_test_trajectory(class_results, model_name, config)
 
         return class_results
+

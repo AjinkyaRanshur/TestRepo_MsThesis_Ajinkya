@@ -132,12 +132,12 @@ def plot_training_metrics(metrics_history, model_name, config):
     # --------------------------------------------------
     # 3. Reconstruction Loss
     # --------------------------------------------------
-    if "train_recon_loss" in metrics_history and "test_recon_loss" in metrics_history:
+    if "illusory_datset_recon_loss" in metrics_history and "cifar10_dataset_recon_loss" in metrics_history:
         plt.figure(figsize=(8, 6))
-        plt.plot(epochs, metrics_history["train_recon_loss"],
-                 label="Train Recon Loss", linewidth=2)
-        plt.plot(epochs, metrics_history["test_recon_loss"],
-                 label="Test Recon Loss", linewidth=2)
+        plt.plot(epochs, metrics_history["illusory_datset_recon_loss"],
+                 label="Illusory datset Recon Loss", linewidth=2)
+        plt.plot(epochs, metrics_history["cifar10_dataset_recon_loss"],
+                 label="Cifar10 dataset Recon Loss", linewidth=2)
 
         plt.xlabel("Epoch")
         plt.ylabel("Reconstruction Loss")

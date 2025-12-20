@@ -351,7 +351,7 @@ def get_metrics_initialize(train_cond):
     if train_cond == "recon_pc_train":
        metrics_history = {'train_loss': [], 'test_loss': []}
     else :
-       metrics_history = {'train_loss': [], 'test_loss': [],'train_acc':[],'test_acc':[],'train_recon_loss':[],'test_recon_loss':[]}
+       metrics_history = {'train_loss': [], 'test_loss': [],'train_acc':[],'test_acc':[],'illusory_datset_recon_loss':[],'cifar10_dataset_recon_loss':[]}
 
     return metrics_history
 
