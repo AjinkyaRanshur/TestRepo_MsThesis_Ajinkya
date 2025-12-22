@@ -36,6 +36,6 @@ save_model_path="/home/ajinkyar/ml_models"
 
 
 base_recon_model = "pc_recon10_Uniform_seed42"
-checkpoint_epoch = 10
+checkpoint_epoch = 100
 
 

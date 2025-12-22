@@ -350,6 +350,9 @@ def get_metrics_initialize(train_cond):
 	
     if train_cond == "recon_pc_train":
        metrics_history = {'train_loss': [], 'test_loss': []}
+    elif train_cond == "illusion_testing":
+       # ✅ FIX: Test mode doesn't produce training metrics
+       metrics_history = {}
     else :
        metrics_history = {'train_loss': [], 'test_loss': [],'train_acc':[],'test_acc':[],'illusory_datset_recon_loss':[],'cifar10_dataset_recon_loss':[]}
 

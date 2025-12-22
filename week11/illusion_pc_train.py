@@ -189,22 +189,20 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
     # ============================================================
     if pc_train_bool == "test":
 
-        # Get class mapping from testloader
-        # testloader.dataset is a Subset, dataset.dataset is the original
-        # SquareDataset
+        """
+        Fixed test mode with proper predictive coding iterations
+        """
+        # Get class mapping
         test_dataset = testloader.dataset
         if hasattr(test_dataset, 'dataset'):
-            # It's a Subset
             class_to_idx = test_dataset.dataset.class_to_idx
         else:
-            # Direct dataset
             class_to_idx = test_dataset.class_to_idx
 
         print(f"\nTesting model: {model_name}")
         print(f"Class mapping: {class_to_idx}")
 
-        # Initialize results storage for ALL classes (including all_in,
-        # all_out)
+        # Initialize results storage
         all_classes = list(class_to_idx.keys())
         class_results = {
             cls: {
@@ -216,34 +214,21 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
 
         net.eval()
 
-        # Don't use torch.no_grad() because predictive_coding_pass needs
-        # gradients!
         for batch_idx, batch_data in enumerate(testloader):
             images, labels, cls_names, should_see = batch_data
-
             images_orig = images.to(config.device)
             labels = labels.to(config.device)
 
             # Process with different noise levels
             for noise in np.arange(0, 0.35, 0.05):
-                images = noisy_img(
-                    images_orig.clone(), "gauss", round(
-                        noise, 2))
+                images = noisy_img(images_orig.clone(), "gauss", round(noise, 2))
 
                 # Initialize feature tensors with actual batch size
                 batch_size = images.size(0)
-                ft_AB_pc_temp = torch.zeros(
-                    batch_size, 6, 32, 32).to(
-                    config.device)
-                ft_BC_pc_temp = torch.zeros(
-                    batch_size, 16, 16, 16).to(
-                    config.device)
-                ft_CD_pc_temp = torch.zeros(
-                    batch_size, 32, 8, 8).to(
-                    config.device)
-                ft_DE_pc_temp = torch.zeros(
-                    batch_size, 64, 4, 4).to(
-                    config.device)
+                ft_AB_pc_temp = torch.zeros(batch_size, 6, 32, 32).to(config.device)
+                ft_BC_pc_temp = torch.zeros(batch_size, 16, 16, 16).to(config.device)
+                ft_CD_pc_temp = torch.zeros(batch_size, 32, 8, 8).to(config.device)
+                ft_DE_pc_temp = torch.zeros(batch_size, 64, 4, 4).to(config.device)
 
                 # Initial feedforward
                 ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp, \
@@ -251,7 +236,7 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
                         images, ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp
                     )
 
-                # ✅ CRITICAL: Enable gradients for predictive coding
+                # Enable gradients for predictive coding
                 ft_AB_pc_temp = ft_AB_pc_temp.requires_grad_(True)
                 ft_BC_pc_temp = ft_BC_pc_temp.requires_grad_(True)
                 ft_CD_pc_temp = ft_CD_pc_temp.requires_grad_(True)
@@ -262,15 +247,46 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
 
                 # Record timestep 0
                 for i, cls_name in enumerate(cls_names):
-                    # Determine perceived class
                     if cls_name in ["all_in", "all_out"]:
                         perceived_class = should_see[i]
                     else:
                         perceived_class = cls_name
 
                     perceived_idx = class_to_idx[perceived_class]
-                    class_results[cls_name]["predictions"][0].append(
-                        probs[i, perceived_idx])
+                    class_results[cls_name]["predictions"][0].append(probs[i, perceived_idx])
+                    
+                    # Count total samples only once (not per timestep)
+                    if noise == 0.0:  # Only count on first noise level
+                        class_results[cls_name]["total"] += 1
+
+                # ✅ FIX: Run predictive coding iterations for timesteps 1 to config.timesteps
+                for t in range(config.timesteps):
+                    output, ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp, \
+                        ft_EF_pc_temp, loss_of_layers = net.predictive_coding_pass(
+                            images,
+                            ft_AB_pc_temp,
+                            ft_BC_pc_temp,
+                            ft_CD_pc_temp,
+                            ft_DE_pc_temp,
+                            ft_EF_pc_temp,
+                            config.betaset,
+                            config.gammaset,
+                            config.alphaset,
+                            batch_size
+                        )
+
+                    # Get probabilities at this timestep
+                    probs = F.softmax(output, dim=1).detach().cpu().numpy()
+
+                    # Record predictions
+                    for i, cls_name in enumerate(cls_names):
+                        if cls_name in ["all_in", "all_out"]:
+                            perceived_class = should_see[i]
+                        else:
+                            perceived_class = cls_name
+
+                        perceived_idx = class_to_idx[perceived_class]
+                        class_results[cls_name]["predictions"][t + 1].append(probs[i, perceived_idx])
 
                 # Cleanup
                 del ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp, ft_EF_pc_temp
@@ -307,4 +323,3 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
         plot_test_trajectory(class_results, model_name, config)
 
         return class_results
-
