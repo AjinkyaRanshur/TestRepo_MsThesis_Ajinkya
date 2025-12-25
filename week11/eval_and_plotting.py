@@ -22,9 +22,9 @@ def plot_test_trajectory(class_results, model_name, config):
     os.makedirs("plots/test_trajectories", exist_ok=True)
 
     # Create single figure + axis
-    plt.figure(figsize=(10, 6))
-    plt.title(f'Illusion Trajectory: {model_name}',
-              fontsize=16, fontweight='bold')
+    plt.figure(figsize=(12, 6))
+    plt.title(f'Pc Dynamics Trajectory \nModel: {model_name}',
+              fontsize=12)
 
     # Define colors
     colors = {
@@ -66,8 +66,8 @@ def plot_test_trajectory(class_results, model_name, config):
     plt.legend(fontsize=10)
     plt.grid(True, alpha=0.3)
 
-    plt.tight_layout()
-    plt.savefig(f"plots/test_trajectories/{model_name}_trajectory_timesteps{config.timesteps}.png", dpi=300)
+
+    plt.savefig(f"plots/test_trajectories/{model_name}_trajectory_timesteps{config.timesteps}.png", dpi=300, bbox_inches='tight')
     plt.show()
 
 

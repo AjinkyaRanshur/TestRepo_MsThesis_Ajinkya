@@ -321,27 +321,53 @@ def classification_training_shapes(class_trainloader,class_validationloader,clas
     return metrics_history
 
 
-
-def illusion_testing(class_trainloader,class_validationloader,class_testingloader,recon_trainingloader,config,metrics_history,model_name):
-
+def illusion_testing(class_trainloader, class_validationloader, class_testingloader,
+                     recon_trainingloader, config, metrics_history, model_name):
+    
     net = Net(num_classes=config.classification_neurons).to(config.device)
-
-    # Set to whichever value for using the recon model
+    
     # Extract base model info from config
-    base_model_name = config.model_name  # e.g., "pc_recon10_Uniform_seed42"
+    base_model_name = config.model_name  # e.g., "pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42"
     checkpoint_epoch = config.checkpoint_epoch  # Which epoch checkpoint to use
-
+    
     checkpoint_path = f"{config.load_model_path}/classification_models/{base_model_name}_epoch{checkpoint_epoch}.pth"
-
-
+    
     print(f"Loading checkpoint: {checkpoint_path}")
-    checkpoint = torch.load(checkpoint_path, map_location=config.device,weights_only=False)
-
+    
+    # ❌ WRONG: Your code tries to load the entire dict directly
+    # net.load_state_dict(torch.load(checkpoint_path, map_location=config.device, weights_only=False))
+    
+    # ✅ CORRECT: Load checkpoint dict first, then extract state_dicts
+    checkpoint = torch.load(checkpoint_path, map_location=config.device, weights_only=False)
+    
+    # Load each layer's state dict individually
+    net.conv1.load_state_dict(checkpoint["conv1"])
+    net.conv2.load_state_dict(checkpoint["conv2"])
+    net.conv3.load_state_dict(checkpoint["conv3"])
+    net.conv4.load_state_dict(checkpoint["conv4"])
+    net.fc1.load_state_dict(checkpoint["fc1"])
+    net.fc2.load_state_dict(checkpoint["fc2"])
+    net.fc3.load_state_dict(checkpoint["fc3"])
+    net.deconv1_fb.load_state_dict(checkpoint["deconv1_fb"])
+    net.deconv2_fb.load_state_dict(checkpoint["deconv2_fb"])
+    net.deconv3_fb.load_state_dict(checkpoint["deconv3_fb"])
+    net.deconv4_fb.load_state_dict(checkpoint["deconv4_fb"])
+    
     print(f"Checkpoint loaded successfully from epoch {checkpoint_epoch}")
-
-    metrics_history=illusion_pc_training(net,class_trainloader,class_validationloader,class_testingloader,recon_trainingloader,"test",config,metrics_history,model_name)
-
-
+    
+    # Run testing
+    metrics_history = illusion_pc_training(
+        net, 
+        class_trainloader, 
+        class_validationloader, 
+        class_testingloader, 
+        recon_trainingloader, 
+        "test", 
+        config, 
+        metrics_history, 
+        model_name
+    )
+    
     return metrics_history
 
 
