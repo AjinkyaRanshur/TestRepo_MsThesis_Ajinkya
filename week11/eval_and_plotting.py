@@ -88,7 +88,7 @@ def plot_training_metrics(metrics_history, model_name, config):
     epochs = range(1, len(metrics_history["train_loss"]) + 1)
 
     # --------------------------------------------------
-    # 1. Classification Loss
+    # 1. MSE Loss
     # --------------------------------------------------
     if "train_loss" in metrics_history and "test_loss" in metrics_history:
         plt.figure(figsize=(8, 6))
@@ -98,8 +98,13 @@ def plot_training_metrics(metrics_history, model_name, config):
                  label="Test Loss", linewidth=2)
 
         plt.xlabel("Epoch")
-        plt.ylabel("Classification Loss")
-        plt.title(f"Classification Loss: {model_name}")
+        if config.training_condition == "recon_pc_train" :
+            plt.ylabel("Reconstruction Loss")
+            plt.title(f"Reconstruction Loss: {model_name}")
+        else:
+            plt.ylabel("Classification Loss")
+            plt.title(f"Classification Loss: {model_name}")
+
         plt.legend()
         plt.grid(alpha=0.3)
 

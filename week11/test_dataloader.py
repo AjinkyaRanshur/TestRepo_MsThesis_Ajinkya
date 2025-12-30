@@ -125,7 +125,30 @@ def create_balanced_dataloaders(data_dir, batch_size=40, seed=42):
         elif cls_name in illusion_indices:
             illusion_indices[cls_name].append(i)
     
-    # Print initial counts
+    
+    # ----------------------------------------------------------------
+    # OPTIONAL: Downsample random class to match basic shape count
+    # ----------------------------------------------------------------
+    TARGET_RANDOM_TOTAL = len(basic_shape_indices["square"])  # 4608
+    NUM_SHOULD_SEE = len(random_indices_by_should_see)
+
+    samples_per_should_see = TARGET_RANDOM_TOTAL // NUM_SHOULD_SEE  # 921
+
+    rng = np.random.default_rng(config.seed)
+
+    downsampled_random_indices_by_should_see = {}
+
+    for should_see_cls, indices in random_indices_by_should_see.items():
+        indices = np.array(indices)
+        sampled = rng.choice(
+                  indices,
+                  size=samples_per_should_see,
+                  replace=False
+                  )
+        downsampled_random_indices_by_should_see[should_see_cls] = sampled.tolist()
+
+    random_indices_by_should_see = downsampled_random_indices_by_should_see
+
     print(f"\nInitial class distribution:")
     for cls in basic_shape_indices:
         print(f"  {cls:15s}: {len(basic_shape_indices[cls])} samples")
@@ -134,6 +157,7 @@ def create_balanced_dataloaders(data_dir, batch_size=40, seed=42):
         print(f"    → should_see '{see_cls}': {len(indices)}")
     for cls in illusion_indices:
         print(f"  {cls:15s}: {len(illusion_indices[cls])} samples")
+
     
     # ================================================================
     # STEP 2: Split basic shapes 70-30

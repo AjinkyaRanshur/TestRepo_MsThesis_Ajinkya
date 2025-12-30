@@ -3,7 +3,7 @@ import torch
 batch_size = 40
 epochs = 200
 seed = 42
-lr = 0.0001
+lr = 5e-05
 momentum = 0.9
 classification_datasetpath="data/visual_illusion_dataset"
 recon_datasetpath="/home/ajinkyar/datasets"

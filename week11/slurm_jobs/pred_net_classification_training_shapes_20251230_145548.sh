@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=pred_net_classification_training_shapes_20251222_165930
-#SBATCH --output=slurm_jobs/pred_net_classification_training_shapes_20251222_165930_%j.out
-#SBATCH --error=slurm_jobs/pred_net_classification_training_shapes_20251222_165930_%j.err
+#SBATCH --job-name=pred_net_classification_training_shapes_20251230_145548
+#SBATCH --output=slurm_jobs/pred_net_classification_training_shapes_20251230_145548_%j.out
+#SBATCH --error=slurm_jobs/pred_net_classification_training_shapes_20251230_145548_%j.err
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --gres=gpu:1

@@ -11,73 +11,35 @@
         "epochs": 200
       },
       "status": "completed",
-      "created_at": "2025-12-15T01:26:04.678363",
-      "training_started": "2025-12-15T01:44:09.330469",
-      "training_completed": "2025-12-15T07:57:45.305609",
+      "created_at": "2025-12-28T02:45:07.424827",
+      "training_started": "2025-12-28T02:47:11.164940",
+      "training_completed": "2025-12-28T10:52:27.686834",
       "metrics": {},
-      "checkpoint_path": null,
+      "checkpoint_path": "/home/ajinkyar/ml_models/recon_models/pc_recon10_Uniform_seed42_20.pth",
       "type": "recon_pc_train"
-    },
-    "null": {
-      "config": {
-        "pattern": "Uniform",
-        "seed": 42,
-        "train_cond": "recoc_train",
-        "lr": 5e-05,
-        "timesteps": 10,
-        "last_neurons": 10,
-        "epochs": 10
-      },
-      "status": "submitted",
-      "created_at": "2025-12-15T01:31:45.344992",
-      "training_started": null,
-      "training_completed": null,
-      "metrics": {},
-      "checkpoint_path": null,
-      "type": "recoc_train"
-    },
-    "class_pc_recon10_Uniform_seed42_chk15_Uniform_seed42": {
-      "config": {
-        "pattern": "Uniform",
-        "seed": 42,
-        "train_cond": "classification_training_shapes",
-        "lr": 0.0001,
-        "timesteps": 10,
-        "last_neurons": 6,
-        "epochs": 25,
-        "base_recon_model": "pc_recon10_Uniform_seed42",
-        "checkpoint_epoch": 15
-      },
-      "status": "training",
-      "created_at": "2025-12-16T17:05:31.404042",
-      "training_started": "2025-12-17T16:46:44.826689",
-      "training_completed": null,
-      "metrics": {},
-      "checkpoint_path": null,
-      "type": "classification_training_shapes"
     },
     "pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42": {
       "config": {
         "pattern": "Uniform",
         "seed": 42,
         "train_cond": "classification_training_shapes",
-        "lr": 0.0001,
+        "lr": 5e-05,
         "timesteps": 10,
         "last_neurons": 6,
         "epochs": 200,
         "base_recon_model": "pc_recon10_Uniform_seed42",
         "checkpoint_epoch": 15
       },
-      "status": "completed",
-      "created_at": "2025-12-22T16:59:30.067839",
-      "training_started": "2025-12-22T17:01:29.648127",
-      "training_completed": "2025-12-24T12:26:26.802107",
+      "status": "training",
+      "created_at": "2025-12-30T14:55:48.203395",
+      "training_started": "2025-12-30T15:41:52.110641",
+      "training_completed": null,
       "metrics": {},
       "checkpoint_path": null,
       "type": "classification_training_shapes"
     }
   },
   "metadata": {
-    "last_updated": "2025-12-24T12:26:26.868503"
+    "last_updated": "2025-12-30T15:41:52.125389"
   }
 }

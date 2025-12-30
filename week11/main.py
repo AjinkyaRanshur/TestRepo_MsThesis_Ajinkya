@@ -63,7 +63,7 @@ def train_test_loader(illusion_bool, config):
         import torchvision.transforms as transforms
         
         transform = transforms.Compose([
-            transforms.Resize((32, 32)),
+        #    transforms.Resize((32, 32)),
             transforms.ToTensor(),
             transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))
         ])
@@ -106,13 +106,40 @@ def train_test_loader(illusion_bool, config):
                 random_indices_by_should_see[should_see].append(i)
             elif cls_name in illusion_indices:
                 illusion_indices[cls_name].append(i)
-        
+
+
+        # ----------------------------------------------------------------
+        # OPTIONAL: Downsample random class to match basic shape count
+        # ----------------------------------------------------------------
+        TARGET_RANDOM_TOTAL = len(basic_shape_indices["square"])  # 4608
+        NUM_SHOULD_SEE = len(random_indices_by_should_see)
+
+        samples_per_should_see = TARGET_RANDOM_TOTAL // NUM_SHOULD_SEE  # 921
+
+        rng = np.random.default_rng(config.seed)
+
+        downsampled_random_indices_by_should_see = {}
+
+        for should_see_cls, indices in random_indices_by_should_see.items():
+            indices = np.array(indices)
+            sampled = rng.choice(
+                  indices,
+                  size=samples_per_should_see,
+                  replace=False
+                  )
+            downsampled_random_indices_by_should_see[should_see_cls] = sampled.tolist()
+
+        random_indices_by_should_see = downsampled_random_indices_by_should_see
+
         print(f"\nInitial class distribution:")
-        for cls in ["square", "rectangle", "trapezium", "triangle", "hexagon"]:
-            print(f"  {cls}: {len(basic_shape_indices[cls])} samples")
-        print(f"  random: {sum(len(v) for v in random_indices_by_should_see.values())} samples")
+        for cls in basic_shape_indices:
+            print(f"  {cls:15s}: {len(basic_shape_indices[cls])} samples")
+        print(f"  {'random':15s}: {sum(len(v) for v in random_indices_by_should_see.values())} samples")
         for see_cls, indices in random_indices_by_should_see.items():
             print(f"    → should_see '{see_cls}': {len(indices)}")
+        for cls in illusion_indices:
+            print(f"  {cls:15s}: {len(illusion_indices[cls])} samples")
+        
         
         # ----------------------------------------------------------------
         # STEP 2: Split basic shapes 70-30
@@ -290,7 +317,7 @@ def recon_training_cifar(trainloader, testloader,config,metrics_history,model_na
 
 def classification_training_shapes(class_trainloader,class_validationloader,class_testingloader,recon_trainingloader,config,metrics_history,model_name):
 
-    net = Net(num_classes=config.classification_neurons).to(config.device)
+    net = Net(num_classes=config.classification_neurons,input_size=128).to(config.device)
     
     # Set to whichever value for using the recon model
     # Extract base model info from config
