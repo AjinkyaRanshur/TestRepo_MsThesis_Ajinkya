@@ -3,7 +3,7 @@ import torch
 batch_size = 40
 epochs = 200
 seed = 42
-lr = 0.0001
+lr = 5e-5
 momentum = 0.9
 classification_datasetpath="data/visual_illusion_dataset"
 recon_datasetpath="/home/ajinkyar/datasets"
@@ -36,7 +36,7 @@ save_model_path="/home/ajinkyar/ml_models"
 
 
 base_recon_model = "pc_recon10_Uniform_seed42"
-checkpoint_epoch = 40
+checkpoint_epoch = 120
 
 
 

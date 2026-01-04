@@ -1,0 +1,221 @@
+Job started at Wed Dec 31 18:53:41 IST 2025
+Running 1 experiments
+Job ID: 8447260
+Started job 1 (Model: pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42) on GPU 0
+CUDA available: True
+CUDA device count: 1
+Using CUDA device: cuda:0
+CUDA device name:Tesla V100-SXM2-16GB
+CUDA memory allocated: 0.00 GB
+Using device: cuda:0
+Full dataset: 92160 samples
+Class mapping (ALL classes): {'square': 0, 'rectangle': 1, 'trapezium': 2, 'triangle': 3, 'hexagon': 4, 'random': 5, 'all_in': 6, 'all_out': 7}
+
+Initial class distribution:
+  square         : 4608 samples
+  rectangle      : 4608 samples
+  trapezium      : 4608 samples
+  triangle       : 4608 samples
+  hexagon        : 4608 samples
+  random         : 4605 samples
+    → should_see 'square': 921
+    → should_see 'rectangle': 921
+    → should_see 'trapezium': 921
+    → should_see 'triangle': 921
+    → should_see 'hexagon': 921
+  all_in         : 23040 samples
+  all_out        : 23040 samples
+
+Training set: 19345 samples
+Validation set: 8300 samples
+Validation class distribution:
+  hexagon: 1383 samples
+  random: 1385 samples
+  rectangle: 1383 samples
+  square: 1383 samples
+  trapezium: 1383 samples
+  triangle: 1383 samples
+
+Sampling illusions to match validation random distribution:
+  all_in: sampled 692 samples
+  all_out: sampled 1385 samples
+
+Test set: 11070 samples
+Test set class distribution:
+  all_in: 1385 samples
+  all_out: 1385 samples
+  hexagon: 1383 samples
+  random: 1385 samples
+  rectangle: 1383 samples
+  square: 1383 samples
+  trapezium: 1383 samples
+  triangle: 1383 samples
+Loading checkpoint: /home/ajinkyar/ml_models/recon_models/pc_recon10_Uniform_seed42_15.pth
+Checkpoint loaded successfully from epoch 15
+Epoch   0 | Loss: 1.7553 | Class: 1.7553 | Recon: 0.0160 | Acc: 24.97%
+Checkpoint saved: /home/ajinkyar/ml_models/classification_models/pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42_epoch0.pth
+Epoch   1 | Loss: 1.5437 | Class: 1.5437 | Recon: 0.0160 | Acc: 35.73%
+Epoch   2 | Loss: 1.3811 | Class: 1.3811 | Recon: 0.0160 | Acc: 41.60%
+Epoch   3 | Loss: 1.2741 | Class: 1.2741 | Recon: 0.0160 | Acc: 45.67%
+Epoch   4 | Loss: 1.2010 | Class: 1.2010 | Recon: 0.0160 | Acc: 47.96%
+Epoch   5 | Loss: 1.1509 | Class: 1.1509 | Recon: 0.0160 | Acc: 49.49%
+Epoch   6 | Loss: 1.1116 | Class: 1.1116 | Recon: 0.0160 | Acc: 51.02%
+Epoch   7 | Loss: 1.0788 | Class: 1.0788 | Recon: 0.0160 | Acc: 52.21%
+Epoch   8 | Loss: 1.0472 | Class: 1.0472 | Recon: 0.0160 | Acc: 53.64%
+Epoch   9 | Loss: 1.0180 | Class: 1.0180 | Recon: 0.0160 | Acc: 55.01%
+Epoch  10 | Loss: 0.9894 | Class: 0.9894 | Recon: 0.0160 | Acc: 56.52%
+Checkpoint saved: /home/ajinkyar/ml_models/classification_models/pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42_epoch10.pth
+Epoch  11 | Loss: 0.9603 | Class: 0.9603 | Recon: 0.0160 | Acc: 58.16%
+Epoch  12 | Loss: 0.9317 | Class: 0.9317 | Recon: 0.0160 | Acc: 60.37%
+Epoch  13 | Loss: 0.9046 | Class: 0.9046 | Recon: 0.0160 | Acc: 62.23%
+Epoch  14 | Loss: 0.8759 | Class: 0.8759 | Recon: 0.0160 | Acc: 63.94%
+Epoch  15 | Loss: 0.8480 | Class: 0.8480 | Recon: 0.0160 | Acc: 65.96%
+Epoch  16 | Loss: 0.8200 | Class: 0.8200 | Recon: 0.0160 | Acc: 67.45%
+Epoch  17 | Loss: 0.7916 | Class: 0.7916 | Recon: 0.0160 | Acc: 69.69%
+Epoch  18 | Loss: 0.7657 | Class: 0.7657 | Recon: 0.0160 | Acc: 70.74%
+Epoch  19 | Loss: 0.7406 | Class: 0.7406 | Recon: 0.0160 | Acc: 72.39%
+Epoch  20 | Loss: 0.7074 | Class: 0.7074 | Recon: 0.0160 | Acc: 73.91%
+Checkpoint saved: /home/ajinkyar/ml_models/classification_models/pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42_epoch20.pth
+Epoch  21 | Loss: 0.6783 | Class: 0.6783 | Recon: 0.0160 | Acc: 75.30%
+Epoch  22 | Loss: 0.6530 | Class: 0.6530 | Recon: 0.0160 | Acc: 76.50%
+Epoch  23 | Loss: 0.6229 | Class: 0.6229 | Recon: 0.0160 | Acc: 78.00%
+Epoch  24 | Loss: 0.5968 | Class: 0.5968 | Recon: 0.0160 | Acc: 79.19%
+Epoch  25 | Loss: 0.5699 | Class: 0.5699 | Recon: 0.0160 | Acc: 80.20%
+Epoch  26 | Loss: 0.5466 | Class: 0.5466 | Recon: 0.0160 | Acc: 81.41%
+Epoch  27 | Loss: 0.5208 | Class: 0.5208 | Recon: 0.0160 | Acc: 82.48%
+Epoch  28 | Loss: 0.4970 | Class: 0.4970 | Recon: 0.0160 | Acc: 83.58%
+Epoch  29 | Loss: 0.4763 | Class: 0.4763 | Recon: 0.0160 | Acc: 84.33%
+Epoch  30 | Loss: 0.4556 | Class: 0.4556 | Recon: 0.0160 | Acc: 85.09%
+Checkpoint saved: /home/ajinkyar/ml_models/classification_models/pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42_epoch30.pth
+Epoch  31 | Loss: 0.4354 | Class: 0.4354 | Recon: 0.0160 | Acc: 85.89%
+Epoch  32 | Loss: 0.4145 | Class: 0.4145 | Recon: 0.0160 | Acc: 86.87%
+Epoch  33 | Loss: 0.3970 | Class: 0.3970 | Recon: 0.0160 | Acc: 87.39%
+Epoch  34 | Loss: 0.3790 | Class: 0.3790 | Recon: 0.0160 | Acc: 88.03%
+Epoch  35 | Loss: 0.3631 | Class: 0.3631 | Recon: 0.0160 | Acc: 88.65%
+Epoch  36 | Loss: 0.3435 | Class: 0.3435 | Recon: 0.0160 | Acc: 89.42%
+Epoch  37 | Loss: 0.3300 | Class: 0.3300 | Recon: 0.0160 | Acc: 90.00%
+Epoch  38 | Loss: 0.3128 | Class: 0.3128 | Recon: 0.0160 | Acc: 90.55%
+Epoch  39 | Loss: 0.3026 | Class: 0.3026 | Recon: 0.0160 | Acc: 90.80%
+Epoch  40 | Loss: 0.2894 | Class: 0.2894 | Recon: 0.0160 | Acc: 91.36%
+Checkpoint saved: /home/ajinkyar/ml_models/classification_models/pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42_epoch40.pth
+Epoch  41 | Loss: 0.2751 | Class: 0.2751 | Recon: 0.0160 | Acc: 91.92%
+Epoch  42 | Loss: 0.2612 | Class: 0.2612 | Recon: 0.0160 | Acc: 92.45%
+Epoch  43 | Loss: 0.2514 | Class: 0.2514 | Recon: 0.0160 | Acc: 92.76%
+Epoch  44 | Loss: 0.2393 | Class: 0.2393 | Recon: 0.0160 | Acc: 93.12%
+Epoch  45 | Loss: 0.2347 | Class: 0.2347 | Recon: 0.0160 | Acc: 93.05%
+Epoch  46 | Loss: 0.2234 | Class: 0.2234 | Recon: 0.0160 | Acc: 93.56%
+Epoch  47 | Loss: 0.2119 | Class: 0.2119 | Recon: 0.0160 | Acc: 94.04%
+Epoch  48 | Loss: 0.2056 | Class: 0.2056 | Recon: 0.0160 | Acc: 94.18%
+Epoch  49 | Loss: 0.1970 | Class: 0.1970 | Recon: 0.0160 | Acc: 94.37%
+Epoch  50 | Loss: 0.1890 | Class: 0.1890 | Recon: 0.0160 | Acc: 94.83%
+Checkpoint saved: /home/ajinkyar/ml_models/classification_models/pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42_epoch50.pth
+Epoch  51 | Loss: 0.1807 | Class: 0.1807 | Recon: 0.0160 | Acc: 95.00%
+Epoch  52 | Loss: 0.1731 | Class: 0.1731 | Recon: 0.0160 | Acc: 95.24%
+Epoch  53 | Loss: 0.1678 | Class: 0.1678 | Recon: 0.0160 | Acc: 95.36%
+Epoch  54 | Loss: 0.1621 | Class: 0.1621 | Recon: 0.0160 | Acc: 95.47%
+Epoch  55 | Loss: 0.1538 | Class: 0.1538 | Recon: 0.0160 | Acc: 95.89%
+Epoch  56 | Loss: 0.1519 | Class: 0.1519 | Recon: 0.0160 | Acc: 95.84%
+Epoch  57 | Loss: 0.1459 | Class: 0.1459 | Recon: 0.0160 | Acc: 96.03%
+Epoch  58 | Loss: 0.1377 | Class: 0.1377 | Recon: 0.0160 | Acc: 96.34%
+Epoch  59 | Loss: 0.1324 | Class: 0.1324 | Recon: 0.0160 | Acc: 96.50%
+Epoch  60 | Loss: 0.1304 | Class: 0.1304 | Recon: 0.0160 | Acc: 96.45%
+Checkpoint saved: /home/ajinkyar/ml_models/classification_models/pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42_epoch60.pth
+Epoch  61 | Loss: 0.1274 | Class: 0.1274 | Recon: 0.0160 | Acc: 96.55%
+Epoch  62 | Loss: 0.1195 | Class: 0.1195 | Recon: 0.0160 | Acc: 96.81%
+Epoch  63 | Loss: 0.1172 | Class: 0.1172 | Recon: 0.0160 | Acc: 96.86%
+Epoch  64 | Loss: 0.1141 | Class: 0.1141 | Recon: 0.0160 | Acc: 96.90%
+Epoch  65 | Loss: 0.1103 | Class: 0.1103 | Recon: 0.0160 | Acc: 96.99%
+Epoch  66 | Loss: 0.1014 | Class: 0.1014 | Recon: 0.0160 | Acc: 97.37%
+Epoch  67 | Loss: 0.1000 | Class: 0.1000 | Recon: 0.0160 | Acc: 97.38%
+Epoch  68 | Loss: 0.0996 | Class: 0.0996 | Recon: 0.0160 | Acc: 97.30%
+Epoch  69 | Loss: 0.0958 | Class: 0.0958 | Recon: 0.0160 | Acc: 97.40%
+Epoch  70 | Loss: 0.0915 | Class: 0.0915 | Recon: 0.0160 | Acc: 97.53%
+Checkpoint saved: /home/ajinkyar/ml_models/classification_models/pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42_epoch70.pth
+Epoch  71 | Loss: 0.0910 | Class: 0.0910 | Recon: 0.0160 | Acc: 97.51%
+Epoch  72 | Loss: 0.0872 | Class: 0.0872 | Recon: 0.0160 | Acc: 97.62%
+Epoch  73 | Loss: 0.0842 | Class: 0.0842 | Recon: 0.0160 | Acc: 97.70%
+Epoch  74 | Loss: 0.0833 | Class: 0.0833 | Recon: 0.0160 | Acc: 97.63%
+Epoch  75 | Loss: 0.0771 | Class: 0.0771 | Recon: 0.0160 | Acc: 97.96%
+Epoch  76 | Loss: 0.0775 | Class: 0.0775 | Recon: 0.0160 | Acc: 97.88%
+Epoch  77 | Loss: 0.0771 | Class: 0.0771 | Recon: 0.0160 | Acc: 97.83%
+Epoch  78 | Loss: 0.0796 | Class: 0.0796 | Recon: 0.0160 | Acc: 97.63%
+Epoch  79 | Loss: 0.0692 | Class: 0.0692 | Recon: 0.0160 | Acc: 98.11%
+Epoch  80 | Loss: 0.0688 | Class: 0.0688 | Recon: 0.0160 | Acc: 98.09%
+Checkpoint saved: /home/ajinkyar/ml_models/classification_models/pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42_epoch80.pth
+Epoch  81 | Loss: 0.0682 | Class: 0.0682 | Recon: 0.0160 | Acc: 98.07%
+Epoch  82 | Loss: 0.0664 | Class: 0.0664 | Recon: 0.0160 | Acc: 98.12%
+Epoch  83 | Loss: 0.0644 | Class: 0.0644 | Recon: 0.0160 | Acc: 98.19%
+Epoch  84 | Loss: 0.0606 | Class: 0.0606 | Recon: 0.0160 | Acc: 98.33%
+Epoch  85 | Loss: 0.0600 | Class: 0.0600 | Recon: 0.0160 | Acc: 98.28%
+Epoch  86 | Loss: 0.0596 | Class: 0.0596 | Recon: 0.0160 | Acc: 98.26%
+Epoch  87 | Loss: 0.0585 | Class: 0.0585 | Recon: 0.0160 | Acc: 98.28%
+Epoch  88 | Loss: 0.0561 | Class: 0.0561 | Recon: 0.0160 | Acc: 98.37%
+Epoch  89 | Loss: 0.0557 | Class: 0.0557 | Recon: 0.0160 | Acc: 98.36%
+Epoch  90 | Loss: 0.0534 | Class: 0.0534 | Recon: 0.0160 | Acc: 98.44%
+Checkpoint saved: /home/ajinkyar/ml_models/classification_models/pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42_epoch90.pth
+Epoch  91 | Loss: 0.0508 | Class: 0.0508 | Recon: 0.0160 | Acc: 98.54%
+Epoch  92 | Loss: 0.0508 | Class: 0.0508 | Recon: 0.0160 | Acc: 98.51%
+Epoch  93 | Loss: 0.0500 | Class: 0.0500 | Recon: 0.0160 | Acc: 98.51%
+Epoch  94 | Loss: 0.0484 | Class: 0.0484 | Recon: 0.0160 | Acc: 98.54%
+Epoch  95 | Loss: 0.0483 | Class: 0.0483 | Recon: 0.0160 | Acc: 98.52%
+Epoch  96 | Loss: 0.0449 | Class: 0.0449 | Recon: 0.0160 | Acc: 98.66%
+Epoch  97 | Loss: 0.0445 | Class: 0.0445 | Recon: 0.0160 | Acc: 98.67%
+Epoch  98 | Loss: 0.0449 | Class: 0.0449 | Recon: 0.0160 | Acc: 98.62%
+Epoch  99 | Loss: 0.0423 | Class: 0.0423 | Recon: 0.0160 | Acc: 98.72%
+Epoch 100 | Loss: 0.0429 | Class: 0.0429 | Recon: 0.0160 | Acc: 98.66%
+Checkpoint saved: /home/ajinkyar/ml_models/classification_models/pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42_epoch100.pth
+Epoch 101 | Loss: 0.0421 | Class: 0.0421 | Recon: 0.0160 | Acc: 98.67%
+Epoch 102 | Loss: 0.0400 | Class: 0.0400 | Recon: 0.0160 | Acc: 98.75%
+Epoch 103 | Loss: 0.0390 | Class: 0.0390 | Recon: 0.0160 | Acc: 98.79%
+Epoch 104 | Loss: 0.0428 | Class: 0.0428 | Recon: 0.0160 | Acc: 98.61%
+Epoch 105 | Loss: 0.0359 | Class: 0.0359 | Recon: 0.0160 | Acc: 98.90%
+Epoch 106 | Loss: 0.0356 | Class: 0.0356 | Recon: 0.0160 | Acc: 98.90%
+Epoch 107 | Loss: 0.0367 | Class: 0.0367 | Recon: 0.0160 | Acc: 98.82%
+Epoch 108 | Loss: 0.0334 | Class: 0.0334 | Recon: 0.0160 | Acc: 98.95%
+Epoch 109 | Loss: 0.0409 | Class: 0.0409 | Recon: 0.0160 | Acc: 98.62%
+Epoch 110 | Loss: 0.0340 | Class: 0.0340 | Recon: 0.0160 | Acc: 98.90%
+Checkpoint saved: /home/ajinkyar/ml_models/classification_models/pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42_epoch110.pth
+Epoch 111 | Loss: 0.0346 | Class: 0.0346 | Recon: 0.0160 | Acc: 98.85%
+Epoch 112 | Loss: 0.0305 | Class: 0.0305 | Recon: 0.0160 | Acc: 99.04%
+Epoch 113 | Loss: 0.0317 | Class: 0.0317 | Recon: 0.0160 | Acc: 98.96%
+Epoch 114 | Loss: 0.0312 | Class: 0.0312 | Recon: 0.0160 | Acc: 98.98%
+Epoch 115 | Loss: 0.0349 | Class: 0.0349 | Recon: 0.0160 | Acc: 98.78%
+Epoch 116 | Loss: 0.0329 | Class: 0.0329 | Recon: 0.0160 | Acc: 98.88%
+Epoch 117 | Loss: 0.0328 | Class: 0.0328 | Recon: 0.0160 | Acc: 98.88%
+Epoch 118 | Loss: 0.0291 | Class: 0.0291 | Recon: 0.0160 | Acc: 99.02%
+Epoch 119 | Loss: 0.0293 | Class: 0.0293 | Recon: 0.0160 | Acc: 98.99%
+Epoch 120 | Loss: 0.0379 | Class: 0.0379 | Recon: 0.0160 | Acc: 98.66%
+Checkpoint saved: /home/ajinkyar/ml_models/classification_models/pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42_epoch120.pth
+Epoch 121 | Loss: 0.0274 | Class: 0.0274 | Recon: 0.0160 | Acc: 99.08%
+Epoch 122 | Loss: 0.0263 | Class: 0.0263 | Recon: 0.0160 | Acc: 99.13%
+Epoch 123 | Loss: 0.0259 | Class: 0.0259 | Recon: 0.0160 | Acc: 99.12%
+Epoch 124 | Loss: 0.0265 | Class: 0.0265 | Recon: 0.0160 | Acc: 99.09%
+Epoch 125 | Loss: 0.0284 | Class: 0.0284 | Recon: 0.0160 | Acc: 99.01%
+Epoch 126 | Loss: 0.0269 | Class: 0.0269 | Recon: 0.0160 | Acc: 99.06%
+Epoch 127 | Loss: 0.0246 | Class: 0.0246 | Recon: 0.0160 | Acc: 99.17%
+Epoch 128 | Loss: 0.0241 | Class: 0.0241 | Recon: 0.0160 | Acc: 99.18%
+Epoch 129 | Loss: 0.0227 | Class: 0.0227 | Recon: 0.0160 | Acc: 99.22%
+Epoch 130 | Loss: 0.0266 | Class: 0.0266 | Recon: 0.0160 | Acc: 99.04%
+Checkpoint saved: /home/ajinkyar/ml_models/classification_models/pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42_epoch130.pth
+Epoch 131 | Loss: 0.0242 | Class: 0.0242 | Recon: 0.0160 | Acc: 99.14%
+Epoch 132 | Loss: 0.0223 | Class: 0.0223 | Recon: 0.0160 | Acc: 99.22%
+Epoch 133 | Loss: 0.0231 | Class: 0.0231 | Recon: 0.0160 | Acc: 99.17%
+Epoch 134 | Loss: 0.0236 | Class: 0.0236 | Recon: 0.0160 | Acc: 99.16%
+Epoch 135 | Loss: 0.0237 | Class: 0.0237 | Recon: 0.0160 | Acc: 99.14%
+Epoch 136 | Loss: 0.0238 | Class: 0.0238 | Recon: 0.0160 | Acc: 99.13%
+Epoch 137 | Loss: 0.0230 | Class: 0.0230 | Recon: 0.0160 | Acc: 99.18%
+Epoch 138 | Loss: 0.0243 | Class: 0.0243 | Recon: 0.0160 | Acc: 99.10%
+Epoch 139 | Loss: 0.0195 | Class: 0.0195 | Recon: 0.0160 | Acc: 99.31%
+Epoch 140 | Loss: 0.0203 | Class: 0.0203 | Recon: 0.0160 | Acc: 99.27%
+Checkpoint saved: /home/ajinkyar/ml_models/classification_models/pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42_epoch140.pth
+Epoch 141 | Loss: 0.0246 | Class: 0.0246 | Recon: 0.0160 | Acc: 99.08%
+Epoch 142 | Loss: 0.0188 | Class: 0.0188 | Recon: 0.0160 | Acc: 99.32%
+Epoch 143 | Loss: 0.0196 | Class: 0.0196 | Recon: 0.0160 | Acc: 99.27%
+Epoch 144 | Loss: 0.0207 | Class: 0.0207 | Recon: 0.0160 | Acc: 99.23%
+Epoch 145 | Loss: 0.0191 | Class: 0.0191 | Recon: 0.0160 | Acc: 99.30%
+Epoch 146 | Loss: 0.0253 | Class: 0.0253 | Recon: 0.0160 | Acc: 99.02%
+Epoch 147 | Loss: 0.0159 | Class: 0.0159 | Recon: 0.0160 | Acc: 99.41%
+Epoch 148 | Loss: 0.0179 | Class: 0.0179 | Recon: 0.0160 | Acc: 99.32%
+Epoch 149 | Loss: 0.0169 | Class: 0.0169 | Recon: 0.0160 | Acc: 99.37%
+Training metric plots saved.
+All jobs completed at Sat Jan  3 06:32:42 IST 2026

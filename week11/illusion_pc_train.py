@@ -225,11 +225,11 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
                 images = noisy_img(images_orig.clone(), "gauss", round(noise, 2))
 
                 # Initialize feature tensors with actual batch size
-                batch_size = images.size(0)
-                ft_AB_pc_temp = torch.zeros(batch_size, 6, 128, 128).to(config.device)
-                ft_BC_pc_temp = torch.zeros(batch_size, 16, 64, 64).to(config.device)
-                ft_CD_pc_temp = torch.zeros(batch_size, 32, 32, 32).to(config.device)
-                ft_DE_pc_temp = torch.zeros(batch_size, 128, 16, 16).to(config.device)
+                #batch_size = images.size(0)
+                ft_AB_pc_temp = torch.zeros(config.batch_size, 6, 128, 128).to(config.device)
+                ft_BC_pc_temp = torch.zeros(config.batch_size, 16, 64, 64).to(config.device)
+                ft_CD_pc_temp = torch.zeros(config.batch_size, 32, 32, 32).to(config.device)
+                ft_DE_pc_temp = torch.zeros(config.batch_size, 128, 16, 16).to(config.device)
 
                 # Initial feedforward
                 ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp, \
@@ -273,7 +273,7 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
                             config.betaset,
                             config.gammaset,
                             config.alphaset,
-                            batch_size
+                            config.batch_size
                         )
 
                     # Get probabilities at this timestep

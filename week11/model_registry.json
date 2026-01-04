@@ -32,14 +32,14 @@
       },
       "status": "training",
       "created_at": "2025-12-30T14:55:48.203395",
-      "training_started": "2025-12-30T15:41:52.110641",
-      "training_completed": null,
+      "training_started": "2026-01-03T17:34:33.444418",
+      "training_completed": "2026-01-03T06:32:08.813104",
       "metrics": {},
       "checkpoint_path": null,
       "type": "classification_training_shapes"
     }
   },
   "metadata": {
-    "last_updated": "2025-12-30T15:41:52.125389"
+    "last_updated": "2026-01-03T17:34:33.455883"
   }
 }

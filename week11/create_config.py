@@ -21,7 +21,9 @@ def update_config(
     lr,
     epochs,
     base_recon_model=None,
-    checkpoint_epoch=None
+    checkpoint_epoch=None,
+    classification_dataset=None,
+    reconstruction_dataset=None
 ):
     """Update the config file with new parameters."""
     with open(CONFIG_FILE, "r") as f:
@@ -48,6 +50,12 @@ def update_config(
 
             elif stripped.startswith("epochs"):
                 f.write(f'epochs = {epochs[0]}\n')
+
+            elif stripped.startswith("classification_datasetpath"):
+                f.write(f'classification_datasetpath = "{classification_dataset}"\n')
+
+            elif stripped.startswith("recon_datasetpath"):
+                f.write(f'recon_datasetpath = "{reconstruction_dataset}"\n')
 
             elif stripped.startswith("seed"):
                 f.write(f"seed = {seed}\n")
@@ -93,7 +101,8 @@ def create_config_files(
     timesteps,
     last_neurons,
     base_recon_models=None,  # List of base reconstruction models
-    checkpoint_epochs=None    # Which checkpoint to use
+    checkpoint_epochs=None,    # Which checkpoint to use
+    dataset_list
 ):
     """
     Create multiple config files from parameters for batch experiments.
@@ -142,12 +151,12 @@ def create_config_files(
     if train_cond == "classification_training_shapes" and base_recon_models:
         for base_model in base_recon_models:
             for checkpoint_epoch in checkpoint_epochs:
-                for seed, pattern, lr, timestep in itertools.product(
-                    seeds, patterns, lr_list, timesteps
+                for seed, pattern, lr, timestep,dataset in itertools.product(
+                    seeds, patterns, lr_list, timesteps,dataset_list
                 ):
                     # Generate model name
                  
-                    model_name = f"{base_model}_chk{checkpoint_epoch}_class_t{timestep}_{pattern}_seed{seed}"
+                    model_name = f"{base_model}_chk{checkpoint_epoch}_class_t{timestep}_{dataset}_{pattern}_seed{seed}"
 
                     tracker = get_tracker()
                     config_dict = {
@@ -193,7 +202,8 @@ def create_config_files(
                         lr,
                         epochs,
                         base_recon_model=base_model,
-                        checkpoint_epoch=checkpoint_epoch
+                        checkpoint_epoch=checkpoint_epoch,
+                        classification_dataset=dataset
                     )
 
                     config_paths.append(cfg_command)
@@ -201,14 +211,15 @@ def create_config_files(
                     exp_id += 1
     else:
         # Reconstruction training (original logic)
-        for seed, pattern, lr, timestep in itertools.product(
-            seeds, patterns, lr_list, timesteps
+        for seed, pattern, lr, timestep,dataset in itertools.product(
+            seeds, patterns, lr_list, timesteps,dataset_list
         ):
             model_name = generate_model_name(
                 pattern=pattern,
                 seed=seed,
                 train_cond=train_cond,
                 recon_timesteps=timestep,
+                dataset=dataset
             )
 
             tracker = get_tracker()
@@ -219,6 +230,7 @@ def create_config_files(
                 "lr": lr,
                 "timesteps": timestep,
                 "last_neurons": last_neurons,
+                "Dataset": dataset,
                 "epochs": epochs[0] if isinstance(epochs, list) else epochs,
             }
             tracker.register_model(model_name, config_dict)
@@ -247,7 +259,8 @@ def create_config_files(
                 last_neurons,
                 seed,
                 lr,
-                epochs
+                epochs,
+                reconstruction_dataset=dataset
             )
 
             config_paths.append(cfg_command)

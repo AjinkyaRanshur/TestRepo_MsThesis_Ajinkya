@@ -86,13 +86,18 @@ def slurm_entries():
     print(Fore.YELLOW + "BATCH SUBMISSION\n")
     
     print("\nTraining Conditions")
-    training_condition = input("Training condition (recon_pc_train/classification_training_shapes): ").strip()
+    
+    training_condition = "recon_pc_train"
    
     print("\nBase Configurations - If Multiple Parameters Need to be tested, use comma-separated values:")
     
     # Get epochs
     epochs_input = input("Epochs (default 200): ").strip() or "200"
     epochs = parse_list(epochs_input, int)
+
+    # Get dataset
+    dataset_input = input("Which dataset do you want ? (custom_illusion_dataset, cifar10, stl10): ").strip() or "cifar10"
+    dataset_list = parse_list(dataset_input,str)
     
     # Get batch size
     batch_input = input("Batch size (default 40): ").strip() or "40"
@@ -143,6 +148,7 @@ def slurm_entries():
         len(timesteps) * 
         len(seeds) * 
         len(selected_patterns)
+        len(dataset_list)
     )
 
     print(f"\n{'='*60}")
@@ -154,6 +160,7 @@ def slurm_entries():
     print(f"Timesteps: {len(timesteps)}")
     print(f"Epochs: {len(epochs)}")
     print(f"Batch sizes: {len(batch_size)}")
+    print(f"Datsets : {len(dataset_list)}")
     print(f"{'='*60}\n")
     
     confirm = input("Proceed with this configuration? (y/n): ").strip().lower()
@@ -169,7 +176,8 @@ def slurm_entries():
         "timesteps": timesteps,
         "number_of_classes": number_of_classes,
         "selected_patterns": selected_patterns,
-        "seeds": seeds
+        "seeds": seeds,
+        "dataset_list":dataset_list,
     }
     
     return base_config

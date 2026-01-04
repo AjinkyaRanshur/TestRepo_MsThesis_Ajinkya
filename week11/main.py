@@ -58,7 +58,7 @@ def train_test_loader(illusion_bool, config):
     - Testing: Validation set + matched samples from all_in/all_out
     """
     
-    if illusion_bool == "illusion":
+    if illusion_bool == "custom_illusion_dataset":
         from customdataset import SquareDataset
         import torchvision.transforms as transforms
         
@@ -68,7 +68,7 @@ def train_test_loader(illusion_bool, config):
             transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))
         ])
 
-        DATA_DIR = config.classification_datasetpath
+        DATA_DIR = "data/visual_illusion_dataset"
         
         # ----------------------------------------------------------------
         # Load ALL 8 classes together
@@ -262,7 +262,7 @@ def train_test_loader(illusion_bool, config):
         
         return trainloader, validationloader, testloader
 
-    else:
+    elif illusion_bool == "cifar10":
         # CIFAR-10 dataset (reconstruction training)
         import torchvision
         import torchvision.transforms as transforms
@@ -273,7 +273,7 @@ def train_test_loader(illusion_bool, config):
         ])
         
         trainset = torchvision.datasets.CIFAR10(
-            root=config.recon_datasetpath,
+            root="/home/ajinkyar/datasets",
             train=True,
             download=True,
             transform=transform
@@ -287,7 +287,7 @@ def train_test_loader(illusion_bool, config):
         )
         
         testset = torchvision.datasets.CIFAR10(
-            root=config.recon_datasetpath,
+            root="/home/ajinkyar/datasets",
             train=False,
             download=True,
             transform=transform
@@ -303,6 +303,65 @@ def train_test_loader(illusion_bool, config):
         validationloader = None
         
         return trainloader, testloader, validationloader
+
+    elif illusion_bool == "stl10":
+        # STL-10 unlabeled dataset (96x96 -> 128x128 for reconstruction)
+        import torchvision
+        import torchvision.transforms as transforms
+        from torch.utils.data import random_split
+        
+        # Transform: Resize to 128x128 + normalize
+        # Using STL-10 normalization values
+        transform = transforms.Compose([
+            transforms.Resize((128, 128)),
+            transforms.ToTensor(),
+            transforms.Normalize((0.4467, 0.4398, 0.4066),
+                               (0.2603, 0.2566, 0.2713))
+        ])
+        
+        # Load unlabeled split (100,000 images)
+        unlabeled_dataset = torchvision.datasets.STL10(
+            root="/home/ajinkyar/datasets",
+            split='unlabeled',
+            download=True,
+            transform=transform
+        )
+        
+        print(f"\nLoaded STL-10 unlabeled dataset: {len(unlabeled_dataset)} images")
+        
+        # Split into train (80%) and test (20%)
+        train_size = int(0.8 * len(unlabeled_dataset))
+        test_size = len(unlabeled_dataset) - train_size
+        
+        trainset, testset = random_split(
+            unlabeled_dataset,
+            [train_size, test_size],
+            generator=torch.Generator().manual_seed(config.seed)
+        )
+        
+        print(f"Train split: {len(trainset)} images")
+        print(f"Test split: {len(testset)} images")
+        
+        trainloader = torch.utils.data.DataLoader(
+            trainset,
+            batch_size=config.batch_size,
+            shuffle=True,
+            num_workers=2,
+            pin_memory=True
+        )
+        
+        testloader = torch.utils.data.DataLoader(
+            testset,
+            batch_size=config.batch_size,
+            shuffle=False,
+            num_workers=2,
+            pin_memory=True
+        )
+        
+        validationloader = None
+        
+        return trainloader, testloader, validationloader
+
 
 
 def recon_training_cifar(trainloader, testloader,config,metrics_history,model_name):
@@ -351,7 +410,7 @@ def classification_training_shapes(class_trainloader,class_validationloader,clas
 def illusion_testing(class_trainloader, class_validationloader, class_testingloader,
                      recon_trainingloader, config, metrics_history, model_name):
     
-    net = Net(num_classes=config.classification_neurons).to(config.device)
+    net = Net(num_classes=config.classification_neurons,input_size=128).to(config.device)
     
     # Extract base model info from config
     base_model_name = config.model_name  # e.g., "pc_recon10_Uniform_seed42_chk15_class_t10_Uniform_seed42"
@@ -413,8 +472,8 @@ def get_metrics_initialize(train_cond):
 
 
 def decide_training_model(config,metrics_history,model_name):
-    recon_training_lr,recon_validation_lr,_=train_test_loader("reconstruction",config)
-    class_training_lr,class_validation_lr,class_testing_lr=train_test_loader("illusion",config)
+    recon_training_lr,recon_validation_lr,_=train_test_loader(config.classification_datasetpath,config)
+    class_training_lr,class_validation_lr,class_testing_lr=train_test_loader(config.recon_datasetpath,config)
 
     cond_to_func={
             "recon_pc_train":lambda: recon_training_cifar(recon_training_lr,recon_validation_lr,config,metrics_history,model_name),

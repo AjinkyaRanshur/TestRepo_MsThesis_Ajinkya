@@ -130,7 +130,7 @@ class Net(nn.Module):
 
         #scalingC=np.round(np.sqrt(np.square( np.prod(ft_AB.shape[1:]))/np.prod(self.deconv2_fb(torch.rand_like(ft_BC)).shape[1:])))
     
-        scalingC = np.round(np.sqrt(np.square((h_in/2)*(w_in/2)*c_AB)/(np.prod(self.conv2.kernel_size * self.conv2.in_channels))))
+        scalingC = np.round(np.sqrt(np.square(( h_in // 2 )*( w_in // 2)*c_AB)/(np.prod(self.conv2.kernel_size * self.conv2.in_channels))))
 
         ft_BC_pc = gamma_BC_fwd*self.conv2(pooled_ft_AB_pc) + (1-gamma_BC_fwd-beta_BC_bck) * ft_BC + beta_BC_bck*self.deconv3_fb(self.upsample(ft_CD))-alpha_BC*scalingC*batch_size*reconstructionC
 
@@ -140,7 +140,7 @@ class Net(nn.Module):
         
         pooled_ft_BC_pc,indices_BC=self.pool(F.relu(ft_BC_pc))
         
-        scalingD = np.round(np.sqrt(np.square((h_in/4)*(w_in/4)*c_BC)/(np.prod(self.conv3.kernel_size * self.conv3.in_channels))))
+        scalingD = np.round(np.sqrt(np.square(( h_in // 4)* ( w_in // 4)*c_BC)/(np.prod(self.conv3.kernel_size * self.conv3.in_channels))))
     
         ft_CD_pc= gamma_CD_fwd*self.conv3(pooled_ft_BC_pc) + (1-gamma_CD_fwd-beta_CD_bck) * ft_CD + beta_CD_bck*self.deconv4_fb(self.upsample(ft_DE))-alpha_CD*scalingD*batch_size*reconstructionD
 
@@ -150,7 +150,7 @@ class Net(nn.Module):
 
         pooled_ft_CD_pc,_ = self.pool(F.relu(ft_CD_pc))
 
-        scalingE = np.round(np.sqrt(np.square((h_in/8)*(w_in/8)*c_CD)/(np.prod(self.conv4.kernel_size * self.conv4.in_channels))))
+        scalingE = np.round(np.sqrt(np.square(( h_in // 8)*( w_in // 8)*c_CD)/(np.prod(self.conv4.kernel_size * self.conv4.in_channels))))
 
         ft_DE_pc=gamma_DE_fwd*self.conv4(pooled_ft_CD_pc) + (1-gamma_DE_fwd) * ft_DE - alpha_DE*scalingE*batch_size*reconstructionE
 
@@ -180,6 +180,13 @@ class Net(nn.Module):
 
         alpha_AB,alpha_BC,alpha_CD,alpha_DE=alpha[0]
 
+        # Get actual dimensions for dynamic scaling
+        _, _, h_in, w_in = x.shape
+        _, c_AB, h_AB, w_AB = ft_AB.shape
+        _, c_BC, h_BC, w_BC = ft_BC.shape
+        _, c_CD, h_CD, w_CD = ft_CD.shape
+        _, c_DE, h_DE, w_DE = ft_DE.shape
+
         errorB=nn.functional.mse_loss(self.deconv1_fb(ft_AB),x)
 
         reconstructionB=torch.autograd.grad(errorB,ft_AB,retain_graph=True)[0]
@@ -187,7 +194,7 @@ class Net(nn.Module):
         #This scaling is done by the factor sqrt((k^2/C)) ref: https://proceedings.neurips.cc/paper_files/paper/2021/file/75c58d36157505a600e0695ed0b3a22d-Supplemental.pdf supplement A. The reason why we do this scaling is because by simply dividing it by the number of neurons wouldn't be helpful since not all of them are involved in the receptive field so we should also take into consideration the elements in the receptive and then take their ratio with respect to the the total number of neurons.
 
 
-        scalingB = np.round(np.sqrt(np.square(32*32*3)/(np.prod(self.conv1.kernel_size * self.conv1.in_channels))))
+        scalingB = np.round(np.sqrt(np.square(h_in*w_in*3)/(np.prod(self.conv1.kernel_size * self.conv1.in_channels))))
 
         #The predictive coding has three main terms the forward the backward and the error. Forward is controlled by gamma and backward is controlled by beta and the error gradient is controlled by alpha and the memory term is controlled by 1 - gamma - beta
 
@@ -204,7 +211,7 @@ class Net(nn.Module):
 
         #scalingC=np.round(np.sqrt(np.square( np.prod(ft_AB.shape[1:]))/np.prod(self.deconv2_fb(torch.rand_like(ft_BC)).shape[1:])))
 
-        scalingC = np.round(np.sqrt(np.square(16*16*6)/(np.prod(self.conv2.kernel_size * self.conv2.in_channels))))
+        scalingC = np.round(np.sqrt(np.square((h_in // 2)*(w_in // 2)*c_AB)/(np.prod(self.conv2.kernel_size * self.conv2.in_channels))))
 
         ft_BC_pc = gamma_BC_fwd*self.conv2(pooled_ft_AB_pc) + (1-gamma_BC_fwd-beta_BC_bck) * ft_BC + beta_BC_bck*self.deconv3_fb(self.upsample(ft_CD))-alpha_BC*scalingC*batch_size*reconstructionC
 
@@ -214,7 +221,7 @@ class Net(nn.Module):
 
         pooled_ft_BC_pc,indices_BC=self.pool(F.relu(ft_BC_pc))
 
-        scalingD = np.round(np.sqrt(np.square(8*8*16)/(np.prod(self.conv3.kernel_size * self.conv3.in_channels))))
+        scalingD = np.round(np.sqrt(np.square((h_in // 4)*(w_in // 4)*c_BC)/(np.prod(self.conv3.kernel_size * self.conv3.in_channels))))
 
         ft_CD_pc= gamma_CD_fwd*self.conv3(pooled_ft_BC_pc) + (1-gamma_CD_fwd-beta_CD_bck) * ft_CD + beta_CD_bck*self.deconv4_fb(self.upsample(ft_DE))-alpha_CD*scalingD*batch_size*reconstructionD
 
@@ -224,7 +231,7 @@ class Net(nn.Module):
 
         pooled_ft_CD_pc,_ = self.pool(F.relu(ft_CD_pc))
 
-        scalingE = np.round(np.sqrt(np.square(4*4*32)/(np.prod(self.conv4.kernel_size * self.conv4.in_channels))))
+        scalingE = np.round(np.sqrt(np.square((h_in // 8)*(w_in // 8)*c_CD)/(np.prod(self.conv4.kernel_size * self.conv4.in_channels))))
 
         ft_DE_pc=gamma_DE_fwd*self.conv4(pooled_ft_CD_pc) + (1-gamma_DE_fwd) * ft_DE - alpha_DE*scalingE*batch_size*reconstructionE
 

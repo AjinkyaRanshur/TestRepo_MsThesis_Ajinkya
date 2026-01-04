@@ -1,7 +1,7 @@
 import torch
 
 batch_size = 40
-epochs = 200
+epochs = 150
 seed = 42
 lr = 5e-05
 momentum = 0.9

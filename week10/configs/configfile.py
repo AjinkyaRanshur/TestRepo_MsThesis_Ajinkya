@@ -19,15 +19,15 @@ print(f"Using device: {device}")
 
 timesteps = 100
 
-gammaset = [[0.43, 0.43, 0.43, 0.43]]  # pattern: Grid_g0.43_b0.43
-betaset = [[0.43, 0.43, 0.43, 0.43]]  # pattern: Grid_g0.43_b0.43
+gammaset = [[0.33, 0.33, 0.33, 0.33]]  # pattern: Uniform
+betaset = [[0.33, 0.33, 0.33, 0.33]]  # pattern: Uniform
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
-model_name = "pc_recon_t10_class_t10_gamma_increasing"
+model_name = "pc_recon_t10_class_t10_uniform"
 noise_type="s&p"
 noise_param=0.0
 
-experiment_name = "Testing pc_recon_t10_class_t10_gamma_increasing with Grid_g0.43_b0.43 pattern at 100 timesteps"
+experiment_name = "Testing pc_recon_t10_class_t10_uniform with Uniform pattern at 100 timesteps"
 load_model_path="/home/ajinkyar/TestRepo_MsThesis_Ajinkya/week10/models"
 save_model_path="/home/ajinkyar/TestRepo_MsThesis_Ajinkya/week10/models"
 
