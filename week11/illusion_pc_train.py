@@ -51,18 +51,24 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
                             noise, 2))
 
                     # Temporary feature tensors
+                    _, _, height, width = images.shape
+                    batch_size = images.size(0)
+
                     ft_AB_pc_temp = torch.zeros(
-                        config.batch_size, 6, 128, 128).to(
-                        config.device)
+                                    batch_size, 6, height, width, device=config.device
+                                    )
+
                     ft_BC_pc_temp = torch.zeros(
-                        config.batch_size, 16, 64, 64).to(
-                        config.device)
+                                    batch_size, 16, height // 2, width // 2, device=config.device
+                                    )
+
                     ft_CD_pc_temp = torch.zeros(
-                        config.batch_size, 32, 32, 32).to(
-                        config.device)
+                                    batch_size, 32, height // 4, width // 4, device=config.device
+                                    ) 
+
                     ft_DE_pc_temp = torch.zeros(
-                        config.batch_size, 128, 16, 16).to(
-                        config.device)
+                                    batch_size, 128, height // 8, width // 8, device=config.device
+                                    )
 
 
                     ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp, ft_EF_pc_temp, ft_FG_pc_temp, output = net.feedforward_pass(
@@ -225,11 +231,26 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
                 images = noisy_img(images_orig.clone(), "gauss", round(noise, 2))
 
                 # Initialize feature tensors with actual batch size
-                #batch_size = images.size(0)
-                ft_AB_pc_temp = torch.zeros(config.batch_size, 6, 128, 128).to(config.device)
-                ft_BC_pc_temp = torch.zeros(config.batch_size, 16, 64, 64).to(config.device)
-                ft_CD_pc_temp = torch.zeros(config.batch_size, 32, 32, 32).to(config.device)
-                ft_DE_pc_temp = torch.zeros(config.batch_size, 128, 16, 16).to(config.device)
+                _, _, height, width = images.shape
+                batch_size = images.size(0)
+
+                ft_AB_pc_temp = torch.zeros(
+                                    batch_size, 6, height, width, device=config.device
+                                    )
+
+                ft_BC_pc_temp = torch.zeros(
+                                    batch_size, 16, height // 2, width // 2, device=config.device
+                                    )
+
+                ft_CD_pc_temp = torch.zeros(
+                                    batch_size, 32, height // 4, width // 4, device=config.device
+                                    ) 
+
+                ft_DE_pc_temp = torch.zeros(
+                                    batch_size, 128, height // 8, width // 8, device=config.device
+                                    )
+
+
 
                 # Initial feedforward
                 ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp, \

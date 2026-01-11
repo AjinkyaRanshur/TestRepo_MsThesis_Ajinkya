@@ -111,8 +111,6 @@ def slurm_entries():
     timesteps_input = input("Timesteps (default 10): ").strip() or "10"
     timesteps = parse_list(timesteps_input, int)
     
-    # Get number of classes
-    number_of_classes = int(input("Enter Number of classes (10 for CIFAR, 6 for Illusory dataset): ").strip() or "6")
     
     # Select patterns
     print("\nAvailable patterns:")
@@ -147,7 +145,7 @@ def slurm_entries():
         len(lr) * 
         len(timesteps) * 
         len(seeds) * 
-        len(selected_patterns)
+        len(selected_patterns) *
         len(dataset_list)
     )
 
@@ -174,7 +172,6 @@ def slurm_entries():
         "batch_size": batch_size,
         "lr": lr,
         "timesteps": timesteps,
-        "number_of_classes": number_of_classes,
         "selected_patterns": selected_patterns,
         "seeds": seeds,
         "dataset_list":dataset_list,

@@ -1,0 +1,10 @@
+{
+  "slurm_job_id": "8448139",
+  "script_path": "slurm_jobs/pred_net_recon_pc_train_20260104_234855.sh",
+  "model_names": [
+    "pc_recon10_custom_illusion_dataset_Uniform_seed42",
+    "pc_recon10_cifar10_Uniform_seed42",
+    "pc_recon10_stl10_Uniform_seed42"
+  ],
+  "submitted_at": "2026-01-04T23:48:56.390837"
+}

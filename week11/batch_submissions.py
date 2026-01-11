@@ -47,7 +47,7 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
             epochs=base_config["epochs"],
             lr_list=base_config["lr"],
             timesteps=base_config["timesteps"],
-            last_neurons=base_config["number_of_classes"],
+            last_neurons=10,
             dataset_list=base_config["dataset_list"]
         )
     

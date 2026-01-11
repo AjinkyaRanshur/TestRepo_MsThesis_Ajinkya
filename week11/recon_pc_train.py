@@ -25,7 +25,7 @@ def recon_pc_training(net,trainloader,testloader,pc_train_bool,config,metrics_hi
             ##Switch to training Mode
             net.train()
             for batch_idx,batch in enumerate(trainloader):
-                images,labels=batch
+                images, labels = batch[:2]
                 images,labels=images.to(config.device),labels.to(config.device)
                 _,_,height,width=images.shape
                 batch_size = images.size(0)
@@ -83,7 +83,7 @@ def recon_pc_training(net,trainloader,testloader,pc_train_bool,config,metrics_hi
             metrics_history['test_loss'].append(test_loss)
             if epoch % 10 == 0:
                iteration_index= iteration_index +1
-               save_path = f'{config.save_model_path}/recon_models/{model_name}_{iteration_index}.pth'
+               save_path = f'{config.save_model_path}/recon_models/{model_name}_{epoch}.pth'
                torch.save({
                    "conv1": net.conv1.state_dict(),
                    "conv2": net.conv2.state_dict(),

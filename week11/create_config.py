@@ -64,7 +64,7 @@ def update_config(
                 f.write(f"lr = {lr}\n")
 
             elif stripped.startswith("timesteps"):
-                f.write(f"timesteps = {timesteps}\n")
+                f.write(f"timesteps = {timesteps[0] if isinstance(timesteps, list) else timesteps}\n")
 
             elif stripped.startswith("classification_neurons"):
                 f.write(f"classification_neurons = {last_neurons}\n")
@@ -102,7 +102,7 @@ def create_config_files(
     last_neurons,
     base_recon_models=None,  # List of base reconstruction models
     checkpoint_epochs=None,    # Which checkpoint to use
-    dataset_list
+    dataset_list=None
 ):
     """
     Create multiple config files from parameters for batch experiments.
@@ -156,7 +156,18 @@ def create_config_files(
                 ):
                     # Generate model name
                  
-                    model_name = f"{base_model}_chk{checkpoint_epoch}_class_t{timestep}_{dataset}_{pattern}_seed{seed}"
+                    base_model = f"{base_model}_chk{checkpoint_epoch}"
+                   
+                    # Fix in create_config.py line 40-47:
+                    model_name = generate_model_name(
+                         pattern=pattern,
+                         seed=seed,
+                         train_cond=train_cond,
+                         recon_timesteps=timestep,
+                         classification_timesteps=timestep,
+                         dataset=dataset,
+                         base_model=base_model
+                    )
 
                     tracker = get_tracker()
                     config_dict = {
@@ -260,6 +271,7 @@ def create_config_files(
                 seed,
                 lr,
                 epochs,
+                classification_dataset=dataset,
                 reconstruction_dataset=dataset
             )
 

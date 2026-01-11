@@ -61,7 +61,7 @@ def plot_test_trajectory(class_results, model_name, config):
         )
 
     plt.xlabel('Timestep', fontsize=12)
-    plt.ylabel('Probability of being a shape(%)', fontsize=12)
+    plt.ylabel('Probability of being a correct(%)', fontsize=12)
     plt.ylim(0, 100)
     plt.legend(fontsize=10)
     plt.grid(True, alpha=0.3)
@@ -243,13 +243,26 @@ def recon_pc_loss(net,dataloader,config):
     total_loss=[]
     test_loss=0
     for batch_idx,batch in enumerate(dataloader):
-        images,labels=batch
-        images,labels=images.to(config.device),labels.to(config.device)
+        images,labels=batch[:2]
 
-        ft_AB_pc_temp = torch.zeros(config.batch_size, 6, 32, 32).to(config.device)
-        ft_BC_pc_temp = torch.zeros(config.batch_size, 16, 16, 16).to(config.device)
-        ft_CD_pc_temp = torch.zeros(config.batch_size, 32, 8, 8).to(config.device)
-        ft_DE_pc_temp = torch.zeros(config.batch_size,64,4,4).to(config.device)
+        images,labels=images.to(config.device),labels.to(config.device)
+        _,_,height,width=images.shape
+        batch_size = images.size(0)
+        ft_AB_pc_temp = torch.zeros(
+                        batch_size, 6, height, width, device=config.device
+                        )
+
+        ft_BC_pc_temp = torch.zeros(
+                        batch_size, 16, height // 2, width // 2, device=config.device
+                         )
+
+        ft_CD_pc_temp = torch.zeros(
+                        batch_size, 32, height // 4, width // 4, device=config.device
+                        ) 
+
+        ft_DE_pc_temp = torch.zeros(
+                        batch_size, 128, height // 8, width // 8, device=config.device
+                        )
 
         ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp = net.feedforward_pass_no_dense(images,ft_AB_pc_temp,ft_BC_pc_temp,ft_CD_pc_temp,ft_DE_pc_temp)
 
