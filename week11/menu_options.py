@@ -255,8 +255,19 @@ def slurm_classification_entries():
     timesteps_input = input("Timesteps (default 10): ").strip() or "10"
     timesteps = parse_list(timesteps_input, int)
     
+     # Get dataset
+    dataset_input = input("Which dataset do you want ? (custom_illusion_dataset, cifar10, stl10): ").strip() or "custom_illusion_dataset"
+    dataset_list = parse_list(dataset_input,str)
+ 
     # Number of classes
-    number_of_classes = 6  # Fixed for illusion dataset
+    number_of_classes = []  # Fixed for illusion dataset
+
+    for dataset in dataset_list:
+        if dataset == "custom_illusion_dataset":
+           number_of_classes.append(6)
+        elif dataset == "cifar10" or dataset == "stl10":
+           number_of_classes.append(10)
+ 
     
     # Select patterns for testing
     print("\nTrain on pattern (for classification models):")
@@ -288,6 +299,8 @@ def slurm_classification_entries():
     number_of_models = (
         len(selected_models) *
         len(checkpoint_epochs) *
+        len(dataset_list) *
+        len(number_of_classes) *
         len(epochs) * 
         len(batch_size) * 
         len(lr) * 

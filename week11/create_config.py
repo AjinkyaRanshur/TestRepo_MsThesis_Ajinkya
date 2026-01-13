@@ -99,7 +99,7 @@ def create_config_files(
     epochs,
     lr_list,
     timesteps,
-    last_neurons,
+    number_of_classes,
     base_recon_models=None,  # List of base reconstruction models
     checkpoint_epochs=None,    # Which checkpoint to use
     dataset_list=None
@@ -151,8 +151,8 @@ def create_config_files(
     if train_cond == "classification_training_shapes" and base_recon_models:
         for base_model in base_recon_models:
             for checkpoint_epoch in checkpoint_epochs:
-                for seed, pattern, lr, timestep,dataset in itertools.product(
-                    seeds, patterns, lr_list, timesteps,dataset_list
+                for seed, pattern, lr, timestep,dataset,last_neurons in itertools.product(
+                    seeds, patterns, lr_list, timesteps,dataset_list,number_of_classes
                 ):
                     # Generate model name
                  
@@ -240,7 +240,7 @@ def create_config_files(
                 "train_cond": train_cond,
                 "lr": lr,
                 "timesteps": timestep,
-                "last_neurons": last_neurons,
+                "last_neurons": number_of_classes[0],
                 "Dataset": dataset,
                 "epochs": epochs[0] if isinstance(epochs, list) else epochs,
             }
@@ -267,7 +267,7 @@ def create_config_files(
                 model_name,
                 timestep,
                 train_cond,
-                last_neurons,
+                number_of_classes[0],
                 seed,
                 lr,
                 epochs,
