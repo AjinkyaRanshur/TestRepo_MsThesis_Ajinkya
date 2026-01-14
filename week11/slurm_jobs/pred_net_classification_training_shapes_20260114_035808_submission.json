@@ -1,0 +1,10 @@
+{
+  "slurm_job_id": "8449388",
+  "script_path": "slurm_jobs/pred_net_classification_training_shapes_20260114_035808.sh",
+  "model_names": [
+    "pc_recon10_custom_illusion_dataset_Uniform_seed42_150_custom_illusion_dataset_classt10_custom_illusion_dataset_Uniform_seed42",
+    "pc_recon10_cifar10_Uniform_seed42_150_custom_illusion_dataset_classt10_custom_illusion_dataset_Uniform_seed42",
+    "pc_recon10_stl10_Uniform_seed42_150_custom_illusion_dataset_classt10_custom_illusion_dataset_Uniform_seed42"
+  ],
+  "submitted_at": "2026-01-14T03:58:10.003836"
+}

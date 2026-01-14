@@ -134,9 +134,17 @@ def slurm_entries():
         indices = [int(x.strip())-1 for x in pattern_choice.split(',')]
         selected_patterns = [patterns[i] for i in indices if 0 <= i < len(patterns)]
     
-    # Select seeds
-    seed_input = input("\nEnter seeds (comma-separated, e.g., 42,123,456): ").strip()
-    seeds = [int(x.strip()) for x in seed_input.split(',')]
+
+    # FIX 2: Simplified seed handling
+    num_seeds_input = input("\nHow many random seeds? (default 3): ").strip() or "3"
+    num_seeds = int(num_seeds_input)
+    
+    # Generate random seeds
+    import random
+    random.seed(42)  # For reproducibility
+    seeds = [random.randint(1, 10000) for _ in range(num_seeds)]
+    
+    print(f"Generated seeds: {seeds}")
     
     # Calculate total number of models
     number_of_models = (
@@ -233,7 +241,7 @@ def slurm_classification_entries():
     
     # Select checkpoint epochs
     print(Fore.YELLOW + "\nWhich checkpoint epochs to use?")
-    print("  Checkpoints are saved every 10 epochs (1, 2, 3, ... = epochs 10, 20, 30, ...)")
+    print("  Checkpoints are saved every 10 epochs (10, 20, 30, ...)")
     checkpoint_input = input("Enter checkpoint indices (comma-separated, e.g., 10,15,20): ").strip()
     checkpoint_epochs = parse_list(checkpoint_input, int)
     
@@ -292,8 +300,7 @@ def slurm_classification_entries():
         selected_patterns = [patterns[i] for i in indices if 0 <= i < len(patterns)]
     
     # Select seeds
-    seed_input = input("\nEnter seeds (comma-separated, e.g., 42,123,456): ").strip()
-    seeds = [int(x.strip()) for x in seed_input.split(',')]
+    print(Fore.YELLOW + "\nUsing same seeds from base reconstruction models")
     
     # Calculate total number of models
     number_of_models = (
@@ -305,7 +312,6 @@ def slurm_classification_entries():
         len(batch_size) * 
         len(lr) * 
         len(timesteps) * 
-        len(seeds) * 
         len(selected_patterns)
     )
 
@@ -337,7 +343,8 @@ def slurm_classification_entries():
         "selected_patterns": selected_patterns,
         "seeds": seeds,
         "base_recon_models": selected_models,
-        "checkpoint_epochs": checkpoint_epochs
+        "checkpoint_epochs": checkpoint_epochs,
+        "dataset_list":dataset_list
     }
     
     return base_config

@@ -13,6 +13,8 @@ class ModelTracker:
     def __init__(self, tracking_file="model_registry.json"):
         self.tracking_file = tracking_file
         self.registry = self._load_registry()
+        # FIX 4: Clean up invalid entries on load
+        self._cleanup_invalid_entries()
     
     def _load_registry(self) -> Dict:
         """Load existing registry or create new one"""
@@ -26,6 +28,37 @@ class ModelTracker:
         self.registry["metadata"]["last_updated"] = datetime.now().isoformat()
         with open(self.tracking_file, 'w') as f:
             json.dump(self.registry, f, indent=2)
+    
+    def _cleanup_invalid_entries(self):
+        """
+        FIX 4: Remove entries where model files don't exist
+        Only checks completed models with checkpoint paths
+        """
+        to_remove = []
+        
+        for model_name, model_data in self.registry["models"].items():
+            # Only check completed models that should have files
+            if model_data.get("status") == "completed":
+                checkpoint_path = model_data.get("checkpoint_path")
+                
+                if checkpoint_path:
+                    # Check if the checkpoint file exists
+                    if not os.path.exists(checkpoint_path):
+                        print(f"Warning: Checkpoint not found for {model_name}: {checkpoint_path}")
+                        to_remove.append(model_name)
+                else:
+                    # Completed model should have a checkpoint
+                    print(f"Warning: Completed model {model_name} has no checkpoint path")
+                    to_remove.append(model_name)
+        
+        # Remove invalid entries
+        for model_name in to_remove:
+            print(f"Removing invalid entry: {model_name}")
+            del self.registry["models"][model_name]
+        
+        if to_remove:
+            self._save_registry()
+            print(f"Cleaned up {len(to_remove)} invalid entries")
     
     def register_model(self, model_name: str, config: Dict):
         """Register a new model with its configuration"""
@@ -86,6 +119,7 @@ class ModelTracker:
             for name, mdata in self.registry["models"].items()
             if mdata.get("type") == "recon_pc_train" and mdata.get("status") == "completed"
         ]
+    
     def get_completed_classification_models(self) -> List[Dict]:
         """Get all completed classification models for testing"""
         return [
@@ -120,7 +154,8 @@ class ModelTracker:
         print(f"Created: {model['created_at']}")
         
         if model.get('checkpoint_path'):
-            print(f"Checkpoint: {model['checkpoint_path']}")
+            exists = "✓" if os.path.exists(model['checkpoint_path']) else "✗ (missing)"
+            print(f"Checkpoint: {model['checkpoint_path']} {exists}")
         
         if model.get('metrics'):
             print("\nMetrics:")
@@ -166,7 +201,8 @@ class ModelTracker:
                 f.write(f"  Created: {model_data['created_at']}\n")
                 
                 if model_data.get('checkpoint_path'):
-                    f.write(f"  Checkpoint: {model_data['checkpoint_path']}\n")
+                    exists = os.path.exists(model_data['checkpoint_path'])
+                    f.write(f"  Checkpoint: {model_data['checkpoint_path']} {'(exists)' if exists else '(MISSING)'}\n")
                 
                 f.write("\n")
         
@@ -200,5 +236,5 @@ def get_completed_recon_models() -> List[Dict]:
 
 
 def get_completed_classification_models() -> List[Dict]:
-    """Quick access to completed reconstruction models"""
+    """Quick access to completed classification models"""
     return get_tracker().get_completed_classification_models()

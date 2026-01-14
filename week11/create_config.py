@@ -100,8 +100,8 @@ def create_config_files(
     lr_list,
     timesteps,
     number_of_classes,
-    base_recon_models=None,  # List of base reconstruction models
-    checkpoint_epochs=None,    # Which checkpoint to use
+    base_recon_models=None,
+    checkpoint_epochs=None,
     dataset_list=None
 ):
     """
@@ -146,40 +146,60 @@ def create_config_files(
 
     # Create configs directory
     os.makedirs("configs", exist_ok=True)
+    
+    tracker = get_tracker()
 
     # If classification training, iterate over base models too
     if train_cond == "classification_training_shapes" and base_recon_models:
         for base_model in base_recon_models:
+            # FIX 1: Extract dataset from base recon model
+            base_model_info = tracker.get_model(base_model)
+            if not base_model_info:
+                print(f"Warning: Base model {base_model} not found in registry!")
+                continue
+            
+            # Get the dataset the base model was trained on
+            base_dataset = base_model_info['config'].get('Dataset', 'custom_illusion_dataset')
+            
+            # FIX 2: Extract seed from base model
+            base_seed = base_model_info['config'].get('seed', 42)
+            
+            # Determine number of classes based on dataset
+            if base_dataset == "custom_illusion_dataset":
+                num_classes = 6
+            elif base_dataset in ["cifar10", "stl10"]:
+                num_classes = 10
+            else:
+                num_classes = 10  # default
+            
             for checkpoint_epoch in checkpoint_epochs:
-                for seed, pattern, lr, timestep,dataset,last_neurons in itertools.product(
-                    seeds, patterns, lr_list, timesteps,dataset_list,number_of_classes
+                # Use the base model's seed instead of iterating through seeds
+                for pattern, lr, timestep in itertools.product(
+                    patterns, lr_list, timesteps
                 ):
-                    # Generate model name
-                 
-                    base_model = f"{base_model}_chk{checkpoint_epoch}"
+                    base_model_with_chk = f"{base_model}_chk{checkpoint_epoch}"
                    
-                    # Fix in create_config.py line 40-47:
                     model_name = generate_model_name(
                          pattern=pattern,
-                         seed=seed,
+                         seed=base_seed,  # Use base model's seed
                          train_cond=train_cond,
                          recon_timesteps=timestep,
                          classification_timesteps=timestep,
-                         dataset=dataset,
-                         base_model=base_model
+                         dataset=base_dataset,
+                         base_model=base_model_with_chk
                     )
 
-                    tracker = get_tracker()
                     config_dict = {
                         "pattern": pattern,
-                        "seed": seed,
+                        "seed": base_seed,  # Use base model's seed
                         "train_cond": train_cond,
                         "lr": lr,
                         "timesteps": timestep,
-                        "last_neurons": last_neurons,
+                        "last_neurons": num_classes,
                         "epochs": epochs[0] if isinstance(epochs, list) else epochs,
                         "base_recon_model": base_model,
-                        "checkpoint_epoch": checkpoint_epoch
+                        "checkpoint_epoch": checkpoint_epoch,
+                        "dataset": base_dataset
                     }
                     tracker.register_model(model_name, config_dict)
 
@@ -208,13 +228,14 @@ def create_config_files(
                         model_name,
                         timestep,
                         train_cond,
-                        last_neurons,
-                        seed,
+                        num_classes,
+                        base_seed,  # Use base model's seed
                         lr,
                         epochs,
                         base_recon_model=base_model,
                         checkpoint_epoch=checkpoint_epoch,
-                        classification_dataset=dataset
+                        classification_dataset=base_dataset,
+                        reconstruction_dataset=base_dataset
                     )
 
                     config_paths.append(cfg_command)
@@ -222,8 +243,8 @@ def create_config_files(
                     exp_id += 1
     else:
         # Reconstruction training (original logic)
-        for seed, pattern, lr, timestep,dataset in itertools.product(
-            seeds, patterns, lr_list, timesteps,dataset_list
+        for seed, pattern, lr, timestep, dataset in itertools.product(
+            seeds, patterns, lr_list, timesteps, dataset_list
         ):
             model_name = generate_model_name(
                 pattern=pattern,
@@ -233,7 +254,6 @@ def create_config_files(
                 dataset=dataset
             )
 
-            tracker = get_tracker()
             config_dict = {
                 "pattern": pattern,
                 "seed": seed,

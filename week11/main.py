@@ -313,7 +313,6 @@ def train_test_loader(illusion_bool, config):
         # Transform: Resize to 128x128 + normalize
         # Using STL-10 normalization values
         transform = transforms.Compose([
-            transforms.Resize((128, 128)),
             transforms.ToTensor(),
             transforms.Normalize((0.4467, 0.4398, 0.4066),
                                (0.2603, 0.2566, 0.2713))
@@ -472,8 +471,8 @@ def get_metrics_initialize(train_cond):
 
 
 def decide_training_model(config,metrics_history,model_name):
-    recon_training_lr,recon_validation_lr,_=train_test_loader(config.classification_datasetpath,config)
-    class_training_lr,class_validation_lr,class_testing_lr=train_test_loader(config.recon_datasetpath,config)
+    recon_training_lr,recon_validation_lr,_=train_test_loader(config.recon_datasetpath,config)
+    class_training_lr,class_validation_lr,class_testing_lr=train_test_loader(config.classification_datasetpath,config)
 
     cond_to_func={
             "recon_pc_train":lambda: recon_training_cifar(recon_training_lr,recon_validation_lr,config,metrics_history,model_name),

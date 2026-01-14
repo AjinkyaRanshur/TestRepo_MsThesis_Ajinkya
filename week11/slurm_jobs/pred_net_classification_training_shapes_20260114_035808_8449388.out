@@ -1,0 +1,6 @@
+Job started at Wed Jan 14 04:02:46 IST 2026
+Running 3 experiments
+Job ID: 8449388
+Started job 1 (Model: pc_recon10_custom_illusion_dataset_Uniform_seed42_150_custom_illusion_dataset_classt10_custom_illusion_dataset_Uniform_seed42) on GPU 0
+Started job 2 (Model: pc_recon10_cifar10_Uniform_seed42_150_custom_illusion_dataset_classt10_custom_illusion_dataset_Uniform_seed42) on GPU 1
+Started job 3 (Model: pc_recon10_stl10_Uniform_seed42_150_custom_illusion_dataset_classt10_custom_illusion_dataset_Uniform_seed42) on GPU 0

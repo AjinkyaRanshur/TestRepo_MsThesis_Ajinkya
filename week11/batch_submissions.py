@@ -37,7 +37,8 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
             timesteps=base_config["timesteps"],
             number_of_classes=base_config["number_of_classes"],
             base_recon_models=base_config.get("base_recon_models", []),
-            checkpoint_epochs=base_config.get("checkpoint_epochs", [])
+            checkpoint_epochs=base_config.get("checkpoint_epochs", []),
+            dataset_list=base_config["dataset_list"]
         )
     else:
         config_paths, model_names = create_config_files(
