@@ -1,15 +1,11 @@
 import torch
-import torchvision
-import torchvision.transforms as transforms
-import matplotlib.pyplot as plt
 import numpy as np
 import torch.nn as nn
-import torch.nn.functional as F
 import torch.optim as optim
 import os
 from add_noise import noisy_img
-import torchvision.utils as vutils
 from eval_and_plotting import recon_pc_loss, eval_pc_ill_accuracy
+import torch.nn.functional as F
 
 
 def illusion_pc_training(net, trainloader, validationloader, testloader,
@@ -17,12 +13,23 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
 
     if pc_train_bool == "fine_tuning":
         criterion = nn.CrossEntropyLoss()
-        optimizer = optim.Adam(
-            list(net.fc1.parameters()) +
-            list(net.fc2.parameters()) +
-            list(net.fc3.parameters()),
-            lr=config.lr
-        )
+        
+        # NEW: Choose optimizer scope based on config
+        optimize_all = getattr(config, 'optimize_all_layers', False)
+        
+        if optimize_all:
+            # Optimize all layers (conv + linear)
+            print(f"Optimizer: Training ALL layers (conv + linear)")
+            optimizer = optim.Adam(net.parameters(), lr=config.lr)
+        else:
+            # Optimize only linear layers (default)
+            print(f"Optimizer: Training LINEAR layers only (fc1, fc2, fc3)")
+            optimizer = optim.Adam(
+                list(net.fc1.parameters()) +
+                list(net.fc2.parameters()) +
+                list(net.fc3.parameters()),
+                lr=config.lr
+            )
 
         for epoch in range(config.epochs):
             running_loss = []
@@ -47,8 +54,7 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
 
                 for noise in np.arange(0, 0.35, 0.05):
                     images = noisy_img(
-                        images_orig.clone(), "gauss", round(
-                            noise, 2))
+                        images_orig.clone(), "gauss", round(noise, 2))
 
                     # Temporary feature tensors
                     _, _, height, width = images.shape
@@ -149,9 +155,8 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
                   f"Acc: {train_accuracy:.2f}%")
 
             net.eval()
-            test_accuracy, test_loss = eval_pc_ill_accuracy(
+            test_accuracy, test_loss, test_recon_loss = eval_pc_ill_accuracy(
                 net, validationloader, config, criterion)
-            test_recon_loss = recon_pc_loss(net, cifar10_testdata, config)
 
             # Store metrics
             metrics_history['train_loss'].append(avg_loss)
@@ -192,13 +197,9 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
         return metrics_history
 
     # ============================================================
-    # TEST MODE - COMPLETELY REWRITTEN
+    # TEST MODE
     # ============================================================
     if pc_train_bool == "test":
-
-        """
-        Fixed test mode with proper predictive coding iterations
-        """
         # Get class mapping
         test_dataset = testloader.dataset
         if hasattr(test_dataset, 'dataset'):
@@ -250,8 +251,6 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
                                     batch_size, 128, height // 8, width // 8, device=config.device
                                     )
 
-
-
                 # Initial feedforward
                 ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp, \
                     ft_EF_pc_temp, ft_FG_pc_temp, output = net.feedforward_pass(
@@ -281,7 +280,7 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
                     if noise == 0.0:  # Only count on first noise level
                         class_results[cls_name]["total"] += 1
 
-                # ✅ FIX: Run predictive coding iterations for timesteps 1 to config.timesteps
+                # Run predictive coding iterations for timesteps 1 to config.timesteps
                 for t in range(config.timesteps):
                     output, ft_AB_pc_temp, ft_BC_pc_temp, ft_CD_pc_temp, ft_DE_pc_temp, \
                         ft_EF_pc_temp, loss_of_layers = net.predictive_coding_pass(

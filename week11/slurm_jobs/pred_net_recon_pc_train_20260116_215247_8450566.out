@@ -1107,3 +1107,13 @@ Epoch:46 and AverageLoss:0.004742994105326943
 Test Loss: 0.0047
 Epoch:47 and AverageLoss:0.0046995729204500096
 Test Loss: 0.0047
+Epoch:48 and AverageLoss:0.0046570639458950605
+Test Loss: 0.0046
+Epoch:49 and AverageLoss:0.0046160865852143615
+Test Loss: 0.0046
+Epoch:50 and AverageLoss:0.004577438934589736
+Test Loss: 0.0045
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_stl_uni_s1825_50.pth
+Model Save Sucessfully
+Epoch:51 and AverageLoss:0.0045389110171236095
+Test Loss: 0.0045

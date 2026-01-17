@@ -101,13 +101,15 @@ def create_config_files(
     number_of_classes,
     base_recon_models=None,
     checkpoint_epochs=None,
-    dataset_list=None
+    dataset_list=None,
+    optimize_all_layers=False  # NEW parameter
 ):
     """
     Create multiple config files from parameters for batch experiments.
     Returns list of config file paths and their associated model names.
     
     FIXED: Seeds now extracted from base models for classification training
+    NEW: Added optimize_all_layers parameter for classification training
     """
 
     config_paths = []
@@ -191,7 +193,8 @@ def create_config_files(
                         "epochs": epochs[0] if isinstance(epochs, list) else epochs,
                         "base_recon_model": base_model,
                         "checkpoint_epoch": checkpoint_epoch,
-                        "dataset": base_dataset
+                        "dataset": base_dataset,
+                        "optimize_all_layers": optimize_all_layers  # NEW
                     }
                     tracker.register_model(model_name, config_dict)
 
@@ -207,6 +210,7 @@ def create_config_files(
                         base = f.read()
 
                     base += "\n# Classification training fields\n"
+                    base += f"optimize_all_layers = {optimize_all_layers}\n"  # NEW
 
                     with open(cfg_path, "w") as f:
                         f.write(base)
@@ -232,7 +236,7 @@ def create_config_files(
                     model_names.append(model_name)
                     exp_id += 1
     else:
-        # RECONSTRUCTION TRAINING
+        # RECONSTRUCTION TRAINING (unchanged)
         for seed, pattern, lr, timestep, dataset in itertools.product(
             seeds, patterns, lr_list, timesteps, dataset_list
         ):

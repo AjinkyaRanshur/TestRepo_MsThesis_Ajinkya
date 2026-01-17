@@ -618,7 +618,7 @@
       "training_started": "2026-01-17T20:13:50.796019",
       "training_completed": null,
       "metrics": {},
-      "checkpoint_path": "/home/ajinkyar/ml_models/recon_models/recon_t10_stl_uni_s1825_40.pth",
+      "checkpoint_path": "/home/ajinkyar/ml_models/recon_models/recon_t10_stl_uni_s1825_50.pth",
       "type": "recon_pc_train"
     },
     "recon_t10_ill_uni_s410": {
@@ -813,6 +813,6 @@
     }
   },
   "metadata": {
-    "last_updated": "2026-01-18T02:27:39.913101"
+    "last_updated": "2026-01-18T03:59:57.298109"
   }
 }
