@@ -1,6 +1,6 @@
 """
 Model Manager - Centralized model tracking system
-Tracks all models using their names as keys
+FIXED: Auto-cleanup of deleted models, proper parallel job handling
 """
 import os
 import json
@@ -13,7 +13,6 @@ class ModelTracker:
     def __init__(self, tracking_file="model_registry.json"):
         self.tracking_file = tracking_file
         self.registry = self._load_registry()
-        # FIX 4: Clean up invalid entries on load
         self._cleanup_invalid_entries()
     
     def _load_registry(self) -> Dict:
@@ -31,34 +30,27 @@ class ModelTracker:
     
     def _cleanup_invalid_entries(self):
         """
-        FIX 4: Remove entries where model files don't exist
-        Only checks completed models with checkpoint paths
+        FIXED: Remove entries where checkpoint files don't exist
+        Runs automatically on load
         """
         to_remove = []
         
         for model_name, model_data in self.registry["models"].items():
-            # Only check completed models that should have files
-            if model_data.get("status") == "completed":
-                checkpoint_path = model_data.get("checkpoint_path")
-                
-                if checkpoint_path:
-                    # Check if the checkpoint file exists
-                    if not os.path.exists(checkpoint_path):
-                        print(f"Warning: Checkpoint not found for {model_name}: {checkpoint_path}")
-                        to_remove.append(model_name)
-                else:
-                    # Completed model should have a checkpoint
-                    print(f"Warning: Completed model {model_name} has no checkpoint path")
-                    to_remove.append(model_name)
+            checkpoint_path = model_data.get("checkpoint_path")
+            
+            # If checkpoint path exists but file is missing, mark for removal
+            if checkpoint_path and not os.path.exists(checkpoint_path):
+                print(f"⚠ Checkpoint missing: {model_name}")
+                to_remove.append(model_name)
         
         # Remove invalid entries
         for model_name in to_remove:
-            print(f"Removing invalid entry: {model_name}")
+            print(f"✗ Removing from registry: {model_name}")
             del self.registry["models"][model_name]
         
         if to_remove:
             self._save_registry()
-            print(f"Cleaned up {len(to_remove)} invalid entries")
+            print(f"✓ Cleaned up {len(to_remove)} invalid entries\n")
     
     def register_model(self, model_name: str, config: Dict):
         """Register a new model with its configuration"""
@@ -77,16 +69,22 @@ class ModelTracker:
         return model_name
     
     def update_status(self, model_name: str, status: str):
-        """Update model training status"""
-        if model_name in self.registry["models"]:
-            self.registry["models"][model_name]["status"] = status
-            
-            if status == "training":
-                self.registry["models"][model_name]["training_started"] = datetime.now().isoformat()
-            elif status == "completed":
-                self.registry["models"][model_name]["training_completed"] = datetime.now().isoformat()
-            
-            self._save_registry()
+        """
+        Update model training status
+        FIXED: Only update if model exists
+        """
+        if model_name not in self.registry["models"]:
+            print(f"⚠ Warning: Model {model_name} not found in registry")
+            return
+        
+        self.registry["models"][model_name]["status"] = status
+        
+        if status == "training":
+            self.registry["models"][model_name]["training_started"] = datetime.now().isoformat()
+        elif status == "completed":
+            self.registry["models"][model_name]["training_completed"] = datetime.now().isoformat()
+        
+        self._save_registry()
     
     def update_metrics(self, model_name: str, metrics: Dict):
         """Update model metrics"""
@@ -95,17 +93,27 @@ class ModelTracker:
             self._save_registry()
  
     def set_checkpoint_path(self, model_name: str, path: str):
-        """Set model checkpoint path"""
-        if model_name in self.registry["models"]:
-            self.registry["models"][model_name]["checkpoint_path"] = path
-            self._save_registry()
+        """
+        Set model checkpoint path
+        FIXED: Verify file exists before saving
+        """
+        if model_name not in self.registry["models"]:
+            print(f"⚠ Warning: Model {model_name} not in registry")
+            return
+        
+        if not os.path.exists(path):
+            print(f"⚠ Warning: Checkpoint file doesn't exist: {path}")
+            return
+        
+        self.registry["models"][model_name]["checkpoint_path"] = path
+        self._save_registry()
     
     def get_model(self, model_name: str) -> Optional[Dict]:
         """Get model info by name"""
         return self.registry["models"].get(model_name)
     
     def get_models_by_type(self, model_type: str) -> List[Dict]:
-        """Get all models of a specific type (e.g., 'recon_pc_train')"""
+        """Get all models of a specific type"""
         return [
             {"name": name, **mdata}
             for name, mdata in self.registry["models"].items()
@@ -113,20 +121,28 @@ class ModelTracker:
         ]
     
     def get_completed_recon_models(self) -> List[Dict]:
-        """Get all completed reconstruction models for classification training"""
-        return [
+        """Get all completed reconstruction models"""
+        models = [
             {"name": name, **mdata}
             for name, mdata in self.registry["models"].items()
-            if mdata.get("type") == "recon_pc_train" and mdata.get("status") == "completed"
+            if (mdata.get("type") == "recon_pc_train" and 
+                mdata.get("status") == "completed" and
+                mdata.get("checkpoint_path") and
+                os.path.exists(mdata.get("checkpoint_path", "")))
         ]
+        return sorted(models, key=lambda x: x.get("created_at", ""), reverse=True)
     
     def get_completed_classification_models(self) -> List[Dict]:
-        """Get all completed classification models for testing"""
-        return [
+        """Get all completed classification models"""
+        models = [
             {"name": name, **mdata}
             for name, mdata in self.registry["models"].items()
-            if mdata.get("type") == "classification_training_shapes" and mdata.get("status") == "completed"
+            if (mdata.get("type") == "classification_training_shapes" and 
+                mdata.get("status") == "completed" and
+                mdata.get("checkpoint_path") and
+                os.path.exists(mdata.get("checkpoint_path", "")))
         ]
+        return sorted(models, key=lambda x: x.get("created_at", ""), reverse=True)
 
     def list_all_models(self, filter_status: Optional[str] = None) -> List[Dict]:
         """List all models, optionally filtered by status"""
@@ -164,30 +180,6 @@ class ModelTracker:
         
         print("="*60 + "\n")
     
-    def print_recon_models_table(self):
-        """Print a table of all completed reconstruction models"""
-        models = self.get_completed_recon_models()
-        
-        if not models:
-            print("No completed reconstruction models found.")
-            return
-        
-        print("\n" + "="*80)
-        print("COMPLETED RECONSTRUCTION MODELS")
-        print("="*80)
-        print(f"{'Model Name':<50} {'Seed':<8} {'Status':<10}")
-        print("-"*80)
-        
-        for model in models:
-            name = model['name'][:48]
-            config = model.get('config', {})
-            seed = str(config.get('seed', 'N/A'))
-            status = model.get('status', 'unknown')
-            
-            print(f"{name:<50} {seed:<8} {status:<10}")
-        
-        print("="*80 + "\n")
-    
     def export_summary(self, output_file: str = "model_summary.txt"):
         """Export a text summary of all models"""
         with open(output_file, 'w') as f:
@@ -209,7 +201,7 @@ class ModelTracker:
         print(f"Summary exported to {output_file}")
 
 
-# Convenience functions for quick access
+# Convenience functions
 _tracker_instance = None
 
 def get_tracker() -> ModelTracker:

@@ -18,13 +18,17 @@ def parse_list(x, cast=int):
 def generate_model_name(pattern, seed, train_cond, recon_timesteps, 
                        classification_timesteps=None, dataset=None, base_model=None):
     """
-    FIX 3: Simplified and clearer model naming
+    Simplified model naming convention
     
-    Reconstruction: recon_{dataset}_{pattern}_t{timesteps}_s{seed}
-    Classification: class_{base_recon_name}_{pattern}_t{timesteps}_s{seed}
+    Reconstruction: recon_t{timesteps}_{dataset}_{pattern}_s{seed}
+    Classification: class_t{timesteps}_{base}_chk{epoch}_{pattern}_s{seed}
+    
+    Examples:
+        recon_t10_c10_uni_s42
+        class_t10_recon_t10_c10_uni_s42_chk150_uni_s42
     """
-    # Shorten pattern names for cleaner filenames
-    pattern_abbrev = {
+    # Pattern abbreviations
+    pattern_map = {
         "Uniform": "uni",
         "Gamma Increasing": "ginc",
         "Gamma Decreasing": "gdec",
@@ -33,28 +37,28 @@ def generate_model_name(pattern, seed, train_cond, recon_timesteps,
         "Beta Inc & Gamma Dec": "bgmix"
     }
     
-    # Shorten dataset names
-    dataset_abbrev = {
+    # Dataset abbreviations
+    dataset_map = {
         "cifar10": "c10",
         "stl10": "stl",
-        "custom_illusion_dataset": "illusion"
+        "custom_illusion_dataset": "ill"
     }
     
-    p = pattern_abbrev.get(pattern, pattern.lower()[:4])
+    p = pattern_map.get(pattern, pattern[:4].lower())
     
     if train_cond == "recon_pc_train":
-        d = dataset_abbrev.get(dataset, dataset[:3] if dataset else "unk")
-        return f"recon_{d}_{p}_t{recon_timesteps}_s{seed}"
+        d = dataset_map.get(dataset, "unk")
+        return f"recon_t{recon_timesteps}_{d}_{p}_s{seed}"
     
     elif train_cond == "classification_training_shapes":
-        # Extract just the base recon model name without the checkpoint info
-        if base_model and "_chk" in base_model:
-            base_name = base_model.split("_chk")[0]
-            chk = base_model.split("_chk")[1]
+        # Extract checkpoint epoch from base_model name
+        if "_chk" in base_model:
+            base_clean, chk_part = base_model.rsplit("_chk", 1)
+            chk_epoch = chk_part
         else:
-            base_name = base_model if base_model else "unknown"
-            chk = "0"
+            base_clean = base_model
+            chk_epoch = "0"
         
-        return f"class_{base_name}_chk{chk}_{p}_t{classification_timesteps}_s{seed}"
+        return f"class_t{classification_timesteps}_{base_clean}_chk{chk_epoch}_{p}_s{seed}"
     
     return f"model_{p}_t{recon_timesteps}_s{seed}"

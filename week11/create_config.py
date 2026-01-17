@@ -81,7 +81,6 @@ def update_config(
                 else:
                     f.write(f'training_condition = "{train_cond}"\n')
             
-            # Add classification-specific fields
             elif train_cond == "classification_training_shapes":
                 if "# Classification training fields" in line:
                     f.write(f"base_recon_model = \"{base_recon_model}\"\n")
@@ -107,6 +106,8 @@ def create_config_files(
     """
     Create multiple config files from parameters for batch experiments.
     Returns list of config file paths and their associated model names.
+    
+    FIXED: Seeds now extracted from base models for classification training
     """
 
     config_paths = []
@@ -144,39 +145,30 @@ def create_config_files(
         },
     }
 
-    # Create configs directory
     os.makedirs("configs", exist_ok=True)
     
     tracker = get_tracker()
 
-    # If classification training, iterate over base models too
     if train_cond == "classification_training_shapes" and base_recon_models:
+        # CLASSIFICATION TRAINING - extract seeds and dataset from base models
         for base_model in base_recon_models:
-            # FIX 1: Extract dataset from base recon model
             base_model_info = tracker.get_model(base_model)
             if not base_model_info:
-                print(f"Warning: Base model {base_model} not found in registry!")
+                print(f"WARNING: Base model {base_model} not found in registry!")
                 continue
             
-            # Get the dataset the base model was trained on
+            # Extract dataset and seed from base model
             base_dataset = base_model_info['config'].get('Dataset', 'custom_illusion_dataset')
-            
-            # FIX 2: Extract seed from base model
             base_seed = base_model_info['config'].get('seed', 42)
             
-            # Determine number of classes based on dataset
-            if base_dataset == "custom_illusion_dataset":
-                num_classes = 6
-            elif base_dataset in ["cifar10", "stl10"]:
-                num_classes = 10
-            else:
-                num_classes = 10  # default
+            # Determine number of classes
+            num_classes = 6 if base_dataset == "custom_illusion_dataset" else 10
             
             for checkpoint_epoch in checkpoint_epochs:
-                # Use the base model's seed instead of iterating through seeds
                 for pattern, lr, timestep in itertools.product(
                     patterns, lr_list, timesteps
                 ):
+                    # Create model name with base model + checkpoint
                     base_model_with_chk = f"{base_model}_chk{checkpoint_epoch}"
                    
                     model_name = generate_model_name(
@@ -191,7 +183,7 @@ def create_config_files(
 
                     config_dict = {
                         "pattern": pattern,
-                        "seed": base_seed,  # Use base model's seed
+                        "seed": base_seed,
                         "train_cond": train_cond,
                         "lr": lr,
                         "timesteps": timestep,
@@ -214,9 +206,7 @@ def create_config_files(
                     with open(BASE_DIR) as f:
                         base = f.read()
 
-                    # Add classification-specific fields if needed
-                    if train_cond == "classification_training_shapes":
-                        base += "\n# Classification training fields\n"
+                    base += "\n# Classification training fields\n"
 
                     with open(cfg_path, "w") as f:
                         f.write(base)
@@ -229,7 +219,7 @@ def create_config_files(
                         timestep,
                         train_cond,
                         num_classes,
-                        base_seed,  # Use base model's seed
+                        base_seed,
                         lr,
                         epochs,
                         base_recon_model=base_model,
@@ -242,7 +232,7 @@ def create_config_files(
                     model_names.append(model_name)
                     exp_id += 1
     else:
-        # Reconstruction training (original logic)
+        # RECONSTRUCTION TRAINING
         for seed, pattern, lr, timestep, dataset in itertools.product(
             seeds, patterns, lr_list, timesteps, dataset_list
         ):

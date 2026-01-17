@@ -1,6 +1,6 @@
 """
 Simple Model Tracking and Batch Submission System
-Keep it simple, keep it useful.
+FIXED: Limit to 2 parallel jobs at a time to avoid registry conflicts
 """
 
 import json
@@ -15,6 +15,7 @@ from model_tracking import get_tracker
 def create_slurm_script(base_config, output_dir="slurm_jobs"):
     """
     Create SLURM batch submission script for multiple experiments
+    FIXED: Run maximum 2 jobs in parallel to avoid registry corruption
     
     Args:
         base_config: Dictionary containing experiment parameters
@@ -23,8 +24,6 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
     Returns:
         Path to created SLURM script and list of model names
     """
-    
-  
     
     # Create config files and register models
     if base_config["train_cond"] == "classification_training_shapes":
@@ -59,11 +58,11 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     job_name = f"pred_net_{base_config['train_cond']}_{timestamp}"
     
-    # Calculate resources
+    # Calculate resources - FIXED: Max 2 parallel jobs
     num_jobs = len(config_paths)
-    gpus_needed = min(2, (num_jobs + 1) // 2)  # 2 GPUs max, 1 GPU per 2 jobs
+    gpus_needed = 2  # Always use 2 GPUs max
     
-    # Build script line by line to avoid indentation issues
+    # Build script
     script_lines = [
         "#!/bin/bash",
         f"#SBATCH --job-name={job_name}",
@@ -76,50 +75,77 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
         f"#SBATCH --time=4-00:00:00",
         f"#SBATCH --mem=32G",
         "",
-        "# Load your environment",
+        "# Load environment",
         "source ~/.bashrc",
         "conda activate cuda_pyt",
         "",
         "# Print job info",
         'echo "Job started at $(date)"',
-        f'echo "Running {num_jobs} experiments"',
+        f'echo "Running {num_jobs} experiments (2 at a time)"',
         'echo "Job ID: $SLURM_JOB_ID"',
         "",
-        "# Run training jobs in parallel",
+        "# FIXED: Run only 2 jobs in parallel at a time",
+        "# This prevents registry corruption from simultaneous writes",
+        ""
     ]
     
-    # Add parallel job execution
-    for i, (cfg_path, model_name) in enumerate(zip(config_paths, model_names)):
-        gpu_id = i % gpus_needed
+    # Add jobs in batches of 2
+    for i in range(0, num_jobs, 2):
+        batch_jobs = []
+        
+        # First job of the pair
+        if i < num_jobs:
+            cfg_path = config_paths[i]
+            model_name = model_names[i]
+            gpu_id = 0
+            
+            script_lines.extend([
+                f"# Batch {i//2 + 1} - Job 1: {model_name}",
+                f"CUDA_VISIBLE_DEVICES={gpu_id} python main.py --config {cfg_path} --model-name {model_name} &",
+                f"JOB1_PID=$!",
+                f'echo "Started {model_name} on GPU {gpu_id} (PID: $JOB1_PID)"',
+                ""
+            ])
+        
+        # Second job of the pair (if exists)
+        if i + 1 < num_jobs:
+            cfg_path = config_paths[i + 1]
+            model_name = model_names[i + 1]
+            gpu_id = 1
+            
+            script_lines.extend([
+                f"# Batch {i//2 + 1} - Job 2: {model_name}",
+                f"CUDA_VISIBLE_DEVICES={gpu_id} python main.py --config {cfg_path} --model-name {model_name} &",
+                f"JOB2_PID=$!",
+                f'echo "Started {model_name} on GPU {gpu_id} (PID: $JOB2_PID)"',
+                ""
+            ])
+        
+        # Wait for both jobs to finish before starting next batch
         script_lines.extend([
-            f"# Experiment {i+1}: {model_name}",
-            f"CUDA_VISIBLE_DEVICES={gpu_id} python main.py --config {cfg_path} --model-name {model_name} &",
-            f'echo "Started job {i+1} (Model: {model_name}) on GPU {gpu_id}"',
+            "# Wait for current batch to complete",
+            "wait",
+            f'echo "Batch {i//2 + 1} completed at $(date)"',
+            'echo "---"',
             ""
         ])
     
-    # Add wait and completion
     script_lines.extend([
-        "# Wait for all jobs to complete",
-        "wait",
-        "",
         'echo "All jobs completed at $(date)"'
     ])
     
-    # Join all lines with newlines
+    # Write script
     script = "\n".join(script_lines)
-    
-    # Write script to file
     script_path = f"{output_dir}/{job_name}.sh"
     with open(script_path, 'w') as f:
         f.write(script)
     
-    # Make script executable
     os.chmod(script_path, 0o755)
     
     print(f"\n✓ Created SLURM script: {script_path}")
     print(f"✓ Generated {num_jobs} config files")
     print(f"✓ Registered {len(model_names)} models in tracker")
+    print(f"✓ Jobs will run 2 at a time to prevent registry conflicts")
     
     return script_path, model_names
 
@@ -139,7 +165,6 @@ def submit_sbatch(script_path, model_names):
     tracker = get_tracker()
     
     try:
-        # Submit the job
         result = subprocess.run(
             ["sbatch", script_path],
             capture_output=True,
@@ -147,7 +172,6 @@ def submit_sbatch(script_path, model_names):
         )
         
         if result.returncode == 0:
-            # Extract job ID from output (format: "Submitted batch job 12345")
             job_id = result.stdout.strip().split()[-1]
             job_name = os.path.basename(script_path).replace('.sh', '')
             
@@ -196,7 +220,7 @@ def check_job_status(job_id):
         if result.returncode == 0:
             lines = result.stdout.strip().split('\n')
             if len(lines) > 1:
-                return lines[1]  # Return status (RUNNING, PENDING, etc.)
+                return lines[1]
         return "UNKNOWN"
     
     except FileNotFoundError:
@@ -222,21 +246,3 @@ def monitor_jobs(submission_json_path):
         for model_name in model_names:
             tracker.update_status(model_name, "completed")
         print("✓ Updated all model statuses to 'completed'")
-
-
-#if __name__ == "__main__":
-    # Example usage
-#    example_config = {
-#        "train_cond": "recon_pc_train",
-#        "epochs": [200],
-#        "batch_size": [40],
-#        "lr": [0.00005],
-#        "timesteps": [10],
-#        "number_of_classes": 10,
-#       "selected_patterns": ["Uniform", "Gamma Increasing"],
-#        "seeds": [42, 123]
-#    }
-    
-#    script_path, model_names = create_slurm_script(example_config)
-#    print(f"\nTo submit: sbatch {script_path}")
-#    print("Or run: python batch_submissions.py")

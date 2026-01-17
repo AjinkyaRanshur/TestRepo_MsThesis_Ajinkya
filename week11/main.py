@@ -61,12 +61,23 @@ def train_test_loader(illusion_bool, config):
     if illusion_bool == "custom_illusion_dataset":
         from customdataset import SquareDataset
         import torchvision.transforms as transforms
-        
-        transform = transforms.Compose([
-        #    transforms.Resize((32, 32)),
-            transforms.ToTensor(),
-            transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))
-        ])
+        if config.recon_datasetpath == "stl10":
+            transform = transforms.Compose([
+            transforms.Resize((96, 96)),
+              transforms.ToTensor(),
+              transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))
+            ])
+        elif config.recon_datasetpath == "cifar10":
+            transform = transforms.Compose([
+            transforms.Resize((32, 32)),
+              transforms.ToTensor(),
+              transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))
+            ])
+        else: 
+            transform = transforms.Compose([
+              transforms.ToTensor(),
+              transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))
+            ])
 
         DATA_DIR = "data/visual_illusion_dataset"
         
@@ -485,8 +496,7 @@ def decide_training_model(config,metrics_history,model_name):
     return result
 
 
-def main(config,model_name=None):
-    
+def main(config, model_name=None):
     from model_tracking import get_tracker
     
     # Update status to training
@@ -494,20 +504,44 @@ def main(config,model_name=None):
         tracker = get_tracker()
         tracker.update_status(model_name, "training")
     
-    metrics_history=get_metrics_initialize(config.training_condition)
-
-    metrics_history= decide_training_model(config,metrics_history,model_name)
-    
-    # Save final training metrics plot
-    from eval_and_plotting import plot_training_metrics
-    plot_training_metrics(metrics_history, model_name, config)
-
     set_seed(config.seed)
-   
-    # Update status to completed and save metrics
+    
+    metrics_history = get_metrics_initialize(config.training_condition)
+    metrics_history = decide_training_model(config, metrics_history, model_name)
+    
+    # Save individual model metrics
+    from eval_and_plotting import plot_training_metrics
+    if config.training_condition != "illusion_testing":
+        plot_training_metrics(metrics_history, model_name, config)
+    
+    # Update status to completed
     if model_name:
         tracker.update_status(model_name, "completed")
-    
+        tracker.update_metrics(model_name, metrics_history)
+        
+        # ✅ NEW: After completing, check if we should plot seed group
+        if config.training_condition != "illusion_testing":
+            siblings = find_seed_siblings(model_name)
+            
+            if len(siblings) > 1:
+                print(f"\n✓ Found {len(siblings)} models with different seeds")
+                print(f"  Models: {siblings}")
+                
+                # Check if all siblings are completed
+                all_completed = all(
+                    tracker.get_model(s).get('status') == 'completed' 
+                    for s in siblings
+                )
+                
+                if all_completed:
+                    print("  All seeds completed - generating aggregate plot with error bars...")
+                    from eval_and_plotting import plot_training_metrics_with_seeds
+                    plot_training_metrics_with_seeds(siblings)
+                else:
+                    print("  Waiting for other seeds to complete before plotting...")
+
+
+
 
 def load_config(config_name):
     return importlib.import_module(config_name)

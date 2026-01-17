@@ -2,7 +2,7 @@ import torch
 
 batch_size = 40
 epochs = 200
-seed = 1825
+seed = 4013
 lr = 5e-05
 momentum = 0.9
 classification_datasetpath = "cifar10"
@@ -25,11 +25,11 @@ gammaset = [[0.33, 0.33, 0.33, 0.33]]  # pattern: Uniform
 betaset = [[0.33, 0.33, 0.33, 0.33]]  # pattern: Uniform
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
-model_name = "recon_t10_c10_uni_s1825"
+model_name = "recon_t10_c10_uni_s4013"
 noise_type="s&p"
 noise_param=0.0
 
-experiment_name = "Testing recon_t10_c10_uni_s1825 with Uniform pattern at 10 timesteps"
+experiment_name = "Testing recon_t10_c10_uni_s4013 with Uniform pattern at 10 timesteps"
 load_model_path="/home/ajinkyar/ml_models"
 save_model_path="/home/ajinkyar/ml_models"
 

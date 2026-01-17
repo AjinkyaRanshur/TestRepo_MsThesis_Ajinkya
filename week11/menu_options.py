@@ -141,8 +141,7 @@ def slurm_entries():
     
     # Generate random seeds
     import random
-    random.seed(42)  # For reproducibility
-    seeds = [random.randint(1, 10000) for _ in range(num_seeds)]
+    seeds = [random.randint(1, 1000) for _ in range(num_seeds)]
     
     print(f"Generated seeds: {seeds}")
     
@@ -151,8 +150,8 @@ def slurm_entries():
         len(epochs) * 
         len(batch_size) * 
         len(lr) * 
-        len(timesteps) * 
-        len(seeds) * 
+        num_seeds * 
+        len(timesteps) *  
         len(selected_patterns) *
         len(dataset_list)
     )
@@ -161,7 +160,7 @@ def slurm_entries():
     print(f"Will create {number_of_models} models")
     print(f"{'='*60}")
     print(f"Patterns: {len(selected_patterns)}")
-    print(f"Seeds: {len(seeds)}")
+    print(f"Seeds: {num_seeds}")
     print(f"Learning rates: {len(lr)}")
     print(f"Timesteps: {len(timesteps)}")
     print(f"Epochs: {len(epochs)}")
@@ -321,7 +320,6 @@ def slurm_classification_entries():
     print(f"Base Models: {len(selected_models)}")
     print(f"Checkpoints per model: {len(checkpoint_epochs)}")
     print(f"Patterns: {len(selected_patterns)}")
-    print(f"Seeds: {len(seeds)}")
     print(f"Learning rates: {len(lr)}")
     print(f"Timesteps: {len(timesteps)}")
     print(f"Epochs: {len(epochs)}")
@@ -341,7 +339,6 @@ def slurm_classification_entries():
         "timesteps": timesteps,
         "number_of_classes": number_of_classes,
         "selected_patterns": selected_patterns,
-        "seeds": seeds,
         "base_recon_models": selected_models,
         "checkpoint_epochs": checkpoint_epochs,
         "dataset_list":dataset_list

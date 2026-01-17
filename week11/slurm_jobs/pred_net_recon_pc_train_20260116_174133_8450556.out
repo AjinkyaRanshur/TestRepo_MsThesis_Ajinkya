@@ -1,0 +1,5 @@
+Job started at Fri Jan 16 17:41:50 IST 2026
+Running 9 experiments (2 at a time)
+Job ID: 8450556
+Started recon_t10_ill_uni_s1825 on GPU 0 (PID: 25700)
+Started recon_t10_c10_uni_s1825 on GPU 1 (PID: 25701)
