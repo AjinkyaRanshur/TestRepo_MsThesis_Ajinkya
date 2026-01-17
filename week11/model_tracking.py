@@ -30,18 +30,35 @@ class ModelTracker:
     
     def _cleanup_invalid_entries(self):
         """
-        FIXED: Remove entries where checkpoint files don't exist
-        Runs automatically on load
+        FIXED: Remove entries where checkpoint files don't exist OR status is incomplete
+        Runs automatically on load and can be called manually
         """
         to_remove = []
         
         for model_name, model_data in self.registry["models"].items():
             checkpoint_path = model_data.get("checkpoint_path")
+            status = model_data.get("status")
             
-            # If checkpoint path exists but file is missing, mark for removal
+            # Remove if:
+            # 1. Has checkpoint path but file doesn't exist
+            # 2. Status is "completed" but no checkpoint path
+            # 3. Status is "training" or "submitted" but no recent activity (older than 7 days)
+            
             if checkpoint_path and not os.path.exists(checkpoint_path):
                 print(f"⚠ Checkpoint missing: {model_name}")
                 to_remove.append(model_name)
+            elif status == "completed" and not checkpoint_path:
+                print(f"⚠ Completed but no checkpoint: {model_name}")
+                to_remove.append(model_name)
+            elif status in ["training", "submitted"]:
+                # Check if stale (no activity for 7 days)
+                created_at = model_data.get("created_at")
+                if created_at:
+                    from datetime import datetime, timedelta
+                    created_time = datetime.fromisoformat(created_at)
+                    if datetime.now() - created_time > timedelta(days=7):
+                        print(f"⚠ Stale training/submitted: {model_name}")
+                        to_remove.append(model_name)
         
         # Remove invalid entries
         for model_name in to_remove:
@@ -51,6 +68,15 @@ class ModelTracker:
         if to_remove:
             self._save_registry()
             print(f"✓ Cleaned up {len(to_remove)} invalid entries\n")
+    
+    def manual_cleanup(self):
+        """Manually trigger cleanup - useful after deleting model files"""
+        print("\n" + "="*60)
+        print("MANUAL REGISTRY CLEANUP")
+        print("="*60)
+        self._cleanup_invalid_entries()
+        print("Cleanup complete!")
+        print("="*60 + "\n")
     
     def register_model(self, model_name: str, config: Dict):
         """Register a new model with its configuration"""
