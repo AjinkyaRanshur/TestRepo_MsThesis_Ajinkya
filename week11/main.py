@@ -498,6 +498,7 @@ def decide_training_model(config,metrics_history,model_name):
 
 def main(config, model_name=None):
     from model_tracking import get_tracker
+    from utils import find_seed_siblings
     
     # Update status to training
     if model_name:
@@ -539,7 +540,6 @@ def main(config, model_name=None):
                     plot_training_metrics_with_seeds(siblings)
                 else:
                     print("  Waiting for other seeds to complete before plotting...")
-
 
 
 
