@@ -1,6 +1,6 @@
 """
 Main Interface for Pred-Net Analyzer
-SLURM-first workflow with interactive placeholder
+FIXED: Added post-processing aggregation option
 """
 
 import os
@@ -19,7 +19,8 @@ from menu_options import (
     slurm_get_test_patterns,
     slurm_get_grid_search_params,
     view_registry,
-    interactive_mode_placeholder
+    interactive_mode_placeholder,
+    run_post_processing
 )
 
 # Initialize colorama
@@ -61,6 +62,7 @@ def handle_slurm_training():
         print(f"\n{Fore.GREEN}✓ Training job submitted!")
         print(f"{Fore.CYAN}Check status with: squeue -u $USER")
         print(f"{Fore.CYAN}View output in: slurm_jobs/")
+        print(f"{Fore.CYAN}Aggregate plots will be generated automatically after completion")
     else:
         print(f"\n{Fore.YELLOW}Submission cancelled.")
     
@@ -164,6 +166,10 @@ def main():
         elif choice == "3":
             # Interactive Mode (placeholder)
             interactive_mode_placeholder()
+        
+        elif choice == "4":
+            # NEW: Generate Aggregate Plots
+            run_post_processing()
         
         elif choice == "0":
             # Exit

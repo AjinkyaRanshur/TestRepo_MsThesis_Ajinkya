@@ -1,4 +1,4 @@
-import torch
+mport torch
 import matplotlib.pyplot as plt
 import numpy as np
 import torch.nn as nn
@@ -8,10 +8,15 @@ from model_tracking import get_tracker
 import torch.nn.functional as F
 
 
+def get_optimizer_display(optimize_all_layers):
+    """Helper function to get optimizer scope display text"""
+    return "All Layers (Conv+Linear)" if optimize_all_layers else "Linear Only (fc1-3)"
+
+
 def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed_analysis"):
     """
     FIXED: Plot training curves with error bars across multiple seeds
-    Enhanced metadata display for classification models
+    UPDATED: Show optimizer scope in classification model plots
     """
     os.makedirs(save_dir, exist_ok=True)
     
@@ -32,6 +37,7 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
     train_cond = config.get('train_cond', 'unknown')
     class_timesteps = config.get('timesteps', 0)
     dataset = config.get('Dataset', 'unknown')
+    optimize_all_layers = config.get('optimize_all_layers', False)
     
     # Extract base model info for classification models
     base_model_name = config.get('base_recon_model', None)
@@ -88,10 +94,12 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
     if recon_timesteps:
         print(f"Reconstruction Timesteps: {recon_timesteps}")
     print(f"Dataset: {dataset}")
+    if train_cond == "classification_training_shapes":
+        print(f"Optimizer: {get_optimizer_display(optimize_all_layers)}")
     print(f"Seeds: {seeds_used}")
     print(f"Models: {len(model_names)}")
     
-    # Base model name (remove seed suffix for filename)
+    # Base name now includes optimizer scope
     base_name = model_names[0].rsplit('_s', 1)[0]
     
     # Dataset name mapping
@@ -189,11 +197,12 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         ax.text(0.5, 1.02, subtitle, 
                 transform=ax.transAxes, ha='center', fontsize=11, style='italic')
         
-        # Enhanced bottom right info box
+        # Enhanced bottom right info box with optimizer scope
         info_lines = [
             f'Classification Pattern: {pattern}',
             f'Seeds: n={len(seeds_used)}',
-            f'Train Dataset: {dataset_name}'
+            f'Train Dataset: {dataset_name}',
+            f'Optimizer: {get_optimizer_display(optimize_all_layers)}'
         ]
         if recon_pattern and recon_dataset:
             recon_ds_name = dataset_display.get(recon_dataset, recon_dataset)
@@ -253,11 +262,12 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         ax.text(0.5, 1.02, subtitle, 
                 transform=ax.transAxes, ha='center', fontsize=11, style='italic')
         
-        # Enhanced info box
+        # Enhanced info box with optimizer scope
         info_lines = [
             f'Classification Pattern: {pattern}',
             f'Seeds: n={len(seeds_used)}',
-            f'Train Dataset: {dataset_name}'
+            f'Train Dataset: {dataset_name}',
+            f'Optimizer: {get_optimizer_display(optimize_all_layers)}'
         ]
         if recon_pattern and recon_dataset:
             recon_ds_name = dataset_display.get(recon_dataset, recon_dataset)
@@ -318,11 +328,12 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         ax.text(0.5, 1.02, subtitle, 
                 transform=ax.transAxes, ha='center', fontsize=11, style='italic')
         
-        # Enhanced info box
+        # Enhanced info box with optimizer scope
         info_lines = [
             f'Classification Pattern: {pattern}',
             f'Seeds: n={len(seeds_used)}',
-            f'Train: {dataset_name} | Test: CIFAR-10 & Illusion'
+            f'Train: {dataset_name} | Test: CIFAR-10 & Illusion',
+            f'Optimizer: {get_optimizer_display(optimize_all_layers)}'
         ]
         if recon_pattern and recon_dataset:
             recon_ds_name = dataset_display.get(recon_dataset, recon_dataset)
@@ -352,6 +363,7 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
 def plot_training_metrics(metrics_history, model_name, config):
     """
     FIXED: Plot training metrics for individual models with unique filenames
+    UPDATED: Show optimizer scope for classification models
     """
     os.makedirs("plots/individual_training_metrics", exist_ok=True)
 
@@ -380,6 +392,7 @@ def plot_training_metrics(metrics_history, model_name, config):
     seed = getattr(config, 'seed', 0)
     timesteps = getattr(config, 'timesteps', 0)
     dataset = getattr(config, 'classification_datasetpath', 'unknown')
+    optimize_all_layers = getattr(config, 'optimize_all_layers', False)
     
     # Dataset display name
     dataset_display = {
@@ -404,6 +417,9 @@ def plot_training_metrics(metrics_history, model_name, config):
                     transform=ax.transAxes, ha='center', fontsize=11, style='italic')
             ax.set_ylabel("Reconstruction Loss (MSE)", fontsize=13, fontweight='bold')
             metric_type = "ReconstructionLoss"
+            
+            # Info box without optimizer (recon models don't have it)
+            info_text = f'Pattern: {pattern}\nSeed: {seed}\nDataset: {dataset_name}'
         else:
             # Classification training
             ax.set_title("Classification Training", fontsize=16, fontweight='bold', pad=20)
@@ -411,9 +427,11 @@ def plot_training_metrics(metrics_history, model_name, config):
                     transform=ax.transAxes, ha='center', fontsize=11, style='italic')
             ax.set_ylabel("Classification Loss (Cross-Entropy)", fontsize=13, fontweight='bold')
             metric_type = "ClassificationLoss"
+            
+            # Info box WITH optimizer scope
+            info_text = f'Pattern: {pattern}\nSeed: {seed}\nDataset: {dataset_name}\nOptimizer: {get_optimizer_display(optimize_all_layers)}'
         
         # Bottom right info box
-        info_text = f'Pattern: {pattern}\nSeed: {seed}\nDataset: {dataset_name}'
         ax.text(0.98, 0.02, info_text, transform=ax.transAxes, 
                 ha='right', va='bottom', fontsize=10,
                 bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3))
@@ -422,7 +440,6 @@ def plot_training_metrics(metrics_history, model_name, config):
         ax.legend(fontsize=11, loc='upper right')
         ax.grid(alpha=0.3, linestyle='--')
 
-        # FIXED: Use full model_name to ensure unique filenames
         filename = f"{model_name}_{metric_type}.png"
         save_path = f"plots/individual_training_metrics/{filename}"
         plt.tight_layout()
@@ -442,7 +459,8 @@ def plot_training_metrics(metrics_history, model_name, config):
         ax.text(0.5, 1.02, f'Classification Timesteps: {timesteps}', 
                 transform=ax.transAxes, ha='center', fontsize=11, style='italic')
         
-        info_text = f'Pattern: {pattern}\nSeed: {seed}\nDataset: {dataset_name}'
+        # Info box with optimizer scope
+        info_text = f'Pattern: {pattern}\nSeed: {seed}\nDataset: {dataset_name}\nOptimizer: {get_optimizer_display(optimize_all_layers)}'
         ax.text(0.98, 0.02, info_text, transform=ax.transAxes, 
                 ha='right', va='bottom', fontsize=10,
                 bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3))
@@ -453,7 +471,6 @@ def plot_training_metrics(metrics_history, model_name, config):
         ax.grid(alpha=0.3, linestyle='--')
         ax.set_ylim([0, 100])
 
-        # FIXED: Use full model_name
         filename = f"{model_name}_ClassificationAccuracy.png"
         save_path = f"plots/individual_training_metrics/{filename}"
         plt.tight_layout()
@@ -475,7 +492,8 @@ def plot_training_metrics(metrics_history, model_name, config):
         ax.text(0.5, 1.02, f'Classification Timesteps: {timesteps}', 
                 transform=ax.transAxes, ha='center', fontsize=11, style='italic')
         
-        info_text = f'Pattern: {pattern}\nSeed: {seed}\nTrain: {dataset_name} | Test: CIFAR-10 & Illusion'
+        # Info box with optimizer scope
+        info_text = f'Pattern: {pattern}\nSeed: {seed}\nTrain: {dataset_name} | Test: CIFAR-10 & Illusion\nOptimizer: {get_optimizer_display(optimize_all_layers)}'
         ax.text(0.98, 0.02, info_text, transform=ax.transAxes, 
                 ha='right', va='bottom', fontsize=10,
                 bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3))
@@ -485,7 +503,6 @@ def plot_training_metrics(metrics_history, model_name, config):
         ax.legend(fontsize=11, loc='upper right')
         ax.grid(alpha=0.3, linestyle='--')
 
-        # FIXED: Use full model_name
         filename = f"{model_name}_ReconstructionComparison.png"
         save_path = f"plots/individual_training_metrics/{filename}"
         plt.tight_layout()

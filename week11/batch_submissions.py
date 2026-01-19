@@ -1,6 +1,6 @@
 """
 Simple Model Tracking and Batch Submission System
-FIXED: Limit to 2 parallel jobs at a time to avoid registry conflicts
+FIXED: Added post-processing script call after all jobs complete
 """
 
 import json
@@ -15,7 +15,7 @@ from model_tracking import get_tracker
 def create_slurm_script(base_config, output_dir="slurm_jobs"):
     """
     Create SLURM batch submission script for multiple experiments
-    FIXED: Run maximum 2 jobs in parallel to avoid registry corruption
+    FIXED: Run maximum 2 jobs in parallel + aggregate plotting after completion
     
     Args:
         base_config: Dictionary containing experiment parameters
@@ -38,7 +38,7 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
             base_recon_models=base_config.get("base_recon_models", []),
             checkpoint_epochs=base_config.get("checkpoint_epochs", []),
             dataset_list=base_config["dataset_list"],
-            optimize_all_layers=base_config.get("optimize_all_layers", False)  # NEW
+            optimize_all_layers=base_config.get("optimize_all_layers", False)
         )
     else:
         config_paths, model_names = create_config_files(
@@ -85,8 +85,7 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
         f'echo "Running {num_jobs} experiments (2 at a time)"',
         'echo "Job ID: $SLURM_JOB_ID"',
         "",
-        "# FIXED: Run only 2 jobs in parallel at a time",
-        "# This prevents registry corruption from simultaneous writes",
+        "# Run jobs in batches of 2 to prevent registry corruption",
         ""
     ]
     
@@ -131,8 +130,20 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
             ""
         ])
     
+    # NEW: Add post-processing to generate aggregate plots
     script_lines.extend([
-        'echo "All jobs completed at $(date)"'
+        'echo "All training jobs completed at $(date)"',
+        'echo ""',
+        'echo "="',
+        'echo "Generating aggregate plots for seed groups..."',
+        'echo "="',
+        '',
+        '# Run post-processing aggregation script',
+        'python post_training_aggregation.py',
+        '',
+        'echo "="',
+        'echo "✓ Job complete! Check plots/ directory for results"',
+        'echo "="'
     ])
     
     # Write script
@@ -147,6 +158,7 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
     print(f"✓ Generated {num_jobs} config files")
     print(f"✓ Registered {len(model_names)} models in tracker")
     print(f"✓ Jobs will run 2 at a time to prevent registry conflicts")
+    print(f"✓ Aggregate plots will be generated automatically after completion")
     
     return script_path, model_names
 

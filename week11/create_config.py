@@ -23,7 +23,8 @@ def update_config(
     base_recon_model=None,
     checkpoint_epoch=None,
     classification_dataset=None,
-    reconstruction_dataset=None
+    reconstruction_dataset=None,
+    optimize_all_layers=False
 ):
     """Update the config file with new parameters."""
     with open(CONFIG_FILE, "r") as f:
@@ -85,6 +86,7 @@ def update_config(
                 if "# Classification training fields" in line:
                     f.write(f"base_recon_model = \"{base_recon_model}\"\n")
                     f.write(f"checkpoint_epoch = {checkpoint_epoch}\n")
+                    f.write(f"optimize_all_layers = {optimize_all_layers}\n")
                 else:
                     f.write(line)
             else:
@@ -102,14 +104,14 @@ def create_config_files(
     base_recon_models=None,
     checkpoint_epochs=None,
     dataset_list=None,
-    optimize_all_layers=False  # NEW parameter
+    optimize_all_layers=False
 ):
     """
     Create multiple config files from parameters for batch experiments.
     Returns list of config file paths and their associated model names.
     
     FIXED: Seeds now extracted from base models for classification training
-    NEW: Added optimize_all_layers parameter for classification training
+    UPDATED: Pass optimize_all_layers to generate_model_name
     """
 
     config_paths = []
@@ -173,14 +175,16 @@ def create_config_files(
                     # Create model name with base model + checkpoint
                     base_model_with_chk = f"{base_model}_chk{checkpoint_epoch}"
                    
+                    # UPDATED: Pass optimize_all_layers to name generation
                     model_name = generate_model_name(
                          pattern=pattern,
-                         seed=base_seed,  # Use base model's seed
+                         seed=base_seed,
                          train_cond=train_cond,
                          recon_timesteps=timestep,
                          classification_timesteps=timestep,
                          dataset=base_dataset,
-                         base_model=base_model_with_chk
+                         base_model=base_model_with_chk,
+                         optimize_all_layers=optimize_all_layers
                     )
 
                     config_dict = {
@@ -194,7 +198,7 @@ def create_config_files(
                         "base_recon_model": base_model,
                         "checkpoint_epoch": checkpoint_epoch,
                         "dataset": base_dataset,
-                        "optimize_all_layers": optimize_all_layers  # NEW
+                        "optimize_all_layers": optimize_all_layers
                     }
                     tracker.register_model(model_name, config_dict)
 
@@ -210,7 +214,7 @@ def create_config_files(
                         base = f.read()
 
                     base += "\n# Classification training fields\n"
-                    base += f"optimize_all_layers = {optimize_all_layers}\n"  # NEW
+                    base += f"optimize_all_layers = {optimize_all_layers}\n"
 
                     with open(cfg_path, "w") as f:
                         f.write(base)
@@ -229,7 +233,8 @@ def create_config_files(
                         base_recon_model=base_model,
                         checkpoint_epoch=checkpoint_epoch,
                         classification_dataset=base_dataset,
-                        reconstruction_dataset=base_dataset
+                        reconstruction_dataset=base_dataset,
+                        optimize_all_layers=optimize_all_layers
                     )
 
                     config_paths.append(cfg_command)

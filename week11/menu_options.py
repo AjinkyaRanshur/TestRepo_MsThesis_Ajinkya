@@ -1,20 +1,4 @@
-# ============================================================
-# INTERACTIVE MODE (PLACEHOLDER)
-# ============================================================
-
-def interactive_mode_placeholder():
-    """Placeholder for interactive mode"""
-    clear()
-    banner("Interactive Mode")
-    
-    print(Fore.YELLOW + "Interactive mode is currently under development.\n")
-    print(Fore.CYAN + "This mode will allow you to:")
-    print("  • Train single models interactively")
-    print("  • Test models in real-time")
-    print("  • View results immediately")
-    print("\nFor now, please use SLURM Job Submission for training and testing.\n")
-    
-    input(Fore.WHITE + "Press ENTER to return to main menu...")import pyfiglet
+import pyfiglet
 from colorama import Fore, Style, init
 from utils import clear, banner, parse_list
 from model_tracking import get_tracker
@@ -31,6 +15,7 @@ def main_menu():
     print(Fore.GREEN + " [1] SLURM Job Submission (Training & Testing)")
     print(Fore.GREEN + " [2] View Model Registry")
     print(Fore.GREEN + " [3] Interactive Mode (Placeholder)")
+    print(Fore.GREEN + " [4] Generate Aggregate Plots (Post-Processing)")
     print(Fore.RED   + " [0] Exit\n")
     return input(Fore.WHITE + "Enter choice: ")
 
@@ -527,3 +512,84 @@ def view_registry():
             print()
     
     input(Fore.YELLOW + "\nPress ENTER to continue...")
+
+
+# ============================================================
+# POST-PROCESSING AGGREGATION
+# ============================================================
+
+def run_post_processing():
+    """Run post-processing aggregation for completed models"""
+    clear()
+    banner("Post-Processing")
+    
+    print(Fore.YELLOW + "Generate aggregate plots for seed groups:\n")
+    print(Fore.GREEN + " [1] Aggregate all completed model groups")
+    print(Fore.GREEN + " [2] Aggregate specific models")
+    print(Fore.RED   + " [0] Back\n")
+    
+    choice = input(Fore.WHITE + "Enter choice: ").strip()
+    
+    if choice == "0":
+        return
+    
+    if choice == "1":
+        # Aggregate all
+        print(f"\n{Fore.CYAN}Running post-processing aggregation...")
+        os.system("python post_training_aggregation.py")
+        input("\nPress ENTER to continue...")
+    
+    elif choice == "2":
+        # Select specific models
+        tracker = get_tracker()
+        completed = tracker.list_all_models(filter_status="completed")
+        
+        if not completed:
+            print(Fore.RED + "No completed models found!")
+            input("Press ENTER...")
+            return
+        
+        print(f"\n{Fore.GREEN}Completed models:\n")
+        for i, model in enumerate(completed, 1):
+            print(f"  {i}. {model['name']}")
+        
+        print(Fore.YELLOW + "\nEnter model numbers (comma-separated):")
+        model_choice = input(Fore.WHITE + "Your choice: ").strip()
+        
+        try:
+            indices = [int(x.strip())-1 for x in model_choice.split(',')]
+            selected = [completed[i]['name'] for i in indices if 0 <= i < len(completed)]
+            
+            if selected:
+                model_str = " ".join(selected)
+                print(f"\n{Fore.CYAN}Running aggregation for {len(selected)} models...")
+                os.system(f"python post_training_aggregation.py --models {model_str}")
+            else:
+                print(Fore.RED + "No valid models selected!")
+        except (ValueError, IndexError):
+            print(Fore.RED + "Invalid selection!")
+        
+        input("\nPress ENTER to continue...")
+    
+    else:
+        print(Fore.RED + "Invalid choice!")
+        input("Press ENTER...")
+
+
+# ============================================================
+# INTERACTIVE MODE (PLACEHOLDER)
+# ============================================================
+
+def interactive_mode_placeholder():
+    """Placeholder for interactive mode"""
+    clear()
+    banner("Interactive Mode")
+    
+    print(Fore.YELLOW + "Interactive mode is currently under development.\n")
+    print(Fore.CYAN + "This mode will allow you to:")
+    print("  • Train single models interactively")
+    print("  • Test models in real-time")
+    print("  • View results immediately")
+    print("\nFor now, please use SLURM Job Submission for training and testing.\n")
+    
+    input(Fore.WHITE + "Press ENTER to return to main menu...")

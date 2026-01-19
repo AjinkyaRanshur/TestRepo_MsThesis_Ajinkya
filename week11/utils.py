@@ -16,16 +16,22 @@ def parse_list(x, cast=int):
     return [cast(v.strip()) for v in x.split(",")]
 
 def generate_model_name(pattern, seed, train_cond, recon_timesteps, 
-                       classification_timesteps=None, dataset=None, base_model=None):
+                       classification_timesteps=None, dataset=None, base_model=None,
+                       optimize_all_layers=False):
     """
     Simplified model naming convention
     
     Reconstruction: recon_t{timesteps}_{dataset}_{pattern}_s{seed}
-    Classification: class_t{timesteps}_{base}_chk{epoch}_{pattern}_s{seed}
+    Classification: class_t{timesteps}_{base}_chk{epoch}_{pattern}_{opt}_s{seed}
+    
+    NEW: Added optimizer scope differentiation
+    - _lin = linear layers only
+    - _all = all layers (conv + linear)
     
     Examples:
         recon_t10_c10_uni_s42
-        class_t10_recon_t10_c10_uni_s42_chk150_uni_s42
+        class_t10_recon_t10_c10_uni_s42_chk150_uni_lin_s42  (linear only)
+        class_t10_recon_t10_c10_uni_s42_chk150_uni_all_s42  (all layers)
     """
     # Pattern abbreviations
     pattern_map = {
@@ -59,7 +65,10 @@ def generate_model_name(pattern, seed, train_cond, recon_timesteps,
             base_clean = base_model
             chk_epoch = "0"
         
-        return f"class_t{classification_timesteps}_{base_clean}_chk{chk_epoch}_{p}_s{seed}"
+        # NEW: Add optimizer scope to name
+        opt_suffix = "all" if optimize_all_layers else "lin"
+        
+        return f"class_t{classification_timesteps}_{base_clean}_chk{chk_epoch}_{p}_{opt_suffix}_s{seed}"
     
     return f"model_{p}_t{recon_timesteps}_s{seed}"
 
@@ -67,6 +76,7 @@ def generate_model_name(pattern, seed, train_cond, recon_timesteps,
 def find_seed_siblings(model_name):
     """
     Find all models with the same configuration but different seeds
+    UPDATED: Now considers optimize_all_layers for classification models
     
     Args:
         model_name: Name of the model to find siblings for
@@ -107,12 +117,14 @@ def find_seed_siblings(model_name):
                 siblings.append(model['name'])
         
         elif train_cond == "classification_training_shapes":
+            # UPDATED: Now includes optimize_all_layers in matching
             if (model_config.get('pattern') == config.get('pattern') and
                 model_config.get('timesteps') == config.get('timesteps') and
                 model_config.get('Dataset') == config.get('Dataset') and
                 model_config.get('lr') == config.get('lr') and
                 model_config.get('base_recon_model') == config.get('base_recon_model') and
-                model_config.get('checkpoint_epoch') == config.get('checkpoint_epoch')):
+                model_config.get('checkpoint_epoch') == config.get('checkpoint_epoch') and
+                model_config.get('optimize_all_layers') == config.get('optimize_all_layers')):
                 siblings.append(model['name'])
     
     return siblings
@@ -121,6 +133,7 @@ def find_seed_siblings(model_name):
 def extract_config_from_model_name(model_name):
     """
     Extract configuration info from model name for grouping
+    UPDATED: Now includes optimize_all_layers for classification
     
     Returns:
         tuple: Configuration key for grouping models
@@ -144,13 +157,15 @@ def extract_config_from_model_name(model_name):
             config.get('lr')
         )
     elif train_cond == "classification_training_shapes":
+        # UPDATED: Now includes optimize_all_layers in grouping key
         return (
             config.get('pattern'),
             config.get('timesteps'),
             config.get('Dataset'),
             config.get('lr'),
             config.get('base_recon_model'),
-            config.get('checkpoint_epoch')
+            config.get('checkpoint_epoch'),
+            config.get('optimize_all_layers')
         )
     
     return None

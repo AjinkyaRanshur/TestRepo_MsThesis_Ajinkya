@@ -520,26 +520,7 @@ def main(config, model_name=None):
         tracker.update_status(model_name, "completed")
         tracker.update_metrics(model_name, metrics_history)
         
-        # ✅ NEW: After completing, check if we should plot seed group
-        if config.training_condition != "illusion_testing":
-            siblings = find_seed_siblings(model_name)
-            
-            if len(siblings) > 1:
-                print(f"\n✓ Found {len(siblings)} models with different seeds")
-                print(f"  Models: {siblings}")
-                
-                # Check if all siblings are completed
-                all_completed = all(
-                    tracker.get_model(s).get('status') == 'completed' 
-                    for s in siblings
-                )
-                
-                if all_completed:
-                    print("  All seeds completed - generating aggregate plot with error bars...")
-                    from eval_and_plotting import plot_training_metrics_with_seeds
-                    plot_training_metrics_with_seeds(siblings)
-                else:
-                    print("  Waiting for other seeds to complete before plotting...")
+
 
 
 
