@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Master's thesis project investigating how neural networks perceive visual illusions using predictive coding algorithms. The system trains feedforward-feedback neural networks on illusion datasets and tests whether model perception (measured via increasing softmax probability of ground-truth perception) aligns with human perception during predictive coding iterations.
+**Pred Net for Psychosis Tasks**: Master's thesis project investigating how neural networks perceive visual illusions using predictive coding algorithms. The system trains feedforward-feedback neural networks on illusion datasets and tests whether model perception (measured via increasing softmax probability of ground-truth perception) aligns with human perception during predictive coding iterations. Applications include understanding visual perception mechanisms in psychotic disorders.
 
-**Core Research Question**: How do models trained on visual illusions learn hierarchical representations? Does PC dynamics reveal that models converge to human-like perception?
+**Core Research Question**: How do models trained on visual illusions learn hierarchical representations? Does PC dynamics reveal that models converge to human-like perception patterns relevant to psychosis research?
 
 ## Common Development Tasks
 

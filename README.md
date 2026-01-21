@@ -1,6 +1,8 @@
-# Predictive Coding Neural Networks on Visual Illusions
+# Pred Net for Psychosis Tasks
 
-A research implementation investigating how neural networks trained on visual illusions learn hierarchical representations using predictive coding algorithms.
+**Predictive Coding Neural Networks on Visual Illusions for Psychosis Research**
+
+A research implementation investigating how neural networks trained on visual illusions learn hierarchical representations using predictive coding algorithms, with applications to understanding visual perception in psychotic disorders.
 
 **Status**: Refactored, optimized, and ready for training/testing
 **Branch**: `claude/init-project-setup-TQpEb`
