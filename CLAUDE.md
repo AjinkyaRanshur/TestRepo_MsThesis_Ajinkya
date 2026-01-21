@@ -4,164 +4,252 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Master's thesis project investigating neural networks trained on visual illusions using predictive coding algorithms. The codebase implements feedforward-feedback neural networks with reconstruction and classification tasks applied to illusion datasets.
+Master's thesis project investigating how neural networks perceive visual illusions using predictive coding algorithms. The system trains feedforward-feedback neural networks on illusion datasets and tests whether model perception (measured via increasing softmax probability of ground-truth perception) aligns with human perception during predictive coding iterations.
 
-**Key Research Area**: How models trained on visual illusions learn hierarchical representations, with emphasis on model perception vs. ground-truth perception of illusions.
+**Core Research Question**: How do models trained on visual illusions learn hierarchical representations? Does PC dynamics reveal that models converge to human-like perception?
 
-## Repository Structure
+## Common Development Tasks
 
-**Core Training & Architecture**:
-- `network.py`: Neural network with Conv layers (feedforward pathway) and ConvTranspose layers (feedback pathway) for predictive coding
-- `illusion_pc_train.py`: Training loop for illusion classification with predictive coding
-- `recon_pc_train.py`: Training loop for reconstruction tasks
-- `customdataset.py`: Dataset loader for visual illusion dataset (SquareDataset class)
+### Train a Model
+```bash
+cd week11
+python interface.py
+# [1] SLURM Job Submission → [1] Training Job → Select training mode
+# Or direct: python main.py --config configs/config_0.py --model-name my_model
+```
 
-**Experiment Management**:
-- `week11/configs/`: Configuration files for experiments (base_config.py contains parameters like learning rate, batch size, timesteps, noise parameters)
-- `model_tracking.py`: Tracks trained models with metadata (uses model_registry.json)
-- `model_registry.json`: JSON registry of all trained models and their configurations
+### Run Trajectory Testing
+Tests whether model's **softmax probability of the perceived class increases across timesteps**:
+```bash
+python run_trajectory_test.py --models model_name1 model_name2 --timesteps 10 --dataset custom_illusion_dataset
+# For illusion classes (all_in, all_out): tracks P(should_see) probability over time
+# For shape classes: tracks P(class_name) probability over time
+```
 
-**Testing & Evaluation**:
-- `test_workflow.py`: Unified testing interface supporting trajectory testing, pattern testing, and grid search
-- `run_trajectory_test.py`: Standalone script for trajectory testing (model accuracy across timesteps)
-- `run_pattern_test.py`: Pattern formation testing
-- `run_grid_search_test.py`: Grid search over hyperparameters
-- `eval_and_plotting.py`: Evaluation metrics and visualization
+### Test on Different Datasets
+```bash
+# Custom illusion dataset (128×128, 6 basic shapes + 2 illusions = 8 classes)
+python run_trajectory_test.py --models my_model --timesteps 10 --dataset custom_illusion_dataset
 
-**Utilities & Data**:
-- `add_noise.py`: Adds Gaussian or salt-and-pepper noise to images
-- `Sequential_Dataset_Generation.py`: Generates visual illusion datasets
-- `main.py`: Main training orchestration (imports config and coordinates training)
-- `menu_options.py`: Interactive menu system for experiment selection
-- `utils.py`: Helper utilities (clear screen, banners, etc.)
-- `batch_submissions.py`: Creates SLURM batch job scripts
-- `interface.py`: GUI interface for interactive experimentation
+# Kanizsa dataset (32×32, 2 binary classes: square vs non-square based on should_see)
+python run_trajectory_test.py --models my_model --timesteps 10 --dataset kanizsa_square_dataset
 
-**Data Structure**:
-- `week{1-11}/`: Weekly progress folders with evolving code
-- `data/visual_illusion_dataset/`: Main illusion dataset with metadata CSV and class subdirectories
-- `models/`: Saved model checkpoints
-- `plots/`: Generated visualizations
-- `slurm_jobs/`: SLURM job submissions and logs
-- `runs/`: TensorBoard/WandB experiment logs
+# Standard benchmarks (CIFAR-10, STL-10, etc.)
+python main.py --config configs/config_0.py  # Set Dataset="cifar10" in config
+```
+
+### View Model Registry
+```bash
+python interface.py
+# [2] View Model Registry
+# Filter by training status, dataset, or patterns used
+```
+
+## Key Architectural Concepts
+
+### Critical: Illusion Testing Logic (test_workflow.py:159-195)
+This is the core mechanism for measuring model perception:
+
+```python
+# For each batch, during trajectory testing:
+for i, cls_name in enumerate(cls_names):
+    if cls_name in ["all_in", "all_out"]:
+        # For illusions: track probability of should_see ground truth
+        perceived_class = should_see[i]  # E.g., "square"
+    else:
+        # For basic shapes: track probability of the shape itself
+        perceived_class = cls_name
+
+    # Get model's softmax probability of perceived class
+    perceived_idx = class_to_idx[perceived_class]
+    class_results[cls_name]["predictions"][t].append(probs[i, perceived_idx])
+```
+
+**Key insight**: For `all_in` illusions (should perceive square), we check if P(square) increases over time. For `all_out` (should NOT perceive square), we also check if P(square) increases—if it doesn't, the model aligns with ground truth.
+
+**This logic must not change**: It's the foundation of the research comparison between model and human perception.
+
+## Datasets: Specifications & Peculiarities
+
+### 1. Custom Illusion Dataset (128×128)
+**Classes**: 6 basic shapes + 2 illusion classes = 8 total
+- **Basic shapes** (6): square, rectangle, trapezium, triangle, hexagon, random
+- **Illusions** (2): all_in, all_out
+  - `all_in`: pacmen pointing inward → **should perceive "square"** (should_see = "square")
+  - `all_out`: pacmen pointing outward → **should NOT perceive "square"** (should_see = "non-square" or similar)
+- **Metadata file**: `dataset_metadata.csv` with columns: filename, Class, Should_See, Size, Position X, Position Y, Background Color, Shape Color
+- **Usage**: Classification with noise augmentation (0-0.35 Gaussian noise in steps)
+- **Test logic**: For illusions, check if P(should_see) increases; for shapes, check if P(class_name) increases
+
+### 2. Kanizsa Square Dataset (32×32 - Binary)
+**Classes**: 2 (based on should_see perception, not visual appearance)
+- Class 1: `square` (Kanizsa square illusion - should perceive square)
+- Class 2: `non-square` (random pacmen orientations - should NOT perceive square)
+- **Key note**: Both classes are pacmen; classification is based on should_see ground truth, not shape
+- **All images have**: should_see = "square" in metadata
+- **Usage**: Binary classification, simpler PC dynamics for testing, 32×32 reduces computational cost
+
+### 3. Other Available Datasets
+- **CIFAR-10**: 32×32, 10 classes (reconstruction training baseline)
+- **STL-10**: 96×96, 10 classes (higher-resolution baseline)
+- New datasets can be added to `dataset_manager.py` (see "Extending for Other Datasets" section)
 
 ## Environment & Setup
 
 **Environment File**: `environment.yml` defines conda environment named `cuda_pyt`
 - PyTorch 2.5.1 with CUDA 11.8 support
-- Key dependencies: numpy, matplotlib, tensorboard, torchvision, torchaudio
-- Includes PyQt6 for GUI
+- Key dependencies: numpy, matplotlib, tensorboard, torchvision, torchaudio, PyQt6
+- All development should happen in `week11/` directory
 
 **Setup Commands**:
 ```bash
 conda env create -f environment.yml
 conda activate cuda_pyt
-```
-
-## Development & Training Commands
-
-**Single Training Run**:
-```bash
-# Navigate to a week folder and run main.py with a config
 cd week11
-python main.py
-# main.py dynamically imports config from the configs/ folder
 ```
 
-**Configuration System**:
-- Config is a Python module in `configs/` folder (e.g., `configs/config_0.py`)
-- Each config defines: batch_size, epochs, lr, timesteps, noise_type, noise_param, device, dataset paths, model name, etc.
-- Training mode determined by `training_condition` in config: "recon_pc_train", "illusion_pc_train", or "fine_tuning"
-- Layers to optimize controlled by `optimize_all_layers` flag in config
+## Network Architecture
 
-**Running Tests**:
-```bash
-# Trajectory testing (model accuracy across timesteps)
-python run_trajectory_test.py --models model_name1 model_name2 --timesteps 10 --dataset custom_illusion_dataset
+The `Net` class in `network.py` implements bidirectional predictive coding:
+- **Feedforward** (Conv layers): 6→16→32→128 channels for hierarchical feature extraction
+- **Feedback** (ConvTranspose layers): Reconstruct predictions for layer-wise error computation
+- **Feature tensors** (ft_AB, ft_BC, ft_CD, ft_DE): Maintained during PC iterations for error signal propagation
+- **Supports**: 32×32 (CIFAR-10, Kanizsa) and 128×128 (custom illusions)
 
-# Pattern testing
-python run_pattern_test.py
+## Training Modes
 
-# Grid search
-python run_grid_search_test.py
+1. **recon_pc_train**: Reconstruction loss (learn to predict images from noise)
+2. **illusion_pc_train**: Classification loss on illusions with noise augmentation (0-0.35 Gaussian)
+3. **fine_tuning**: Transfer learning (currently planned, not implemented)
+
+## File Organization & Consolidation Opportunities
+
+> **Note**: The following consolidations maintain full functionality while reducing navigation complexity and code duplication. These are recommendations for future refactoring.
+
+### Priority 1: Config Consolidation (Highest Impact)
+**Problem**: `config_0.py` through `config_11.py` are 95% identical (~1,100 bytes each), creating massive redundancy
+
+**Current**: 12 config files + base_config.py + configfile.py + configtest.py = 15 files
+**Recommendation**:
+- Create `configs/experiments.json` registry with all experiment parameters as data
+- Create `configs/config_loader.py` with ConfigLoader and ConfigBuilder classes
+- Delete 12 redundant `config_*.py` files
+- Delete stale `configfile.py` and `configtest.py`
+
+**Impact**: Removes 14 files, reduces ~13 KB of redundant Python, centralizes experiment tracking
+
+### Priority 2: Test Consolidation
+**Problem**: 7 test-related files with ~40% duplicated logic
+
+**Current**: test_workflow.py + test_runner.py + run_trajectory_test.py + run_pattern_test.py + run_grid_search_test.py + pattern_testing.py + grid_search_testing.py
+**Recommendation**:
+- Merge `run_trajectory_test.py`, `run_pattern_test.py`, `run_grid_search_test.py` into single `run_test.py` dispatcher
+- Consolidate pattern_testing.py and grid_search_testing.py logic into test_workflow.py
+- Deprecate test_runner.py (duplicate of test_workflow.py)
+
+**Impact**: Reduces 5-7 files → 2 files, eliminates TestConfig duplication, single entry point for all tests
+
+### Priority 3: Training Consolidation
+**Problem**: `illusion_pc_train.py` and `recon_pc_train.py` are 70% duplicate code
+
+**Current**: illusion_pc_train.py + recon_pc_train.py + trainer.py + main.py orchestration
+**Recommendation**:
+- Deprecate `illusion_pc_train.py` and `recon_pc_train.py`
+- Use unified `trainer.py` (PredictiveCodingTrainer class) as sole training interface
+- Update main.py to only use trainer.py
+
+**Impact**: Removes 537 lines of redundant training logic, single code path for maintenance
+
+### Priority 4: Dataset Consolidation
+**Problem**: Dataset generators scattered; duplicated geometry logic
+
+**Current**: customdataset.py + dataset_manager.py + Sequential_Dataset_Generation.py + data/kanisza_square_dataset.py + data/shapes_dataset.py
+**Recommendation**: Create `data_generation/` package:
+```
+data_generation/
+  ├── __init__.py
+  ├── geometry.py           # Shared pacman/shape drawing utilities
+  ├── base.py               # Abstract dataset base class
+  └── generators/
+      ├── illusion.py       # Custom illusions (from Sequential_Dataset_Generation.py)
+      └── kanisza.py        # Merged kanisza_square_dataset.py + shapes_dataset.py
 ```
 
-**SLURM Cluster Submission**:
-```bash
-# Create and submit SLURM job for testing
-python slurm_testing_submission.py
-# Creates scripts in slurm_jobs/ and submits via sbatch
+**Impact**: ~200 lines of deduplicated geometry code, better organization, single source of truth for drawing logic
+
+## Extending for Other Datasets (PC Dynamics)
+
+To use predictive coding dynamics on custom datasets (CIFAR-10, STL-10, medical imaging, etc.):
+
+### Step 1: Create Custom Dataset Class
+```python
+# In data_generation/generators/my_dataset.py
+from torch.utils.data import Dataset
+
+class MyDataset(Dataset):
+    def __getitem__(self, idx):
+        # CRITICAL: Return 4-tuple with consistent format:
+        # (image, label, class_name, should_see)
+        # where should_see is ground truth perception (or None if not applicable)
+        return image, label, class_name, should_see
 ```
 
-## Key Concepts & Architecture
+### Step 2: Register Dataset
+```python
+# In dataset_manager.py, update load_dataset():
+if dataset_name == "my_dataset":
+    num_classes = 10
+    train_dataset = MyDataset(...)
+    val_dataset = MyDataset(...)
+    return train_dataset, val_dataset, num_classes
+```
 
-### Predictive Coding Network Architecture
-The `Net` class in `network.py` implements a bidirectional network:
-- **Feedforward pathway** (Conv layers): Extracts hierarchical features (6 → 16 → 32 → 128 channels)
-- **Feedback pathway** (ConvTranspose layers): Reconstructs image from predictions for error computation
-- **Features stored at each layer**: Temporary feature tensors (ft_AB, ft_BC, ft_CD, ft_DE, etc.) propagated during predictive coding iterations
-- Input size adaptive: supports 32x32 (CIFAR-10) and 128x128 (STL-10) images
+### Step 3: Configure Training
+```python
+# In configs/my_config.py
+Dataset = "my_dataset"
+classification_datasetpath = "path/to/my/dataset"
+number_of_classes = 10
+```
 
-### Dataset Structure
-Visual illusion dataset consists of 8 classes:
-- **Basic shapes** (6 classes): square, rectangle, trapezium, triangle, hexagon, random
-- **Illusion classes** (2 classes): all_in, all_out
-- **Metadata**: CSV with filename, class, Should_See ground truth (whether the illusion should be perceived)
-- **Data splits**: 70% train (basic + random), 30% validation, test set includes matched samples from illusion classes
+### Step 4: Adapt Testing Logic
+Modify `test_workflow.py:159-195` to handle your domain-specific perception logic:
+```python
+# Example: For medical imaging classification
+if dataset == "my_medical_dataset":
+    # Custom logic: maybe should_see is diagnosis ground truth
+    perceived_class = should_see[i] if should_see[i] else cls_name
+else:
+    # existing illusion logic stays unchanged
+```
 
-### Configuration Management
-Configs are Python modules with experiment parameters:
-- `base_config.py`: Template configuration
-- `config_0.py`, `config_1.py`, etc.: Specific experiment configs
-- Main config attributes: `batch_size`, `epochs`, `lr`, `timesteps`, `seed`, `device`, `classification_neurons`, `noise_type`, `noise_param`, `model_name`, `training_condition`, `optimize_all_layers`
+## Implementation Details
 
-### Model Tracking
-- Models stored with metadata in `model_registry.json`
-- Each model entry contains: model name, config parameters, training date, performance metrics
-- Enables querying models by name or configuration for reproducible testing
+### Feature Tensor Management (Critical)
+During each PC iteration, feature tensors are:
+- **Initialized** to zeros at batch dimensions
+- **Maintained** with gradients for error signal computation
+- **Cleaned up** after PC pass to prevent memory leaks (see test_workflow.py:197-198)
 
-### Training Modes
-1. **illusion_pc_train**: Classification on illusion dataset with noise augmentation (0-0.35 Gaussian noise in steps)
-2. **recon_pc_train**: Reconstruction task with reconstruction loss
-3. **fine_tuning**: Supervised classification with optional layer selection (all layers vs. linear layers only)
-
-## Testing & Metrics
-
-**Trajectory Testing**: Tests how model performance evolves across timesteps (T=1 to T=10)
-- Aggregates results across multiple model seeds
-- Returns accuracy per class with error bars
-- Key function: `run_trajectory_test()` in `test_workflow.py`
-
-**Pattern Testing**: Evaluates model response to specific geometric patterns
-**Grid Search**: Sweeps hyperparameters (learning rate, noise, timesteps) to find optimal configurations
-
-**Evaluation Metrics**:
-- Classification accuracy per class and overall
-- Reconstruction loss (MSE between reconstruction and original)
-- Per-timestep accuracy tracking
-- "Illusion index": Metric comparing model perception to ground-truth Should_See
-
-## Important Notes
-
-### Data Paths
-- Dataset paths configured in config files, typically:
-  - Illusion dataset: `data/visual_illusion_dataset/`
-  - External datasets (CIFAR-10, STL-10): configured in config via `recon_datasetpath`
-  - Model save/load: paths set in config (`save_model_path`, `load_model_path`)
-
-### CUDA/Device Handling
-- Network configured for CUDA if available
-- Device passed through config: `config.device`
-- Batch data and model moved to device within training loops
-- Check device availability: `torch.cuda.is_available()`
-
-### Week Folders as Iterations
-- Code evolves across `week1/` through `week11/` folders
-- Each week may refactor implementation, add new features, or change directory structure
-- Most active development in `week11/` (latest implementation)
-- `week10/` and earlier are historical references but may have outdated patterns
+### Model Checkpoint Format
+```python
+checkpoint = {
+    "conv1": net.conv1.state_dict(),  # All conv layers
+    "conv2": ...,
+    "deconv1_fb": net.deconv1_fb.state_dict(),  # All deconv layers
+    # ... etc for all layers
+}
+```
 
 ### Reproducibility
-- Set seed via `set_seed(seed)` function in main.py
-- Config includes seed parameter for all randomness sources (Python random, numpy, torch, CUDA)
-- SLURM jobs configure specific timesteps, models, and seeds for deterministic testing
+- Config `seed` parameter controls all randomness sources
+- SLURM jobs lock specific timesteps, models, seeds for deterministic testing
+- Model registry tracks config used for each trained model
+
+## Debugging & Troubleshooting
+
+**Testing logic**: Check test_workflow.py:159-195 (where perceived_class is selected)
+**Dataset loading**: Run test_dataloader.py to verify dataset structure
+**PC convergence**: Monitor feature tensor gradients, check noise levels
+**Memory**: Reduce batch_size, verify torch.cuda.empty_cache() in loops
+**Config path**: Paths are relative to week11/, use absolute paths if needed
