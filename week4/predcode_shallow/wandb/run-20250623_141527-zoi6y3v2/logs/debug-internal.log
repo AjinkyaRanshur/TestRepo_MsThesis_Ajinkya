@@ -1,7 +1,0 @@
-{"time":"2025-06-23T14:15:27.247786586+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/predcode_shallow/wandb/run-20250623_141527-zoi6y3v2/logs/debug-core.log"}
-{"time":"2025-06-23T14:15:27.556943807+02:00","level":"INFO","msg":"stream: created new stream","id":"zoi6y3v2"}
-{"time":"2025-06-23T14:15:27.557028898+02:00","level":"INFO","msg":"stream: started","id":"zoi6y3v2"}
-{"time":"2025-06-23T14:15:27.557089228+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"zoi6y3v2"}
-{"time":"2025-06-23T14:15:27.557148389+02:00","level":"INFO","msg":"handler: started","stream_id":"zoi6y3v2"}
-{"time":"2025-06-23T14:15:27.557209951+02:00","level":"INFO","msg":"sender: started","stream_id":"zoi6y3v2"}
-{"time":"2025-06-23T14:15:27.971027161+02:00","level":"INFO","msg":"Starting system monitor"}

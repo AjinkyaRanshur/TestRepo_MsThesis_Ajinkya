@@ -1,8 +1,0 @@
-{"time":"2025-07-30T14:27:55.101935782+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
-{"time":"2025-07-30T14:27:55.465177997+02:00","level":"INFO","msg":"stream: created new stream","id":"scydzgmw"}
-{"time":"2025-07-30T14:27:55.465249396+02:00","level":"INFO","msg":"stream: started","id":"scydzgmw"}
-{"time":"2025-07-30T14:27:55.465278427+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"scydzgmw"}
-{"time":"2025-07-30T14:27:55.465295737+02:00","level":"INFO","msg":"handler: started","stream_id":"scydzgmw"}
-{"time":"2025-07-30T14:27:55.46536912+02:00","level":"INFO","msg":"sender: started","stream_id":"scydzgmw"}
-{"time":"2025-07-30T14:34:56.218564224+02:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/ranshur-ajinkya-res-cerco/Ajinkya_Training_Model_Reports/scydzgmw/file_stream"}
-{"time":"2025-07-30T14:34:56.224559736+02:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/ranshur-ajinkya-res-cerco/Ajinkya_Training_Model_Reports/scydzgmw/file_stream: {\"error\":\"run Ajinkya_Training_Model_Reports/scydzgmw not found while streaming file\"}"}

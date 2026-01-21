@@ -1,6 +1,0 @@
-{"time":"2025-08-26T13:27:53.441540121+02:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
-{"time":"2025-08-26T13:27:53.802416881+02:00","level":"INFO","msg":"stream: created new stream","id":"okebndp1"}
-{"time":"2025-08-26T13:27:53.802462005+02:00","level":"INFO","msg":"stream: started","id":"okebndp1"}
-{"time":"2025-08-26T13:27:53.802498148+02:00","level":"INFO","msg":"sender: started","stream_id":"okebndp1"}
-{"time":"2025-08-26T13:27:53.802500461+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"okebndp1"}
-{"time":"2025-08-26T13:27:53.802597139+02:00","level":"INFO","msg":"handler: started","stream_id":"okebndp1"}

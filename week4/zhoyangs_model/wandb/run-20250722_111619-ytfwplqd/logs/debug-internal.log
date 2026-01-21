@@ -1,7 +1,0 @@
-{"time":"2025-07-22T11:16:19.489855569+02:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/ajinkyar/projects/TestRepo_MsThesis_Ajinkya/week4/zhoyangs_model/wandb/run-20250722_111619-ytfwplqd/logs/debug-core.log"}
-{"time":"2025-07-22T11:16:19.790853316+02:00","level":"INFO","msg":"stream: created new stream","id":"ytfwplqd"}
-{"time":"2025-07-22T11:16:19.790940724+02:00","level":"INFO","msg":"stream: started","id":"ytfwplqd"}
-{"time":"2025-07-22T11:16:19.790986155+02:00","level":"INFO","msg":"sender: started","stream_id":"ytfwplqd"}
-{"time":"2025-07-22T11:16:19.791018641+02:00","level":"INFO","msg":"handler: started","stream_id":"ytfwplqd"}
-{"time":"2025-07-22T11:16:19.790990733+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ytfwplqd"}
-{"time":"2025-07-22T11:16:20.126210557+02:00","level":"INFO","msg":"Starting system monitor"}
