@@ -72,38 +72,41 @@ def create_slurm_test_script(test_config, output_dir="slurm_jobs"):
     if test_type == "trajectory":
         script_lines.extend([
             "# Run trajectory testing",
-            "python run_trajectory_test.py \\",
+            "python run_test.py \\",
+            f'  --mode trajectory \\',
             f'  --models {" ".join(test_config["model_names"])} \\',
             f'  --timesteps {test_config["test_timesteps"]} \\',
-            f'  --dataset {dataset}',  # ADD THIS LINE
+            f'  --dataset {dataset}',
             ""
         ])
-    
+
     elif test_type == "pattern":
         patterns_str = ",".join(test_config["test_patterns"])
         script_lines.extend([
             "# Run pattern testing",
-            "python run_pattern_test.py \\",
+            "python run_test.py \\",
+            f'  --mode pattern \\',
             f'  --models {" ".join(test_config["model_names"])} \\',
             f'  --timesteps {test_config["test_timesteps"]} \\',
             f'  --patterns "{patterns_str}" \\',
-            f'  --dataset {dataset}',  # ADD THIS LINE
+            f'  --dataset {dataset}',
             ""
         ])
-    
+
     elif test_type == "grid_search":
         grid_params = test_config["grid_params"]
         gamma_start, gamma_stop, gamma_step = grid_params["gamma_range"]
         beta_start, beta_stop, beta_step = grid_params["beta_range"]
-        
+
         script_lines.extend([
             "# Run grid search",
-            "python run_grid_search_test.py \\",
+            "python run_test.py \\",
+            f'  --mode grid \\',
             f'  --models {" ".join(test_config["model_names"])} \\',
             f'  --timesteps {test_config["test_timesteps"]} \\',
             f'  --gamma-start {gamma_start} --gamma-stop {gamma_stop} --gamma-step {gamma_step} \\',
             f'  --beta-start {beta_start} --beta-stop {beta_stop} --beta-step {beta_step} \\',
-            f'  --dataset {dataset}',  # ADD THIS LINE
+            f'  --dataset {dataset}',
             ""
         ])
     

@@ -7,7 +7,7 @@ import torch
 import numpy as np
 from typing import Optional, Dict, Tuple, Callable
 from torch.utils.data import DataLoader
-from network_refactored import Net
+from network import Net
 from checkpoint_utils import (
     initialize_feature_tensors,
     save_model_checkpoint,
@@ -145,7 +145,7 @@ class PredictiveCodingTrainer:
         for noise_level in noise_levels:
             # Add noise
             if noise_level > 0:
-                noisy_images = noisy_img(images, noise_level, "gaussian")
+                noisy_images = noisy_img(images, "gauss", noise_level)
             else:
                 noisy_images = images
 
