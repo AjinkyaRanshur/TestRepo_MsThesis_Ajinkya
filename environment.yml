@@ -170,4 +170,8 @@ dependencies:
   - yaml=0.2.5=h7b6447c_0
   - zlib=1.2.13=h5eee18b_1
   - zstd=1.5.6=hc292b87_0
+  - pip
+  - pip:
+    - pyfiglet==0.8.0
+    - colorama==0.4.6
 prefix: /home/ajinkya/miniconda3/envs/cuda_pyt
