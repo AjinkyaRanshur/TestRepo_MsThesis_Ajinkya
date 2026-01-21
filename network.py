@@ -70,12 +70,13 @@ class Net(nn.Module):
         self.upsample = nn.Upsample(scale_factor=2, mode="bilinear")
         self.upsample_nearest = nn.Upsample(scale_factor=2, mode="nearest")
 
-    def feedforward_pass(self, x):
+    def feedforward_pass(self, x, ft_AB=None, ft_BC=None, ft_CD=None, ft_DE=None):
         """
         Feedforward pass with all layers (classification).
 
         Args:
             x: Input tensor (batch_size, 3, height, width)
+            ft_AB, ft_BC, ft_CD, ft_DE: Feature tensors (unused, kept for API compatibility)
 
         Returns:
             Tuple of layer features and classification output
@@ -103,12 +104,13 @@ class Net(nn.Module):
 
         return ft_AB, ft_BC, ft_CD, ft_DE, ft_EF, ft_FG, output
 
-    def feedforward_pass_no_dense(self, x):
+    def feedforward_pass_no_dense(self, x, ft_AB=None, ft_BC=None, ft_CD=None, ft_DE=None):
         """
         Feedforward pass without dense layers (reconstruction only).
 
         Args:
             x: Input tensor
+            ft_AB, ft_BC, ft_CD, ft_DE: Feature tensors (unused, kept for API compatibility)
 
         Returns:
             Tuple of convolutional layer features
@@ -141,7 +143,9 @@ class Net(nn.Module):
         ft_GF = self.fc3_fb(output)
         ft_FE = self.fc2_fb(ft_FG)
         ft_ED = self.fc1_fb(ft_EF)
-        ft_ED = ft_ED.view(-1, 128, 2, 2)
+        # Reshape based on input_size (spatial dims after 4 pooling layers = input_size // 16)
+        spatial_dim = self.input_size // 16
+        ft_ED = ft_ED.view(-1, 128, spatial_dim, spatial_dim)
         ft_ED = self.upsample_nearest(ft_ED)
 
         ft_DC = self.deconv4_fb(self.upsample(ft_DE))

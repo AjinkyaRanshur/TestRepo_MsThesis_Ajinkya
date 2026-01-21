@@ -38,7 +38,8 @@ def initialize_feature_tensors(
 
     if include_dense:
         # Calculate FC input size (128 * 8 * 8 for 128x128, or 128 * 2 * 2 for 32x32)
-        fc_input_size = 128 * (height // 64) * (width // 64)
+        # After 4 pooling layers, spatial dimension is height/16 x width/16
+        fc_input_size = 128 * (height // 16) * (width // 16)
         ft_EF = torch.zeros(batch_size, 1024, device=device)
         ft_FG = torch.zeros(batch_size, 256, device=device)
         return ft_AB, ft_BC, ft_CD, ft_DE, ft_EF, ft_FG

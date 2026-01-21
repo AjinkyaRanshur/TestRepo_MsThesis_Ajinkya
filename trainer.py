@@ -156,6 +156,12 @@ class PredictiveCodingTrainer:
             ft_EF_temp = torch.zeros_like(ft_EF)
             ft_FG_temp = torch.zeros_like(ft_FG)
 
+            # Enable gradients for predictive coding error computation
+            ft_AB_temp.requires_grad_(True)
+            ft_BC_temp.requires_grad_(True)
+            ft_CD_temp.requires_grad_(True)
+            ft_DE_temp.requires_grad_(True)
+
             # Predictive coding iterations
             for t in range(timesteps):
                 self.optimizer.zero_grad()
@@ -224,6 +230,12 @@ class PredictiveCodingTrainer:
             ft_CD_temp = torch.zeros_like(ft_CD)
             ft_DE_temp = torch.zeros_like(ft_DE)
 
+            # Enable gradients for predictive coding error computation
+            ft_AB_temp.requires_grad_(True)
+            ft_BC_temp.requires_grad_(True)
+            ft_CD_temp.requires_grad_(True)
+            ft_DE_temp.requires_grad_(True)
+
             for t in range(timesteps):
                 self.optimizer.zero_grad()
 
@@ -291,6 +303,12 @@ class PredictiveCodingTrainer:
                 self.device,
                 include_dense=True,
             )
+
+            # Enable gradients for predictive coding error computation
+            ft_AB.requires_grad_(True)
+            ft_BC.requires_grad_(True)
+            ft_CD.requires_grad_(True)
+            ft_DE.requires_grad_(True)
 
             # Single predictive coding pass (no noise for evaluation)
             output, _, _, _, _, _, loss = self.net.predictive_coding_pass(
