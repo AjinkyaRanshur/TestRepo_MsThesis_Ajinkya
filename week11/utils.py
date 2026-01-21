@@ -47,7 +47,8 @@ def generate_model_name(pattern, seed, train_cond, recon_timesteps,
     dataset_map = {
         "cifar10": "c10",
         "stl10": "stl",
-        "custom_illusion_dataset": "ill"
+        "custom_illusion_dataset": "ill",
+        "kanizsa_square_dataset": "ksq"  # ADD THIS LINE
     }
     
     p = pattern_map.get(pattern, pattern[:4].lower())

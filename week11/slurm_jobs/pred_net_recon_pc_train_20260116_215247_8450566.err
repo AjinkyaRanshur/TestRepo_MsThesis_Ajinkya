@@ -88,3 +88,4 @@ W0000 00:00:1768801332.479049   12604 computation_placer.cc:177] computation pla
 To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 2026-01-19 11:12:12.503252: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+slurmstepd: error: *** JOB 8450566 ON gpu018 CANCELLED AT 2026-01-19T23:30:14 ***

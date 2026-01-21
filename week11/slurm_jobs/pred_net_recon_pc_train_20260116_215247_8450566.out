@@ -2637,3 +2637,7 @@ Epoch:80 and AverageLoss:0.0035415904455585404
 Test Loss: 0.0035
 Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_stl_uni_s410_80.pth
 Model Save Sucessfully
+Epoch:81 and AverageLoss:0.0035252701874123886
+Test Loss: 0.0035
+Epoch:82 and AverageLoss:0.00351021910563577
+Test Loss: 0.0035

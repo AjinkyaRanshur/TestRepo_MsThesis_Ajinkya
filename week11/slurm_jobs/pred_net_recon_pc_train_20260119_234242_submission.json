@@ -1,0 +1,10 @@
+{
+  "slurm_job_id": "8453212",
+  "script_path": "slurm_jobs/pred_net_recon_pc_train_20260119_234242.sh",
+  "model_names": [
+    "recon_t10_ill_uni_s8733",
+    "recon_t10_ill_uni_s5511",
+    "recon_t10_ill_uni_s5234"
+  ],
+  "submitted_at": "2026-01-19T23:42:44.073059"
+}

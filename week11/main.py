@@ -481,19 +481,21 @@ def get_metrics_initialize(train_cond):
     return metrics_history
 
 
-def decide_training_model(config,metrics_history,model_name):
-    recon_training_lr,recon_validation_lr,_=train_test_loader(config.recon_datasetpath,config)
-    class_training_lr,class_validation_lr,class_testing_lr=train_test_loader(config.classification_datasetpath,config)
 
-    cond_to_func={
-            "recon_pc_train":lambda: recon_training_cifar(recon_training_lr,recon_validation_lr,config,metrics_history,model_name),
-            "classification_training_shapes": lambda:classification_training_shapes(class_training_lr,class_validation_lr,class_testing_lr,recon_training_lr,config,metrics_history,model_name),
-	    "illusion_testing": lambda:illusion_testing(class_training_lr,class_validation_lr,class_testing_lr,recon_training_lr,config,metrics_history,model_name),
+
+def decide_training_model(config, metrics_history, model_name):
+    recon_training_lr, recon_validation_lr, _ = train_test_loader(config.recon_datasetpath, config)
+    class_training_lr, class_validation_lr, class_testing_lr = train_test_loader(config.classification_datasetpath, config)
+
+    cond_to_func = {
+        "recon_pc_train": lambda: recon_training_cifar(recon_training_lr, recon_validation_lr, config, metrics_history, model_name),
+        "classification_training_shapes": lambda: classification_training_shapes(class_training_lr, class_validation_lr, class_testing_lr, recon_training_lr, config, metrics_history, model_name),
+        "illusion_testing": lambda: illusion_testing(class_training_lr, class_validation_lr, class_testing_lr, recon_training_lr, config, metrics_history, model_name),
     }
 
-    result=cond_to_func[config.training_condition]()
-
+    result = cond_to_func[config.training_condition]()
     return result
+
 
 
 def main(config, model_name=None):

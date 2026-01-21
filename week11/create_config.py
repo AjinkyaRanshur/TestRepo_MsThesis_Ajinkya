@@ -65,7 +65,10 @@ def update_config(
                 f.write(f"lr = {lr}\n")
 
             elif stripped.startswith("timesteps"):
-                f.write(f"timesteps = {timesteps[0] if isinstance(timesteps, list) else timesteps}\n")
+                 # Ensure timesteps is always an integer, not a list
+                ts = timesteps[0] if isinstance(timesteps, list) else timesteps
+                f.write(f"timesteps = {ts}\n")            
+
 
             elif stripped.startswith("classification_neurons"):
                 f.write(f"classification_neurons = {last_neurons}\n")

@@ -67,14 +67,20 @@ def run_single_trajectory_test(model_name, test_timesteps, config):
     
     tracker = get_tracker()
     model_info = tracker.get_model(model_name)
-    
+
+    # NEW: Determine number of classes and dataset from model config
+    model_config = model_info['config']
+    dataset = model_config.get('Dataset', 'custom_illusion_dataset')
+    num_classes = model_config.get('last_neurons', 6)
+    input_size = 128 if dataset == "custom_illusion_dataset" else 32
+
     if not model_info:
         print(f"Model {model_name} not found!")
         return None
-    
-    # Load model
-    net = Net(num_classes=6, input_size=128).to(config.device)
-    
+     
+    net = Net(num_classes=num_classes, input_size=input_size).to(config.device)  
+
+  
     checkpoint_path = model_info.get('checkpoint_path')
     if not checkpoint_path:
         print(f"No checkpoint for {model_name}")
@@ -97,7 +103,7 @@ def run_single_trajectory_test(model_name, test_timesteps, config):
     net.eval()
     
     # Get test dataloader
-    _, _, testloader = train_test_loader("custom_illusion_dataset", config)
+    _, _, testloader = train_test_loader(dataset, config)
     
     # Get class mapping
     test_dataset = testloader.dataset

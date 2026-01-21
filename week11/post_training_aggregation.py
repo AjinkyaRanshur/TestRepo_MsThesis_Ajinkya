@@ -1,4 +1,4 @@
-ii"""
+"""
 Post-Training Aggregation Script
 Run this AFTER all SLURM training jobs complete to generate aggregate plots
 

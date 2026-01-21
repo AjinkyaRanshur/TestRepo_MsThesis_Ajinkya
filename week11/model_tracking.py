@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, Optional, List
-
+import fcntl  # Add at top
 
 class ModelTracker:
     def __init__(self, tracking_file="model_registry.json"):
@@ -27,6 +27,19 @@ class ModelTracker:
         self.registry["metadata"]["last_updated"] = datetime.now().isoformat()
         with open(self.tracking_file, 'w') as f:
             json.dump(self.registry, f, indent=2)
+
+
+    def _save_registry(self):
+        """Save registry to disk with file locking"""
+        self.registry["metadata"]["last_updated"] = datetime.now().isoformat()
+    
+        #  Use file locking for parallel safety
+        with open(self.tracking_file, 'w') as f:
+            fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+            try:
+                json.dump(self.registry, f, indent=2)
+            finally:
+                fcntl.flock(f.fileno(), fcntl.LOCK_UN)
     
     def _cleanup_invalid_entries(self):
         """

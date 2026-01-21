@@ -54,10 +54,19 @@ def create_slurm_test_script(test_config, output_dir="slurm_jobs"):
         'echo "Job started at $(date)"',
         f'echo "Test type: {test_type}"',
         f'echo "Models: {len(test_config["model_names"])}"',
+        f'  --dataset {dataset}',  # ADD THIS LINE
         f'echo "Test timesteps: {test_config["test_timesteps"]}"',
         'echo "Job ID: $SLURM_JOB_ID"',
         "",
     ]
+   
+    # NEW: Determine dataset from first model
+    from model_tracking import get_tracker
+    tracker = get_tracker()
+    first_model = tracker.get_model(test_config["model_names"][0])
+    dataset = "custom_illusion_dataset"  # default
+    if first_model:
+        dataset = first_model['config'].get('Dataset', 'custom_illusion_dataset')
     
     # Add test-specific command
     if test_type == "trajectory":
@@ -65,7 +74,8 @@ def create_slurm_test_script(test_config, output_dir="slurm_jobs"):
             "# Run trajectory testing",
             "python run_trajectory_test.py \\",
             f'  --models {" ".join(test_config["model_names"])} \\',
-            f'  --timesteps {test_config["test_timesteps"]}',
+            f'  --timesteps {test_config["test_timesteps"]} \\',
+            f'  --dataset {dataset}',  # ADD THIS LINE
             ""
         ])
     
@@ -76,7 +86,8 @@ def create_slurm_test_script(test_config, output_dir="slurm_jobs"):
             "python run_pattern_test.py \\",
             f'  --models {" ".join(test_config["model_names"])} \\',
             f'  --timesteps {test_config["test_timesteps"]} \\',
-            f'  --patterns "{patterns_str}"',
+            f'  --patterns "{patterns_str}" \\',
+            f'  --dataset {dataset}',  # ADD THIS LINE
             ""
         ])
     
@@ -91,7 +102,8 @@ def create_slurm_test_script(test_config, output_dir="slurm_jobs"):
             f'  --models {" ".join(test_config["model_names"])} \\',
             f'  --timesteps {test_config["test_timesteps"]} \\',
             f'  --gamma-start {gamma_start} --gamma-stop {gamma_stop} --gamma-step {gamma_step} \\',
-            f'  --beta-start {beta_start} --beta-stop {beta_stop} --beta-step {beta_step}',
+            f'  --beta-start {beta_start} --beta-stop {beta_stop} --beta-step {beta_step} \\',
+            f'  --dataset {dataset}',  # ADD THIS LINE
             ""
         ])
     
@@ -111,7 +123,9 @@ def create_slurm_test_script(test_config, output_dir="slurm_jobs"):
     print(f"✓ Test type: {test_type}")
     print(f"✓ Models: {len(test_config['model_names'])}")
     print(f"✓ Test timesteps: {test_config['test_timesteps']}")
-    
+    print(f"✓ Dataset: {dataset}")  # ADD THIS LINE
+
+
     if test_type == "pattern":
         print(f"✓ Patterns: {len(test_config['test_patterns'])}")
     elif test_type == "grid_search":

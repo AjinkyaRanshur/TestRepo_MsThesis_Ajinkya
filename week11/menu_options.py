@@ -225,8 +225,16 @@ def slurm_recon_entries():
     print("  1. cifar10")
     print("  2. stl10")
     print("  3. custom_illusion_dataset")
-    dataset_input = input("Dataset choice (1-3, default cifar10): ").strip() or "1"
-    dataset_map = {"1": "cifar10", "2": "stl10", "3": "custom_illusion_dataset"}
+    print("  4. kanizsa_square_dataset")
+    dataset_input = input("Dataset choice (1-4, default cifar10): ").strip() or "1"
+    
+    dataset_map = {
+    "1": "cifar10", 
+    "2": "stl10", 
+    "3": "custom_illusion_dataset",
+    "4": "kanizsa_square_dataset"  # NEW
+    }
+
     dataset_list = [dataset_map.get(dataset_input, "cifar10")]
     
     # Get batch size
@@ -356,7 +364,27 @@ def slurm_classification_entries():
             return None
     
     print(f"\n{Fore.GREEN}Selected {len(selected_models)} base models{Fore.RESET}")
-    
+   
+    # NEW: Ask which dataset to use for classification training
+    print(Fore.YELLOW + "\nWhich dataset to use for classification training?")
+    print("  1. custom_illusion_dataset (6 classes: 5 shapes + random)")
+    print("  2. kanizsa_square_dataset (2 classes: square vs random)")
+
+    dataset_choice = input("Dataset choice (1-2, default 1): ").strip() or "1"
+
+    if dataset_choice == "2":
+       classification_dataset = "kanizsa_square_dataset"
+       number_of_classes = [2]  # square vs random
+    else:
+       classification_dataset = "custom_illusion_dataset"
+       number_of_classes = [6]  # 5 shapes + random
+
+    dataset_list = [classification_dataset]
+
+    print(f"\n{Fore.GREEN}Classification dataset: {classification_dataset}{Fore.RESET}")
+    print(f"{Fore.GREEN}Number of classes: {number_of_classes[0]}{Fore.RESET}")    
+
+
     # Select checkpoint epochs
     print(Fore.YELLOW + "\nWhich checkpoint epochs to use?")
     print("  Checkpoints saved every 10 epochs (10, 20, 30, ...)")
@@ -377,10 +405,6 @@ def slurm_classification_entries():
     
     timesteps_input = input("Timesteps (default 10): ").strip() or "10"
     timesteps = parse_list(timesteps_input, int)
-    
-    # Dataset (same as base models)
-    dataset_list = ["custom_illusion_dataset"]  # Fixed for classification
-    number_of_classes = [6]
     
     # Select patterns
     print("\nClassification patterns:")
@@ -430,6 +454,8 @@ def slurm_classification_entries():
     print(f"Patterns: {len(selected_patterns)}")
     print(f"Timesteps: {len(timesteps)}")
     print(f"Optimize all layers: {optimize_all_layers}")
+    print(f"Classification Dataset: {classification_dataset}")
+    print(f"Number of classes: {number_of_classes[0]}")
     print(f"{'='*60}\n")
     
     confirm = input("Proceed? (y/n): ").strip().lower()

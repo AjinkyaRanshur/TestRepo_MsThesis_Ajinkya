@@ -13,7 +13,7 @@ from grid_search_testing import run_grid_search, print_grid_search_summary
 
 
 class TestConfig:
-    def __init__(self, timesteps):
+    def __init__(self, timesteps,dataset):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.batch_size = 40
         self.timesteps = timesteps
@@ -23,14 +23,15 @@ class TestConfig:
         self.betaset = [[0.33, 0.33, 0.33, 0.33]]
         self.alphaset = [[0.1, 0.1, 0.1, 0.1]]
         
-        self.classification_datasetpath = "custom_illusion_dataset"
-        self.recon_datasetpath = "custom_illusion_dataset"
+        self.classification_datasetpath = dataset
+        self.recon_datasetpath = dataset
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--models", nargs='+', required=True, help="Model names")
     parser.add_argument("--timesteps", type=int, required=True, help="Test timesteps")
+    parser.add_argument("--dataset", type=str, default="custom_illusion_dataset",help="Dataset (custom_illusion_dataset or kanizsa_square_dataset)")
     parser.add_argument("--gamma-start", type=float, required=True)
     parser.add_argument("--gamma-stop", type=float, required=True)
     parser.add_argument("--gamma-step", type=float, required=True)
@@ -43,13 +44,14 @@ if __name__ == "__main__":
     gamma_range = (args.gamma_start, args.gamma_stop, args.gamma_step)
     beta_range = (args.beta_start, args.beta_stop, args.beta_step)
     
-    config = TestConfig(args.timesteps)
+    config = TestConfig(args.timesteps, args.dataset)
     
     print(f"\n{'='*60}")
     print(f"GRID SEARCH (SLURM)")
     print(f"{'='*60}")
     print(f"Models: {args.models}")
     print(f"Timesteps: {args.timesteps}")
+    print(f"Dataset: {args.dataset}")
     print(f"Gamma range: {gamma_range}")
     print(f"Beta range: {beta_range}")
     print(f"Device: {config.device}")
