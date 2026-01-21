@@ -527,14 +527,38 @@ def main(config, model_name=None):
 
 
 def load_config(config_name):
+    """
+    Load config by name or experiment ID.
+
+    Args:
+        config_name: Either:
+            - Experiment ID (0-11 or "0"-"11")
+            - Old-style module path ("configs.config_0")
+
+    Returns:
+        Config object with all parameters as attributes
+    """
+    # Try new-style experiment ID first
+    try:
+        exp_id = int(config_name.replace("configs.config_", "").replace("config_", ""))
+        from configs.experiments import get_config, print_device_info
+        config = get_config(exp_id)
+        print_device_info(config.device)
+        return config
+    except (ValueError, KeyError):
+        pass
+
+    # Fall back to old-style module import
     return importlib.import_module(config_name)
+
 
 # This line ensures safe multiprocessing
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", type=str, required=True)
-    parser.add_argument("--model-name", type=str, default=None, 
+    parser.add_argument("--config", type=str, required=True,
+                       help="Experiment ID (0-11) or config module path")
+    parser.add_argument("--model-name", type=str, default=None,
                        help="Model ID from tracking system")
     args = parser.parse_args()
 
@@ -543,7 +567,7 @@ if __name__ == "__main__":
 
     config = load_config(args.config)
 
-    main(config,args.model_name)
+    main(config, args.model_name)
 
 
 

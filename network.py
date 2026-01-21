@@ -11,8 +11,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-from constants import NETWORK_ARCHITECTURE, INPUT_SIZE_TO_FC
-from checkpoint_utils import initialize_feature_tensors
 
 
 class Net(nn.Module):
@@ -37,10 +35,15 @@ class Net(nn.Module):
         self.input_size = input_size
         self.num_classes = num_classes
 
-        if input_size not in INPUT_SIZE_TO_FC:
+        # Classification layers - ADAPTIVE based on input size
+        if input_size == 32:
+            # After 4 pooling layers: 32 -> 16 -> 8 -> 4 -> 2
+            self.fc_input_size = 128 * 2 * 2
+        elif input_size == 128:
+            # After 4 pooling layers: 128 -> 64 -> 32 -> 16 -> 8
+            self.fc_input_size = 128 * 8 * 8
+        else:
             raise ValueError(f"Input size {input_size} not supported. Use 32 or 128.")
-
-        self.fc_input_size = INPUT_SIZE_TO_FC[input_size]
 
         # Feedforward pathway (Conv layers)
         self.conv1 = nn.Conv2d(3, 6, kernel_size=5, stride=1, padding=2)
