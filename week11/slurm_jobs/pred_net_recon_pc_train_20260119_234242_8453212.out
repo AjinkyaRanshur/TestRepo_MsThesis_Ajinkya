@@ -1070,3 +1070,589 @@ Model Save Sucessfully
 Batch 1 completed at Wed Jan 21 15:28:03 IST 2026
 ---
 Started recon_t10_ill_uni_s5234 on GPU 0 (PID: 5618)
+CUDA available: True
+CUDA device count: 1
+Using CUDA device: cuda:0
+CUDA device name:Tesla V100-SXM2-16GB
+CUDA memory allocated: 0.00 GB
+Using device: cuda:0
+Full dataset: 92160 samples
+Class mapping (ALL classes): {'square': 0, 'rectangle': 1, 'trapezium': 2, 'triangle': 3, 'hexagon': 4, 'random': 5, 'all_in': 6, 'all_out': 7}
+
+Initial class distribution:
+  square         : 4608 samples
+  rectangle      : 4608 samples
+  trapezium      : 4608 samples
+  triangle       : 4608 samples
+  hexagon        : 4608 samples
+  random         : 4605 samples
+    → should_see 'square': 921
+    → should_see 'rectangle': 921
+    → should_see 'trapezium': 921
+    → should_see 'triangle': 921
+    → should_see 'hexagon': 921
+  all_in         : 23040 samples
+  all_out        : 23040 samples
+
+Training set: 19345 samples
+Validation set: 8300 samples
+Validation class distribution:
+  hexagon: 1383 samples
+  random: 1385 samples
+  rectangle: 1383 samples
+  square: 1383 samples
+  trapezium: 1383 samples
+  triangle: 1383 samples
+
+Sampling illusions to match validation random distribution:
+  all_in: sampled 692 samples
+  all_out: sampled 1385 samples
+
+Test set: 11070 samples
+Test set class distribution:
+  all_in: 1385 samples
+  all_out: 1385 samples
+  hexagon: 1383 samples
+  random: 1385 samples
+  rectangle: 1383 samples
+  square: 1383 samples
+  trapezium: 1383 samples
+  triangle: 1383 samples
+Full dataset: 92160 samples
+Class mapping (ALL classes): {'square': 0, 'rectangle': 1, 'trapezium': 2, 'triangle': 3, 'hexagon': 4, 'random': 5, 'all_in': 6, 'all_out': 7}
+
+Initial class distribution:
+  square         : 4608 samples
+  rectangle      : 4608 samples
+  trapezium      : 4608 samples
+  triangle       : 4608 samples
+  hexagon        : 4608 samples
+  random         : 4605 samples
+    → should_see 'square': 921
+    → should_see 'rectangle': 921
+    → should_see 'trapezium': 921
+    → should_see 'triangle': 921
+    → should_see 'hexagon': 921
+  all_in         : 23040 samples
+  all_out        : 23040 samples
+
+Training set: 19345 samples
+Validation set: 8300 samples
+Validation class distribution:
+  hexagon: 1383 samples
+  random: 1385 samples
+  rectangle: 1383 samples
+  square: 1383 samples
+  trapezium: 1383 samples
+  triangle: 1383 samples
+
+Sampling illusions to match validation random distribution:
+  all_in: sampled 692 samples
+  all_out: sampled 1385 samples
+
+Test set: 11070 samples
+Test set class distribution:
+  all_in: 1385 samples
+  all_out: 1385 samples
+  hexagon: 1383 samples
+  random: 1385 samples
+  rectangle: 1383 samples
+  square: 1383 samples
+  trapezium: 1383 samples
+  triangle: 1383 samples
+Epoch:0 and AverageLoss:0.3664460436802758
+Test Loss: 0.0953
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_0.pth
+Model Save Sucessfully
+Epoch:1 and AverageLoss:0.08025576443650013
+Test Loss: 0.0676
+Epoch:2 and AverageLoss:0.060592401364802824
+Test Loss: 0.0539
+Epoch:3 and AverageLoss:0.04937253437536068
+Test Loss: 0.0445
+Epoch:4 and AverageLoss:0.04094294648355812
+Test Loss: 0.0371
+Epoch:5 and AverageLoss:0.034283152100252956
+Test Loss: 0.0313
+Epoch:6 and AverageLoss:0.029176792368477533
+Test Loss: 0.0269
+Epoch:7 and AverageLoss:0.025219283420746485
+Test Loss: 0.0235
+Epoch:8 and AverageLoss:0.022058898001940042
+Test Loss: 0.0207
+Epoch:9 and AverageLoss:0.019428295300780864
+Test Loss: 0.0182
+Epoch:10 and AverageLoss:0.01717315287683313
+Test Loss: 0.0161
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_10.pth
+Model Save Sucessfully
+Epoch:11 and AverageLoss:0.015212656454806609
+Test Loss: 0.0143
+Epoch:12 and AverageLoss:0.013507431946417764
+Test Loss: 0.0127
+Epoch:13 and AverageLoss:0.012075806384875385
+Test Loss: 0.0114
+Epoch:14 and AverageLoss:0.010864976547227418
+Test Loss: 0.0103
+Epoch:15 and AverageLoss:0.009808693376508318
+Test Loss: 0.0093
+Epoch:16 and AverageLoss:0.00890628048622873
+Test Loss: 0.0085
+Epoch:17 and AverageLoss:0.008120885492140843
+Test Loss: 0.0078
+Epoch:18 and AverageLoss:0.007438329690182197
+Test Loss: 0.0072
+Epoch:19 and AverageLoss:0.006876293279245989
+Test Loss: 0.0066
+Epoch:20 and AverageLoss:0.006375980401827284
+Test Loss: 0.0062
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_20.pth
+Model Save Sucessfully
+Epoch:21 and AverageLoss:0.005968560769188041
+Test Loss: 0.0058
+Epoch:22 and AverageLoss:0.005603479093983616
+Test Loss: 0.0057
+Epoch:23 and AverageLoss:0.005299804911637017
+Test Loss: 0.0052
+Epoch:24 and AverageLoss:0.005029429303970927
+Test Loss: 0.0049
+Epoch:25 and AverageLoss:0.00479488335222714
+Test Loss: 0.0047
+Epoch:26 and AverageLoss:0.004569638294383329
+Test Loss: 0.0045
+Epoch:27 and AverageLoss:0.004390642297558086
+Test Loss: 0.0043
+Epoch:28 and AverageLoss:0.004236542112251728
+Test Loss: 0.0041
+Epoch:29 and AverageLoss:0.004076687478140951
+Test Loss: 0.0040
+Epoch:30 and AverageLoss:0.004031095540724418
+Test Loss: 0.0039
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_30.pth
+Model Save Sucessfully
+Epoch:31 and AverageLoss:0.003837190555458627
+Test Loss: 0.0038
+Epoch:32 and AverageLoss:0.0037481399817769377
+Test Loss: 0.0037
+Epoch:33 and AverageLoss:0.0036577444840107144
+Test Loss: 0.0036
+Epoch:34 and AverageLoss:0.003578056565443562
+Test Loss: 0.0035
+Epoch:35 and AverageLoss:0.0034753603900182406
+Test Loss: 0.0034
+Epoch:36 and AverageLoss:0.0033984014645126485
+Test Loss: 0.0034
+Epoch:37 and AverageLoss:0.003317030618151973
+Test Loss: 0.0033
+Epoch:38 and AverageLoss:0.0032366108638042014
+Test Loss: 0.0032
+Epoch:39 and AverageLoss:0.0031794878790801593
+Test Loss: 0.0031
+Epoch:40 and AverageLoss:0.003103718299164691
+Test Loss: 0.0031
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_40.pth
+Model Save Sucessfully
+Epoch:41 and AverageLoss:0.003041115931229481
+Test Loss: 0.0030
+Epoch:42 and AverageLoss:0.0029934341225519097
+Test Loss: 0.0030
+Epoch:43 and AverageLoss:0.00292116205168557
+Test Loss: 0.0029
+Epoch:44 and AverageLoss:0.002874904382427431
+Test Loss: 0.0028
+Epoch:45 and AverageLoss:0.0028337402637732363
+Test Loss: 0.0028
+Epoch:46 and AverageLoss:0.0027928403220312623
+Test Loss: 0.0028
+Epoch:47 and AverageLoss:0.002737378228931064
+Test Loss: 0.0027
+Epoch:48 and AverageLoss:0.0027146239751518883
+Test Loss: 0.0027
+Epoch:49 and AverageLoss:0.002659655537615984
+Test Loss: 0.0027
+Epoch:50 and AverageLoss:0.0026239321554129683
+Test Loss: 0.0026
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_50.pth
+Model Save Sucessfully
+Epoch:51 and AverageLoss:0.0025865749301088683
+Test Loss: 0.0026
+Epoch:52 and AverageLoss:0.002547400116955107
+Test Loss: 0.0025
+Epoch:53 and AverageLoss:0.0025173734324168383
+Test Loss: 0.0025
+Epoch:54 and AverageLoss:0.002477352757561059
+Test Loss: 0.0025
+Epoch:55 and AverageLoss:0.0024580631760133752
+Test Loss: 0.0024
+Epoch:56 and AverageLoss:0.0024162612038602944
+Test Loss: 0.0024
+Epoch:57 and AverageLoss:0.0023898502132539785
+Test Loss: 0.0024
+Epoch:58 and AverageLoss:0.0023671076495935446
+Test Loss: 0.0024
+Epoch:59 and AverageLoss:0.0023407068301746544
+Test Loss: 0.0023
+Epoch:60 and AverageLoss:0.002305719706572377
+Test Loss: 0.0023
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_60.pth
+Model Save Sucessfully
+Epoch:61 and AverageLoss:0.0023196327968111863
+Test Loss: 0.0023
+Epoch:62 and AverageLoss:0.002256260776876911
+Test Loss: 0.0023
+Epoch:63 and AverageLoss:0.0022358560228955063
+Test Loss: 0.0022
+Epoch:64 and AverageLoss:0.00222124803132062
+Test Loss: 0.0022
+Epoch:65 and AverageLoss:0.00219622329969444
+Test Loss: 0.0022
+Epoch:66 and AverageLoss:0.002181546842440778
+Test Loss: 0.0022
+Epoch:67 and AverageLoss:0.0021527136497060994
+Test Loss: 0.0021
+Epoch:68 and AverageLoss:0.0021404600271681894
+Test Loss: 0.0021
+Epoch:69 and AverageLoss:0.002108406815254553
+Test Loss: 0.0021
+Epoch:70 and AverageLoss:0.002098088105082173
+Test Loss: 0.0021
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_70.pth
+Model Save Sucessfully
+Epoch:71 and AverageLoss:0.0020946401851117025
+Test Loss: 0.0021
+Epoch:72 and AverageLoss:0.0020498132505377153
+Test Loss: 0.0020
+Epoch:73 and AverageLoss:0.0020495165211113922
+Test Loss: 0.0020
+Epoch:74 and AverageLoss:0.0020181164595256137
+Test Loss: 0.0020
+Epoch:75 and AverageLoss:0.0020280704051371633
+Test Loss: 0.0020
+Epoch:76 and AverageLoss:0.001985276010405072
+Test Loss: 0.0020
+Epoch:77 and AverageLoss:0.002001600974520345
+Test Loss: 0.0020
+Epoch:78 and AverageLoss:0.001957689255354772
+Test Loss: 0.0020
+Epoch:79 and AverageLoss:0.001945572570428129
+Test Loss: 0.0019
+Epoch:80 and AverageLoss:0.0019389887170554408
+Test Loss: 0.0019
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_80.pth
+Model Save Sucessfully
+Epoch:81 and AverageLoss:0.0019238132739070157
+Test Loss: 0.0019
+Epoch:82 and AverageLoss:0.001911616050503563
+Test Loss: 0.0019
+Epoch:83 and AverageLoss:0.001897969840225294
+Test Loss: 0.0019
+Epoch:84 and AverageLoss:0.001882373449856354
+Test Loss: 0.0019
+Epoch:85 and AverageLoss:0.0018710218052945507
+Test Loss: 0.0019
+Epoch:86 and AverageLoss:0.001855841080161689
+Test Loss: 0.0019
+Epoch:87 and AverageLoss:0.0018443253664838627
+Test Loss: 0.0022
+Epoch:88 and AverageLoss:0.001834239643298028
+Test Loss: 0.0018
+Epoch:89 and AverageLoss:0.0018180540764284867
+Test Loss: 0.0018
+Epoch:90 and AverageLoss:0.0018058858943183344
+Test Loss: 0.0018
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_90.pth
+Model Save Sucessfully
+Epoch:91 and AverageLoss:0.0018031596009377082
+Test Loss: 0.0018
+Epoch:92 and AverageLoss:0.00178481775628449
+Test Loss: 0.0018
+Epoch:93 and AverageLoss:0.0017714380218805206
+Test Loss: 0.0018
+Epoch:94 and AverageLoss:0.0017678004918977896
+Test Loss: 0.0018
+Epoch:95 and AverageLoss:0.001805585149766046
+Test Loss: 0.0017
+Epoch:96 and AverageLoss:0.0017388003764285374
+Test Loss: 0.0017
+Epoch:97 and AverageLoss:0.0017319657115365786
+Test Loss: 0.0017
+Epoch:98 and AverageLoss:0.0017330557279181013
+Test Loss: 0.0017
+Epoch:99 and AverageLoss:0.0017147850010001432
+Test Loss: 0.0017
+Epoch:100 and AverageLoss:0.0017112152721186376
+Test Loss: 0.0017
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_100.pth
+Model Save Sucessfully
+Epoch:101 and AverageLoss:0.0017011172793832538
+Test Loss: 0.0017
+Epoch:102 and AverageLoss:0.0016895043577090645
+Test Loss: 0.0017
+Epoch:103 and AverageLoss:0.0016900951046138724
+Test Loss: 0.0017
+Epoch:104 and AverageLoss:0.001668234525560132
+Test Loss: 0.0017
+Epoch:105 and AverageLoss:0.0016685744275123436
+Test Loss: 0.0017
+Epoch:106 and AverageLoss:0.0016612904985754727
+Test Loss: 0.0016
+Epoch:107 and AverageLoss:0.0016449564641672534
+Test Loss: 0.0016
+Epoch:108 and AverageLoss:0.0016431226007821238
+Test Loss: 0.0016
+Epoch:109 and AverageLoss:0.0016562745604310032
+Test Loss: 0.0017
+Epoch:110 and AverageLoss:0.0016194191238889087
+Test Loss: 0.0016
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_110.pth
+Model Save Sucessfully
+Epoch:111 and AverageLoss:0.001615421994673935
+Test Loss: 0.0016
+Epoch:112 and AverageLoss:0.0016082564330600155
+Test Loss: 0.0016
+Epoch:113 and AverageLoss:0.0016055883556385024
+Test Loss: 0.0016
+Epoch:114 and AverageLoss:0.001593117073490015
+Test Loss: 0.0016
+Epoch:115 and AverageLoss:0.0015870575763743124
+Test Loss: 0.0016
+Epoch:116 and AverageLoss:0.001577573524612918
+Test Loss: 0.0016
+Epoch:117 and AverageLoss:0.0015767004722363723
+Test Loss: 0.0016
+Epoch:118 and AverageLoss:0.0015622521543775278
+Test Loss: 0.0016
+Epoch:119 and AverageLoss:0.0015777049962361922
+Test Loss: 0.0016
+Epoch:120 and AverageLoss:0.0015441379995731837
+Test Loss: 0.0015
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_120.pth
+Model Save Sucessfully
+Epoch:121 and AverageLoss:0.0015402616358608438
+Test Loss: 0.0016
+Epoch:122 and AverageLoss:0.001544988657995358
+Test Loss: 0.0015
+Epoch:123 and AverageLoss:0.0015288050587612305
+Test Loss: 0.0015
+Epoch:124 and AverageLoss:0.0015354686357034754
+Test Loss: 0.0015
+Epoch:125 and AverageLoss:0.0015124506039269777
+Test Loss: 0.0015
+Epoch:126 and AverageLoss:0.001514714620242565
+Test Loss: 0.0015
+Epoch:127 and AverageLoss:0.0015112571673244546
+Test Loss: 0.0015
+Epoch:128 and AverageLoss:0.0014969632769155524
+Test Loss: 0.0015
+Epoch:129 and AverageLoss:0.0014956690626476761
+Test Loss: 0.0015
+Epoch:130 and AverageLoss:0.0014857059270807365
+Test Loss: 0.0015
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_130.pth
+Model Save Sucessfully
+Epoch:131 and AverageLoss:0.0014815095081840727
+Test Loss: 0.0015
+Epoch:132 and AverageLoss:0.0015098466143427679
+Test Loss: 0.0015
+Epoch:133 and AverageLoss:0.0014635502214760958
+Test Loss: 0.0015
+Epoch:134 and AverageLoss:0.001459746026965089
+Test Loss: 0.0015
+Epoch:135 and AverageLoss:0.001475660320638856
+Test Loss: 0.0015
+Epoch:136 and AverageLoss:0.0014513660012311419
+Test Loss: 0.0014
+Epoch:137 and AverageLoss:0.0014494977652601327
+Test Loss: 0.0015
+Epoch:138 and AverageLoss:0.0014452434979304132
+Test Loss: 0.0014
+Epoch:139 and AverageLoss:0.0014446869173591326
+Test Loss: 0.0014
+Epoch:140 and AverageLoss:0.0014394853389889295
+Test Loss: 0.0014
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_140.pth
+Model Save Sucessfully
+Epoch:141 and AverageLoss:0.0014221045793051455
+Test Loss: 0.0014
+Epoch:142 and AverageLoss:0.0014259236079904305
+Test Loss: 0.0015
+Epoch:143 and AverageLoss:0.0014173556423470886
+Test Loss: 0.0014
+Epoch:144 and AverageLoss:0.0014122717714125737
+Test Loss: 0.0014
+Epoch:145 and AverageLoss:0.0014139150419899779
+Test Loss: 0.0014
+Epoch:146 and AverageLoss:0.0013951899085486354
+Test Loss: 0.0014
+Epoch:147 and AverageLoss:0.0013960529296045106
+Test Loss: 0.0014
+Epoch:148 and AverageLoss:0.0013959708916791136
+Test Loss: 0.0014
+Epoch:149 and AverageLoss:0.0013799576430575738
+Test Loss: 0.0014
+Epoch:150 and AverageLoss:0.0013849639018934051
+Test Loss: 0.0014
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_150.pth
+Model Save Sucessfully
+Epoch:151 and AverageLoss:0.0013756121810398656
+Test Loss: 0.0014
+Epoch:152 and AverageLoss:0.0013706868217126583
+Test Loss: 0.0014
+Epoch:153 and AverageLoss:0.001359412504825741
+Test Loss: 0.0014
+Epoch:154 and AverageLoss:0.0013659630459781412
+Test Loss: 0.0014
+Epoch:155 and AverageLoss:0.0013652303503116224
+Test Loss: 0.0014
+Epoch:156 and AverageLoss:0.001343394671869849
+Test Loss: 0.0013
+Epoch:157 and AverageLoss:0.0013462567440001294
+Test Loss: 0.0013
+Epoch:158 and AverageLoss:0.001347271032455331
+Test Loss: 0.0013
+Epoch:159 and AverageLoss:0.0013288243181622502
+Test Loss: 0.0013
+Epoch:160 and AverageLoss:0.0013329546570523896
+Test Loss: 0.0013
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_160.pth
+Model Save Sucessfully
+Epoch:161 and AverageLoss:0.0013293880609216262
+Test Loss: 0.0013
+Epoch:162 and AverageLoss:0.0013181283754442842
+Test Loss: 0.0013
+Epoch:163 and AverageLoss:0.0013187147982655215
+Test Loss: 0.0013
+Epoch:164 and AverageLoss:0.0013100456736004364
+Test Loss: 0.0013
+Epoch:165 and AverageLoss:0.0013119751679632151
+Test Loss: 0.0013
+Epoch:166 and AverageLoss:0.0013189128637823761
+Test Loss: 0.0013
+Epoch:167 and AverageLoss:0.0012927262536067254
+Test Loss: 0.0013
+Epoch:168 and AverageLoss:0.0012963538674814704
+Test Loss: 0.0013
+Epoch:169 and AverageLoss:0.0012874777151237065
+Test Loss: 0.0013
+Epoch:170 and AverageLoss:0.0013448983698569562
+Test Loss: 0.0013
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_170.pth
+Model Save Sucessfully
+Epoch:171 and AverageLoss:0.0012772092305860783
+Test Loss: 0.0013
+Epoch:172 and AverageLoss:0.0012741584048417882
+Test Loss: 0.0013
+Epoch:173 and AverageLoss:0.0012741701482373775
+Test Loss: 0.0013
+Epoch:174 and AverageLoss:0.0012748265987231342
+Test Loss: 0.0013
+Epoch:175 and AverageLoss:0.0012708319103814784
+Test Loss: 0.0013
+Epoch:176 and AverageLoss:0.0012689972162142796
+Test Loss: 0.0013
+Epoch:177 and AverageLoss:0.0012579350860949128
+Test Loss: 0.0013
+Epoch:178 and AverageLoss:0.0012596730447820704
+Test Loss: 0.0013
+Epoch:179 and AverageLoss:0.0012509691389951054
+Test Loss: 0.0012
+Epoch:180 and AverageLoss:0.0012664191326470892
+Test Loss: 0.0012
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_180.pth
+Model Save Sucessfully
+Epoch:181 and AverageLoss:0.0012395348734691861
+Test Loss: 0.0012
+Epoch:182 and AverageLoss:0.0012433800418439806
+Test Loss: 0.0012
+Epoch:183 and AverageLoss:0.00123697051247832
+Test Loss: 0.0012
+Epoch:184 and AverageLoss:0.0012328287000644737
+Test Loss: 0.0012
+Epoch:185 and AverageLoss:0.0012349373668678536
+Test Loss: 0.0012
+Epoch:186 and AverageLoss:0.0012256791035852525
+Test Loss: 0.0012
+Epoch:187 and AverageLoss:0.001221276684770022
+Test Loss: 0.0012
+Epoch:188 and AverageLoss:0.001218399145878074
+Test Loss: 0.0012
+Epoch:189 and AverageLoss:0.0012345675263344118
+Test Loss: 0.0012
+Epoch:190 and AverageLoss:0.0012052750078074188
+Test Loss: 0.0012
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_ill_uni_s5234_190.pth
+Model Save Sucessfully
+Epoch:191 and AverageLoss:0.0012066913302025703
+Test Loss: 0.0012
+Epoch:192 and AverageLoss:0.0012095006273468679
+Test Loss: 0.0012
+Epoch:193 and AverageLoss:0.0011993723707167771
+Test Loss: 0.0012
+Epoch:194 and AverageLoss:0.0011969800726539448
+Test Loss: 0.0012
+Epoch:195 and AverageLoss:0.0011952416746432639
+Test Loss: 0.0012
+Epoch:196 and AverageLoss:0.001196963335546157
+Test Loss: 0.0012
+Epoch:197 and AverageLoss:0.001181252484021262
+Test Loss: 0.0012
+Epoch:198 and AverageLoss:0.0012009292773609934
+Test Loss: 0.0012
+Epoch:199 and AverageLoss:0.0011752295308536658
+Test Loss: 0.0012
+Model Save Sucessfully
+  ✓ Saved: recon_t10_ill_uni_s5234_ReconstructionLoss.png
+Batch 2 completed at Thu Jan 22 07:35:25 IST 2026
+---
+All training jobs completed at Thu Jan 22 07:35:25 IST 2026
+
+=
+Generating aggregate plots for seed groups...
+=
+============================================================
+POST-TRAINING AGGREGATION
+============================================================
+
+Mode: Aggregate all completed model groups
+
+
+Found 2 completed models
+Grouping by configuration (excluding seed)...
+
+============================================================
+GENERATING AGGREGATE PLOTS
+============================================================
+
+Group 1:
+  Config: Recon | Uniform | t=10 | custom_illusion_dataset | lr=5e-05
+  Models: 2 seeds
+    • recon_t10_ill_uni_s5234
+    • recon_t10_ill_uni_s5511
+  Generating aggregate plot...
+
+============================================================
+PLOTTING AGGREGATE METRICS ACROSS SEEDS
+============================================================
+Pattern: Uniform
+Condition: recon_pc_train
+Classification Timesteps: 10
+Dataset: custom_illusion_dataset
+Seeds: [5234, 5511]
+Models: 2
+✓ Saved: recon_t10_ill_uni_ReconstructionLoss.png
+============================================================
+
+  ✓ Aggregate plot generated
+
+============================================================
+SUMMARY
+============================================================
+  Total model groups: 1
+  Groups with multiple seeds: 1 (plots generated)
+  Groups with single seed: 0 (no aggregate needed)
+============================================================
+
+✓ Aggregate plotting complete!
+=
+✓ Job complete! Check plots/ directory for results
+=
