@@ -1,6 +1,6 @@
 """
 Simple Model Tracking and Batch Submission System
-FIXED: Added completion check script before post-processing, proper Python string formatting
+FIXED: 2 GPU limit, proper completion check, fixed race conditions
 """
 
 import json
@@ -15,7 +15,7 @@ from model_tracking import get_tracker
 def create_slurm_script(base_config, output_dir="slurm_jobs"):
     """
     Create SLURM batch submission script for multiple experiments
-    FIXED: Run maximum 2 jobs in parallel + wait for ALL completions before aggregating
+    FIXED: Maximum 2 GPUs, proper job batching, completion verification
     
     Args:
         base_config: Dictionary containing experiment parameters
@@ -59,9 +59,9 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     job_name = f"pred_net_{base_config['train_cond']}_{timestamp}"
     
-    # Calculate resources - Use as many GPUs as jobs (up to available)
+    # ✅ FIXED: Maximum 2 GPUs
     num_jobs = len(config_paths)
-    gpus_needed = num_jobs  # One GPU per job
+    gpus_needed = min(2, num_jobs)  # Request max 2 GPUs
     
     # Build script
     script_lines = [
@@ -82,44 +82,74 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
         "",
         "# Print job info",
         'echo "Job started at $(date)"',
-        f'echo "Running {num_jobs} experiments in parallel"',
+        f'echo "Running {num_jobs} experiments with {gpus_needed} GPUs"',
         'echo "Job ID: $SLURM_JOB_ID"',
         "",
-        "# Run all jobs in parallel, each on its own GPU",
-        ""
     ]
     
-    # Add jobs - all run in parallel, each with its own GPU
-    for i in range(num_jobs):
-        cfg_path = config_paths[i]
-        model_name = model_names[i]
-        gpu_id = i  # Each job gets its own GPU (0, 1, 2, 3, ...)
+    # ✅ Run jobs in batches of 2 (one per GPU)
+    if gpus_needed == 2:
+        script_lines.append("# Running jobs in batches of 2 (one per GPU)")
+        script_lines.append("")
         
-        script_lines.extend([
-            f"# Job {i+1}: {model_name}",
-            f"CUDA_VISIBLE_DEVICES={gpu_id} python main.py --config {cfg_path} --model-name {model_name} &",
-            f"JOB{i+1}_PID=$!",
-            f'echo "Started {model_name} on GPU {gpu_id} (PID: $JOB{i+1}_PID)"',
-            ""
-        ])
+        for batch_start in range(0, num_jobs, 2):
+            batch_end = min(batch_start + 2, num_jobs)
+            batch_jobs = list(range(batch_start, batch_end))
+            
+            script_lines.append(f"# Batch {batch_start//2 + 1}: Jobs {batch_start+1}-{batch_end}")
+            
+            # Start jobs in this batch
+            for i, job_idx in enumerate(batch_jobs):
+                cfg_path = config_paths[job_idx]
+                model_name = model_names[job_idx]
+                gpu_id = i  # 0 or 1
+                
+                script_lines.extend([
+                    f"CUDA_VISIBLE_DEVICES={gpu_id} python main.py --config {cfg_path} --model-name {model_name} &",
+                    f"JOB{job_idx+1}_PID=$!",
+                    f'echo "Started {model_name} on GPU {gpu_id} (PID: $JOB{job_idx+1}_PID)"',
+                ])
+            
+            # Wait for this batch to complete before starting next batch
+            script_lines.extend([
+                "",
+                "# Wait for this batch to complete",
+                "wait",
+                f'echo "Batch {batch_start//2 + 1} completed at $(date)"',
+                'echo "---"',
+                ""
+            ])
+    else:
+        # Only 1 GPU or 1 job - run sequentially
+        script_lines.append("# Running jobs sequentially on 1 GPU")
+        script_lines.append("")
+        
+        for i in range(num_jobs):
+            cfg_path = config_paths[i]
+            model_name = model_names[i]
+            
+            script_lines.extend([
+                f"# Job {i+1}: {model_name}",
+                f"CUDA_VISIBLE_DEVICES=0 python main.py --config {cfg_path} --model-name {model_name}",
+                f'echo "Completed {model_name} at $(date)"',
+                'echo "---"',
+                ""
+            ])
     
-    # Wait for all jobs to finish
+    # Final completion message
     script_lines.extend([
-        "# Wait for all jobs to complete",
-        "wait",
         'echo "All training jobs completed at $(date)"',
-        'echo "---"',
+        'echo ""',
         ""
     ])
     
-    # ✅ MODIFICATION: Fixed completion check with proper Python string formatting
+    # ✅ Completion check with proper Python formatting
     script_lines.extend([
-        'echo ""',
         'echo "========================================"',
         'echo "Verifying all models completed successfully..."',
         'echo "========================================"',
         '',
-        '# ✅ Check that all models are marked as completed in registry',
+        '# Check that all models are marked as completed in registry',
         'python << EOF',
         'from model_tracking import get_tracker',
         'tracker = get_tracker()',
@@ -130,13 +160,13 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
         '    if not info or info.get("status") != "completed":',
         '        incomplete.append(m)',
         'if incomplete:',
-        '    print(f"WARNING: {len(incomplete)} models did not complete:")',  # ✅ Fixed: single braces
+        '    print(f"WARNING: {len(incomplete)} models did not complete:")',
         '    for m in incomplete:',
-        '        print(f"  - {m}")',  # ✅ Fixed: single braces
+        '        print(f"  - {m}")',
         '    print("Skipping aggregate plots.")',
         '    exit(1)',
         'else:',
-        '    print(f"✓ All {len(models)} models completed successfully")',  # ✅ Fixed: single braces
+        '    print(f"✓ All {len(models)} models completed successfully")',
         '    exit(0)',
         'EOF',
         '',
@@ -171,8 +201,11 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
     print(f"\n✓ Created SLURM script: {script_path}")
     print(f"✓ Generated {num_jobs} config files")
     print(f"✓ Registered {len(model_names)} models in tracker")
-    print(f"✓ Requesting {gpus_needed} GPUs for parallel execution")
-    print(f"✓ All jobs will run in parallel (1 GPU per job)")
+    print(f"✓ Requesting {gpus_needed} GPUs (max 2)")
+    if gpus_needed == 2:
+        print(f"✓ Jobs will run in batches of 2 (1 job per GPU)")
+    else:
+        print(f"✓ Jobs will run sequentially on 1 GPU")
     print(f"✓ Completion check added before aggregate plotting")
     
     return script_path, model_names

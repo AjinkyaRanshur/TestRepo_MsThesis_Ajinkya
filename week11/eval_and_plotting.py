@@ -16,7 +16,7 @@ def get_optimizer_display(optimize_all_layers):
 def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed_analysis"):
     """
     FIXED: Plot training curves with error bars (not ribbons) across multiple seeds
-    UPDATED: Legend and metadata outside plot area for reconstruction plots
+    UPDATED: Metadata at bottom right outside plot area for ALL plots
     """
     os.makedirs(save_dir, exist_ok=True)
     
@@ -125,16 +125,15 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         
         epochs = np.arange(1, min_epochs + 1)
         
-        # ✅ MODIFICATION 3: Use error bars instead of ribbons
         # Adaptive sampling based on number of epochs
         if min_epochs <= 25:
-            error_bar_interval = 1  # Every epoch for very short training
+            error_bar_interval = 1
         elif min_epochs <= 50:
-            error_bar_interval = 2  # Every 2 epochs
+            error_bar_interval = 2
         elif min_epochs <= 100:
-            error_bar_interval = 5  # Every 5 epochs
+            error_bar_interval = 5
         else:
-            error_bar_interval = max(5, min_epochs // 20)  # ~20 error bars, min 5
+            error_bar_interval = max(5, min_epochs // 20)
         
         error_epochs = epochs[::error_bar_interval]
         error_mean_train = mean_train[::error_bar_interval]
@@ -161,20 +160,23 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         ax.text(0.5, 1.02, f'Reconstruction Timesteps: {class_timesteps}', 
                 transform=ax.transAxes, ha='center', fontsize=11, style='italic')
         
-        # ✅ MODIFICATION 4: Move metadata and legend out of the plot area
-        # Put info text at top left outside the plot
-        info_text = f'Pattern: {pattern} | Seeds: n={len(seeds_used)} | Dataset: {dataset_name}'
-        ax.text(0.5, 1.06, info_text, transform=ax.transAxes, 
-                ha='center', va='bottom', fontsize=10,
-                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
-        
         ax.set_xlabel('Epoch', fontsize=13, fontweight='bold')
         ax.set_ylabel('Reconstruction Loss (MSE)', fontsize=13, fontweight='bold')
         
-        # Legend outside plot area (upper right)
-        ax.legend(fontsize=11, loc='upper left', bbox_to_anchor=(1.02, 1), 
-                 borderaxespad=0, frameon=True, fancybox=True, shadow=True)
+        # Legend inside plot area (upper right)
+        ax.legend(fontsize=11, loc='upper right', frameon=True, fancybox=True, shadow=True)
         ax.grid(alpha=0.3, linestyle='--')
+        
+        # ✅ Metadata at bottom right OUTSIDE plot area
+        info_lines = [
+            f'Pattern: {pattern}',
+            f'Seeds: n={len(seeds_used)}',
+            f'Dataset: {dataset_name}'
+        ]
+        info_text = '\n'.join(info_lines)
+        ax.text(1.02, 0.02, info_text, transform=ax.transAxes, 
+                ha='left', va='bottom', fontsize=10,
+                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
         
         filename = f"{base_name}_ReconstructionLoss.png"
         filepath = os.path.join(save_dir, filename)
@@ -199,16 +201,15 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         
         epochs = np.arange(1, min_epochs + 1)
         
-        # ✅ MODIFICATION 3: Use error bars instead of ribbons
-        # Adaptive sampling based on number of epochs
+        # Adaptive sampling
         if min_epochs <= 25:
-            error_bar_interval = 1  # Every epoch for very short training
+            error_bar_interval = 1
         elif min_epochs <= 50:
-            error_bar_interval = 2  # Every 2 epochs
+            error_bar_interval = 2
         elif min_epochs <= 100:
-            error_bar_interval = 5  # Every 5 epochs
+            error_bar_interval = 5
         else:
-            error_bar_interval = max(5, min_epochs // 20)  # ~20 error bars, min 5
+            error_bar_interval = max(5, min_epochs // 20)
         
         error_epochs = epochs[::error_bar_interval]
         error_mean_train = mean_train[::error_bar_interval]
@@ -239,7 +240,12 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         ax.text(0.5, 1.02, subtitle, 
                 transform=ax.transAxes, ha='center', fontsize=11, style='italic')
         
-        # Enhanced bottom right info box with optimizer scope
+        ax.set_xlabel('Epoch', fontsize=13, fontweight='bold')
+        ax.set_ylabel('Classification Loss (Cross-Entropy)', fontsize=13, fontweight='bold')
+        ax.legend(fontsize=11, loc='upper right')
+        ax.grid(alpha=0.3, linestyle='--')
+        
+        # ✅ Metadata at bottom right OUTSIDE plot area
         info_lines = [
             f'Classification Pattern: {pattern}',
             f'Seeds: n={len(seeds_used)}',
@@ -251,14 +257,9 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
             info_lines.append(f'Base Model: {recon_pattern}, {recon_ds_name}')
         
         info_text = '\n'.join(info_lines)
-        ax.text(0.98, 0.02, info_text, transform=ax.transAxes, 
-                ha='right', va='bottom', fontsize=9,
-                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3))
-        
-        ax.set_xlabel('Epoch', fontsize=13, fontweight='bold')
-        ax.set_ylabel('Classification Loss (Cross-Entropy)', fontsize=13, fontweight='bold')
-        ax.legend(fontsize=11, loc='upper right')
-        ax.grid(alpha=0.3, linestyle='--')
+        ax.text(1.02, 0.02, info_text, transform=ax.transAxes, 
+                ha='left', va='bottom', fontsize=9,
+                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
         
         filename = f"{base_name}_ClassificationLoss.png"
         filepath = os.path.join(save_dir, filename)
@@ -283,16 +284,15 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         
         epochs = np.arange(1, min_epochs + 1)
         
-        # ✅ MODIFICATION 3: Use error bars instead of ribbons
-        # Adaptive sampling based on number of epochs
+        # Adaptive sampling
         if min_epochs <= 25:
-            error_bar_interval = 1  # Every epoch for very short training
+            error_bar_interval = 1
         elif min_epochs <= 50:
-            error_bar_interval = 2  # Every 2 epochs
+            error_bar_interval = 2
         elif min_epochs <= 100:
-            error_bar_interval = 5  # Every 5 epochs
+            error_bar_interval = 5
         else:
-            error_bar_interval = max(5, min_epochs // 20)  # ~20 error bars, min 5
+            error_bar_interval = max(5, min_epochs // 20)
         
         error_epochs = epochs[::error_bar_interval]
         error_mean_train = mean_train_acc[::error_bar_interval]
@@ -323,7 +323,13 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         ax.text(0.5, 1.02, subtitle, 
                 transform=ax.transAxes, ha='center', fontsize=11, style='italic')
         
-        # Enhanced info box with optimizer scope
+        ax.set_xlabel('Epoch', fontsize=13, fontweight='bold')
+        ax.set_ylabel('Accuracy (%)', fontsize=13, fontweight='bold')
+        ax.legend(fontsize=11, loc='lower right')
+        ax.grid(alpha=0.3, linestyle='--')
+        ax.set_ylim([0, 100])
+        
+        # ✅ Metadata at bottom right OUTSIDE plot area
         info_lines = [
             f'Classification Pattern: {pattern}',
             f'Seeds: n={len(seeds_used)}',
@@ -335,15 +341,9 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
             info_lines.append(f'Base Model: {recon_pattern}, {recon_ds_name}')
         
         info_text = '\n'.join(info_lines)
-        ax.text(0.98, 0.02, info_text, transform=ax.transAxes, 
-                ha='right', va='bottom', fontsize=9,
-                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3))
-        
-        ax.set_xlabel('Epoch', fontsize=13, fontweight='bold')
-        ax.set_ylabel('Accuracy (%)', fontsize=13, fontweight='bold')
-        ax.legend(fontsize=11, loc='lower right')
-        ax.grid(alpha=0.3, linestyle='--')
-        ax.set_ylim([0, 100])
+        ax.text(1.02, 0.02, info_text, transform=ax.transAxes, 
+                ha='left', va='bottom', fontsize=9,
+                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
         
         filename = f"{base_name}_ClassificationAccuracy.png"
         filepath = os.path.join(save_dir, filename)
@@ -368,16 +368,15 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         
         epochs = np.arange(1, min_epochs + 1)
         
-        # ✅ MODIFICATION 3: Use error bars instead of ribbons
-        # Adaptive sampling based on number of epochs
+        # Adaptive sampling
         if min_epochs <= 25:
-            error_bar_interval = 1  # Every epoch for very short training
+            error_bar_interval = 1
         elif min_epochs <= 50:
-            error_bar_interval = 2  # Every 2 epochs
+            error_bar_interval = 2
         elif min_epochs <= 100:
-            error_bar_interval = 5  # Every 5 epochs
+            error_bar_interval = 5
         else:
-            error_bar_interval = max(5, min_epochs // 20)  # ~20 error bars, min 5
+            error_bar_interval = max(5, min_epochs // 20)
         
         error_epochs = epochs[::error_bar_interval]
         error_mean_illusion = mean_illusion[::error_bar_interval]
@@ -408,7 +407,12 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         ax.text(0.5, 1.02, subtitle, 
                 transform=ax.transAxes, ha='center', fontsize=11, style='italic')
         
-        # Enhanced info box with optimizer scope
+        ax.set_xlabel('Epoch', fontsize=13, fontweight='bold')
+        ax.set_ylabel('Reconstruction Loss (MSE)', fontsize=13, fontweight='bold')
+        ax.legend(fontsize=11, loc='upper right')
+        ax.grid(alpha=0.3, linestyle='--')
+        
+        # ✅ Metadata at bottom right OUTSIDE plot area
         info_lines = [
             f'Classification Pattern: {pattern}',
             f'Seeds: n={len(seeds_used)}',
@@ -420,14 +424,9 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
             info_lines.append(f'Base Model: {recon_pattern}, {recon_ds_name}')
         
         info_text = '\n'.join(info_lines)
-        ax.text(0.98, 0.02, info_text, transform=ax.transAxes, 
-                ha='right', va='bottom', fontsize=9,
-                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3))
-        
-        ax.set_xlabel('Epoch', fontsize=13, fontweight='bold')
-        ax.set_ylabel('Reconstruction Loss (MSE)', fontsize=13, fontweight='bold')
-        ax.legend(fontsize=11, loc='upper right')
-        ax.grid(alpha=0.3, linestyle='--')
+        ax.text(1.02, 0.02, info_text, transform=ax.transAxes, 
+                ha='left', va='bottom', fontsize=9,
+                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
         
         filename = f"{base_name}_ReconstructionComparison.png"
         filepath = os.path.join(save_dir, filename)
@@ -443,7 +442,7 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
 def plot_training_metrics(metrics_history, model_name, config):
     """
     FIXED: Plot training metrics for individual models with unique filenames
-    UPDATED: Show optimizer scope for classification models
+    UPDATED: Metadata at bottom right outside plot for ALL plots
     """
     os.makedirs("plots/individual_training_metrics", exist_ok=True)
 
@@ -498,8 +497,12 @@ def plot_training_metrics(metrics_history, model_name, config):
             ax.set_ylabel("Reconstruction Loss (MSE)", fontsize=13, fontweight='bold')
             metric_type = "ReconstructionLoss"
             
-            # Info box without optimizer (recon models don't have it)
-            info_text = f'Pattern: {pattern}\nSeed: {seed}\nDataset: {dataset_name}'
+            # ✅ Metadata at bottom right OUTSIDE plot
+            info_lines = [
+                f'Pattern: {pattern}',
+                f'Seed: {seed}',
+                f'Dataset: {dataset_name}'
+            ]
         else:
             # Classification training
             ax.set_title("Classification Training", fontsize=16, fontweight='bold', pad=20)
@@ -508,13 +511,18 @@ def plot_training_metrics(metrics_history, model_name, config):
             ax.set_ylabel("Classification Loss (Cross-Entropy)", fontsize=13, fontweight='bold')
             metric_type = "ClassificationLoss"
             
-            # Info box WITH optimizer scope
-            info_text = f'Pattern: {pattern}\nSeed: {seed}\nDataset: {dataset_name}\nOptimizer: {get_optimizer_display(optimize_all_layers)}'
+            # ✅ Metadata at bottom right OUTSIDE plot
+            info_lines = [
+                f'Pattern: {pattern}',
+                f'Seed: {seed}',
+                f'Dataset: {dataset_name}',
+                f'Optimizer: {get_optimizer_display(optimize_all_layers)}'
+            ]
         
-        # Bottom right info box
-        ax.text(0.98, 0.02, info_text, transform=ax.transAxes, 
-                ha='right', va='bottom', fontsize=10,
-                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3))
+        info_text = '\n'.join(info_lines)
+        ax.text(1.02, 0.02, info_text, transform=ax.transAxes, 
+                ha='left', va='bottom', fontsize=10,
+                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
         ax.set_xlabel("Epoch", fontsize=13, fontweight='bold')
         ax.legend(fontsize=11, loc='upper right')
@@ -539,11 +547,17 @@ def plot_training_metrics(metrics_history, model_name, config):
         ax.text(0.5, 1.02, f'Classification Timesteps: {timesteps}', 
                 transform=ax.transAxes, ha='center', fontsize=11, style='italic')
         
-        # Info box with optimizer scope
-        info_text = f'Pattern: {pattern}\nSeed: {seed}\nDataset: {dataset_name}\nOptimizer: {get_optimizer_display(optimize_all_layers)}'
-        ax.text(0.98, 0.02, info_text, transform=ax.transAxes, 
-                ha='right', va='bottom', fontsize=10,
-                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3))
+        # ✅ Metadata at bottom right OUTSIDE plot
+        info_lines = [
+            f'Pattern: {pattern}',
+            f'Seed: {seed}',
+            f'Dataset: {dataset_name}',
+            f'Optimizer: {get_optimizer_display(optimize_all_layers)}'
+        ]
+        info_text = '\n'.join(info_lines)
+        ax.text(1.02, 0.02, info_text, transform=ax.transAxes, 
+                ha='left', va='bottom', fontsize=10,
+                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
         ax.set_xlabel("Epoch", fontsize=13, fontweight='bold')
         ax.set_ylabel("Accuracy (%)", fontsize=13, fontweight='bold')
@@ -572,11 +586,17 @@ def plot_training_metrics(metrics_history, model_name, config):
         ax.text(0.5, 1.02, f'Classification Timesteps: {timesteps}', 
                 transform=ax.transAxes, ha='center', fontsize=11, style='italic')
         
-        # Info box with optimizer scope
-        info_text = f'Pattern: {pattern}\nSeed: {seed}\nTrain: {dataset_name} | Test: CIFAR-10 & Illusion\nOptimizer: {get_optimizer_display(optimize_all_layers)}'
-        ax.text(0.98, 0.02, info_text, transform=ax.transAxes, 
-                ha='right', va='bottom', fontsize=10,
-                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3))
+        # ✅ Metadata at bottom right OUTSIDE plot
+        info_lines = [
+            f'Pattern: {pattern}',
+            f'Seed: {seed}',
+            f'Train: {dataset_name} | Test: CIFAR-10 & Illusion',
+            f'Optimizer: {get_optimizer_display(optimize_all_layers)}'
+        ]
+        info_text = '\n'.join(info_lines)
+        ax.text(1.02, 0.02, info_text, transform=ax.transAxes, 
+                ha='left', va='bottom', fontsize=10,
+                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
         ax.set_xlabel("Epoch", fontsize=13, fontweight='bold')
         ax.set_ylabel("Reconstruction Loss (MSE)", fontsize=13, fontweight='bold')
@@ -594,11 +614,12 @@ def plot_training_metrics(metrics_history, model_name, config):
 def plot_test_trajectory(class_results, model_name, config):
     """
     Plot trajectory of illusion perception across timesteps
+    UPDATED: Metadata at bottom right outside plot
     """
     os.makedirs("plots/test_trajectories", exist_ok=True)
 
-    plt.figure(figsize=(12, 6))
-    plt.title(f'PC Dynamics Trajectory\nModel: {model_name}', fontsize=12)
+    fig, ax = plt.subplots(figsize=(12, 7))
+    ax.set_title(f'PC Dynamics Trajectory\nModel: {model_name}', fontsize=12)
 
     colors = {
         'square': '#2ecc71',
@@ -622,7 +643,7 @@ def plot_test_trajectory(class_results, model_name, config):
 
         timesteps = range(len(mean_probs))
 
-        plt.plot(
+        ax.plot(
             timesteps,
             mean_probs,
             linewidth=2,
@@ -632,11 +653,11 @@ def plot_test_trajectory(class_results, model_name, config):
             color=colors.get(cls_name, '#95a5a6')
         )
 
-    plt.xlabel('Timestep', fontsize=12)
-    plt.ylabel('Probability of being correct (%)', fontsize=12)
-    plt.ylim(0, 100)
-    plt.legend(fontsize=10)
-    plt.grid(True, alpha=0.3)
+    ax.set_xlabel('Timestep', fontsize=12)
+    ax.set_ylabel('Probability of being correct (%)', fontsize=12)
+    ax.set_ylim(0, 100)
+    ax.legend(fontsize=10, loc='best')
+    ax.grid(True, alpha=0.3)
 
     plt.tight_layout()
     plt.savefig(f"plots/test_trajectories/{model_name}_trajectory.png", 

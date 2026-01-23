@@ -64,8 +64,8 @@ def slurm_testing_type_menu():
 
 def slurm_select_test_models():
     """
-    Select models for SLURM testing
-    Returns list of model names grouped by configuration
+    UPDATED: Simplified model selection - show only unique configurations without seeds
+    Select base configuration, automatically includes all seeds
     """
     clear()
     banner("Model Selection")
@@ -82,32 +82,67 @@ def slurm_select_test_models():
         input("\nPress ENTER...")
         return None
     
-    # Group by configuration (excluding seed)
+    # ✅ Group by configuration (excluding seed) - SIMPLIFIED display
     config_groups = {}
     for model in models:
         config = model['config']
         
+        # Key without seed
         key = (
             config.get('pattern'),
             config.get('timesteps'),
             config.get('Dataset'),
             config.get('base_recon_model'),
-            config.get('checkpoint_epoch')
+            config.get('checkpoint_epoch'),
+            config.get('optimize_all_layers', False)
         )
         
         if key not in config_groups:
-            config_groups[key] = []
-        config_groups[key].append(model['name'])
+            config_groups[key] = {
+                'models': [],
+                'config': config
+            }
+        config_groups[key]['models'].append(model['name'])
     
-    # Display configurations
+    # ✅ Display SIMPLIFIED configurations (essentials only)
     print(Fore.GREEN + f"Found {len(config_groups)} unique model configurations:\n")
     
     configs_list = list(config_groups.items())
-    for i, (config_key, model_names) in enumerate(configs_list, 1):
-        pattern, timesteps, dataset, base_model, chk_epoch = config_key
-        print(f"{i}. Pattern: {pattern}, Timesteps: {timesteps}, Dataset: {dataset}")
-        print(f"   Base: {base_model}, Checkpoint: {chk_epoch}")
-        print(f"   Seeds: {len(model_names)} ({', '.join([m.split('_s')[-1] for m in model_names])})\n")
+    for i, (config_key, group_data) in enumerate(configs_list, 1):
+        pattern, timesteps, dataset, base_model, chk_epoch, opt_all = config_key
+        config = group_data['config']
+        model_names = group_data['models']
+        
+        # Get base model info for display
+        base_model_info = tracker.get_model(base_model)
+        if base_model_info:
+            base_config = base_model_info['config']
+            recon_timesteps = base_config.get('timesteps', '?')
+            recon_dataset = base_config.get('Dataset', '?')
+        else:
+            recon_timesteps = '?'
+            recon_dataset = '?'
+        
+        # Dataset display names
+        dataset_display = {
+            "cifar10": "CIFAR-10",
+            "stl10": "STL-10",
+            "custom_illusion_dataset": "Illusion",
+            "kanizsa_square_dataset": "Kanizsa"
+        }
+        
+        train_ds = dataset_display.get(dataset, dataset)
+        recon_ds = dataset_display.get(recon_dataset, recon_dataset)
+        
+        # Optimizer display
+        opt_display = "All Layers" if opt_all else "Linear Only"
+        
+        # ✅ SIMPLIFIED DISPLAY - only essentials
+        print(f"{Fore.CYAN}{i}. Classification Training Config:{Fore.RESET}")
+        print(f"   Base Recon: {recon_ds} dataset, {recon_timesteps} timesteps")
+        print(f"   Classification: {train_ds} dataset, {timesteps} timesteps")
+        print(f"   Pattern: {pattern} | Optimizer: {opt_display}")
+        print(f"   {Fore.GREEN}Seeds available: {len(model_names)}{Fore.RESET}\n")
     
     # Select configuration
     print(Fore.YELLOW + "Select configuration number (or 'all' for all):")
@@ -115,15 +150,15 @@ def slurm_select_test_models():
     
     if choice.lower() == 'all':
         selected_models = []
-        for model_names in config_groups.values():
-            selected_models.extend(model_names)
+        for _, group_data in config_groups.values():
+            selected_models.extend(group_data['models'])
         return selected_models
     
     try:
         idx = int(choice) - 1
         if 0 <= idx < len(configs_list):
             selected_config = configs_list[idx]
-            return selected_config[1]  # Return list of model names
+            return selected_config[1]['models']  # Return list of all seed models
         else:
             print(Fore.RED + "Invalid selection!")
             return None
@@ -220,7 +255,7 @@ def slurm_recon_entries():
     epochs_input = input("Epochs (default 200): ").strip() or "200"
     epochs = parse_list(epochs_input, int)
 
-    # Get dataset - ✅ FIXED: Now handles ranges and multiple selections
+    # Get dataset
     print("\nAvailable datasets:")
     print("  1. cifar10")
     print("  2. stl10")
@@ -235,13 +270,12 @@ def slurm_recon_entries():
         "4": "kanizsa_square_dataset"
     }
     
-    # ✅ Parse dataset selection (handles comma-separated and ranges)
+    # Parse dataset selection
     dataset_list = []
     if dataset_input:
         for part in dataset_input.split(','):
             part = part.strip()
             if '-' in part:
-                # Handle range like "1-3"
                 try:
                     start, end = part.split('-')
                     for i in range(int(start), int(end) + 1):
@@ -250,11 +284,9 @@ def slurm_recon_entries():
                 except ValueError:
                     print(f"{Fore.YELLOW}Warning: Invalid range '{part}', skipping{Fore.RESET}")
             else:
-                # Handle single selection
                 if part in dataset_map and dataset_map[part] not in dataset_list:
                     dataset_list.append(dataset_map[part])
     
-    # Default to cifar10 if nothing valid selected
     if not dataset_list:
         dataset_list = ["cifar10"]
     
@@ -343,14 +375,15 @@ def slurm_recon_entries():
 
 def slurm_classification_entries():
     """
-    Collect parameters for classification training batch submission
+    UPDATED: Simplified classification training - show grouped reconstruction models
+    Automatically trains all seeds from selected base model
     """
     clear()
     banner("Classification Training")
     
     print(Fore.YELLOW + "SLURM BATCH SUBMISSION - CLASSIFICATION\n")
     
-    # Show available reconstruction models
+    # Show available reconstruction models GROUPED by config
     tracker = get_tracker()
     completed_models = tracker.get_completed_recon_models()
     
@@ -360,36 +393,78 @@ def slurm_classification_entries():
         input("\nPress ENTER...")
         return None
     
-    print(Fore.GREEN + f"Found {len(completed_models)} completed reconstruction models:\n")
-    for i, model in enumerate(completed_models, 1):
+    # ✅ Group reconstruction models by config (excluding seed)
+    recon_groups = {}
+    for model in completed_models:
         config = model.get('config', {})
-        print(f"  {i}. {model['name']}")
-        print(f"     Pattern: {config.get('pattern')}, Seed: {config.get('seed')}, "
-              f"Timesteps: {config.get('timesteps')}, Dataset: {config.get('Dataset')}\n")
+        
+        key = (
+            config.get('pattern'),
+            config.get('timesteps'),
+            config.get('Dataset'),
+            config.get('lr')
+        )
+        
+        if key not in recon_groups:
+            recon_groups[key] = {
+                'models': [],
+                'config': config
+            }
+        recon_groups[key]['models'].append(model['name'])
     
-    # Select base models
-    print(Fore.YELLOW + "Select base reconstruction models:")
-    print("  - Enter model numbers (comma-separated, e.g., 1,2,3)")
-    print("  - Or enter 'all' to use all models\n")
+    # ✅ Display SIMPLIFIED reconstruction groups
+    print(Fore.GREEN + f"Found {len(recon_groups)} reconstruction configurations:\n")
+    
+    groups_list = list(recon_groups.items())
+    for i, (config_key, group_data) in enumerate(groups_list, 1):
+        pattern, timesteps, dataset, lr = config_key
+        model_names = group_data['models']
+        
+        # Dataset display
+        dataset_display = {
+            "cifar10": "CIFAR-10",
+            "stl10": "STL-10",
+            "custom_illusion_dataset": "Illusion",
+            "kanizsa_square_dataset": "Kanizsa"
+        }
+        dataset_name = dataset_display.get(dataset, dataset)
+        
+        # ✅ SIMPLIFIED DISPLAY
+        print(f"{Fore.CYAN}{i}. Reconstruction Config:{Fore.RESET}")
+        print(f"   Dataset: {dataset_name} | Timesteps: {timesteps}")
+        print(f"   Pattern: {pattern}")
+        print(f"   {Fore.GREEN}Seeds available: {len(model_names)}{Fore.RESET}\n")
+    
+    # Select base model group
+    print(Fore.YELLOW + "Select base reconstruction configuration:")
+    print("  - Enter configuration number")
+    print("  - Or enter 'all' to use all configurations\n")
     
     model_choice = input(Fore.WHITE + "Your choice: ").strip()
     
     if model_choice.lower() == 'all':
-        selected_models = [m['name'] for m in completed_models]
+        selected_models = []
+        for group_data in recon_groups.values():
+            selected_models.extend(group_data['models'])
     else:
         try:
-            indices = [int(x.strip())-1 for x in model_choice.split(',')]
-            selected_models = [completed_models[i]['name'] for i in indices 
-                             if 0 <= i < len(completed_models)]
-        except (ValueError, IndexError):
-            print(Fore.RED + "Invalid selection!")
+            idx = int(model_choice) - 1
+            if 0 <= idx < len(groups_list):
+                selected_models = groups_list[idx][1]['models']
+            else:
+                print(Fore.RED + "Invalid selection!")
+                input("Press ENTER...")
+                return None
+        except ValueError:
+            print(Fore.RED + "Invalid input!")
             input("Press ENTER...")
             return None
     
-    print(f"\n{Fore.GREEN}Selected {len(selected_models)} base models{Fore.RESET}")
+    print(f"\n{Fore.GREEN}✓ Selected {len(selected_models)} base models (all seeds){Fore.RESET}")
+    print(f"{Fore.YELLOW}Classification will be trained for ALL seeds automatically{Fore.RESET}\n")
    
-    # NEW: Ask which dataset to use for classification training
-    print(Fore.YELLOW + "\nWhich dataset to use for classification training?")
+    # Dataset for classification training
+    print(Fore.YELLOW + "Which dataset to use for classification training?")
     print("  1. custom_illusion_dataset (6 classes: 5 shapes + random)")
     print("  2. kanizsa_square_dataset (2 classes: square vs random)")
 
@@ -397,16 +472,15 @@ def slurm_classification_entries():
 
     if dataset_choice == "2":
        classification_dataset = "kanizsa_square_dataset"
-       number_of_classes = [2]  # square vs random
+       number_of_classes = [2]
     else:
        classification_dataset = "custom_illusion_dataset"
-       number_of_classes = [6]  # 5 shapes + random
+       number_of_classes = [6]
 
     dataset_list = [classification_dataset]
 
     print(f"\n{Fore.GREEN}Classification dataset: {classification_dataset}{Fore.RESET}")
     print(f"{Fore.GREEN}Number of classes: {number_of_classes[0]}{Fore.RESET}")    
-
 
     # Select checkpoint epochs
     print(Fore.YELLOW + "\nWhich checkpoint epochs to use?")
@@ -415,7 +489,7 @@ def slurm_classification_entries():
     checkpoint_epochs = parse_list(checkpoint_input, int)
     
     # Get training parameters
-    print("\nTraining Parameters:")
+    print("\nClassification Training Parameters:")
     
     epochs_input = input("Epochs (default 25): ").strip() or "25"
     epochs = parse_list(epochs_input, int)
@@ -459,6 +533,7 @@ def slurm_classification_entries():
     optimize_all_layers = (opt_choice == "2")
     
     # Calculate total models
+    # ✅ Seeds come from base models automatically
     number_of_models = (
         len(selected_models) *
         len(checkpoint_epochs) *
@@ -472,7 +547,7 @@ def slurm_classification_entries():
     print(f"\n{'='*60}")
     print(f"Will create {number_of_models} classification models")
     print(f"{'='*60}")
-    print(f"Base Models: {len(selected_models)}")
+    print(f"Base Recon Models: {len(selected_models)} (with all their seeds)")
     print(f"Checkpoints per model: {len(checkpoint_epochs)}")
     print(f"Patterns: {len(selected_patterns)}")
     print(f"Timesteps: {len(timesteps)}")

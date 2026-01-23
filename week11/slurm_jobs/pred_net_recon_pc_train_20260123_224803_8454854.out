@@ -1,0 +1,331 @@
+==========================================
+SLURM_CLUSTER_NAME = param-brahma
+SLURM_ARRAY_JOB_ID = 
+SLURM_ARRAY_TASK_ID = 
+SLURM_ARRAY_TASK_COUNT = 
+SLURM_ARRAY_TASK_MAX = 
+SLURM_ARRAY_TASK_MIN = 
+SLURM_JOB_ACCOUNT = collins
+SLURM_JOB_ID = 8454854
+SLURM_JOB_NAME = pred_net_recon_pc_train_20260123_224803
+SLURM_JOB_NODELIST = gpu020
+SLURM_JOB_USER = ajinkyar
+SLURM_JOB_UID = 7397
+SLURM_JOB_PARTITION = gpu
+SLURM_TASK_PID = 10211
+SLURM_SUBMIT_DIR = /home/ajinkyar/TestRepo_MsThesis_Ajinkya/week11
+SLURM_CPUS_ON_NODE = 4
+SLURM_NTASKS = 1
+SLURM_TASK_PID = 10211
+==========================================
+Job started at Fri Jan 23 22:47:52 IST 2026
+Running 3 experiments with 2 GPUs
+Job ID: 8454854
+Started recon_t10_c10_uni_s3336 on GPU 0 (PID: 10233)
+Started recon_t10_c10_uni_s1134 on GPU 1 (PID: 10234)
+CUDA available: True
+CUDA device count: 1
+Using CUDA device: cuda:0
+CUDA device name:Tesla V100-SXM2-16GB
+CUDA memory allocated: 0.00 GB
+Using device: cuda:0
+⚠ Checkpoint missing: recon_t10_c10_uni_s2933
+⚠ Checkpoint missing: recon_t10_c10_uni_s8723
+⚠ Checkpoint missing: recon_t10_c10_uni_s2535
+⚠ Checkpoint missing: recon_t10_c10_uni_s4214
+✗ Removing from registry: recon_t10_c10_uni_s2933
+✗ Removing from registry: recon_t10_c10_uni_s8723
+✗ Removing from registry: recon_t10_c10_uni_s2535
+✗ Removing from registry: recon_t10_c10_uni_s4214
+✓ Cleaned up 4 invalid entries
+
+Epoch:0 and AverageLoss:0.299841377222538
+Test Loss: 0.1284
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_c10_uni_s3336_0.pth
+Model Save Sucessfully
+Epoch:1 and AverageLoss:0.09316139723956585
+Test Loss: 0.0717
+Epoch:2 and AverageLoss:0.06075298798084259
+Test Loss: 0.0515
+Epoch:3 and AverageLoss:0.045036948937177655
+Test Loss: 0.0393
+Epoch:4 and AverageLoss:0.03521563589423895
+Test Loss: 0.0316
+Epoch:5 and AverageLoss:0.028880889667570592
+Test Loss: 0.0264
+Epoch:6 and AverageLoss:0.024455555167794227
+Test Loss: 0.0227
+Epoch:7 and AverageLoss:0.021225639753043653
+Test Loss: 0.0199
+Epoch:8 and AverageLoss:0.018833707734197378
+Test Loss: 0.0178
+Epoch:9 and AverageLoss:0.017029835376888514
+Test Loss: 0.0163
+Epoch:10 and AverageLoss:0.015641233472526075
+Test Loss: 0.0150
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_c10_uni_s3336_10.pth
+Model Save Sucessfully
+Epoch:11 and AverageLoss:0.014556640076637269
+Test Loss: 0.0141
+Epoch:12 and AverageLoss:0.013682892710715532
+Test Loss: 0.0133
+Epoch:13 and AverageLoss:0.012974071072041989
+Test Loss: 0.0126
+Epoch:14 and AverageLoss:0.0123733538903296
+Test Loss: 0.0121
+Epoch:15 and AverageLoss:0.011846719197928906
+Test Loss: 0.0116
+Epoch:16 and AverageLoss:0.011381143876165152
+Test Loss: 0.0112
+Epoch:17 and AverageLoss:0.010972272402048112
+Test Loss: 0.0108
+Epoch:18 and AverageLoss:0.010614089434593917
+Test Loss: 0.0104
+Epoch:19 and AverageLoss:0.010297894690930844
+Test Loss: 0.0101
+
+============================================================
+Training completed for recon_t10_c10_uni_s3336
+Generating individual training plots...
+============================================================
+
+  ✓ Saved: recon_t10_c10_uni_s3336_ReconstructionLoss.png
+
+✓ Metrics saved to registry
+✓ Individual plots generated
+============================================================
+
+Model Save Sucessfully
+CUDA available: True
+CUDA device count: 1
+Using CUDA device: cuda:0
+CUDA device name:Tesla V100-SXM2-16GB
+CUDA memory allocated: 0.00 GB
+Using device: cuda:0
+⚠ Checkpoint missing: recon_t10_c10_uni_s2933
+⚠ Checkpoint missing: recon_t10_c10_uni_s8723
+⚠ Checkpoint missing: recon_t10_c10_uni_s2535
+⚠ Checkpoint missing: recon_t10_c10_uni_s4214
+✗ Removing from registry: recon_t10_c10_uni_s2933
+✗ Removing from registry: recon_t10_c10_uni_s8723
+✗ Removing from registry: recon_t10_c10_uni_s2535
+✗ Removing from registry: recon_t10_c10_uni_s4214
+✓ Cleaned up 4 invalid entries
+
+Epoch:0 and AverageLoss:0.37408897042274475
+Test Loss: 0.1654
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_c10_uni_s1134_0.pth
+Model Save Sucessfully
+Epoch:1 and AverageLoss:0.12120334687232971
+Test Loss: 0.0896
+Epoch:2 and AverageLoss:0.07296236487030983
+Test Loss: 0.0594
+Epoch:3 and AverageLoss:0.0505824305087328
+Test Loss: 0.0433
+Epoch:4 and AverageLoss:0.038292657472193244
+Test Loss: 0.0339
+Epoch:5 and AverageLoss:0.030709647545218467
+Test Loss: 0.0278
+Epoch:6 and AverageLoss:0.025691019289195538
+Test Loss: 0.0237
+Epoch:7 and AverageLoss:0.022168071122467516
+Test Loss: 0.0207
+Epoch:8 and AverageLoss:0.019545793564617633
+Test Loss: 0.0184
+Epoch:9 and AverageLoss:0.017537253224104644
+Test Loss: 0.0167
+Epoch:10 and AverageLoss:0.015985920145362615
+Test Loss: 0.0153
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_c10_uni_s1134_10.pth
+Model Save Sucessfully
+Epoch:11 and AverageLoss:0.0147567970238626
+Test Loss: 0.0142
+Epoch:12 and AverageLoss:0.013758987540751695
+Test Loss: 0.0133
+Epoch:13 and AverageLoss:0.012927860760688782
+Test Loss: 0.0126
+Epoch:14 and AverageLoss:0.012226310616731644
+Test Loss: 0.0119
+Epoch:15 and AverageLoss:0.011625040542334318
+Test Loss: 0.0114
+Epoch:16 and AverageLoss:0.011094098470360041
+Test Loss: 0.0108
+Epoch:17 and AverageLoss:0.010626803373545409
+Test Loss: 0.0104
+Epoch:18 and AverageLoss:0.010206151885539293
+Test Loss: 0.0100
+Epoch:19 and AverageLoss:0.009830048536509275
+Test Loss: 0.0097
+
+============================================================
+Training completed for recon_t10_c10_uni_s1134
+Generating individual training plots...
+============================================================
+
+  ✓ Saved: recon_t10_c10_uni_s1134_ReconstructionLoss.png
+
+✓ Metrics saved to registry
+✓ Individual plots generated
+============================================================
+
+Model Save Sucessfully
+Batch 1 completed at Fri Jan 23 23:38:06 IST 2026
+---
+Started recon_t10_c10_uni_s6833 on GPU 0 (PID: 11155)
+CUDA available: True
+CUDA device count: 1
+Using CUDA device: cuda:0
+CUDA device name:Tesla V100-SXM2-16GB
+CUDA memory allocated: 0.00 GB
+Using device: cuda:0
+⚠ Checkpoint missing: recon_t10_c10_uni_s2933
+⚠ Checkpoint missing: recon_t10_c10_uni_s8723
+⚠ Checkpoint missing: recon_t10_c10_uni_s2535
+⚠ Checkpoint missing: recon_t10_c10_uni_s4214
+✗ Removing from registry: recon_t10_c10_uni_s2933
+✗ Removing from registry: recon_t10_c10_uni_s8723
+✗ Removing from registry: recon_t10_c10_uni_s2535
+✗ Removing from registry: recon_t10_c10_uni_s4214
+✓ Cleaned up 4 invalid entries
+
+Epoch:0 and AverageLoss:0.297114126598835
+Test Loss: 0.1405
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_c10_uni_s6833_0.pth
+Model Save Sucessfully
+Epoch:1 and AverageLoss:0.10520385866761207
+Test Loss: 0.0785
+Epoch:2 and AverageLoss:0.06466701861023903
+Test Loss: 0.0535
+Epoch:3 and AverageLoss:0.04648576144576073
+Test Loss: 0.0403
+Epoch:4 and AverageLoss:0.03619218465536833
+Test Loss: 0.0324
+Epoch:5 and AverageLoss:0.029701784147322177
+Test Loss: 0.0271
+Epoch:6 and AverageLoss:0.02516708591878414
+Test Loss: 0.0233
+Epoch:7 and AverageLoss:0.021826599024236202
+Test Loss: 0.0204
+Epoch:8 and AverageLoss:0.019301669804006816
+Test Loss: 0.0182
+Epoch:9 and AverageLoss:0.017394252218306063
+Test Loss: 0.0166
+Epoch:10 and AverageLoss:0.01593624828606844
+Test Loss: 0.0153
+Model Saved Successfully to: /home/ajinkyar/ml_models/recon_models/recon_t10_c10_uni_s6833_10.pth
+Model Save Sucessfully
+Epoch:11 and AverageLoss:0.014802651904523373
+Test Loss: 0.0143
+Epoch:12 and AverageLoss:0.013891186786442996
+Test Loss: 0.0135
+Epoch:13 and AverageLoss:0.013148310262709855
+Test Loss: 0.0128
+Epoch:14 and AverageLoss:0.012517675887048245
+Test Loss: 0.0122
+Epoch:15 and AverageLoss:0.011974662987887859
+Test Loss: 0.0117
+Epoch:16 and AverageLoss:0.01150257054939866
+Test Loss: 0.0113
+Epoch:17 and AverageLoss:0.011098518165946007
+Test Loss: 0.0109
+Epoch:18 and AverageLoss:0.010737053585797547
+Test Loss: 0.0106
+Epoch:19 and AverageLoss:0.010415106574445963
+Test Loss: 0.0103
+
+============================================================
+Training completed for recon_t10_c10_uni_s6833
+Generating individual training plots...
+============================================================
+
+  ✓ Saved: recon_t10_c10_uni_s6833_ReconstructionLoss.png
+
+✓ Metrics saved to registry
+✓ Individual plots generated
+============================================================
+
+Model Save Sucessfully
+Batch 2 completed at Sat Jan 24 00:25:53 IST 2026
+---
+All training jobs completed at Sat Jan 24 00:25:53 IST 2026
+
+========================================
+Verifying all models completed successfully...
+========================================
+⚠ Checkpoint missing: recon_t10_c10_uni_s2933
+⚠ Checkpoint missing: recon_t10_c10_uni_s8723
+⚠ Checkpoint missing: recon_t10_c10_uni_s2535
+⚠ Checkpoint missing: recon_t10_c10_uni_s4214
+✗ Removing from registry: recon_t10_c10_uni_s2933
+✗ Removing from registry: recon_t10_c10_uni_s8723
+✗ Removing from registry: recon_t10_c10_uni_s2535
+✗ Removing from registry: recon_t10_c10_uni_s4214
+✓ Cleaned up 4 invalid entries
+
+✓ All 3 models completed successfully
+
+========================================
+Generating aggregate plots for seed groups...
+========================================
+============================================================
+POST-TRAINING AGGREGATION
+============================================================
+
+Mode: Aggregate all completed model groups
+
+⚠ Checkpoint missing: recon_t10_c10_uni_s2933
+⚠ Checkpoint missing: recon_t10_c10_uni_s8723
+⚠ Checkpoint missing: recon_t10_c10_uni_s2535
+⚠ Checkpoint missing: recon_t10_c10_uni_s4214
+✗ Removing from registry: recon_t10_c10_uni_s2933
+✗ Removing from registry: recon_t10_c10_uni_s8723
+✗ Removing from registry: recon_t10_c10_uni_s2535
+✗ Removing from registry: recon_t10_c10_uni_s4214
+✓ Cleaned up 4 invalid entries
+
+
+Found 7 completed models
+Grouping by configuration (excluding seed)...
+
+============================================================
+GENERATING AGGREGATE PLOTS
+============================================================
+
+Group 1:
+  Config: Recon | Uniform | t=10 | cifar10 | lr=5e-05
+  Models: 7 seeds
+    • recon_t10_c10_uni_s6833
+    • recon_t10_c10_uni_s1134
+    • recon_t10_c10_uni_s3336
+    • recon_t10_c10_uni_s4214
+    • recon_t10_c10_uni_s2535
+    • recon_t10_c10_uni_s8723
+    • recon_t10_c10_uni_s2933
+  Generating aggregate plot...
+
+============================================================
+PLOTTING AGGREGATE METRICS ACROSS SEEDS
+============================================================
+Pattern: Uniform
+Condition: recon_pc_train
+Classification Timesteps: 10
+Dataset: cifar10
+Seeds: [6833, 1134, 3336, 4214, 2535, 8723, 2933]
+Models: 7
+✓ Saved: recon_t10_c10_uni_ReconstructionLoss.png
+============================================================
+
+  ✓ Aggregate plot generated
+
+============================================================
+SUMMARY
+============================================================
+  Total model groups: 1
+  Groups with multiple seeds: 1 (plots generated)
+  Groups with single seed: 0 (no aggregate needed)
+============================================================
+
+✓ Aggregate plotting complete!
+========================================
+✓ Job complete! Check plots/ directory for results
+========================================
