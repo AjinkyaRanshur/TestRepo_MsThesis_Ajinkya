@@ -1,6 +1,6 @@
 """
 Model Manager - Centralized model tracking system
-FIXED: Auto-cleanup of deleted models, proper parallel job handling
+FIXED: Proper file locking for parallel job handling, auto-cleanup of deleted models
 """
 import os
 import json
@@ -23,23 +23,35 @@ class ModelTracker:
         return {"models": {}, "metadata": {"last_updated": None}}
     
     def _save_registry(self):
-        """Save registry to disk"""
-        self.registry["metadata"]["last_updated"] = datetime.now().isoformat()
-        with open(self.tracking_file, 'w') as f:
-            json.dump(self.registry, f, indent=2)
-
-
-    def _save_registry(self):
-        """Save registry to disk with file locking"""
-        self.registry["metadata"]["last_updated"] = datetime.now().isoformat()
-    
-        #  Use file locking for parallel safety
-        with open(self.tracking_file, 'w') as f:
-            fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+        """Save registry to disk with file locking - handles concurrent access"""
+        lock_file = self.tracking_file + '.lock'
+        
+        # Acquire lock BEFORE any file operations
+        with open(lock_file, 'w') as lock_f:
+            fcntl.flock(lock_f.fileno(), fcntl.LOCK_EX)
             try:
-                json.dump(self.registry, f, indent=2)
+                # Reload registry to get latest state from other processes
+                if os.path.exists(self.tracking_file):
+                    with open(self.tracking_file, 'r') as f:
+                        current_registry = json.load(f)
+                    
+                    # Merge: update only the specific models we're working on
+                    current_registry["models"].update(self.registry["models"])
+                    current_registry["metadata"]["last_updated"] = datetime.now().isoformat()
+                    self.registry = current_registry
+                else:
+                    self.registry["metadata"]["last_updated"] = datetime.now().isoformat()
+                
+                # Write updated registry atomically
+                temp_file = self.tracking_file + '.tmp'
+                with open(temp_file, 'w') as f:
+                    json.dump(self.registry, f, indent=2)
+                
+                # Atomic rename
+                os.replace(temp_file, self.tracking_file)
+                
             finally:
-                fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                fcntl.flock(lock_f.fileno(), fcntl.LOCK_UN)
     
     def _cleanup_invalid_entries(self):
         """
@@ -110,8 +122,11 @@ class ModelTracker:
     def update_status(self, model_name: str, status: str):
         """
         Update model training status
-        FIXED: Only update if model exists
+        FIXED: Only update if model exists, reload before update
         """
+        # Reload to get latest state
+        self.registry = self._load_registry()
+        
         if model_name not in self.registry["models"]:
             print(f"⚠ Warning: Model {model_name} not found in registry")
             return
@@ -127,6 +142,9 @@ class ModelTracker:
     
     def update_metrics(self, model_name: str, metrics: Dict):
         """Update model metrics"""
+        # Reload to get latest state
+        self.registry = self._load_registry()
+        
         if model_name in self.registry["models"]:
             self.registry["models"][model_name]["metrics"].update(metrics)
             self._save_registry()
@@ -134,8 +152,11 @@ class ModelTracker:
     def set_checkpoint_path(self, model_name: str, path: str):
         """
         Set model checkpoint path
-        FIXED: Verify file exists before saving
+        FIXED: Verify file exists before saving, reload before update
         """
+        # Reload to get latest state
+        self.registry = self._load_registry()
+        
         if model_name not in self.registry["models"]:
             print(f"⚠ Warning: Model {model_name} not in registry")
             return
@@ -148,11 +169,13 @@ class ModelTracker:
         self._save_registry()
     
     def get_model(self, model_name: str) -> Optional[Dict]:
-        """Get model info by name"""
+        """Get model info by name - always reload for latest state"""
+        self.registry = self._load_registry()
         return self.registry["models"].get(model_name)
     
     def get_models_by_type(self, model_type: str) -> List[Dict]:
         """Get all models of a specific type"""
+        self.registry = self._load_registry()
         return [
             {"name": name, **mdata}
             for name, mdata in self.registry["models"].items()
@@ -161,6 +184,7 @@ class ModelTracker:
     
     def get_completed_recon_models(self) -> List[Dict]:
         """Get all completed reconstruction models"""
+        self.registry = self._load_registry()
         models = [
             {"name": name, **mdata}
             for name, mdata in self.registry["models"].items()
@@ -173,6 +197,7 @@ class ModelTracker:
     
     def get_completed_classification_models(self) -> List[Dict]:
         """Get all completed classification models"""
+        self.registry = self._load_registry()
         models = [
             {"name": name, **mdata}
             for name, mdata in self.registry["models"].items()
@@ -185,6 +210,7 @@ class ModelTracker:
 
     def list_all_models(self, filter_status: Optional[str] = None) -> List[Dict]:
         """List all models, optionally filtered by status"""
+        self.registry = self._load_registry()
         models = [
             {"name": name, **mdata}
             for name, mdata in self.registry["models"].items()
@@ -221,6 +247,7 @@ class ModelTracker:
     
     def export_summary(self, output_file: str = "model_summary.txt"):
         """Export a text summary of all models"""
+        self.registry = self._load_registry()
         with open(output_file, 'w') as f:
             f.write("MODEL TRACKING SUMMARY\n")
             f.write("=" * 80 + "\n\n")

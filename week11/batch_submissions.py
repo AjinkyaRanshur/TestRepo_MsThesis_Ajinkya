@@ -1,6 +1,6 @@
 """
 Simple Model Tracking and Batch Submission System
-FIXED: Added completion check script before post-processing
+FIXED: Added completion check script before post-processing, proper Python string formatting
 """
 
 import json
@@ -112,9 +112,8 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
         ""
     ])
     
-    # ✅ MODIFICATION 2: Add completion check before post-processing
+    # ✅ MODIFICATION: Fixed completion check with proper Python string formatting
     script_lines.extend([
-        'echo "All training jobs completed at $(date)"',
         'echo ""',
         'echo "========================================"',
         'echo "Verifying all models completed successfully..."',
@@ -131,13 +130,13 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
         '    if not info or info.get("status") != "completed":',
         '        incomplete.append(m)',
         'if incomplete:',
-        '    print(f"WARNING: {{len(incomplete)}} models did not complete:")',
+        '    print(f"WARNING: {len(incomplete)} models did not complete:")',  # ✅ Fixed: single braces
         '    for m in incomplete:',
-        '        print(f"  - {{m}}")',
+        '        print(f"  - {m}")',  # ✅ Fixed: single braces
         '    print("Skipping aggregate plots.")',
         '    exit(1)',
         'else:',
-        '    print(f"✓ All {{len(models)}} models completed successfully")',
+        '    print(f"✓ All {len(models)} models completed successfully")',  # ✅ Fixed: single braces
         '    exit(0)',
         'EOF',
         '',

@@ -120,9 +120,198 @@
       "metrics": {},
       "checkpoint_path": null,
       "type": "recon_pc_train"
+    },
+    "recon_t10_c10_uni_s9511": {
+      "config": {
+        "pattern": "Uniform",
+        "seed": 9511,
+        "train_cond": "recon_pc_train",
+        "lr": 5e-05,
+        "timesteps": 10,
+        "last_neurons": 10,
+        "Dataset": "cifar10",
+        "epochs": 20
+      },
+      "status": "registered",
+      "created_at": "2026-01-23T21:25:07.379983",
+      "training_started": null,
+      "training_completed": null,
+      "metrics": {},
+      "checkpoint_path": null,
+      "type": "recon_pc_train"
+    },
+    "recon_t10_c10_uni_s6202": {
+      "config": {
+        "pattern": "Uniform",
+        "seed": 6202,
+        "train_cond": "recon_pc_train",
+        "lr": 5e-05,
+        "timesteps": 10,
+        "last_neurons": 10,
+        "Dataset": "cifar10",
+        "epochs": 20
+      },
+      "status": "registered",
+      "created_at": "2026-01-23T21:25:07.405278",
+      "training_started": null,
+      "training_completed": null,
+      "metrics": {},
+      "checkpoint_path": null,
+      "type": "recon_pc_train"
+    },
+    "recon_t10_c10_uni_s6780": {
+      "config": {
+        "pattern": "Uniform",
+        "seed": 6780,
+        "train_cond": "recon_pc_train",
+        "lr": 5e-05,
+        "timesteps": 10,
+        "last_neurons": 10,
+        "Dataset": "cifar10",
+        "epochs": 20
+      },
+      "status": "registered",
+      "created_at": "2026-01-23T21:25:07.414074",
+      "training_started": null,
+      "training_completed": null,
+      "metrics": {},
+      "checkpoint_path": null,
+      "type": "recon_pc_train"
+    },
+    "recon_t10_c10_uni_s8723": {
+      "config": {
+        "pattern": "Uniform",
+        "seed": 8723,
+        "train_cond": "recon_pc_train",
+        "lr": 5e-05,
+        "timesteps": 10,
+        "last_neurons": 10,
+        "Dataset": "cifar10",
+        "epochs": 10
+      },
+      "status": "completed",
+      "created_at": "2026-01-23T21:25:22.873552",
+      "training_started": "2026-01-23T21:27:07.908837",
+      "training_completed": "2026-01-23T21:51:06.113420",
+      "metrics": {
+        "train_loss": [
+          0.32378171288967134,
+          0.12116262519955635,
+          0.06870829752385617,
+          0.047961163914203644,
+          0.03662476707696915,
+          0.02944901674836874,
+          0.02473776633888483,
+          0.021409871980547904,
+          0.018980788730084897,
+          0.017162941195815802
+        ],
+        "test_loss": [
+          0.16457722067832947,
+          0.08747764211893082,
+          0.05561028528213501,
+          0.041305944830179214,
+          0.03246478226035834,
+          0.02673864957690239,
+          0.02287623057514429,
+          0.02002638603746891,
+          0.017969790562987326,
+          0.016368232227861882
+        ]
+      },
+      "checkpoint_path": "/home/ajinkyar/ml_models/recon_models/recon_t10_c10_uni_s8723_0.pth",
+      "type": "recon_pc_train"
+    },
+    "recon_t10_c10_uni_s2535": {
+      "config": {
+        "pattern": "Uniform",
+        "seed": 2535,
+        "train_cond": "recon_pc_train",
+        "lr": 5e-05,
+        "timesteps": 10,
+        "last_neurons": 10,
+        "Dataset": "cifar10",
+        "epochs": 10
+      },
+      "status": "completed",
+      "created_at": "2026-01-23T21:25:22.883258",
+      "training_started": "2026-01-23T21:27:07.930309",
+      "training_completed": "2026-01-23T21:51:20.467971",
+      "metrics": {
+        "train_loss": [
+          0.35235855551958084,
+          0.11122949763536454,
+          0.06886435573995113,
+          0.05054301691353321,
+          0.03976569095104933,
+          0.03290380376279354,
+          0.02801775997579098,
+          0.024358384244143962,
+          0.021578300715982913,
+          0.01940187358185649
+        ],
+        "test_loss": [
+          0.15430322062969207,
+          0.08211188808083535,
+          0.0579124258607626,
+          0.04415765824913979,
+          0.036016920007765296,
+          0.03022546821087599,
+          0.02597934953868389,
+          0.02276036762446165,
+          0.020362922422587873,
+          0.018465833701193334
+        ]
+      },
+      "checkpoint_path": "/home/ajinkyar/ml_models/recon_models/recon_t10_c10_uni_s2535_0.pth",
+      "type": "recon_pc_train"
+    },
+    "recon_t10_c10_uni_s4214": {
+      "config": {
+        "pattern": "Uniform",
+        "seed": 4214,
+        "train_cond": "recon_pc_train",
+        "lr": 5e-05,
+        "timesteps": 10,
+        "last_neurons": 10,
+        "Dataset": "cifar10",
+        "epochs": 10
+      },
+      "status": "completed",
+      "created_at": "2026-01-23T21:25:22.892009",
+      "training_started": "2026-01-23T21:27:07.966559",
+      "training_completed": "2026-01-23T21:51:20.546107",
+      "metrics": {
+        "train_loss": [
+          0.3314216941356659,
+          0.1095988340497017,
+          0.06891292208135127,
+          0.04975198040306568,
+          0.037600299659371374,
+          0.029694215089082716,
+          0.024512252175807953,
+          0.021015989796817302,
+          0.01852733940333128,
+          0.016673930057138204
+        ],
+        "test_loss": [
+          0.14742169424891471,
+          0.08271434760093689,
+          0.05760179814696312,
+          0.0427402665913105,
+          0.03302663853019476,
+          0.026738373406231402,
+          0.02248191598802805,
+          0.0196225016862154,
+          0.017471726790070533,
+          0.01584821817278862
+        ]
+      },
+      "checkpoint_path": "/home/ajinkyar/ml_models/recon_models/recon_t10_c10_uni_s4214_0.pth",
+      "type": "recon_pc_train"
     }
   },
   "metadata": {
-    "last_updated": "2026-01-23T20:11:06.342299"
+    "last_updated": "2026-01-23T21:51:35.809781"
   }
 }
