@@ -1,12 +1,12 @@
 import torch
 
 batch_size = 40
-epochs = 200
-seed = 5234
+epochs = 20
+seed = 2933
 lr = 5e-05
 momentum = 0.9
-classification_datasetpath = "custom_illusion_dataset"
-recon_datasetpath = "custom_illusion_dataset"
+classification_datasetpath = "cifar10"
+recon_datasetpath = "cifar10"
 training_condition = "recon_pc_train"
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 classification_neurons = 10
@@ -25,11 +25,11 @@ gammaset = [[0.33, 0.33, 0.33, 0.33]]  # pattern: Uniform
 betaset = [[0.33, 0.33, 0.33, 0.33]]  # pattern: Uniform
 alphaset = [[0.01, 0.01, 0.01, 0.01]]
 
-model_name = "recon_t10_ill_uni_s5234"
+model_name = "recon_t10_c10_uni_s2933"
 noise_type="s&p"
 noise_param=0.0
 
-experiment_name = "Testing recon_t10_ill_uni_s5234 with Uniform pattern at 10 timesteps"
+experiment_name = "Testing recon_t10_c10_uni_s2933 with Uniform pattern at 10 timesteps"
 load_model_path="/home/ajinkyar/ml_models"
 save_model_path="/home/ajinkyar/ml_models"
 

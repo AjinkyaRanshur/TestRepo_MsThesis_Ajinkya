@@ -194,6 +194,25 @@ def illusion_pc_training(net, trainloader, validationloader, testloader,
 
                 print(f"Checkpoint saved: {save_path}")
 
+        # ✅ MODIFICATION 1: Update registry and plot metrics at end of training
+        from model_tracking import get_tracker
+        from eval_and_plotting import plot_training_metrics
+        
+        tracker = get_tracker()
+        tracker.update_status(model_name, "completed")
+        tracker.update_metrics(model_name, metrics_history)
+        
+        print(f"\n{'='*60}")
+        print(f"Training completed for {model_name}")
+        print(f"Generating individual training plots...")
+        print(f"{'='*60}\n")
+        
+        plot_training_metrics(metrics_history, model_name, config)
+        
+        print(f"\n✓ Metrics saved to registry")
+        print(f"✓ Individual plots generated")
+        print(f"{'='*60}\n")
+
         return metrics_history
 
     # ============================================================

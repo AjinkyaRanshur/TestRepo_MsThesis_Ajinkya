@@ -15,8 +15,8 @@ def get_optimizer_display(optimize_all_layers):
 
 def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed_analysis"):
     """
-    FIXED: Plot training curves with error bars across multiple seeds
-    UPDATED: Show optimizer scope in classification model plots
+    FIXED: Plot training curves with error bars (not ribbons) across multiple seeds
+    UPDATED: Legend and metadata outside plot area for reconstruction plots
     """
     os.makedirs(save_dir, exist_ok=True)
     
@@ -125,15 +125,34 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         
         epochs = np.arange(1, min_epochs + 1)
         
+        # ✅ MODIFICATION 3: Use error bars instead of ribbons
+        # Adaptive sampling based on number of epochs
+        if min_epochs <= 25:
+            error_bar_interval = 1  # Every epoch for very short training
+        elif min_epochs <= 50:
+            error_bar_interval = 2  # Every 2 epochs
+        elif min_epochs <= 100:
+            error_bar_interval = 5  # Every 5 epochs
+        else:
+            error_bar_interval = max(5, min_epochs // 20)  # ~20 error bars, min 5
+        
+        error_epochs = epochs[::error_bar_interval]
+        error_mean_train = mean_train[::error_bar_interval]
+        error_std_train = std_train[::error_bar_interval]
+        error_mean_test = mean_test[::error_bar_interval]
+        error_std_test = std_test[::error_bar_interval]
+        
         fig, ax = plt.subplots(figsize=(12, 7))
         
+        # Plot lines
         ax.plot(epochs, mean_train, label='Train Loss', linewidth=2.5, color='#2E86DE')
-        ax.fill_between(epochs, mean_train - std_train, mean_train + std_train, 
-                        alpha=0.25, color='#2E86DE')
-        
         ax.plot(epochs, mean_test, label='Test Loss', linewidth=2.5, color='#EE5A6F')
-        ax.fill_between(epochs, mean_test - std_test, mean_test + std_test, 
-                        alpha=0.25, color='#EE5A6F')
+        
+        # Add error bars
+        ax.errorbar(error_epochs, error_mean_train, yerr=error_std_train, 
+                   fmt='none', ecolor='#2E86DE', alpha=0.4, capsize=3, capthick=1.5)
+        ax.errorbar(error_epochs, error_mean_test, yerr=error_std_test, 
+                   fmt='none', ecolor='#EE5A6F', alpha=0.4, capsize=3, capthick=1.5)
         
         # Main title
         ax.set_title('Reconstruction Training', fontsize=16, fontweight='bold', pad=20)
@@ -142,15 +161,19 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         ax.text(0.5, 1.02, f'Reconstruction Timesteps: {class_timesteps}', 
                 transform=ax.transAxes, ha='center', fontsize=11, style='italic')
         
-        # Bottom right info box
-        info_text = f'Pattern: {pattern}\nSeeds: n={len(seeds_used)}\nDataset: {dataset_name}'
-        ax.text(0.98, 0.02, info_text, transform=ax.transAxes, 
-                ha='right', va='bottom', fontsize=10,
-                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3))
+        # ✅ MODIFICATION 4: Move metadata and legend out of the plot area
+        # Put info text at top left outside the plot
+        info_text = f'Pattern: {pattern} | Seeds: n={len(seeds_used)} | Dataset: {dataset_name}'
+        ax.text(0.5, 1.06, info_text, transform=ax.transAxes, 
+                ha='center', va='bottom', fontsize=10,
+                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
         
         ax.set_xlabel('Epoch', fontsize=13, fontweight='bold')
         ax.set_ylabel('Reconstruction Loss (MSE)', fontsize=13, fontweight='bold')
-        ax.legend(fontsize=11, loc='upper right')
+        
+        # Legend outside plot area (upper right)
+        ax.legend(fontsize=11, loc='upper left', bbox_to_anchor=(1.02, 1), 
+                 borderaxespad=0, frameon=True, fancybox=True, shadow=True)
         ax.grid(alpha=0.3, linestyle='--')
         
         filename = f"{base_name}_ReconstructionLoss.png"
@@ -176,15 +199,34 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         
         epochs = np.arange(1, min_epochs + 1)
         
+        # ✅ MODIFICATION 3: Use error bars instead of ribbons
+        # Adaptive sampling based on number of epochs
+        if min_epochs <= 25:
+            error_bar_interval = 1  # Every epoch for very short training
+        elif min_epochs <= 50:
+            error_bar_interval = 2  # Every 2 epochs
+        elif min_epochs <= 100:
+            error_bar_interval = 5  # Every 5 epochs
+        else:
+            error_bar_interval = max(5, min_epochs // 20)  # ~20 error bars, min 5
+        
+        error_epochs = epochs[::error_bar_interval]
+        error_mean_train = mean_train[::error_bar_interval]
+        error_std_train = std_train[::error_bar_interval]
+        error_mean_test = mean_test[::error_bar_interval]
+        error_std_test = std_test[::error_bar_interval]
+        
         fig, ax = plt.subplots(figsize=(12, 7))
         
+        # Plot lines
         ax.plot(epochs, mean_train, label='Train Loss', linewidth=2.5, color='#6C5CE7')
-        ax.fill_between(epochs, mean_train - std_train, mean_train + std_train, 
-                        alpha=0.25, color='#6C5CE7')
-        
         ax.plot(epochs, mean_test, label='Test Loss', linewidth=2.5, color='#FD79A8')
-        ax.fill_between(epochs, mean_test - std_test, mean_test + std_test, 
-                        alpha=0.25, color='#FD79A8')
+        
+        # Add error bars
+        ax.errorbar(error_epochs, error_mean_train, yerr=error_std_train, 
+                   fmt='none', ecolor='#6C5CE7', alpha=0.4, capsize=3, capthick=1.5)
+        ax.errorbar(error_epochs, error_mean_test, yerr=error_std_test, 
+                   fmt='none', ecolor='#FD79A8', alpha=0.4, capsize=3, capthick=1.5)
         
         # Main title
         ax.set_title('Classification Training', fontsize=16, fontweight='bold', pad=20)
@@ -241,15 +283,34 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         
         epochs = np.arange(1, min_epochs + 1)
         
+        # ✅ MODIFICATION 3: Use error bars instead of ribbons
+        # Adaptive sampling based on number of epochs
+        if min_epochs <= 25:
+            error_bar_interval = 1  # Every epoch for very short training
+        elif min_epochs <= 50:
+            error_bar_interval = 2  # Every 2 epochs
+        elif min_epochs <= 100:
+            error_bar_interval = 5  # Every 5 epochs
+        else:
+            error_bar_interval = max(5, min_epochs // 20)  # ~20 error bars, min 5
+        
+        error_epochs = epochs[::error_bar_interval]
+        error_mean_train = mean_train_acc[::error_bar_interval]
+        error_std_train = std_train_acc[::error_bar_interval]
+        error_mean_test = mean_test_acc[::error_bar_interval]
+        error_std_test = std_test_acc[::error_bar_interval]
+        
         fig, ax = plt.subplots(figsize=(12, 7))
         
+        # Plot lines
         ax.plot(epochs, mean_train_acc, label='Train Accuracy', linewidth=2.5, color='#00B894')
-        ax.fill_between(epochs, mean_train_acc - std_train_acc, mean_train_acc + std_train_acc, 
-                        alpha=0.25, color='#00B894')
-        
         ax.plot(epochs, mean_test_acc, label='Test Accuracy', linewidth=2.5, color='#FDCB6E')
-        ax.fill_between(epochs, mean_test_acc - std_test_acc, mean_test_acc + std_test_acc, 
-                        alpha=0.25, color='#FDCB6E')
+        
+        # Add error bars
+        ax.errorbar(error_epochs, error_mean_train, yerr=error_std_train, 
+                   fmt='none', ecolor='#00B894', alpha=0.4, capsize=3, capthick=1.5)
+        ax.errorbar(error_epochs, error_mean_test, yerr=error_std_test, 
+                   fmt='none', ecolor='#FDCB6E', alpha=0.4, capsize=3, capthick=1.5)
         
         # Main title
         ax.set_title('Classification Training', fontsize=16, fontweight='bold', pad=20)
@@ -307,15 +368,34 @@ def plot_training_metrics_with_seeds(model_names, save_dir="plots/aggregate_seed
         
         epochs = np.arange(1, min_epochs + 1)
         
+        # ✅ MODIFICATION 3: Use error bars instead of ribbons
+        # Adaptive sampling based on number of epochs
+        if min_epochs <= 25:
+            error_bar_interval = 1  # Every epoch for very short training
+        elif min_epochs <= 50:
+            error_bar_interval = 2  # Every 2 epochs
+        elif min_epochs <= 100:
+            error_bar_interval = 5  # Every 5 epochs
+        else:
+            error_bar_interval = max(5, min_epochs // 20)  # ~20 error bars, min 5
+        
+        error_epochs = epochs[::error_bar_interval]
+        error_mean_illusion = mean_illusion[::error_bar_interval]
+        error_std_illusion = std_illusion[::error_bar_interval]
+        error_mean_cifar = mean_cifar[::error_bar_interval]
+        error_std_cifar = std_cifar[::error_bar_interval]
+        
         fig, ax = plt.subplots(figsize=(12, 7))
         
+        # Plot lines
         ax.plot(epochs, mean_illusion, label='Illusion Dataset', linewidth=2.5, color='#E17055')
-        ax.fill_between(epochs, mean_illusion - std_illusion, mean_illusion + std_illusion, 
-                        alpha=0.25, color='#E17055')
-        
         ax.plot(epochs, mean_cifar, label='CIFAR-10 Dataset', linewidth=2.5, color='#74B9FF')
-        ax.fill_between(epochs, mean_cifar - std_cifar, mean_cifar + std_cifar, 
-                        alpha=0.25, color='#74B9FF')
+        
+        # Add error bars
+        ax.errorbar(error_epochs, error_mean_illusion, yerr=error_std_illusion, 
+                   fmt='none', ecolor='#E17055', alpha=0.4, capsize=3, capthick=1.5)
+        ax.errorbar(error_epochs, error_mean_cifar, yerr=error_std_cifar, 
+                   fmt='none', ecolor='#74B9FF', alpha=0.4, capsize=3, capthick=1.5)
         
         # Main title
         ax.set_title('Classification Training', fontsize=16, fontweight='bold', pad=20)

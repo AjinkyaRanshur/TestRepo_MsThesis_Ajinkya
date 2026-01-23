@@ -500,29 +500,19 @@ def decide_training_model(config, metrics_history, model_name):
 
 def main(config, model_name=None):
     from model_tracking import get_tracker
-    from utils import find_seed_siblings
     
-    # Update status to training
+    # Only update status to "training" at start
     if model_name:
         tracker = get_tracker()
         tracker.update_status(model_name, "training")
     
     set_seed(config.seed)
-    
     metrics_history = get_metrics_initialize(config.training_condition)
+    
+    # Training happens here (registry update & plotting now in training files)
     metrics_history = decide_training_model(config, metrics_history, model_name)
     
-    # Save individual model metrics
-    from eval_and_plotting import plot_training_metrics
-    if config.training_condition != "illusion_testing":
-        plot_training_metrics(metrics_history, model_name, config)
-    
-    # Update status to completed
-    if model_name:
-        tracker.update_status(model_name, "completed")
-        tracker.update_metrics(model_name, metrics_history)
-        
-
+    # ✅ No longer need to update registry or plot here
 
 
 

@@ -1,6 +1,6 @@
 """
 Simple Model Tracking and Batch Submission System
-FIXED: Added post-processing script call after all jobs complete
+FIXED: Added completion check script before post-processing
 """
 
 import json
@@ -15,7 +15,7 @@ from model_tracking import get_tracker
 def create_slurm_script(base_config, output_dir="slurm_jobs"):
     """
     Create SLURM batch submission script for multiple experiments
-    FIXED: Run maximum 2 jobs in parallel + aggregate plotting after completion
+    FIXED: Run maximum 2 jobs in parallel + wait for ALL completions before aggregating
     
     Args:
         base_config: Dictionary containing experiment parameters
@@ -59,9 +59,9 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     job_name = f"pred_net_{base_config['train_cond']}_{timestamp}"
     
-    # Calculate resources - FIXED: Max 2 parallel jobs
+    # Calculate resources - Use as many GPUs as jobs (up to available)
     num_jobs = len(config_paths)
-    gpus_needed = 2  # Always use 2 GPUs max
+    gpus_needed = num_jobs  # One GPU per job
     
     # Build script
     script_lines = [
@@ -82,68 +82,83 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
         "",
         "# Print job info",
         'echo "Job started at $(date)"',
-        f'echo "Running {num_jobs} experiments (2 at a time)"',
+        f'echo "Running {num_jobs} experiments in parallel"',
         'echo "Job ID: $SLURM_JOB_ID"',
         "",
-        "# Run jobs in batches of 2 to prevent registry corruption",
+        "# Run all jobs in parallel, each on its own GPU",
         ""
     ]
     
-    # Add jobs in batches of 2
-    for i in range(0, num_jobs, 2):
-        batch_jobs = []
+    # Add jobs - all run in parallel, each with its own GPU
+    for i in range(num_jobs):
+        cfg_path = config_paths[i]
+        model_name = model_names[i]
+        gpu_id = i  # Each job gets its own GPU (0, 1, 2, 3, ...)
         
-        # First job of the pair
-        if i < num_jobs:
-            cfg_path = config_paths[i]
-            model_name = model_names[i]
-            gpu_id = 0
-            
-            script_lines.extend([
-                f"# Batch {i//2 + 1} - Job 1: {model_name}",
-                f"CUDA_VISIBLE_DEVICES={gpu_id} python main.py --config {cfg_path} --model-name {model_name} &",
-                f"JOB1_PID=$!",
-                f'echo "Started {model_name} on GPU {gpu_id} (PID: $JOB1_PID)"',
-                ""
-            ])
-        
-        # Second job of the pair (if exists)
-        if i + 1 < num_jobs:
-            cfg_path = config_paths[i + 1]
-            model_name = model_names[i + 1]
-            gpu_id = 1
-            
-            script_lines.extend([
-                f"# Batch {i//2 + 1} - Job 2: {model_name}",
-                f"CUDA_VISIBLE_DEVICES={gpu_id} python main.py --config {cfg_path} --model-name {model_name} &",
-                f"JOB2_PID=$!",
-                f'echo "Started {model_name} on GPU {gpu_id} (PID: $JOB2_PID)"',
-                ""
-            ])
-        
-        # Wait for both jobs to finish before starting next batch
         script_lines.extend([
-            "# Wait for current batch to complete",
-            "wait",
-            f'echo "Batch {i//2 + 1} completed at $(date)"',
-            'echo "---"',
+            f"# Job {i+1}: {model_name}",
+            f"CUDA_VISIBLE_DEVICES={gpu_id} python main.py --config {cfg_path} --model-name {model_name} &",
+            f"JOB{i+1}_PID=$!",
+            f'echo "Started {model_name} on GPU {gpu_id} (PID: $JOB{i+1}_PID)"',
             ""
         ])
     
-    # NEW: Add post-processing to generate aggregate plots
+    # Wait for all jobs to finish
+    script_lines.extend([
+        "# Wait for all jobs to complete",
+        "wait",
+        'echo "All training jobs completed at $(date)"',
+        'echo "---"',
+        ""
+    ])
+    
+    # ✅ MODIFICATION 2: Add completion check before post-processing
     script_lines.extend([
         'echo "All training jobs completed at $(date)"',
         'echo ""',
-        'echo "="',
-        'echo "Generating aggregate plots for seed groups..."',
-        'echo "="',
+        'echo "========================================"',
+        'echo "Verifying all models completed successfully..."',
+        'echo "========================================"',
         '',
-        '# Run post-processing aggregation script',
-        'python post_training_aggregation.py',
+        '# ✅ Check that all models are marked as completed in registry',
+        'python << EOF',
+        'from model_tracking import get_tracker',
+        'tracker = get_tracker()',
+        f'models = {model_names}',
+        'incomplete = []',
+        'for m in models:',
+        '    info = tracker.get_model(m)',
+        '    if not info or info.get("status") != "completed":',
+        '        incomplete.append(m)',
+        'if incomplete:',
+        '    print(f"WARNING: {{len(incomplete)}} models did not complete:")',
+        '    for m in incomplete:',
+        '        print(f"  - {{m}}")',
+        '    print("Skipping aggregate plots.")',
+        '    exit(1)',
+        'else:',
+        '    print(f"✓ All {{len(models)}} models completed successfully")',
+        '    exit(0)',
+        'EOF',
         '',
-        'echo "="',
-        'echo "✓ Job complete! Check plots/ directory for results"',
-        'echo "="'
+        '# Store exit code from Python script',
+        'COMPLETION_CHECK=$?',
+        '',
+        '# Only run post-processing if all models completed',
+        'if [ $COMPLETION_CHECK -eq 0 ]; then',
+        '    echo ""',
+        '    echo "========================================"',
+        '    echo "Generating aggregate plots for seed groups..."',
+        '    echo "========================================"',
+        '    python post_training_aggregation.py',
+        '    echo "========================================"',
+        '    echo "✓ Job complete! Check plots/ directory for results"',
+        '    echo "========================================"',
+        'else',
+        '    echo ""',
+        '    echo "⚠ Skipping aggregate plots due to incomplete models"',
+        '    echo "Run post_training_aggregation.py manually after models complete"',
+        'fi'
     ])
     
     # Write script
@@ -157,8 +172,9 @@ def create_slurm_script(base_config, output_dir="slurm_jobs"):
     print(f"\n✓ Created SLURM script: {script_path}")
     print(f"✓ Generated {num_jobs} config files")
     print(f"✓ Registered {len(model_names)} models in tracker")
-    print(f"✓ Jobs will run 2 at a time to prevent registry conflicts")
-    print(f"✓ Aggregate plots will be generated automatically after completion")
+    print(f"✓ Requesting {gpus_needed} GPUs for parallel execution")
+    print(f"✓ All jobs will run in parallel (1 GPU per job)")
+    print(f"✓ Completion check added before aggregate plotting")
     
     return script_path, model_names
 

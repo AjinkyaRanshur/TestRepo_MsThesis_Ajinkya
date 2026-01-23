@@ -220,25 +220,48 @@ def slurm_recon_entries():
     epochs_input = input("Epochs (default 200): ").strip() or "200"
     epochs = parse_list(epochs_input, int)
 
-    # Get dataset
+    # Get dataset - ✅ FIXED: Now handles ranges and multiple selections
     print("\nAvailable datasets:")
     print("  1. cifar10")
     print("  2. stl10")
     print("  3. custom_illusion_dataset")
     print("  4. kanizsa_square_dataset")
-    dataset_input = input("Dataset choice (1-4, default cifar10): ").strip() or "1"
+    dataset_input = input("Dataset choice (comma-separated or range like 1-3, default cifar10): ").strip() or "1"
     
     dataset_map = {
-    "1": "cifar10", 
-    "2": "stl10", 
-    "3": "custom_illusion_dataset",
-    "4": "kanizsa_square_dataset"  # NEW
+        "1": "cifar10", 
+        "2": "stl10", 
+        "3": "custom_illusion_dataset",
+        "4": "kanizsa_square_dataset"
     }
-
-    dataset_list = [dataset_map.get(dataset_input, "cifar10")]
+    
+    # ✅ Parse dataset selection (handles comma-separated and ranges)
+    dataset_list = []
+    if dataset_input:
+        for part in dataset_input.split(','):
+            part = part.strip()
+            if '-' in part:
+                # Handle range like "1-3"
+                try:
+                    start, end = part.split('-')
+                    for i in range(int(start), int(end) + 1):
+                        if str(i) in dataset_map and dataset_map[str(i)] not in dataset_list:
+                            dataset_list.append(dataset_map[str(i)])
+                except ValueError:
+                    print(f"{Fore.YELLOW}Warning: Invalid range '{part}', skipping{Fore.RESET}")
+            else:
+                # Handle single selection
+                if part in dataset_map and dataset_map[part] not in dataset_list:
+                    dataset_list.append(dataset_map[part])
+    
+    # Default to cifar10 if nothing valid selected
+    if not dataset_list:
+        dataset_list = ["cifar10"]
+    
+    print(f"{Fore.GREEN}Selected datasets: {', '.join(dataset_list)}{Fore.RESET}\n")
     
     # Get batch size
-    batch_input = input("\nBatch size (default 40): ").strip() or "40"
+    batch_input = input("Batch size (default 40): ").strip() or "40"
     batch_size = parse_list(batch_input, int)
     
     # Get learning rate
@@ -562,6 +585,7 @@ def run_post_processing():
     if choice == "1":
         # Aggregate all
         print(f"\n{Fore.CYAN}Running post-processing aggregation...")
+        import os
         os.system("python post_training_aggregation.py")
         input("\nPress ENTER to continue...")
     
@@ -589,6 +613,7 @@ def run_post_processing():
             if selected:
                 model_str = " ".join(selected)
                 print(f"\n{Fore.CYAN}Running aggregation for {len(selected)} models...")
+                import os
                 os.system(f"python post_training_aggregation.py --models {model_str}")
             else:
                 print(Fore.RED + "No valid models selected!")
